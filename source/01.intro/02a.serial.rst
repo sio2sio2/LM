@@ -1,0 +1,779 @@
+Lenguajes de serialización de datos
+***********************************
+Ya se ha explicado que los **lenguajes de serialización de datos** están
+especialmente diseñados para la transmisión y el almacenamiento de datos
+estructurados, por lo que resultan más adecuados para esta tarea que los
+*lenguajes de marcas*, aunque éstos últimos hayan sido usados (probablemente
+hasta el abuso) durante años.
+
+Trataremos la sintaxis de tres lenguajes (aunque quizás sería recomendable añadir la
+de TOML_, muy útil para crear archivos de configuración).
+
+.. _csv:
+
+|CSV|
+=====
+Es un formato centrado en la representación de datos en columnas y está
+descrito en el :rfc:`4180`. Es muy simple y sus principales reglas son las
+siguientes:
+
+#. Es un formato de texto, aunque no hay forma de definir el sistema de
+   codificación, por lo que su elección deberá realizarse en los procesos de
+   importación y exportación.
+#. Los datos están estructurados en registros, cada uno de los cuales ocupa una
+   línea. Los `cambios de línea
+   <https://es.wikipedia.org/wiki/Nueva_l%C3%ADnea>`_ deben estar codificados
+   tal como se hace en sistemas MS-DOS, o sea, con los dos caracteres
+   :kbd:`\\r\\n` (``CRLF``)\ [#]_
+#. Cada registro, a su vez, se divide en campos separados entre sí por un
+   delimitador. El delimitador es habitualmente una coma, pero no
+   necesariamente, por lo que definir cuál es deberá  hacerse en los procesos de
+   exportación e importación.
+#. Todos los registros deben contener el mismo número de campos.
+#. Opcionalmente, el primer registro, puede ser un registro de cabecera que
+   contenga los nombres de los campos. No hay forma de notar que este primer
+   registro es de cabecera, por lo que suu interpretación debe especificarse en
+   el proceso de importación.
+#. Los campos, en general, no necesitan entrecomillarse (con comillas dobles) a
+   menos que contenga un carácter que distorsione la lectura: el delimitador, el
+   cambio de línea o la propia comilla doble.
+#. En un campo entrecomillado, si el texto contiene un carácter de comilla doble
+   este debe representarse con dos caracteres seguidos de comilla doble.
+
+Ejemplo:
+
+.. code:: csv
+
+   Campo 1,Campo 2,Campo 3,Campo 4
+   1,2,3,4
+   a,b,c,d e
+   "a,b",c,d,e
+   "a""b",c,d,e
+
+.. _json:
+
+|JSON|
+======
+Este lenguaje nació como forma de representar objetos en Javascript_, por lo que
+su aspecto guarda bastante parecido con ellos.
+
+Se usa muy habitualmente en la transmisión de datos entre servidor y cliente
+web, en lo que ha desplazado casi por completo a |XML|.
+
+Reglas básicas
+--------------
+.. _json-nodo:
+
+Básicamente los datos en un documento |JSON| se estructuran en *nodos*. Un
+:dfn:`nodo` representa un dato de uno de estos supertipos:
+
+#. :dfn:`Escalar`, que es un dato constituido por un único valor.
+#. :dfn:`Secuencia`  (o :ref:`array <json-array>`), que es un dato constituido
+   por una colección ordenada de nodos. Por ejemplo:
+
+   .. code-block:: json
+
+      [5, "hola", true]
+
+   Los nodos contenidos en la secuencia no tienen por qué ser escalares, lo
+   que provoca que anidación. Por ejemplo:
+
+   .. code-block:: json
+
+      [5, "hola", ["esto", "anidado"]]
+
+#. :dfn:`Mapa` (u :ref:`objeto <json-objeto>`),  que es una colección ordenada de
+   parejas clave-valor:
+
+   .. code-block:: json
+
+      {
+         "nombre": "Pedro Martínez Alvárez",
+         "edad": 32,
+         "casado": true
+      }
+
+   Como en el caso de las secuencia, los valores pueden ser nodos de cualquier
+   tipo, lo que provoca anidación:
+
+   .. code-block:: json
+
+      {
+         "nombre": "Pedro Martínez Alvárez",
+         "edad": 32,
+         "casado": true,
+         "hijos": [
+            "Felipe",
+            "Sonsoles"
+         ]
+      }
+
+   .. note:: Los objetos pueden tener parejas clave-valor absolutamente
+      arbitrarias. Las reglas generales de |JSON|, simplemente, indican cómo deben
+      escribirse los datos y de qué tipo pueden ser (en nuestro ejemplo, el dato
+      "*nombre*" es una cadena; "*edad*", un número; y "*casado*", un valor
+      lógico). Es obvio que para resolver un determinado problema, el documento
+      |JSON| que usemos tendrá que recoger unos determinados datos relevantes con
+      lo que ni las claves ni sus valores podrán ser arbitrarios. Por tanto, esto
+      exige, además de las reglas generales que expondremos ahora, definir una
+      gramática particular que permita :ref:`validar el doccumento <lm-validez>`.
+
+Sabido esto, las reglas básicas son:
+
+.. rst-class:: simple
+
+* Un archivo o flujo de datos  sólo puede contener un documento |JSON|.
+* Cada documento |JSON| esta constituido por un único nodo *mapa* o un único nodo
+  *secuencia* (al que, por supuesto, pueden estar anidados más nodos).
+* No pueden escribirse comentarios.
+* No hay reglas estrictas para el uso del espaciado, de modo que lo mismo da no
+  usar ninguno, uno o varios. Por lo tanto, este |JSON|:
+
+  .. code:: json
+
+     {"nombre":"Pedro Martínez Alvárez","edad":32,"casado":true}
+
+  es equivalente al primero que expusimos, aunque bastante menos legible porque
+  hemos prescindido de todos los espacios. Dependiendo si queremos privilegiar
+  la legibilidad o el ahorro en el tamaño, podremos usar más o menos espacios.
+* Por carácter de espaciado se entiende el propio espacio, el cambio de línea
+  (:kbd:`\\n`), el retorno de carro (:kbd:`\\r`) o la tabulación. 
+
+El resto de reglas  dependen de cómo se expresan los tipos datos, de modo que
+proseguiremos con ellos.
+
+Tipos de datos
+--------------
+Los tipos existentes en |JSON| son:
+
+.. _json-cadena:
+
+**Cadena**
+   Es un escalar que debe estar encerrado entre comillas dobles (las simples no
+   valen). Si en la propia cadena hay alguna comilla doble, podemos escaparla
+   para evitar que el procesador la interprete como el final de la cadena:
+   :code:`"Juan Martín Díez, \\"el Empecinado\\""`.
+
+.. _json-numero:
+
+**Número**
+   Es un escalar que representa:
+
+   * Enteros (p.e. :code:`25`).
+   * Coma flotante (p.e. :code:`123.54`) que usan como separador el punto.
+   * Coma flotante en notación científica  (p.e. :code:`2.5e-6`, :code:`2.5E-6`,
+     :code:`2.5e6`, :code:`2.5e+6`).
+
+.. _json-booleano:
+
+**Lógico** (o **booleano**)
+   Como en Javascript_ este tipo escalar se expresa con :code:`true` (verdadero)
+   o :code:`false`.
+
+.. _json-nulo:
+
+**Nulo**
+   Este tipo escalar sólo tiene un posible valor que es :code:`null` y
+   representa la ausencia de valor.
+
+.. _json-array:
+
+**Array**
+   Un :dfn:`array` es una colección ordenada de datos de cualquiera de los tipos
+   posibles. Aunque habitualmente todos sus elemenetos son de un mismo tipo, no
+   es obligado que sea así. Para notarlo, debe encerrarse la colección entre
+   corchetes (de apertura :kbd:`[`  y de cierre :kbd:`]`) y usar como separador
+   de elementos la coma. Por ejemplo:
+
+   .. code-block:: json
+
+      [ 25, "cadena", null, 1.2e-6, false, [1, "s"], {"a": 1, "b":  null} ]
+
+   Como ocurre con los *arrays* de todos los lenguajes, para referir los
+   disintos elementos se usa el índice de posición (empezando en **0**).  Por
+   ejemplo, el valor nulo que está en la tercera posición, se refiere usando
+   usando el índice **2**.
+
+.. _json-objeto:
+
+**Objeto**
+   Un :dfn:`objeto` es una colección desordenada de parejas clave-valor. Tiene
+   las siguientes características:
+
+   * Para notarlo, se debe encerrar la colección entre llaves de apertura
+     (:kbd:`{`)  y cierre (:kbd:`}`).
+   * Como separador entre parejas clave-valor, se usa la coma.
+   * Como separador entre clave y valor se usa ":kbd:`:`".
+   * Las claves sólo pueden ser de tipo cadena\ [#]_.
+   * Cada clave dentro de un mismo objeto debe ser única.
+   * Los valores pueden ser de cualquier tipo.   
+
+   Ejemplo:
+
+   .. code-block::  json
+
+      { "a": null, "b": [1, "x", 2.5e+5], "c": { "ca": "xxx", "cb": false } }
+
+No hay más tipos de datos válidos, por lo que faltan los tipos de Javascript_
+para valores indefinidos (undefined_) y para funciones (function_). Un ejemplo
+más completo de un documento |JSON| puede ser:
+
+.. code-block:: json
+
+   {
+      "nombre": "Pedro Martínez Alvárez",
+      "edad": 32,
+      "casado": true,
+      "direccion": {
+         "calle": "Trujillo",
+         "numero": 22
+      },
+      "nacimiento": "1991-08-25",
+      "defuncion": null,
+      "hijos": [
+         "Felipe",
+         "Sonsoles"
+      ]
+   }
+
+.. seealso:: Puede echarle un ojo a `la definición formal  de su grámatica
+   <https://www.json.org/>`_.
+
+.. _yaml:
+
+|YAML|
+======
+|YAML| (`página web oficial <https://yaml.org>`_) es otro lenguaje de
+serialización que, como |JSON|, construye su estructura de datos basándose en el
+concepto de :ref:`nodo <json-nodo>` (escalar, de secuencia o de mapa), lo que
+permite que en principio puedan compartir nichos de uso. En la práctica |YAML|
+se usa más para la escritura de archivos de configuración y |JSON| para la
+transmisión de datos entre servidor y cliente\ [#]_. Su última especificación es
+`YAML 1.2.2 <https://yaml.org/spec/1.2.2/>`_.
+
+.. _yaml-1ej:
+
+Por ejemplo:
+
+.. code-block:: yaml
+
+   %YAML 1.2
+   ---
+   # Este hombre es muy amigo mío.
+   nombre: Pedro Martínez Alvárez
+   edad: 32  # Empieza a ser un puretilla ya.
+   casado: true
+
+.. _yaml-struct:
+
+Estructura
+----------
+Un archivo o un flujo de información está constituido por uno o más documentos
+|YAML| que se separan a través de tres guiones seguidos (:code:`---`). La
+estructura de cada documento es:
+
+.. code-block:: yaml
+
+   #Directivas para el procesador (empiezan por %), como por ejemplo:
+   %YAML 1.2
+   ---
+   #
+   ## Contenido del documento
+   #
+   ...
+
+Se pueden distinguir, pues, cuatro componentes:
+
+* El **contenido del documento** que es el único indispensable.  Por tanto,
+  podrías tener un archivo |YAML| con sólo contenido si solo estuviera
+  constituido de un documento y no requiriéramos especificar directivas.
+
+* La **marca inicial** :code:`---`, que señala el inicio del contenido.
+  Sólo es neceseria si queremos especificar directivas o incluir varios
+  documentos en un mismo archivo.
+
+* Las directivas que afectan al documento que se escribe a continuación. Estas
+  directivas sirven para guiar al procesador encargado de analizarlo.
+
+* La  **marca** final :code:`...` (tres puntos), que señala explicitamente el
+  final del contenido y es opcional.
+
+Por tanto, podríamos encontrarnos con un archivo así:
+
+.. code-block:: yaml
+
+   # Directivas para el documento 1.
+   %YAML 1.2
+   ---
+   #
+   ## Documento 1
+   #
+   #... La marca final no es indispensable.
+   # Directivas para el documento 2.
+   %YAML 1.2
+   ---
+   #
+   ## Documento 2
+   #
+
+Obsérvese que en cualquier momento podemos incluir comentarios anteponiéndolos
+con una almohadilla (:kbd:`#`) tal como se hacen en la *shell* de Linux. Como en
+ella, el comentario puede ocupar una línea completa o encontrarse al final de
+una línea de datos (como ocurre en la línea del primer ejemplo correspondiente
+al dato de la edad).
+
+.. _yaml-direct:
+
+Directivas
+----------
+Se notan anteponiéndoles el carácter :kbd:`%` y sirven para dirigir el análisis
+del procesador. Por ahora, la especificación sólo definido dos:
+
+:code:`%YAML`
+   que identifica la versión usada de la especificación (**1.0**, **1.1** ó
+   **1.2**).
+
+:code:`%TAG`
+   Que define notaciones abreviadas para etiquetas. Lo trataremos en el epígrafe
+   sobre :ref:`yaml-tags`.
+
+.. _yaml-data:
+
+Contenido
+---------
+El contenido esta constituido por un único nodo, como en el caso de |JSON|, pero
+a diferencia de éste, también es válido un nodo escalar. Por tanto, esto es un
+YAML válido:
+
+.. code-block:: yaml
+
+   1
+
+o sea, un documento que serializa únicamente un número entero. Ahora bien, ¿por qué
+esto es un número? ¿Por qué en el :ref:`primer ejemplo <yaml-1ej>` se
+identifican cadenas, números y valores lógicos? La explicación nos la
+proporcionan los esquemas.
+
+.. _yaml-schemas:
+
+Esquemas
+--------
+Hasta ahora los nodos que hemos incluido en nuestros ejemplos som nodos
+sin etiquetar o, siendo más precisos, eran nodos etiquetados implícitamente,
+puesto que las *etiquetas* permiten definir de qué tipo es el nodo. Esto supone
+que el procesador deduce el tipo de dato dependiendo de cómo se hubiera escrito.
+Por ejemplo:
+
+.. code-block:: yaml
+
+   ---
+   num: "1"
+   cadena: 1
+
+En este ejemplo, hay cinco nodos:
+
+* El raíz que constituye el contenido del documento y que se deduce que es un
+  objeto por incluir a continuación dos parejas clave-valor sin guiones que las
+  antecedan.
+* Los dos nodos clave, que se deduce que son cadenas, por ser  caracteres
+  alfanuméricos.
+* Los dos nodos valor, el segundo de los cuales es un entero, por contener un
+  entero; y el primero de los cuales es una cadena, porque, aunque contiene un
+  entero, se ha entrecomillado.
+
+Sin embargo, podríamos haber hecho explícita la declaración de tipos mediante el
+uso de **etiquetas**:
+
+.. code-block:: yaml
+
+   --- !!map
+   !!str  num: !!int "1"
+   !!str cadena: !!str 1
+
+y en este caso, el procesador no hará suposiciones  en función de cómo vea
+escritos los datos, sino que forzará que el tipo sea aquel indicado por la
+etiqueta explícita:
+
+* El nodo raíz es un objeto.
+* La clave "num" es una cadena.
+* El valor asociado a "num" es un entero.
+* La clave "cadena" es una cadena.
+* El valor asociado a "cadena" es una cadena.
+
+De hecho, si pasáramos a un procesador un documento como éste:
+
+.. code-block:: yaml
+
+   --- !!int
+   x
+
+estaríamos forzando a que el nodo fuera un entero. Pero, como "x" no es un
+entero válido, el procesador debería provocar un fallo. En cualquier caso,
+profundizaremos en la *etiquetas* bajo el próximo, para centrarnos ahora en qué
+es un esquema:
+
+Un :dfn:`esquema` en |YAML| es un conjunto de etiquetas y un mecanismo para
+resolverlas. Los procesadores deben implementar un esquema, aunque la
+especificación define tres:
+
+**Failsafe schema** (o sea *esquema a prueba de fallos*)
+   Es un esquema que sólo reconoce tres tipos: :ref:`secuencias <yaml-seq>`,
+   :ref:`mapas <yaml-map>` y :ref:`cadenas <yaml-str>`.
+
+**JSON schema**
+   Es un esquema que implementa al menos los tipos existentes en |JSON|. Por
+   tanto, añade a los anteriores los tipos :ref:`null <yaml-null>`, :ref:`entero
+   <yaml-int>`, :ref:`flotante <yaml-float>` y :ref:`lógico <yaml-bool>`.
+
+**Core schema** (o sea, esquema básico)
+   Es un esquema que no añade tipos al anterior, sino que, simplemente, amplia
+   el modo en que se pueden escribir algunos tipos de datos. Por ejemplo,
+   :code:`null` (y sólo :code:`null`) se entenderá como el tipo nulo en el
+   esquema |JSON| y si escribimos alguna variante como :code:`NULL` se entenderá
+   una cadena.  Sin embargo, en este esquema también puede escribirse este dato
+   como :code:`Null`, :code:`NULL` o dejar el valor vacío.
+
+   .. seealso:: Échele un ojo a cuáles son `todas las extensiones en la especificación <https://yaml.org/spec/1.2.2/#core-schema>`_.
+
+Un procesador debería como mínimo implementar el primero de los esquemas, pero lo
+habitual es que implemente un esquema que extienda el esquema básico.
+
+.. _yaml-tipos:
+
+Tipos
+-----
+Analicemos los tipos incluidos dentro de los esquemas de |YAML| (entre
+paréntesis se indica cuál es la etiqueta que los identifica):
+
+.. _yaml-int:
+
+**Enteros** (``int``)
+   Pueden escribirse:
+
+   * Decimales (:code:`-123`)
+   * Octales (:code:`0o10`)
+   * Hexadecimales (:code:`0x1a`).
+
+.. _yaml-float:
+
+**Numeros en coma flotante** (``float``)
+   Tiene también varias expresiones:
+
+   * La habitual con punto separador :code:`123.45`.
+   * En notación científica :code:`1.25e+5`\ [#]_)
+   * Valores infinitos (:code:`.inf` y :code:`-.inf`).
+   * *No es un número* (:code:`.nan`)\ [#]_.
+
+.. _yaml-bool:
+
+**Lógicos** o **booleanos** (``bool``)
+   Como en Javascript_  (y |JSON|) se representan con :code:`true` y
+   :code:`false`.
+
+.. _yaml-null:
+
+**Nulo** (``null``)
+   Es la ausencia de valor y se escribe :code:`null`.
+
+.. _yaml-str:
+
+**Cadenas** (``str``)
+   Las cadenas. a diferencia de |JSON|, no necesitan escribirse entrecomilladas,
+   aunque si se hace pueden usarse comillas simples o dobles. Las implicaciones
+   de unas y otras es ligeramente diferente (véase en la especificación la
+   explicación dedicada al `entrecomillado doble
+   <https://yaml.org/spec/1.2.2/#double-quoted-style>`_):
+
+   .. code-block:: yaml 
+
+      a: "esto es una cadena"
+      "x y": también lo es esto
+      num: 2  # Esto se interpreta como número, no una cadena.
+      no num: "2"
+      verdad: Las cadenas se entrecomillan con " o '.
+      lamismaverdad: "Las cadenas se entrecomillan con \" o '."
+
+
+   .. note:: El procesador procura adivinar el tipo del dato, por lo que un
+      **2** no entrecomillado (como el caso de la clave "*num*" del ejemplo) se
+      interpreta como un entero y no como una cadena. Por la misma razón,
+      :code:`false` o :code:`null` sin entrecomillar tampoco se consideran
+      cadenas. Entrecomillados esos valores, sin embargo, sí será cadenas.
+
+   Cuando las cadenas son largas\ [#]_, hay también modo de escribirlas cómodamente:
+
+   .. code-block:: yaml
+
+      larga: |
+         Este cadena contiene
+         varias líneas que conservan los
+         cambios de línea
+
+         tal y como se escriben.
+
+      otralarga: >
+         Esta cadena convierte
+         los cambios de línea en espacios,
+         pero transforma una línea en blanco
+
+         en un cambio de línea.
+
+Además de estos tipos de datos escalares, existen los que definen colecciones.
+En |JSON| eran los *objetos* y los *arrays* y en |YAML| también, aunque  existe
+algún otro:
+
+.. _yaml-seq:
+
+**Array** (``seq``)
+   Las colecciones ordenadas (reléase lo expuesto para los :ref:`arrays en JSON
+   <json-array>`) se notan con guiones:
+
+   .. code-block:: yaml
+
+      - uno
+      - 2
+      - true
+      -
+         - array dentro de array
+         - 1.24e-5
+      - null
+
+   .. note:: Para anidar (el cuarto elemento es, a su vez, un *array*) se usa
+      el sangrado mediante caracteres de espaciados\ [#]_. No hay ninguna regla
+      sobre cuántos son apropiados, pero debe ser consistente. En el ejemplo,
+      como se han usado tres para el primer elemento \"*array dentro de un
+      array*\", por lo que el segundo también de ser sangrado con otros tres.
+      Este elemento también habría sido posible haberlo escrito así:
+
+      .. code-block:: yaml
+
+         - - array dentro de array
+           - 1.24e-5
+
+   Además de esta notación, existe otra que es exactamente la misma que la usada
+   en |JSON|. Por tanto, también es válido haber escrito el dato anterior como:
+
+   .. code-block:: yaml
+
+      [
+         "uno",
+         2
+         true,
+         [
+            "array dentro de array",
+            1.24e-5
+         ],
+         null
+      ]
+
+   o una mezcla de ambas notaciones como:
+
+   .. code-block:: yaml
+
+      - uno
+      - 2
+      - true
+      - [ array dentro de array, 1.24e-5 ]
+      - null
+
+.. _yaml-map:
+
+**Mapa** u **objeto** (``map``)
+   Las colecciones ordenadas de parejas clave-valor se notan no colocando
+   guiones y utilizando como separador la secuencia de dos caracteres
+   :code:`: \ `\ :
+
+   ..  ``
+   
+   .. code-block:: yaml
+
+      uno: 1
+      dos: 2
+      tres:  # Array anidado como valor.
+         - a
+         - b
+         - true
+      cuatro: null
+      cinco: # Mapa anidado como valor.
+         x: equis
+         y: y griega
+
+   Sin embargo, también pueden notarse usando la notación de |JSON|:
+
+   .. code-block:: yaml
+
+      {
+         "uno": 1,
+         "dos": 2,
+         "tres": ["a", "b", true],
+         "cuatro": null,
+         "cinco": {"x": "equis", "y": "y  griega"}
+      }
+
+   Tanto las claves como los valores pueden ser un nodo de cualquier tipo.
+
+   .. note:: Llegados a este punto, podemos hacer notar un hecho muy importante:
+      todo lo que se expresa con |JSON|, puede expresarse con |YAML| y, además,
+      puede expresarse del mismo modo, por lo que |YAML| es un superconjunto de
+      |JSON| o, lo que es lo mismo, todo documento |JSON| es un documento |YAML|
+      bien formado.
+
+Además de estos tipos incluidos en el esquema básico, existen otros  que suelen
+implementar los procesadores:
+
+.. _yaml-set:
+
+**Conjunto**
+   Es una secuencia desordenada, que se nota usando el carácter de interrogación
+   (:code:`?`) en vez del guión:
+
+   .. code-block:: yaml
+
+      ? xxx
+      ? yyy
+      ? zzz
+
+   En el fondo, equivale equivale a un mapa, los valores de cuyas claves son
+   todos nulos:
+
+   .. code-block:: yaml
+
+      xxx: null
+      yyy: null
+      zzz: null
+
+.. _yaml-binary:
+
+**Binario**
+   Aunque |YAML| es una representación de datos en texto plano, este tipo de
+   dato permite incluir valores binarios. Para lograrse deben codificarse los
+   datos binarios en base64_:
+
+   .. code-block:: yaml
+
+      %YAML 1.2
+      ---
+      nombre: "Pedro Martínez Alvárez"
+      edad: 32
+      casado: true
+      avatar: !!binary |
+         PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDov
+         L3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjAwIj4NCjxyZWN0IGZp
+         bGw9IiNmZmYiIGhlaWdodD0iNjAwIiB3aWR0aD0iOTAwIi8+DQo8Y2lyY2xlIGZpbGw9IiNiYzAw
+         MmQiIGN4PSI0NTAiIGN5PSIzMDAiIHI9IjE4MCIvPgo8L3N2Zz4=
+
+   En este ejemplo, la codificación es la representación |SVG| de la bandera de
+   Japón:
+
+   .. image:: files/japan.svg
+      :width: 200
+      :alt: Bandera de Japón
+
+   .. note:: Por otra parte hemos utilizados una :ref:`etiqueta <yaml-tags>`
+      (:code:`!!binary`) que introduciremos un poco más adelante y hemos
+      necesitado incluir la tubería (carácter :kbd:`|`), porque la
+      representación codificada el binario ocupa varias líneas (véase
+      :ref:`cadenas <yaml-str>`).
+
+**Fecha** (``date``)
+
+**Marcas de tiempo** (``timestamp``)
+
+.. _yaml-ref:
+
+Referencias
+-----------
+Las referencias (o anclas) permiten referir el valor de un nodo dentro de otro.
+Pueden crear referencias tanto a escalares:
+
+.. code-block:: yaml
+
+   - nombre: &pedro "Pedro Martínez Alvárez"
+     edad: 32
+     casado: true
+   - nombre: "María Martínez Cansado"
+     edad: 2
+     casado: false
+     padre: *pedro
+
+como a *arrays*:
+
+.. code-block:: yaml
+
+   comun: &jugadores
+      - Manolo
+      - Paco
+      - María
+   futbol: *jugadores
+   baloncesto: *jugadores
+
+como a mapas:
+
+.. code-block:: yaml
+
+   - &pedro
+     nombre: "Pedro Martínez Alvárez"
+     edad: 32
+     casado: true
+   - nombre: "María Martínez Cansado"
+     edad: 2
+     casado: false
+     padre: *pedro
+
+En el caso de mapas, la referencia a un mapa se puede añadir a la definición
+de otro para añadir a éste las parejas clave-valor del primero:
+
+.. code-block:: yaml
+
+   defaults: &defaults
+      sgbd: mysql
+      host: localhost
+   mrbs:
+      nombre: aulas
+      <<: *defaults
+   wordpress:
+      nombre: wp
+      <<: *defaults
+
+.. _yaml-tags:
+
+Etiquetas (*tags*)
+------------------
+
+.. rubric:: Notas al pie
+
+.. [#] Que, curiosamente, es justo lo contrario que se hacía en una máquina de
+   escribir en las que primero se cambiaba de línea y luego se volvía el carro.
+
+.. [#]  Por esta razón, las claves siempre se muestran entrecomilladas. Esto es
+   una diferencia con Javascript_ en que se permite no entgrecomillar las claves.
+
+.. [#] Al menos en servicios web. La razón muy probablemente sea que el cliente
+   de las aplicaciones web es un navegador con Javascript_ para el cual el
+   soporte de |JSON| es nativo.
+
+.. [#] En esta notación son válidas todas las expresiones que ya vimos para
+   |JSON|.
+
+.. [#] "No es un número" es la forma de representar en algunos lenguajes de
+   programación que una operación es imposible de calcular es imposible. Por
+   ejemplo, la operación :math:`0/0`.
+
+.. [#] En realidad, no es necesario que el tipo sea una cadena (véase :ref:`tipo
+   binario <yaml-binary>`, por ejemplo), pero lo habitual es que un valor que
+   ocupe más de una línea sea una cadena.
+
+.. [#] Aunque no es necesario, se recomienda que estos caracteres de espaciado
+   sean espacios.
+
+.. |CSV| replace:: :abbr:`CSV (Comma-Separated Values)`
+.. |JSON| replace:: :abbr:`JSON (JavaScript Object Notation)`
+.. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`
+.. |SVG| replace:: :abbr:`SVG (Scalable Vector Graphics)`
+
+.. _TOML: https://toml.io
+.. _Javascript: https://es.wikipedia.org/wiki/JavaScript
+.. _function: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function
+.. _undefined: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined
+.. _base64: https://es.wikipedia.org/wiki/Base64
+

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE direccion SYSTEM "direccion.dtd">
+<direccion>
+   <via tipo="calle">Callo, 5</via>
+   <cp>12345</cp>
+   <localidad>Villaconejos</localidad>
+</direccion>
+
+

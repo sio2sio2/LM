@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE claustro SYSTEM "casilleros.dtd" [
+   <!ENTITY EFI "Educación Física">
+]>
+<claustro centro="IES Pepe Botella" xmlns="urn:profesores">
+   <profesor id="p1">
+      <apelativo>Luis</apelativo>
+      <nombre>Luis</nombre>
+      <apellidos>Márquez Vázquez</apellidos>
+      <departamento>&EFI;</departamento>
+      <d:direccion xmlns:d="urn:direccion">
+         <d:via tipo="calle">Callo, 5</d:via>
+         <d:cp>12345</cp>
+         <d:localidad>Villaconejos</d:localidad>
+      </d:direccion>
+   </profesor>
+
+   <!-- Otros profesores -->
+</claustro>

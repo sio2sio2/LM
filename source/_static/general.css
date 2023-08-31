@@ -1,0 +1,13 @@
+.dfn {
+   border: dotted 1px #AAA;
+   background-color: #EDA;
+   padding: 2px 4px;
+}
+
+dl dd  p:first-child {
+   margin-top: 0;
+}
+
+.simple li p:first-child {
+   margin: 0;
+}

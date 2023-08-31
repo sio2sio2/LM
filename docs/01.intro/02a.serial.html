@@ -1,0 +1,877 @@
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>1.2.1. Lenguajes de serialización de datos &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" href="../_static/general.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    
+    
+     
+        <script src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="1.2.2. Lenguajes de marcas" href="02b.marcas.html" />
+    <link rel="prev" title="1.2. Sintaxis" href="02.sintaxis.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="02b.marcas.html" title="1.2.2. Lenguajes de marcas"
+             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="02.sintaxis.html" title="1.2. Sintaxis"
+             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">1. </span>Lenguajes para el intercambio de datos</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="02.sintaxis.html" accesskey="U"><span class="section-number">1.2. </span>Sintaxis</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1.2.1. </span>Lenguajes de serialización de datos</a></li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="lenguajes-de-serializacion-de-datos">
+<h1><span class="section-number">1.2.1. </span>Lenguajes de serialización de datos<a class="headerlink" href="#lenguajes-de-serializacion-de-datos" title="Enlace permanente a este encabezado">¶</a></h1>
+<p>Ya se ha explicado que los <strong>lenguajes de serialización de datos</strong> están
+especialmente diseñados para la transmisión y el almacenamiento de datos
+estructurados, por lo que resultan más adecuados para esta tarea que los
+<em>lenguajes de marcas</em>, aunque éstos últimos hayan sido usados (probablemente
+hasta el abuso) durante años.</p>
+<p>Trataremos la sintaxis de tres lenguajes (aunque quizás sería recomendable añadir la
+de <a class="reference external" href="https://toml.io">TOML</a>, muy útil para crear archivos de configuración).</p>
+<section id="csv">
+<span id="id1"></span><h2><span class="section-number">1.2.1.1. </span><abbr title="Comma-Separated Values">CSV</abbr><a class="headerlink" href="#csv" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Es un formato centrado en la representación de datos en columnas y está
+descrito en el <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4180.html"><strong>RFC 4180</strong></a>. Es muy simple y sus principales reglas son las
+siguientes:</p>
+<ol class="arabic simple">
+<li><p>Es un formato de texto, aunque no hay forma de definir el sistema de
+codificación, por lo que su elección deberá realizarse en los procesos de
+importación y exportación.</p></li>
+<li><p>Los datos están estructurados en registros, cada uno de los cuales ocupa una
+línea. Los <a class="reference external" href="https://es.wikipedia.org/wiki/Nueva_l%C3%ADnea">cambios de línea</a> deben estar codificados
+tal como se hace en sistemas MS-DOS, o sea, con los dos caracteres
+<kbd class="kbd docutils literal notranslate">\r\n</kbd> (<code class="docutils literal notranslate"><span class="pre">CRLF</span></code>)<a class="footnote-reference brackets" href="#id11" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
+<li><p>Cada registro, a su vez, se divide en campos separados entre sí por un
+delimitador. El delimitador es habitualmente una coma, pero no
+necesariamente, por lo que definir cuál es deberá  hacerse en los procesos de
+exportación e importación.</p></li>
+<li><p>Todos los registros deben contener el mismo número de campos.</p></li>
+<li><p>Opcionalmente, el primer registro, puede ser un registro de cabecera que
+contenga los nombres de los campos. No hay forma de notar que este primer
+registro es de cabecera, por lo que suu interpretación debe especificarse en
+el proceso de importación.</p></li>
+<li><p>Los campos, en general, no necesitan entrecomillarse (con comillas dobles) a
+menos que contenga un carácter que distorsione la lectura: el delimitador, el
+cambio de línea o la propia comilla doble.</p></li>
+<li><p>En un campo entrecomillado, si el texto contiene un carácter de comilla doble
+este debe representarse con dos caracteres seguidos de comilla doble.</p></li>
+</ol>
+<p>Ejemplo:</p>
+<div class="highlight-csv notranslate"><div class="highlight"><pre><span></span>Campo 1,Campo 2,Campo 3,Campo 4
+1,2,3,4
+a,b,c,d e
+&quot;a,b&quot;,c,d,e
+&quot;a&quot;&quot;b&quot;,c,d,e
+</pre></div>
+</div>
+</section>
+<section id="json">
+<span id="id3"></span><h2><span class="section-number">1.2.1.2. </span><abbr title="JavaScript Object Notation">JSON</abbr><a class="headerlink" href="#json" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Este lenguaje nació como forma de representar objetos en <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a>, por lo que
+su aspecto guarda bastante parecido con ellos.</p>
+<p>Se usa muy habitualmente en la transmisión de datos entre servidor y cliente
+web, en lo que ha desplazado casi por completo a <abbr title="eXtensible  Markup Language">XML</abbr>.</p>
+<section id="reglas-basicas">
+<h3><span class="section-number">1.2.1.2.1. </span>Reglas básicas<a class="headerlink" href="#reglas-basicas" title="Enlace permanente a este encabezado">¶</a></h3>
+<p id="json-nodo">Básicamente los datos en un documento <abbr title="JavaScript Object Notation">JSON</abbr> se estructuran en <em>nodos</em>. Un
+<em class="dfn">nodo</em> representa un dato de uno de estos supertipos:</p>
+<ol class="arabic">
+<li><p><em class="dfn">Escalar</em>, que es un dato constituido por un único valor.</p></li>
+<li><p><em class="dfn">Secuencia</em>  (o <a class="reference internal" href="#json-array"><span class="std std-ref">array</span></a>), que es un dato constituido
+por una colección ordenada de nodos. Por ejemplo:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hola&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Los nodos contenidos en la secuencia no tienen por qué ser escalares, lo
+que provoca que anidación. Por ejemplo:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hola&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;esto&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;anidado&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</li>
+<li><p><em class="dfn">Mapa</em> (u <a class="reference internal" href="#json-objeto"><span class="std std-ref">objeto</span></a>),  que es una colección ordenada de
+parejas clave-valor:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Pedro Martínez Alvárez&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;edad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;casado&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Como en el caso de las secuencia, los valores pueden ser nodos de cualquier
+tipo, lo que provoca anidación:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Pedro Martínez Alvárez&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;edad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;casado&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;hijos&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;Felipe&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;Sonsoles&quot;</span>
+<span class="w">   </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Los objetos pueden tener parejas clave-valor absolutamente
+arbitrarias. Las reglas generales de <abbr title="JavaScript Object Notation">JSON</abbr>, simplemente, indican cómo deben
+escribirse los datos y de qué tipo pueden ser (en nuestro ejemplo, el dato
+«<em>nombre</em>» es una cadena; «<em>edad</em>», un número; y «<em>casado</em>», un valor
+lógico). Es obvio que para resolver un determinado problema, el documento
+<abbr title="JavaScript Object Notation">JSON</abbr> que usemos tendrá que recoger unos determinados datos relevantes con
+lo que ni las claves ni sus valores podrán ser arbitrarios. Por tanto, esto
+exige, además de las reglas generales que expondremos ahora, definir una
+gramática particular que permita <a class="reference internal" href="01.intro.html#lm-validez"><span class="std std-ref">validar el doccumento</span></a>.</p>
+</div>
+</li>
+</ol>
+<p>Sabido esto, las reglas básicas son:</p>
+<ul class="simple">
+<li><p>Un archivo o flujo de datos  sólo puede contener un documento <abbr title="JavaScript Object Notation">JSON</abbr>.</p></li>
+<li><p>Cada documento <abbr title="JavaScript Object Notation">JSON</abbr> esta constituido por un único nodo <em>mapa</em> o un único nodo
+<em>secuencia</em> (al que, por supuesto, pueden estar anidados más nodos).</p></li>
+<li><p>No pueden escribirse comentarios.</p></li>
+<li><p>No hay reglas estrictas para el uso del espaciado, de modo que lo mismo da no
+usar ninguno, uno o varios. Por lo tanto, este <abbr title="JavaScript Object Notation">JSON</abbr>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="s2">&quot;Pedro Martínez Alvárez&quot;</span><span class="p">,</span><span class="nt">&quot;edad&quot;</span><span class="p">:</span><span class="mi">32</span><span class="p">,</span><span class="nt">&quot;casado&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>es equivalente al primero que expusimos, aunque bastante menos legible porque
+hemos prescindido de todos los espacios. Dependiendo si queremos privilegiar
+la legibilidad o el ahorro en el tamaño, podremos usar más o menos espacios.</p>
+</li>
+<li><p>Por carácter de espaciado se entiende el propio espacio, el cambio de línea
+(<kbd class="kbd docutils literal notranslate">\n</kbd>), el retorno de carro (<kbd class="kbd docutils literal notranslate">\r</kbd>) o la tabulación.</p></li>
+</ul>
+<p>El resto de reglas  dependen de cómo se expresan los tipos datos, de modo que
+proseguiremos con ellos.</p>
+</section>
+<section id="tipos-de-datos">
+<h3><span class="section-number">1.2.1.2.2. </span>Tipos de datos<a class="headerlink" href="#tipos-de-datos" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Los tipos existentes en <abbr title="JavaScript Object Notation">JSON</abbr> son:</p>
+<dl class="simple" id="json-cadena">
+<dt><strong>Cadena</strong></dt><dd><p>Es un escalar que debe estar encerrado entre comillas dobles (las simples no
+valen). Si en la propia cadena hay alguna comilla doble, podemos escaparla
+para evitar que el procesador la interprete como el final de la cadena:
+<code class="code docutils literal notranslate"><span class="pre">&quot;Juan</span> <span class="pre">Martín</span> <span class="pre">Díez,</span> <span class="pre">\&quot;el</span> <span class="pre">Empecinado\&quot;&quot;</span></code>.</p>
+</dd>
+</dl>
+<dl class="simple" id="json-numero">
+<dt><strong>Número</strong></dt><dd><p>Es un escalar que representa:</p>
+<ul class="simple">
+<li><p>Enteros (p.e. <code class="code docutils literal notranslate"><span class="pre">25</span></code>).</p></li>
+<li><p>Coma flotante (p.e. <code class="code docutils literal notranslate"><span class="pre">123.54</span></code>) que usan como separador el punto.</p></li>
+<li><p>Coma flotante en notación científica  (p.e. <code class="code docutils literal notranslate"><span class="pre">2.5e-6</span></code>, <code class="code docutils literal notranslate"><span class="pre">2.5E-6</span></code>,
+<code class="code docutils literal notranslate"><span class="pre">2.5e6</span></code>, <code class="code docutils literal notranslate"><span class="pre">2.5e+6</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple" id="json-booleano">
+<dt><strong>Lógico</strong> (o <strong>booleano</strong>)</dt><dd><p>Como en <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a> este tipo escalar se expresa con <code class="code docutils literal notranslate"><span class="pre">true</span></code> (verdadero)
+o <code class="code docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</dd>
+</dl>
+<dl class="simple" id="json-nulo">
+<dt><strong>Nulo</strong></dt><dd><p>Este tipo escalar sólo tiene un posible valor que es <code class="code docutils literal notranslate"><span class="pre">null</span></code> y
+representa la ausencia de valor.</p>
+</dd>
+</dl>
+<dl id="json-array">
+<dt><strong>Array</strong></dt><dd><p>Un <em class="dfn">array</em> es una colección ordenada de datos de cualquiera de los tipos
+posibles. Aunque habitualmente todos sus elemenetos son de un mismo tipo, no
+es obligado que sea así. Para notarlo, debe encerrarse la colección entre
+corchetes (de apertura <kbd class="kbd docutils literal notranslate">[</kbd>  y de cierre <kbd class="kbd docutils literal notranslate">]</kbd>) y usar como separador
+de elementos la coma. Por ejemplo:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;cadena&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">1.2e-6</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;s&quot;</span><span class="p">],</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;a&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;b&quot;</span><span class="p">:</span><span class="w">  </span><span class="kc">null</span><span class="p">}</span><span class="w"> </span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Como ocurre con los <em>arrays</em> de todos los lenguajes, para referir los
+disintos elementos se usa el índice de posición (empezando en <strong>0</strong>).  Por
+ejemplo, el valor nulo que está en la tercera posición, se refiere usando
+usando el índice <strong>2</strong>.</p>
+</dd>
+</dl>
+<dl id="json-objeto">
+<dt><strong>Objeto</strong></dt><dd><p>Un <em class="dfn">objeto</em> es una colección desordenada de parejas clave-valor. Tiene
+las siguientes características:</p>
+<ul class="simple">
+<li><p>Para notarlo, se debe encerrar la colección entre llaves de apertura
+(<kbd class="kbd docutils literal notranslate">{</kbd>)  y cierre (<kbd class="kbd docutils literal notranslate">}</kbd>).</p></li>
+<li><p>Como separador entre parejas clave-valor, se usa la coma.</p></li>
+<li><p>Como separador entre clave y valor se usa «<kbd class="kbd docutils literal notranslate">:</kbd>».</p></li>
+<li><p>Las claves sólo pueden ser de tipo cadena<a class="footnote-reference brackets" href="#id12" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p></li>
+<li><p>Cada clave dentro de un mismo objeto debe ser única.</p></li>
+<li><p>Los valores pueden ser de cualquier tipo.</p></li>
+</ul>
+<p>Ejemplo:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;a&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;b&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">2.5e+5</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;c&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;ca&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxx&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cb&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>No hay más tipos de datos válidos, por lo que faltan los tipos de <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a>
+para valores indefinidos (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a>) y para funciones (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>). Un ejemplo
+más completo de un documento <abbr title="JavaScript Object Notation">JSON</abbr> puede ser:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Pedro Martínez Alvárez&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;edad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;casado&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;direccion&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;calle&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Trujillo&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;numero&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span>
+<span class="w">   </span><span class="p">},</span>
+<span class="w">   </span><span class="nt">&quot;nacimiento&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1991-08-25&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;defuncion&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;hijos&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;Felipe&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;Sonsoles&quot;</span>
+<span class="w">   </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Puede echarle un ojo a <a class="reference external" href="https://www.json.org/">la definición formal  de su grámatica</a>.</p>
+</div>
+</section>
+</section>
+<section id="yaml">
+<span id="id5"></span><h2><span class="section-number">1.2.1.3. </span><abbr title="YAML Ain't Markup Language">YAML</abbr><a class="headerlink" href="#yaml" title="Enlace permanente a este encabezado">¶</a></h2>
+<p><abbr title="YAML Ain't Markup Language">YAML</abbr> (<a class="reference external" href="https://yaml.org">página web oficial</a>) es otro lenguaje de
+serialización que, como <abbr title="JavaScript Object Notation">JSON</abbr>, construye su estructura de datos basándose en el
+concepto de <a class="reference internal" href="#json-nodo"><span class="std std-ref">nodo</span></a> (escalar, de secuencia o de mapa), lo que
+permite que en principio puedan compartir nichos de uso. En la práctica <abbr title="YAML Ain't Markup Language">YAML</abbr>
+se usa más para la escritura de archivos de configuración y <abbr title="JavaScript Object Notation">JSON</abbr> para la
+transmisión de datos entre servidor y cliente<a class="footnote-reference brackets" href="#id13" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>. Su última especificación es
+<a class="reference external" href="https://yaml.org/spec/1.2.2/">YAML 1.2.2</a>.</p>
+<p id="yaml-1ej">Por ejemplo:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">%YAML</span><span class="w"> </span><span class="m">1.2</span>
+<span class="nn">---</span>
+<span class="c1"># Este hombre es muy amigo mío.</span>
+<span class="nt">nombre</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pedro Martínez Alvárez</span>
+<span class="nt">edad</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32</span><span class="w">  </span><span class="c1"># Empieza a ser un puretilla ya.</span>
+<span class="nt">casado</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<section id="estructura">
+<span id="yaml-struct"></span><h3><span class="section-number">1.2.1.3.1. </span>Estructura<a class="headerlink" href="#estructura" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Un archivo o un flujo de información está constituido por uno o más documentos
+<abbr title="YAML Ain't Markup Language">YAML</abbr> que se separan a través de tres guiones seguidos (<code class="code docutils literal notranslate"><span class="pre">---</span></code>). La
+estructura de cada documento es:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1">#Directivas para el procesador (empiezan por %), como por ejemplo:</span>
+<span class="nt">%YAML</span><span class="w"> </span><span class="m">1.2</span>
+<span class="nn">---</span>
+<span class="c1">#</span>
+<span class="c1">## Contenido del documento</span>
+<span class="c1">#</span>
+<span class="nn">...</span>
+</pre></div>
+</div>
+<p>Se pueden distinguir, pues, cuatro componentes:</p>
+<ul class="simple">
+<li><p>El <strong>contenido del documento</strong> que es el único indispensable.  Por tanto,
+podrías tener un archivo <abbr title="YAML Ain't Markup Language">YAML</abbr> con sólo contenido si solo estuviera
+constituido de un documento y no requiriéramos especificar directivas.</p></li>
+<li><p>La <strong>marca inicial</strong> <code class="code docutils literal notranslate"><span class="pre">---</span></code>, que señala el inicio del contenido.
+Sólo es neceseria si queremos especificar directivas o incluir varios
+documentos en un mismo archivo.</p></li>
+<li><p>Las directivas que afectan al documento que se escribe a continuación. Estas
+directivas sirven para guiar al procesador encargado de analizarlo.</p></li>
+<li><p>La  <strong>marca</strong> final <code class="code docutils literal notranslate"><span class="pre">...</span></code> (tres puntos), que señala explicitamente el
+final del contenido y es opcional.</p></li>
+</ul>
+<p>Por tanto, podríamos encontrarnos con un archivo así:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Directivas para el documento 1.</span>
+<span class="nt">%YAML</span><span class="w"> </span><span class="m">1.2</span>
+<span class="nn">---</span>
+<span class="c1">#</span>
+<span class="c1">## Documento 1</span>
+<span class="c1">#</span>
+<span class="c1">#... La marca final no es indispensable.</span>
+<span class="c1"># Directivas para el documento 2.</span>
+<span class="nt">%YAML</span><span class="w"> </span><span class="m">1.2</span>
+<span class="nn">---</span>
+<span class="c1">#</span>
+<span class="c1">## Documento 2</span>
+<span class="c1">#</span>
+</pre></div>
+</div>
+<p>Obsérvese que en cualquier momento podemos incluir comentarios anteponiéndolos
+con una almohadilla (<kbd class="kbd docutils literal notranslate">#</kbd>) tal como se hacen en la <em>shell</em> de Linux. Como en
+ella, el comentario puede ocupar una línea completa o encontrarse al final de
+una línea de datos (como ocurre en la línea del primer ejemplo correspondiente
+al dato de la edad).</p>
+</section>
+<section id="directivas">
+<span id="yaml-direct"></span><h3><span class="section-number">1.2.1.3.2. </span>Directivas<a class="headerlink" href="#directivas" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Se notan anteponiéndoles el carácter <kbd class="kbd docutils literal notranslate">%</kbd> y sirven para dirigir el análisis
+del procesador. Por ahora, la especificación sólo definido dos:</p>
+<dl class="simple">
+<dt><code class="code docutils literal notranslate"><span class="pre">%YAML</span></code></dt><dd><p>que identifica la versión usada de la especificación (<strong>1.0</strong>, <strong>1.1</strong> ó
+<strong>1.2</strong>).</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">%TAG</span></code></dt><dd><p>Que define notaciones abreviadas para etiquetas. Lo trataremos en el epígrafe
+sobre <a class="reference internal" href="#yaml-tags"><span class="std std-ref">Etiquetas (tags)</span></a>.</p>
+</dd>
+</dl>
+</section>
+<section id="contenido">
+<span id="yaml-data"></span><h3><span class="section-number">1.2.1.3.3. </span>Contenido<a class="headerlink" href="#contenido" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>El contenido esta constituido por un único nodo, como en el caso de <abbr title="JavaScript Object Notation">JSON</abbr>, pero
+a diferencia de éste, también es válido un nodo escalar. Por tanto, esto es un
+YAML válido:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</pre></div>
+</div>
+<p>o sea, un documento que serializa únicamente un número entero. Ahora bien, ¿por qué
+esto es un número? ¿Por qué en el <a class="reference internal" href="#yaml-1ej"><span class="std std-ref">primer ejemplo</span></a> se
+identifican cadenas, números y valores lógicos? La explicación nos la
+proporcionan los esquemas.</p>
+</section>
+<section id="esquemas">
+<span id="yaml-schemas"></span><h3><span class="section-number">1.2.1.3.4. </span>Esquemas<a class="headerlink" href="#esquemas" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Hasta ahora los nodos que hemos incluido en nuestros ejemplos som nodos
+sin etiquetar o, siendo más precisos, eran nodos etiquetados implícitamente,
+puesto que las <em>etiquetas</em> permiten definir de qué tipo es el nodo. Esto supone
+que el procesador deduce el tipo de dato dependiendo de cómo se hubiera escrito.
+Por ejemplo:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="nt">num</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="nt">cadena</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</pre></div>
+</div>
+<p>En este ejemplo, hay cinco nodos:</p>
+<ul class="simple">
+<li><p>El raíz que constituye el contenido del documento y que se deduce que es un
+objeto por incluir a continuación dos parejas clave-valor sin guiones que las
+antecedan.</p></li>
+<li><p>Los dos nodos clave, que se deduce que son cadenas, por ser  caracteres
+alfanuméricos.</p></li>
+<li><p>Los dos nodos valor, el segundo de los cuales es un entero, por contener un
+entero; y el primero de los cuales es una cadena, porque, aunque contiene un
+entero, se ha entrecomillado.</p></li>
+</ul>
+<p>Sin embargo, podríamos haber hecho explícita la declaración de tipos mediante el
+uso de <strong>etiquetas</strong>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span><span class="w"> </span><span class="kt">!!map</span>
+<span class="nt">!!str  num</span><span class="p">:</span><span class="w"> </span><span class="kt">!!int</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="nt">!!str cadena</span><span class="p">:</span><span class="w"> </span><span class="kt">!!str</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</pre></div>
+</div>
+<p>y en este caso, el procesador no hará suposiciones  en función de cómo vea
+escritos los datos, sino que forzará que el tipo sea aquel indicado por la
+etiqueta explícita:</p>
+<ul class="simple">
+<li><p>El nodo raíz es un objeto.</p></li>
+<li><p>La clave «num» es una cadena.</p></li>
+<li><p>El valor asociado a «num» es un entero.</p></li>
+<li><p>La clave «cadena» es una cadena.</p></li>
+<li><p>El valor asociado a «cadena» es una cadena.</p></li>
+</ul>
+<p>De hecho, si pasáramos a un procesador un documento como éste:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span><span class="w"> </span><span class="kt">!!int</span>
+<span class="l l-Scalar l-Scalar-Plain">x</span>
+</pre></div>
+</div>
+<p>estaríamos forzando a que el nodo fuera un entero. Pero, como «x» no es un
+entero válido, el procesador debería provocar un fallo. En cualquier caso,
+profundizaremos en la <em>etiquetas</em> bajo el próximo, para centrarnos ahora en qué
+es un esquema:</p>
+<p>Un <em class="dfn">esquema</em> en <abbr title="YAML Ain't Markup Language">YAML</abbr> es un conjunto de etiquetas y un mecanismo para
+resolverlas. Los procesadores deben implementar un esquema, aunque la
+especificación define tres:</p>
+<dl>
+<dt><strong>Failsafe schema</strong> (o sea <em>esquema a prueba de fallos</em>)</dt><dd><p>Es un esquema que sólo reconoce tres tipos: <a class="reference internal" href="#yaml-seq"><span class="std std-ref">secuencias</span></a>,
+<a class="reference internal" href="#yaml-map"><span class="std std-ref">mapas</span></a> y <a class="reference internal" href="#yaml-str"><span class="std std-ref">cadenas</span></a>.</p>
+</dd>
+<dt><strong>JSON schema</strong></dt><dd><p>Es un esquema que implementa al menos los tipos existentes en <abbr title="JavaScript Object Notation">JSON</abbr>. Por
+tanto, añade a los anteriores los tipos <a class="reference internal" href="#yaml-null"><span class="std std-ref">null</span></a>, <a class="reference internal" href="#yaml-int"><span class="std std-ref">entero</span></a>, <a class="reference internal" href="#yaml-float"><span class="std std-ref">flotante</span></a> y <a class="reference internal" href="#yaml-bool"><span class="std std-ref">lógico</span></a>.</p>
+</dd>
+<dt><strong>Core schema</strong> (o sea, esquema básico)</dt><dd><p>Es un esquema que no añade tipos al anterior, sino que, simplemente, amplia
+el modo en que se pueden escribir algunos tipos de datos. Por ejemplo,
+<code class="code docutils literal notranslate"><span class="pre">null</span></code> (y sólo <code class="code docutils literal notranslate"><span class="pre">null</span></code>) se entenderá como el tipo nulo en el
+esquema <abbr title="JavaScript Object Notation">JSON</abbr> y si escribimos alguna variante como <code class="code docutils literal notranslate"><span class="pre">NULL</span></code> se entenderá
+una cadena.  Sin embargo, en este esquema también puede escribirse este dato
+como <code class="code docutils literal notranslate"><span class="pre">Null</span></code>, <code class="code docutils literal notranslate"><span class="pre">NULL</span></code> o dejar el valor vacío.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Échele un ojo a cuáles son <a class="reference external" href="https://yaml.org/spec/1.2.2/#core-schema">todas las extensiones en la especificación</a>.</p>
+</div>
+</dd>
+</dl>
+<p>Un procesador debería como mínimo implementar el primero de los esquemas, pero lo
+habitual es que implemente un esquema que extienda el esquema básico.</p>
+</section>
+<section id="tipos">
+<span id="yaml-tipos"></span><h3><span class="section-number">1.2.1.3.5. </span>Tipos<a class="headerlink" href="#tipos" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Analicemos los tipos incluidos dentro de los esquemas de <abbr title="YAML Ain't Markup Language">YAML</abbr> (entre
+paréntesis se indica cuál es la etiqueta que los identifica):</p>
+<dl class="simple" id="yaml-int">
+<dt><strong>Enteros</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>)</dt><dd><p>Pueden escribirse:</p>
+<ul class="simple">
+<li><p>Decimales (<code class="code docutils literal notranslate"><span class="pre">-123</span></code>)</p></li>
+<li><p>Octales (<code class="code docutils literal notranslate"><span class="pre">0o10</span></code>)</p></li>
+<li><p>Hexadecimales (<code class="code docutils literal notranslate"><span class="pre">0x1a</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple" id="yaml-float">
+<dt><strong>Numeros en coma flotante</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>)</dt><dd><p>Tiene también varias expresiones:</p>
+<ul class="simple">
+<li><p>La habitual con punto separador <code class="code docutils literal notranslate"><span class="pre">123.45</span></code>.</p></li>
+<li><p>En notación científica <code class="code docutils literal notranslate"><span class="pre">1.25e+5</span></code><a class="footnote-reference brackets" href="#id14" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>)</p></li>
+<li><p>Valores infinitos (<code class="code docutils literal notranslate"><span class="pre">.inf</span></code> y <code class="code docutils literal notranslate"><span class="pre">-.inf</span></code>).</p></li>
+<li><p><em>No es un número</em> (<code class="code docutils literal notranslate"><span class="pre">.nan</span></code>)<a class="footnote-reference brackets" href="#id15" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple" id="yaml-bool">
+<dt><strong>Lógicos</strong> o <strong>booleanos</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>)</dt><dd><p>Como en <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a>  (y <abbr title="JavaScript Object Notation">JSON</abbr>) se representan con <code class="code docutils literal notranslate"><span class="pre">true</span></code> y
+<code class="code docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</dd>
+</dl>
+<dl class="simple" id="yaml-null">
+<dt><strong>Nulo</strong> (<code class="docutils literal notranslate"><span class="pre">null</span></code>)</dt><dd><p>Es la ausencia de valor y se escribe <code class="code docutils literal notranslate"><span class="pre">null</span></code>.</p>
+</dd>
+</dl>
+<dl id="yaml-str">
+<dt><strong>Cadenas</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>)</dt><dd><p>Las cadenas. a diferencia de <abbr title="JavaScript Object Notation">JSON</abbr>, no necesitan escribirse entrecomilladas,
+aunque si se hace pueden usarse comillas simples o dobles. Las implicaciones
+de unas y otras es ligeramente diferente (véase en la especificación la
+explicación dedicada al <a class="reference external" href="https://yaml.org/spec/1.2.2/#double-quoted-style">entrecomillado doble</a>):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">a</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;esto</span><span class="nv"> </span><span class="s">es</span><span class="nv"> </span><span class="s">una</span><span class="nv"> </span><span class="s">cadena&quot;</span>
+<span class="s">&quot;x</span><span class="nv"> </span><span class="s">y&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">también lo es esto</span>
+<span class="nt">num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w">  </span><span class="c1"># Esto se interpreta como número, no una cadena.</span>
+<span class="nt">no num</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
+<span class="nt">verdad</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Las cadenas se entrecomillan con &quot; o &#39;.</span>
+<span class="nt">lamismaverdad</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Las</span><span class="nv"> </span><span class="s">cadenas</span><span class="nv"> </span><span class="s">se</span><span class="nv"> </span><span class="s">entrecomillan</span><span class="nv"> </span><span class="s">con</span><span class="nv"> </span><span class="s">\&quot;</span><span class="nv"> </span><span class="s">o</span><span class="nv"> </span><span class="s">&#39;.&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>El procesador procura adivinar el tipo del dato, por lo que un
+<strong>2</strong> no entrecomillado (como el caso de la clave «<em>num</em>» del ejemplo) se
+interpreta como un entero y no como una cadena. Por la misma razón,
+<code class="code docutils literal notranslate"><span class="pre">false</span></code> o <code class="code docutils literal notranslate"><span class="pre">null</span></code> sin entrecomillar tampoco se consideran
+cadenas. Entrecomillados esos valores, sin embargo, sí será cadenas.</p>
+</div>
+<p>Cuando las cadenas son largas<a class="footnote-reference brackets" href="#id16" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>, hay también modo de escribirlas cómodamente:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">larga</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">   </span><span class="no">Este cadena contiene</span>
+<span class="w">   </span><span class="no">varias líneas que conservan los</span>
+<span class="w">   </span><span class="no">cambios de línea</span>
+
+<span class="w">   </span><span class="no">tal y como se escriben.</span>
+
+<span class="nt">otralarga</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">   </span><span class="no">Esta cadena convierte</span>
+<span class="w">   </span><span class="no">los cambios de línea en espacios,</span>
+<span class="w">   </span><span class="no">pero transforma una línea en blanco</span>
+
+<span class="w">   </span><span class="no">en un cambio de línea.</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>Además de estos tipos de datos escalares, existen los que definen colecciones.
+En <abbr title="JavaScript Object Notation">JSON</abbr> eran los <em>objetos</em> y los <em>arrays</em> y en <abbr title="YAML Ain't Markup Language">YAML</abbr> también, aunque  existe
+algún otro:</p>
+<dl id="yaml-seq">
+<dt><strong>Array</strong> (<code class="docutils literal notranslate"><span class="pre">seq</span></code>)</dt><dd><p>Las colecciones ordenadas (reléase lo expuesto para los <a class="reference internal" href="#json-array"><span class="std std-ref">arrays en JSON</span></a>) se notan con guiones:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uno</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="p p-Indicator">-</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array dentro de array</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.24e-5</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Para anidar (el cuarto elemento es, a su vez, un <em>array</em>) se usa
+el sangrado mediante caracteres de espaciados<a class="footnote-reference brackets" href="#id17" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>. No hay ninguna regla
+sobre cuántos son apropiados, pero debe ser consistente. En el ejemplo,
+como se han usado tres para el primer elemento &quot;<em>array dentro de un
+array</em>&quot;, por lo que el segundo también de ser sangrado con otros tres.
+Este elemento también habría sido posible haberlo escrito así:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array dentro de array</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.24e-5</span>
+</pre></div>
+</div>
+</div>
+<p>Además de esta notación, existe otra que es exactamente la misma que la usada
+en <abbr title="JavaScript Object Notation">JSON</abbr>. Por tanto, también es válido haber escrito el dato anterior como:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">[</span>
+<span class="w">   </span><span class="s">&quot;uno&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">   </span><span class="nv">2</span>
+<span class="w">   </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">   </span><span class="p p-Indicator">[</span>
+<span class="w">      </span><span class="s">&quot;array</span><span class="nv"> </span><span class="s">dentro</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">array&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="nv">1.24e-5</span>
+<span class="w">   </span><span class="p p-Indicator">],</span>
+<span class="w">   </span><span class="nv">null</span>
+<span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+<p>o una mezcla de ambas notaciones como:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uno</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">array dentro de array</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1.24e-5</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl id="yaml-map">
+<dt><strong>Mapa</strong> u <strong>objeto</strong> (<code class="docutils literal notranslate"><span class="pre">map</span></code>)</dt><dd><p>Las colecciones ordenadas de parejas clave-valor se notan no colocando
+guiones y utilizando como separador la secuencia de dos caracteres
+<code class="code docutils literal notranslate"><span class="pre">:</span> </code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">uno</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">dos</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="nt">tres</span><span class="p">:</span><span class="w">  </span><span class="c1"># Array anidado como valor.</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">a</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">b</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">cuatro</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+<span class="nt">cinco</span><span class="p">:</span><span class="w"> </span><span class="c1"># Mapa anidado como valor.</span>
+<span class="w">   </span><span class="nt">x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">equis</span>
+<span class="w">   </span><span class="nt">y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">y griega</span>
+</pre></div>
+</div>
+<p>Sin embargo, también pueden notarse usando la notación de <abbr title="JavaScript Object Notation">JSON</abbr>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span>
+<span class="w">   </span><span class="s">&quot;uno&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
+<span class="w">   </span><span class="s">&quot;dos&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span>
+<span class="w">   </span><span class="s">&quot;tres&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;a&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">],</span>
+<span class="w">   </span><span class="s">&quot;cuatro&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">   </span><span class="s">&quot;cinco&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;x&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;equis&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;y&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;y</span><span class="nv">  </span><span class="s">griega&quot;</span><span class="p p-Indicator">}</span>
+<span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+<p>Tanto las claves como los valores pueden ser un nodo de cualquier tipo.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Llegados a este punto, podemos hacer notar un hecho muy importante:
+todo lo que se expresa con <abbr title="JavaScript Object Notation">JSON</abbr>, puede expresarse con <abbr title="YAML Ain't Markup Language">YAML</abbr> y, además,
+puede expresarse del mismo modo, por lo que <abbr title="YAML Ain't Markup Language">YAML</abbr> es un superconjunto de
+<abbr title="JavaScript Object Notation">JSON</abbr> o, lo que es lo mismo, todo documento <abbr title="JavaScript Object Notation">JSON</abbr> es un documento <abbr title="YAML Ain't Markup Language">YAML</abbr>
+bien formado.</p>
+</div>
+</dd>
+</dl>
+<p>Además de estos tipos incluidos en el esquema básico, existen otros  que suelen
+implementar los procesadores:</p>
+<dl id="yaml-set">
+<dt><strong>Conjunto</strong></dt><dd><p>Es una secuencia desordenada, que se nota usando el carácter de interrogación
+(<code class="code docutils literal notranslate"><span class="pre">?</span></code>) en vez del guión:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">?</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xxx</span>
+<span class="p p-Indicator">?</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yyy</span>
+<span class="p p-Indicator">?</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zzz</span>
+</pre></div>
+</div>
+<p>En el fondo, equivale equivale a un mapa, los valores de cuyas claves son
+todos nulos:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">xxx</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+<span class="nt">yyy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+<span class="nt">zzz</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl id="yaml-binary">
+<dt><strong>Binario</strong></dt><dd><p>Aunque <abbr title="YAML Ain't Markup Language">YAML</abbr> es una representación de datos en texto plano, este tipo de
+dato permite incluir valores binarios. Para lograrse deben codificarse los
+datos binarios en <a class="reference external" href="https://es.wikipedia.org/wiki/Base64">base64</a>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">%YAML</span><span class="w"> </span><span class="m">1.2</span>
+<span class="nn">---</span>
+<span class="nt">nombre</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Pedro</span><span class="nv"> </span><span class="s">Martínez</span><span class="nv"> </span><span class="s">Alvárez&quot;</span>
+<span class="nt">edad</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32</span>
+<span class="nt">casado</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">avatar</span><span class="p">:</span><span class="w"> </span><span class="kt">!!binary</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">   </span><span class="no">PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDov</span>
+<span class="w">   </span><span class="no">L3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjAwIj4NCjxyZWN0IGZp</span>
+<span class="w">   </span><span class="no">bGw9IiNmZmYiIGhlaWdodD0iNjAwIiB3aWR0aD0iOTAwIi8+DQo8Y2lyY2xlIGZpbGw9IiNiYzAw</span>
+<span class="w">   </span><span class="no">MmQiIGN4PSI0NTAiIGN5PSIzMDAiIHI9IjE4MCIvPgo8L3N2Zz4=</span>
+</pre></div>
+</div>
+<p>En este ejemplo, la codificación es la representación <abbr title="Scalable Vector Graphics">SVG</abbr> de la bandera de
+Japón:</p>
+<a class="reference internal image-reference" href="../_images/japan.svg"><img alt="Bandera de Japón" src="../_images/japan.svg" width="200" /></a>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Por otra parte hemos utilizados una <a class="reference internal" href="#yaml-tags"><span class="std std-ref">etiqueta</span></a>
+(<code class="code docutils literal notranslate"><span class="pre">!!binary</span></code>) que introduciremos un poco más adelante y hemos
+necesitado incluir la tubería (carácter <kbd class="kbd docutils literal notranslate">|</kbd>), porque la
+representación codificada el binario ocupa varias líneas (véase
+<a class="reference internal" href="#yaml-str"><span class="std std-ref">cadenas</span></a>).</p>
+</div>
+</dd>
+</dl>
+<p><strong>Fecha</strong> (<code class="docutils literal notranslate"><span class="pre">date</span></code>)</p>
+<p><strong>Marcas de tiempo</strong> (<code class="docutils literal notranslate"><span class="pre">timestamp</span></code>)</p>
+</section>
+<section id="referencias">
+<span id="yaml-ref"></span><h3><span class="section-number">1.2.1.3.6. </span>Referencias<a class="headerlink" href="#referencias" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Las referencias (o anclas) permiten referir el valor de un nodo dentro de otro.
+Pueden crear referencias tanto a escalares:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">nombre</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;pedro</span><span class="w"> </span><span class="s">&quot;Pedro</span><span class="nv"> </span><span class="s">Martínez</span><span class="nv"> </span><span class="s">Alvárez&quot;</span>
+<span class="w">  </span><span class="nt">edad</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32</span>
+<span class="w">  </span><span class="nt">casado</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">nombre</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;María</span><span class="nv"> </span><span class="s">Martínez</span><span class="nv"> </span><span class="s">Cansado&quot;</span>
+<span class="w">  </span><span class="nt">edad</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="nt">casado</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">padre</span><span class="p">:</span><span class="w"> </span><span class="nv">*pedro</span>
+</pre></div>
+</div>
+<p>como a <em>arrays</em>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">comun</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;jugadores</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Manolo</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Paco</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">María</span>
+<span class="nt">futbol</span><span class="p">:</span><span class="w"> </span><span class="nv">*jugadores</span>
+<span class="nt">baloncesto</span><span class="p">:</span><span class="w"> </span><span class="nv">*jugadores</span>
+</pre></div>
+</div>
+<p>como a mapas:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nl">&amp;pedro</span>
+<span class="w">  </span><span class="nt">nombre</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Pedro</span><span class="nv"> </span><span class="s">Martínez</span><span class="nv"> </span><span class="s">Alvárez&quot;</span>
+<span class="w">  </span><span class="nt">edad</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32</span>
+<span class="w">  </span><span class="nt">casado</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">nombre</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;María</span><span class="nv"> </span><span class="s">Martínez</span><span class="nv"> </span><span class="s">Cansado&quot;</span>
+<span class="w">  </span><span class="nt">edad</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="nt">casado</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">padre</span><span class="p">:</span><span class="w"> </span><span class="nv">*pedro</span>
+</pre></div>
+</div>
+<p>En el caso de mapas, la referencia a un mapa se puede añadir a la definición
+de otro para añadir a éste las parejas clave-valor del primero:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">defaults</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;defaults</span>
+<span class="w">   </span><span class="nt">sgbd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql</span>
+<span class="w">   </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span>
+<span class="nt">mrbs</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">nombre</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aulas</span>
+<span class="w">   </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="nv">*defaults</span>
+<span class="nt">wordpress</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">nombre</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wp</span>
+<span class="w">   </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="nv">*defaults</span>
+</pre></div>
+</div>
+</section>
+<section id="etiquetas-tags">
+<span id="yaml-tags"></span><h3><span class="section-number">1.2.1.3.7. </span>Etiquetas (<em>tags</em>)<a class="headerlink" href="#etiquetas-tags" title="Enlace permanente a este encabezado">¶</a></h3>
+<p class="rubric">Notas al pie</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id11" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>Que, curiosamente, es justo lo contrario que se hacía en una máquina de
+escribir en las que primero se cambiaba de línea y luego se volvía el carro.</p>
+</aside>
+<aside class="footnote brackets" id="id12" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">2</a><span class="fn-bracket">]</span></span>
+<p>Por esta razón, las claves siempre se muestran entrecomilladas. Esto es
+una diferencia con <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a> en que se permite no entgrecomillar las claves.</p>
+</aside>
+<aside class="footnote brackets" id="id13" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">3</a><span class="fn-bracket">]</span></span>
+<p>Al menos en servicios web. La razón muy probablemente sea que el cliente
+de las aplicaciones web es un navegador con <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a> para el cual el
+soporte de <abbr title="JavaScript Object Notation">JSON</abbr> es nativo.</p>
+</aside>
+<aside class="footnote brackets" id="id14" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">4</a><span class="fn-bracket">]</span></span>
+<p>En esta notación son válidas todas las expresiones que ya vimos para
+<abbr title="JavaScript Object Notation">JSON</abbr>.</p>
+</aside>
+<aside class="footnote brackets" id="id15" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">5</a><span class="fn-bracket">]</span></span>
+<p>«No es un número» es la forma de representar en algunos lenguajes de
+programación que una operación es imposible de calcular es imposible. Por
+ejemplo, la operación <span class="math notranslate nohighlight">\(0/0\)</span>.</p>
+</aside>
+<aside class="footnote brackets" id="id16" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">6</a><span class="fn-bracket">]</span></span>
+<p>En realidad, no es necesario que el tipo sea una cadena (véase <a class="reference internal" href="#yaml-binary"><span class="std std-ref">tipo
+binario</span></a>, por ejemplo), pero lo habitual es que un valor que
+ocupe más de una línea sea una cadena.</p>
+</aside>
+<aside class="footnote brackets" id="id17" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">7</a><span class="fn-bracket">]</span></span>
+<p>Aunque no es necesario, se recomienda que estos caracteres de espaciado
+sean espacios.</p>
+</aside>
+</aside>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/logo.png" alt="Logo"/>
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">1.2.1. Lenguajes de serialización de datos</a><ul>
+<li><a class="reference internal" href="#csv">1.2.1.1. <abbr title="Comma-Separated Values">CSV</abbr></a></li>
+<li><a class="reference internal" href="#json">1.2.1.2. <abbr title="JavaScript Object Notation">JSON</abbr></a><ul>
+<li><a class="reference internal" href="#reglas-basicas">1.2.1.2.1. Reglas básicas</a></li>
+<li><a class="reference internal" href="#tipos-de-datos">1.2.1.2.2. Tipos de datos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#yaml">1.2.1.3. <abbr title="YAML Ain't Markup Language">YAML</abbr></a><ul>
+<li><a class="reference internal" href="#estructura">1.2.1.3.1. Estructura</a></li>
+<li><a class="reference internal" href="#directivas">1.2.1.3.2. Directivas</a></li>
+<li><a class="reference internal" href="#contenido">1.2.1.3.3. Contenido</a></li>
+<li><a class="reference internal" href="#esquemas">1.2.1.3.4. Esquemas</a></li>
+<li><a class="reference internal" href="#tipos">1.2.1.3.5. Tipos</a></li>
+<li><a class="reference internal" href="#referencias">1.2.1.3.6. Referencias</a></li>
+<li><a class="reference internal" href="#etiquetas-tags">1.2.1.3.7. Etiquetas (<em>tags</em>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="02.sintaxis.html"
+                          title="Previous page">&larr; <span class="section-number">1.2. </span>Sintaxis</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="02b.marcas.html"
+                          title="Next page">&rarr; <span class="section-number">1.2.2. </span>Lenguajes de marcas</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/01.intro/02a.serial.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="02b.marcas.html" title="1.2.2. Lenguajes de marcas"
+             >siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="02.sintaxis.html" title="1.2. Sintaxis"
+             >anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">1. </span>Lenguajes para el intercambio de datos</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="02.sintaxis.html" ><span class="section-number">1.2. </span>Sintaxis</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1.2.1. </span>Lenguajes de serialización de datos</a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2023, José Miguel Sánchez Alés.
+      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

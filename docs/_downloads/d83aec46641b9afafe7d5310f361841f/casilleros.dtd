@@ -1,0 +1,28 @@
+<!ENTITY % datospers "(apelativo,nombre,apellidos)">
+<!--
+   id:         Identificador del profesor (formato i<N>)
+   sustituto:  Quién sustituye al profesor, en caso de estar de baja.
+               Si coincide con el propio identificador, entonces
+               el profesor está de baja, pero aún sin sustituto.
+   casillero:  Número de casillero. Si es "0", el profesor no tiene
+               casillero. Si no se especifica, el casillero será:
+                  - En caso de profesor titular, la <N> del identificador.
+                  - En caso de sustituto, el casillero del titular.
+   adicional:  Casilleros adicionales que ocupa el profesor.
+-->
+<!ENTITY % attrpers 
+   "id        ID       #REQUIRED
+    casillero NMTOKEN  #IMPLIED
+    sustituto IDREF    #IMPLIED
+    adicional NMTOKENS #IMPLIED">
+
+<!ELEMENT claustro (profesor|asistente)+>
+<!ATTLIST claustro centro CDATA #REQUIRED>
+<!ELEMENT profesor (%datospers;,departamento?)>
+<!ELEMENT asistente %datospers;>
+<!ATTLIST profesor %attrpers;>
+<!ATTLIST asistente %attrpers;>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT apellidos (#PCDATA)>
+<!ELEMENT apelativo (#PCDATA)>
+<!ELEMENT departamento (#PCDATA)>
