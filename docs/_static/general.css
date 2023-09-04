@@ -11,3 +11,11 @@ dl dd  p:first-child {
 .simple li p:first-child {
    margin: 0;
 }
+
+.toctree-wrapper .caption {
+   font-weight: bold;
+}
+
+div.admonition-todo {
+   background-color:  #e5ffe5;
+}

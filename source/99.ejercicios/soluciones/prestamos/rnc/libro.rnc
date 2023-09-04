@@ -1,0 +1,15 @@
+start = libro
+
+libro = element libro { nombre, autor, año, editorial, ejemplares,
+   attribute isbn { xsd:ID { pattern="id(\d|-)+" } }
+}
+
+nombre = element nombre { text }
+autor = element autor { text }
+año = element año { xsd:int { minInclusive="1449" maxExclusive="2100" } }
+editorial = element editorial { text }
+
+ejemplares = element ejemplares { ejemplar+ }
+ejemplar = element ejemplar { empty,
+   attribute codigo { xsd:ID { pattern="e\d+" } }
+}

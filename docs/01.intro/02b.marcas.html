@@ -13,6 +13,7 @@
     <title>1.2.2. Lenguajes de marcas &#8212; documentación de Lenguajes de Marcas - rolling</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
     <link rel="stylesheet" href="../_static/general.css" type="text/css" />
     <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
@@ -24,6 +25,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
+    <script src="../_static/design-tabs.js"></script>
 
     
     
@@ -43,6 +45,7 @@
 
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="1.3. Ejercicios propuestos" href="03.ejercicios.html" />
     <link rel="prev" title="1.2.1. Lenguajes de serialización de datos" href="02a.serial.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head><body>
@@ -54,6 +57,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="Índice General"
              accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="03.ejercicios.html" title="1.3. Ejercicios propuestos"
+             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="02a.serial.html" title="1.2.1. Lenguajes de serialización de datos"
              accesskey="P">anterior</a> &nbsp; &nbsp;</li>
@@ -500,7 +506,7 @@ departamentos:</p>
 </pre></div>
 </div>
 <p>La entidad <code class="code docutils literal notranslate"><span class="pre">&amp;EFI;</span></code> está definida en fichero aparte (ya se verá cómo se
-hacen tal definición al tratar el <span class="xref std std-ref">DTD</span>) y equivale a «<em>Educación
+hacen tal definición al tratar el <a class="reference internal" href="../02.validacion/01.dtdxml.html#dtd"><span class="std std-ref">DTD</span></a>) y equivale a «<em>Educación
 Física</em>». Por tanto, lo anterior es equivalente a que se hubiera escrito:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;departamento&gt;</span>Educación<span class="w"> </span>Física<span class="nt">&lt;/departamento&gt;</span>
 </pre></div>
@@ -588,7 +594,7 @@ niveles de validez:</p>
 Cuando un documento lo alcanza, se dice que el documento está <em class="dfn">bien
 formado</em>.</p></li>
 <li><p>El cumplimiento de unas <strong>reglas gramaticales precisas</strong> definidas en un <abbr title="Document Type Definition">DTD</abbr>
-(o en un documento equivalente como un <span class="xref std std-ref">XSD</span> o un <span class="xref std std-ref">Relax-NG</span>). Cuando el documento alcanza este nivel, se le denomina <em class="dfn">valido</em>.
+(o en un documento equivalente como un <a class="reference internal" href="../98.apendices/21.xsd.html#xsd"><span class="std std-ref">XSD</span></a> o un <a class="reference internal" href="../98.apendices/22.rnc.html#rnc"><span class="std std-ref">Relax-NG</span></a>). Cuando el documento alcanza este nivel, se le denomina <em class="dfn">valido</em>.
 Por supuesto, todo <abbr title="eXtensible  Markup Language">XML</abbr> válido es bien formado.</p></li>
 </ul>
 <p>Volviendo a<a class="reference internal" href="#xml-ejemplo"><span class="std std-ref">l ejemplo</span></a>, para comprobar si está bien formado
@@ -602,7 +608,7 @@ nos bastará descargar exclusivamente el <abbr title="eXtensible  Markup Languag
 <div class="admonition seealso">
 <p class="admonition-title">Ver también</p>
 <p>Para más información sobre <strong class="program">xmlstarlet</strong> consulte el
-<span class="xref std std-ref">epígrafe sobre validación con un DTD</span>.</p>
+<a class="reference internal" href="../02.validacion/01.dtdxml.html#dtd"><span class="std std-ref">epígrafe sobre validación con un DTD</span></a>.</p>
 </div>
 </section>
 </section>
@@ -661,9 +667,9 @@ cierre.</p></li>
 siempre escrito entre comillas.</p></li>
 </ul>
 <p>Por ejemplo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;claustro centro=&quot;IES Pepe Botella&quot;&gt;
-   &lt;!-- Aquí todo el documento --&gt;
-&lt;/claustro&gt;
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;claustro</span><span class="w"> </span><span class="na">centro=</span><span class="s">&quot;IES Pepe Botella&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="cm">&lt;!-- Aquí todo el documento --&gt;</span>
+<span class="nt">&lt;/claustro&gt;</span>
 </pre></div>
 </div>
 </li>
@@ -672,7 +678,7 @@ siempre escrito entre comillas.</p></li>
 bien cuando es lícito que su valor quede indefinido.</p></li>
 <li><p>En caso de que un atributo aparezca, debe forzosamente tener valor.
 Esto, por tanto, es inválido:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!-- Inválido: el atributo &quot;centro&quot; aparece sin valor. --&gt;
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>&lt;!-- Inválido: el atributo &quot;centro&quot; aparece sin valor. --&gt;
 &lt;claustro centro&gt;
    &lt;!-- Aquí todo el documento --&gt;
 &lt;/claustro&gt;
@@ -683,10 +689,10 @@ Esto, por tanto, es inválido:</p>
 escribirse en cualquier orden.</p></li>
 <li><p>Para un mismo elemento no puede repetirse el atributo. Por tanto, esto es
 incorrecto:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!-- Inválido: un mismo atributo aparece repetido dos veces. --&gt;
-&lt;claustro centro=&quot;IES Número 1&quot; centro=&quot;IES Número 2&quot;&gt;
-   &lt;!-- Aquí todo el documento --&gt;
-&lt;/claustro&gt;
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- Inválido: un mismo atributo aparece repetido dos veces. --&gt;</span>
+<span class="nt">&lt;claustro</span><span class="w"> </span><span class="na">centro=</span><span class="s">&quot;IES Número 1&quot;</span><span class="w"> </span><span class="na">centro=</span><span class="s">&quot;IES Número 2&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="cm">&lt;!-- Aquí todo el documento --&gt;</span>
+<span class="nt">&lt;/claustro&gt;</span>
 </pre></div>
 </div>
 </li>
@@ -695,7 +701,7 @@ incorrecto:</p>
 <dt><strong>Entidades</strong></dt><dd><ul>
 <li><p>Se representan con un símbolo «&amp;» antes del nombre de la entidad y un «;»
 después. Por ejemplo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">departamento</span><span class="o">&gt;&amp;</span><span class="n">INF</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">departamento</span><span class="o">&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;INF;</span><span class="nt">&lt;/departamento&gt;</span>
 </pre></div>
 </div>
 </li>
@@ -912,8 +918,93 @@ están juntos, pero no revueltos, esto es: dentro de elementos
 <p>Al no existir espacios de nombres en <abbr title="Standard Generalized Markup Language">SGML</abbr>, <abbr title="Document Type Definition">DTD</abbr> que es el método
 para definir gramáticas heredado de <abbr title="Standard Generalized Markup Language">SGML</abbr> no permite definir espacios de
 nombres. Para hacer uso de ellos deberemos hacer las definiciones con
-<span class="xref std std-ref">XSD</span> o <span class="xref std std-ref">Relax-NG</span>.</p>
+<a class="reference internal" href="../98.apendices/21.xsd.html#xsd"><span class="std std-ref">XSD</span></a> o <a class="reference internal" href="../98.apendices/22.rnc.html#rnc"><span class="std std-ref">Relax-NG</span></a>.</p>
 </div>
+</section>
+<section id="ejercicios-resueltos">
+<span id="xml-resueltos"></span><h3><span class="section-number">1.2.2.2.5. </span>Ejercicios resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Enlace permanente a este encabezado">¶</a></h3>
+<ol class="arabic">
+<li><p>Escribir la versión <abbr title="eXtensible  Markup Language">XML</abbr> del <a class="reference internal" href="02a.serial.html#yaml-resueltos"><span class="std std-ref">primer ejercicio YAML resuelto</span></a>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución propuesta<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;recetas&gt;</span>
+<span class="w">   </span><span class="cm">&lt;!-- El tiempo está en minutos --&gt;</span>
+<span class="w">   </span><span class="nt">&lt;receta</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;r01&quot;</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;ensalada&quot;</span><span class="w"> </span><span class="na">preparacion=</span><span class="s">&quot;5&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;tomate&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;pieza&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;cebolla&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;pieza&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;.25&quot;</span><span class="w"> </span><span class="nt">/&gt;</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;lechuga&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;gramo&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;150&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;sal&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;gramo&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;vinagre&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;cc&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;3&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;aceite&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;cc&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;6&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/receta&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;receta</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;r02&quot;</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;bocadillo de anchoas&quot;</span><span class="w"> </span><span class="na">preparacion=</span><span class="s">&quot;4&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;pan&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;pieza&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;anchoa&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;pieza&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;3&quot;</span><span class="w"> </span><span class="nt">/&gt;</span><span class="w"> </span>
+<span class="w">   </span><span class="nt">&lt;/receta&gt;</span>
+
+<span class="w">   </span><span class="cm">&lt;!-- Más recetas --&gt;</span>
+<span class="nt">&lt;/recetas&gt;</span>
+</pre></div>
+</div>
+</div>
+</details></li>
+<li><p>Escribir la versión <abbr title="eXtensible  Markup Language">XML</abbr> del <a class="reference internal" href="02a.serial.html#yaml-resueltos"><span class="std std-ref">segundo ejercicio resuelto</span></a>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución propuesta<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;cadena</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;Burriquín&quot;</span><span class="nt">&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;recetas&gt;</span>
+<span class="w">      </span><span class="cm">&lt;!-- El tiempo está en minutos --&gt;</span>
+<span class="w">      </span><span class="nt">&lt;receta</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;r01&quot;</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;ensalada&quot;</span><span class="w"> </span><span class="na">preparacion=</span><span class="s">&quot;5&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;tomate&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;pieza&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;cebolla&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;pieza&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;.25&quot;</span><span class="w"> </span><span class="nt">/&gt;</span><span class="w"> </span>
+<span class="w">         </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;lechuga&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;gramo&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;350&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;sal&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;gramo&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;vinagre&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;cc&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;3&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;aceite&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;cc&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;6&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/receta&gt;</span>
+
+<span class="w">      </span><span class="nt">&lt;receta</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;r02&quot;</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;bocadillo de anchoas&quot;</span><span class="w"> </span><span class="na">preparacion=</span><span class="s">&quot;4&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;pan&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;pieza&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;anchoa&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;pieza&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;lata&quot;</span><span class="w"> </span><span class="nt">/&gt;</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">&lt;/receta&gt;</span>
+
+<span class="w">      </span><span class="cm">&lt;!-- Más recetas --&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/recetas&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;restaurante</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;re01&quot;</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;El tragón feliz&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;domicilio&gt;</span>
+<span class="w">         </span><span class="nt">&lt;direccion&gt;</span>c/<span class="w"> </span>Callo,<span class="w"> </span>nº<span class="w"> </span>25.<span class="w"> </span>Bajo.<span class="nt">&lt;/direccion&gt;</span>
+<span class="w">         </span><span class="nt">&lt;municipio&gt;</span>Vallecito<span class="w"> </span>frondoso<span class="nt">&lt;/municipio&gt;</span>
+<span class="w">         </span><span class="nt">&lt;cp&gt;</span>12345<span class="nt">&lt;/cp&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/domicilio&gt;</span>
+<span class="w">      </span><span class="nt">&lt;carta&gt;</span>
+<span class="w">         </span><span class="cm">&lt;!-- Este plato se sirve como ración o como media o como tapa --&gt;</span>
+<span class="w">         </span><span class="nt">&lt;plato</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;r01&quot;</span><span class="w"> </span><span class="na">tipo=</span><span class="s">&quot;racion media tapa&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;plato</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;r02&quot;</span><span class="w"> </span><span class="na">tipo=</span><span class="s">&quot;media&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="cm">&lt;!-- Más platos --&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/carta&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/restaurante&gt;</span>
+<span class="w">   </span><span class="cm">&lt;!-- Más restaurantes de la cadena --&gt;</span>
+<span class="nt">&lt;/cadena&gt;</span>
+</pre></div>
+</div>
+</div>
+</details></li>
+</ol>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="id9" role="note">
@@ -989,6 +1080,7 @@ texto) carecen de significado.</p>
 </li>
 <li><a class="reference internal" href="#reglas-generales">1.2.2.2.3. Reglas generales</a></li>
 <li><a class="reference internal" href="#espacios-de-nombres">1.2.2.2.4. Espacios de nombres</a></li>
+<li><a class="reference internal" href="#ejercicios-resueltos">1.2.2.2.5. Ejercicios resueltos</a></li>
 </ul>
 </li>
 </ul>
@@ -1000,6 +1092,11 @@ texto) carecen de significado.</p>
     <h4>Previous page</h4>
     <p class="topless"><a href="02a.serial.html"
                           title="Previous page">&larr; <span class="section-number">1.2.1. </span>Lenguajes de serialización de datos</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="03.ejercicios.html"
+                          title="Next page">&rarr; <span class="section-number">1.3. </span>Ejercicios propuestos</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>Esta página</h3>
@@ -1047,6 +1144,9 @@ texto) carecen de significado.</p>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="Índice General"
              >índice</a></li>
+        <li class="right" >
+          <a href="03.ejercicios.html" title="1.3. Ejercicios propuestos"
+             >siguiente</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="02a.serial.html" title="1.2.1. Lenguajes de serialización de datos"
              >anterior</a> &nbsp; &nbsp;</li>

@@ -561,36 +561,44 @@ las menos importantes):
      - El valor que adopta el atributo para el elemento que caracteriza,
        siempre escrito entre comillas.
 
-     Por ejemplo::
+     Por ejemplo:
 
-      <claustro centro="IES Pepe Botella">
-         <!-- Aquí todo el documento -->
-      </claustro>
+     .. code-block:: xml
+
+        <claustro centro="IES Pepe Botella">
+           <!-- Aquí todo el documento -->
+        </claustro>
 
    * Se incluyen exclusivamente dentro de la etiqueta de apertura.
    * Pueden obviarse atributos bien cuando tienen valor predeterminado,
      bien cuando es lícito que su valor quede indefinido.
    * En caso de que un atributo aparezca, debe forzosamente tener valor.
-     Esto, por tanto, es inválido::
+     Esto, por tanto, es inválido:
 
-      <!-- Inválido: el atributo "centro" aparece sin valor. -->
-      <claustro centro>
-         <!-- Aquí todo el documento -->
-      </claustro>
+     .. code-block:: xml
+
+        <!-- Inválido: el atributo "centro" aparece sin valor. -->
+        <claustro centro>
+           <!-- Aquí todo el documento -->
+        </claustro>
 
    * Si un elemento se caracteriza con varios atributos, estos pueden
      escribirse en cualquier orden.
    * Para un mismo elemento no puede repetirse el atributo. Por tanto, esto es
-     incorrecto::
+     incorrecto:
 
-      <!-- Inválido: un mismo atributo aparece repetido dos veces. -->
-      <claustro centro="IES Número 1" centro="IES Número 2">
-         <!-- Aquí todo el documento -->
-      </claustro>
+     .. code-block:: xml
+
+        <!-- Inválido: un mismo atributo aparece repetido dos veces. -->
+        <claustro centro="IES Número 1" centro="IES Número 2">
+           <!-- Aquí todo el documento -->
+        </claustro>
 
 **Entidades**
    * Se representan con un símbolo "&" antes del nombre de la entidad y un ";"
-     después. Por ejemplo::
+     después. Por ejemplo:
+
+     .. code-block:: xml
 
       <departamento>&INF;</departamento>
 
@@ -747,6 +755,26 @@ están juntos, pero no revueltos, esto es: dentro de elementos
    para definir gramáticas heredado de |SGML| no permite definir espacios de
    nombres. Para hacer uso de ellos deberemos hacer las definiciones con
    :ref:`XSD <xsd>` o :ref:`Relax-NG <rnc>`.
+
+.. _xml-resueltos:
+
+Ejercicios resueltos
+====================
+#. Escribir la versión |XML| del :ref:`primer ejercicio YAML resuelto
+   <yaml-resueltos>`.
+
+   .. dropdown:: Solución propuesta
+
+      .. literalinclude:: files/ejxml1.recetas.xml
+         :language: xml
+
+#. Escribir la versión |XML| del :ref:`segundo ejercicio resuelto
+   <yaml-resueltos>`.
+
+   .. dropdown:: Solución propuesta
+
+      .. literalinclude:: files/ejxml2.cadena.xml
+         :language: xml
 
 .. rubric:: Notas al pie
 

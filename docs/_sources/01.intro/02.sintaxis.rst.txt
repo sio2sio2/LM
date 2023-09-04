@@ -6,7 +6,7 @@ lenguajes para intercambio de datos más habituales. Téngase presente que un
 aspecto fundamental de ella, es poder comprobar luego que se ha usado
 correctamente :ref:`validando el documento escrito <lm-validez>`. La unidad, sin
 embargo, se limitará a exponer la sintaxis y reservará  la validación para
-:ref:`una unidad posterior <validacion>`.
+:ref:`una unidad posterior <ut2>`.
 
 .. toctree::
    :glob:

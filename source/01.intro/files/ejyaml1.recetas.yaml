@@ -1,0 +1,33 @@
+%YAML 1.2
+---
+- nombre: ensalada
+  tiempo: 5  # El tiempo es en minutos.
+  ingredientes:
+    - nombre: tomate
+      unidad: pieza
+      cantidad: 2
+    - nombre: cebolla
+      unidad: pieza
+      cantidad: .25
+    - nombre: lechuga
+      unidad: gramo
+      cantidad: 150
+    - nombre: sal
+      unidad: gramo
+      cantidad: 2
+    - nombre: aceite
+      unidad: ml
+      cantidad: 6
+    - nombre: vinagre
+      unidad: ml
+      cantidad: 3
+
+- nombre: bocadillo de anchoas
+  tiempo: 4
+  ingredientes:
+    - nombre: pan
+      unidad: pieza
+      cantidad: 1
+    - nombre: anchoa
+      unidad: pieza
+      cantidad: 3

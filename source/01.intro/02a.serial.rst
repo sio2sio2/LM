@@ -55,15 +55,36 @@ Ejemplo:
 |JSON|
 ======
 Este lenguaje nació como forma de representar objetos en Javascript_, por lo que
-su aspecto guarda bastante parecido con ellos.
+su aspecto guarda bastante parecido con ellos. Muy probablemente por esta
+filiación con el lenguaje de programación se usa habitualmente en la transmisión
+de datos entre servidor y cliente web, tarea en la que ha desplazado casi por
+completo a |XML|.
 
-Se usa muy habitualmente en la transmisión de datos entre servidor y cliente
-web, en lo que ha desplazado casi por completo a |XML|.
+Dedicaremos el resto del epígrafe a describir cuál es la sintaxis del lenguaje,
+para lo cual nos vendrá muy bien tener a mano algún validador que nos permita
+comprobar si un documento cumple con tal sintaxis:
 
-Reglas básicas
---------------
+.. rst-class:: simple
+
+* `JSONLint online <https://jsonlint.com/>`_, que nos permite hacer las
+  comprobación con un navegador y conexión a internet.
+* El paquete :deb:`python3-demjson` disponible en las distribuciones basadas en
+  *Debian*, que proporciona la librería *demjson* de Python_ y un ejecutable
+  llamado :command:`jsonlint`, cuyo  uso es muy sencillo:
+
+  .. code-block:: console
+
+     $ jsonlint documento.json     # Solo comprueba si es bien formado
+     documento.json: ok
+     $ jsonlint -f documento.json  # Además de la comprobación, lo reformatea.
+
+.. warning:: Aunque hemos usado la palabra *validador*, estos programas no
+   validan el documento, solamente comprueban si es bien formado.
+
 .. _json-nodo:
 
+Estructura
+----------
 Básicamente los datos en un documento |JSON| se estructuran en *nodos*. Un
 :dfn:`nodo` representa un dato de uno de estos supertipos:
 
@@ -76,11 +97,15 @@ Básicamente los datos en un documento |JSON| se estructuran en *nodos*. Un
       [5, "hola", true]
 
    Los nodos contenidos en la secuencia no tienen por qué ser escalares, lo
-   que provoca que anidación. Por ejemplo:
+   que provoca que haya anidación. Por ejemplo:
 
    .. code-block:: json
 
       [5, "hola", ["esto", "anidado"]]
+
+   Tiene esta estructura de nodos:
+
+   .. image:: files/nodos-json.png
 
 #. :dfn:`Mapa` (u :ref:`objeto <json-objeto>`),  que es una colección ordenada de
    parejas clave-valor:
@@ -118,7 +143,9 @@ Básicamente los datos en un documento |JSON| se estructuran en *nodos*. Un
       exige, además de las reglas generales que expondremos ahora, definir una
       gramática particular que permita :ref:`validar el doccumento <lm-validez>`.
 
-Sabido esto, las reglas básicas son:
+Reglas básicas
+--------------
+Conocida su estructura, las reglas básicas son:
 
 .. rst-class:: simple
 
@@ -142,7 +169,7 @@ Sabido esto, las reglas básicas son:
 El resto de reglas  dependen de cómo se expresan los tipos datos, de modo que
 proseguiremos con ellos.
 
-Tipos de datos
+Tipos de nodos
 --------------
 Los tipos existentes en |JSON| son:
 
@@ -251,6 +278,15 @@ se usa más para la escritura de archivos de configuración y |JSON| para la
 transmisión de datos entre servidor y cliente\ [#]_. Su última especificación es
 `YAML 1.2.2 <https://yaml.org/spec/1.2.2/>`_.
 
+Como en el caso de |JSON| nos resultará enormemente útil validadores:
+
+* `YAMLLint online <https://www.yamllint.com/>`_, que nos permite comprobar si
+  un documento |YAML| es bien formado mediante un navegador y una conexión a
+  red.
+* El programa de *Linux* :command:`yamllint` que en las distribuciones basadas
+  en *Debian* se encuentra en el paquete homónimo (:deb:`yamllint`).
+
+
 .. _yaml-1ej:
 
 Por ejemplo:
@@ -358,11 +394,11 @@ proporcionan los esquemas.
 
 Esquemas
 --------
-Hasta ahora los nodos que hemos incluido en nuestros ejemplos som nodos
-sin etiquetar o, siendo más precisos, eran nodos etiquetados implícitamente,
-puesto que las *etiquetas* permiten definir de qué tipo es el nodo. Esto supone
-que el procesador deduce el tipo de dato dependiendo de cómo se hubiera escrito.
-Por ejemplo:
+Hasta ahora los nodos que hemos incluido en nuestros ejemplos son nodos
+sin etiquetar o, siendo más precisos, son nodos etiquetados implícitamente,
+puesto que las *etiquetas* permiten definir de qué tipo es el nodo. Al no
+declararse explícitamente ninguna, el procesador deduce el tipo de dato
+dependiendo de cómo se hubiera escrito. Por ejemplo:
 
 .. code-block:: yaml
 
@@ -375,14 +411,14 @@ En este ejemplo, hay cinco nodos:
 * El raíz que constituye el contenido del documento y que se deduce que es un
   objeto por incluir a continuación dos parejas clave-valor sin guiones que las
   antecedan.
-* Los dos nodos clave, que se deduce que son cadenas, por ser  caracteres
+* Los dos nodos clave, que se deduce que son cadenas, por ser caracteres
   alfanuméricos.
 * Los dos nodos valor, el segundo de los cuales es un entero, por contener un
   entero; y el primero de los cuales es una cadena, porque, aunque contiene un
   entero, se ha entrecomillado.
 
 Sin embargo, podríamos haber hecho explícita la declaración de tipos mediante el
-uso de **etiquetas**:
+uso de :ref:`etiquetas <yaml-tags>`:
 
 .. code-block:: yaml
 
@@ -394,11 +430,11 @@ y en este caso, el procesador no hará suposiciones  en función de cómo vea
 escritos los datos, sino que forzará que el tipo sea aquel indicado por la
 etiqueta explícita:
 
-* El nodo raíz es un objeto.
-* La clave "num" es una cadena.
-* El valor asociado a "num" es un entero.
-* La clave "cadena" es una cadena.
-* El valor asociado a "cadena" es una cadena.
+* El nodo raíz es un objeto (``map``).
+* La clave "num" es una cadena (``str``).
+* El valor asociado a "num" es un entero`(``int``).
+* La clave "cadena" es una cadena (``str``).
+* El valor asociado a "cadena" es una cadena (``str``).
 
 De hecho, si pasáramos a un procesador un documento como éste:
 
@@ -409,8 +445,8 @@ De hecho, si pasáramos a un procesador un documento como éste:
 
 estaríamos forzando a que el nodo fuera un entero. Pero, como "x" no es un
 entero válido, el procesador debería provocar un fallo. En cualquier caso,
-profundizaremos en la *etiquetas* bajo el próximo, para centrarnos ahora en qué
-es un esquema:
+profundizaremos en la *etiquetas* más adelante; ahora nos centraremos en el
+concepto de *esquema*:
 
 Un :dfn:`esquema` en |YAML| es un conjunto de etiquetas y un mecanismo para
 resolverlas. Los procesadores deben implementar un esquema, aunque la
@@ -425,13 +461,15 @@ especificación define tres:
    tanto, añade a los anteriores los tipos :ref:`null <yaml-null>`, :ref:`entero
    <yaml-int>`, :ref:`flotante <yaml-float>` y :ref:`lógico <yaml-bool>`.
 
+.. _yaml-core-schema:
+
 **Core schema** (o sea, esquema básico)
    Es un esquema que no añade tipos al anterior, sino que, simplemente, amplia
    el modo en que se pueden escribir algunos tipos de datos. Por ejemplo,
    :code:`null` (y sólo :code:`null`) se entenderá como el tipo nulo en el
-   esquema |JSON| y si escribimos alguna variante como :code:`NULL` se entenderá
-   una cadena.  Sin embargo, en este esquema también puede escribirse este dato
-   como :code:`Null`, :code:`NULL` o dejar el valor vacío.
+   esquema |JSON| y si escribieramos alguna variante como :code:`NULL` se entenderá
+   siempre como una cadena. Sin embargo, en este esquema también puede
+   escribirse este dato como :code:`Null`, :code:`NULL` o dejar el valor vacío.
 
    .. seealso:: Échele un ojo a cuáles son `todas las extensiones en la especificación <https://yaml.org/spec/1.2.2/#core-schema>`_.
 
@@ -618,8 +656,24 @@ algún otro:
       |JSON| o, lo que es lo mismo, todo documento |JSON| es un documento |YAML|
       bien formado.
 
-Además de estos tipos incluidos en el esquema básico, existen otros  que suelen
-implementar los procesadores:
+   Hay otra forma alternativa de escribir los mapas (bastante menos usada por
+   ser menos legible) que consiste en colocar la clave en una línea
+   anteponiéndole un :code:`? \ ` y colocar en el siguiente el valor
+   anteponiéndole un :code:`: \ `. Por ejemplo:
+
+   ..  ``
+
+   .. code-block:: yaml
+
+      ? nombre
+      : "Pedro Martínez Alvárez"
+      ? edad
+      : 32
+      ? casado
+      : true
+
+Además de estos tipos incluidos en el :ref:`esquema básico <yaml-core-schema>`,
+existen otros que suelen implementar los procesadores:
 
 .. _yaml-set:
 
@@ -641,6 +695,11 @@ implementar los procesadores:
       xxx: null
       yyy: null
       zzz: null
+
+   .. note:: En realidad, la notación con :code:`?` no es nueva, ya que en el
+      :ref:`esquema básico <yaml-core-schema>`, la ausencia de valor puede
+      entenderse como ``null`` y acabamos de ver que el ``?`` puede introducir
+      una clave, si el valor no se expresa en la misma línea que la clave.
 
 .. _yaml-binary:
 
@@ -676,8 +735,32 @@ implementar los procesadores:
       :ref:`cadenas <yaml-str>`).
 
 **Fecha** (``date``)
+   El tipo permite definir fechas de calendario:
 
+   .. code-block:: yaml
+
+      nombre: "Pedro Martínez Alvárez"
+      edad: 32
+      casado: true
+      nacimiento: 1991-05-07
+
+   Obsérvese que el formato es ``AAAA-MM-DD``.
+      
 **Marcas de tiempo** (``timestamp``)
+   Permite definir un instante de tiempo concreto en distintos formatos:
+
+   .. code-block:: yaml
+
+      zulu: 2022-09-01T17:29:32.321Z
+      iso8601: 2022-09-01T17:29:32.321+02:00
+      spaced: 2022-09-01 21:59:32.321 +2
+
+   Los dos primeros ejemplos son iguales con la única diferencia de que el
+   primero es la `hora zulú
+   <https://es.wikipedia.org/wiki/Tiempo_universal_coordinado#Hora_Zulú>`_
+   (notado por la "Z"); y el segundo la local con expresión del huso horario. El
+   tercer ejemplo, es bastante parecio pero separa los tres componentes (fecha,
+   hora y uso horario mediante espacios).
 
 .. _yaml-ref:
 
@@ -694,7 +777,7 @@ Pueden crear referencias tanto a escalares:
    - nombre: "María Martínez Cansado"
      edad: 2
      casado: false
-     padre: *pedro
+     padre: *pedro  # El valor de "padre" es el nombre de Pedro.
 
 como a *arrays*:
 
@@ -718,7 +801,7 @@ como a mapas:
    - nombre: "María Martínez Cansado"
      edad: 2
      casado: false
-     padre: *pedro
+     padre: *pedro  # El valor de "padre" es el mapa completo de Pedro
 
 En el caso de mapas, la referencia a un mapa se puede añadir a la definición
 de otro para añadir a éste las parejas clave-valor del primero:
@@ -739,6 +822,80 @@ de otro para añadir a éste las parejas clave-valor del primero:
 
 Etiquetas (*tags*)
 ------------------
+Sin profundizar en ellas ya hemos introducido que una :dfn:`etiqueta` sirve para
+declarar el tipo del nodo. También dimos un ejemplo de una etiqueta explícita:
+
+.. code-block:: yaml
+
+   !!int 1
+
+En este caso especificamos que el nodo es un entero y así debería entenderlo el
+procesador. En realidad, en el esquema básico de |YAML| el tipo es
+``tag:yaml.org,2002:int``, no ``int`` a secas, ya que la |URN| asociada al
+esquema de |YAML| es *tag:yaml.org,2002*; :code:`!!int` simplifica escribir:
+
+.. code-block:: yaml
+
+   !<tag:yaml.org,2002:int> 1
+
+La :ref:`directiva <yaml-direct>` ``%TAG`` permite definir un atajo para no
+tener que escribir |URN| distintas de la antedicha:
+
+.. code-block:: yaml
+
+   %YAML 1.2
+   %TAG !ex! tag:ejemplo.org:2023:
+   ---
+   !ex!tiporaro |
+      Este es un tipo raro que
+      debería soportar el procesador.
+
+En el ejemplo :code:`!ex!tiporaro` equivale a :code:`!<tag:ejemplo.org:2023:tiporaro>`\ [#]_.
+
+.. _yaml-resueltos:
+
+Ejercicios resueltos
+--------------------
+
+#. Diseñar un documento |YAML| que almacene recetas de cocina, de manera
+   que:
+
+   * Cada receta está constituida por ingredientes que deben citarse, así como
+     la cantidad de cada uno de ellos.
+   * Para cada receta, debe indicarse también cuál es el tiempo total de
+     preparación.
+   * De cada ingrediente en cada receta debe indicarse también cuál es la unidad
+     en la que se mide. Por ejemplo, en alguna receta se necesitarán 200 gramos de
+     tomate, pero en otra bastará con indicar dos piezas.
+
+   .. dropdown:: Solución propuesta
+
+      .. literalinclude:: files/ejyaml1.recetas.yaml
+         :language: yaml
+
+#. Tomando como referencia el documento anterior, escriba otro que enumere la
+   red de restaurantes de una cadena, de cada uno de los cuales se refiera:
+
+   * El nombre, dirección postal y teléfono.
+   * Si acepta pedidos a domicilio.
+   * Las recetas que tiene en carta cada restaurante y en qué formato las
+     ofrecen al público (tapa, media ración o ración). Por supuesto, varios
+     restaurantes pueden ofrecer la misma receta.
+
+   .. dropdown:: Solución propuesta
+
+      .. literalinclude:: files/ejyaml2.cadena.yaml
+         :language: yaml
+
+.. rubric:: Enlaces de interés
+
+* `Procesador online de YAML <https://yaml-online-parser.appspot.com/>`_, útil
+  para comprobar cómo interpreta el procesador nuestras pruebas.
+* `Ejemplo comentado de un documento YAML
+  <https://learnxinyminutes.com/docs/es-es/yaml-es/>`_, útil para comprobar de
+  un vistazo la sintaxis de los tipos más habituales de nodos.
+* `Un tutorial que ilustra las principales características de YAML
+  <https://spacelift.io/blog/yaml>`_.
 
 .. rubric:: Notas al pie
 
@@ -766,13 +923,27 @@ Etiquetas (*tags*)
 .. [#] Aunque no es necesario, se recomienda que estos caracteres de espaciado
    sean espacios.
 
+.. [#] Como no tendremos ningún procesador que soporte tal etiqueta no podremos
+   hacer la comprobación. Sin embargo, aunque no tenga interés práctico, podemos
+   usar la directiva ``%TAG``  con la |URN| asociada al esquema de |YAML| para
+   probar que funciona:
+
+   .. code-block:: yaml
+
+      %YAML 1.2
+      %TAG !y! tag:yaml.org,2002:
+      ---
+      !y!int 1
+
 .. |CSV| replace:: :abbr:`CSV (Comma-Separated Values)`
 .. |JSON| replace:: :abbr:`JSON (JavaScript Object Notation)`
 .. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`
 .. |SVG| replace:: :abbr:`SVG (Scalable Vector Graphics)`
+.. |URN| replace:: :abbr:`URN (Uniform Resource Locator)`
 
 .. _TOML: https://toml.io
 .. _Javascript: https://es.wikipedia.org/wiki/JavaScript
+.. _Python: https://www.python.org
 .. _function: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function
 .. _undefined: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined
 .. _base64: https://es.wikipedia.org/wiki/Base64

@@ -1,0 +1,9 @@
+<!ELEMENT direccion (via, cp, localidad)>
+<!ATTLIST direccion xmlns  CDATA    #FIXED "urn:direccion">
+
+<!ELEMENT via (#PCDATA)>
+<!ATTLIST via tipo    (calle|callejón|travesía|plaza|avenida|cuesta|costanilla)  #REQUIRED>
+
+<!ELEMENT cp (#PCDATA)>
+<!ELEMENT localidad (#PCDATA)>
+

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE facturacion SYSTEM "dtd/facturas.dtd">
+<facturacion empresa="Supermercados Gagagaga">
+   <clientes>
+      <cliente id="c01">
+         <dni>12345678</dni>
+         <nombre>Perico de los Palotes</nombre>
+         <direccion>
+            <domicilio>c/ AAAAA. 22.</domicilio>
+            <cp>12345</cp>
+            <poblacion>Villaarriba</poblacion>
+         </direccion>
+      </cliente>
+
+      <cliente id="c02">
+         <dni>01234567</dni>
+         <nombre>Mariquilla de la O</nombre>
+         <direccion>
+            <domicilio>c/ BBBB. 23.</domicilio>
+            <cp>54321</cp>
+            <poblacion>Villaabajo</poblacion>
+         </direccion>
+      </cliente>
+
+      <!-- Más clientes -->
+   </clientes>
+
+   <inventario>
+      <producto codigo="p01" nombre="tomate" precio="0.8" iva="superreducido" />
+      <producto codigo="p02" nombre="mollete" precio="0.3" iva="superreducido" />
+
+      <!-- Más productos -->
+   </inventario>
+
+   <!-- El descuento es en % -->
+   <factura codigo="f01" cliente="c01" fecha="2018-10-15" descuento="10">
+      <item producto="p01" cantidad="1" />
+      <item producto="p02" cantidad="3" />
+
+      <!-- Otros productos comprados por el cliente -->
+   </factura>
+
+   <!-- Más facturas -->
+</facturacion>

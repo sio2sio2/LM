@@ -1,0 +1,9 @@
+# Es un trozo de gramática
+# que combinaremos con facturas.rnc
+
+producto = element producto { empty,
+   attribute codigo { xsd:ID { pattern="p\d+" } },
+   attribute nombre { text },
+   attribute precio { xsd:decimal{ pattern="\.\d{1,2}|\d+(\.\d{1,2})?" } },
+   attribute iva { "superreducido" | "reducido" | "normal" }
+}

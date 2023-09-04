@@ -1,0 +1,12 @@
+start = cliente
+
+cliente = element cliente {dni, nombre, direccion,
+   attribute id { xsd:ID { pattern="c\d+" } }
+}
+
+dni = element dni { xsd:string { pattern="\d{8}" } }
+nombre = element nombre { text }
+direccion = element direccion { domicilio, cp, poblacion }
+domicilio = element domicilio { text }
+cp = element cp { xsd:positiveInteger { minExclusive="1000" maxExclusive="53000" }}
+poblacion = element poblacion { text }

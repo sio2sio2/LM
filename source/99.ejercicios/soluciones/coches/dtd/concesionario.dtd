@@ -1,0 +1,18 @@
+<!ELEMENT concesionario (modelo+, coche*)>
+<!ATTLIST concesionario marca CDATA       #REQUIRED>
+
+<!ELEMENT modelo (cilindrada, cv, velmax, plazas)>
+<!ATTLIST modelo id           ID          #REQUIRED
+                 nombre       CDATA       #REQUIRED>
+
+<!ELEMENT cilindrada (#PCDATA)>
+<!ELEMENT cv (#PCDATA)>
+<!ELEMENT velmax (#PCDATA)>
+<!ELEMENT plazas (#PCDATA)>
+
+<!ELEMENT coche EMPTY>
+<!ATTLIST coche id            ID          #REQUIRED
+                modelo        IDREF       #REQUIRED
+                tipo          (nuevo|km0|2mano)    #REQUIRED
+                km            NMTOKEN     "0"
+                reservado     (true|false) "false">

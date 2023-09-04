@@ -1,0 +1,55 @@
+.. _ej-val:
+
+Ejercicios sobre validación
+===========================
+
+Resuelva los siguientes ejercicios sobre |DTD|:
+
+#. Si en un |DTD| el contenido de un elemento "x" se define con
+   :code:`((a|b)?,c,d` indique si "x" puede contener (y explique
+   el por qué en caso de que no):
+
+   #. ``a``
+   #. ``a c d``
+   #. ``c d``
+   #. ``a b c d``
+   #. ``b c d``
+
+#. Si en un |DTD| el contenido de un elemento "x" se define con
+   :code:`((a|b),c*,d?)` indique si "x" puede contener (y explique el por qué en
+   caso de que no):
+
+   a. ``a d``
+   #. ``d``
+   #. ``a c c c``
+   #. ``a``
+   #. ``b b d``
+   #. ``b c d``
+   #. ``b d d``
+   #. ``c c d``
+
+#. Si en un |DTD| el contenido de un elemento "x" se define con
+   :code:`(((a,b,c)|c),a+,(b|d)?)` indique si "x" puede contener (y explique el
+   por qué en caso de que no):
+
+   a. ``a a d``
+   #. ``c a b``
+   #. ``a b c b``
+   #. ``a b a a b``
+   #. ``c``
+   #. ``c a``
+   
+#. Si en un |DTD| el contenido de un elemento "x" se define con
+   :code:`(((a|b)|(c|d)),(a,c)+,b?)` indique si "x" puede contener (y explique
+   el por qué en caso de que no):
+
+   #. ``a b a c b``
+   #. ``a a c a c``
+   #. ``b d c a c b``
+   #. ``d a c``
+   #. ``c a c b``
+
+Y, ahora, escriba las gramáticas que permitan validar las soluciones diseñadas
+para los :ref:`ejercicios sobre lenguajes de marcas <ej-li-doc>`.
+
+.. |DTD| replace:: :abbr:`DTD (Document Type Definition)`

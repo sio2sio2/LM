@@ -1,0 +1,27 @@
+<!ELEMENT grafico (punto|recta|rectangulo|circunferencia)*>
+<!ATTLIST grafico unidad   (m|cm|mm)   "cm">
+
+<!ELEMENT punto EMPTY>
+<!ATTLIST punto id      ID       #REQUIRED
+                x       NMTOKEN  #REQUIRED
+                y       NMTOKEN  #REQUIRED>
+
+<!ELEMENT recta EMPTY>
+<!ATTLIST recta id      ID       #REQUIRED
+                x1      NMTOKEN  #REQUIRED
+                y1      NMTOKEN  #REQUIRED
+                x2      NMTOKEN  #REQUIRED
+                y2      NMTOKEN  #REQUIRED>
+
+<!ELEMENT rectangulo EMPTY>
+<!ATTLIST rectangulo id      ID       #REQUIRED
+                     x1      NMTOKEN  #REQUIRED
+                     y1      NMTOKEN  #REQUIRED
+                     x2      NMTOKEN  #REQUIRED
+                     y2      NMTOKEN  #REQUIRED>
+
+<!ELEMENT circunferencia EMPTY>
+<!ATTLIST circunferencia id      ID       #REQUIRED
+                         x       NMTOKEN  #REQUIRED
+                         y       NMTOKEN  #REQUIRED
+                         r       NMTOKEN  #REQUIRED>

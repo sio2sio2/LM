@@ -1,0 +1,11 @@
+include "../../04/concesionario.rnc" {
+   concesionario = redef_concesionario
+   reservado = attribute reservado { xsd:IDREF { pattern="c\d+" } }
+}
+
+redef_concesionario = element concesionario {clientes, modelo+, coche+,
+   attribute marca { text }
+}
+
+clientes = element clientes { cliente+ }
+cliente = grammar { include "../../02/rnc/cliente.rnc" }

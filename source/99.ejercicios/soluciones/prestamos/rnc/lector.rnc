@@ -1,0 +1,14 @@
+start = lector
+
+lector = element lector { dni, nombre, direccion,
+   attribute registro { xsd:ID { pattern="l\d+" } }
+}
+
+dni = element dni { xsd:string { pattern="\d{8}[A-Za-z]" } }
+nombre = element nombre { text }
+
+direccion = element direccion { domicilio, cp, poblacion }
+domicilio = element domicilio { text }
+cp = element cp { xsd:positiveInteger { minExclusive="1000" maxExclusive="53000" } }
+poblacion = element poblacion { text }
+

@@ -1,0 +1,11 @@
+<!ELEMENT recetas (receta+)>
+
+<!ELEMENT receta (ingrediente+)>
+<!ATTLIST receta id              ID                #REQUIRED
+                 nombre          CDATA             #REQUIRED
+                 preparacion     CDATA             #IMPLIED>
+
+<!ELEMENT ingrediente EMPTY>
+<!ATTLIST ingrediente nombre     CDATA             #REQUIRED
+                      unidad     (pieza|gramo|cc)  #REQUIRED
+                      cantidad   CDATA             #REQUIRED>

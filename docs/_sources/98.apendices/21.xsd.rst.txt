@@ -1,0 +1,7 @@
+.. _xsd:
+
+W3C |XML| Schema
+****************
+
+.. todo:: Trasladar `la versión antigua
+   <https://alacena.iescastillodeluna.es/zipi/LM/Tema3.html>`_.

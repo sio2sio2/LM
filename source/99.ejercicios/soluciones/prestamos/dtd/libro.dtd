@@ -1,0 +1,12 @@
+<!ELEMENT libro (nombre, autor, año, editorial, ejemplares)>
+<!ATTLIST libro      isbn        ID                      #REQUIRED>
+
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT autor (#PCDATA)>
+<!ELEMENT año (#PCDATA)>
+<!ELEMENT editorial (#PCDATA)>
+
+<!ELEMENT ejemplares (ejemplar+)>
+<!ELEMENT ejemplar EMPTY>
+<!ATTLIST ejemplar codigo        ID             #REQUIRED>
+

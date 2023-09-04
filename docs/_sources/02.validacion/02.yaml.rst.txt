@@ -1,0 +1,7 @@
+|JSON|/|YAML|
+=============
+
+
+.. |JSON| replace:: :abbr:`JSON (JavaScript Object Notation)`
+.. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`
+

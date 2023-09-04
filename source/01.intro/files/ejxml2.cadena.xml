@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cadena nombre="Burriquín">
+
+   <recetas>
+      <!-- El tiempo está en minutos -->
+      <receta id="r01" nombre="ensalada" preparacion="5">
+         <ingrediente nombre="tomate" unidad="pieza" cantidad="2" />
+         <ingrediente nombre="cebolla" unidad="pieza" cantidad=".25" /> 
+         <ingrediente nombre="lechuga" unidad="gramo" cantidad="350" />
+         <ingrediente nombre="sal" unidad="gramo" cantidad="2" />
+         <ingrediente nombre="vinagre" unidad="cc" cantidad="3" />
+         <ingrediente nombre="aceite" unidad="cc" cantidad="6" />
+      </receta>
+
+      <receta id="r02" nombre="bocadillo de anchoas" preparacion="4">
+         <ingrediente nombre="pan" unidad="pieza" cantidad="1" />
+         <ingrediente nombre="anchoa" unidad="pieza" cantidad="lata" /> 
+      </receta>
+
+      <!-- Más recetas -->
+   </recetas>
+
+   <restaurante id="re01" nombre="El tragón feliz">
+      <domicilio>
+         <direccion>c/ Callo, nº 25. Bajo.</direccion>
+         <municipio>Vallecito frondoso</municipio>
+         <cp>12345</cp>
+      </domicilio>
+      <carta>
+         <!-- Este plato se sirve como ración o como media o como tapa -->
+         <plato ref="r01" tipo="racion media tapa" />
+         <plato ref="r02" tipo="media" />
+         <!-- Más platos -->
+      </carta>
+   </restaurante>
+   <!-- Más restaurantes de la cadena -->
+</cadena>

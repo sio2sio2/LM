@@ -7,21 +7,37 @@ superiores de la familia profesional de `Informática y Comunicaciones`_.
 Unidades del curso
 ------------------
 
+**Bloque 1: Tecnologías para el intercambio de información**
+
 .. toctree::
    :maxdepth: 2
    :glob:
    :numbered:
 
-   [0-9]*/index
+   0[1-3]*/index
 
-.. Relación de ejercicios
-   ----------------------
+**Bloque 2: Tecnologías web**
 
-   .. toctree::
-      :maxdepth: 1
-      :glob:
+**Bloque 3: Sistemas de gestión empresarial**
 
-      99.ejercicios/[0-9]*
+Apéndices
+---------
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+   :numbered:
+
+   98.apendices/[0-9]*
+
+Ejercicios
+----------
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   99.ejercicios/[0-9]*
 
 Referencias rápidas
 -------------------

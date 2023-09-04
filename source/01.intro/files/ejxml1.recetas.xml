@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recetas>
+   <!-- El tiempo está en minutos -->
+   <receta id="r01" nombre="ensalada" preparacion="5">
+      <ingrediente nombre="tomate" unidad="pieza" cantidad="2" />
+      <ingrediente nombre="cebolla" unidad="pieza" cantidad=".25" /> 
+      <ingrediente nombre="lechuga" unidad="gramo" cantidad="150" />
+      <ingrediente nombre="sal" unidad="gramo" cantidad="2" />
+      <ingrediente nombre="vinagre" unidad="cc" cantidad="3" />
+      <ingrediente nombre="aceite" unidad="cc" cantidad="6" />
+   </receta>
+
+   <receta id="r02" nombre="bocadillo de anchoas" preparacion="4">
+      <ingrediente nombre="pan" unidad="pieza" cantidad="1" />
+      <ingrediente nombre="anchoa" unidad="pieza" cantidad="3" /> 
+   </receta>
+
+   <!-- Más recetas -->
+</recetas>

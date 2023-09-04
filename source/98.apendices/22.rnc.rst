@@ -1,0 +1,4 @@
+.. _rnc:
+
+Relax-NG Compact
+****************

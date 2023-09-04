@@ -1,0 +1,21 @@
+<!ENTITY % recetas SYSTEM "recetas.dtd">
+%recetas;
+
+<!ELEMENT cadena (recetas, restaurante+)>
+<!ATTLIST cadena nombre       CDATA          #REQUIRED>
+
+<!ELEMENT restaurante (domicilio, carta)>
+<!ATTLIST restaurante id      ID             #REQUIRED
+                      nombre  CDATA          #IMPLIED>
+
+<!ELEMENT domicilio (direccion, municipio, cp)>
+
+<!ELEMENT direccion (#PCDATA)>
+<!ELEMENT municipio (#PCDATA)>
+<!ELEMENT cp        (#PCDATA)>
+
+<!ELEMENT carta (plato+)>
+
+<!ELEMENT plato EMPTY>
+<!ATTLIST plato ref           IDREF          #REQUIRED
+                tipo          NMTOKENS       #REQUIRED>

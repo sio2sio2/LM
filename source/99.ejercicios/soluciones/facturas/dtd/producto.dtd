@@ -1,0 +1,5 @@
+<!ELEMENT producto EMPTY>
+<!ATTLIST producto codigo     ID                #REQUIRED
+                   nombre     CDATA             #REQUIRED
+                   precio     CDATA             #REQUIRED
+                   iva        (superreducido|reducido|normal)  "normal">

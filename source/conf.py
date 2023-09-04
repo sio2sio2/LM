@@ -18,13 +18,16 @@ extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.mathjax',
     'sphinx.ext.githubpages',
-    'sphinx.ext.extlinks'
+    'sphinx.ext.extlinks',
+    'sphinx_design'
 ]
 
 templates_path = ['_templates']
 exclude_patterns = []
 
 language = 'es'
+
+todo_include_todos = True
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
@@ -42,3 +45,7 @@ rst_epilog = """
 .. |HTML| replace:: :abbr:`HTML (HyperText Markup Language)`
 .. |URL| replace:: :abbr:`URL (Uniform Resource Locator)`
 """
+
+extlinks = {
+    'deb': ('https://packages.debian.org/stable/%s','%s'),
+}
