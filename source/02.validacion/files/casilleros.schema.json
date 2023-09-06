@@ -1,0 +1,78 @@
+{
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "$id": "urn:casilleros.schema.json",
+   "type": "object",
+   "title": "Casilleros",
+   "description": "Asignación de casilleros a profesores",
+   "properties": {
+      "centro": {
+         "type": "string",
+         "description": "Nombre del centro de enseñanza"
+      },
+      "profesores": {
+         "type": "array",
+         "description": "Relación de profesores",
+         "items": {
+            "type": "object",
+            "properties": {
+               "id": { 
+                  "type": "integer",
+                  "description": "Identificador único del profesor",
+                  "minimum": 0
+
+               },
+               "sustituye": {
+                  "type": "integer",
+                  "description": "Identificador del profesor al que sustituye",
+                  "minimum": 0
+               },
+               "casillero": {
+                  "type": "array",
+                  "items": {
+                     "type": "integer",
+                     "minimum": 0
+                  },
+                  "uniqueItems": true
+               },
+               "apelativo": {
+                  "type": "string",
+                  "descripcion": "Nombre por el que se le conoce"
+               },
+               "nombre": {
+                  "type": "string",
+                  "descripcion": "Nombre de pila"
+               },
+               "apellidos": {
+                  "type": "string",
+                  "descripcion": "Apellidos"
+               },
+               "nombre": {
+                  "type": "string",
+                  "descripcion": "Nombre de pila"
+               },
+               "departamento": {
+                  "type": "string",
+                  "descripcion": "Departamento didáctico al que pertenece"
+               }
+            },
+            "additionalProperties": false,
+            "required": ["id", "nombre", "apellidos"],
+            "oneOf": [
+               {
+                  "required": ["departamento"],
+                  "not": { "required": ["sustituye"] }
+               },
+               { "required": ["sustituye"], 
+                  "allOf": [
+                     {"not": { "required": ["departamento"] }},
+                     {"not": { "required": ["casillero"] }}
+                  ]
+               }
+            ]
+         },
+         "minItems": 1
+      }
+   },
+   "additionalProperties": false,
+   "required": ["centro", "profesores"]
+}

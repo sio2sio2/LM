@@ -79,6 +79,184 @@
             
   <section id="json-yaml">
 <h1><span class="section-number">2.2. </span><abbr title="JavaScript Object Notation">JSON</abbr>/<abbr title="YAML Ain't Markup Language">YAML</abbr><a class="headerlink" href="#json-yaml" title="Enlace permanente a este encabezado">¶</a></h1>
+<p>La definición de gramáticas para documentos <abbr title="JavaScript Object Notation">JSON</abbr> o <abbr title="YAML Ain't Markup Language">YAML</abbr> no es tan madura
+como para documentos <abbr title="eXtensible  Markup Language">XML</abbr>. Hay distintas alternativas, de las cuales la más
+extendida es <a class="reference external" href="https://json-schema.org/">JSON Schema</a>, que puede utilizarse tanto para definir
+gramáticas de documentos <abbr title="JavaScript Object Notation">JSON</abbr> y <abbr title="YAML Ain't Markup Language">YAML</abbr>.</p>
+<p>Dedicaremos el epígrafe a describir cómo escribir la gramática de un documento
+<abbr title="JavaScript Object Notation">JSON</abbr> utilizando <a class="reference external" href="https://json-schema.org/">JSON Schema</a>.</p>
+<section id="preliminares">
+<h2><span class="section-number">2.2.1. </span>Preliminares<a class="headerlink" href="#preliminares" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Antes de entrar a definir su sintaxis, es conveniente echar un vistazo al aspecto que
+tienen y saber cómo pueden validarse con ellos documentos <abbr title="JavaScript Object Notation">JSON</abbr>.</p>
+<section id="ejemplo">
+<h3><span class="section-number">2.2.1.1. </span>Ejemplo<a class="headerlink" href="#ejemplo" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Tomemos la versión <abbr title="JavaScript Object Notation">JSON</abbr> del <a class="reference internal" href="../01.intro/02a.serial.html#json-ejemplo-inicial"><span class="std std-ref">ejemplo introductorio</span></a>:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Casilleros<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;centro&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;IES Pepe Botella&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;profesores&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;apelativo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Luis&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Luis&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;apellidos&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Márquez Vázquez&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;departamento&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Educación Física&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;apelativo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cristina&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;María  Cristina&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;apellidos&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Prieto Monagas&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;departamento&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Biología y Geología&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;apelativo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Manolo&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Manuel&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;apellidos&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Páez Robledo&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;departamento&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Matemáticas&quot;</span>
+
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;casillero&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">17</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">],</span>
+<span class="w">         </span><span class="nt">&quot;apelativo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Lucía&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Lucía&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;apellidos&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Gálvez Ruiz&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;departamento&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Inglés&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;casillero&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">28</span><span class="p">],</span>
+<span class="w">         </span><span class="nt">&quot;apelativo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Migue&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Miguel Ángel&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;apellidos&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Campos Sanchez&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;departamento&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Historia&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">81</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;casillero&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">         </span><span class="nt">&quot;apelativo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Vero&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Verónica&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;apellidos&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Martín Díaz&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;departamento&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Biología&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">86</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;sustituye&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;apelativo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Roberto&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Roberto&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;apellidos&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mínguez Torralbo&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">   </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</details><p>Este <abbr title="JavaScript Object Notation">JSON</abbr> se ajusta al siguiente esquema:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Gramática de Casilleros con JSON Schema<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://json-schema.org/draft/2020-12/schema&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;$id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:casilleros.schema.json&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Casilleros&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Asignación de casilleros a profesores&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;centro&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nombre del centro de enseñanza&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;profesores&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Relación de profesores&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">               </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">                  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Identificador único del profesor&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;minimum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="w">               </span><span class="p">},</span>
+<span class="w">               </span><span class="nt">&quot;sustituye&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Identificador del profesor al que sustituye&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;minimum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">               </span><span class="p">},</span>
+<span class="w">               </span><span class="nt">&quot;casillero&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                     </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+<span class="w">                     </span><span class="nt">&quot;minimum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">                  </span><span class="p">},</span>
+<span class="w">                  </span><span class="nt">&quot;uniqueItems&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">               </span><span class="p">},</span>
+<span class="w">               </span><span class="nt">&quot;apelativo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;descripcion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nombre por el que se le conoce&quot;</span>
+<span class="w">               </span><span class="p">},</span>
+<span class="w">               </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;descripcion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nombre de pila&quot;</span>
+<span class="w">               </span><span class="p">},</span>
+<span class="w">               </span><span class="nt">&quot;apellidos&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;descripcion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Apellidos&quot;</span>
+<span class="w">               </span><span class="p">},</span>
+<span class="w">               </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;descripcion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nombre de pila&quot;</span>
+<span class="w">               </span><span class="p">},</span>
+<span class="w">               </span><span class="nt">&quot;departamento&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;descripcion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Departamento didáctico al que pertenece&quot;</span>
+<span class="w">               </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;additionalProperties&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;nombre&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;apellidos&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;oneOf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">               </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;departamento&quot;</span><span class="p">],</span>
+<span class="w">                  </span><span class="nt">&quot;not&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;sustituye&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
+<span class="w">               </span><span class="p">},</span>
+<span class="w">               </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;sustituye&quot;</span><span class="p">],</span><span class="w"> </span>
+<span class="w">                  </span><span class="nt">&quot;allOf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                     </span><span class="p">{</span><span class="nt">&quot;not&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;departamento&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">}},</span>
+<span class="w">                     </span><span class="p">{</span><span class="nt">&quot;not&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;casillero&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">}}</span>
+<span class="w">                  </span><span class="p">]</span>
+<span class="w">               </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="nt">&quot;minItems&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">   </span><span class="p">},</span>
+<span class="w">   </span><span class="nt">&quot;additionalProperties&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;centro&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;profesores&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</details><p>Como puede verse, el documento es en sí un documento <abbr title="JavaScript Object Notation">JSON</abbr>. Trataremos a partir
+de ahora de saber cómo escribir</p>
+</section>
+<section id="validacion">
+<h3><span class="section-number">2.2.1.2. </span>Validación<a class="headerlink" href="#validacion" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Antes de empezar, no obstante, es conveniente saber cómo validar:</p>
+</section>
+</section>
 </section>
 
 
@@ -90,7 +268,20 @@
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/logo.png" alt="Logo"/>
-        </a></p>
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">2.2. <abbr title="JavaScript Object Notation">JSON</abbr>/<abbr title="YAML Ain't Markup Language">YAML</abbr></a><ul>
+<li><a class="reference internal" href="#preliminares">2.2.1. Preliminares</a><ul>
+<li><a class="reference internal" href="#ejemplo">2.2.1.1. Ejemplo</a></li>
+<li><a class="reference internal" href="#validacion">2.2.1.2. Validación</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div class="sphinxprev">
     <h4>Previous page</h4>
     <p class="topless"><a href="01.dtdxml.html"

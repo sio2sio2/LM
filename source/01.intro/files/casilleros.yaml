@@ -1,0 +1,50 @@
+%YAML 1.2
+---
+centro: "IES Pepe Botella"
+profesores:
+  - id: 1
+    apelativo: Luis
+    nombre: Luis
+    apellidos: Márquez Vázquez
+    departamento: Educación Física
+    # Este profesor es sustituido por el 86.
+    # Como no se indica, su casillero es el 13.
+  - id: 13
+    apelativo: Cristina
+    nombre: María Cristina
+    apellidos:  Prieto Monagas
+    departamento: Biología y Geología
+  - id: 15
+    apelativo: Manolo
+    nombre: Manuel
+    apellidos: Páez Robledo
+    departamento: Matemáticas
+    # Ocupa varios casilleros.
+  - id: 17
+    casillero: [17, 43]
+    apelativo: Lucía
+    nombre: Lucía
+    apellidos: Gálvez Ruiz
+    departamento: Inglésç
+    # Ocupa un casillero distinto al de su ID.
+  - id: 17
+    casillero: [28]
+    apelativo: Migue
+    nombre: Miguel Ángel
+    apellidos: Campos Sánchez
+    departamento: Historia
+    # No tiene asignado casillero.
+  - id: 81
+    casillero: []
+    apelativo: Vero
+    nombre: Verónica
+    apellidos: Martín Díaz
+    departamento: Biología
+    # Es sustituto, así que tiene
+    # los mismos casilleros y departamento
+    # que aquel al que sustituye.
+  - id: 86
+    sustituye: 13
+    apelativo: Roberto
+    nombre: Roberto
+    apellidos: Mínguez Torralbo

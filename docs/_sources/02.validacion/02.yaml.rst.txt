@@ -1,7 +1,52 @@
 |JSON|/|YAML|
-=============
+*************
+La definición de gramáticas para documentos |JSON| o |YAML| no es tan madura
+como para documentos |XML|. Hay distintas alternativas, de las cuales la más
+extendida es `JSON Schema`_, que puede utilizarse tanto para definir
+gramáticas de documentos |JSON| y |YAML|.
+
+Dedicaremos el epígrafe a describir cómo escribir la gramática de un documento
+|JSON| utilizando `JSON Schema`_.
+
+Preliminares
+============
+Antes de entrar a definir su sintaxis, es conveniente echar un vistazo al aspecto que
+tienen y saber cómo pueden validarse con ellos documentos |JSON|.
+
+.. Hablar de todos los estándares que hay 4, 5, 6 ,7, 2019-09 y 2022-12.
+
+Ejemplo
+-------
+Tomemos la versión |JSON| del :ref:`ejemplo introductorio <json-ejemplo-inicial>`:
+
+.. dropdown:: Casilleros
+
+   .. literalinclude:: /01.intro/files/casilleros.json
+      :language: json
+
+Este |JSON| se ajusta al siguiente esquema:
+
+.. dropdown:: Gramática de Casilleros con JSON Schema
+
+   .. literalinclude:: files/casilleros.schema.json
+      :language: json
+
+Como puede verse, el documento es en sí un documento |JSON|. Trataremos a partir
+de ahora de saber cómo escribir
+
+Validación
+----------
+Antes de empezar, no obstante, es conveniente saber cómo validar:
+
+
+.. https://www.jsonschemavalidator.net/
+.. https://jsonformatter.org/yaml-to-jsonschema
+.. https://dev.to/brpaz/how-to-create-your-own-auto-completion-for-json-and-yaml-files-on-vs-code-with-the-help-of-json-schema-k1i
+.. https://codebeautify.org/yaml-to-json-schema-generator
 
 
 .. |JSON| replace:: :abbr:`JSON (JavaScript Object Notation)`
 .. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`
 
+.. _JSON Schema: https://json-schema.org/
+.. _jsonschema: https://github.com/python-jsonschema/jsonschema

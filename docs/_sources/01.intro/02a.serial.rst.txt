@@ -66,8 +66,8 @@ comprobar si un documento cumple con tal sintaxis:
 
 .. rst-class:: simple
 
-* `JSONLint online <https://jsonlint.com/>`_, que nos permite hacer las
-  comprobación con un navegador y conexión a internet.
+* `Validador JSON online <https://codebeautify.org/jsonvalidator>`_, que nos
+  permite hacer las comprobación con un navegador y conexión a internet.
 * El paquete :deb:`python3-demjson` disponible en las distribuciones basadas en
   *Debian*, que proporciona la librería *demjson* de Python_ y un ejecutable
   llamado :command:`jsonlint`, cuyo  uso es muy sencillo:
@@ -80,6 +80,18 @@ comprobar si un documento cumple con tal sintaxis:
 
 .. warning:: Aunque hemos usado la palabra *validador*, estos programas no
    validan el documento, solamente comprueban si es bien formado.
+
+.. _json-ejemplo-inicial:
+
+Para familiarizarnos con el aspecto de estos documentos y poder probar las
+herramientas anterior, facilitamos un :download:`documento JSON
+<files/casilleros.json>` que enumera los profesores de un centro educativo con
+los casilleros que tienen asignados:
+
+.. dropdown:: JSON sobre casilleros
+
+   .. literalinclude:: files/casilleros.json
+      :language: json
 
 .. _json-nodo:
 
@@ -299,6 +311,16 @@ Por ejemplo:
    nombre: Pedro Martínez Alvárez
    edad: 32  # Empieza a ser un puretilla ya.
    casado: true
+
+o, si queremos un ejemplo más amplio, equivalente al :ref:`ejemplo introductorio
+para JSON <json-ejemplo-inicial>`:
+
+.. _yaml-ejemplo-inicial:
+
+.. dropdown:: YAML de casilleros
+
+   .. literalinclude:: files/casilleros.yaml
+      :language: yaml
 
 .. _yaml-struct:
 
