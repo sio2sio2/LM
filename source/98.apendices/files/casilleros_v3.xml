@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE claustro SYSTEM "casilleros.dtd">
+<!DOCTYPE claustro SYSTEM "departamentos.ent">
 
 <claustro centro="IES Pepe Botella">
    <profesor id="p1">
@@ -16,8 +16,6 @@
       <departamento>&ByG;</departamento>
    </profesor>
 
-   <!-- Si se sustituye a sí mismo es que está de baja -->
-
    <profesor id="p15">
       <apelativo>Manolo</apelativo>
       <nombre>Manuel</nombre>
@@ -33,11 +31,6 @@
       <apellidos>Gálvez Ruiz</apellidos>
       <departamento>&ING;</departamento>
    </profesor>
-
-   <!-- En principio, si el casillero está vacío
-        la aplicación les asigna el que indica su identificador,
-        pero se puede asignar uno distinto.
-    -->
 
    <profesor id="p28" casillero="28">
       <apelativo>Miguel Ángel</apelativo>

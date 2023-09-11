@@ -10,7 +10,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>2.1. XML (DTD) &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <title>2.1. DTD &#8212; documentación de Lenguajes de Marcas - rolling</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
@@ -45,7 +45,7 @@
 
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
-    <link rel="next" title="2.2. JSON/YAML" href="02.yaml.html" />
+    <link rel="next" title="2.2. JSON Schema" href="02.yaml.html" />
     <link rel="prev" title="2. Validación" href="index.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head><body>
@@ -58,7 +58,7 @@
           <a href="../genindex.html" title="Índice General"
              accesskey="I">índice</a></li>
         <li class="right" >
-          <a href="02.yaml.html" title="2.2. JSON/YAML"
+          <a href="02.yaml.html" title="2.2. JSON Schema"
              accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="index.html" title="2. Validación"
@@ -66,7 +66,7 @@
     <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">2. </span>Validación</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2.1. </span><abbr title="eXtensible  Markup Language">XML</abbr> (<abbr title="Document Type Definition">DTD</abbr>)</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2.1. </span><abbr title="Document Type Definition">DTD</abbr></a></li> 
       </ul>
     </div>
     </div>
@@ -77,19 +77,19 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="xml-dtd">
-<span id="dtd"></span><h1><span class="section-number">2.1. </span><abbr title="eXtensible  Markup Language">XML</abbr> (<abbr title="Document Type Definition">DTD</abbr>)<a class="headerlink" href="#xml-dtd" title="Enlace permanente a este encabezado">¶</a></h1>
+  <section id="dtd">
+<span id="id1"></span><h1><span class="section-number">2.1. </span><abbr title="Document Type Definition">DTD</abbr><a class="headerlink" href="#dtd" title="Enlace permanente a este encabezado">¶</a></h1>
 <p>Para definir gramáticas de documentos <abbr title="eXtensible  Markup Language">XML</abbr> se usan distintos lenguajes, pero
 los más habituales son:</p>
 <ul class="simple">
 <li><p><abbr title="Document Type Definition">DTD</abbr> <abbr title="eXtensible  Markup Language">XML</abbr>, derivado del <abbr title="Document Type Definition">DTD</abbr> que se usa para validar documentos <abbr title="Standard Generalized Markup Language">SGML</abbr>.
 Básicamente es un documento <abbr title="Standard Generalized Markup Language">SGML</abbr> usado para definir la gramática de un
 dialecto <abbr title="eXtensible  Markup Language">XML</abbr> concreto.</p></li>
-<li><p><a class="reference internal" href="../98.apendices/21.xsd.html#xsd"><span class="std std-ref">W3C XML Schema</span></a>, que es un lenguaje de esquemas <abbr title="eXtensible  Markup Language">XML</abbr> desarrollado
+<li><p><a class="reference internal" href="../98.apendices/21.xsd.html#xsd"><span class="std std-ref">W3C XML Schema</span></a>, que es un lenguaje con sintaxis <abbr title="eXtensible  Markup Language">XML</abbr> desarrollado
 por el <abbr title="W3 Consortium">W3C</abbr>.</p></li>
 <li><p><a class="reference internal" href="../98.apendices/22.rnc.html#rnc"><span class="std std-ref">Relax-NG</span></a>, que es otro lenguaje de esquemas <abbr title="eXtensible  Markup Language">XML</abbr> más sencillo que
 el anterior y que, además de la sintaxis <abbr title="eXtensible  Markup Language">XML</abbr>, dispone de una sintaxis
-alternativa llamada <em>Compacta</em></p></li>
+alternativa llamada <em>Compacta</em>.</p></li>
 </ul>
 <p>Desarrollaremos sólo el primer lenguaje, que es el más extendido, aunque también
 el más limitado y menos expresivo. Los otros dos, los desarrollaremos como
@@ -144,7 +144,7 @@ encuentra el propio <abbr title="Document Type Definition">DTD</abbr>, mientras 
 Formal) es un modo de identificar inequívocamente ese <abbr title="Document Type Definition">DTD</abbr> público, por lo
 que cumple el papel de un <abbr title="Uniform Resource Identifier">URI</abbr>. Que en este caso se use <abbr title="Formal Public Identifier">FPI</abbr> y no <abbr title="Uniform Resource Identifier">URI</abbr> es
 una cuestión heredada de tiempos en que no existía aún el segundo concepto,
-por lo que los <abbr title="Formal Public Identifier">FPI</abbr>s constituyen un <a class="reference external" href="https://es.wikipedia.org/wiki/Sistema_heredado">sistema heredado</a><a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+por lo que los <abbr title="Formal Public Identifier">FPI</abbr>s constituyen un <a class="reference external" href="https://es.wikipedia.org/wiki/Sistema_heredado">sistema heredado</a><a class="footnote-reference brackets" href="#id5" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 <p>Un ejemplo de declaración es la que define la versión 1.0 de <abbr title="eXtensible HyperText Markup Language">XHTML</abbr>:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</span>
 </pre></div>
@@ -171,7 +171,7 @@ reglas incluidas en la propia declaración:</p>
 <section id="ejemplo">
 <h3><span class="section-number">2.1.1.2. </span>Ejemplo<a class="headerlink" href="#ejemplo" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Antes de entrar en harina, no esta de más ver qué aspecto tiene un <abbr title="Document Type Definition">DTD</abbr>. Para
-ello tomemos el <a class="reference internal" href="../01.intro/02b.marcas.html#xml-ejemplo"><span class="std std-ref">documento XML usado como ejemplo introductorio</span></a>, aunque con una ligera variación<a class="footnote-reference brackets" href="#id5" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> (descárguelo de <a class="reference download internal" download="" href="../_downloads/4cb21890aa27e222184ac6820327e0c7/casilleros_v2.xml"><code class="xref download docutils literal notranslate"><span class="pre">aquí</span></code></a>):</p>
+ello tomemos el <a class="reference internal" href="../01.intro/02b.marcas.html#xml-ejemplo"><span class="std std-ref">documento XML usado como ejemplo introductorio</span></a>, aunque con una ligera variación<a class="footnote-reference brackets" href="#id6" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> (descárguelo de <a class="reference download internal" download="" href="../_downloads/4cb21890aa27e222184ac6820327e0c7/casilleros_v2.xml"><code class="xref download docutils literal notranslate"><span class="pre">aquí</span></code></a>):</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 XML de casilleros<div class="sd-summary-down docutils">
@@ -190,7 +190,7 @@ XML de casilleros<div class="sd-summary-down docutils">
 <span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;EFI;</span><span class="nt">&lt;/departamento&gt;</span>
 <span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
 
-<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p13&quot;</span><span class="w"> </span><span class="na">sustituto=</span><span class="s">&quot;p86&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p13&quot;</span><span class="nt">&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Cristina<span class="nt">&lt;/apelativo&gt;</span>
 <span class="w">      </span><span class="nt">&lt;nombre&gt;</span>María<span class="w"> </span>Cristina<span class="nt">&lt;/nombre&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Prieto<span class="w"> </span>Monagas<span class="nt">&lt;/apellidos&gt;</span>
@@ -199,7 +199,7 @@ XML de casilleros<div class="sd-summary-down docutils">
 
 <span class="w">   </span><span class="cm">&lt;!-- Si se sustituye a sí mismo es que está de baja --&gt;</span>
 
-<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p15&quot;</span><span class="w"> </span><span class="na">sustituto=</span><span class="s">&quot;p15&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p15&quot;</span><span class="nt">&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Manolo<span class="nt">&lt;/apelativo&gt;</span>
 <span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Manuel<span class="nt">&lt;/nombre&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Páez<span class="w"> </span>Robledo<span class="nt">&lt;/apellidos&gt;</span>
@@ -208,7 +208,7 @@ XML de casilleros<div class="sd-summary-down docutils">
 
 <span class="w">   </span><span class="cm">&lt;!-- Profesor con casillero(s) adicional(es) --&gt;</span>
 
-<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p17&quot;</span><span class="w"> </span><span class="na">adicional=</span><span class="s">&quot;43&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p17&quot;</span><span class="w"> </span><span class="na">casillero=</span><span class="s">&quot;17 43&quot;</span><span class="nt">&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Lucía<span class="nt">&lt;/apelativo&gt;</span>
 <span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Lucía<span class="nt">&lt;/nombre&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Gálvez<span class="w"> </span>Ruiz<span class="nt">&lt;/apellidos&gt;</span>
@@ -227,9 +227,7 @@ XML de casilleros<div class="sd-summary-down docutils">
 <span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;HIS;</span><span class="nt">&lt;/departamento&gt;</span>
 <span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
 
-<span class="w">   </span><span class="cm">&lt;!-- Profesor sin casillero (tienen el 0) --&gt;</span>
-
-<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p81&quot;</span><span class="w"> </span><span class="na">casillero=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p81&quot;</span><span class="w"> </span><span class="na">casillero=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Verónica<span class="nt">&lt;/apelativo&gt;</span>
 <span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Verónica<span class="nt">&lt;/nombre&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Martín<span class="w"> </span>Díaz<span class="nt">&lt;/apellidos&gt;</span>
@@ -238,7 +236,7 @@ XML de casilleros<div class="sd-summary-down docutils">
 
 <span class="w">   </span><span class="cm">&lt;!-- Profesor sustituto --&gt;</span>
 
-<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p86&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p86&quot;</span><span class="w"> </span><span class="na">sustituye=</span><span class="s">&quot;p13&quot;</span><span class="nt">&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Roberto<span class="nt">&lt;/apelativo&gt;</span>
 <span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Roberto<span class="nt">&lt;/nombre&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Mínguez<span class="w"> </span>Torralbo<span class="nt">&lt;/apellidos&gt;</span>
@@ -259,20 +257,16 @@ DTD de casilleros<div class="sd-summary-down docutils">
 <span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">datospers</span> <span class="s2">&quot;(apelativo,nombre,apellidos)&quot;</span><span class="k">&gt;</span>
 <span class="c">&lt;!--</span>
 <span class="c">   id:         Identificador del profesor (formato i&lt;N&gt;)</span>
-<span class="c">   sustituto:  Quién sustituye al profesor, en caso de estar de baja.</span>
-<span class="c">               Si coincide con el propio identificador, entonces</span>
-<span class="c">               el profesor está de baja, pero aún sin sustituto.</span>
-<span class="c">   casillero:  Número de casillero. Si es &quot;0&quot;, el profesor no tiene</span>
-<span class="c">               casillero. Si no se especifica, el casillero será:</span>
-<span class="c">                  - En caso de profesor titular, la &lt;N&gt; del identificador.</span>
+<span class="c">   sustituye:  A quién sustituye al profesor.</span>
+<span class="c">   casillero:  Número de casillero asignado. Si no se especifica:</span>
+<span class="c">                  - En caso de profesor titular, la &lt;N&gt; de &quot;id&quot;</span>
 <span class="c">                  - En caso de sustituto, el casillero del titular.</span>
-<span class="c">   adicional:  Casilleros adicionales que ocupa el profesor.</span>
+<span class="c">               Si está vacío, el profesor no tiene asignado casillero.</span>
 <span class="c">--&gt;</span>
 <span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">attrpers</span> 
    <span class="s2">&quot;id        ID       #REQUIRED</span>
-<span class="s2">    casillero NMTOKEN  #IMPLIED</span>
-<span class="s2">    sustituto IDREF    #IMPLIED</span>
-<span class="s2">    adicional NMTOKENS #IMPLIED&quot;</span><span class="k">&gt;</span>
+<span class="s2">    casillero CDATA    #IMPLIED</span>
+<span class="s2">    sustituye IDREF    #IMPLIED&quot;</span><span class="k">&gt;</span>
 
 <span class="ni">%departamentos;</span>
 
@@ -608,7 +602,7 @@ como privadas:</p>
 <span class="k">&lt;!NOTATION</span> <span class="nt">nombre</span> <span class="kc">PUBLIC</span> <span class="s2">&quot;IDPublico&quot;</span> <span class="s2">&quot;IDSistema&quot;</span><span class="k">&gt;</span>
 </pre></div>
 </div>
-<p>El identificador del sistema suele ser el tipo <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> asociado a ese formato<a class="footnote-reference brackets" href="#id6" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>:</p>
+<p>El identificador del sistema suele ser el tipo <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> asociado a ese formato<a class="footnote-reference brackets" href="#id7" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>:</p>
 <div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!NOTATION</span> <span class="nt">JPG</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;image/jpeg&quot;</span><span class="k">&gt;</span>
 <span class="k">&lt;!NOTATION</span> <span class="nt">PNG</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;image/png&quot;</span><span class="k">&gt;</span>
 <span class="k">&lt;!NOTATION</span> <span class="nt">GIF</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;image/gif&quot;</span><span class="k">&gt;</span>
@@ -719,34 +713,30 @@ DTD de casilleros<div class="sd-summary-down docutils">
 </span><span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">datospers</span> <span class="s2">&quot;(apelativo,nombre,apellidos)&quot;</span><span class="k">&gt;</span>
 <span class="c">&lt;!--</span>
 <span class="c">   id:         Identificador del profesor (formato i&lt;N&gt;)</span>
-<span class="c">   sustituto:  Quién sustituye al profesor, en caso de estar de baja.</span>
-<span class="c">               Si coincide con el propio identificador, entonces</span>
-<span class="c">               el profesor está de baja, pero aún sin sustituto.</span>
-<span class="c">   casillero:  Número de casillero. Si es &quot;0&quot;, el profesor no tiene</span>
-<span class="c">               casillero. Si no se especifica, el casillero será:</span>
-<span class="c">                  - En caso de profesor titular, la &lt;N&gt; del identificador.</span>
+<span class="c">   sustituye:  A quién sustituye al profesor.</span>
+<span class="c">   casillero:  Número de casillero asignado. Si no se especifica:</span>
+<span class="c">                  - En caso de profesor titular, la &lt;N&gt; de &quot;id&quot;</span>
 <span class="c">                  - En caso de sustituto, el casillero del titular.</span>
-<span class="c">   adicional:  Casilleros adicionales que ocupa el profesor.</span>
+<span class="c">               Si está vacío, el profesor no tiene asignado casillero.</span>
 <span class="c">--&gt;</span>
 <span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">attrpers</span> 
    <span class="s2">&quot;id        ID       #REQUIRED</span>
 <span class="s2">    casillero NMTOKEN  #IMPLIED</span>
-<span class="s2">    sustituto IDREF    #IMPLIED</span>
-<span class="s2">    adicional NMTOKENS #IMPLIED&quot;</span><span class="k">&gt;</span>
+<span class="s2">    sustituye IDREF    #IMPLIED&quot;</span><span class="k">&gt;</span>
 
 <span class="ni">%departamentos;</span>
-<span class="hll"><span class="ni">%direccion;</span>
-</span>
+<span class="ni">%direccion;</span>
+
 <span class="k">&lt;!ELEMENT</span> <span class="nt">claustro</span> <span class="o">(</span><span class="nt">profesor</span><span class="o">|</span><span class="nt">asistente</span><span class="o">)+</span><span class="k">&gt;</span>
-<span class="hll"><span class="k">&lt;!ATTLIST</span> <span class="nt">claustro</span> <span class="na">centro</span> <span class="kc">CDATA</span> <span class="kc">#REQUIRED</span>
-</span><span class="hll">                   <span class="na">xmlns</span>  <span class="kc">CDATA</span> <span class="kc">#FIXED</span>    <span class="s2">&quot;urn:profesores&quot;</span><span class="k">&gt;</span>
-</span><span class="hll"><span class="k">&lt;!ELEMENT</span> <span class="nt">profesor</span> <span class="o">(</span><span class="ni">%datospers;</span><span class="o">,</span><span class="nt">departamento</span><span class="o">?,</span><span class="nt">direccion</span><span class="o">)</span><span class="k">&gt;</span>
-</span><span class="hll"><span class="k">&lt;!ELEMENT</span> <span class="nt">asistente</span> <span class="o">(</span><span class="ni">%datospers;</span><span class="o">,</span><span class="nt">direccion</span><span class="o">)</span><span class="k">&gt;</span>
-</span><span class="k">&lt;!ATTLIST</span> <span class="nt">profesor</span> <span class="ni">%attrpers;</span><span class="k">&gt;</span>
-<span class="k">&lt;!ATTLIST</span> <span class="nt">asistente</span> <span class="ni">%attrpers;</span><span class="k">&gt;</span>
-<span class="k">&lt;!ELEMENT</span> <span class="nt">nombre</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
-<span class="k">&lt;!ELEMENT</span> <span class="nt">apellidos</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
-<span class="k">&lt;!ELEMENT</span> <span class="nt">apelativo</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ATTLIST</span> <span class="nt">claustro</span> <span class="na">centro</span> <span class="kc">CDATA</span> <span class="kc">#REQUIRED</span>
+<span class="hll">                   <span class="na">xmlns</span>  <span class="kc">CDATA</span> <span class="kc">#FIXED</span>    <span class="s2">&quot;urn:profesores&quot;</span><span class="k">&gt;</span>
+</span><span class="k">&lt;!ELEMENT</span> <span class="nt">profesor</span> <span class="o">(</span><span class="ni">%datospers;</span><span class="o">,</span><span class="nt">departamento</span><span class="o">?,</span><span class="nt">direccion</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ELEMENT</span> <span class="nt">asistente</span> <span class="o">(</span><span class="ni">%datospers;</span><span class="o">,</span><span class="nt">direccion</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="hll"><span class="k">&lt;!ATTLIST</span> <span class="nt">profesor</span> <span class="ni">%attrpers;</span><span class="k">&gt;</span>
+</span><span class="hll"><span class="k">&lt;!ATTLIST</span> <span class="nt">asistente</span> <span class="ni">%attrpers;</span><span class="k">&gt;</span>
+</span><span class="hll"><span class="k">&lt;!ELEMENT</span> <span class="nt">nombre</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+</span><span class="hll"><span class="k">&lt;!ELEMENT</span> <span class="nt">apellidos</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+</span><span class="k">&lt;!ELEMENT</span> <span class="nt">apelativo</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
 <span class="k">&lt;!ELEMENT</span> <span class="nt">departamento</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
 </pre></div>
 </div>
@@ -866,18 +856,18 @@ elemento se pueda repetir entre 3 y 25 veces.</p></li>
 </dl>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id4" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>De hecho, para la definición de <span class="xref std std-ref">espacios de nombres</span>, que
+<aside class="footnote brackets" id="id5" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>De hecho, para la definición de <a class="reference internal" href="../98.apendices/22.rnc.html#rnc-ns"><span class="std std-ref">espacios de nombres</span></a>, que
 son más modernos, ya sólo se usa una <abbr title="Uniform Resource Identifier">URI</abbr> para identificarlos.</p>
 </aside>
-<aside class="footnote brackets" id="id5" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id6" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
 <p>La variación es que hemos sacado la definición de las entidades del <abbr title="eXtensible  Markup Language">XML</abbr>
 y la hemos trasladado a un ficheo aparte.</p>
 </aside>
-<aside class="footnote brackets" id="id6" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id7" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
 <p>Los tipos <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> identifican de forma única los distintos tipos de
 archivos y se crearon en un principio para los adjuntos al correo
 electrónico. Véase una explicación más detallada <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/HTTP/Basics_of_HTTP/MIME_types">aquí</a>.
@@ -899,7 +889,7 @@ En los sistemas <em>linux</em> hay una lista de tipos mime en <code class="file 
         </a></p><div class="sphinx-toc sphinxlocaltoc">
     <h3><a href="../index.html">Page contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">2.1. <abbr title="eXtensible  Markup Language">XML</abbr> (<abbr title="Document Type Definition">DTD</abbr>)</a><ul>
+<li><a class="reference internal" href="#">2.1. <abbr title="Document Type Definition">DTD</abbr></a><ul>
 <li><a class="reference internal" href="#preliminares">2.1.1. Preliminares</a><ul>
 <li><a class="reference internal" href="#declaracion">2.1.1.1. Declaración</a></li>
 <li><a class="reference internal" href="#ejemplo">2.1.1.2. Ejemplo</a></li>
@@ -937,7 +927,7 @@ En los sistemas <em>linux</em> hay una lista de tipos mime en <code class="file 
   <div class="sphinxnext">
     <h4>Next page</h4>
     <p class="topless"><a href="02.yaml.html"
-                          title="Next page">&rarr; <span class="section-number">2.2. </span><abbr title="JavaScript Object Notation">JSON</abbr>/<abbr title="YAML Ain't Markup Language">YAML</abbr></a></p>
+                          title="Next page">&rarr; <span class="section-number">2.2. </span><abbr title="JavaScript Object Notation">JSON</abbr> Schema</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>Esta página</h3>
@@ -986,7 +976,7 @@ En los sistemas <em>linux</em> hay una lista de tipos mime en <code class="file 
           <a href="../genindex.html" title="Índice General"
              >índice</a></li>
         <li class="right" >
-          <a href="02.yaml.html" title="2.2. JSON/YAML"
+          <a href="02.yaml.html" title="2.2. JSON Schema"
              >siguiente</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="index.html" title="2. Validación"
@@ -994,7 +984,7 @@ En los sistemas <em>linux</em> hay una lista de tipos mime en <code class="file 
     <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">2. </span>Validación</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2.1. </span><abbr title="eXtensible  Markup Language">XML</abbr> (<abbr title="Document Type Definition">DTD</abbr>)</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2.1. </span><abbr title="Document Type Definition">DTD</abbr></a></li> 
       </ul>
     </div>
     </div>

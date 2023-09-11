@@ -2,54 +2,132 @@
 
 Ejercicios sobre validación
 ===========================
-
-Resuelva los siguientes ejercicios sobre |DTD|:
-
-#. Si en un |DTD| el contenido de un elemento "x" se define con
-   :code:`((a|b)?,c,d` indique si "x" puede contener (y explique
-   el por qué en caso de que no):
-
-   #. ``a``
-   #. ``a c d``
-   #. ``c d``
-   #. ``a b c d``
-   #. ``b c d``
-
-#. Si en un |DTD| el contenido de un elemento "x" se define con
-   :code:`((a|b),c*,d?)` indique si "x" puede contener (y explique el por qué en
-   caso de que no):
-
-   a. ``a d``
-   #. ``d``
-   #. ``a c c c``
-   #. ``a``
-   #. ``b b d``
-   #. ``b c d``
-   #. ``b d d``
-   #. ``c c d``
-
-#. Si en un |DTD| el contenido de un elemento "x" se define con
-   :code:`(((a,b,c)|c),a+,(b|d)?)` indique si "x" puede contener (y explique el
-   por qué en caso de que no):
-
-   a. ``a a d``
-   #. ``c a b``
-   #. ``a b c b``
-   #. ``a b a a b``
-   #. ``c``
-   #. ``c a``
+#. Indique si un nodo "x" puede tener un determinado contenido (y explique
+   el por qué en caso de que no), sabiendo que su definición |DTD| es:
    
-#. Si en un |DTD| el contenido de un elemento "x" se define con
-   :code:`(((a|b)|(c|d)),(a,c)+,b?)` indique si "x" puede contener (y explique
-   el por qué en caso de que no):
+   a. :code:`((a|b)?,c,d)` 
+   
+      1. ``a``
+      #. ``a c d``
+      #. ``c d``
+      #. ``a b c d``
+      #. ``b c d``
 
-   #. ``a b a c b``
-   #. ``a a c a c``
-   #. ``b d c a c b``
-   #. ``d a c``
-   #. ``c a c b``
+   #. :code:`((a|b),c*,d?)` 
+
+      1. ``a d``
+      #. ``d``
+      #. ``a c c c``
+      #. ``a``
+      #. ``b b d``
+      #. ``b c d``
+      #. ``b d d``
+      #. ``c c d``
+
+   #. :code:`(((a,b,c)|c),a+,(b|d)?)`
+
+      1. ``a a d``
+      #. ``c a b``
+      #. ``a b c b``
+      #. ``a b a a b``
+      #. ``c``
+      #. ``c a``
+   
+   #. :code:`(((a|b)|(c|d)),(a,c)+,b?)`
+
+      1. ``a b a c b``
+      #. ``a a c a c``
+      #. ``b d c a c b``
+      #. ``d a c``
+      #. ``c a c b``
+
+#. Dado el siguiente esquema |JSON|
+
+   .. code-block:: json
+
+      {
+         "$schema": "https://json-schema.org/draft/2020-12/schema",
+         "type": "array",
+         "prefixItems": [
+            {"const": true},
+            {"type": "integer"}
+         ],
+         "items": { "type": "integer", "exclusiveMinimum": 0 }
+      }
+
+   determine si los documentos sucesivos son válidos y, en caso de que no sea
+   así, indique por qué:
+
+   a. :code:`[4, 5, 8]`
+   #. :code:`[]`
+   #. :code:`[true, 2, 0]`
+   #. :code:`[true, 0]`
+   #. :code:`[true, 1, 1]`
+   #. :code:`[true]`
+   #. :code:`[1]`
+   #. :code:`[false, 1, 1]`
+
+#. Dado el siguiente esquema |JSON|
+
+   .. code-block:: json
+
+      {
+         "$schema": "https://json-schema.org/draft/2020-12/schema",
+         "type": "object",
+         "properties": {
+            "nombre": { "type": "string", "minLength": 1},
+            "tipo": { "enum": ["python", "javascript", "java", "c", "go"] },
+            "tamaño": { "type": "integer", "exclusiveMinimum": 0 }
+         },
+         "required": ["nombre", "tipo"]
+      }
+
+   indique **sin usar un validador** si los siguientes documentos son válidos:
+
+   a. 
+      .. code-block:: json
+
+         {
+            "nombre": "script.js",
+            "tipo": "javascript"
+         }
+
+   #.
+      .. code-block:: json
+
+         {
+            "nombre": "consola.java",
+            "tamaño": 1234
+         }
+
+   #.
+      .. code-block:: json
+
+         {
+            "nombre": "consola.java",
+            "tamaño": 1234
+         }
+
+   #.
+      .. code-block:: json
+
+         {
+            "nombre": "consola.java",
+            "tipo": "java",
+            "ruta": "/usr/bin"
+         }
+
+   #.
+      .. code-block:: json
+
+         {
+            "nombre": "servidor.c"
+         }
 
 Y, ahora, escriba las gramáticas que permitan validar las soluciones diseñadas
-para los :ref:`ejercicios sobre lenguajes de marcas <ej-li-doc>`.
+para los :ref:`ejercicios sobre lenguajes de marcas <ej-li-doc>`:
+
+.. include:: /99.ejercicios/10.lenguajes.rst
+   :start-line: 49
 
 .. |DTD| replace:: :abbr:`DTD (Document Type Definition)`

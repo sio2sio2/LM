@@ -48,4 +48,5 @@ rst_epilog = """
 
 extlinks = {
     'deb': ('https://packages.debian.org/stable/%s','%s'),
+    'jsonschema': ('https://json-schema.org/understanding-json-schema/reference/%s.html','%s')
 }

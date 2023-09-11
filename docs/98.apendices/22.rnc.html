@@ -78,6 +78,968 @@
             
   <section id="relax-ng-compact">
 <span id="rnc"></span><h1><span class="section-number">2. </span>Relax-NG Compact<a class="headerlink" href="#relax-ng-compact" title="Enlace permanente a este encabezado">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Se presupone que el lector ya sabe describir la gramática con
+<abbr title="Document Type Definition">DTD</abbr>. Si no es así, consulte el <a class="reference internal" href="../02.validacion/01.dtdxml.html#dtd"><span class="std std-ref">epígrafe correspondiente</span></a>.</p>
+</div>
+<p><a class="reference external" href="http://www.relaxng.org/">Relax-NG</a> es un lenguaje de esquemas para <abbr title="eXtensible  Markup Language">XML</abbr>,
+esto es, un dialecto <abbr title="eXtensible  Markup Language">XML</abbr> que sirve para definir la gramática de otros
+documentos <abbr title="eXtensible  Markup Language">XML</abbr>. El <a class="reference external" href="https://www.w3c.es/">w3c</a>  patrocina otro lenguaje de
+esquemas distinto: el <a class="reference external" href="https://www.w3.org/standards/xml/schema">XML Schema</a>,
+pero se le tilda por muchos de complejo y <abbr title="Relax-NG">RNG</abbr>, como respuesta a ello, pretende
+crear un lenguaje de esquemás más sencillo.</p>
+<p>En cualquier caso, como uno de los principales defectos de <abbr title="eXtensible  Markup Language">XML</abbr> es ser
+exageradamente verborreico, <em>Relax-NG</em> presenta dos sintaxis diferentes: una
+<abbr title="eXtensible  Markup Language">XML</abbr>, que notaremos <abbr title="Relax-NG">RNG</abbr>, y otra que no lo es y que recibe el adjetivo de
+<strong>compacta</strong>, y que notaremos como <abbr title="Relax-NG Compact">RNC</abbr>. En estos apuntes, trataremos la
+versión compacta para evitar la insoportable verborrea del <abbr title="eXtensible  Markup Language">XML</abbr>.</p>
+<p>Si comparamos <em>Relax-NG</em> con <abbr title="Document Type Definition">DTD</abbr><a class="footnote-reference brackets" href="#id13" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> nos encontramos con:</p>
+<ul class="simple">
+<li><p><strong>Ventajas</strong>:</p>
+<ul>
+<li><p>Soporta <em>tipado</em>, esto es, tiene la capacidad de ser más preciso en las
+definiciones del contenido textual. En <abbr title="Document Type Definition">DTD</abbr> (salvo al definir atributos
+enumerables o <em>tokens</em>), nos tenemos que limitar a indicar que el contenido
+es texto libre sin más (<code class="docutils literal notranslate"><span class="pre">CDATA</span></code> para atributos, <code class="docutils literal notranslate"><span class="pre">#PCDATA</span></code> para nodos).
+Con <abbr title="Relax-NG Compact">RNC</abbr>, en cambio, podremos precisar que es un número entero o una
+palabra de ocho letras como máximo, por ejemplo.</p></li>
+<li><p>Unifica la forma de definir el valor de los atributos y el contenido de los
+nodos de texto. Ya veremos que si el contenido de un atributo es un número
+entero deberemos definirlo como <code class="code docutils literal notranslate"><span class="pre">xsd:int</span></code>, que es la forma en que
+deberemos indicar que el contenido de un nodo lo es.</p></li>
+<li><p>Soporta <em>espacios de nombres</em>, que es un concepto que trataremos más
+adelante.</p></li>
+<li><p>La definición de los nodos depende de su contexto, por lo que es posible
+definir dos nodos con un mismo nombre, pero distinto contenido, siempre que
+estos nodos no sean nodos hermanos. Por ejemplo, en un <abbr title="eXtensible  Markup Language">XML</abbr> podemos tener
+nodos <em>cliente</em> uno de cuyos hijos es el nodo <em>direccion</em> que expresa la
+dirección postal del cliente; y nodos <em>proveedor</em> uno de cuyos hijos también
+se llama <em>direccion</em> para expresar el mismo concepto. Con un <abbr title="Document Type Definition">DTD</abbr> sería
+posible, pero sólo si la definición del contenido de ambos nodos <em>direccion</em>
+es idéntico. Si no lo fuera (p.e. porque nuestros proveedores son
+internacionales y necesitamos incluir en la dirección un nodo <em>país</em>, pero
+nuestros clientes son locales y no queremos hacer lo mismo con ellos),
+deberíamos usar nombres distintos. Con <abbr title="Relax-NG Compact">RNC</abbr>, al depender la definición del
+contexto, es perfectamente posible que ambos nodos se llamen <em>direccion</em>.</p></li>
+<li><p>Soporta contenido desordenado (el conector <strong>&amp;</strong> que ya trataremos).</p></li>
+</ul>
+</li>
+<li><p><strong>Desventajas</strong>:</p>
+<ul>
+<li><p>No permite definir valores predeterminados para atributos.</p></li>
+<li><p>No permite definir <a class="reference internal" href="../02.validacion/01.dtdxml.html#dtd-ent-gen"><span class="std std-ref">entidades generales</span></a>.</p></li>
+<li><p>No permite definir <a class="reference internal" href="../02.validacion/01.dtdxml.html#dtd-not"><span class="std std-ref">notaciones</span></a>.</p></li>
+<li><p>No hay forma de especificar que los espacios en blanco sean significativos.</p></li>
+</ul>
+</li>
+</ul>
+<p>Por añadidura, el uso de la sintaxis compacta añade dos ventajas más:</p>
+<ul class="simple">
+<li><p>Evita la verborrea del <abbr title="eXtensible  Markup Language">XML</abbr>.</p></li>
+<li><p>La sintaxis es concisa y, en algunos aspectos como la expresión de la
+cardinalidad, recuerda a <abbr title="Document Type Definition">DTD</abbr>.</p></li>
+</ul>
+<section id="preliminares">
+<h2><span class="section-number">2.1. </span>Preliminares<a class="headerlink" href="#preliminares" title="Enlace permanente a este encabezado">¶</a></h2>
+<section id="declaracion">
+<h3><span class="section-number">2.1.1. </span>Declaración<a class="headerlink" href="#declaracion" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>A diferencia del <abbr title="Document Type Definition">DTD</abbr>, no hay un modo estándar de relacionar un documento <abbr title="eXtensible  Markup Language">XML</abbr>
+con el fichero <abbr title="Relax-NG Compact">RNC</abbr> que describe su gramática. Un modo habitual de hacerlo es
+usar una instrucción de procesamiento:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml-model href=&quot;casilleros.rnc&quot; type=&quot;application/relax-ng-compact-syntax&quot;?&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="ejemplo">
+<span id="rnc-ejemplo-inicial"></span><h3><span class="section-number">2.1.2. </span>Ejemplo<a class="headerlink" href="#ejemplo" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Si retomamos el <a class="reference internal" href="../01.intro/02b.marcas.html#xml-ejemplo"><span class="std std-ref">ejemplo sobre el claustro de profesores</span></a><a class="footnote-reference brackets" href="#id14" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+XML de casilleros.<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="cp">&lt;!DOCTYPE claustro SYSTEM &quot;casilleros.dtd&quot; [</span>
+<span class="cp">   &lt;!ENTITY FyQ &quot;Física y Química&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY EFI &quot;Educación Física&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY ING &quot;Inglés&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY INF &quot;Informática&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY FRA &quot;Francés&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY ORI &quot;Orientación&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY MUS &quot;Música&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY LEN &quot;Lengua Castellana y Literatura&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY MAT &quot;Matemáticas&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY ByG &quot;Biología y Geología&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY FIL &quot;Filosofía&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY HIS &quot;Geografía e Historia&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY LAT &quot;Latín&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY GRI &quot;Griego&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY DIB &quot;Dibujo&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY FOL &quot;Formación y Orientación Laboral&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY TEC &quot;Tecnología&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY REL &quot;Religión&quot;&gt;</span>
+]&gt;
+
+<span class="nt">&lt;claustro</span><span class="w"> </span><span class="na">centro=</span><span class="s">&quot;IES Pepe Botella&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p1&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Luis<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Luis<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Márquez<span class="w"> </span>Vázquez<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;EFI;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p13&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Cristina<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>María<span class="w"> </span>Cristina<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Prieto<span class="w"> </span>Monagas<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;ByG;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+
+<span class="w">   </span><span class="cm">&lt;!-- Si se sustituye a sí mismo es que está de baja --&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p15&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Manolo<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Manuel<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Páez<span class="w"> </span>Robledo<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;MAT;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+
+<span class="w">   </span><span class="cm">&lt;!-- Profesor con casillero(s) adicional(es) --&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p17&quot;</span><span class="w"> </span><span class="na">casillero=</span><span class="s">&quot;17 43&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Lucía<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Lucía<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Gálvez<span class="w"> </span>Ruiz<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;ING;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+
+<span class="w">   </span><span class="cm">&lt;!-- En principio, si el casillero está vacío</span>
+<span class="cm">        la aplicación les asigna el que indica su identificador,</span>
+<span class="cm">        pero se puede asignar uno distinto.</span>
+<span class="cm">    --&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p28&quot;</span><span class="w"> </span><span class="na">casillero=</span><span class="s">&quot;28&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Miguel<span class="w"> </span>Ángel<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Miguel<span class="w"> </span>Ángel<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Campos<span class="w"> </span>Sánchez<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;HIS;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+
+<span class="w">   </span><span class="cm">&lt;!-- Profesor sin casillero (tienen el 0) --&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p81&quot;</span><span class="w"> </span><span class="na">casillero=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Verónica<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Verónica<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Martín<span class="w"> </span>Díaz<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;ByG;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+
+<span class="w">   </span><span class="cm">&lt;!-- Profesor sustituto --&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p86&quot;</span><span class="w"> </span><span class="na">sustituye=</span><span class="s">&quot;p86&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Roberto<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Roberto<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Mínguez<span class="w"> </span>Torralbo<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+<span class="nt">&lt;/claustro&gt;</span>
+</pre></div>
+</div>
+</div>
+</details><p>La definición mediante <abbr title="Relax-NG Compact">RNC</abbr> podría ser la siguiente (buscando la mayor
+similitud sintáctica con <abbr title="Document Type Definition">DTD</abbr>):</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Gramática con <abbr title="Relax-NG Compact">RNC</abbr><div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span>start <span class="o">=</span> claustro
+
+claustro <span class="o">=</span> <span class="kd">element</span><span class="nv"> claustro </span><span class="p">{</span> <span class="p">(</span>profesor<span class="o">|</span>asistente<span class="p">)</span>+<span class="o">,</span>
+   <span class="kd">attribute</span><span class="nv"> centro </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span>
+<span class="p">}</span>
+
+attrpers <span class="o">=</span> <span class="kd">attribute</span><span class="nv"> id </span><span class="p">{</span> <span class="kt">xsd:ID</span> <span class="p">{</span> <span class="na">pattern</span> <span class="o">=</span> <span class="na">&quot;p[0-9]+&quot;</span> <span class="p">}</span> <span class="p">}</span><span class="o">,</span>
+           <span class="kd">attribute</span><span class="nv"> sustituye </span><span class="p">{</span> <span class="kt">xsd:IDREF</span> <span class="p">{</span> <span class="na">pattern</span> <span class="o">=</span> <span class="na">&quot;p[0-9]+&quot;</span> <span class="p">}</span> <span class="p">}</span><span class="o">?,</span>
+           <span class="kd">attribute</span><span class="nv"> casillero </span><span class="p">{</span> list <span class="p">{</span> <span class="kt">xsd:positiveInteger+</span> <span class="p">}</span> <span class="p">}</span><span class="o">?</span>
+
+profesor <span class="o">=</span> <span class="kd">element</span><span class="nv"> profesor </span><span class="p">{</span> apelativo<span class="o">,</span> nombre<span class="o">,</span> apellidos<span class="o">,</span> departamento<span class="o">?,</span>
+   attrpers
+<span class="p">}</span>
+
+asistente <span class="o">=</span> <span class="kd">element</span><span class="nv"> asistente </span><span class="p">{</span> apelativo<span class="o">,</span> nombre<span class="o">,</span> apellidos<span class="o">,</span>
+   attrpers
+<span class="p">}</span>
+
+apelativo <span class="o">=</span> <span class="kd">element</span><span class="nv"> apelativo </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span>
+nombre <span class="o">=</span> <span class="kd">element</span><span class="nv"> nombre </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span>
+apellidos <span class="o">=</span> <span class="kd">element</span><span class="nv"> apellidos </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span>
+departamento <span class="o">=</span> <span class="kd">element</span><span class="nv"> departamento </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</details><p>La sintaxis es bastante elocuente. Obsérvese cómo la cardinalidad la expresamos
+de la misma forma que en <abbr title="Document Type Definition">DTD</abbr> y que hemos sido capaces de definir con bastante
+precisión cuál es el formato del identificador que tiene cada profesor.</p>
+</section>
+<section id="validacion">
+<h3><span class="section-number">2.1.3. </span>Validación<a class="headerlink" href="#validacion" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Para validar documentos cuya gramática se ha definido mediante un <abbr title="Relax-NG Compact">RNC</abbr> podemos
+valernos de <a class="reference external" href="http://www.thaiopensource.com/relaxng/jing.html">jing</a>
+(disponible a través del paquete <a class="reference external" href="https://packages.debian.org/stable/jing">jing</a>), que soporta la sintaxis compacta
+directamente; o bien aplicar un traductor de <abbr title="Relax-NG Compact">RNC</abbr> a <abbr title="Relax-NG">RNG</abbr> como <a class="reference external" href="http://www.thaiopensource.com/relaxng/trang.html">trang</a> (disponible a través del
+paquete <a class="reference external" href="https://packages.debian.org/stable/trang">trang</a>) y posteriormente realizar la validación propiamente dicha
+con <strong class="command">xmlstarlet</strong> que sí soporta <abbr title="Relax-NG">RNG</abbr>.  Ya que hemos venido usando
+<strong class="command">xmlstarlet</strong> hasta ahora para la validación nos decantaremos por esta
+segunda opción:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>trang<span class="w"> </span>casilleros.rnc<span class="w"> </span>casilleros.rng
+<span class="gp">$ </span>xmlstarlet<span class="w"> </span>val<span class="w"> </span>-e<span class="w"> </span>-r<span class="w"> </span>casilleros.rng<span class="w"> </span>casilleros.xml<span class="w">  </span><span class="c1"># -e muestra errores si los hay</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong class="command">trang</strong> traduce a <abbr title="Document Type Definition">DTD</abbr> (o <abbr title="XML Schema Definition">XSD</abbr>), por lo que también podemos
+obtener el <abbr title="Document Type Definition">DTD</abbr> (o <abbr title="XML Schema Definition">XSD</abbr>) equivalente a nuestro <abbr title="Relax-NG Compact">RNC</abbr>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>trang<span class="w"> </span>casilleros.rnc<span class="w"> </span>casilleros.dtd
+</pre></div>
+</div>
+<p>Puede ser útil esta traduccion para ver cómo se ve la gramática definida en
+<abbr title="Document Type Definition">DTD</abbr>, pero es absolutamente desconsejable hacer esta traducción con el
+propósito de validar después, ya que <abbr title="Document Type Definition">DTD</abbr> es menos expresivo y, en
+consecuencia , es muy probable que se pierda expresividad<a class="footnote-reference brackets" href="#id15" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong class="command">trang</strong> permite también otra cosa: obtener la gramática a
+partir del documento <abbr title="eXtensible  Markup Language">XML</abbr>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>trang<span class="w"> </span>casilleros.xml<span class="w"> </span>casilleros.rnc<span class="w">  </span><span class="c1"># O casilleros.dtd para obtener el DTD</span>
+</pre></div>
+</div>
+<p>Esto, sin embargo, crea siempre gramáticas deficientes, ya que rara vez la
+herramienta es capaz de adivinar nuestra intención de hacer que un atributo
+fuera un identificador o que un contenido responda a una enumeración. Su
+utlidad se reduce, por lo general, a brindarnos un esqueleto sobre el que
+perfilar la gramática.</p>
+</div>
+</section>
+</section>
+<section id="sintaxis-basica">
+<h2><span class="section-number">2.2. </span>Sintaxis básica<a class="headerlink" href="#sintaxis-basica" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>La sintaxis es, hasta cierto punto, semejante a la de un <abbr title="Document Type Definition">DTD</abbr></p>
+<section id="elementos">
+<h3><span class="section-number">2.2.1. </span>Elementos<a class="headerlink" href="#elementos" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Se definen con la construcción:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">element</span><span class="nv"> nombre_del_elemento </span><span class="p">{</span>
+   contenido
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>que se puede acompañar al final de la cardinalidad tal como se escribe en un
+<abbr title="Document Type Definition">DTD</abbr>:</p>
+<ul class="simple">
+<li><p><em>Nada</em> implica que el elemento debe aparecer una vez</p></li>
+<li><p>«?» que es optativo</p></li>
+<li><p>«*» que puede no aparecer o aparecer un número arbitrario de veces.</p></li>
+<li><p>«+» que debe aparecer al menos una vez.</p></li>
+</ul>
+<p>Por su parte, en el <em>contenido</em> se incluyen tanto los atributos (a diferencia de
+como se hace en <abbr title="Document Type Definition">DTD</abbr>) como el contenido en sí del elemento. Los atributos
+pueden enumerase antes (como se hará a continuación) o después del contenido
+(como se hizo en el <a class="reference internal" href="#rnc-ejemplo-inicial"><span class="std std-ref">ejemplo ilustrativo</span></a>).</p>
+<p>Otra diferencia fundamental respecto al <abbr title="Document Type Definition">DTD</abbr> es que, en principio, las
+definiciones de cada elemento no se hacen por separado, sino que se van anidando
+unas dentro de otras:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span>claustro <span class="o">=</span> <span class="kd">element</span><span class="nv"> claustro </span><span class="p">{</span>
+   <span class="kd">attribute</span><span class="nv"> centro </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span><span class="o">,</span>
+   <span class="kd">element</span><span class="nv"> profesor </span><span class="p">{</span>
+      <span class="c1"># La definición del elemento...</span>
+   <span class="p">}</span>+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Por tanto, la definición del elemento «<em>profesor</em>» se hace dentro de la definición
+del elemento «<em>claustro</em>». Como ello, puede dificultar la legibilidad se permite
+la posibilidad de dar nombre a los <em>patrones</em>, esto es, de dar nombre a elementos o
+atributos<a class="footnote-reference brackets" href="#id16" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> para definirlos a continuación, lo que aproxima la sintaxis a la del
+<abbr title="Document Type Definition">DTD</abbr>, ya que permite definir de forma independiente los elementos:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span>start <span class="o">=</span> claustro
+
+claustro <span class="o">=</span> <span class="kd">element</span><span class="nv"> claustro </span><span class="p">{</span> profesor+<span class="o">,</span>
+   <span class="kd">attribute</span><span class="nv"> centro </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span>
+<span class="p">}</span>
+
+profesor <span class="o">=</span> <span class="kd">element</span><span class="nv"> profesor </span><span class="p">{</span>
+   <span class="c1"># La definición de este elemento...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>El patrón no tiene por qué tener el mismo nombre que el elemento, aunque aquí lo
+hayamos hecho coincidir. Por otro lado, cuando se usan <em>patrones</em> es necesario
+que el nodo raiz se define como el valor que recibe el patrón <code class="docutils literal notranslate"><span class="pre">start</span></code>.</p>
+<p>Por otro lado, el contenido, contenido (o sea, el contenido exceptuando los
+atributos) puede ser:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">empty</span></code>, o sea, el elemento está vacío (como <code class="docutils literal notranslate"><span class="pre">EMPTY</span></code> de <abbr title="Document Type Definition">DTD</abbr>):</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">element</span><span class="nv"> xxx </span><span class="p">{</span> empty <span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>o una secuencia de:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">text</span></code>, o sea, texto libre equivalente al <code class="docutils literal notranslate"><span class="pre">#PCDATA</span></code> de <abbr title="Document Type Definition">DTD</abbr>:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">element</span><span class="nv"> xxx </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Otro elemento:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">element</span><span class="nv"> xxx </span><span class="p">{</span> <span class="kd">element</span><span class="nv"> yyy </span><span class="p">{</span> ... <span class="p">}</span> <span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>No hay soporte directo para <code class="docutils literal notranslate"><span class="pre">ANY</span></code> pero puede emularse creando este
+patrón:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span>any <span class="o">=</span> <span class="p">(</span><span class="kd">element</span><span class="nv"> * </span><span class="p">{</span> <span class="kd">attribute</span><span class="nv"> * </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span><span class="o">*,</span> any <span class="p">}</span> <span class="o">|</span> <span class="kt">text</span>)*
+</pre></div>
+</div>
+</div>
+<section id="elementos-de-solo-texto">
+<span id="rnc-solo-texto"></span><h4><span class="section-number">2.2.1.1. </span>Elementos de sólo texto<a class="headerlink" href="#elementos-de-solo-texto" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>Los elementos que sólo contienen texto, y que se corresponden con <code class="docutils literal notranslate"><span class="pre">#PCDATA</span></code>
+permiten una expresión muchísimo más rica que la que ofrece la palabra reservada
+<em>text</em>, de manera que al final el contenido no sea texto libre:</p>
+<ul>
+<li><p>Podemos usar los tipos definidos en <abbr title="XML Schema Definition">XSD</abbr> usando el espacio de nombres
+<em>xsd</em>:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">element</span><span class="nv"> numero </span><span class="p">{</span> <span class="kt">xsd:int</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>La consecuencia de esta definción es que ese elemento sólo podrá contener un
+número entero.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Vea más adelante el <a class="reference internal" href="#rnc-datatype"><span class="std std-ref">epígrafe dedicado a estos tipos</span></a>.</p>
+</div>
+</li>
+<li><p>Podemos restringir el contenido a una serie concreta de valores, tal como se
+hace en la enumeración de <abbr title="Document Type Definition">DTD</abbr>:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">element</span><span class="nv"> sexo </span><span class="p">{</span> <span class="s2">&quot;varon&quot;</span> <span class="o">|</span> <span class="s2">&quot;hembra&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>Asimismo podemos también establecer cuál es el tipo del dato en una
+enumeración:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">element</span><span class="nv"> iva </span><span class="p">{</span> <span class="kt">xsd:integer</span> &quot;4&quot; | xsd:integer &quot;10&quot; | xsd:integer &quot;21&quot; <span class="p">}</span>
+</pre></div>
+</div>
+<p>En este caso, tres son los valores fijos y, los tres, además, son números
+enteros.</p>
+<p>Es posible restringir los valores a uno solo:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">element</span><span class="nv"> nacionalidad </span><span class="p">{</span> <span class="s2">&quot;española&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>lo que equivaldría a hacer fijo y obligatorio el valor del elemento. Si
+tratáramos de atributos. esta es la forma de definir un <code class="docutils literal notranslate"><span class="pre">#FIXED</span></code>.</p>
+<p>Ahora bien, la enumeración no está restringida sólo a valores textuales. Esta
+enumeración también es válida:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">element</span><span class="nv"> cantidad </span><span class="p">{</span> <span class="kt">xsd:int</span> | &quot;mucho&quot; | &quot;una pizca&quot; <span class="p">}</span>
+</pre></div>
+</div>
+<p>donde los posibles valores son «mucho», «una pizca» o cualquier número
+entero.</p>
+</li>
+<li><p>Podemos crear <em>listas</em>, que no son más que secuencias de palabras separadas por
+espacios. Por ejemplo, si queremos que el contenido sean dos números enteros:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">element</span><span class="nv"> punto2D </span><span class="p">{</span> list <span class="p">{</span> <span class="kt">xsd:int,</span> xsd:int <span class="p">}</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>Por supuesto podemos usar cardinalidad:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">element</span><span class="nv"> puntoND </span><span class="p">{</span> list <span class="p">{</span> <span class="kt">xsd:int+</span> <span class="p">}</span> <span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="secuencia">
+<h4><span class="section-number">2.2.1.2. </span>Secuencia<a class="headerlink" href="#secuencia" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>Ya se definió la <em class="dfn">secuencia</em> como el modo en que varios elementos se
+suceden dentro del contenido de otro y que <abbr title="Document Type Definition">DTD</abbr> permitía definir dos: la
+sucesión representada por la coma, y la alternativa, representada por la tubería
+<abbr title="Relax-NG Compact">RNC</abbr> permite definir estos dos mismos conceptos con los mismos símbolos y,
+además, uno adicional:</p>
+<dl class="simple">
+<dt><strong>p,q</strong></dt><dd><p><em>p</em> seguido de <em>q</em></p>
+</dd>
+<dt><strong>p|q</strong></dt><dd><p>O <em>p</em> o <em>q</em>.</p>
+</dd>
+<dt><strong>p&amp;q</strong></dt><dd><p><em>p</em> y <em>q</em>, pero en cualquier orden.</p>
+</dd>
+</dl>
+<p>Como ejemplo de definición, podemos traer la definición de profesor:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">element</span><span class="nv"> profesor </span><span class="p">{</span> apodo<span class="o">,</span> nombre<span class="o">,</span> apellidos<span class="o">,</span> departamento<span class="o">,</span>
+   <span class="kd">attribute</span><span class="nv"> id </span><span class="p">{</span> <span class="kt">xsd:ID</span> <span class="p">{</span> <span class="na">pattern</span> <span class="o">=</span> <span class="na">&quot;p[0-9]+&quot;</span> <span class="p">}</span> <span class="p">}</span><span class="o">,</span>
+   <span class="kd">attribute</span><span class="nv"> sexo </span><span class="p">{</span> <span class="s2">&quot;hombre&quot;</span> <span class="o">|</span> <span class="s2">&quot;mujer&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Los atributos siempre se separan con comas, aunque ya sabemos que su
+orden es indiferente según las reglas generales del <abbr title="eXtensible  Markup Language">XML</abbr>.</p>
+</div>
+<p>Como en el caso del <abbr title="Document Type Definition">DTD</abbr> podemos usar paréntesis y aplicar cardinalidad a
+varios elementos a la vez para complicar la secuencia.</p>
+</section>
+</section>
+<section id="atributos">
+<h3><span class="section-number">2.2.2. </span>Atributos<a class="headerlink" href="#atributos" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>La definición de atributos es idéntica a la de <a class="reference internal" href="#rnc-solo-texto"><span class="std std-ref">elementos de sólo texto</span></a> con la salvedad de que la palabra reservada para definirlos es
+<code class="docutils literal notranslate"><span class="pre">attribute</span></code>:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">attribute</span><span class="nv"> sexo </span><span class="p">{</span> <span class="s2">&quot;hombre&quot;</span> <span class="o">|</span> <span class="s2">&quot;mujer&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>Para establecer la diferencia entre <code class="docutils literal notranslate"><span class="pre">#IMPLIED</span></code> y <code class="docutils literal notranslate"><span class="pre">#REQUIRED</span></code> basta usar la
+cardinalidad: un atributo declarado sin más es <code class="docutils literal notranslate"><span class="pre">#REQUIRED</span></code>, como en el caso de
+los atributos del ejemplo; si se usa <code class="docutils literal notranslate"><span class="pre">?</span></code> entonces será <code class="docutils literal notranslate"><span class="pre">#IMPLIED</span></code>. Por
+ejemplo, si en la definición anterior de profesor el atributo <em>sexo</em> fuera
+opcional, podríamos haber hecho:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">element</span><span class="nv"> profesor </span><span class="p">{</span> apodo<span class="o">,</span> nombre<span class="o">,</span> apellidos<span class="o">,</span> departamento<span class="o">,</span>
+   <span class="kd">attribute</span><span class="nv"> id </span><span class="p">{</span> <span class="kt">xsd:ID</span> <span class="p">{</span> <span class="na">pattern</span> <span class="o">=</span> <span class="na">&quot;p[0-9]+&quot;</span> <span class="p">}</span> <span class="p">}</span><span class="o">,</span>
+   <span class="kd">attribute</span><span class="nv"> sexo </span><span class="p">{</span> <span class="s2">&quot;hombre&quot;</span> <span class="o">|</span> <span class="s2">&quot;mujer&quot;</span> <span class="p">}</span><span class="o">?</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>No es posible indicar que un atributo tendrá un valor predeterminado, si
+no se incluye en el <abbr title="eXtensible  Markup Language">XML</abbr>.</p>
+</div>
+<p>Para expresar los tipos especiales de atributos definidos en <abbr title="Document Type Definition">DTD</abbr> (<code class="docutils literal notranslate"><span class="pre">ID</span></code>,
+<code class="docutils literal notranslate"><span class="pre">IDREF</span></code>, <code class="docutils literal notranslate"><span class="pre">NMTOKEN</span></code>, etc.), es necesario echar mano de los <a class="reference internal" href="#rnc-datatype"><span class="std std-ref">tipos de
+datos</span></a>, como es el caso del atributo <em>id</em> del elemento <em>profesor</em>.</p>
+</section>
+<section id="comentarios-anotaciones">
+<h3><span class="section-number">2.2.3. </span>Comentarios. Anotaciones<a class="headerlink" href="#comentarios-anotaciones" title="Enlace permanente a este encabezado">¶</a></h3>
+<div class="admonition-todo admonition" id="id5">
+<p class="admonition-title">Por hacer</p>
+<p>Por escribir</p>
+</div>
+</section>
+<section id="y-las-entidades">
+<h3><span class="section-number">2.2.4. </span>¿Y las entidades?<a class="headerlink" href="#y-las-entidades" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Las entidades generales definidas por el usuario permitían expresar un contenido
+con un nombre:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ENTITY</span> <span class="ni">HyG</span> <span class="s2">&quot;Historia y Geografía&quot;</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<p>De esta manera, incluir en el texto la entidad «<code class="code docutils literal notranslate"><span class="pre">&amp;HyG;</span></code>» equivale a escribir
+directamente «Historia y Geografía». Esto, en realidad, no es algo relativo a la
+gramática, sino más bien un mecanismo de sustitución de contenido. Por ese
+motivo, <em>Relax NG</em> no establece ningún mecanismo para definir entidades
+generales y no hay forma de hacerlo.</p>
+<p>Una argucia, si las usamos en el <abbr title="eXtensible  Markup Language">XML</abbr>, es definirlas en un <abbr title="Document Type Definition">DTD</abbr>, externo o
+interno. En el ejemplo de presentación hemos usado uno interno, pero podemos
+optar por la opción externa:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="cp">&lt;!DOCTYPE claustro SYSTEM &quot;departamentos.ent&quot;&gt;</span>
+<span class="hll">
+</span><span class="nt">&lt;claustro</span><span class="w"> </span><span class="na">centro=</span><span class="s">&quot;IES Pepe Botella&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p1&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Luis<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Luis<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Márquez<span class="w"> </span>Vázquez<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;EFI;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p13&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Cristina<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>María<span class="w"> </span>Cristina<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Prieto<span class="w"> </span>Monagas<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;ByG;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p15&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Manolo<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Manuel<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Páez<span class="w"> </span>Robledo<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;MAT;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+
+<span class="w">   </span><span class="cm">&lt;!-- Profesor con casillero(s) adicional(es) --&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p17&quot;</span><span class="w"> </span><span class="na">casillero=</span><span class="s">&quot;17 43&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Lucía<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Lucía<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Gálvez<span class="w"> </span>Ruiz<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;ING;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p28&quot;</span><span class="w"> </span><span class="na">casillero=</span><span class="s">&quot;28&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Miguel<span class="w"> </span>Ángel<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Miguel<span class="w"> </span>Ángel<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Campos<span class="w"> </span>Sánchez<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;HIS;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p81&quot;</span><span class="w"> </span><span class="na">casillero=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Verónica<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Verónica<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Martín<span class="w"> </span>Díaz<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;ByG;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+
+<span class="w">   </span><span class="cm">&lt;!-- Profesor sustituto --&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p86&quot;</span><span class="w"> </span><span class="na">sustituye=</span><span class="s">&quot;p13&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Roberto<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Roberto<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Mínguez<span class="w"> </span>Torralbo<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+<span class="nt">&lt;/claustro&gt;</span>
+</pre></div>
+</div>
+<p>donde <a class="reference download internal" download="" href="../_downloads/4a4a530913f66a6de7951e6d554d5941/departamentos.ent"><code class="xref download docutils literal notranslate"><span class="pre">/02.validacion/files/departamentos.ent</span></code></a> es el que ya definimos en la sección
+dedicada a <abbr title="Document Type Definition">DTD</abbr>.</p>
+</section>
+</section>
+<section id="tipos-de-datos">
+<span id="rnc-datatype"></span><h2><span class="section-number">2.3. </span>Tipos de datos<a class="headerlink" href="#tipos-de-datos" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Ya se ha apuntado que <abbr title="Relax-NG Compact">RNC</abbr> soporta tipos, pero no los define, sino que usa las
+definiciones ya establecidas para <abbr title="XML Schema Definition">XSD</abbr>. Estos tipos pueden consultarse en la
+<a class="reference external" href="https://www.w3.org/TR/xmlschema-2/">documentación de del propio W3C XML Schemas</a>,
+o mejor aún, en el <a class="reference external" href="http://books.xmlschemata.org/relaxng/relax-CHP-19.html">apéndice correspondiente del libro sobre Relan-NG antes
+reseñado</a>, que hace
+un resumen de la anterior.</p>
+<section id="relacion">
+<h3><span class="section-number">2.3.1. </span>Relación<a class="headerlink" href="#relacion" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Sin ánimo de ser exahustivos, pueden sernos de mucha utilidad:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://books.xmlschemata.org/relaxng/ch19-77151.html">xsd:ID</a>, para
+definir identificadores.</p></li>
+<li><p><a class="reference external" href="http://books.xmlschemata.org/relaxng/ch19-77159.html">xsd:IDREF</a>, para
+refefir identificadores ya definidos.</p></li>
+<li><p><a class="reference external" href="http://books.xmlschemata.org/relaxng/ch19-77167.html">xsd:IDREFS</a>, para
+refefir una lista de identificadores ya definidos.</p></li>
+<li><p><a class="reference external" href="http://books.xmlschemata.org/relaxng/ch19-77231.html">xsd:NMTOKEM</a>,
+equivalente al <code class="docutils literal notranslate"><span class="pre">NMTOKEN</span></code> de <abbr title="Document Type Definition">DTD</abbr>.</p></li>
+<li><p><a class="reference external" href="http://books.xmlschemata.org/relaxng/ch19-77239.html">xsd:NMTOKENS</a>,
+equivalente al <code class="docutils literal notranslate"><span class="pre">NMTOKENS</span></code> de <abbr title="Document Type Definition">DTD</abbr>.</p></li>
+<li><p><a class="reference external" href="http://books.xmlschemata.org/relaxng/ch19-77183.html">xsd:integer</a>, para
+definir números enteros.</p></li>
+<li><p><a class="reference external" href="http://books.xmlschemata.org/relaxng/ch19-77057.html">xsd:decimal</a>, para
+definir números con decimales.</p></li>
+<li><p><a class="reference external" href="http://books.xmlschemata.org/relaxng/ch19-77303.html">xsd:string</a>, para
+definir una cadena cualquiera<a class="footnote-reference brackets" href="#id17" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>.</p></li>
+<li><p><a class="reference external" href="http://books.xmlschemata.org/relaxng/ch19-77041.html">xsd:date</a>, para
+definir fechas (p.e. «2010-08-01»).</p></li>
+<li><p><a class="reference external" href="http://books.xmlschemata.org/relaxng/ch19-77025.html">xsd:boolean</a>, para
+definir un valor lógico (<em>true</em>/<em>false</em>).</p></li>
+</ul>
+<p>Una definición puede ser la siguiente:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">element</span><span class="nv"> precio </span><span class="p">{</span> <span class="kt">xsd:decimal</span> <span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="restricciones">
+<h3><span class="section-number">2.3.2. </span>Restricciones<a class="headerlink" href="#restricciones" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Al declarar el tipo también se pueden introducir restricciones. Hay distintos
+tipos de restricciones y dependiendo de la naturaleza del tipo de dato unas
+serán aplicables y otras no. Por ejemplo, en los tipos de datos de naturaleza
+numérica, tiene sentido establecer mínimos y máximos:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">element</span><span class="nv"> precio </span><span class="p">{</span> <span class="kt">xsd:decimal</span> <span class="p">{</span> <span class="na">minInclusive</span><span class="o">=</span><span class="na">&quot;0&quot;</span> <span class="p">}</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>Pero para el caso particular de un precio en euros, también tiene sentido obligar a que haya dos decimales, así que podemos definir el contenido de este elemento de la siguiente forma<a class="footnote-reference brackets" href="#id18" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">element</span><span class="nv"> precio </span><span class="p">{</span> <span class="kt">xsd:decimal</span> <span class="p">{</span> <span class="na">minInclusive</span><span class="o">=</span><span class="na">&quot;0&quot;</span> <span class="na">fractionDigits</span><span class="o">=</span><span class="na">&quot;2&quot;</span> <span class="p">}</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>Pueden consultarse las referencias anteriores para ver qué restricciones pueden
+aplicarse a cada tipo. Una muy socorrida y que es aplicable a todos los tipos
+es la que permite comprobar si el valor cumple con una expresión regular<a class="footnote-reference brackets" href="#id19" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">attribute</span><span class="nv"> id </span><span class="p">{</span> <span class="kt">xsd:ID</span> <span class="p">{</span> <span class="na">pattern</span> <span class="o">=</span> <span class="na">&quot;p[0-9]+&quot;</span> <span class="p">}</span> <span class="p">}</span><span class="o">,</span>
+</pre></div>
+</div>
+<p>En este caso obligamos a que el identificador comience por la letra «<em>p</em>» y
+añada un número después.</p>
+</section>
+</section>
+<section id="definicion-modular">
+<h2><span class="section-number">2.4. </span>Definición modular<a class="headerlink" href="#definicion-modular" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Con lo visto hasta ahora, tenemos ya la mayor parte de los componentes
+necesarios para definir la gramática de un <abbr title="eXtensible  Markup Language">XML</abbr> en un sólo documento <abbr title="Relax-NG Compact">RNC</abbr>.
+Ahora bien, cuando la definición es larga o cuando queremos reaprovechar
+definiciones parciales hechas anteriormente para definir otro <abbr title="eXtensible  Markup Language">XML</abbr><a class="footnote-reference brackets" href="#id20" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>, es
+conveniente que podamos trocear en distintos ficheros <abbr title="Relax-NG Compact">RNC</abbr>.</p>
+<p>Aunque no lo hemos declarado a las claras, cada fichero <abbr title="Relax-NG Compact">RNC</abbr> definido hasta
+ahora nos han permitido fijarle una gramática completa al <abbr title="eXtensible  Markup Language">XML</abbr> al que
+define.</p>
+<p>Ahora bien, podemos separar las definiciones en diversos ficheros de manera que
+el <abbr title="eXtensible  Markup Language">XML</abbr> lo validen el conjunto de todos estos ficheros. Para ello, la sintaxis
+de <abbr title="Relax-NG Compact">RNC</abbr> provee de dos directivas:</p>
+<ul class="simple">
+<li><p><strong>external</strong> que permite importar un patrón (o sea, un «trozo») de la
+gramática.</p></li>
+<li><p><strong>include</strong> qie permite importar una gramática completa</p></li>
+</ul>
+<section id="importacion-de-patrones">
+<h3><span class="section-number">2.4.1. </span>Importación de patrones<a class="headerlink" href="#importacion-de-patrones" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>En este caso, requerimos el uso de <code class="docutils literal notranslate"><span class="pre">external</span></code>. Un ejemplo tan ilustrativo como
+inútil es éste:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="c1"># ejemplo.rnc</span>
+
+start <span class="o">=</span> <span class="kd">element</span><span class="nv"> raiz </span><span class="p">{</span>
+   external <span class="s2">&quot;aparte.rnc&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Y en <code class="file docutils literal notranslate"><span class="pre">aparte.rnc</span></code> incluímos el <em>patrón</em> al que queremos que responda el
+elemento <em>raiz</em>. Por ejemplo:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span>empty
+</pre></div>
+</div>
+<p>o cualquier otro más complicado:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span>list <span class="p">{</span> <span class="kt">xsd:int,</span> xsd:float <span class="p">}</span>
+</pre></div>
+</div>
+<p>Al incluir <code class="file docutils literal notranslate"><span class="pre">aparte.rnc</span></code> un patrón y no una gramática este fichero, por si
+sólo, es incapaz de servir para validar.</p>
+</section>
+<section id="importacion-de-gramaticas">
+<h3><span class="section-number">2.4.2. </span>Importación de gramáticas<a class="headerlink" href="#importacion-de-gramaticas" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Podemos también con <code class="docutils literal notranslate"><span class="pre">include</span></code> importar una gramática definida en un archivo
+externo. Por ejemplo, consideremos el siguiente <abbr title="eXtensible  Markup Language">XML</abbr>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;</span>
+<span class="nt">&lt;persona&gt;</span>
+<span class="w">   </span><span class="nt">&lt;nombre&gt;</span>Perico<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">   </span><span class="nt">&lt;apellidos&gt;</span>de<span class="w"> </span>los<span class="w"> </span>palotes<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dni&gt;</span>41112233D<span class="nt">&lt;/dni&gt;</span>
+<span class="w">   </span><span class="nt">&lt;tlfo&gt;</span>953112233<span class="nt">&lt;/tlfo&gt;</span>
+<span class="w">   </span><span class="nt">&lt;direccion&gt;</span>
+<span class="w">      </span><span class="nt">&lt;via</span><span class="w"> </span><span class="na">tipo=</span><span class="s">&quot;calle&quot;</span><span class="nt">&gt;</span>Callo,<span class="w"> </span>5<span class="nt">&lt;/via&gt;</span>
+<span class="w">      </span><span class="nt">&lt;cp&gt;</span>12345<span class="nt">&lt;/cp&gt;</span>
+<span class="w">      </span><span class="nt">&lt;localidad&gt;</span>Villaconejos<span class="nt">&lt;/localidad&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/direccion&gt;</span>
+<span class="nt">&lt;/persona&gt;</span>
+</pre></div>
+</div>
+<p><strong>Mezclando dos gramáticas</strong></p>
+<p>Supongamos que escribimos un fichero <code class="file docutils literal notranslate"><span class="pre">direccion.rnc</span></code> para definir el
+elemento <em>direccion</em>:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span>start <span class="o">=</span> direccion
+
+direccion <span class="o">=</span> <span class="kd">element</span><span class="nv"> direccion </span><span class="p">{</span> via<span class="o">,</span> cp<span class="o">,</span> localidad <span class="p">}</span>
+
+via <span class="o">=</span> <span class="kd">element</span><span class="nv"> via </span><span class="p">{</span> <span class="kt">text</span>,
+   <span class="kd">attribute</span><span class="nv"> tipo </span><span class="p">{</span> <span class="s2">&quot;calle&quot;</span><span class="o">|</span><span class="s2">&quot;callejón&quot;</span><span class="o">|</span><span class="s2">&quot;travesía&quot;</span><span class="o">|</span><span class="s2">&quot;plaza&quot;</span><span class="o">|</span><span class="s2">&quot;avenida&quot;</span><span class="o">|</span><span class="s2">&quot;cuesta&quot;</span><span class="o">|</span><span class="s2">&quot;costanilla&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+cp <span class="o">=</span> <span class="kd">element</span><span class="nv"> cp </span><span class="p">{</span> <span class="kt">xsd:int</span> <span class="p">{</span> <span class="na">minExclusive</span><span class="o">=</span><span class="na">&quot;1000&quot;</span> <span class="na">maxExclusive</span><span class="o">=</span> <span class="na">&quot;53000&quot;</span> <span class="p">}}</span>
+localidad <span class="o">=</span> <span class="kd">element</span><span class="nv"> localidad </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>La definición es una gramática completa y serviría para validar documentos como
+éste:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;direccion&gt;</span>
+<span class="w">   </span><span class="nt">&lt;via</span><span class="w"> </span><span class="na">tipo=</span><span class="s">&quot;calle&quot;</span><span class="nt">&gt;</span>Callo,<span class="w"> </span>5<span class="nt">&lt;/via&gt;</span>
+<span class="w">   </span><span class="nt">&lt;cp&gt;</span>12345<span class="nt">&lt;/cp&gt;</span>
+<span class="w">   </span><span class="nt">&lt;localidad&gt;</span>Villaconejos<span class="nt">&lt;/localidad&gt;</span>
+<span class="nt">&lt;/direccion&gt;</span>
+</pre></div>
+</div>
+<p>Cierto es que documentos que definan una sóla dirección no son muy útiles, pero
+podría ser posible. Podríamos incorporar el <abbr title="Relax-NG Compact">RNC</abbr> anterior a <code class="file docutils literal notranslate"><span class="pre">persona.rnc</span></code>
+de este modo:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span>include <span class="s2">&quot;direccion.rnc&quot;</span>
+
+start <span class="o">|=</span> persona
+
+persona <span class="o">=</span> <span class="kd">element</span><span class="nv"> persona </span><span class="p">{</span> nombre<span class="o">,</span> apellidos<span class="o">,</span> dni<span class="o">,</span> tlfo<span class="o">,</span> direccion <span class="p">}</span>
+
+nombre <span class="o">=</span> <span class="kd">element</span><span class="nv"> nombre </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span>
+apellidos <span class="o">=</span> <span class="kd">element</span><span class="nv"> apellidos </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span>
+dni <span class="o">=</span> <span class="kd">element</span><span class="nv"> dni </span><span class="p">{</span> <span class="kt">xsd:string</span> <span class="p">{</span> <span class="na">pattern</span><span class="o">=</span><span class="na">&quot;[0-9]{8</span><span class="p">}</span>[A-Za-z]&quot; <span class="p">}</span> <span class="p">}</span>
+tlfo <span class="o">=</span> <span class="kd">element</span><span class="nv"> tlfo </span><span class="p">{</span> <span class="kt">xsd:int</span> <span class="p">{</span> <span class="na">minInclusive</span><span class="o">=</span><span class="na">&quot;600000000&quot;</span> <span class="na">maxInclusive</span><span class="o">=</span><span class="na">&quot;999999999&quot;</span> <span class="p">}</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>En este caso, lo que hacemos es combinar ambas gramáticas y obsérvese:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span>start <span class="o">|=</span> persona
+</pre></div>
+</div>
+<p>que es equivalente a<a class="footnote-reference brackets" href="#id21" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></a>:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span>start <span class="o">=</span> direccion <span class="o">|</span> persona
+</pre></div>
+</div>
+<p>ya que en <code class="file docutils literal notranslate"><span class="pre">direccion.rnc</span></code> ya estaba definido que el elemento inicial era
+<em>direccion</em>.</p>
+<p>El efecto es que <code class="file docutils literal notranslate"><span class="pre">persona.rnc</span></code> permitirá tanto que el elemento raíz sea
+<em>persona</em> como que sea <em>dirección</em> y, en consecuencia, permitirá validar los dos
+ejemplos anteriores. Es probable que nuestra intención no fuera esa, sino que
+sólo pudiéramos validar documentos <abbr title="eXtensible  Markup Language">XML</abbr> en que el elemento raíz fuera
+<em>persona</em>, pero <abbr title="Relax-NG Compact">RNC</abbr> no nos permite redefinir por completo <em>start</em>. La solución
+más precisa en ese caso sería otra: anidar las gramáticas<a class="footnote-reference brackets" href="#id22" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>10<span class="fn-bracket">]</span></a>.</p>
+<p class="rubric">Anidando gramáticas</p>
+<p>En este caso, las dos gramáticas no se combinan, sino que una se incluya dentro
+de la otra:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span>start <span class="o">=</span> persona
+
+persona <span class="o">=</span> <span class="kd">element</span><span class="nv"> persona </span><span class="p">{</span> nombre<span class="o">,</span> apellidos<span class="o">,</span> dni<span class="o">,</span> tlfo<span class="o">,</span> direccion <span class="p">}</span>
+
+nombre <span class="o">=</span> <span class="kd">element</span><span class="nv"> nombre </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span>
+apellidos <span class="o">=</span> <span class="kd">element</span><span class="nv"> apellidos </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span>
+dni <span class="o">=</span> <span class="kd">element</span><span class="nv"> dni </span><span class="p">{</span> <span class="kt">xsd:string</span> <span class="p">{</span> <span class="na">pattern</span><span class="o">=</span><span class="na">&quot;[0-9]{8</span><span class="p">}</span>[A-Za-z]&quot; <span class="p">}</span> <span class="p">}</span>
+tlfo <span class="o">=</span> <span class="kd">element</span><span class="nv"> tlfo </span><span class="p">{</span> <span class="kt">xsd:int</span> <span class="p">{</span> <span class="na">minInclusive</span><span class="o">=</span><span class="na">&quot;600000000&quot;</span> <span class="na">maxInclusive</span><span class="o">=</span><span class="na">&quot;999999999&quot;</span> <span class="p">}</span> <span class="p">}</span>
+direccion <span class="o">=</span> grammar <span class="p">{</span> include <span class="s2">&quot;direccion.rnc&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>Escrito así, el único nodo raíz posible es <em>persona</em> y tras <em>tlfo</em> debe
+haber un nodo <em>direccion</em>, ya que este es el nodo raíz de la gramática anidada.</p>
+<p>Tanto si se combinan como si se anidan gramáticas, <code class="docutils literal notranslate"><span class="pre">include</span></code> permite modificar
+las definiciones hechas en el fichero original. Por ejemplo:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span>include <span class="s2">&quot;direccion.rnc&quot;</span> <span class="p">{</span>
+   localidad <span class="o">=</span> <span class="kd">element</span><span class="nv"> municipio </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>En el caso que se requieran definir otros patrones para redefinir los existentes
+habrá que definirlos fuera del <code class="docutils literal notranslate"><span class="pre">include</span></code>:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span>include <span class="s2">&quot;direccion.rnc&quot;</span> <span class="p">{</span>
+   localidad <span class="o">=</span> nueva_definicion
+<span class="p">}</span>
+
+<span class="c1"># Nueva definición complicada</span>
+nueva_definicion <span class="o">=</span> ...
+</pre></div>
+</div>
+<p>Ahora bien, si se anido la gramática entonces habrá que hacer:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span>include <span class="s2">&quot;direccion.rnc&quot;</span> <span class="p">{</span>
+   localidad <span class="o">=</span> parent nueva_definicion
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="espacios-de-nombres">
+<span id="rnc-ns"></span><h3><span class="section-number">2.4.3. </span>Espacios de nombres<a class="headerlink" href="#espacios-de-nombres" title="Enlace permanente a este encabezado">¶</a></h3>
+<p><abbr title="Relax-NG Compact">RNC</abbr> soporta la definición de espacios de nombres.</p>
+<p>Por ejemplo, recordemos que antes jugamos con dos gramáticas: una que definía
+<em>persona</em> y otra que definía <em>direccion</em>. Supongamos que asociamos un espacio de
+nombres a cada gramnática:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;</span>
+<span class="nt">&lt;persona</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;urn:persona&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;nombre&gt;</span>Perico<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">   </span><span class="nt">&lt;apellidos&gt;</span>de<span class="w"> </span>los<span class="w"> </span>palotes<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dni&gt;</span>41112233D<span class="nt">&lt;/dni&gt;</span>
+<span class="w">   </span><span class="nt">&lt;tlfo&gt;</span>953112233<span class="nt">&lt;/tlfo&gt;</span>
+<span class="w">   </span><span class="nt">&lt;direccion</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;urn:direccion&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;via</span><span class="w"> </span><span class="na">tipo=</span><span class="s">&quot;calle&quot;</span><span class="nt">&gt;</span>Callo,<span class="w"> </span>5<span class="nt">&lt;/via&gt;</span>
+<span class="w">      </span><span class="nt">&lt;cp&gt;</span>12345<span class="nt">&lt;/cp&gt;</span>
+<span class="w">      </span><span class="nt">&lt;localidad&gt;</span>Villaconejos<span class="nt">&lt;/localidad&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/direccion&gt;</span>
+<span class="nt">&lt;/persona&gt;</span>
+</pre></div>
+</div>
+<p>Si consultamos el  <a class="reference internal" href="../01.intro/02b.marcas.html#xmlns"><span class="std std-ref">epígrafe en el que introducíamos el concepto de espacio
+de nombres</span></a>, veremos que el <abbr title="eXtensible  Markup Language">XML</abbr> podía adoptar distintas formas
+dependiendo de qué prefijos usáramos y como definiéramos los espacios de nombres
+predeterminados. Sin embargo, a efectos de definir el <abbr title="Relax-NG Compact">RNC</abbr> nos es absolutamente
+indiferente cómo se hayan expresado los espacios de nombres en el <abbr title="eXtensible  Markup Language">XML</abbr>.</p>
+<p>La forma de asignar un espacio de nombres a nuestra gramática es simple: basta
+con declararlo al principio del fichero:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">default</span> <span class="kn">namespace</span> <span class="o">=</span> <span class="s2">&quot;urn:direccion&quot;</span>
+
+start <span class="o">=</span> direccion
+
+direccion <span class="o">=</span> <span class="kd">element</span><span class="nv"> direccion </span><span class="p">{</span> via<span class="o">,</span> cp<span class="o">,</span> localidad <span class="p">}</span>
+
+via <span class="o">=</span> <span class="kd">element</span><span class="nv"> via </span><span class="p">{</span> <span class="kt">text</span>,
+   <span class="kd">attribute</span><span class="nv"> tipo </span><span class="p">{</span> <span class="s2">&quot;calle&quot;</span><span class="o">|</span><span class="s2">&quot;callejón&quot;</span><span class="o">|</span><span class="s2">&quot;travesía&quot;</span><span class="o">|</span><span class="s2">&quot;plaza&quot;</span><span class="o">|</span><span class="s2">&quot;avenida&quot;</span><span class="o">|</span><span class="s2">&quot;cuesta&quot;</span><span class="o">|</span><span class="s2">&quot;costanilla&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+cp <span class="o">=</span> <span class="kd">element</span><span class="nv"> cp </span><span class="p">{</span> <span class="kt">xsd:int</span> <span class="p">{</span> <span class="na">minExclusive</span><span class="o">=</span><span class="na">&quot;1000&quot;</span> <span class="na">maxExclusive</span><span class="o">=</span> <span class="na">&quot;53000&quot;</span> <span class="p">}}</span>
+localidad <span class="o">=</span> <span class="kd">element</span><span class="nv"> localidad </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>Y en el otro fichero:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">default</span> <span class="kn">namespace</span> <span class="o">=</span> <span class="s2">&quot;urn:persona&quot;</span>
+
+start <span class="o">=</span> persona
+
+persona <span class="o">=</span> <span class="kd">element</span><span class="nv"> persona </span><span class="p">{</span> nombre<span class="o">,</span> apellidos<span class="o">,</span> dni<span class="o">,</span> tlfo<span class="o">,</span> direccion <span class="p">}</span>
+
+nombre <span class="o">=</span> <span class="kd">element</span><span class="nv"> nombre </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span>
+apellidos <span class="o">=</span> <span class="kd">element</span><span class="nv"> apellidos </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span>
+dni <span class="o">=</span> <span class="kd">element</span><span class="nv"> dni </span><span class="p">{</span> <span class="kt">xsd:string</span> <span class="p">{</span> <span class="na">pattern</span><span class="o">=</span><span class="na">&quot;[0-9]{8</span><span class="p">}</span>[A-Za-z]&quot; <span class="p">}</span> <span class="p">}</span>
+tlfo <span class="o">=</span> <span class="kd">element</span><span class="nv"> tlfo </span><span class="p">{</span> <span class="kt">xsd:int</span> <span class="p">{</span> <span class="na">minInclusive</span><span class="o">=</span><span class="na">&quot;600000000&quot;</span> <span class="na">maxInclusive</span><span class="o">=</span><span class="na">&quot;999999999&quot;</span> <span class="p">}</span> <span class="p">}</span>
+direccion <span class="o">=</span> grammar <span class="p">{</span> include <span class="s2">&quot;direccion.rnc&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>En ambos casos se ha definido el espacio de nombres como el predeterminado para
+no tener que anteceder todos los nombres de elementos con un prefijo<a class="footnote-reference brackets" href="#id23" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></a></p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Es más que recomendable, cuando definimos la gramática para un tipo de
+<abbr title="eXtensible  Markup Language">XML</abbr>, asociarla a un espacio de nombres. Si esta gramática es un
+poco larga, es conveniente hacerla modular, pero no definir espacios de
+nombres para cada fichero, a excepción de algún fichero que pudiera definir
+una parte de la gramática con utilidad en sí misma.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Los tipos de datos están en un espacio de nombre a parte, de ahí que
+usemos el prefijo <em>xsd</em>, pero no es necesarto definir cuál es este espacio,
+ya que las herramientas de validación lo dan por supuesto.</p>
+</div>
+</section>
+</section>
+<section id="ejercicios-resueltos">
+<h2><span class="section-number">2.5. </span>Ejercicios resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Enlace permanente a este encabezado">¶</a></h2>
+<ol class="arabic">
+<li><p>Tomando el <abbr title="eXtensible  Markup Language">XML</abbr> sobre recetas, <a class="reference internal" href="../01.intro/02a.serial.html#yaml-resueltos"><span class="std std-ref">ya resuelto en un epígrafe anterior</span></a>, escriba un <abbr title="Relax-NG Compact">RNC</abbr> para validarlo.</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span>start <span class="o">=</span> recetas
+
+recetas <span class="o">=</span> <span class="kd">element</span><span class="nv"> recetas </span><span class="p">{</span> receta+ <span class="p">}</span>
+
+receta <span class="o">=</span> <span class="kd">element</span><span class="nv"> receta </span><span class="p">{</span> ingrediente+<span class="o">,</span>
+   <span class="kd">attribute</span><span class="nv"> id </span><span class="p">{</span> <span class="kt">xsd:ID</span> <span class="p">{</span> <span class="na">pattern</span><span class="o">=</span><span class="na">&quot;r\d+&quot;</span> <span class="p">}</span> <span class="p">}</span><span class="o">,</span>
+   <span class="kd">attribute</span><span class="nv"> nombre </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span><span class="o">,</span>
+   <span class="kd">attribute</span><span class="nv"> preparacion </span><span class="p">{</span> <span class="kt">xsd:decimal</span> <span class="p">{</span> <span class="na">minExclusive</span><span class="o">=</span><span class="na">&quot;0&quot;</span> <span class="p">}</span> <span class="p">}</span><span class="o">?</span>
+<span class="p">}</span>
+
+ingrediente <span class="o">=</span> <span class="kd">element</span><span class="nv"> ingrediente </span><span class="p">{</span> empty<span class="o">,</span>
+   <span class="kd">attribute</span><span class="nv"> nombre </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span><span class="o">,</span>
+   <span class="kd">attribute</span><span class="nv"> unidad </span><span class="p">{</span> <span class="s2">&quot;pieza&quot;</span> <span class="o">|</span> <span class="s2">&quot;gramo&quot;</span> <span class="o">|</span> <span class="s2">&quot;cc&quot;</span> <span class="p">}</span><span class="o">,</span>
+   <span class="kd">attribute</span><span class="nv"> cantidad </span><span class="p">{</span> <span class="kt">xsd:decimal</span> <span class="p">{</span> <span class="na">minExclusive</span><span class="o">=</span><span class="na">&quot;0&quot;</span> <span class="p">}</span> | &quot;lata&quot; <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Tomando el <abbr title="eXtensible  Markup Language">XML</abbr> sobre una cadena de restaurantes <a class="reference internal" href="../01.intro/02a.serial.html#yaml-resueltos"><span class="std std-ref">ya resuelto en un
+epígrafe anterior</span></a>, escriba un <abbr title="Relax-NG Compact">RNC</abbr> para validarlo. Procure
+reaprovechar el <abbr title="Relax-NG Compact">RNC</abbr> del ejercicio anterior.</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span>start <span class="o">=</span> cadena
+
+cadena <span class="o">=</span> <span class="kd">element</span><span class="nv"> cadena </span><span class="p">{</span> recetas<span class="o">,</span> restaurante<span class="o">,</span>
+   <span class="kd">attribute</span><span class="nv"> nombre </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span>
+<span class="p">}</span>
+
+recetas <span class="o">=</span> grammar <span class="p">{</span> include <span class="s2">&quot;recetas.rnc&quot;</span> <span class="p">}</span>
+
+restaurante <span class="o">=</span> <span class="kd">element</span><span class="nv"> restaurante </span><span class="p">{</span> domicilio<span class="o">,</span> carta<span class="o">,</span>
+   <span class="kd">attribute</span><span class="nv"> id </span><span class="p">{</span> <span class="kt">xsd:ID</span> <span class="p">{</span> <span class="na">pattern</span><span class="o">=</span><span class="na">&quot;re\d+&quot;</span> <span class="p">}</span> <span class="p">}</span><span class="o">,</span>
+   <span class="kd">attribute</span><span class="nv"> nombre </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span><span class="o">?</span>
+<span class="p">}</span>
+
+domicilio <span class="o">=</span> <span class="kd">element</span><span class="nv"> domicilio </span><span class="p">{</span> direccion<span class="o">,</span> municipio<span class="o">,</span> cp <span class="p">}</span>
+
+direccion <span class="o">=</span> <span class="kd">element</span><span class="nv"> direccion </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span>
+municipio <span class="o">=</span> <span class="kd">element</span><span class="nv"> municipio </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span>
+cp <span class="o">=</span> <span class="kd">element</span><span class="nv"> cp </span><span class="p">{</span> <span class="kt">xsd:positiveInteger</span> <span class="p">{</span> <span class="na">minExclusive</span><span class="o">=</span><span class="na">&quot;1000&quot;</span> <span class="na">maxExclusive</span><span class="o">=</span><span class="na">&quot;53000&quot;</span> <span class="p">}</span> <span class="p">}</span>
+
+carta <span class="o">=</span> <span class="kd">element</span><span class="nv"> carta </span><span class="p">{</span> plato+ <span class="p">}</span>
+
+plato <span class="o">=</span> <span class="kd">element</span><span class="nv"> plato </span><span class="p">{</span> empty<span class="o">,</span>
+   <span class="kd">attribute</span><span class="nv"> ref </span><span class="p">{</span> <span class="kt">xsd:IDREF</span> <span class="p">{</span> <span class="na">pattern</span><span class="o">=</span><span class="na">&quot;r\d+&quot;</span> <span class="p">}</span> <span class="p">}</span><span class="o">,</span>
+   <span class="kd">attribute</span><span class="nv"> tipo </span><span class="p">{</span> list <span class="p">{</span> <span class="p">(</span><span class="s2">&quot;tapa&quot;</span> <span class="o">|</span> <span class="s2">&quot;media&quot;</span> <span class="o">|</span> <span class="s2">&quot;racion&quot;</span><span class="p">)</span>+ <span class="p">}</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p class="rubric">Enlaces de interés</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://infohost.nmt.edu/tcc/help/pubs/rnc/rnc.pdf">Descripción del Relax NG Compact</a>.</p></li>
+<li><p><a class="reference external" href="http://www.relaxng.org/compact-tutorial-20030326.html#id2814955">Tutorial oficial</a>.</p></li>
+<li><p><a class="reference external" href="http://books.xmlschemata.org/relaxng/page2.html">Libro completo «Relax NG»</a></p></li>
+</ul>
+<p class="rubric">Notas al pie</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id13" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Las ventajas y desventajas expresadas a continuación son una indisimulada
+reescritura de <a class="reference external" href="http://www.relaxng.org/compact-tutorial-20030326.html#id2817637">esta comparación</a>.</p>
+</aside>
+<aside class="footnote brackets" id="id14" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Hemos vuelto a la primera versión del ejemplo en el que se incluía la
+definición de las entidades dentro del <abbr title="Document Type Definition">DTD</abbr>, porque <abbr title="Relax-NG Compact">RNC</abbr> no las soporta.
+Lo que sí podríamos hacer es eliminar referencia a <code class="file docutils literal notranslate"><span class="pre">casillero.dtd</span></code>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE claustro [</span>
+<span class="cp">   &lt;!ENTITY FyQ &quot;Física y Química&quot;&gt;</span>
+<span class="w">   </span>--<span class="w"> </span>Resto<span class="w"> </span>de<span class="w"> </span>entidades<span class="w"> </span>--
+]&gt;
+</pre></div>
+</div>
+</aside>
+<aside class="footnote brackets" id="id15" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>En el ejemplo, perderíamos la restricción en el formato del
+identificador.</p>
+</aside>
+<aside class="footnote brackets" id="id16" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>En puridad, no sólo para elementos y atributos. Podemos hacer otro tipo
+de asignaciones que quizás también resultan útiles y que se entenderán más
+adelante:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span>tupla <span class="o">=</span> <span class="kt">xsd:int,</span> xsd:int
+</pre></div>
+</div>
+</aside>
+<aside class="footnote brackets" id="id17" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">5</a><span class="fn-bracket">]</span></span>
+<p>O sea que equivale a <code class="docutils literal notranslate"><span class="pre">text</span></code>. Pero la ventaja de este tipo de dato es
+que <abbr title="XML Schema Definition">XSD</abbr> pemite añadir restricciones a la definición general, como obligar
+a que esa cadena cumpla con una expresión regular. Se verá a continuación.</p>
+</aside>
+<aside class="footnote brackets" id="id18" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">6</a><span class="fn-bracket">]</span></span>
+<p>La definición propuesta obliga a poner siempre dos decimales, así que un
+precio de <em>1</em> o de <em>1.5</em> fallará. Para incluir estas posibilidades habría que
+haber recurrido a una expresión regular:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">element</span><span class="nv"> precio </span><span class="p">{</span> <span class="kt">xsd:decimal</span> <span class="p">{</span> <span class="na">minInclusive</span><span class="o">=</span><span class="na">&quot;0&quot;</span> <span class="na">pattern</span><span class="o">=</span><span class="na">&quot;\.\d{1,2</span><span class="p">}</span>|\d+(\.\d<span class="p">{</span><span class="na">1,2</span><span class="p">}</span>)?&quot; <span class="p">}</span> <span class="p">}</span>
+</pre></div>
+</div>
+</aside>
+<aside class="footnote brackets" id="id19" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">7</a><span class="fn-bracket">]</span></span>
+<p><em>Relax-NG</em> us alas expresiones definidas para <em>W3C XML Schema</em> que son
+expresiones regulares de tipo <abbr title="Extended Regular Expresion">ERE</abbr>.</p>
+</aside>
+<aside class="footnote brackets" id="id20" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">8</a><span class="fn-bracket">]</span></span>
+<p>Por ejemplo, la definición de un domicilio postal puede servirnos en
+muchos <abbr title="eXtensible  Markup Language">XML</abbr> que tengan distinto propósito.</p>
+</aside>
+<aside class="footnote brackets" id="id21" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">9</a><span class="fn-bracket">]</span></span>
+<p>Los patrones también pueden redefinirse con <code class="code docutils literal notranslate"><span class="pre">&amp;=</span></code> o con <code class="code docutils literal notranslate"><span class="pre">=</span></code>,
+este último para sustituir totalmente la definición antigua. En el caso de
+<em>start</em>, no obstante*^esto último no es posible.</p>
+</aside>
+<aside class="footnote brackets" id="id22" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">10</a><span class="fn-bracket">]</span></span>
+<p>Por lo general, en las gramáticas de amplio uso, como <abbr title="Uniform Resource Name">URN</abbr> se toma una <abbr title="Uniform Resource Locator">URL</abbr>
+caracerística. Por ejemplo, los datos de <abbr title="eXtensible  Markup Language">XML</abbr> Schema están definidos en el
+espacio de nombres «<em>http://www.w3.org/2001/XMLSchema-datatypes</em>».</p>
+</aside>
+<aside class="footnote brackets" id="id23" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id12">11</a><span class="fn-bracket">]</span></span>
+<p>La declaración de un espacio de nombres y su prefijo cuando
+no es el predeterminado se hace así:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kn">namespace</span> p <span class="o">=</span> <span class="s2">&quot;urn:persona&quot;</span>
+</pre></div>
+</div>
+<p>Ello obligaria a usar tal prefijo en las definiciones de los elementos. Por
+ejemplo:</p>
+<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span>apellidos <span class="o">=</span> <span class="kd">element</span><span class="nv"> p:apellidos </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span>
+</pre></div>
+</div>
+</aside>
+</aside>
+</section>
 </section>
 
 
@@ -89,7 +1051,44 @@
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/logo.png" alt="Logo"/>
-        </a></p>
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">2. Relax-NG Compact</a><ul>
+<li><a class="reference internal" href="#preliminares">2.1. Preliminares</a><ul>
+<li><a class="reference internal" href="#declaracion">2.1.1. Declaración</a></li>
+<li><a class="reference internal" href="#ejemplo">2.1.2. Ejemplo</a></li>
+<li><a class="reference internal" href="#validacion">2.1.3. Validación</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sintaxis-basica">2.2. Sintaxis básica</a><ul>
+<li><a class="reference internal" href="#elementos">2.2.1. Elementos</a><ul>
+<li><a class="reference internal" href="#elementos-de-solo-texto">2.2.1.1. Elementos de sólo texto</a></li>
+<li><a class="reference internal" href="#secuencia">2.2.1.2. Secuencia</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#atributos">2.2.2. Atributos</a></li>
+<li><a class="reference internal" href="#comentarios-anotaciones">2.2.3. Comentarios. Anotaciones</a></li>
+<li><a class="reference internal" href="#y-las-entidades">2.2.4. ¿Y las entidades?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tipos-de-datos">2.3. Tipos de datos</a><ul>
+<li><a class="reference internal" href="#relacion">2.3.1. Relación</a></li>
+<li><a class="reference internal" href="#restricciones">2.3.2. Restricciones</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#definicion-modular">2.4. Definición modular</a><ul>
+<li><a class="reference internal" href="#importacion-de-patrones">2.4.1. Importación de patrones</a></li>
+<li><a class="reference internal" href="#importacion-de-gramaticas">2.4.2. Importación de gramáticas</a></li>
+<li><a class="reference internal" href="#espacios-de-nombres">2.4.3. Espacios de nombres</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ejercicios-resueltos">2.5. Ejercicios resueltos</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div class="sphinxprev">
     <h4>Previous page</h4>
     <p class="topless"><a href="21.xsd.html"

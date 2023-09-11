@@ -74,11 +74,11 @@
             
   <section id="ejercicios-sobre-validacion">
 <span id="ej-val"></span><h1>Ejercicios sobre validación<a class="headerlink" href="#ejercicios-sobre-validacion" title="Enlace permanente a este encabezado">¶</a></h1>
-<p>Resuelva los siguientes ejercicios sobre <abbr title="Document Type Definition">DTD</abbr>:</p>
-<ol class="arabic simple">
-<li><p>Si en un <abbr title="Document Type Definition">DTD</abbr> el contenido de un elemento «x» se define con
-<code class="code docutils literal notranslate"><span class="pre">((a|b)?,c,d</span></code> indique si «x» puede contener (y explique
-el por qué en caso de que no):</p>
+<ol class="arabic">
+<li><p>Indique si un nodo «x» puede tener un determinado contenido (y explique
+el por qué en caso de que no), sabiendo que su definición <abbr title="Document Type Definition">DTD</abbr> es:</p>
+<ol class="loweralpha simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">((a|b)?,c,d)</span></code></p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">a</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">c</span> <span class="pre">d</span></code></p></li>
@@ -87,10 +87,8 @@ el por qué en caso de que no):</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">c</span> <span class="pre">d</span></code></p></li>
 </ol>
 </li>
-<li><p>Si en un <abbr title="Document Type Definition">DTD</abbr> el contenido de un elemento «x» se define con
-<code class="code docutils literal notranslate"><span class="pre">((a|b),c*,d?)</span></code> indique si «x» puede contener (y explique el por qué en
-caso de que no):</p>
-<ol class="loweralpha simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">((a|b),c*,d?)</span></code></p>
+<ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">d</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">d</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">c</span> <span class="pre">c</span> <span class="pre">c</span></code></p></li>
@@ -101,10 +99,8 @@ caso de que no):</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">c</span> <span class="pre">d</span></code></p></li>
 </ol>
 </li>
-<li><p>Si en un <abbr title="Document Type Definition">DTD</abbr> el contenido de un elemento «x» se define con
-<code class="code docutils literal notranslate"><span class="pre">(((a,b,c)|c),a+,(b|d)?)</span></code> indique si «x» puede contener (y explique el
-por qué en caso de que no):</p>
-<ol class="loweralpha simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">(((a,b,c)|c),a+,(b|d)?)</span></code></p>
+<ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">a</span> <span class="pre">d</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">a</span> <span class="pre">b</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">b</span> <span class="pre">c</span> <span class="pre">b</span></code></p></li>
@@ -113,9 +109,7 @@ por qué en caso de que no):</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">a</span></code></p></li>
 </ol>
 </li>
-<li><p>Si en un <abbr title="Document Type Definition">DTD</abbr> el contenido de un elemento «x» se define con
-<code class="code docutils literal notranslate"><span class="pre">(((a|b)|(c|d)),(a,c)+,b?)</span></code> indique si «x» puede contener (y explique
-el por qué en caso de que no):</p>
+<li><p><code class="code docutils literal notranslate"><span class="pre">(((a|b)|(c|d)),(a,c)+,b?)</span></code></p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">b</span> <span class="pre">a</span> <span class="pre">c</span> <span class="pre">b</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">a</span> <span class="pre">c</span> <span class="pre">a</span> <span class="pre">c</span></code></p></li>
@@ -125,8 +119,176 @@ el por qué en caso de que no):</p>
 </ol>
 </li>
 </ol>
+</li>
+<li><p>Dado el siguiente esquema <abbr title="JavaScript Object Notation">JSON</abbr></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://json-schema.org/draft/2020-12/schema&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;prefixItems&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span><span class="nt">&quot;const&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">}</span>
+<span class="w">   </span><span class="p">],</span>
+<span class="w">   </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;exclusiveMinimum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>determine si los documentos sucesivos son válidos y, en caso de que no sea
+así, indique por qué:</p>
+<ol class="loweralpha simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">[4,</span> <span class="pre">5,</span> <span class="pre">8]</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">[]</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">[true,</span> <span class="pre">2,</span> <span class="pre">0]</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">[true,</span> <span class="pre">0]</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">[true,</span> <span class="pre">1,</span> <span class="pre">1]</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">[true]</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">[1]</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">[false,</span> <span class="pre">1,</span> <span class="pre">1]</span></code></p></li>
+</ol>
+</li>
+<li><p>Dado el siguiente esquema <abbr title="JavaScript Object Notation">JSON</abbr></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://json-schema.org/draft/2020-12/schema&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;minLength&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;enum&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;javascript&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;java&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;go&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;tamaño&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;exclusiveMinimum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">}</span>
+<span class="w">   </span><span class="p">},</span>
+<span class="w">   </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tipo&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>indique <strong>sin usar un validador</strong> si los siguientes documentos son válidos:</p>
+<ol class="loweralpha">
+<li><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;script.js&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;javascript&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;consola.java&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;tamaño&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;consola.java&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;tamaño&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;consola.java&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;java&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;ruta&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/bin&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;servidor.c&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+</ol>
 <p>Y, ahora, escriba las gramáticas que permitan validar las soluciones diseñadas
-para los <a class="reference internal" href="10.lenguajes.html#ej-li-doc"><span class="std std-ref">ejercicios sobre lenguajes de marcas</span></a>.</p>
+para los <a class="reference internal" href="10.lenguajes.html#ej-li-doc"><span class="std std-ref">ejercicios sobre lenguajes de marcas</span></a>:</p>
+<ol class="arabic" start="5">
+<li><p>Diseñe un documento para almacenar las facturas generadas por una empresa.
+Téngase en cuenta que:</p>
+<ul class="simple">
+<li><p>Cada factura tiene un código.</p></li>
+<li><p>La factura también necesita la fecha de emisión.</p></li>
+<li><p>En la factura aparecen los datos del cliente (dni, nombre, dirección,
+código postal, población).</p></li>
+<li><p>De cada producto que se ha comprado debe aparecer la cantidad de productos
+comprados, la denominación y el precio unitario.</p></li>
+<li><p>Se debe guardar el <abbr title="Impuesto sobre el Valor Añadido">IVA</abbr> de cada producto.</p></li>
+<li><p>Si es necesario se indicara un descuento al importe total de la factura.</p></li>
+</ul>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/00e763038b8dd22ab3683d96148d2365/facturas.xml"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Diseñe un documento para almacenar la información sobre los préstamos de
+libros que se realizan en una biblioteca:</p>
+<ul class="simple">
+<li><p>De cada libro guardamos varios datos: código <abbr title="International Standard Book Number">ISBN</abbr>, nombre, editorial, año de publicación, autor.</p></li>
+<li><p>De cada libro podemos tener uno o varios ejemplares. Cada ejemplar se
+diferencia de otro por un código numérico.</p></li>
+<li><p>Se prestan los ejemplares, y de cada prestamos hay que indicar el ejemplar
+del libro, el socio al que se ha prestado y la fecha de prestamo.</p></li>
+<li><p>Del socio hay que guadar DNI, nombre y dirección.</p></li>
+</ul>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/6dbfdb7c2f8cd36ed1637fd9f5ba0322/biblioteca.xml"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Escriba un documento para almacenar los coches que tiene puestos a la venta
+un concesionario:</p>
+<ul class="simple">
+<li><p>El concesionario se dedica a vender distintos modelos de una misma marca de
+coches.</p></li>
+<li><p>De cada modelo es necesario recoger la cilindrada, los caballos de vapor, la
+velocidad máxima, el número de plazas y los kilómetros que tiene (el
+concesionario también vende coches de segunda mano).</p></li>
+<li><p>También se quiere almacenar cuántos coches de cada modelo hay en el
+concesionario e identificar cada uno de ellos.</p></li>
+<li><p>Un coche puede estar reservado o no.</p></li>
+</ul>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/4788abbb3a95b8c9adc3d7afc2edcc7c/concesionario.xml"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Retome el ejemplo del ejercicio anterior, pero enriquezca el documento para
+que se conozca los del cliente que ha realizado una determinada reserva
+(nombre, dirección, tlfo).</p>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/379432f4b215995bbc2c8945afb43c09/concesionario.xml"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Diseñe un documento que recoja la información referente a los Parques
+Nacionales de España, en especial:</p>
+<ul class="simple">
+<li><p>Provincia y Comunidad Autónoma en la que se encuentra.</p></li>
+<li><p>Extensión de terreno.</p></li>
+<li><p>Presupuesto anual para su protección.</p></li>
+<li><p>Fauna y flora a preservar:</p>
+<ul>
+<li><p>Nombre común.</p></li>
+<li><p>Nombre científico.</p></li>
+<li><p>Número de ejemplares en cada parque (para fauna).</p></li>
+<li><p>Peligro de extinción: alto, medio, bajo.</p></li>
+</ul>
+</li>
+</ul>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/d159aeeadf309783b526372c41c97fc1/parques.xml"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Un ayuntamiento desea recoger la información de los habitantes que hay en su
+municipio, de manera que de cada ciudadano se sepa:</p>
+<ul class="simple">
+<li><p>Nombre y apellidos</p></li>
+<li><p>Dirección</p></li>
+<li><p>Teléfono</p></li>
+<li><p>Lugar de nacimiento</p></li>
+<li><p>Quién es el padre y quién la madre.</p></li>
+</ul>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/f1167d2b5559eec5f82f9933f9d3bd55/ayuntamiento.xml"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Diseñe un documento para almacenar la información de un gráfico vectorial
+en 2 dimensiones. Los elementos que pueden definirse en ese documento son:</p>
+<ul class="simple">
+<li><p><em>Punto</em>: Se definirá con dos coordenadas: x,y.</p></li>
+<li><p><em>Circunferencia</em>: se define por un centro (coordenadas x,y) y un radio.</p></li>
+<li><p><em>Recta</em>: se define por dos puntos: el inicial y el final.</p></li>
+<li><p><em>Rectáculo</em>: se define por dos puntos: la esquina superior derecha y la esquina
+superior izquierda.</p></li>
+</ul>
+<p>Todo elemento debe estar inequívocamente identificado, y debe conocerse de
+alguna forma cuál es la unidad de medida (m, cm, etc.) en que están expresados
+todos los números que aparecen.</p>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/4232e1b220861668fa19f3293f4b1982/grafico.xml"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+</ol>
 </section>
 
 

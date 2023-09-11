@@ -323,6 +323,13 @@ precisa que se usen aplicaciones de dibujo como <a class="reference external" hr
 <span id="xml-ejemplo"></span><h4><span class="section-number">1.2.2.2.1.4. </span>Ejemplo introductorio<a class="headerlink" href="#ejemplo-introductorio" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Echemos un vistazo a <a class="reference download internal" download="" href="../_downloads/a9ed8d632f3020a13c378f13a8b83419/casilleros.xml"><code class="xref download docutils literal notranslate"><span class="pre">este</span> <span class="pre">XML</span></code></a> que permite
 gestionar los casilleros de los profesores de un centro de enseñanza:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Casilleros de profesores<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="cp">&lt;!DOCTYPE claustro SYSTEM &quot;casilleros.dtd&quot; [</span>
 <span class="cp">   &lt;!ENTITY FyQ &quot;Física y Química&quot;&gt;</span>
@@ -353,7 +360,7 @@ gestionar los casilleros de los profesores de un centro de enseñanza:</p>
 <span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;EFI;</span><span class="nt">&lt;/departamento&gt;</span>
 <span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
 
-<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p13&quot;</span><span class="w"> </span><span class="na">sustituto=</span><span class="s">&quot;p86&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p13&quot;</span><span class="nt">&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Cristina<span class="nt">&lt;/apelativo&gt;</span>
 <span class="w">      </span><span class="nt">&lt;nombre&gt;</span>María<span class="w"> </span>Cristina<span class="nt">&lt;/nombre&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Prieto<span class="w"> </span>Monagas<span class="nt">&lt;/apellidos&gt;</span>
@@ -362,7 +369,7 @@ gestionar los casilleros de los profesores de un centro de enseñanza:</p>
 
 <span class="w">   </span><span class="cm">&lt;!-- Si se sustituye a sí mismo es que está de baja --&gt;</span>
 
-<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p15&quot;</span><span class="w"> </span><span class="na">sustituto=</span><span class="s">&quot;p15&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p15&quot;</span><span class="nt">&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Manolo<span class="nt">&lt;/apelativo&gt;</span>
 <span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Manuel<span class="nt">&lt;/nombre&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Páez<span class="w"> </span>Robledo<span class="nt">&lt;/apellidos&gt;</span>
@@ -371,7 +378,7 @@ gestionar los casilleros de los profesores de un centro de enseñanza:</p>
 
 <span class="w">   </span><span class="cm">&lt;!-- Profesor con casillero(s) adicional(es) --&gt;</span>
 
-<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p17&quot;</span><span class="w"> </span><span class="na">adicional=</span><span class="s">&quot;43&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p17&quot;</span><span class="w"> </span><span class="na">casillero=</span><span class="s">&quot;17 43&quot;</span><span class="nt">&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Lucía<span class="nt">&lt;/apelativo&gt;</span>
 <span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Lucía<span class="nt">&lt;/nombre&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Gálvez<span class="w"> </span>Ruiz<span class="nt">&lt;/apellidos&gt;</span>
@@ -401,7 +408,7 @@ gestionar los casilleros de los profesores de un centro de enseñanza:</p>
 
 <span class="w">   </span><span class="cm">&lt;!-- Profesor sustituto --&gt;</span>
 
-<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p86&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p86&quot;</span><span class="w"> </span><span class="na">sustituye=</span><span class="s">&quot;p86&quot;</span><span class="nt">&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Roberto<span class="nt">&lt;/apelativo&gt;</span>
 <span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Roberto<span class="nt">&lt;/nombre&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Mínguez<span class="w"> </span>Torralbo<span class="nt">&lt;/apellidos&gt;</span>
@@ -409,7 +416,8 @@ gestionar los casilleros de los profesores de un centro de enseñanza:</p>
 <span class="nt">&lt;/claustro&gt;</span>
 </pre></div>
 </div>
-<div class="admonition note">
+</div>
+</details><div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>El documento puede validarse con <a class="reference download internal" download="" href="../_downloads/d83aec46641b9afafe7d5310f361841f/casilleros.dtd"><code class="xref download docutils literal notranslate"><span class="pre">este</span> <span class="pre">DTD</span></code></a>.</p>
 </div>

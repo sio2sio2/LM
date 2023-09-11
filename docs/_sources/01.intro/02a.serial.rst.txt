@@ -93,6 +93,24 @@ los casilleros que tienen asignados:
    .. literalinclude:: files/casilleros.json
       :language: json
 
+Las ideas que inspiran este documento son las siguientes\ [#]_:
+
+* De cada profesor incluimos algunos datos que nos resultan relevantes.
+* Si no se expresa el apelativo, es que se le nombra con su nombre de pila.
+* Los profesores titulares, al darse de baja, pueden ser sustitutidos por otro.
+* Los profesores deben pertenecer a un departamento, a menos que sean un
+  sustituto, en cuyo caso pertenecerá forzosamente al departamento del profesor
+  al que sustituye.
+* En principio los profesores tiene casillero, pero:
+
+  + Si no se expresa el de un profesor titular, el casillero coincidirá con su
+    identificador  (p.e. el profesor **10** tiene el casillero **10**).
+  + Los sustitutos no pueden expresar el casillero, porque forzosamente usarán
+    el del titular al que sustituyen.
+  + Un profesor puede disponer de varios casilleros, así que que ese campo debe
+    ser una lista.
+  + Si la lista está vacía, el profesor ha renunciado a tener casillero.
+
 .. _json-nodo:
 
 Estructura
@@ -923,6 +941,10 @@ Ejercicios resueltos
 
 .. [#] Que, curiosamente, es justo lo contrario que se hacía en una máquina de
    escribir en las que primero se cambiaba de línea y luego se volvía el carro.
+
+.. [#] Desgraciadamente, no se pueden incluir comentarios en los documentos
+   |JSON|, por lo que no podemos hacer estos puntualizaciones dentro del propio
+   texto.
 
 .. [#]  Por esta razón, las claves siempre se muestran entrecomilladas. Esto es
    una diferencia con Javascript_ en que se permite no entgrecomillar las claves.

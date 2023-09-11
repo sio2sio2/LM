@@ -1,0 +1,23 @@
+start = claustro
+
+claustro = element claustro { (profesor|asistente)+,
+   attribute centro { text }
+}
+
+attrpers = attribute id { xsd:ID { pattern = "p[0-9]+" } },
+           attribute sustituto { xsd:IDREF { pattern = "p[0-9]+" } }?,
+           attribute casillero { xsd:nonNegativeInteger }?,
+           attribute adicional { list { xsd:positiveInteger+ } }?
+
+profesor = element profesor { apelativo, nombre, apellidos, departamento?,
+   attrpers
+}
+
+asistente = element asistente { apelativo, nombre, apellidos,
+   attrpers
+}
+
+apelativo = element apelativo { text }
+nombre = element nombre { text }
+apellidos = element apellidos { text }
+departamento = element departamento { text }

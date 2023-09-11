@@ -1,0 +1,25 @@
+start = cadena
+
+cadena = element cadena { recetas, restaurante,
+   attribute nombre { text }
+}
+
+recetas = grammar { include "recetas.rnc" }
+
+restaurante = element restaurante { domicilio, carta,
+   attribute id { xsd:ID { pattern="re\d+" } },
+   attribute nombre { text }?
+}
+
+domicilio = element domicilio { direccion, municipio, cp }
+
+direccion = element direccion { text }
+municipio = element municipio { text }
+cp = element cp { xsd:positiveInteger { minExclusive="1000" maxExclusive="53000" } }
+
+carta = element carta { plato+ }
+
+plato = element plato { empty,
+   attribute ref { xsd:IDREF { pattern="r\d+" } },
+   attribute tipo { list { ("tapa" | "media" | "racion")+ } }
+}

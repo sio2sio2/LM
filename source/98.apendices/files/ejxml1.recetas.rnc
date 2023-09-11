@@ -1,0 +1,15 @@
+start = recetas
+
+recetas = element recetas { receta+ }
+
+receta = element receta { ingrediente+,
+   attribute id { xsd:ID { pattern="r\d+" } },
+   attribute nombre { text },
+   attribute preparacion { xsd:decimal { minExclusive="0" } }?
+}
+
+ingrediente = element ingrediente { empty,
+   attribute nombre { text },
+   attribute unidad { "pieza" | "gramo" | "cc" },
+   attribute cantidad { xsd:decimal { minExclusive="0" } | "lata" }
+}

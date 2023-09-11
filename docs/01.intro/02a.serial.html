@@ -100,7 +100,7 @@ importación y exportación.</p></li>
 <li><p>Los datos están estructurados en registros, cada uno de los cuales ocupa una
 línea. Los <a class="reference external" href="https://es.wikipedia.org/wiki/Nueva_l%C3%ADnea">cambios de línea</a> deben estar codificados
 tal como se hace en sistemas MS-DOS, o sea, con los dos caracteres
-<kbd class="kbd docutils literal notranslate">\r\n</kbd> (<code class="docutils literal notranslate"><span class="pre">CRLF</span></code>)<a class="footnote-reference brackets" href="#id13" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
+<kbd class="kbd docutils literal notranslate">\r\n</kbd> (<code class="docutils literal notranslate"><span class="pre">CRLF</span></code>)<a class="footnote-reference brackets" href="#id14" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
 <li><p>Cada registro, a su vez, se divide en campos separados entre sí por un
 delimitador. El delimitador es habitualmente una coma, pero no
 necesariamente, por lo que definir cuál es deberá  hacerse en los procesos de
@@ -224,7 +224,27 @@ JSON sobre casilleros<div class="sd-summary-down docutils">
 </pre></div>
 </div>
 </div>
-</details><section id="estructura">
+</details><p>Las ideas que inspiran este documento son las siguientes<a class="footnote-reference brackets" href="#id15" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>:</p>
+<ul class="simple">
+<li><p>De cada profesor incluimos algunos datos que nos resultan relevantes.</p></li>
+<li><p>Si no se expresa el apelativo, es que se le nombra con su nombre de pila.</p></li>
+<li><p>Los profesores titulares, al darse de baja, pueden ser sustitutidos por otro.</p></li>
+<li><p>Los profesores deben pertenecer a un departamento, a menos que sean un
+sustituto, en cuyo caso pertenecerá forzosamente al departamento del profesor
+al que sustituye.</p></li>
+<li><p>En principio los profesores tiene casillero, pero:</p>
+<ul>
+<li><p>Si no se expresa el de un profesor titular, el casillero coincidirá con su
+identificador  (p.e. el profesor <strong>10</strong> tiene el casillero <strong>10</strong>).</p></li>
+<li><p>Los sustitutos no pueden expresar el casillero, porque forzosamente usarán
+el del titular al que sustituyen.</p></li>
+<li><p>Un profesor puede disponer de varios casilleros, así que que ese campo debe
+ser una lista.</p></li>
+<li><p>Si la lista está vacía, el profesor ha renunciado a tener casillero.</p></li>
+</ul>
+</li>
+</ul>
+<section id="estructura">
 <span id="json-nodo"></span><h3><span class="section-number">1.2.1.2.1. </span>Estructura<a class="headerlink" href="#estructura" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Básicamente los datos en un documento <abbr title="JavaScript Object Notation">JSON</abbr> se estructuran en <em>nodos</em>. Un
 <em class="dfn">nodo</em> representa un dato de uno de estos supertipos:</p>
@@ -356,7 +376,7 @@ las siguientes características:</p>
 (<kbd class="kbd docutils literal notranslate">{</kbd>)  y cierre (<kbd class="kbd docutils literal notranslate">}</kbd>).</p></li>
 <li><p>Como separador entre parejas clave-valor, se usa la coma.</p></li>
 <li><p>Como separador entre clave y valor se usa «<kbd class="kbd docutils literal notranslate">:</kbd>».</p></li>
-<li><p>Las claves sólo pueden ser de tipo cadena<a class="footnote-reference brackets" href="#id14" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p></li>
+<li><p>Las claves sólo pueden ser de tipo cadena<a class="footnote-reference brackets" href="#id16" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.</p></li>
 <li><p>Cada clave dentro de un mismo objeto debe ser única.</p></li>
 <li><p>Los valores pueden ser de cualquier tipo.</p></li>
 </ul>
@@ -393,13 +413,13 @@ más completo de un documento <abbr title="JavaScript Object Notation">JSON</abb
 </section>
 </section>
 <section id="yaml">
-<span id="id5"></span><h2><span class="section-number">1.2.1.3. </span><abbr title="YAML Ain't Markup Language">YAML</abbr><a class="headerlink" href="#yaml" title="Enlace permanente a este encabezado">¶</a></h2>
+<span id="id6"></span><h2><span class="section-number">1.2.1.3. </span><abbr title="YAML Ain't Markup Language">YAML</abbr><a class="headerlink" href="#yaml" title="Enlace permanente a este encabezado">¶</a></h2>
 <p><abbr title="YAML Ain't Markup Language">YAML</abbr> (<a class="reference external" href="https://yaml.org">página web oficial</a>) es otro lenguaje de
 serialización que, como <abbr title="JavaScript Object Notation">JSON</abbr>, construye su estructura de datos basándose en el
 concepto de <a class="reference internal" href="#json-nodo"><span class="std std-ref">nodo</span></a> (escalar, de secuencia o de mapa), lo que
 permite que en principio puedan compartir nichos de uso. En la práctica <abbr title="YAML Ain't Markup Language">YAML</abbr>
 se usa más para la escritura de archivos de configuración y <abbr title="JavaScript Object Notation">JSON</abbr> para la
-transmisión de datos entre servidor y cliente<a class="footnote-reference brackets" href="#id15" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>. Su última especificación es
+transmisión de datos entre servidor y cliente<a class="footnote-reference brackets" href="#id17" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>. Su última especificación es
 <a class="reference external" href="https://yaml.org/spec/1.2.2/">YAML 1.2.2</a>.</p>
 <p>Como en el caso de <abbr title="JavaScript Object Notation">JSON</abbr> nos resultará enormemente útil validadores:</p>
 <ul class="simple">
@@ -481,7 +501,7 @@ YAML de casilleros<div class="sd-summary-down docutils">
 </div>
 </div>
 </details><section id="yaml-struct">
-<span id="id7"></span><h3><span class="section-number">1.2.1.3.1. </span>Estructura<a class="headerlink" href="#yaml-struct" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="id8"></span><h3><span class="section-number">1.2.1.3.1. </span>Estructura<a class="headerlink" href="#yaml-struct" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Un archivo o un flujo de información está constituido por uno o más documentos
 <abbr title="YAML Ain't Markup Language">YAML</abbr> que se separan a través de tres guiones seguidos (<code class="code docutils literal notranslate"><span class="pre">---</span></code>). La
 estructura de cada documento es:</p>
@@ -648,9 +668,9 @@ paréntesis se indica cuál es la etiqueta que los identifica):</p>
 <dt><strong>Numeros en coma flotante</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>)</dt><dd><p>Tiene también varias expresiones:</p>
 <ul class="simple">
 <li><p>La habitual con punto separador <code class="code docutils literal notranslate"><span class="pre">123.45</span></code>.</p></li>
-<li><p>En notación científica <code class="code docutils literal notranslate"><span class="pre">1.25e+5</span></code><a class="footnote-reference brackets" href="#id16" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>)</p></li>
+<li><p>En notación científica <code class="code docutils literal notranslate"><span class="pre">1.25e+5</span></code><a class="footnote-reference brackets" href="#id18" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>)</p></li>
 <li><p>Valores infinitos (<code class="code docutils literal notranslate"><span class="pre">.inf</span></code> y <code class="code docutils literal notranslate"><span class="pre">-.inf</span></code>).</p></li>
-<li><p><em>No es un número</em> (<code class="code docutils literal notranslate"><span class="pre">.nan</span></code>)<a class="footnote-reference brackets" href="#id17" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>.</p></li>
+<li><p><em>No es un número</em> (<code class="code docutils literal notranslate"><span class="pre">.nan</span></code>)<a class="footnote-reference brackets" href="#id19" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -684,7 +704,7 @@ interpreta como un entero y no como una cadena. Por la misma razón,
 <code class="code docutils literal notranslate"><span class="pre">false</span></code> o <code class="code docutils literal notranslate"><span class="pre">null</span></code> sin entrecomillar tampoco se consideran
 cadenas. Entrecomillados esos valores, sin embargo, sí será cadenas.</p>
 </div>
-<p>Cuando las cadenas son largas<a class="footnote-reference brackets" href="#id18" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>, hay también modo de escribirlas cómodamente:</p>
+<p>Cuando las cadenas son largas<a class="footnote-reference brackets" href="#id20" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>, hay también modo de escribirlas cómodamente:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">larga</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">   </span><span class="no">Este cadena contiene</span>
 <span class="w">   </span><span class="no">varias líneas que conservan los</span>
@@ -719,7 +739,7 @@ algún otro:</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Para anidar (el cuarto elemento es, a su vez, un <em>array</em>) se usa
-el sangrado mediante caracteres de espaciados<a class="footnote-reference brackets" href="#id19" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>. No hay ninguna regla
+el sangrado mediante caracteres de espaciados<a class="footnote-reference brackets" href="#id21" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>. No hay ninguna regla
 sobre cuántos son apropiados, pero debe ser consistente. En el ejemplo,
 como se han usado tres para el primer elemento &quot;<em>array dentro de un
 array</em>&quot;, por lo que el segundo también de ser sangrado con otros tres.
@@ -950,7 +970,7 @@ tener que escribir <abbr title="Uniform Resource Locator">URN</abbr> distintas d
 <span class="w">   </span><span class="no">debería soportar el procesador.</span>
 </pre></div>
 </div>
-<p>En el ejemplo <code class="code docutils literal notranslate"><span class="pre">!ex!tiporaro</span></code> equivale a <code class="code docutils literal notranslate"><span class="pre">!&lt;tag:ejemplo.org:2023:tiporaro&gt;</span></code><a class="footnote-reference brackets" href="#id20" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>.</p>
+<p>En el ejemplo <code class="code docutils literal notranslate"><span class="pre">!ex!tiporaro</span></code> equivale a <code class="code docutils literal notranslate"><span class="pre">!&lt;tag:ejemplo.org:2023:tiporaro&gt;</span></code><a class="footnote-reference brackets" href="#id22" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></a>.</p>
 </section>
 <section id="ejercicios-resueltos">
 <span id="yaml-resueltos"></span><h3><span class="section-number">1.2.1.3.8. </span>Ejercicios resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Enlace permanente a este encabezado">¶</a></h3>
@@ -1095,46 +1115,52 @@ un vistazo la sintaxis de los tipos más habituales de nodos.</p></li>
 </ul>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id13" role="note">
+<aside class="footnote brackets" id="id14" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
 <p>Que, curiosamente, es justo lo contrario que se hacía en una máquina de
 escribir en las que primero se cambiaba de línea y luego se volvía el carro.</p>
 </aside>
-<aside class="footnote brackets" id="id14" role="note">
+<aside class="footnote brackets" id="id15" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">2</a><span class="fn-bracket">]</span></span>
+<p>Desgraciadamente, no se pueden incluir comentarios en los documentos
+<abbr title="JavaScript Object Notation">JSON</abbr>, por lo que no podemos hacer estos puntualizaciones dentro del propio
+texto.</p>
+</aside>
+<aside class="footnote brackets" id="id16" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">3</a><span class="fn-bracket">]</span></span>
 <p>Por esta razón, las claves siempre se muestran entrecomilladas. Esto es
 una diferencia con <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a> en que se permite no entgrecomillar las claves.</p>
 </aside>
-<aside class="footnote brackets" id="id15" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">3</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id17" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">4</a><span class="fn-bracket">]</span></span>
 <p>Al menos en servicios web. La razón muy probablemente sea que el cliente
 de las aplicaciones web es un navegador con <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a> para el cual el
 soporte de <abbr title="JavaScript Object Notation">JSON</abbr> es nativo.</p>
 </aside>
-<aside class="footnote brackets" id="id16" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">4</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id18" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">5</a><span class="fn-bracket">]</span></span>
 <p>En esta notación son válidas todas las expresiones que ya vimos para
 <abbr title="JavaScript Object Notation">JSON</abbr>.</p>
 </aside>
-<aside class="footnote brackets" id="id17" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">5</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id19" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">6</a><span class="fn-bracket">]</span></span>
 <p>«No es un número» es la forma de representar en algunos lenguajes de
 programación que una operación es imposible de calcular es imposible. Por
 ejemplo, la operación <span class="math notranslate nohighlight">\(0/0\)</span>.</p>
 </aside>
-<aside class="footnote brackets" id="id18" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">6</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id20" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">7</a><span class="fn-bracket">]</span></span>
 <p>En realidad, no es necesario que el tipo sea una cadena (véase <a class="reference internal" href="#yaml-binary"><span class="std std-ref">tipo
 binario</span></a>, por ejemplo), pero lo habitual es que un valor que
 ocupe más de una línea sea una cadena.</p>
 </aside>
-<aside class="footnote brackets" id="id19" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">7</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id21" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id12">8</a><span class="fn-bracket">]</span></span>
 <p>Aunque no es necesario, se recomienda que estos caracteres de espaciado
 sean espacios.</p>
 </aside>
-<aside class="footnote brackets" id="id20" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id12">8</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id22" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id13">9</a><span class="fn-bracket">]</span></span>
 <p>Como no tendremos ningún procesador que soporte tal etiqueta no podremos
 hacer la comprobación. Sin embargo, aunque no tenga interés práctico, podemos
 usar la directiva <code class="docutils literal notranslate"><span class="pre">%TAG</span></code>  con la <abbr title="Uniform Resource Locator">URN</abbr> asociada al esquema de <abbr title="YAML Ain't Markup Language">YAML</abbr> para

@@ -1,6 +1,6 @@
 {
    "$schema": "https://json-schema.org/draft/2020-12/schema",
-   "$id": "urn:casilleros.schema.json",
+   "$id": "casilleros.schema.json",
    "type": "object",
    "title": "Casilleros",
    "description": "Asignación de casilleros a profesores",

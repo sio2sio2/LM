@@ -270,8 +270,10 @@ Ejemplo introductorio
 Echemos un vistazo a :download:`este XML <files/casilleros.xml>` que permite
 gestionar los casilleros de los profesores de un centro de enseñanza:
 
-.. literalinclude:: files/casilleros.xml
-   :language: xml
+.. dropdown:: Casilleros de profesores
+
+   .. literalinclude:: files/casilleros.xml
+      :language: xml
 
 .. note:: El documento puede validarse con :download:`este DTD
    <files/casilleros.dtd>`.

@@ -2,20 +2,20 @@
 
 .. _dtd:
 
-*************
-|XML| (|DTD|)
-*************
+*****
+|DTD|
+*****
 Para definir gramáticas de documentos |XML| se usan distintos lenguajes, pero
 los más habituales son:
 
 * |DTD| |XML|, derivado del |DTD| que se usa para validar documentos |SGML|.
   Básicamente es un documento |SGML| usado para definir la gramática de un
   dialecto |XML| concreto.
-* :ref:`W3C XML Schema <xsd>`, que es un lenguaje de esquemas |XML| desarrollado
+* :ref:`W3C XML Schema <xsd>`, que es un lenguaje con sintaxis |XML| desarrollado
   por el |W3C|.
 * :ref:`Relax-NG <rnc>`, que es otro lenguaje de esquemas |XML| más sencillo que
   el anterior y que, además de la sintaxis |XML|, dispone de una sintaxis
-  alternativa llamada *Compacta*
+  alternativa llamada *Compacta*.
 
 Desarrollaremos sólo el primer lenguaje, que es el más extendido, aunque también
 el más limitado y menos expresivo. Los otros dos, los desarrollaremos como

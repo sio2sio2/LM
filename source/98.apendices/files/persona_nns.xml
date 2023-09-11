@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<persona>
+   <nombre>Perico</nombre>
+   <apellidos>de los palotes</apellidos>
+   <dni>41112233D</dni>
+   <tlfo>953112233</tlfo>
+   <direccion>
+      <via tipo="calle">Callo, 5</via>
+      <cp>12345</cp>
+      <localidad>Villaconejos</localidad>
+   </direccion>
+</persona>

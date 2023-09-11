@@ -28,7 +28,7 @@
       <departamento>&EFI;</departamento>
    </profesor>
 
-   <profesor id="p13" sustituto="p86">
+   <profesor id="p13">
       <apelativo>Cristina</apelativo>
       <nombre>María Cristina</nombre>
       <apellidos>Prieto Monagas</apellidos>
@@ -37,7 +37,7 @@
 
    <!-- Si se sustituye a sí mismo es que está de baja -->
 
-   <profesor id="p15" sustituto="p15">
+   <profesor id="p15">
       <apelativo>Manolo</apelativo>
       <nombre>Manuel</nombre>
       <apellidos>Páez Robledo</apellidos>
@@ -46,7 +46,7 @@
 
    <!-- Profesor con casillero(s) adicional(es) -->
 
-   <profesor id="p17" adicional="43">
+   <profesor id="p17" casillero="17 43">
       <apelativo>Lucía</apelativo>
       <nombre>Lucía</nombre>
       <apellidos>Gálvez Ruiz</apellidos>
@@ -76,7 +76,7 @@
 
    <!-- Profesor sustituto -->
 
-   <profesor id="p86">
+   <profesor id="p86" sustituye="p86">
       <apelativo>Roberto</apelativo>
       <nombre>Roberto</nombre>
       <apellidos>Mínguez Torralbo</apellidos>
