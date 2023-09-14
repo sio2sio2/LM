@@ -45,6 +45,7 @@
 
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Ejercicios sobre XPath" href="30.xpath.html" />
     <link rel="prev" title="Ejercicios sobre lenguajes de información" href="10.lenguajes.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head><body>
@@ -56,6 +57,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="Índice General"
              accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="30.xpath.html" title="Ejercicios sobre XPath"
+             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="10.lenguajes.html" title="Ejercicios sobre lenguajes de información"
              accesskey="P">anterior</a> &nbsp; &nbsp;</li>
@@ -197,6 +201,72 @@ así, indique por qué:</p>
 </li>
 </ol>
 </li>
+<li><p>Dado el siguiente esquema <abbr title="JavaScript Object Notation">JSON</abbr></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://json-schema.org/draft/2020-12/schema&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;minLength&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;interprete&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;minLength&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;enum&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;javascript&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;java&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;go&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;tamaño&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;exclusiveMinimum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">}</span>
+<span class="w">   </span><span class="p">},</span>
+<span class="w">   </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">],</span>
+<span class="w">   </span><span class="nt">&quot;oneOf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;interprete&quot;</span><span class="p">],</span>
+<span class="w">         </span><span class="nt">&quot;not&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;tipo&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;tipo&quot;</span><span class="p">],</span>
+<span class="w">         </span><span class="nt">&quot;not&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;interprete&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">   </span><span class="p">],</span>
+<span class="w">   </span><span class="nt">&quot;additionalProperties&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>indique <strong>sin usar un validador</strong> si los siguientes documentos son válidos:</p>
+<ol class="arabic">
+<li><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;servidor.c&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;servidor.c&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;interprete&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/bin/c&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;servidor.c&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;interprete&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/bin/c&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;tamaño&quot;</span><span class="p">:</span><span class="w">  </span><span class="mi">1234</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;servidor.c&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;servidor.c&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;ruta&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/local/bin&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
 </ol>
 <p>Y, ahora, escriba las gramáticas que permitan validar las soluciones diseñadas
 para los <a class="reference internal" href="10.lenguajes.html#ej-li-doc"><span class="std std-ref">ejercicios sobre lenguajes de marcas</span></a>:</p>
@@ -306,6 +376,11 @@ todos los números que aparecen.</p>
     <p class="topless"><a href="10.lenguajes.html"
                           title="Previous page">&larr; Ejercicios sobre lenguajes de información</a></p>
   </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="30.xpath.html"
+                          title="Next page">&rarr; Ejercicios sobre <em>XPath</em></a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>Esta página</h3>
     <ul class="this-page-menu">
@@ -352,6 +427,9 @@ todos los números que aparecen.</p>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="Índice General"
              >índice</a></li>
+        <li class="right" >
+          <a href="30.xpath.html" title="Ejercicios sobre XPath"
+             >siguiente</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="10.lenguajes.html" title="Ejercicios sobre lenguajes de información"
              >anterior</a> &nbsp; &nbsp;</li>

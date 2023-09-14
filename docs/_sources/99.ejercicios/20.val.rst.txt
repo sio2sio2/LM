@@ -124,6 +124,77 @@ Ejercicios sobre validación
             "nombre": "servidor.c"
          }
 
+#. Dado el siguiente esquema |JSON|
+
+   .. code-block:: json
+
+      {
+         "$schema": "https://json-schema.org/draft/2020-12/schema",
+         "type": "object",
+         "properties": {
+            "nombre": { "type": "string", "minLength": 1},
+            "interprete": {"type": "string", "minLength": 1},
+            "tipo": { "enum": ["python", "javascript", "java", "c", "go"] },
+            "tamaño": { "type": "integer", "exclusiveMinimum": 0 }
+         },
+         "required": ["nombre"],
+         "oneOf": [
+            {
+               "required": ["interprete"],
+               "not": { "required": ["tipo"] }
+            },
+            {
+               "required": ["tipo"],
+               "not": { "required": ["interprete"] }
+            }
+         ],
+         "additionalProperties": false
+      }
+
+   indique **sin usar un validador** si los siguientes documentos son válidos:
+
+   #.
+      .. code-block:: json
+
+         {
+            "nombre": "servidor.c"
+         }
+
+   #.
+      .. code-block:: json
+
+         {
+            "nombre": "servidor.c",
+            "interprete": "/usr/bin/c",
+            "tipo": "c"
+         }
+
+   #.
+      .. code-block:: json
+
+         {
+            "nombre": "servidor.c",
+            "interprete": "/usr/bin/c",
+            "tamaño":  1234
+         }
+
+   #.
+      .. code-block:: json
+
+         {
+            "nombre": "servidor.c",
+            "tipo": "c"
+         }
+
+   #.
+      .. code-block:: json
+
+         {
+            "nombre": "servidor.c",
+            "tipo": "c",
+            "ruta": "/usr/local/bin"
+         }
+
 Y, ahora, escriba las gramáticas que permitan validar las soluciones diseñadas
 para los :ref:`ejercicios sobre lenguajes de marcas <ej-li-doc>`:
 

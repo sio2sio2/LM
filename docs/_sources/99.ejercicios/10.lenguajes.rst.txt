@@ -150,5 +150,4 @@ uno de ellos cree una versión |YAML| y otra versión |XML|.
       :download:`Solución propuesta </99.ejercicios/soluciones/grafico/grafico.xml>`
 
 
-.. |JSON| replace:: :abbr:`JSON (JavaScript Object Notation)`
 .. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`

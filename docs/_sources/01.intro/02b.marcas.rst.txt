@@ -811,7 +811,6 @@ Ejercicios resueltos
 .. |RSS| replace:: :abbr:`RSS (Really Simple Syndication)`
 .. |XSLT| replace:: :abbr:`XSLT (Extensible Stylesheet Language Transformations)`
 .. |URN| replace:: :abbr:`URN (Uniform Resource Name)`
-.. |JSON| replace:: :abbr:`JSON (JavaScript Object Notation)`
 .. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`
 
 .. _IBM: https://es.wikipedia.org/wiki/IBM

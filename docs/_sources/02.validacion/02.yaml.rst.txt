@@ -1085,7 +1085,6 @@ crearlos:
 .. [#] En realidad, podríamos haber definido ``edad`` y ``nacimiento`` en
    ``properties`` y no necesitaríamos recurrir a ``unevaluatedProperties``.
 
-.. |JSON| replace:: :abbr:`JSON (JavaScript Object Notation)`
 .. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`
 .. |DTD| replace:: :abbr:`DTD (Document Type Definition)`
 .. |URN| replace:: :abbr:`URN (Uniform Resource Name)`

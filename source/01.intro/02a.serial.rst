@@ -980,7 +980,6 @@ Ejercicios resueltos
       !y!int 1
 
 .. |CSV| replace:: :abbr:`CSV (Comma-Separated Values)`
-.. |JSON| replace:: :abbr:`JSON (JavaScript Object Notation)`
 .. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`
 .. |SVG| replace:: :abbr:`SVG (Scalable Vector Graphics)`
 .. |URN| replace:: :abbr:`URN (Uniform Resource Locator)`

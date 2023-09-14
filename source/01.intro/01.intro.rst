@@ -387,7 +387,6 @@ interés, pero existe otros muchos ampliamente utilizados:
 .. |DSSSL| replace:: :abbr:`DSSSL (Document Style Semantics and Specification Language)`
 .. |XSL-FO| replace:: :abbr:`XSL-FO (XSL Formatting Object)`
 .. |PDF| replace:: :abbr:`PDF (Portable Document Format)`
-.. |JSON| replace:: :abbr:`JSON (JavaScript Object Notation)`
 .. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`
 .. |XHTML| replace:: :abbr:`XHTML (eXtensible HyperText Markup Language)`
 .. _TeX: https://tug.org/ 

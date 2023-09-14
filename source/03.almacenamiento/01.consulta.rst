@@ -1,0 +1,13 @@
+Tecnologías de consulta
+=======================
+Tan importante como conocer los formatos con que se intercambian documentos de
+datos es saber cómo extraer datos concretos incluidos en ellos. Para ello
+estudiaremos dos lenguajes de consulta, uno orientado a documentos |XML| y otro
+a documentos |JSON|.
+
+.. toctree::
+   :caption: Contenidos
+   :glob:
+   :maxdepth: 2
+
+   01[a-z]*
