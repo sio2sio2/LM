@@ -106,10 +106,11 @@ necesito, o sea, un conjunto de datos sin una estructura narrativa<a class="foot
 Entonces, ¿qué sería más apropiado para enumerar datos? He aquí la respuesta:</p>
 <p id="l-ser">Un <em class="dfn">lenguaje de serialización de datos</em> es un lenguaje especialmente
 diseñado para serializar datos, esto es, para transmitir un conjunto de datos o
-almacenarlos temporalmente. El lenguaje no tiene por qué producir documentos
-legibles, pero nosotros nos centraremos en los textuales, esto es, en los que
-generan flujos de datos directamente leíbles por un humano, ya que los lenguajes
-de marcas definidos anteriormente se caracterizan por ser textuales.</p>
+almacenarlos temporalmente. El lenguaje, en principio no tiene por qué producir
+<a class="reference internal" href="#texto-plano"><span class="std std-ref">documentos legibles</span></a>, pero nosotros nos centraremos en los
+textuales, esto es, en los que generan flujos de datos directamente leíbles por
+un humano, ya que los lenguajes de marcas definidos anteriormente se
+caracterizan por ser textuales.</p>
 <p>La confusión entre ambos tipos de lenguajes deriva de que ha sido y es muy común
 usar <em>lenguajes de marcas</em> (en especial dialectos <abbr title="eXtensible  Markup Language">XML</abbr> como trataremos más
 adelante) para serializar datos. Profundizaremos en ello.</p>
@@ -124,7 +125,7 @@ programación cuya sintaxis se ajuste a un lenguaje de marcas. Por ejemplo,
 <p class="rubric">Terminología</p>
 <p>Antes de empezar, es conveniente aclarar algunos de los conceptos con los que
 nos encontraremos en este  texto:</p>
-<dl class="simple">
+<dl class="simple" id="texto-plano">
 <dt><em class="dfn">Texto plano</em></dt><dd><p>Es el archivo digital que contiene únicamente caracteres legibles por los
 humanos.</p>
 </dd>
@@ -293,6 +294,10 @@ documento con este tipo de marcado</span></a>.</p>
 esta primera estrategia descriptiva, ya que existe un texto narrativo que
 marcar. La segunda estrategia, en cambio, es la propia de los
 <a class="reference internal" href="#l-ser"><span class="std std-ref">lenguajes de serialización de datos</span></a>.</p>
+<p>En el módulo, dedicaremos el primer tramo del curso a estudiar unos y otros
+lenguajes para el <em>marcado descriptivo orientado al dato</em>. En cambio, el
+segundo, que aborda la tecnología web, trata <abbr title="HyperText Markup Language">HTML</abbr>, que es un lenguaje de
+<em>marcado descriptivo orientado al documento</em>.</p>
 </div>
 </dd>
 </dl>
@@ -359,6 +364,8 @@ este formato.</p></li>
 <li><p><a class="reference external" href="https://www.adobe.com/es/products/postscript.html">Postscript</a>, usado para la descripción de páginas de impresión. Muchas
 impresoras son capaces de interpretarlo y es en este formato en el que se
 le debe proporcionar el documento de impresión.</p></li>
+<li><p><a class="reference external" href="https://es.wikipedia.org/wiki/PDF">PDF</a>, que se basa en el anterior y es un estándar <em>de facto</em> para la
+representación digital de documentos.</p></li>
 <li><p><a class="reference external" href="https://es.wikipedia.org/wiki/Troff">troff</a> y su evolución <a class="reference external" href="https://es.wikipedia.org/wiki/Nroff">nroff</a>, que es un sistema tipográfico al que relegó
 la aparición de <a class="reference external" href="https://tug.org/">TeX</a>, pero que se sigue usando en la maquetación de las
 páginas de manual en los sistemas <em>UNIX</em>.</p></li>

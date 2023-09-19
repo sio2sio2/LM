@@ -40,10 +40,11 @@ Entonces, ¿qué sería más apropiado para enumerar datos? He aquí la respuest
 
 Un :dfn:`lenguaje de serialización de datos` es un lenguaje especialmente
 diseñado para serializar datos, esto es, para transmitir un conjunto de datos o
-almacenarlos temporalmente. El lenguaje no tiene por qué producir documentos
-legibles, pero nosotros nos centraremos en los textuales, esto es, en los que
-generan flujos de datos directamente leíbles por un humano, ya que los lenguajes
-de marcas definidos anteriormente se caracterizan por ser textuales.
+almacenarlos temporalmente. El lenguaje, en principio no tiene por qué producir
+:ref:`documentos legibles <texto-plano>`, pero nosotros nos centraremos en los
+textuales, esto es, en los que generan flujos de datos directamente leíbles por
+un humano, ya que los lenguajes de marcas definidos anteriormente se
+caracterizan por ser textuales.
 
 La confusión entre ambos tipos de lenguajes deriva de que ha sido y es muy común
 usar *lenguajes de marcas* (en especial dialectos |XML| como trataremos más
@@ -59,6 +60,8 @@ adelante) para serializar datos. Profundizaremos en ello.
 
 Antes de empezar, es conveniente aclarar algunos de los conceptos con los que
 nos encontraremos en este  texto:
+
+.. _texto-plano:
 
 :dfn:`Texto plano`
    Es el archivo digital que contiene únicamente caracteres legibles por los
@@ -248,6 +251,11 @@ Atendiendo a la estrategia que siga un lenguaje al marcar, podemos distinguir:
       marcar. La segunda estrategia, en cambio, es la propia de los
       :ref:`lenguajes de serialización de datos <l-ser>`.
 
+      En el módulo, dedicaremos el primer tramo del curso a estudiar unos y otros
+      lenguajes para el *marcado descriptivo orientado al dato*. En cambio, el
+      segundo, que aborda la tecnología web, trata |HTML|, que es un lenguaje de
+      *marcado descriptivo orientado al documento*.
+
 Los lenguajes de marcas suelen ensayar preferentemente una estrategia de
 marcado, aunque puede tener marcas de alguna estrategia distinta. Por ejemplo,
 |HTML| dispone, por lo general, de marcas descriptivas (como ``<p>`` o
@@ -314,6 +322,8 @@ interés, pero existe otros muchos ampliamente utilizados:
       * Postscript_, usado para la descripción de páginas de impresión. Muchas
         impresoras son capaces de interpretarlo y es en este formato en el que se
         le debe proporcionar el documento de impresión.
+      * PDF_, que se basa en el anterior y es un estándar *de facto* para la
+        representación digital de documentos.
       * troff_ y su evolución nroff_, que es un sistema tipográfico al que relegó
         la aparición de TeX_, pero que se sigue usando en la maquetación de las
         páginas de manual en los sistemas *UNIX*.
@@ -413,6 +423,7 @@ interés, pero existe otros muchos ampliamente utilizados:
 .. _Inkscape: https://inkscape.org
 .. _TOML: https://toml.io/
 .. _Javascript: https://es.wikipedia.org/wiki/JavaScript
+.. _PDF: https://es.wikipedia.org/wiki/PDF
 
 .. |uostr| unicode:: U+00D8 .. LATIN CAPITAL LETTER O WITH STROKE
 
