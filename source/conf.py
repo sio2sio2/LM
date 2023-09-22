@@ -45,6 +45,7 @@ rst_epilog = """
 .. |HTML| replace:: :abbr:`HTML (HyperText Markup Language)`
 .. |URL| replace:: :abbr:`URL (Uniform Resource Locator)`
 .. |JSON| replace:: :abbr:`JSON (JavaScript Object Notation)`
+.. _Javascript: https://es.wikipedia.org/wiki/JavaScript
 """
 
 extlinks = {

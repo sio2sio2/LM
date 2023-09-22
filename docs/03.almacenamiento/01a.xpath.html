@@ -45,7 +45,7 @@
 
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
-    <link rel="next" title="3.1.2. JSONpath" href="01b.jsonpath.html" />
+    <link rel="next" title="3.1.2. JSONPath" href="01b.jsonpath.html" />
     <link rel="prev" title="3.1. Tecnologías de consulta" href="01.consulta.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head><body>
@@ -58,7 +58,7 @@
           <a href="../genindex.html" title="Índice General"
              accesskey="I">índice</a></li>
         <li class="right" >
-          <a href="01b.jsonpath.html" title="3.1.2. JSONpath"
+          <a href="01b.jsonpath.html" title="3.1.2. JSONPath"
              accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="01.consulta.html" title="3.1. Tecnologías de consulta"
@@ -88,7 +88,7 @@ documento <abbr title="eXtensible  Markup Language">XML</abbr>.</p>
 <p><em>XPath</em> es, pues, un estandar del <abbr title="W3 Consortium">W3C</abbr><a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> que no tiene utilidad <em>per se</em>,
 sino como herramienta cuando se usan métodos de procesamiento del <abbr title="eXtensible  Markup Language">XML</abbr> (XQuery,
 <span class="xref std std-ref">XSLT</span>, bibliotecas para <abbr title="eXtensible  Markup Language">XML</abbr> de programas de propósito general,
-etc.). Las últimas versiones de <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/JavaScript">Javascript</a>, que fue un lenguaje
+etc.). Las últimas versiones de <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a>, que fue un lenguaje
 diseñado específicamente para la manipulación de <abbr title="HyperText Markup Language">HTML</abbr>, soportan también la
 selección de nodos con <em>XPath</em>, mediante la función <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/JavaScript/Introduction_to_using_XPath_in_JavaScript">document.evaluate</a>.</p>
 <div class="admonition note">
@@ -97,7 +97,7 @@ selección de nodos con <em>XPath</em>, mediante la función <a class="reference
 es <abbr title="eXtensible  Markup Language">XML</abbr>, pero tiene bastantes semejanzas) es muy común usar para la
 identificación de nodos los <span class="xref std std-ref">selectores CSS</span>, diseñados
 en principio para definir el estilo (el aspecto) de cada nodo. Sin embargo,
-<a class="reference external" href="https://developer.mozilla.org/es/docs/Web/JavaScript">Javascript</a> los usa también en general para la manipulación de nodos (véase
+<a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a> los usa también en general para la manipulación de nodos (véase
 <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/API/Document/querySelectorAll">document.querySelectorAll</a>),
 en vez de <em>XPath</em>.</p>
 </div>
@@ -156,7 +156,26 @@ XML de casilleros<div class="sd-summary-down docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="cp">&lt;!DOCTYPE claustro SYSTEM &quot;casilleros.dtd&quot;&gt;</span>
+<span class="cp">&lt;!DOCTYPE claustro SYSTEM &quot;casilleros.dtd&quot; [</span>
+<span class="cp">   &lt;!ENTITY FyQ &quot;Física y Química&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY EFI &quot;Educación Física&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY ING &quot;Inglés&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY INF &quot;Informática&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY FRA &quot;Francés&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY ORI &quot;Orientación&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY MUS &quot;Música&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY LEN &quot;Lengua Castellana y Literatura&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY MAT &quot;Matemáticas&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY ByG &quot;Biología y Geología&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY FIL &quot;Filosofía&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY HIS &quot;Geografía e Historia&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY LAT &quot;Latín&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY GRI &quot;Griego&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY DIB &quot;Dibujo&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY FOL &quot;Formación y Orientación Laboral&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY TEC &quot;Tecnología&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY REL &quot;Religión&quot;&gt;</span>
+]&gt;
 
 <span class="nt">&lt;claustro</span><span class="w"> </span><span class="na">centro=</span><span class="s">&quot;IES Pepe Botella&quot;</span><span class="nt">&gt;</span>
 <span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p1&quot;</span><span class="nt">&gt;</span>
@@ -764,10 +783,17 @@ unión de los nodos que seleccionan las distintas rutas. Por ejemplo:</p>
 <p>selecciona todos los nodos <em>apodo</em> y <em>nombre</em>.</p>
 </section>
 </section>
-<section id="practicando-con-xpath">
-<h2><span class="section-number">3.1.1.3. </span>Practicando con <em>XPath</em><a class="headerlink" href="#practicando-con-xpath" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>Para practicar lo aprendido con <em>XPath</em> puede usarse <strong class="command">xmlstarlet</strong>
-tanto para obtener información del <abbr title="eXtensible  Markup Language">XML</abbr> original, como para modificarlo.</p>
+<section id="procesadores">
+<h2><span class="section-number">3.1.1.3. </span>Procesadores<a class="headerlink" href="#procesadores" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Para procesar nuestras expresiones <em>XPath</em> tenemos muchas alternativas, dos de
+las cuales pueden ser:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://extendsclass.com/xpath-tester.html">XPath Tester</a>, que permite
+evaluar online nuestras expresiones.</p></li>
+<li><p>El paquete <a class="reference external" href="https://packages.debian.org/stable/xmlstarlet">xmlstarlet</a>, cuyo paquete homónimo permite utilizar
+expresiones <em>XPath</em> tanto para seleccionar información del <abbr title="eXtensible  Markup Language">XML</abbr> original,
+como para modificarlo.</p></li>
+</ul>
 <section id="seleccion">
 <h3><span class="section-number">3.1.1.3.1. </span>Selección<a class="headerlink" href="#seleccion" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Para lograrlo es necesario usar el comando <code class="docutils literal notranslate"><span class="pre">sel</span></code>, seguido de la opción <code class="docutils literal notranslate"><span class="pre">-t</span></code>, y
@@ -1176,7 +1202,7 @@ técnico en dos dimensiones, determinar la expresión <em>XPath</em> que selecci
 <li><a class="reference internal" href="#agregacion-de-rutas">3.1.1.2.4. Agregación de rutas</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#practicando-con-xpath">3.1.1.3. Practicando con <em>XPath</em></a><ul>
+<li><a class="reference internal" href="#procesadores">3.1.1.3. Procesadores</a><ul>
 <li><a class="reference internal" href="#seleccion">3.1.1.3.1. Selección</a></li>
 <li><a class="reference internal" href="#edicion">3.1.1.3.2. Edición</a></li>
 </ul>
@@ -1196,7 +1222,7 @@ técnico en dos dimensiones, determinar la expresión <em>XPath</em> que selecci
   <div class="sphinxnext">
     <h4>Next page</h4>
     <p class="topless"><a href="01b.jsonpath.html"
-                          title="Next page">&rarr; <span class="section-number">3.1.2. </span><abbr title="JavaScript Object Notation">JSON</abbr>path</a></p>
+                          title="Next page">&rarr; <span class="section-number">3.1.2. </span><abbr title="JavaScript Object Notation">JSON</abbr>Path</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>Esta página</h3>
@@ -1245,7 +1271,7 @@ técnico en dos dimensiones, determinar la expresión <em>XPath</em> que selecci
           <a href="../genindex.html" title="Índice General"
              >índice</a></li>
         <li class="right" >
-          <a href="01b.jsonpath.html" title="3.1.2. JSONpath"
+          <a href="01b.jsonpath.html" title="3.1.2. JSONPath"
              >siguiente</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="01.consulta.html" title="3.1. Tecnologías de consulta"

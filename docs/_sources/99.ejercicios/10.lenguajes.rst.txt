@@ -6,6 +6,8 @@ Ejercicios sobre lenguajes de información
 Empecemos por algunos de identificación de nodos en lenguajes de serialización
 de datos:
 
+.. _ej10-01:
+
 #. Determine y justifique cuántos nodos contiene el siguiente documento
    |JSON|:
 
@@ -38,6 +40,8 @@ de datos:
          cp: 12345
       }
 
+   .. _ej10-03:
+
 #. Reescriba el documento anterior haciendo explícitos mediante etiquetas
    (``!!int``, ``!!str``,  etc.) los tipos que se deducen del aspecto de los
    nodos.
@@ -45,6 +49,7 @@ de datos:
 Y, ahora, diseñemos documentos para transmitir o almacenar información. De cada
 uno de ellos cree una versión |YAML| y otra versión |XML|.
 
+.. _ej10-05:
 .. _ej-li-doc:
 
 5. Diseñe un documento para almacenar las facturas generadas por una empresa.

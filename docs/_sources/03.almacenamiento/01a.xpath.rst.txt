@@ -12,8 +12,7 @@ documento |XML|.
 *XPath* es, pues, un estandar del |W3C|\ [#]_ que no tiene utilidad *per se*,
 sino como herramienta cuando se usan métodos de procesamiento del |XML| (XQuery,
 :ref:`XSLT <xslt>`, bibliotecas para |XML| de programas de propósito general,
-etc.). Las últimas versiones de `Javascript
-<https://developer.mozilla.org/es/docs/Web/JavaScript>`_, que fue un lenguaje
+etc.). Las últimas versiones de Javascript_, que fue un lenguaje
 diseñado específicamente para la manipulación de |HTML|, soportan también la
 selección de nodos con *XPath*, mediante la función `document.evaluate
 <https://developer.mozilla.org/es/docs/Web/JavaScript/Introduction_to_using_XPath_in_JavaScript>`_.
@@ -533,10 +532,16 @@ unión de los nodos que seleccionan las distintas rutas. Por ejemplo::
 
 selecciona todos los nodos *apodo* y *nombre*.
 
-Practicando con *XPath*
-***********************
-Para practicar lo aprendido con *XPath* puede usarse :command:`xmlstarlet`
-tanto para obtener información del |XML| original, como para modificarlo.
+Procesadores
+************
+Para procesar nuestras expresiones *XPath* tenemos muchas alternativas, dos de
+las cuales pueden ser:
+
+* `XPath Tester <https://extendsclass.com/xpath-tester.html>`_, que permite
+  evaluar online nuestras expresiones.
+* El paquete :deb:`xmlstarlet`, cuyo paquete homónimo permite utilizar
+  expresiones *XPath* tanto para seleccionar información del |XML| original,
+  como para modificarlo.
 
 Selección
 =========

@@ -10,7 +10,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>3.1.2. JSONpath &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <title>3.1.2. JSONPath &#8212; documentación de Lenguajes de Marcas - rolling</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
@@ -67,7 +67,7 @@
 
           <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">3. </span>Almacenamiento</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="01.consulta.html" accesskey="U"><span class="section-number">3.1. </span>Tecnologías de consulta</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3.1.2. </span><abbr title="JavaScript Object Notation">JSON</abbr>path</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3.1.2. </span><abbr title="JavaScript Object Notation">JSON</abbr>Path</a></li> 
       </ul>
     </div>
     </div>
@@ -79,7 +79,99 @@
           <div class="body" role="main">
             
   <section id="jsonpath">
-<h1><span class="section-number">3.1.2. </span><abbr title="JavaScript Object Notation">JSON</abbr>path<a class="headerlink" href="#jsonpath" title="Enlace permanente a este encabezado">¶</a></h1>
+<h1><span class="section-number">3.1.2. </span><abbr title="JavaScript Object Notation">JSON</abbr>Path<a class="headerlink" href="#jsonpath" title="Enlace permanente a este encabezado">¶</a></h1>
+<p><abbr title="JavaScript Object Notation">JSON</abbr>Path es a <a class="reference internal" href="../01.intro/02a.serial.html#json"><span class="std std-ref">JSON</span></a> lo que <a class="reference internal" href="01a.xpath.html#xpath"><span class="std std-ref">XPath</span></a> a <a class="reference internal" href="../01.intro/02b.marcas.html#xml"><span class="std std-ref">XML</span></a>, esto es, un lenguaje que nos permite indicar qué nodos del documento
+desean seleccionarse. No es aún un estándar, y su existencia surge por la
+necesidad de tener un equivalente a <em>XPath</em> para documentos <abbr title="JavaScript Object Notation">JSON</abbr> (véase el
+<a class="reference external" href="https://goessner.net/articles/JsonPath/">artículo original que lo propuso</a>).
+Este estado de las cosas obedece a cuál ha sido la historia del intercambio de
+datos, a la cual se apuntó cuando se discutió <a class="reference internal" href="../01.intro/index.html#ut1"><span class="std std-ref">por qué este módulo se
+denomina lenguaje de marcas</span></a><a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>: las tecnologías alrededor de <abbr title="eXtensible  Markup Language">XML</abbr>
+se desarrollaron cuando éste monopolizaba el intercambio de datos, de suerte que
+los lenguajes que han empezado a despuntar después han ido inspirándose en ellas
+para lograr sus funcionalidades.</p>
+<p>Se inspira en:</p>
+<ul class="simple">
+<li><p>XPath, fundamentalmente para su funcionalidad.</p></li>
+<li><p>El modo en que se refieren las propiedades de los objetos en lenguajes de
+programación <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a>, <a class="reference external" href="https://www.python.org">Python</a> o <a class="reference external" href="https://www.php.net">PHP</a>, para su sintaxis.</p></li>
+</ul>
+<p class="rubric">Notas al pie</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Conviene, no obstante, aclarar que esto es una mera conjetura del autor,
+el cual está convencido que de haber nacido este módulo tiempo después de
+haber pasado la época del empacho del <abbr title="eXtensible  Markup Language">XML</abbr> no se habría denominado «Lenguaje
+de marcas» para no dejar excluidos a los <a class="reference internal" href="../01.intro/01.intro.html#l-ser"><span class="std std-ref">lenguajes de serialización de
+datos</span></a>.</p>
+</aside>
+</aside>
+<section id="sintaxis-basica">
+<h2><span class="section-number">3.1.2.1. </span>Sintaxis básica<a class="headerlink" href="#sintaxis-basica" title="Enlace permanente a este encabezado">¶</a></h2>
+<p><abbr title="JavaScript Object Notation">JSON</abbr>Path, por analogía con algunos lenguajes de programación utiliza el
+punto (»<kbd class="kbd docutils literal notranslate">.</kbd>») o los corchetes (»<kbd class="kbd docutils literal notranslate">[]</kbd>») para separar las claves de un
+objeto. Tomemos para ilustrarlo un documento ya analizado:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Pedro Martínez Alvárez&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;edad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;casado&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;direccion&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;calle&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Trujillo&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;numero&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span>
+<span class="w">   </span><span class="p">},</span>
+<span class="w">   </span><span class="nt">&quot;nacimiento&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1991-08-25&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;defuncion&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;hijos&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;Felipe&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;Sonsoles&quot;</span>
+<span class="w">   </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Como <code class="docutils literal notranslate"><span class="pre">$</span></code> es la forma de referirnos al nodo raíz el valor de la propiedad
+<em>centro</em>, podemos referirla así:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.nombre
+</pre></div>
+</div>
+<p>o con la sintaxis de corchetes equivalente:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$[&quot;nombre&quot;]
+</pre></div>
+</div>
+<p>en la que, como puede verse, es necesario escribir la clave entre comillas
+dobles. Del mismo modo la expresión:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.direccion
+</pre></div>
+</div>
+<p>devolvería el valor de esta propiedad que no es un escalar, sino otro mapa
+completo con dos propiedades. Si quisiéramos acceder a una de ellas concreta,
+podríamos volver a usar el punto (o los corchetes indistintamente):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.direccion.calle
+</pre></div>
+</div>
+<p>La expresión:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.hijos
+</pre></div>
+</div>
+<p>devolvería, en cambio, una secuencia, no un objeto, por lo que no tendría
+sentido usar el punto, sino usar una notación que nos eligiese uno de los
+elementos de la secuencia:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.hijos[0]
+</pre></div>
+</div>
+<p>En este caso elegimos el primer hijo (<em>Felipe</em>), ya que:</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>A diferencia de <em>XPath</em>, el primer elemento se nota con <strong>0</strong>, no
+con <strong>1</strong>.</p>
+</div>
+</section>
+<section id="sintaxis-completa">
+<h2><span class="section-number">3.1.2.2. </span>Sintaxis completa<a class="headerlink" href="#sintaxis-completa" title="Enlace permanente a este encabezado">¶</a></h2>
+</section>
+<section id="procesadores">
+<h2><span class="section-number">3.1.2.3. </span>Procesadores<a class="headerlink" href="#procesadores" title="Enlace permanente a este encabezado">¶</a></h2>
+</section>
 </section>
 
 
@@ -91,7 +183,18 @@
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/logo.png" alt="Logo"/>
-        </a></p>
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">3.1.2. <abbr title="JavaScript Object Notation">JSON</abbr>Path</a><ul>
+<li><a class="reference internal" href="#sintaxis-basica">3.1.2.1. Sintaxis básica</a></li>
+<li><a class="reference internal" href="#sintaxis-completa">3.1.2.2. Sintaxis completa</a></li>
+<li><a class="reference internal" href="#procesadores">3.1.2.3. Procesadores</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div class="sphinxprev">
     <h4>Previous page</h4>
     <p class="topless"><a href="01a.xpath.html"
@@ -158,7 +261,7 @@
 
           <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">3. </span>Almacenamiento</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="01.consulta.html" ><span class="section-number">3.1. </span>Tecnologías de consulta</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3.1.2. </span><abbr title="JavaScript Object Notation">JSON</abbr>path</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3.1.2. </span><abbr title="JavaScript Object Notation">JSON</abbr>Path</a></li> 
       </ul>
     </div>
     </div>

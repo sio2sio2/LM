@@ -422,7 +422,6 @@ interés, pero existe otros muchos ampliamente utilizados:
 .. _LibreOffice: https://www.documentfoundation.org/
 .. _Inkscape: https://inkscape.org
 .. _TOML: https://toml.io/
-.. _Javascript: https://es.wikipedia.org/wiki/JavaScript
 .. _PDF: https://es.wikipedia.org/wiki/PDF
 
 .. |uostr| unicode:: U+00D8 .. LATIN CAPITAL LETTER O WITH STROKE

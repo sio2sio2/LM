@@ -19,3 +19,7 @@ dl dd  p:first-child {
 div.admonition-todo {
    background-color:  #e5ffe5;
 }
+
+abbr {
+   border-bottom: none;
+}

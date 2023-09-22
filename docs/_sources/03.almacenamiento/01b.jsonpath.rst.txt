@@ -1,2 +1,111 @@
-|JSON|\ path
+|JSON|\ Path
 ************
+|JSON|\ Path es a :ref:`JSON <json>` lo que :ref:`XPath <xpath>` a :ref:`XML
+<xml>`, esto es, un lenguaje que nos permite indicar qué nodos del documento
+desean seleccionarse. No es aún un estándar, y su existencia surge por la
+necesidad de tener un equivalente a *XPath* para documentos |JSON| (véase el
+`artículo original que lo propuso <https://goessner.net/articles/JsonPath/>`_).
+Este estado de las cosas obedece a cuál ha sido la historia del intercambio de
+datos, a la cual se apuntó cuando se discutió :ref:`por qué este módulo se
+denomina lenguaje de marcas <ut1>`\ [#]_: las tecnologías alrededor de |XML|
+se desarrollaron cuando éste monopolizaba el intercambio de datos, de suerte que
+los lenguajes que han empezado a despuntar después han ido inspirándose en ellas
+para lograr sus funcionalidades.
+
+Se inspira en:
+
+* XPath, fundamentalmente para su funcionalidad.
+* El modo en que se refieren las propiedades de los objetos en lenguajes de
+  programación Javascript_, Python_ o PHP_, para su sintaxis.
+
+.. rubric:: Notas al pie
+
+.. [#] Conviene, no obstante, aclarar que esto es una mera conjetura del autor,
+   el cual está convencido que de haber nacido este módulo tiempo después de
+   haber pasado la época del empacho del |XML| no se habría denominado "Lenguaje
+   de marcas" para no dejar excluidos a los :ref:`lenguajes de serialización de
+   datos <l-ser>`.
+
+Sintaxis básica
+===============
+|JSON|\ Path, por analogía con algunos lenguajes de programación utiliza el
+punto (":kbd:`.`") o los corchetes (":kbd:`[]`") para separar las claves de un
+objeto. Tomemos para ilustrarlo un documento ya analizado:
+
+.. code:: json
+
+   {
+      "nombre": "Pedro Martínez Alvárez",
+      "edad": 32,
+      "casado": true,
+      "direccion": {
+         "calle": "Trujillo",
+         "numero": 22
+      },
+      "nacimiento": "1991-08-25",
+      "defuncion": null,
+      "hijos": [
+         "Felipe",
+         "Sonsoles"
+      ]
+   }
+
+
+Como ``$`` es la forma de referirnos al nodo raíz el valor de la propiedad
+*centro*, podemos referirla así:
+
+.. code:: none
+
+   $.nombre
+
+o con la sintaxis de corchetes equivalente:
+
+.. code:: none
+
+   $["nombre"]
+
+en la que, como puede verse, es necesario escribir la clave entre comillas
+dobles. Del mismo modo la expresión:
+
+.. code:: none
+
+   $.direccion
+
+devolvería el valor de esta propiedad que no es un escalar, sino otro mapa
+completo con dos propiedades. Si quisiéramos acceder a una de ellas concreta,
+podríamos volver a usar el punto (o los corchetes indistintamente):
+
+.. code:: none
+
+   $.direccion.calle
+
+La expresión:
+
+.. code:: none
+
+   $.hijos
+
+devolvería, en cambio, una secuencia, no un objeto, por lo que no tendría
+sentido usar el punto, sino usar una notación que nos eligiese uno de los
+elementos de la secuencia:
+
+.. code:: none
+
+   $.hijos[0]
+
+En este caso elegimos el primer hijo (*Felipe*), ya que:
+
+.. warning:: A diferencia de *XPath*, el primer elemento se nota con **0**, no
+   con **1**.
+
+Sintaxis completa
+=================
+
+Procesadores
+============
+
+.. https://jsonpath.com
+.. jq.
+
+.. _Python: https://www.python.org
+.. _PHP: https://www.php.net

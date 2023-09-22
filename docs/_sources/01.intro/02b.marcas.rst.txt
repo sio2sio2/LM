@@ -8,6 +8,8 @@ básicamente:
 * La dupla |SGML|/|XML|, en especial el segundo, ya que el primero sólo lo
   trataremos con un mero carácter introductorio para presentar el segundo.
 
+.. _sgml:
+
 |SGML|
 ******
 
