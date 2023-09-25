@@ -1,0 +1,40 @@
+{
+   "unidad": "cm",
+   "entidades": [
+      {
+         "id": 1,
+         "tipo": "punto",
+         "x": 0,
+         "y": 0
+      },
+      {
+         "id": 2,
+         "tipo": "recta",
+         "x1": 0,
+         "y1": 0,
+         "x2": 5,
+         "y2": 10
+      },
+      {
+         "id": 5,
+         "tipo": "punto",
+         "x": -1,
+         "y": 10
+      },
+      {
+         "id": 3,
+         "tipo": "circunferencia",
+         "x": 10,
+         "y": 10,
+         "r": 5
+      },
+      {
+         "id": 4,
+         "tipo": "rectangulo",
+         "x1": 4,
+         "y1": 4,
+         "x2": 10,
+         "y2": 10
+      }
+   ]
+}

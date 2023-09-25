@@ -1,0 +1,49 @@
+{
+   "ayuntamiento": "Isla Cristina",
+   "vecinos": [
+      {
+         "id": 1,
+         "nombre": "José Manuel",
+         "apellidos": "Pérez Bermúdez",
+         "direccion": {
+            "tipo_via": "avenida",
+            "via": "España",
+            "numero": 100,
+            "piso": 1,
+            "letra": "A"
+         },
+         "tlfo": 959010203,
+         "origen": "Lepe"
+      },
+      {
+         "id": 2,
+         "nombre": "María",
+         "apellidos": "González Faneca",
+         "direccion": {
+            "tipo_via": "avenida",
+            "via": "España",
+            "numero": 100,
+            "piso": 1,
+            "letra": "A"
+         },
+         "tlfo": 959010203,
+         "origen": "Isla Cristina"
+      },
+      {
+         "id": 3,
+         "nombre": "Manuel",
+         "apellidos": "Pérez González",
+         "direccion": {
+            "tipo_via": "avenida",
+            "via": "España",
+            "numero": 100,
+            "piso": 1,
+            "letra": "A"
+         },
+         "tlfo": 959010203,
+         "origen": "Isla Cristina",
+         "padre": 1,
+         "madre": 2
+      }
+   ]
+}

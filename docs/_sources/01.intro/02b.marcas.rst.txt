@@ -128,7 +128,7 @@ Un documento |SGML| está consituido por tres partes:
 **Tipo de documento**
    La definición del tipo de documento, o sea, el |DTD|. Expone la gramática del
    lenguaje. Lo habitual es que se haga una simple declaración y la exposición
-   se haga en fichero aparte.
+   se haga en archivo aparte.
 
 **Contenido**
    esto es, una instancia concreta del tipo de documento, en que todo el
@@ -277,10 +277,7 @@ gestionar los casilleros de los profesores de un centro de enseñanza:
    .. literalinclude:: files/casilleros.xml
       :language: xml
 
-.. note:: El documento puede validarse con :download:`este DTD
-   <files/casilleros.dtd>`.
-
-.. note:: El documento no es un texto marcado, sino una sucesión de datos, por
+.. caution:: El documento no es un texto marcado, sino una sucesión de datos, por
    lo que estamos utilizando este |XML| para *marcado descriptivo orientado al
    dato*, o sea, justamente para algo para lo que se ajusta mejor un *lenguaje de
    serialización de datos*. Por lo general, a partir de ahora, todos los
@@ -289,6 +286,26 @@ gestionar los casilleros de los profesores de un centro de enseñanza:
 Se observan en él las marcas claramente diferenciadas del contenido, pero aún
 nos viene demasiado grande entender los detalles del documento. Volveremos
 a ellos según aparezcan más adelante.
+
+Introduciremos a continuación cuál es la gramatica general de los documentos
+|XML|, pero nos conviene de antemano saber cómo comprobar si son bien formados.  
+Tenemos varias alternativas:
+
+.. rst-class:: simple
+
+* Un validador online como el proporcionado por `xmlvalidation.com
+  <https://www.xmlvalidation.com/>`_.
+* La orden :program:`xmlstarlet`, instalable a través del paquete
+  :deb:`xmlstarlet`::
+
+   $ xmlstarlet val -e casilleros.xml
+
+  .. seealso:: Para más información sobre :program:`xmlstarlet` consulte el
+     :ref:`epígrafe sobre validación con un DTD <xml-valid>`.
+
+* `Visual Studio Code`_ es capaz de comprobar a sintaxis si se instala en el una
+  extensión apropiada como `XML de RedHat
+  <https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml>`_.
 
 Anatomía del documento
 ======================
@@ -330,7 +347,7 @@ que es imprescindible conocer su nombre y qué refieren:
             <apelativo>Luis</apelativo>
             <nombre>Luis</nombre>
             <apellidos>Márquez Vázquez</apellidos>
-            <departamento>&EFI;</departamento>
+            <departamento>Educación Física</departamento>
       </profesor>
    
    En el primer caso, el elemento está constituido exclusivamente por texto;
@@ -390,7 +407,7 @@ Sección **CDATA**
 
       <departamento>&EFI;</departamento>
 
-   La entidad :code:`&EFI;` está definida en fichero aparte (ya se verá cómo se
+   La entidad :code:`&EFI;` está definida en archivo aparte (ya se verá cómo se
    hacen tal definición al tratar el :ref:`DTD <dtd>`) y equivale a "*Educación
    Física*". Por tanto, lo anterior es equivalente a que se hubiera escrito:
 
@@ -421,6 +438,10 @@ Todo documento |XML| consta de dos partes:
 
       <?xml version="1.0" encoding="UTF-8"?>
       <!DOCTYPE claustro SYSTEM "casilleros.dtd">
+
+   .. note:: En nuestro ejemplo no hemos incluido esta declaración, porque
+      hasta la próxima unidad  no abordaremos la definición de una gramática
+      particular.
 
 **Contenido**
    Es la información que contiene propiamente el documento junto a las marcas
@@ -483,32 +504,6 @@ Que se pueda establecer este árbol jerárquico, da pie a algunas definiciones:
    Es aquel que comparte con él el mismo padre.
 
    .. image:: files/XML-Hermanos.png
-
-Validez
--------
-Cuando se analiza la validez de un documento |XML|, podemos establecer dos
-niveles de validez:
-
-- El cumplimiento de las **reglas generales** que todo |XML| debe cumplir.
-  Cuando un documento lo alcanza, se dice que el documento está :dfn:`bien
-  formado`.
-
-- El cumplimiento de unas **reglas gramaticales precisas** definidas en un |DTD|
-  (o en un documento equivalente como un :ref:`XSD <xsd>` o un :ref:`Relax-NG
-  <rnc>`). Cuando el documento alcanza este nivel, se le denomina :dfn:`valido`.
-  Por supuesto, todo |XML| válido es bien formado. 
-
-Volviendo a\ :ref:`l ejemplo <xml-ejemplo>`, para comprobar si está bien formado
-nos bastará descargar exclusivamente el |XML| y utlizar un validador como
-:program:`xmlstarlet`::
-
-   $ xmlstarlet val -e casilleros.xml
-
-Ahora bien, si queremos concluir que es válido, tendremos que tomar también el
-|DTD| que se proporciona justamente en la nota inferior.
-
-.. seealso:: Para más información sobre :program:`xmlstarlet` consulte el
-   :ref:`epígrafe sobre validación con un DTD <dtd>`.
 
 Reglas generales
 ================
@@ -651,8 +646,8 @@ las menos importantes):
         padre del Electromagnetismo, Hans Christian |uostr|\ rsted, nos
         toparíamos con que hay un carácter (|uostr|) que no es propio del
         castellano, y en consecuencia somos incapaces de escribirlo
-        directamente con el teclado. El modo escribir este carácter mediante una
-        entidad es el siguiente:
+        directamente con el teclado. La estrategia para escribir este carácter
+        mediante una entidad es el siguiente:
 
         #. Accedemos a la `pagina indicada
            <https://www.utf8-chartable.de/unicode-utf8-table.pl>`_.
@@ -683,7 +678,7 @@ las menos importantes):
      b. Definidas por el **usuario** en el documento que defina la gramática (un
         |DTD| por ejemplo). Es lo que se ha hecho en el :ref:`ejemplo
         introductorio <xml-ejemplo>` para las entidades :code:`&EFI;`,
-        code:`&HyG;`, etc.
+        :code:`&HyG;`, etc.
 
 .. _xmlns:
 
@@ -830,6 +825,7 @@ Ejercicios resueltos
 .. _Inkscape: https://inkscape.org
 .. _reStructured Text: http://docutils.sourceforge.net/rst.html
 .. _Markdown: https://daringfireball.net/projects/markdown/
+.. _Visual Studio Code: https://code.visualstudio.com
 
 .. |uostr| unicode:: U+00D8 .. LATIN CAPITAL LETTER O WITH STROKE
 

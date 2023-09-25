@@ -46,10 +46,6 @@
                   "type": "string",
                   "descripcion": "Apellidos"
                },
-               "nombre": {
-                  "type": "string",
-                  "descripcion": "Nombre de pila"
-               },
                "departamento": {
                   "type": "string",
                   "descripcion": "Departamento didáctico al que pertenece"

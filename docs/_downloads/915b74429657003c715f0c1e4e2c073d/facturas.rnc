@@ -1,0 +1,23 @@
+start = facturacion
+
+facturacion = element facturacion { clientes, inventario, factura+,
+   attribute empresa { text }
+}
+
+clientes = element clientes { cliente+ }
+cliente = grammar { include "cliente.rnc" }
+
+inventario = element inventario { producto+ }
+include "producto.rnc"
+
+factura = element factura { item+,
+   attribute codigo { xsd:ID { pattern="f\d+" } },
+   attribute cliente { xsd:IDREF { pattern="c\d+" } },
+   attribute fecha { xsd:date },
+   attribute descuento { xsd:int { minInclusive="0" maxInclusive= "100" } }?
+}
+
+item = element item { empty,
+   attribute producto { xsd:IDREF { pattern="p\d+" } },
+   attribute cantidad { xsd:positiveInteger }
+}

@@ -23,6 +23,11 @@ Antes de entrar a definir su sintaxis es conveniente saber algunos aspectos de
   <https://json-schema.org/specification.html>`_. En consecuencia a fecha de
   redacción de este documento el borrador más reciente es el *2020-12*.
 
+.. note:: Obviamente, si se pretende definir una gramática de |YAML| con |JSON|\
+   Schema, sólo podremos escribir en el |YAML| aquello que puede escribirse en
+   un |JSON|. Por ejemplo, no podremos usar ``undefined`` o todas las claves
+   tendrán que ser cadenas, a pesar de que |YAML| no tiene esas limitaciones.
+
 .. seealso:: Como la especificación es muy árida, ilustraremos aquí los aspectos más básicos,
    pero para mayor profundización puede echarse mano de la guía oficial
    `Understanding JSON Schema
@@ -58,19 +63,89 @@ Validación
 ----------
 Antes de empezar, no obstante, es conveniente saber cómo validar:
 
+.. rst-class:: simple
+
 * `Validador online <https://jschon.dev/>`_, que tiene el inconveniente de que
   no pueden subirse archivos locales.
 * La orden :command:`jsonschema`, disponible a través del paquete
   :deb:`python3-jsonschema` de las distribuciones basadas en *Debian*.
 
-Esta última orden, tiene un uso muy sencillo:
+  .. code:: bash
 
-.. code:: bash
+     $ jsonschema -i casilleros.json casilleros.schema.json
 
-   $ jsonschema -i casilleros.json casilleros.schema.json
+  La orden no mostrará salida (y devolverá un **0** al sistema) si el documento
+  respeta la gramática definida en el esquema. En principio, sólo es capaz de
+  validar documentos |JSON|, pero para validar |YAML| puede hacerse una
+  `conversión previa a JSON con yq
+  <https://mikefarah.gitbook.io/yq/v/v3.x/usage/convert>`_.
 
-La orden no mostrará salida (y devolverá un **0** al sistema) si el documento
-respeta la gramática definida en el esquema.
+* El todo terreno `Visual Studio Code`_, que sirve para validar tanto |JSON|
+  como |YAML|. Sin embargo, requiere en ambos casos configuración adicional:
+
+  |JSON|
+   El soporte es nativo, como ya vimos, pero requiere configuración. En
+   ``File>Preferences>Settings`` (o, simplemente, :kbd:`Ctrl+,`) debemos
+   consultar la extensión para |JSON|, una de cuyas configuraciones es ``JSON:
+   Schemas``:
+
+   .. image:: files/vs-json-schemas.png
+
+   Al pinchar en la edición se nos abrirá el archivo de configuración
+   :file:`settings.json` que nos permite relacionar archivos |JSON| con los
+   esquemas que usan. Por ejemplo:
+
+   .. image:: files/vs-json-settings.png
+
+   Este es un proyecto abierto como una carpeta en que el esquema está en la
+   propia carpeta raíz y se ha definido la relación entre archivos |JSON| y
+   esquemas así:
+
+   .. code:: json
+
+      {
+          "json.schemas": [
+              { "fileMatch": ["casilleros*.json"], "url": "/casilleros.schema.json" }
+          ]
+      }
+
+   La propiedad ``json.schemas`` es una secuencia, cada uno de cuyos elementos
+   es un objeto que serve para referir un esquema distinto. En él, ``fileMatch``
+   es la lista de archivos que siguen el esquema, mientras que ``url`` indica la
+   |URL| (que no propiamente la ruta) del esquema. Podríamos haber escrito una
+   |URL| absoluta (con file:`file:///etc.`), pero dado que la |URL| base es la
+   propia carpeta del proyecto, hemos preferido una |URL| relativa. 
+
+  |YAML|
+   Como ya se indicó al tratar su sintaxis, requiere instalar  la `extensión
+   para YAML
+   <https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml>`_ y,
+   como en el caso anterior, relacionar el archivo con su esquema correspondiente.
+   La configuración es muy semejante, salvo que se encuentra dentro de la
+   extensión |YAML| en, y que el |JSON| de configuración no es exactamente
+   igual:
+
+   .. code:: json
+
+      {
+         "yaml.schemas": {
+            "./casilleros.schema.json": "casilleros*.yaml"
+         }
+      } 
+
+   En este caso, ``yaml.schemas`` es un objeto y cada objeto tiene como claves
+   la ruta al esquema (no una |URL| como antes) y como valor el archivo o los
+   archivos que se rigen por el esquema. Cuando son varios, es necesario usar
+   una secuencia:
+
+   .. code:: json
+
+      {
+         "yaml.schemas": {
+            "./casilleros.schema.json": ["casilleros*.yaml", "*casilleros.yaml"]
+         }
+      } 
+
 
 Sintaxis básica
 ===============
@@ -1093,3 +1168,4 @@ crearlos:
 
 .. _JSON Schema: https://json-schema.org/
 .. _jsonschema: https://github.com/python-jsonschema/jsonschema
+.. _Visual Studio Code: https://code.visualstudio.com

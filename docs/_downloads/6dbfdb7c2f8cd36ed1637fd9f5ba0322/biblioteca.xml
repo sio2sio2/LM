@@ -32,7 +32,7 @@
    <!-- Socios incritos en la biblioteca -->
    <socios>
       <lector registro="l01">
-         <dni>12345678L</dni>
+         <dni>12345678Z</dni>
          <nombre>Perico de los Palotes</nombre>
          <direccion>
             <domicilio>c/ AAAAA. 22.</domicilio>
@@ -42,7 +42,7 @@
       </lector>
 
       <lector registro="l02">
-         <dni>01234567Z</dni>
+         <dni>01234567L</dni>
          <nombre>Mercedes Verdugo Cordero</nombre>
          <direccion>
             <domicilio>c/ BBBBB. 21.</domicilio>

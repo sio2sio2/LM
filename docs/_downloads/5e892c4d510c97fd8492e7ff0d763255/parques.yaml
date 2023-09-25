@@ -1,0 +1,26 @@
+%YAML 1.2
+---
+pais: "España"
+especies:
+  - id: 1
+    comun: "Lince"
+    cientifico: "Lynx pardinus"
+    tipo: "fauna"
+    # El peligro puede ser alto, medio o bajo.
+    peligro: "medio"
+  - id: 2
+    comun: "Drago"
+    cientifico: "Dracaena draco"
+    tipo: "flora"
+    peligro: "medio"
+  # Más especies...
+parques:
+  - id:  1
+    nombre: "Doñana"
+    provincia: "Huelva"
+    ca: "Andalucia"
+    especimenes:
+      - ref: 1
+        ejemplares: 150
+      - ref: 2
+        # Como es flora, no indicamos ejemplares.

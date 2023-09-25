@@ -1,0 +1,31 @@
+{
+   "pais": "España",
+   "especies": [
+      {
+         "id": 1,
+         "comun": "Lince",
+         "cientifico": "Lynx pardinus",
+         "tipo": "fauna",
+         "peligro": "medio"
+      },
+      {
+         "id": 2,
+         "comun": "Drago",
+         "cientifico": "Dracaena draco",
+         "tipo": "flora",
+         "peligro": "medio"
+      }
+   ],
+   "parques": [
+      {
+         "id": 1,
+         "nombre": "Doñana",
+         "provincia": "Huelva",
+         "ca": "Andalucía",
+         "especimenes": [
+            {"ref": 1, "ejemplares": 150},
+            {"ref": 2}
+         ]
+      }
+   ]
+}

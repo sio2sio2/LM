@@ -1,0 +1,36 @@
+%YAML 1.2
+---
+concesionario: "SEAT"
+modelos:
+  - id: 1
+    nombre: "León"
+    cilindrada: 2000
+    cv: 140
+    velmax: 220
+    plazas: 5
+  - id: 2
+    nombre: "Ibiza"
+    cilindrada: 1800
+    cv: 120
+    velmax: 200
+    plazas: 5
+  # Más modelos...
+coches:
+  - id: 1
+    modelo: 1
+    # tipos posibles: nuevo, 2mano, km0.
+    tipo: "nuevo"
+    reservado: true
+  - id: 2
+    modelo: 1
+    tipo: "2mano"
+    km: 50000
+  - id: 3
+    modelo: 2
+    tipo: "km0"
+  - id: 4
+    modelo: 2
+    tipo: "2mano"
+    km: 132000
+    reservado: true
+  # Más coches...

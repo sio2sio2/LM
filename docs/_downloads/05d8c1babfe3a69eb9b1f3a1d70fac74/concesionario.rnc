@@ -1,0 +1,25 @@
+start = concesionario
+
+concesionario = element concesionario { modelo+, coche*,
+   attribute marca { text }
+}
+
+modelo = element modelo { cilindrada, cv, velmax, plazas,
+   attribute id { xsd:ID { pattern="m\d+" } },
+   attribute nombre { text }
+}
+
+cilindrada = element cilindrada { xsd:positiveInteger }
+cv = element cv { xsd:positiveInteger }
+velmax = element velmax { xsd:positiveInteger }
+plazas = element plazas { xsd:positiveInteger }
+
+coche = element coche { empty,
+   attribute id { xsd:ID { pattern="co\d+" } },
+   attribute modelo { xsd:IDREF { pattern="m\d+" } },
+   attribute tipo { "2mano" | "km0" | "nuevo" },
+   attribute km { xsd:nonNegativeInteger }?,
+   reservado?
+}
+
+reservado = attribute reservado { xsd:boolean }

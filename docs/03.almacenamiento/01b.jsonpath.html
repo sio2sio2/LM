@@ -81,34 +81,35 @@
   <section id="jsonpath">
 <h1><span class="section-number">3.1.2. </span><abbr title="JavaScript Object Notation">JSON</abbr>Path<a class="headerlink" href="#jsonpath" title="Enlace permanente a este encabezado">¶</a></h1>
 <p><abbr title="JavaScript Object Notation">JSON</abbr>Path es a <a class="reference internal" href="../01.intro/02a.serial.html#json"><span class="std std-ref">JSON</span></a> lo que <a class="reference internal" href="01a.xpath.html#xpath"><span class="std std-ref">XPath</span></a> a <a class="reference internal" href="../01.intro/02b.marcas.html#xml"><span class="std std-ref">XML</span></a>, esto es, un lenguaje que nos permite indicar qué nodos del documento
-desean seleccionarse. No es aún un estándar, y su existencia surge por la
-necesidad de tener un equivalente a <em>XPath</em> para documentos <abbr title="JavaScript Object Notation">JSON</abbr> (véase el
-<a class="reference external" href="https://goessner.net/articles/JsonPath/">artículo original que lo propuso</a>).
-Este estado de las cosas obedece a cuál ha sido la historia del intercambio de
-datos, a la cual se apuntó cuando se discutió <a class="reference internal" href="../01.intro/index.html#ut1"><span class="std std-ref">por qué este módulo se
-denomina lenguaje de marcas</span></a><a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>: las tecnologías alrededor de <abbr title="eXtensible  Markup Language">XML</abbr>
-se desarrollaron cuando éste monopolizaba el intercambio de datos, de suerte que
-los lenguajes que han empezado a despuntar después han ido inspirándose en ellas
-para lograr sus funcionalidades.</p>
-<p>Se inspira en:</p>
+desean seleccionarse. No es aún un estándar (aunque podemos <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jsonpath-base-20">consultar sus
+borradores</a>), y su
+existencia surge por la necesidad de tener un equivalente a <em>XPath</em> para
+documentos <abbr title="JavaScript Object Notation">JSON</abbr> (véase el <a class="reference external" href="https://goessner.net/articles/JsonPath/">artículo original que lo propuso</a>).  Este estado de las cosas obedece
+a cuál ha sido la historia del intercambio de datos, a la cual se apuntó cuando
+se discutió <a class="reference internal" href="../01.intro/index.html#ut1"><span class="std std-ref">por qué este módulo se denomina lenguaje de marcas</span></a><a class="footnote-reference brackets" href="#id5" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>: las tecnologías alrededor de <abbr title="eXtensible  Markup Language">XML</abbr> se desarrollaron cuando éste
+monopolizaba el intercambio de datos, de suerte que los lenguajes que han
+empezado a despuntar después han ido inspirándose en ellas para lograr sus
+funcionalidades.</p>
+<p>Podemos resumir sus características en los siguientes puntos:</p>
 <ul class="simple">
-<li><p>XPath, fundamentalmente para su funcionalidad.</p></li>
-<li><p>El modo en que se refieren las propiedades de los objetos en lenguajes de
-programación <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a>, <a class="reference external" href="https://www.python.org">Python</a> o <a class="reference external" href="https://www.php.net">PHP</a>, para su sintaxis.</p></li>
+<li><p>La sintaxis con la que se refieren las propiedades de los objetos está inspirada
+en lenguajes de programación como <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a>, <a class="reference external" href="https://www.python.org">Python</a> o <a class="reference external" href="https://www.php.net">PHP</a>.</p></li>
+<li><p>Pretende emular para <abbr title="JavaScript Object Notation">JSON</abbr> la utilidad de <em>XPath</em> en el mundo <abbr title="eXtensible  Markup Language">XML</abbr>.</p></li>
+<li><p>Tiene bastante menos expresividad y más limitaciones que <em>XPath</em>.</p></li>
+<li><p>Aunque la tecnología parece que se ha abierto hueco, aún no está madura del
+todo y no tiene un estándar al que deban apegarse las implementaciones
+existentes.</p></li>
 </ul>
-<p class="rubric">Notas al pie</p>
-<aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id2" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>Conviene, no obstante, aclarar que esto es una mera conjetura del autor,
-el cual está convencido que de haber nacido este módulo tiempo después de
-haber pasado la época del empacho del <abbr title="eXtensible  Markup Language">XML</abbr> no se habría denominado «Lenguaje
-de marcas» para no dejar excluidos a los <a class="reference internal" href="../01.intro/01.intro.html#l-ser"><span class="std std-ref">lenguajes de serialización de
-datos</span></a>.</p>
-</aside>
-</aside>
-<section id="sintaxis-basica">
-<h2><span class="section-number">3.1.2.1. </span>Sintaxis básica<a class="headerlink" href="#sintaxis-basica" title="Enlace permanente a este encabezado">¶</a></h2>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>La riqueza semántica de <abbr title="JavaScript Object Notation">JSON</abbr>Path actualmente no es comparable
+con la de <em>XPath</em> en absoluto, a lo que se añade un soporte bastante parcial
+de los procesadores. Además, aunque hay desarrollos que han apostado por su
+uso (p.e. Oracle para los tipos <abbr title="JavaScript Object Notation">JSON</abbr> de sus bases relacionales), otros no lo
+han hecho, como el caso de la base de datos documental <a class="reference external" href="https://www.mongodb.com">MongoDB</a>.</p>
+</div>
+<section id="sintaxis">
+<h2><span class="section-number">3.1.2.1. </span>Sintaxis<a class="headerlink" href="#sintaxis" title="Enlace permanente a este encabezado">¶</a></h2>
 <p><abbr title="JavaScript Object Notation">JSON</abbr>Path, por analogía con algunos lenguajes de programación utiliza el
 punto (»<kbd class="kbd docutils literal notranslate">.</kbd>») o los corchetes (»<kbd class="kbd docutils literal notranslate">[]</kbd>») para separar las claves de un
 objeto. Tomemos para ilustrarlo un documento ya analizado:</p>
@@ -124,11 +125,17 @@ objeto. Tomemos para ilustrarlo un documento ya analizado:</p>
 <span class="w">   </span><span class="nt">&quot;defuncion&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
 <span class="w">   </span><span class="nt">&quot;hijos&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="s2">&quot;Felipe&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;Sonsoles&quot;</span>
+<span class="w">      </span><span class="s2">&quot;Sonsoles&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;Pablo&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;Angustias&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;Filomena&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;Belisario&quot;</span>
 <span class="w">   </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+<section id="mapas">
+<h3><span class="section-number">3.1.2.1.1. </span>Mapas<a class="headerlink" href="#mapas" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Como <code class="docutils literal notranslate"><span class="pre">$</span></code> es la forma de referirnos al nodo raíz el valor de la propiedad
 <em>centro</em>, podemos referirla así:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.nombre
@@ -149,13 +156,35 @@ podríamos volver a usar el punto (o los corchetes indistintamente):</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.direccion.calle
 </pre></div>
 </div>
+<p>Hasta ahora hemos seleccinado una propiedad dentro de un objeto, pero ¿podemos
+seleccionar varias? La respuesta es sí. Esto escogería dos propiedades a la vez:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$[casado, edad]
+</pre></div>
+</div>
+<p>Obsérvese que no se han usado comillas. También podemos seleccionar todas:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.direccion[*]
+</pre></div>
+</div>
+<p>que seleccionaría el valor de las dos propiedades que tiene el nodo
+<em>dirección</em>.</p>
+<p>Por último, dentro de un mapa es posible mediante la notación «<code class="docutils literal notranslate"><span class="pre">..</span></code>»
+seleccionar propiedades que no se encuentran directamente en él, sino dentro de
+algún objeto anidado<a class="footnote-reference brackets" href="#id6" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. Por ejemplo:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$..calle
+</pre></div>
+</div>
+<p>selecciona cualquier propiedad «calle» del documento.</p>
+</section>
+<section id="secuencias">
+<h3><span class="section-number">3.1.2.1.2. </span>Secuencias<a class="headerlink" href="#secuencias" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>La expresión:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.hijos
 </pre></div>
 </div>
-<p>devolvería, en cambio, una secuencia, no un objeto, por lo que no tendría
-sentido usar el punto, sino usar una notación que nos eligiese uno de los
-elementos de la secuencia:</p>
+<p>devuelve una secuencia, no un objeto, por lo que no tendría sentido usar el
+punto, sino usar una notación que nos elija uno de los elementos de la
+secuencia. Como en el caso de la mayoría de los lenguajes de programación, se
+usan corchetes que encierran un índice de posición:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.hijos[0]
 </pre></div>
 </div>
@@ -165,12 +194,327 @@ elementos de la secuencia:</p>
 <p>A diferencia de <em>XPath</em>, el primer elemento se nota con <strong>0</strong>, no
 con <strong>1</strong>.</p>
 </div>
+<p>También es posible, escoger varios elementos individuales. Esto escogería el
+primero y el tercero:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.hijos[0,2]
+</pre></div>
+</div>
+<p><abbr title="JavaScript Object Notation">JSON</abbr>Path soporta rangos inspirándose en los <a class="reference external" href="https://parzibyte.me/blog/2018/12/18/operaciones-cortar-arreglos-python/">slices de Python</a>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.hijos[1:4]
+</pre></div>
+</div>
+<p>que escoge el segundo (<strong>1</strong>), el tercero (<strong>2</strong>) y el cuarto (<strong>3</strong>). Obsérvese
+que el quinto (<strong>4</strong>) queda excluido de la expresión del rango. En un rango,
+puede omitirse el límite inferior en cuyo caso se entenderá que es <strong>0</strong> o el
+límite superior, en cuyo caso se entenderá que es la longitud de la secuencia.
+Por tanto:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.hijos[:3]
+</pre></div>
+</div>
+<p>equivale a:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.hijos[0:3]
+</pre></div>
+</div>
+<p>y:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.hijos[2:]
+</pre></div>
+</div>
+<p>equivale a:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.hijos[2:6]
+</pre></div>
+</div>
+<p>ya que en el ejemplo hay seis hijos. Finalmente:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.hijos[:]
+</pre></div>
+</div>
+<p>escoge todos los hijos. Esto se puede escribir también como:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.hijos[*]
+</pre></div>
+</div>
+<p>También es posible, cuando se expresa un rango, indicar el paso:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.hijos[::2]
+</pre></div>
+</div>
+<p>En este caso, se escogen los hijos que ocupan posiciones pares en la secuencia.
+También pueden usarse números negativos, con el mismo significado que en
+<a class="reference external" href="https://www.python.org">Python</a><a class="footnote-reference brackets" href="#id7" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.</p>
 </section>
-<section id="sintaxis-completa">
-<h2><span class="section-number">3.1.2.2. </span>Sintaxis completa<a class="headerlink" href="#sintaxis-completa" title="Enlace permanente a este encabezado">¶</a></h2>
+<section id="filtros">
+<h3><span class="section-number">3.1.2.1.3. </span>Filtros<a class="headerlink" href="#filtros" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Cuando el nodo es una secuencia, no sólo pueden seleccionarse elementos por su
+posición, sino utilizar filtros para escoger aquellos nodos que cumplen una
+determinada condición. Tomemos el ejemplo de casilleros para ilustrarlo:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+JSON de casilleros<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;centro&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;IES Pepe Botella&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;profesores&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;apelativo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Luis&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Luis&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;apellidos&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Márquez Vázquez&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;departamento&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Educación Física&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;apelativo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cristina&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;María  Cristina&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;apellidos&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Prieto Monagas&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;departamento&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Biología y Geología&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;apelativo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Manolo&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Manuel&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;apellidos&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Páez Robledo&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;departamento&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Matemáticas&quot;</span>
+
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;casillero&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">17</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">],</span>
+<span class="w">         </span><span class="nt">&quot;apelativo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Lucía&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Lucía&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;apellidos&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Gálvez Ruiz&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;departamento&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Inglés&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;casillero&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">28</span><span class="p">],</span>
+<span class="w">         </span><span class="nt">&quot;apelativo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Migue&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Miguel Ángel&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;apellidos&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Campos Sanchez&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;departamento&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Historia&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">81</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;casillero&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">         </span><span class="nt">&quot;apelativo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Vero&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Verónica&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;apellidos&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Martín Díaz&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;departamento&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Biología&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">86</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;sustituye&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;apelativo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Roberto&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Roberto&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;apellidos&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mínguez Torralbo&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">   </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</details><p>En este caso, puede interesarnos escoger sólo los profesores cuyo departamento
+sea «Matemáticas»:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.profesores[?(@.departamento == &quot;Matemáticas&quot;)]
+</pre></div>
+</div>
+<p>Como puede observarse, el filtro se encierra dentro de los corchetes y
+tiene la forma <code class="code docutils literal notranslate"><span class="pre">?(expr_logica)</span></code>, de manera que se evaluará la expresión
+lógica y se devolverán solo los elementos de la secuencia que devuelvan
+verdadero. Dentro de estas expresiones, <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> es la forma de referir cada
+elemento de la propia secuencia, por lo que la expresión lógica escoge aquellos
+elementos cuya propiedad <em>departamento</em> (<code class="code docutils literal notranslate"><span class="pre">&#64;.departamento</span></code>) es igual a
+Matemáticas. Otro ejemplo, puede ser:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.profesores[?(@.nombre == @.apelativo)]
+</pre></div>
+</div>
+<p>que devolverá los profesores cuyo nombre coincide exactamente con su apelativo
+(p.e. devolverá a <em>Luis</em>, pero no a <em>Verónica</em>, puesto que la llaman <em>Vero</em>).</p>
+<p>Para construir estas expresiones hay distintos operadores:</p>
+<table class="docutils align-default" id="id9">
+<caption><span class="caption-text"><strong>Operadores aritméticos</strong></span><a class="headerlink" href="#id9" title="Enlace permanente a esta tabla">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Operador</p></th>
+<th class="head"><p>Significado</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>+</p></td>
+<td><p>Suma aritmética o concatenación de cadenas</p></td>
+</tr>
+<tr class="row-odd"><td><p>-</p></td>
+<td><p>Resta</p></td>
+</tr>
+<tr class="row-even"><td><p>*</p></td>
+<td><p>Multiplicación</p></td>
+</tr>
+<tr class="row-odd"><td><p>/</p></td>
+<td><p>División</p></td>
+</tr>
+<tr class="row-even"><td><p>%</p></td>
+<td><p>Módulo (resto)</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id10">
+<caption><span class="caption-text"><strong>Operadores lógicos</strong></span><a class="headerlink" href="#id10" title="Enlace permanente a esta tabla">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Operador</p></th>
+<th class="head"><p>Significado</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>==</p></td>
+<td><p>Igualdad.</p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;=</p></td>
+<td><p>Menor o igual.</p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;</p></td>
+<td><p>Estrictamente menor.</p></td>
+</tr>
+<tr class="row-odd"><td><p>&gt;=</p></td>
+<td><p>Mayor o igual.</p></td>
+</tr>
+<tr class="row-even"><td><p>&gt;</p></td>
+<td><p>Estrictamente mayor.</p></td>
+</tr>
+<tr class="row-odd"><td><p>&amp;&amp;</p></td>
+<td><p><strong>Y</strong> lógico.</p></td>
+</tr>
+<tr class="row-even"><td><p>||</p></td>
+<td><p><strong>O</strong> lógico.</p></td>
+</tr>
+<tr class="row-odd"><td><p>!</p></td>
+<td><p>Negación.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id11">
+<caption><span class="caption-text"><strong>Operadores de  comparación</strong></span><a class="headerlink" href="#id11" title="Enlace permanente a esta tabla">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Operador</p></th>
+<th class="head"><p>Significado</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>==</p></td>
+<td><p>Igualdad.</p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;=</p></td>
+<td><p>Menor o igual.</p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;</p></td>
+<td><p>Estrictamente menor.</p></td>
+</tr>
+<tr class="row-odd"><td><p>&gt;=</p></td>
+<td><p>Mayor o igual.</p></td>
+</tr>
+<tr class="row-even"><td><p>&gt;</p></td>
+<td><p>Estrictamente mayor.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Debemos saber, además, que:</p>
+<ul class="simple">
+<li><p>No deberían efectuarse conversiones de tipos, por lo que <strong>17</strong> (entero) y
+&quot;17&quot; (cadena)  no deberían ser iguales.</p></li>
+<li><p>Sólo está definido el orden para números y cadenas (el alfabético). En
+consecuencia, comparar con «<code class="docutils literal notranslate"><span class="pre">&lt;</span></code>»  o «<code class="docutils literal notranslate"><span class="pre">&gt;</span></code>» valores de otro tipo debería
+devolver siempre falso<a class="footnote-reference brackets" href="#id8" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.</p></li>
+<li><p>Dos secuencias son iguales cuando contienen igual número de elementos y cada
+elemento de la primera secuencia es igual a su correspondiente de la segunda.</p></li>
+<li><p>Dos objetos son iguales cuando incluyen las mismas claves y sus
+correspondientes valores de éstas son identicos en uno y otro objeto.</p></li>
+<li><p>Comprobar la existencia es también una expresión lógica válida, que devuelve
+verdadero si al menos hay un nodo, y falso, si no lo hay. Por ejemplo:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.profesores[?(@.casillero)]
+</pre></div>
+</div>
+<p>devuelve los profesores que tienen explícita su propiedad «casillero».</p>
+</li>
+<li><p>Como en el caso de <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a>, tanto las cadenas como las secuencias tienen
+una propiedad implícita <code class="docutils literal notranslate"><span class="pre">.length</span></code> que devuelve su tamaño. Por tanto:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  $.profesores[?(@.casillero &amp;&amp; @.casillero.length &gt; 1)]
+
+devuelve los profesores con más de un casillero.
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Obsérvese que antes de hacer la comparación nos hemos asegurado de
+que el profesor tiene la propiedad «casillero» para evitar errores.</p>
+</div>
+<p>El <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jsonpath-base-20">último borrador</a>  define
+una serie de funciones estándar para enriquecer los filtros:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Función</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jsonpath-base-20#name-length-function-extension">length</a></p></td>
+<td><p>Devuelve el tamaño del array, mapa o cadena</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jsonpath-base-20#name-count-function-extension">count</a></p></td>
+<td><p>Devuelve el tamaño del array.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jsonpath-base-20#name-match-function-extension">match</a></p></td>
+<td><p>Concordancia completa con un patrón.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jsonpath-base-20#name-search-function-extension">search</a></p></td>
+<td><p>Concordancia con un patrón.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jsonpath-base-20#name-value-function-extension">value</a></p></td>
+<td><p>Devuelve el valor del nodo.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Además, de permitir que se extienda la sintaxis con otras funciones
+adicionales que defina el procesador.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>El soporte de los procesadores para estas funciones es precario.</p>
+</div>
+</li>
+</ul>
+</section>
 </section>
 <section id="procesadores">
-<h2><span class="section-number">3.1.2.3. </span>Procesadores<a class="headerlink" href="#procesadores" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">3.1.2.2. </span>Procesadores<a class="headerlink" href="#procesadores" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Los procesadores existentes no tienen un soporte completo para la última versión
+del borrador. Proponemos dos:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://jsonpath.com">JSONPath.com</a>, que permite las pruebas online.</p></li>
+<li><p>El paquete <a class="reference external" href="https://packages.debian.org/stable/python3-jsonpath-ng">python3-jsonpath-ng</a>, que incluye la orden
+<strong class="command">jsonpath_ng</strong>. La orden (aunque sí la librería de <a class="reference external" href="https://www.python.org">Python</a>) no soporta
+filtros.</p></li>
+</ul>
+<p class="rubric">Notas al pie</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id5" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Conviene, no obstante, aclarar que esto es una mera conjetura del autor,
+el cual está convencido que de haber nacido este módulo tiempo después de
+haber pasado la época del empacho del <abbr title="eXtensible  Markup Language">XML</abbr> no se habría denominado «Lenguaje
+de marcas» para no dejar excluidos a los <a class="reference internal" href="../01.intro/01.intro.html#l-ser"><span class="std std-ref">lenguajes de serialización de
+datos</span></a>.</p>
+</aside>
+<aside class="footnote brackets" id="id6" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Pero no parecen tener buen soporte en las implementaciones que se han
+probado.</p>
+</aside>
+<aside class="footnote brackets" id="id7" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>O sea, es el equivalente a <code class="docutils literal notranslate"><span class="pre">//</span></code> en <em>XPath</em>.</p>
+</aside>
+<aside class="footnote brackets" id="id8" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>Cosa que no ocurre con «<code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>»  y «<code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>» porque la igualdad sí está
+definida. Por eso, <code class="code docutils literal notranslate"><span class="pre">?(true</span> <span class="pre">&lt;=</span> <span class="pre">true)</span></code> es verdadero.</p>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -187,9 +531,13 @@ con <strong>1</strong>.</p>
     <h3><a href="../index.html">Page contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">3.1.2. <abbr title="JavaScript Object Notation">JSON</abbr>Path</a><ul>
-<li><a class="reference internal" href="#sintaxis-basica">3.1.2.1. Sintaxis básica</a></li>
-<li><a class="reference internal" href="#sintaxis-completa">3.1.2.2. Sintaxis completa</a></li>
-<li><a class="reference internal" href="#procesadores">3.1.2.3. Procesadores</a></li>
+<li><a class="reference internal" href="#sintaxis">3.1.2.1. Sintaxis</a><ul>
+<li><a class="reference internal" href="#mapas">3.1.2.1.1. Mapas</a></li>
+<li><a class="reference internal" href="#secuencias">3.1.2.1.2. Secuencias</a></li>
+<li><a class="reference internal" href="#filtros">3.1.2.1.3. Filtros</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#procesadores">3.1.2.2. Procesadores</a></li>
 </ul>
 </li>
 </ul>

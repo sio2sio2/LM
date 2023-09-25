@@ -1,0 +1,76 @@
+{
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "$id": "grafico.schema.json",
+   "title": "Graficos-2D",
+   "description": "JSON para describir gráficos  en 2-D",
+   "type": "object",
+   "properties": {
+      "unidad": {
+         "description": "Unidades en las que se expresan las dimensiones",
+         "enum": [ "m", "cm", "mm"]
+      },
+      "entidades": {
+         "description": "Lista de entidades de las que se compone el gráfico",
+         "type": "array",
+         "uniqueItems": true,
+         "items": {
+            "type": "object",
+            "properties": {
+               "id": {
+                  "description": "Identificador de la entidad",
+                  "type": "integer",
+                  "minimum": 1
+               }
+            },
+            "required": ["id", "tipo"],
+            "oneOf": [
+               {
+                  "properties": {
+                     "tipo": {
+                        "const": "punto"
+                     },
+                     "x": { "$ref": "#$defs/coordenada" },
+                     "y": { "$ref": "#$defs/coordenada" }
+                  },
+                  "required": ["x", "y"]
+               },
+               {
+                  "properties": {
+                     "tipo": {
+                        "const": "circunferencia"
+                     },
+                     "x": { "$ref": "#$defs/coordenada" },
+                     "y": { "$ref": "#$defs/coordenada" },
+                     "r": {
+                        "description": "Radio",
+                        "type": "integer",
+                        "minimum": 1
+                     }
+                  },
+                  "required": ["x", "y", "r"]
+               },
+               {
+                  "properties": {
+                     "tipo": {
+                        "enum": [ "rectangulo", "recta" ]
+                     },
+                     "x1": { "$ref": "#$defs/coordenada" },
+                     "y1": { "$ref": "#$defs/coordenada" },
+                     "x2": { "$ref": "#$defs/coordenada" },
+                     "y2": { "$ref": "#$defs/coordenada" }
+                  },
+                  "required": ["x1", "y1", "x2", "y2"]
+               }
+            ],
+            "unevaluatedProperties": false
+         }
+      },
+      "additionalProperties": false
+   },
+   "$defs": {
+      "coordenada": {
+         "description": "Coordenada en el plano",
+         "type": "integer"
+      }
+   }
+}

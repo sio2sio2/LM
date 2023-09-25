@@ -2,32 +2,37 @@
 ************
 |JSON|\ Path es a :ref:`JSON <json>` lo que :ref:`XPath <xpath>` a :ref:`XML
 <xml>`, esto es, un lenguaje que nos permite indicar qué nodos del documento
-desean seleccionarse. No es aún un estándar, y su existencia surge por la
-necesidad de tener un equivalente a *XPath* para documentos |JSON| (véase el
-`artículo original que lo propuso <https://goessner.net/articles/JsonPath/>`_).
-Este estado de las cosas obedece a cuál ha sido la historia del intercambio de
-datos, a la cual se apuntó cuando se discutió :ref:`por qué este módulo se
-denomina lenguaje de marcas <ut1>`\ [#]_: las tecnologías alrededor de |XML|
-se desarrollaron cuando éste monopolizaba el intercambio de datos, de suerte que
-los lenguajes que han empezado a despuntar después han ido inspirándose en ellas
-para lograr sus funcionalidades.
+desean seleccionarse. No es aún un estándar (aunque podemos `consultar sus
+borradores
+<https://datatracker.ietf.org/doc/html/draft-ietf-jsonpath-base-20>`_), y su
+existencia surge por la necesidad de tener un equivalente a *XPath* para
+documentos |JSON| (véase el `artículo original que lo propuso
+<https://goessner.net/articles/JsonPath/>`_).  Este estado de las cosas obedece
+a cuál ha sido la historia del intercambio de datos, a la cual se apuntó cuando
+se discutió :ref:`por qué este módulo se denomina lenguaje de marcas <ut1>`\
+[#]_: las tecnologías alrededor de |XML| se desarrollaron cuando éste
+monopolizaba el intercambio de datos, de suerte que los lenguajes que han
+empezado a despuntar después han ido inspirándose en ellas para lograr sus
+funcionalidades.
 
-Se inspira en:
+Podemos resumir sus características en los siguientes puntos:
 
-* XPath, fundamentalmente para su funcionalidad.
-* El modo en que se refieren las propiedades de los objetos en lenguajes de
-  programación Javascript_, Python_ o PHP_, para su sintaxis.
+* La sintaxis con la que se refieren las propiedades de los objetos está inspirada
+  en lenguajes de programación como Javascript_, Python_ o PHP_.
+* Pretende emular para |JSON| la utilidad de *XPath* en el mundo |XML|.
+* Tiene bastante menos expresividad y más limitaciones que *XPath*.
+* Aunque la tecnología parece que se ha abierto hueco, aún no está madura del
+  todo y no tiene un estándar al que deban apegarse las implementaciones
+  existentes.
 
-.. rubric:: Notas al pie
+.. caution:: La riqueza semántica de |JSON|\ Path actualmente no es comparable
+   con la de *XPath* en absoluto, a lo que se añade un soporte bastante parcial
+   de los procesadores. Además, aunque hay desarrollos que han apostado por su
+   uso (p.e. Oracle para los tipos |JSON| de sus bases relacionales), otros no lo
+   han hecho, como el caso de la base de datos documental MongoDB_.
 
-.. [#] Conviene, no obstante, aclarar que esto es una mera conjetura del autor,
-   el cual está convencido que de haber nacido este módulo tiempo después de
-   haber pasado la época del empacho del |XML| no se habría denominado "Lenguaje
-   de marcas" para no dejar excluidos a los :ref:`lenguajes de serialización de
-   datos <l-ser>`.
-
-Sintaxis básica
-===============
+Sintaxis
+========
 |JSON|\ Path, por analogía con algunos lenguajes de programación utiliza el
 punto (":kbd:`.`") o los corchetes (":kbd:`[]`") para separar las claves de un
 objeto. Tomemos para ilustrarlo un documento ya analizado:
@@ -46,11 +51,17 @@ objeto. Tomemos para ilustrarlo un documento ya analizado:
       "defuncion": null,
       "hijos": [
          "Felipe",
-         "Sonsoles"
+         "Sonsoles",
+         "Pablo",
+         "Angustias",
+         "Filomena",
+         "Belisario"
       ]
    }
 
 
+Mapas
+-----
 Como ``$`` es la forma de referirnos al nodo raíz el valor de la propiedad
 *centro*, podemos referirla así:
 
@@ -79,15 +90,44 @@ podríamos volver a usar el punto (o los corchetes indistintamente):
 
    $.direccion.calle
 
+Hasta ahora hemos seleccinado una propiedad dentro de un objeto, pero ¿podemos
+seleccionar varias? La respuesta es sí. Esto escogería dos propiedades a la vez:
+
+.. code:: none
+
+   $[casado, edad]
+
+Obsérvese que no se han usado comillas. También podemos seleccionar todas:
+
+.. code:: none
+
+   $.direccion[*]
+
+que seleccionaría el valor de las dos propiedades que tiene el nodo
+*dirección*.
+
+Por último, dentro de un mapa es posible mediante la notación "``..``"
+seleccionar propiedades que no se encuentran directamente en él, sino dentro de
+algún objeto anidado\ [#]_. Por ejemplo:
+
+.. code:: none
+
+   $..calle
+
+selecciona cualquier propiedad "calle" del documento.
+
+Secuencias
+----------
 La expresión:
 
 .. code:: none
 
    $.hijos
 
-devolvería, en cambio, una secuencia, no un objeto, por lo que no tendría
-sentido usar el punto, sino usar una notación que nos eligiese uno de los
-elementos de la secuencia:
+devuelve una secuencia, no un objeto, por lo que no tendría sentido usar el
+punto, sino usar una notación que nos elija uno de los elementos de la
+secuencia. Como en el caso de la mayoría de los lenguajes de programación, se
+usan corchetes que encierran un índice de posición:
 
 .. code:: none
 
@@ -98,14 +138,222 @@ En este caso elegimos el primer hijo (*Felipe*), ya que:
 .. warning:: A diferencia de *XPath*, el primer elemento se nota con **0**, no
    con **1**.
 
-Sintaxis completa
-=================
+También es posible, escoger varios elementos individuales. Esto escogería el
+primero y el tercero:
+
+.. code:: none
+
+   $.hijos[0,2]
+
+|JSON|\ Path soporta rangos inspirándose en los `slices de Python
+<https://parzibyte.me/blog/2018/12/18/operaciones-cortar-arreglos-python/>`_:
+
+.. code:: none
+
+   $.hijos[1:4]
+
+que escoge el segundo (**1**), el tercero (**2**) y el cuarto (**3**). Obsérvese
+que el quinto (**4**) queda excluido de la expresión del rango. En un rango,
+puede omitirse el límite inferior en cuyo caso se entenderá que es **0** o el
+límite superior, en cuyo caso se entenderá que es la longitud de la secuencia.
+Por tanto:
+
+.. code:: none
+
+   $.hijos[:3]
+
+equivale a:
+
+.. code:: none
+
+   $.hijos[0:3]
+
+y:
+
+.. code:: none
+
+   $.hijos[2:]
+
+equivale a:
+
+.. code:: none
+
+   $.hijos[2:6]
+
+ya que en el ejemplo hay seis hijos. Finalmente:
+
+.. code:: none
+
+   $.hijos[:]
+
+escoge todos los hijos. Esto se puede escribir también como:
+
+.. code:: none
+
+   $.hijos[*]
+
+También es posible, cuando se expresa un rango, indicar el paso:
+
+.. code:: none
+
+   $.hijos[::2]
+
+En este caso, se escogen los hijos que ocupan posiciones pares en la secuencia.
+También pueden usarse números negativos, con el mismo significado que en
+Python_\ [#]_.
+
+Filtros
+-------
+Cuando el nodo es una secuencia, no sólo pueden seleccionarse elementos por su
+posición, sino utilizar filtros para escoger aquellos nodos que cumplen una
+determinada condición. Tomemos el ejemplo de casilleros para ilustrarlo:
+
+.. dropdown:: JSON de casilleros
+
+   .. literalinclude:: /01.intro/files/casilleros.json
+      :language: json
+
+En este caso, puede interesarnos escoger sólo los profesores cuyo departamento
+sea "Matemáticas":
+
+.. code:: none
+
+   $.profesores[?(@.departamento == "Matemáticas")]
+
+Como puede observarse, el filtro se encierra dentro de los corchetes y
+tiene la forma :code:`?(expr_logica)`, de manera que se evaluará la expresión
+lógica y se devolverán solo los elementos de la secuencia que devuelvan
+verdadero. Dentro de estas expresiones, ``@`` es la forma de referir cada
+elemento de la propia secuencia, por lo que la expresión lógica escoge aquellos
+elementos cuya propiedad *departamento* (:code:`@.departamento`) es igual a
+Matemáticas. Otro ejemplo, puede ser:
+
+.. code:: none
+
+   $.profesores[?(@.nombre == @.apelativo)]
+
+que devolverá los profesores cuyo nombre coincide exactamente con su apelativo
+(p.e. devolverá a *Luis*, pero no a *Verónica*, puesto que la llaman *Vero*).
+
+Para construir estas expresiones hay distintos operadores:
+
+.. table:: **Operadores aritméticos**
+
+   ========== ============================================
+    Operador   Significado
+   ========== ============================================
+       \+      Suma aritmética o concatenación de cadenas
+       \-      Resta
+       \*      Multiplicación
+       /       División
+       %       Módulo (resto)
+   ========== ============================================
+
+.. table:: **Operadores lógicos**
+
+   ========== ======================================================
+    Operador   Significado
+   ========== ======================================================
+      \=\=     Igualdad.
+      \<\=     Menor o igual.
+      \<       Estrictamente menor.
+      \>=      Mayor o igual.
+      \>       Estrictamente mayor.
+      &&       **Y** lógico.
+      ||       **O** lógico.
+      !        Negación.
+   ========== ======================================================
+
+.. table:: **Operadores de  comparación**
+
+   ========== ======================================================
+    Operador   Significado
+   ========== ======================================================
+      \=\=     Igualdad.
+      \<\=     Menor o igual.
+      \<       Estrictamente menor.
+      \>=      Mayor o igual.
+      \>       Estrictamente mayor.
+   ========== ======================================================
+
+Debemos saber, además, que:
+
+.. rst-class:: simple
+
+* No deberían efectuarse conversiones de tipos, por lo que **17** (entero) y
+  \"17\" (cadena)  no deberían ser iguales.
+* Sólo está definido el orden para números y cadenas (el alfabético). En
+  consecuencia, comparar con "``<``"  o "``>``" valores de otro tipo debería
+  devolver siempre falso\ [#]_.
+* Dos secuencias son iguales cuando contienen igual número de elementos y cada
+  elemento de la primera secuencia es igual a su correspondiente de la segunda.
+* Dos objetos son iguales cuando incluyen las mismas claves y sus
+  correspondientes valores de éstas son identicos en uno y otro objeto.
+* Comprobar la existencia es también una expresión lógica válida, que devuelve
+  verdadero si al menos hay un nodo, y falso, si no lo hay. Por ejemplo:
+
+  .. code:: none
+
+     $.profesores[?(@.casillero)]
+
+  devuelve los profesores que tienen explícita su propiedad "casillero".
+* Como en el caso de Javascript_, tanto las cadenas como las secuencias tienen
+  una propiedad implícita ``.length`` que devuelve su tamaño. Por tanto:
+
+  .. code:: none
+
+     $.profesores[?(@.casillero && @.casillero.length > 1)]
+
+   devuelve los profesores con más de un casillero.
+
+  .. note:: Obsérvese que antes de hacer la comparación nos hemos asegurado de
+     que el profesor tiene la propiedad "casillero" para evitar errores.
+
+  El `último borrador
+  <https://datatracker.ietf.org/doc/html/draft-ietf-jsonpath-base-20>`_  define
+  una serie de funciones estándar para enriquecer los filtros:
+
+  ============================================================================================================= ===========================================
+   Función
+  ============================================================================================================= ===========================================
+   `length <https://datatracker.ietf.org/doc/html/draft-ietf-jsonpath-base-20#name-length-function-extension>`_ Devuelve el tamaño del array, mapa o cadena
+   `count <https://datatracker.ietf.org/doc/html/draft-ietf-jsonpath-base-20#name-count-function-extension>`_   Devuelve el tamaño del array.
+   `match <https://datatracker.ietf.org/doc/html/draft-ietf-jsonpath-base-20#name-match-function-extension>`_   Concordancia completa con un patrón.
+   `search <https://datatracker.ietf.org/doc/html/draft-ietf-jsonpath-base-20#name-search-function-extension>`_ Concordancia con un patrón.
+   `value <https://datatracker.ietf.org/doc/html/draft-ietf-jsonpath-base-20#name-value-function-extension>`_   Devuelve el valor del nodo.
+  ============================================================================================================= ===========================================
+
+  Además, de permitir que se extienda la sintaxis con otras funciones
+  adicionales que defina el procesador.
+
+  .. note:: El soporte de los procesadores para estas funciones es precario.
 
 Procesadores
 ============
+Los procesadores existentes no tienen un soporte completo para la última versión
+del borrador. Proponemos dos:
 
-.. https://jsonpath.com
-.. jq.
+* `JSONPath.com <https://jsonpath.com>`_, que permite las pruebas online.
+* El paquete :deb:`python3-jsonpath-ng`, que incluye la orden
+  :command:`jsonpath_ng`. La orden (aunque sí la librería de Python_) no soporta
+  filtros.
+
+.. rubric:: Notas al pie
+
+.. [#] Conviene, no obstante, aclarar que esto es una mera conjetura del autor,
+   el cual está convencido que de haber nacido este módulo tiempo después de
+   haber pasado la época del empacho del |XML| no se habría denominado "Lenguaje
+   de marcas" para no dejar excluidos a los :ref:`lenguajes de serialización de
+   datos <l-ser>`.
+
+.. [#] Pero no parecen tener buen soporte en las implementaciones que se han
+   probado.
+
+.. [#] O sea, es el equivalente a ``//`` en *XPath*.
+
+.. [#] Cosa que no ocurre con "``<=``"  y "``>=``" porque la igualdad sí está
+   definida. Por eso, :code:`?(true <= true)` es verdadero.
 
 .. _Python: https://www.python.org
 .. _PHP: https://www.php.net
+.. _MongoDB: https://www.mongodb.com

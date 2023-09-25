@@ -97,6 +97,12 @@ nombradas mediante un ordinal (<em>Draft 1</em>, <em>Draft  2</em>, etc.) y las 
 con la fecha en que se publicaron: <em>2019-09</em> y <a class="reference external" href="https://json-schema.org/specification.html">2020-12</a>. En consecuencia a fecha de
 redacción de este documento el borrador más reciente es el <em>2020-12</em>.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Obviamente, si se pretende definir una gramática de <abbr title="YAML Ain't Markup Language">YAML</abbr> con <abbr title="JavaScript Object Notation">JSON</abbr>Schema, sólo podremos escribir en el <abbr title="YAML Ain't Markup Language">YAML</abbr> aquello que puede escribirse en
+un <abbr title="JavaScript Object Notation">JSON</abbr>. Por ejemplo, no podremos usar <code class="docutils literal notranslate"><span class="pre">undefined</span></code> o todas las claves
+tendrán que ser cadenas, a pesar de que <abbr title="YAML Ain't Markup Language">YAML</abbr> no tiene esas limitaciones.</p>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">Ver también</p>
 <p>Como la especificación es muy árida, ilustraremos aquí los aspectos más básicos,
@@ -230,10 +236,6 @@ Gramática de Casilleros con JSON Schema<div class="sd-summary-down docutils">
 <span class="w">                  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
 <span class="w">                  </span><span class="nt">&quot;descripcion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Apellidos&quot;</span>
 <span class="w">               </span><span class="p">},</span>
-<span class="w">               </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">&quot;descripcion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nombre de pila&quot;</span>
-<span class="w">               </span><span class="p">},</span>
 <span class="w">               </span><span class="nt">&quot;departamento&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
 <span class="w">                  </span><span class="nt">&quot;descripcion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Departamento didáctico al que pertenece&quot;</span>
@@ -277,14 +279,72 @@ resuelto muy fácilmente con <abbr title="Document Type Definition">DTD</abbr>:<
 <li><p><a class="reference external" href="https://jschon.dev/">Validador online</a>, que tiene el inconveniente de que
 no pueden subirse archivos locales.</p></li>
 <li><p>La orden <strong class="command">jsonschema</strong>, disponible a través del paquete
-<a class="reference external" href="https://packages.debian.org/stable/python3-jsonschema">python3-jsonschema</a> de las distribuciones basadas en <em>Debian</em>.</p></li>
-</ul>
-<p>Esta última orden, tiene un uso muy sencillo:</p>
+<a class="reference external" href="https://packages.debian.org/stable/python3-jsonschema">python3-jsonschema</a> de las distribuciones basadas en <em>Debian</em>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>jsonschema<span class="w"> </span>-i<span class="w"> </span>casilleros.json<span class="w"> </span>casilleros.schema.json
 </pre></div>
 </div>
 <p>La orden no mostrará salida (y devolverá un <strong>0</strong> al sistema) si el documento
-respeta la gramática definida en el esquema.</p>
+respeta la gramática definida en el esquema. En principio, sólo es capaz de
+validar documentos <abbr title="JavaScript Object Notation">JSON</abbr>, pero para validar <abbr title="YAML Ain't Markup Language">YAML</abbr> puede hacerse una
+<a class="reference external" href="https://mikefarah.gitbook.io/yq/v/v3.x/usage/convert">conversión previa a JSON con yq</a>.</p>
+</li>
+<li><p>El todo terreno <a class="reference external" href="https://code.visualstudio.com">Visual Studio Code</a>, que sirve para validar tanto <abbr title="JavaScript Object Notation">JSON</abbr>
+como <abbr title="YAML Ain't Markup Language">YAML</abbr>. Sin embargo, requiere en ambos casos configuración adicional:</p>
+<dl>
+<dt><abbr title="JavaScript Object Notation">JSON</abbr></dt><dd><p>El soporte es nativo, como ya vimos, pero requiere configuración. En
+<code class="docutils literal notranslate"><span class="pre">File&gt;Preferences&gt;Settings</span></code> (o, simplemente, <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">,</kbd></kbd>) debemos
+consultar la extensión para <abbr title="JavaScript Object Notation">JSON</abbr>, una de cuyas configuraciones es <code class="docutils literal notranslate"><span class="pre">JSON:</span>
+<span class="pre">Schemas</span></code>:</p>
+<img alt="../_images/vs-json-schemas.png" src="../_images/vs-json-schemas.png" />
+<p>Al pinchar en la edición se nos abrirá el archivo de configuración
+<code class="file docutils literal notranslate"><span class="pre">settings.json</span></code> que nos permite relacionar archivos <abbr title="JavaScript Object Notation">JSON</abbr> con los
+esquemas que usan. Por ejemplo:</p>
+<img alt="../_images/vs-json-settings.png" src="../_images/vs-json-settings.png" />
+<p>Este es un proyecto abierto como una carpeta en que el esquema está en la
+propia carpeta raíz y se ha definido la relación entre archivos <abbr title="JavaScript Object Notation">JSON</abbr> y
+esquemas así:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;json.schemas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;fileMatch&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;casilleros*.json&quot;</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/casilleros.schema.json&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>La propiedad <code class="docutils literal notranslate"><span class="pre">json.schemas</span></code> es una secuencia, cada uno de cuyos elementos
+es un objeto que serve para referir un esquema distinto. En él, <code class="docutils literal notranslate"><span class="pre">fileMatch</span></code>
+es la lista de archivos que siguen el esquema, mientras que <code class="docutils literal notranslate"><span class="pre">url</span></code> indica la
+<abbr title="Uniform Resource Locator">URL</abbr> (que no propiamente la ruta) del esquema. Podríamos haber escrito una
+<abbr title="Uniform Resource Locator">URL</abbr> absoluta (con file:<cite>file:///etc.</cite>), pero dado que la <abbr title="Uniform Resource Locator">URL</abbr> base es la
+propia carpeta del proyecto, hemos preferido una <abbr title="Uniform Resource Locator">URL</abbr> relativa.</p>
+</dd>
+<dt><abbr title="YAML Ain't Markup Language">YAML</abbr></dt><dd><p>Como ya se indicó al tratar su sintaxis, requiere instalar  la <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml">extensión
+para YAML</a> y,
+como en el caso anterior, relacionar el archivo con su esquema correspondiente.
+La configuración es muy semejante, salvo que se encuentra dentro de la
+extensión <abbr title="YAML Ain't Markup Language">YAML</abbr> en, y que el <abbr title="JavaScript Object Notation">JSON</abbr> de configuración no es exactamente
+igual:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;yaml.schemas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;./casilleros.schema.json&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;casilleros*.yaml&quot;</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>En este caso, <code class="docutils literal notranslate"><span class="pre">yaml.schemas</span></code> es un objeto y cada objeto tiene como claves
+la ruta al esquema (no una <abbr title="Uniform Resource Locator">URL</abbr> como antes) y como valor el archivo o los
+archivos que se rigen por el esquema. Cuando son varios, es necesario usar
+una secuencia:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;yaml.schemas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;./casilleros.schema.json&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;casilleros*.yaml&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;*casilleros.yaml&quot;</span><span class="p">]</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
 </section>
 </section>
 <section id="sintaxis-basica">

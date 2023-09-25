@@ -127,7 +127,7 @@ La definición de su gramática hecha en |DTD| es :download:`la siguiente
    .. literalinclude:: files/casilleros_v2.dtd
 
 Este |DTD|, a su vez, llama a otro que contiene exclusivamente :download:`las
-entidades que definen los departamentos <files/departamentos.ent>`:
+entidades que definen los departamentos <files/departamentos.ent>`\ [#]_:
 
 .. dropdown:: DTD de definición de entidades
 
@@ -143,6 +143,10 @@ validaciones. Se propone:
 - Una solución en línea como `xmlvalidation.com
   <https://www.xmlvalidation.com/>`_, que permite validar documentos |XML| a
   partir de su |DTD|.
+- `Visual Studio Code`_, cuya `extensión XML
+  <https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml>`_,
+  consulta la gramática definida en el |DTD| que se refiera en la declaración\
+  [#]_ e indica las violaciones a ella según se escribe.
 - :command:`xmlstarlet`, que tiene paquete en las distribuciones basadas en
   *Debian* (:deb:`xmlstarlet`).
 
@@ -606,8 +610,19 @@ inconvenientes.
 .. [#] De hecho, para la definición de :ref:`espacios de nombres <rnc-ns>`, que
    son más modernos, ya sólo se usa una |URI| para identificarlos.
 
-.. [#] La variación es que hemos sacado la definición de las entidades del |XML|
-   y la hemos trasladado a un ficheo aparte.
+.. [#] La variación es que hemos incluido la definición del tipo de documento
+   con :code:`<!DOCTYPE ... >`.
+
+.. [#] Podríamos haber introducido esas definiciones dentro del propio
+   :file:`casilleros.dtd` o incluso haberlas incluido como adición a la propia
+   declaración del documento en el |XML|:
+
+   .. dropdown::  XML de casilleros con entidades empotradas
+
+      .. literalinclude:: files/casilleros_v1.xml
+         :language: xml
+
+.. [#] También soporta :ref:`Relax-NG Compact <rnc>` y :ref:`XML Schemas <xsd>`.
 
 .. [#] Los tipos |MIME| identifican de forma única los distintos tipos de
    archivos y se crearon en un principio para los adjuntos al correo
@@ -626,3 +641,5 @@ inconvenientes.
 .. |SGML| replace:: :abbr:`SGML (Standard Generalized Markup Language)`
 .. |XHTML| replace:: :abbr:`XHTML (eXtensible HyperText Markup Language)`
 .. |XSLT| replace:: :abbr:`XSLT (Extensible Stylesheet Language Transformations)`
+
+.. _Visual Studio Code: https://code.visualstudio.com

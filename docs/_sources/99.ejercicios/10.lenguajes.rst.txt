@@ -66,7 +66,11 @@ uno de ellos cree una versión |YAML| y otra versión |XML|.
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución propuesta </99.ejercicios/soluciones/facturas/facturas.xml>`
+      | :download:`XML </99.ejercicios/soluciones/facturas/facturas.xml>`
+      | :download:`JSON </99.ejercicios/soluciones/facturas/facturas.json>`
+      | :download:`YAML </99.ejercicios/soluciones/facturas/facturas.yaml>`
+      | :download:`DTD </99.ejercicios/soluciones/facturas/dtd/facturas.dtd>`
+      | :download:`RNC </99.ejercicios/soluciones/facturas/rnc/facturas.rnc>`
 
 #. Diseñe un documento para almacenar la información sobre los préstamos de
    libros que se realizan en una biblioteca:
@@ -75,13 +79,17 @@ uno de ellos cree una versión |YAML| y otra versión |XML|.
      Standard Book Number)`, nombre, editorial, año de publicación, autor.
    * De cada libro podemos tener uno o varios ejemplares. Cada ejemplar se
      diferencia de otro por un código numérico.
-   * Se prestan los ejemplares, y de cada prestamos hay que indicar el ejemplar
+   * Se prestan los ejemplares, y de cada préstamo hay que indicar el ejemplar
      del libro, el socio al que se ha prestado y la fecha de prestamo.
    * Del socio hay que guadar DNI, nombre y dirección.
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución propuesta </99.ejercicios/soluciones/prestamos/biblioteca.xml>`
+      | :download:`XML </99.ejercicios/soluciones/prestamos/biblioteca.xml>`
+      | :download:`JSON </99.ejercicios/soluciones/prestamos/biblioteca.json>`
+      | :download:`YAML </99.ejercicios/soluciones/prestamos/biblioteca.yaml>`
+      | :download:`DTD </99.ejercicios/soluciones/prestamos/dtd/biblioteca.dtd>`
+      | :download:`RNC </99.ejercicios/soluciones/prestamos/rnc/biblioteca.rnc>`
 
 #. Escriba un documento para almacenar los coches que tiene puestos a la venta
    un concesionario:
@@ -97,7 +105,11 @@ uno de ellos cree una versión |YAML| y otra versión |XML|.
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución propuesta </99.ejercicios/soluciones/coches/concesionario.xml>`
+      | :download:`XML </99.ejercicios/soluciones/coches/concesionario.xml>`
+      | :download:`JSON </99.ejercicios/soluciones/coches/concesionario.json>`
+      | :download:`YAML </99.ejercicios/soluciones/coches/concesionario.yaml>`
+      | :download:`DTD </99.ejercicios/soluciones/coches/dtd/concesionario.dtd>`
+      | :download:`RNC </99.ejercicios/soluciones/coches/rnc/concesionario.rnc>`
 
 #. Retome el ejemplo del ejercicio anterior, pero enriquezca el documento para
    que se conozca los del cliente que ha realizado una determinada reserva
@@ -105,7 +117,12 @@ uno de ellos cree una versión |YAML| y otra versión |XML|.
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución propuesta </99.ejercicios/soluciones/cochesclientes/concesionario.xml>`
+      | :download:`XML </99.ejercicios/soluciones/cochesclientes/concesionario.xml>`
+      | :download:`JSON </99.ejercicios/soluciones/cochesclientes/concesionario.json>`
+      | :download:`YAML </99.ejercicios/soluciones/cochesclientes/concesionario.yaml>`
+      | :download:`DTD </99.ejercicios/soluciones/cochesclientes/dtd/concesionario.dtd>`
+      | :download:`RNC </99.ejercicios/soluciones/cochesclientes/rnc/concesionario.rnc>`
+
 
 #. Diseñe un documento que recoja la información referente a los Parques
    Nacionales de España, en especial:
@@ -122,7 +139,11 @@ uno de ellos cree una versión |YAML| y otra versión |XML|.
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución propuesta </99.ejercicios/soluciones/parques/parques.xml>`
+      | :download:`XML </99.ejercicios/soluciones/parques/parques.xml>`
+      | :download:`JSON </99.ejercicios/soluciones/parques/parques.json>`
+      | :download:`YAML </99.ejercicios/soluciones/parques/parques.yaml>`
+      | :download:`DTD </99.ejercicios/soluciones/parques/dtd/parques.dtd>`
+      | :download:`RNC </99.ejercicios/soluciones/parques/rnc/parques.rnc>`
 
 #. Un ayuntamiento desea recoger la información de los habitantes que hay en su
    municipio, de manera que de cada ciudadano se sepa:
@@ -135,7 +156,11 @@ uno de ellos cree una versión |YAML| y otra versión |XML|.
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución propuesta </99.ejercicios/soluciones/ayuntamiento/ayuntamiento.xml>`
+      | :download:`XML </99.ejercicios/soluciones/ayuntamiento/ayuntamiento.xml>`
+      | :download:`JSON </99.ejercicios/soluciones/ayuntamiento/ayuntamiento.json>`
+      | :download:`YAML </99.ejercicios/soluciones/ayuntamiento/ayuntamiento.yaml>`
+      | :download:`DTD </99.ejercicios/soluciones/ayuntamiento/dtd/ayuntamiento.dtd>`
+      | :download:`RNC </99.ejercicios/soluciones/ayuntamiento/rnc/ayuntamiento.rnc>`
 
 #. Diseñe un documento para almacenar la información de un gráfico vectorial
    en 2 dimensiones. Los elementos que pueden definirse en ese documento son:
@@ -152,7 +177,11 @@ uno de ellos cree una versión |YAML| y otra versión |XML|.
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución propuesta </99.ejercicios/soluciones/grafico/grafico.xml>`
+      | :download:`XML </99.ejercicios/soluciones/grafico/grafico.xml>`
+      | :download:`JSON </99.ejercicios/soluciones/grafico/grafico.json>`
+      | :download:`YAML </99.ejercicios/soluciones/grafico/grafico.yaml>`
+      | :download:`DTD </99.ejercicios/soluciones/grafico/dtd/grafico.dtd>`
+      | :download:`RNC </99.ejercicios/soluciones/grafico/rnc/grafico.rnc>`
 
 
 .. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`

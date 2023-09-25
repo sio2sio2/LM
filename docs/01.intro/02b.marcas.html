@@ -192,7 +192,7 @@ sea la ya descrita como <code class="docutils literal notranslate"><span class="
 <dl class="simple" id="sgml-doctype">
 <dt><strong>Tipo de documento</strong></dt><dd><p>La definición del tipo de documento, o sea, el <abbr title="Document Type Definition">DTD</abbr>. Expone la gramática del
 lenguaje. Lo habitual es que se haga una simple declaración y la exposición
-se haga en fichero aparte.</p>
+se haga en archivo aparte.</p>
 </dd>
 <dt><strong>Contenido</strong></dt><dd><p>esto es, una instancia concreta del tipo de documento, en que todo el
 contenido está incluido dentro de un elemento de primer nivel.</p>
@@ -331,40 +331,20 @@ Casilleros de profesores<div class="sd-summary-down docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="cp">&lt;!DOCTYPE claustro SYSTEM &quot;casilleros.dtd&quot; [</span>
-<span class="cp">   &lt;!ENTITY FyQ &quot;Física y Química&quot;&gt;</span>
-<span class="w">   </span><span class="cp">&lt;!ENTITY EFI &quot;Educación Física&quot;&gt;</span>
-<span class="w">   </span><span class="cp">&lt;!ENTITY ING &quot;Inglés&quot;&gt;</span>
-<span class="w">   </span><span class="cp">&lt;!ENTITY INF &quot;Informática&quot;&gt;</span>
-<span class="w">   </span><span class="cp">&lt;!ENTITY FRA &quot;Francés&quot;&gt;</span>
-<span class="w">   </span><span class="cp">&lt;!ENTITY ORI &quot;Orientación&quot;&gt;</span>
-<span class="w">   </span><span class="cp">&lt;!ENTITY MUS &quot;Música&quot;&gt;</span>
-<span class="w">   </span><span class="cp">&lt;!ENTITY LEN &quot;Lengua Castellana y Literatura&quot;&gt;</span>
-<span class="w">   </span><span class="cp">&lt;!ENTITY MAT &quot;Matemáticas&quot;&gt;</span>
-<span class="w">   </span><span class="cp">&lt;!ENTITY ByG &quot;Biología y Geología&quot;&gt;</span>
-<span class="w">   </span><span class="cp">&lt;!ENTITY FIL &quot;Filosofía&quot;&gt;</span>
-<span class="w">   </span><span class="cp">&lt;!ENTITY HIS &quot;Geografía e Historia&quot;&gt;</span>
-<span class="w">   </span><span class="cp">&lt;!ENTITY LAT &quot;Latín&quot;&gt;</span>
-<span class="w">   </span><span class="cp">&lt;!ENTITY GRI &quot;Griego&quot;&gt;</span>
-<span class="w">   </span><span class="cp">&lt;!ENTITY DIB &quot;Dibujo&quot;&gt;</span>
-<span class="w">   </span><span class="cp">&lt;!ENTITY FOL &quot;Formación y Orientación Laboral&quot;&gt;</span>
-<span class="w">   </span><span class="cp">&lt;!ENTITY TEC &quot;Tecnología&quot;&gt;</span>
-<span class="w">   </span><span class="cp">&lt;!ENTITY REL &quot;Religión&quot;&gt;</span>
-]&gt;
 
 <span class="nt">&lt;claustro</span><span class="w"> </span><span class="na">centro=</span><span class="s">&quot;IES Pepe Botella&quot;</span><span class="nt">&gt;</span>
 <span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p1&quot;</span><span class="nt">&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Luis<span class="nt">&lt;/apelativo&gt;</span>
 <span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Luis<span class="nt">&lt;/nombre&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Márquez<span class="w"> </span>Vázquez<span class="nt">&lt;/apellidos&gt;</span>
-<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;EFI;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span>Educación<span class="w"> </span>Física<span class="nt">&lt;/departamento&gt;</span>
 <span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
 
 <span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p13&quot;</span><span class="nt">&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Cristina<span class="nt">&lt;/apelativo&gt;</span>
 <span class="w">      </span><span class="nt">&lt;nombre&gt;</span>María<span class="w"> </span>Cristina<span class="nt">&lt;/nombre&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Prieto<span class="w"> </span>Monagas<span class="nt">&lt;/apellidos&gt;</span>
-<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;ByG;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span>Biología<span class="w"> </span>y<span class="w"> </span>Geología<span class="nt">&lt;/departamento&gt;</span>
 <span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
 
 <span class="w">   </span><span class="cm">&lt;!-- Si se sustituye a sí mismo es que está de baja --&gt;</span>
@@ -373,7 +353,7 @@ Casilleros de profesores<div class="sd-summary-down docutils">
 <span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Manolo<span class="nt">&lt;/apelativo&gt;</span>
 <span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Manuel<span class="nt">&lt;/nombre&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Páez<span class="w"> </span>Robledo<span class="nt">&lt;/apellidos&gt;</span>
-<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;MAT;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span>Matemáticas<span class="nt">&lt;/departamento&gt;</span>
 <span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
 
 <span class="w">   </span><span class="cm">&lt;!-- Profesor con casillero(s) adicional(es) --&gt;</span>
@@ -382,7 +362,7 @@ Casilleros de profesores<div class="sd-summary-down docutils">
 <span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Lucía<span class="nt">&lt;/apelativo&gt;</span>
 <span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Lucía<span class="nt">&lt;/nombre&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Gálvez<span class="w"> </span>Ruiz<span class="nt">&lt;/apellidos&gt;</span>
-<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;ING;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span>Inglés<span class="nt">&lt;/departamento&gt;</span>
 <span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
 
 <span class="w">   </span><span class="cm">&lt;!-- En principio, si el casillero está vacío</span>
@@ -394,7 +374,7 @@ Casilleros de profesores<div class="sd-summary-down docutils">
 <span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Miguel<span class="w"> </span>Ángel<span class="nt">&lt;/apelativo&gt;</span>
 <span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Miguel<span class="w"> </span>Ángel<span class="nt">&lt;/nombre&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Campos<span class="w"> </span>Sánchez<span class="nt">&lt;/apellidos&gt;</span>
-<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;HIS;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span>Historia<span class="nt">&lt;/departamento&gt;</span>
 <span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
 
 <span class="w">   </span><span class="cm">&lt;!-- Profesor sin casillero (tienen el 0) --&gt;</span>
@@ -403,7 +383,7 @@ Casilleros de profesores<div class="sd-summary-down docutils">
 <span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Verónica<span class="nt">&lt;/apelativo&gt;</span>
 <span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Verónica<span class="nt">&lt;/nombre&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Martín<span class="w"> </span>Díaz<span class="nt">&lt;/apellidos&gt;</span>
-<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;ByG;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span>Biología<span class="w"> </span>y<span class="w"> </span>Geología<span class="nt">&lt;/departamento&gt;</span>
 <span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
 
 <span class="w">   </span><span class="cm">&lt;!-- Profesor sustituto --&gt;</span>
@@ -417,12 +397,8 @@ Casilleros de profesores<div class="sd-summary-down docutils">
 </pre></div>
 </div>
 </div>
-</details><div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>El documento puede validarse con <a class="reference download internal" download="" href="../_downloads/d83aec46641b9afafe7d5310f361841f/casilleros.dtd"><code class="xref download docutils literal notranslate"><span class="pre">este</span> <span class="pre">DTD</span></code></a>.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
+</details><div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
 <p>El documento no es un texto marcado, sino una sucesión de datos, por
 lo que estamos utilizando este <abbr title="eXtensible  Markup Language">XML</abbr> para <em>marcado descriptivo orientado al
 dato</em>, o sea, justamente para algo para lo que se ajusta mejor un <em>lenguaje de
@@ -432,6 +408,25 @@ ejemplos de <abbr title="eXtensible  Markup Language">XML</abbr> tendrán esta p
 <p>Se observan en él las marcas claramente diferenciadas del contenido, pero aún
 nos viene demasiado grande entender los detalles del documento. Volveremos
 a ellos según aparezcan más adelante.</p>
+<p>Introduciremos a continuación cuál es la gramatica general de los documentos
+<abbr title="eXtensible  Markup Language">XML</abbr>, pero nos conviene de antemano saber cómo comprobar si son bien formados.
+Tenemos varias alternativas:</p>
+<ul class="simple">
+<li><p>Un validador online como el proporcionado por <a class="reference external" href="https://www.xmlvalidation.com/">xmlvalidation.com</a>.</p></li>
+<li><p>La orden <strong class="program">xmlstarlet</strong>, instalable a través del paquete
+<a class="reference external" href="https://packages.debian.org/stable/xmlstarlet">xmlstarlet</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet val -e casilleros.xml
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Para más información sobre <strong class="program">xmlstarlet</strong> consulte el
+<a class="reference internal" href="../02.validacion/01.dtdxml.html#xml-valid"><span class="std std-ref">epígrafe sobre validación con un DTD</span></a>.</p>
+</div>
+</li>
+<li><p><a class="reference external" href="https://code.visualstudio.com">Visual Studio Code</a> es capaz de comprobar a sintaxis si se instala en el una
+extensión apropiada como <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml">XML de RedHat</a>.</p></li>
+</ul>
 </section>
 </section>
 <section id="anatomia-del-documento">
@@ -465,7 +460,7 @@ es un elemento <code class="docutils literal notranslate"><span class="pre">&lt;
 <span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Luis<span class="nt">&lt;/apelativo&gt;</span>
 <span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Luis<span class="nt">&lt;/nombre&gt;</span>
 <span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Márquez<span class="w"> </span>Vázquez<span class="nt">&lt;/apellidos&gt;</span>
-<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;EFI;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span>Educación<span class="w"> </span>Física<span class="nt">&lt;/departamento&gt;</span>
 <span class="nt">&lt;/profesor&gt;</span>
 </pre></div>
 </div>
@@ -513,7 +508,7 @@ departamentos:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;EFI;</span><span class="nt">&lt;/departamento&gt;</span>
 </pre></div>
 </div>
-<p>La entidad <code class="code docutils literal notranslate"><span class="pre">&amp;EFI;</span></code> está definida en fichero aparte (ya se verá cómo se
+<p>La entidad <code class="code docutils literal notranslate"><span class="pre">&amp;EFI;</span></code> está definida en archivo aparte (ya se verá cómo se
 hacen tal definición al tratar el <a class="reference internal" href="../02.validacion/01.dtdxml.html#dtd"><span class="std std-ref">DTD</span></a>) y equivale a «<em>Educación
 Física</em>». Por tanto, lo anterior es equivalente a que se hubiera escrito:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;departamento&gt;</span>Educación<span class="w"> </span>Física<span class="nt">&lt;/departamento&gt;</span>
@@ -542,6 +537,12 @@ SGML</span></a>). Retomando el <a class="reference internal" href="#xml-ejemplo"
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="cp">&lt;!DOCTYPE claustro SYSTEM &quot;casilleros.dtd&quot;&gt;</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>En nuestro ejemplo no hemos incluido esta declaración, porque
+hasta la próxima unidad  no abordaremos la definición de una gramática
+particular.</p>
 </div>
 </dd>
 <dt><strong>Contenido</strong></dt><dd><p>Es la información que contiene propiamente el documento junto a las marcas
@@ -592,32 +593,6 @@ ascendientes del de referencia.</p>
 <img alt="../_images/XML-Hermanos.png" src="../_images/XML-Hermanos.png" />
 </dd>
 </dl>
-</section>
-<section id="validez">
-<h4><span class="section-number">1.2.2.2.2.4. </span>Validez<a class="headerlink" href="#validez" title="Enlace permanente a este encabezado">¶</a></h4>
-<p>Cuando se analiza la validez de un documento <abbr title="eXtensible  Markup Language">XML</abbr>, podemos establecer dos
-niveles de validez:</p>
-<ul class="simple">
-<li><p>El cumplimiento de las <strong>reglas generales</strong> que todo <abbr title="eXtensible  Markup Language">XML</abbr> debe cumplir.
-Cuando un documento lo alcanza, se dice que el documento está <em class="dfn">bien
-formado</em>.</p></li>
-<li><p>El cumplimiento de unas <strong>reglas gramaticales precisas</strong> definidas en un <abbr title="Document Type Definition">DTD</abbr>
-(o en un documento equivalente como un <a class="reference internal" href="../98.apendices/21.xsd.html#xsd"><span class="std std-ref">XSD</span></a> o un <a class="reference internal" href="../98.apendices/22.rnc.html#rnc"><span class="std std-ref">Relax-NG</span></a>). Cuando el documento alcanza este nivel, se le denomina <em class="dfn">valido</em>.
-Por supuesto, todo <abbr title="eXtensible  Markup Language">XML</abbr> válido es bien formado.</p></li>
-</ul>
-<p>Volviendo a<a class="reference internal" href="#xml-ejemplo"><span class="std std-ref">l ejemplo</span></a>, para comprobar si está bien formado
-nos bastará descargar exclusivamente el <abbr title="eXtensible  Markup Language">XML</abbr> y utlizar un validador como
-<strong class="program">xmlstarlet</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet val -e casilleros.xml
-</pre></div>
-</div>
-<p>Ahora bien, si queremos concluir que es válido, tendremos que tomar también el
-<abbr title="Document Type Definition">DTD</abbr> que se proporciona justamente en la nota inferior.</p>
-<div class="admonition seealso">
-<p class="admonition-title">Ver también</p>
-<p>Para más información sobre <strong class="program">xmlstarlet</strong> consulte el
-<a class="reference internal" href="../02.validacion/01.dtdxml.html#dtd"><span class="std std-ref">epígrafe sobre validación con un DTD</span></a>.</p>
-</div>
 </section>
 </section>
 <section id="reglas-generales">
@@ -767,8 +742,8 @@ escribiendo un manual de física y quisiéramos escribir el nombre del
 padre del Electromagnetismo, Hans Christian Ørsted, nos
 toparíamos con que hay un carácter (Ø) que no es propio del
 castellano, y en consecuencia somos incapaces de escribirlo
-directamente con el teclado. El modo escribir este carácter mediante una
-entidad es el siguiente:</p>
+directamente con el teclado. La estrategia para escribir este carácter
+mediante una entidad es el siguiente:</p>
 <ol class="arabic simple">
 <li><p>Accedemos a la <a class="reference external" href="https://www.utf8-chartable.de/unicode-utf8-table.pl">pagina indicada</a>.</p></li>
 <li><p>Escogemos el bloque preciso. Al tratarse de una lengua europea, es
@@ -794,7 +769,7 @@ hexadecimal o decimal. Nos aparecerá directamente el código
 <li><p>Definidas por el <strong>usuario</strong> en el documento que defina la gramática (un
 <abbr title="Document Type Definition">DTD</abbr> por ejemplo). Es lo que se ha hecho en el <a class="reference internal" href="#xml-ejemplo"><span class="std std-ref">ejemplo
 introductorio</span></a> para las entidades <code class="code docutils literal notranslate"><span class="pre">&amp;EFI;</span></code>,
-code:<cite>&amp;HyG;</cite>, etc.</p></li>
+<code class="code docutils literal notranslate"><span class="pre">&amp;HyG;</span></code>, etc.</p></li>
 </ol>
 </li>
 </ul>
@@ -1083,7 +1058,6 @@ texto) carecen de significado.</p>
 <li><a class="reference internal" href="#componentes">1.2.2.2.2.1. Componentes</a></li>
 <li><a class="reference internal" href="#id9">1.2.2.2.2.2. Partes</a></li>
 <li><a class="reference internal" href="#estructura-jerarquica">1.2.2.2.2.3. Estructura jerárquica</a></li>
-<li><a class="reference internal" href="#validez">1.2.2.2.2.4. Validez</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#reglas-generales">1.2.2.2.3. Reglas generales</a></li>
