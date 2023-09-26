@@ -470,7 +470,7 @@ YAML de casilleros<div class="sd-summary-down docutils">
 <span class="w">    </span><span class="nt">apelativo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Lucía</span>
 <span class="w">    </span><span class="nt">nombre</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Lucía</span>
 <span class="w">    </span><span class="nt">apellidos</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gálvez Ruiz</span>
-<span class="w">    </span><span class="nt">departamento</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Inglésç</span>
+<span class="w">    </span><span class="nt">departamento</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Inglés</span>
 <span class="w">    </span><span class="c1"># Ocupa un casillero distinto al de su ID.</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">17</span>
 <span class="w">    </span><span class="nt">casillero</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">28</span><span class="p p-Indicator">]</span>
@@ -665,9 +665,9 @@ paréntesis se indica cuál es la etiqueta que los identifica):</p>
 <dl class="simple" id="yaml-int">
 <dt><strong>Enteros</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>)</dt><dd><p>Pueden escribirse:</p>
 <ul class="simple">
-<li><p>Decimales (<code class="code docutils literal notranslate"><span class="pre">-123</span></code>)</p></li>
-<li><p>Octales (<code class="code docutils literal notranslate"><span class="pre">0o10</span></code>)</p></li>
-<li><p>Hexadecimales (<code class="code docutils literal notranslate"><span class="pre">0x1a</span></code>).</p></li>
+<li><p>Decimales como <code class="code docutils literal notranslate"><span class="pre">-123</span></code>.</p></li>
+<li><p>Octales como <code class="code docutils literal notranslate"><span class="pre">0o10</span></code> (<a class="reference internal" href="#yaml-core-schema"><span class="std std-ref">core schema</span></a>)</p></li>
+<li><p>Hexadecimales como <code class="code docutils literal notranslate"><span class="pre">0x1a</span></code> (<a class="reference internal" href="#yaml-core-schema"><span class="std std-ref">core schema</span></a>).</p></li>
 </ul>
 </dd>
 </dl>
@@ -676,8 +676,8 @@ paréntesis se indica cuál es la etiqueta que los identifica):</p>
 <ul class="simple">
 <li><p>La habitual con punto separador <code class="code docutils literal notranslate"><span class="pre">123.45</span></code>.</p></li>
 <li><p>En notación científica <code class="code docutils literal notranslate"><span class="pre">1.25e+5</span></code><a class="footnote-reference brackets" href="#id18" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>)</p></li>
-<li><p>Valores infinitos (<code class="code docutils literal notranslate"><span class="pre">.inf</span></code> y <code class="code docutils literal notranslate"><span class="pre">-.inf</span></code>).</p></li>
-<li><p><em>No es un número</em> (<code class="code docutils literal notranslate"><span class="pre">.nan</span></code>)<a class="footnote-reference brackets" href="#id19" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>.</p></li>
+<li><p>Valores infinitos: <code class="code docutils literal notranslate"><span class="pre">.inf</span></code> y <code class="code docutils literal notranslate"><span class="pre">-.inf</span></code> (<a class="reference internal" href="#yaml-core-schema"><span class="std std-ref">core schema</span></a>).</p></li>
+<li><p><em>No es un número</em>: <code class="code docutils literal notranslate"><span class="pre">.nan</span></code><a class="footnote-reference brackets" href="#id19" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a> (<a class="reference internal" href="#yaml-core-schema"><span class="std std-ref">core schema</span></a>).</p></li>
 </ul>
 </dd>
 </dl>
@@ -893,7 +893,7 @@ representación codificada el binario ocupa varias líneas (véase
 <p>Obsérvese que el formato es <code class="docutils literal notranslate"><span class="pre">AAAA-MM-DD</span></code>.</p>
 </dd>
 <dt><strong>Marcas de tiempo</strong> (<code class="docutils literal notranslate"><span class="pre">timestamp</span></code>)</dt><dd><p>Permite definir un instante de tiempo concreto en distintos formatos:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">zulu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2022-09-01T17:29:32.321Z</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">zulu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2022-09-01T15:29:32.321Z</span>
 <span class="nt">iso8601</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2022-09-01T17:29:32.321+02:00</span>
 <span class="nt">spaced</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2022-09-01 21:59:32.321 +2</span>
 </pre></div>
@@ -979,11 +979,12 @@ tener que escribir <abbr title="Uniform Resource Locator">URN</abbr> distintas d
 </div>
 <p>En el ejemplo <code class="code docutils literal notranslate"><span class="pre">!ex!tiporaro</span></code> equivale a <code class="code docutils literal notranslate"><span class="pre">!&lt;tag:ejemplo.org:2023:tiporaro&gt;</span></code><a class="footnote-reference brackets" href="#id22" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></a>.</p>
 </section>
+</section>
 <section id="ejercicios-resueltos">
-<span id="yaml-resueltos"></span><h3><span class="section-number">1.2.1.3.8. </span>Ejercicios resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="yaml-resueltos"></span><h2><span class="section-number">1.2.1.4. </span>Ejercicios resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Enlace permanente a este encabezado">¶</a></h2>
 <ol class="arabic">
-<li><p>Diseñar un documento <abbr title="YAML Ain't Markup Language">YAML</abbr> que almacene recetas de cocina, de manera
-que:</p>
+<li><p>Diseñar un documento <abbr title="JavaScript Object Notation">JSON</abbr> y su equivalente <abbr title="YAML Ain't Markup Language">YAML</abbr> que almacene recetas de
+cocina, de manera que:</p>
 <ul class="simple">
 <li><p>Cada receta está constituida por ingredientes que deben citarse, así como
 la cantidad de cada uno de ellos.</p></li>
@@ -995,7 +996,39 @@ tomate, pero en otra bastará con indicar dos piezas.</p></li>
 </ul>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-Solución propuesta<div class="sd-summary-down docutils">
+Solución propuesta JSON<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ensalada&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;tiempo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;ingredientes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">         </span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tomate&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pieza&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cebolla&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pieza&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.25</span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;lechuga&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gramo&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sal&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gramo&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aceite&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ml&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vinagre&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ml&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">   </span><span class="p">},</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bocadillo de anchoas&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;tiempo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;ingredientes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">         </span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pan&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pieza&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;anchoa&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pieza&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución propuesta YAML<div class="sd-summary-down docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
@@ -1048,7 +1081,84 @@ restaurantes pueden ofrecer la misma receta.</p></li>
 </ul>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-Solución propuesta<div class="sd-summary-down docutils">
+Solución propuesta JSON<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;recetas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ensalada&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;tiempo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;ingredientes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tomate&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pieza&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cebolla&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pieza&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.25</span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;lechuga&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gramo&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sal&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gramo&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aceite&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ml&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vinagre&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ml&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">}</span>
+<span class="w">         </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bocadillo de anchoas&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;tiempo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;ingredientes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pan&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pieza&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;anchoa&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pieza&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">}</span>
+<span class="w">         </span><span class="p">]</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">   </span><span class="p">]</span>
+
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ensalada&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;tiempo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;ingredientes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tomate&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pieza&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cebolla&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pieza&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.25</span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;lechuga&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gramo&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sal&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gramo&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aceite&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ml&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vinagre&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ml&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">}</span>
+<span class="w">         </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bocadillo de anchoas&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;tiempo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;ingredientes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pan&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pieza&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;anchoa&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;unidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pieza&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">}</span>
+<span class="w">         </span><span class="p">]</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">   </span><span class="p">],</span>
+<span class="w">   </span><span class="nt">&quot;cadena&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;El tragón feliz&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;tlfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">956010203</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;direccion&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;via&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;calle Callo, nº25. Bajo&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;municipio&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Vallecito Frondoso&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;cp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="nt">&quot;carta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="nt">&quot;plato&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ensalada&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;formato&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;tapa&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;media&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;racion&quot;</span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="nt">&quot;plato&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bocadillo de anchoas&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;formato&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;media&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;racion&quot;</span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">         </span><span class="p">]</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">   </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución propuesta YAML<div class="sd-summary-down docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
@@ -1056,8 +1166,7 @@ Solución propuesta<div class="sd-summary-down docutils">
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">%YAML</span><span class="w"> </span><span class="m">1.2</span>
 <span class="nn">---</span>
 <span class="nt">recetas</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nl">&amp;ensalada</span>
-<span class="w">    </span><span class="nt">nombre</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ensalada</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">nombre</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;ensalada</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ensalada</span>
 <span class="w">    </span><span class="nt">tiempo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w">  </span><span class="c1"># El tiempo es en minutos.</span>
 <span class="w">    </span><span class="nt">ingredientes</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">nombre</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tomate</span>
@@ -1079,8 +1188,7 @@ Solución propuesta<div class="sd-summary-down docutils">
 <span class="w">        </span><span class="nt">unidad</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ml</span>
 <span class="w">        </span><span class="nt">cantidad</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nl">&amp;bocanchoas</span>
-<span class="w">    </span><span class="nt">nombre</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bocadillo de anchoas</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">nombre</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;bocanchoas</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bocadillo de anchoas</span>
 <span class="w">    </span><span class="nt">tiempo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
 <span class="w">    </span><span class="nt">ingredientes</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">nombre</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pan</span>
@@ -1094,7 +1202,7 @@ Solución propuesta<div class="sd-summary-down docutils">
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">nombre</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">El tragón feliz</span>
 <span class="w">    </span><span class="nt">tlfo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">956010203</span>
 <span class="w">    </span><span class="nt">direccion</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">via</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">calle Callo, nº25.  Bajo</span>
+<span class="w">      </span><span class="nt">via</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">calle Callo, nº25. Bajo</span>
 <span class="w">      </span><span class="nt">municipio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Vallecito Frondoso</span>
 <span class="w">      </span><span class="nt">cp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">12345</span>
 <span class="w">    </span><span class="nt">carta</span><span class="p">:</span>
@@ -1182,7 +1290,6 @@ probar que funciona:</p>
 </aside>
 </section>
 </section>
-</section>
 
 
             <div class="clearer"></div>
@@ -1212,9 +1319,9 @@ probar que funciona:</p>
 <li><a class="reference internal" href="#tipos">1.2.1.3.5. Tipos</a></li>
 <li><a class="reference internal" href="#referencias">1.2.1.3.6. Referencias</a></li>
 <li><a class="reference internal" href="#etiquetas-tags">1.2.1.3.7. Etiquetas (<em>tags</em>)</a></li>
-<li><a class="reference internal" href="#ejercicios-resueltos">1.2.1.3.8. Ejercicios resueltos</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#ejercicios-resueltos">1.2.1.4. Ejercicios resueltos</a></li>
 </ul>
 </li>
 </ul>

@@ -1147,9 +1147,10 @@ crearlos:
       ``casillero``, ``departamento`` y ``sustituye`` del :ref:`ejemplo inicial
       <json-schema-ejemplo>`.
 
-.. https://jsonformatter.org/yaml-to-jsonschema
-.. https://dev.to/brpaz/how-to-create-your-own-auto-completion-for-json-and-yaml-files-on-vs-code-with-the-help-of-json-schema-k1i
-.. https://codebeautify.org/yaml-to-json-schema-generator
+Ejercicios resueltos
+====================
+
+.. todo:: Resolver los :ref:`ejercicios de recetas y cadena <yaml-resueltos>`.
 
 .. rubric:: Notas al pie
 

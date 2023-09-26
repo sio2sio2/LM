@@ -1,0 +1,12 @@
+**************
+Bases de datos
+**************
+
+|JSON| en bases relacionales
+****************************
+
+Bases nativas
+*************
+
+.. Bases XML.
+   Bases documentales (mongoDB)

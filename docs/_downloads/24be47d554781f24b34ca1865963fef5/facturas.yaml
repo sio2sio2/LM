@@ -19,7 +19,7 @@ clientes:
 facturas:
   - codigo: 1
     cliente: 1
-    fecha: !!date "2018-10-15"
+    fecha: 2018-10-15
     descuento: 10
     contenido:
     - producto: "tomate"

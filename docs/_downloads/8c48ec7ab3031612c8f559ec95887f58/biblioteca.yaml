@@ -34,15 +34,15 @@ socios:
 prestamos:
   - ejemplar: 1
     lector: 1
-    fecha: !!date "2018-10-02"
+    fecha: 2018-10-02
     plazo: 10
-    devolucion: !!date "2018-10-15"
+    devolucion: 2018-10-15
   - ejemplar: 6
     lector: 2
-    fecha: !!date "2018-10-02"
+    fecha: 2018-10-02
     plazo: 15
   - ejemplar: 7
     lector: 1
-    fecha: !!date "2018-10-05"
+    fecha: 2018-10-05
     plazo: 10
   # Más prestamos...

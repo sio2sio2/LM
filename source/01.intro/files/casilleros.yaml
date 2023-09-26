@@ -25,7 +25,7 @@ profesores:
     apelativo: Lucía
     nombre: Lucía
     apellidos: Gálvez Ruiz
-    departamento: Inglésç
+    departamento: Inglés
     # Ocupa un casillero distinto al de su ID.
   - id: 17
     casillero: [28]

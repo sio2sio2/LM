@@ -536,9 +536,9 @@ paréntesis se indica cuál es la etiqueta que los identifica):
 **Enteros** (``int``)
    Pueden escribirse:
 
-   * Decimales (:code:`-123`)
-   * Octales (:code:`0o10`)
-   * Hexadecimales (:code:`0x1a`).
+   * Decimales como :code:`-123`.
+   * Octales como :code:`0o10` (:ref:`core schema <yaml-core-schema>`)
+   * Hexadecimales como :code:`0x1a` (:ref:`core schema <yaml-core-schema>`).
 
 .. _yaml-float:
 
@@ -547,8 +547,8 @@ paréntesis se indica cuál es la etiqueta que los identifica):
 
    * La habitual con punto separador :code:`123.45`.
    * En notación científica :code:`1.25e+5`\ [#]_)
-   * Valores infinitos (:code:`.inf` y :code:`-.inf`).
-   * *No es un número* (:code:`.nan`)\ [#]_.
+   * Valores infinitos: :code:`.inf` y :code:`-.inf` (:ref:`core schema <yaml-core-schema>`).
+   * *No es un número*: :code:`.nan`\ [#]_ (:ref:`core schema <yaml-core-schema>`).
 
 .. _yaml-bool:
 
@@ -799,7 +799,7 @@ existen otros que suelen implementar los procesadores:
 
    .. code-block:: yaml
 
-      zulu: 2022-09-01T17:29:32.321Z
+      zulu: 2022-09-01T15:29:32.321Z
       iso8601: 2022-09-01T17:29:32.321+02:00
       spaced: 2022-09-01 21:59:32.321 +2
 
@@ -903,10 +903,10 @@ En el ejemplo :code:`!ex!tiporaro` equivale a :code:`!<tag:ejemplo.org:2023:tipo
 .. _yaml-resueltos:
 
 Ejercicios resueltos
---------------------
+====================
 
-#. Diseñar un documento |YAML| que almacene recetas de cocina, de manera
-   que:
+#. Diseñar un documento |JSON| y su equivalente |YAML| que almacene recetas de
+   cocina, de manera que:
 
    * Cada receta está constituida por ingredientes que deben citarse, así como
      la cantidad de cada uno de ellos.
@@ -916,7 +916,12 @@ Ejercicios resueltos
      en la que se mide. Por ejemplo, en alguna receta se necesitarán 200 gramos de
      tomate, pero en otra bastará con indicar dos piezas.
 
-   .. dropdown:: Solución propuesta
+   .. dropdown:: Solución propuesta JSON
+
+      .. literalinclude:: files/ejyaml1.recetas.json
+         :language: json
+
+   .. dropdown:: Solución propuesta YAML
 
       .. literalinclude:: files/ejyaml1.recetas.yaml
          :language: yaml
@@ -930,7 +935,12 @@ Ejercicios resueltos
      ofrecen al público (tapa, media ración o ración). Por supuesto, varios
      restaurantes pueden ofrecer la misma receta.
 
-   .. dropdown:: Solución propuesta
+   .. dropdown:: Solución propuesta JSON
+
+      .. literalinclude:: files/ejyaml2.cadena.json
+         :language: json
+
+   .. dropdown:: Solución propuesta YAML
 
       .. literalinclude:: files/ejyaml2.cadena.yaml
          :language: yaml

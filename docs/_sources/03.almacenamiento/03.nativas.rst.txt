@@ -1,5 +1,0 @@
-Bases nativas
-*************
-
-.. Bases XML.
-   Bases documentales (mongoDB)

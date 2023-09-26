@@ -1,8 +1,7 @@
 %YAML 1.2
 ---
 recetas:
-  - &ensalada
-    nombre: ensalada
+  - nombre: &ensalada ensalada
     tiempo: 5  # El tiempo es en minutos.
     ingredientes:
       - nombre: tomate
@@ -24,8 +23,7 @@ recetas:
         unidad: ml
         cantidad: 3
 
-  - &bocanchoas
-    nombre: bocadillo de anchoas
+  - nombre: &bocanchoas bocadillo de anchoas
     tiempo: 4
     ingredientes:
       - nombre: pan
@@ -39,7 +37,7 @@ cadena:
   - nombre: El tragón feliz
     tlfo: 956010203
     direccion:
-      via: calle Callo, nº25.  Bajo
+      via: calle Callo, nº25. Bajo
       municipio: Vallecito Frondoso
       cp: 12345
     carta:

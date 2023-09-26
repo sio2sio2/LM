@@ -351,7 +351,7 @@ una secuencia:</p>
 <h2><span class="section-number">2.2.2. </span>Sintaxis básica<a class="headerlink" href="#sintaxis-basica" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Ya sabemos que un documento <abbr title="JavaScript Object Notation">JSON</abbr> está constituido por nodos, cada uno de los
 cuales tiene un tipo. Construir el esquema de un documento <abbr title="JavaScript Object Notation">JSON</abbr> consiste
-básicamente en definir los subesquemas que describen cada uno de sus nodos<a class="footnote-reference brackets" href="#id7" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+básicamente en definir los subesquemas que describen cada uno de sus nodos<a class="footnote-reference brackets" href="#id8" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 <p>No nos proponemos profundizar mucho, ya que tienen algo más de complejidad que
 los <a class="reference internal" href="01.dtdxml.html#dtd"><span class="std std-ref">DTD</span></a>.</p>
 <section id="esquema-del-nodo-raiz">
@@ -818,7 +818,7 @@ segunda es capaz de comprobar propiedades que se encuentran dentro de
 </pre></div>
 </div>
 <p>En este esquema, <code class="docutils literal notranslate"><span class="pre">edad</span></code> y <code class="docutils literal notranslate"><span class="pre">nacimiento</span></code> están definidos dentro de un
-esquema condicional (con <a class="reference internal" href="#json-schema-oneof"><span class="std std-ref">oneOf</span></a>)<a class="footnote-reference brackets" href="#id8" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>, por lo
+esquema condicional (con <a class="reference internal" href="#json-schema-oneof"><span class="std std-ref">oneOf</span></a>)<a class="footnote-reference brackets" href="#id9" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>, por lo
 que si usaramos <a class="reference internal" href="#json-schema-additionalproperties"><span class="std std-ref">additionalProperties</span></a>, el documento <abbr title="JavaScript Object Notation">JSON</abbr> sería inválido si
 incluyéramos <code class="docutils literal notranslate"><span class="pre">edad</span></code> o <code class="docutils literal notranslate"><span class="pre">nacimiento</span></code>.</p>
 <div class="admonition seealso">
@@ -1224,15 +1224,22 @@ debe resultar verdadero.</p></li>
 </div>
 </dd>
 </dl>
+</section>
+<section id="ejercicios-resueltos">
+<h2><span class="section-number">2.2.6. </span>Ejercicios resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Enlace permanente a este encabezado">¶</a></h2>
+<div class="admonition-todo admonition" id="id7">
+<p class="admonition-title">Por hacer</p>
+<p>Resolver los <a class="reference internal" href="../01.intro/02a.serial.html#yaml-resueltos"><span class="std std-ref">ejercicios de recetas y cadena</span></a>.</p>
+</div>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id7" role="note">
+<aside class="footnote brackets" id="id8" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
 <p>Aunque los nodos clave (o sea, los nodos que constituyen las claves de un
 objeto), es forzoso que sean cadenas, así que en principio no hay que
 describir cómo son, sino expresar simplemente qué palabras contienen.</p>
 </aside>
-<aside class="footnote brackets" id="id8" role="note">
+<aside class="footnote brackets" id="id9" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">2</a><span class="fn-bracket">]</span></span>
 <p>En realidad, podríamos haber definido <code class="docutils literal notranslate"><span class="pre">edad</span></code> y <code class="docutils literal notranslate"><span class="pre">nacimiento</span></code> en
 <code class="docutils literal notranslate"><span class="pre">properties</span></code> y no necesitaríamos recurrir a <code class="docutils literal notranslate"><span class="pre">unevaluatedProperties</span></code>.</p>
@@ -1267,6 +1274,7 @@ describir cómo son, sino expresar simplemente qué palabras contienen.</p>
 <li><a class="reference internal" href="#combinacion-de-esquemas">2.2.3. Combinación de esquemas</a></li>
 <li><a class="reference internal" href="#referencias">2.2.4. Referencias</a></li>
 <li><a class="reference internal" href="#esquemas-condicionales">2.2.5. Esquemas condicionales</a></li>
+<li><a class="reference internal" href="#ejercicios-resueltos">2.2.6. Ejercicios resueltos</a></li>
 </ul>
 </li>
 </ul>
