@@ -107,38 +107,38 @@ seguir para llegar a un determinado archivo. La analogía no es gratuita, puesto
 que en el caso de los sistemas de archivos se habla del árbol de directorios, de
 la misma manera que en un documento <abbr title="eXtensible  Markup Language">XML</abbr> hay un árbol de nodos.</p>
 <p class="rubric">Versiones</p>
-<p>Hay tres versiones de <em>XPath</em>:</p>
+<p>Desde su creación en 1999, <em>XPath</em> se ha ido actualizando con distintas
+versiones:</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://www.w3.org/TR/xpath-10/">Versión 1</a>,</dt><dd><p>que apareció en el año 1999, y es universalmente soportada. Es la versión que
+soporta <a class="reference external" href="http://xmlsoft.org/">libxml</a>, la librería que utiliza
+<strong class="command">xmlstarlet</strong>.</p>
+</dd>
+<dt><a class="reference external" href="https://www.w3.org/TR/xpath-20/">Versión 2</a>,</dt><dd><p>que apareció en 2007, e introduce mejoras muy significativas. No todo el
+software soporta esta especificación.</p>
+</dd>
+<dt><a class="reference external" href="https://www.w3.org/TR/xpath-30/">Versión 3</a>,</dt><dd><p>que apareció en 2014. En el mundo del software libre soportan esta versión la
+librería <a class="reference external" href="http://saxon.sourceforge.net/saxon7.7/api-guide.html">Saxon</a> para
+<a class="reference external" href="https://www.java.com/">Java</a> y <a class="reference external" href="http://xerces.apache.org/">Xerces</a>, que
+tiene versión para <a class="reference external" href="https://es.wikipedia.org/wiki/C%2B%2B">C++</a>. En la <abbr title="Command Line Interface">CLI</abbr>
+de Linux puede usarse a través de algunos progamas de <em>software</em> libre:</p>
 <ul class="simple">
-<li><p>La versión <strong>1</strong>, que apareció en el año 1999, y es universalmente
-soportada. Es la versión que soporta <a class="reference external" href="http://xmlsoft.org/">libxml</a>, la
-librería que utiliza <strong class="command">xmlstarlet</strong>.</p></li>
-<li><p>La versión <strong>2</strong>, que apareció en 2007, e introduce mejoras muy
-significativas. No todo el software soporta esta especificación.</p>
+<li><p><a class="reference external" href="http://xqilla.sourceforge.net/HomePage">xqilla</a>, que aunque tiene paquete
+en <em>Debian</em>, desgraciadamente no está disponible para <em>Bookworm</em>, por
+<a class="reference external" href="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=984418">problemas de compilación con g++-11</a>.</p></li>
+<li><p><a class="reference external" href="http://www.videlibri.de/xidel.html">xidel</a>, que no tiene paquete oficial,
+pero puede descargarse de su página oficial.</p></li>
+</ul>
+</dd>
+<dt><a class="reference external" href="https://www.w3.org/TR/xpath-31/">Versión 3.1</a>,</dt><dd><p>publicada en 2017, que añade soporte para consultar también documentos <abbr title="JavaScript Object Notation">JSON</abbr>.</p>
+</dd>
+</dl>
 <div class="admonition seealso">
 <p class="admonition-title">Ver también</p>
-<p>Una exhaustiva comparación entre las versiones <strong>1.0</strong> y <strong>2.0</strong>
-se encuentra <a class="reference external" href="http://www.mulberrytech.com/papers/XPath-2-0-User-Grp-HTML/contents.html">en este documento</a>.</p>
+<p>El <abbr title="W3 Consortium">W3C</abbr> mantiene una <a class="reference external" href="https://www.w3.org/TR/xpath/">página que enumera todas las versiones</a>. Para una exhaustiva comparación entre las
+versiones <strong>1.0</strong> y <strong>2.0</strong> se encuentra <a class="reference external" href="http://www.mulberrytech.com/papers/XPath-2-0-User-Grp-HTML/contents.html">en este documento</a>.</p>
 </div>
-</li>
-<li><p>La  versión <strong>3</strong>, que apareció en 2014. En el mundo del software libre
-soportan esta versión la librería <a class="reference external" href="http://saxon.sourceforge.net/saxon7.7/api-guide.html">Saxon</a> para <a class="reference external" href="https://www.java.com/">Java</a> y <a class="reference external" href="http://xerces.apache.org/">Xerces</a>, que tiene
-versión para <a class="reference external" href="https://es.wikipedia.org/wiki/C%2B%2B">C++</a> y puede ser usada
-a través del commando de línea <a class="reference external" href="http://xqilla.sourceforge.net/HomePage">xqilla</a>. Aunque tiene paquete en <em>Debian</em>,
-desgraciadamente no está disponible para <em>Bookworm</em>, por <a class="reference external" href="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=984418">problemas de
-compilación con g++-11</a>.</p>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p><a class="reference external" href="http://www.videlibri.de/xidel.html">xidel</a>, también software
-libre, permite el uso de <em>XPath</em> <strong>3.0</strong> para la extracción de datos.</p>
-</div>
-</li>
-<li><p>La versión <strong>3.1</strong>, publicada en 2017, que añade soporte para consultar
-también documentos <abbr title="JavaScript Object Notation">JSON</abbr>.</p></li>
-</ul>
-<div class="admonition caution">
-<p class="admonition-title">Prudencia</p>
 <p>Estos apuntes desarrollan <em>XPath</em> <strong>1.0</strong>.</p>
-</div>
 <section id="sintaxis-basica">
 <h2><span class="section-number">3.1.1.1. </span>Sintaxis básica<a class="headerlink" href="#sintaxis-basica" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Por analogía con las rutas de archivos, una ruta de <em>XPath</em> tiene una forma

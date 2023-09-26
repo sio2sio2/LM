@@ -8,20 +8,20 @@ clientes:
     direccion:
       domicilio: "c/ AAAA, 22"
       cp: 12345
-      localidad: "Villaarriba"
+      poblacion: "Villaarriba"
   - id: 2
-    dni: "01234567L",
+    dni: "01234567L"
     nombre: "Mariquilla de la O"
     direccion:
       domicilio: "c/ BBBB, 23"
       cp: 54321
-      localidad: "Villaabajo"
+      poblacion: "Villaabajo"
 facturas:
-  codigo: 1
-  cliente: 1
-  fecha: !!date "2018-10-15"
-  descuento: 10
-  contenido:
+  - codigo: 1
+    cliente: 1
+    fecha: !!date "2018-10-15"
+    descuento: 10
+    contenido:
     - producto: "tomate"
       precio: 0.8
       cantidad: 1.0

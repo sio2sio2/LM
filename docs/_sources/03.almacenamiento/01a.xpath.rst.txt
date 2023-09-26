@@ -34,39 +34,44 @@ la misma manera que en un documento |XML| hay un árbol de nodos.
 
 .. rubric:: Versiones
 
-Hay tres versiones de *XPath*:
+Desde su creación en 1999, *XPath* se ha ido actualizando con distintas
+versiones:
 
 .. rst-class:: simple
 
-* La versión **1**, que apareció en el año 1999, y es universalmente
-  soportada. Es la versión que soporta `libxml <http://xmlsoft.org/>`_, la
-  librería que utiliza :command:`xmlstarlet`.
+`Versión 1 <https://www.w3.org/TR/xpath-10/>`_,
+  que apareció en el año 1999, y es universalmente soportada. Es la versión que
+  soporta `libxml <http://xmlsoft.org/>`_, la librería que utiliza
+  :command:`xmlstarlet`.
 
-* La versión **2**, que apareció en 2007, e introduce mejoras muy
-  significativas. No todo el software soporta esta especificación.
+`Versión 2 <https://www.w3.org/TR/xpath-20/>`_,
+  que apareció en 2007, e introduce mejoras muy significativas. No todo el
+  software soporta esta especificación.
 
-  .. seealso:: Una exhaustiva comparación entre las versiones **1.0** y **2.0**
-     se encuentra `en este documento
-     <http://www.mulberrytech.com/papers/XPath-2-0-User-Grp-HTML/contents.html>`_.
+`Versión 3 <https://www.w3.org/TR/xpath-30/>`_,
+  que apareció en 2014. En el mundo del software libre soportan esta versión la
+  librería `Saxon <http://saxon.sourceforge.net/saxon7.7/api-guide.html>`_ para
+  `Java <https://www.java.com/>`_ y `Xerces <http://xerces.apache.org/>`_, que
+  tiene versión para `C++ <https://es.wikipedia.org/wiki/C%2B%2B>`_. En la |CLI|
+  de Linux puede usarse a través de algunos progamas de *software* libre:
 
-* La  versión **3**, que apareció en 2014. En el mundo del software libre
-  soportan esta versión la librería `Saxon
-  <http://saxon.sourceforge.net/saxon7.7/api-guide.html>`_ para `Java
-  <https://www.java.com/>`_ y `Xerces <http://xerces.apache.org/>`_, que tiene
-  versión para `C++ <https://es.wikipedia.org/wiki/C%2B%2B>`_ y puede ser usada
-  a través del commando de línea `xqilla
-  <http://xqilla.sourceforge.net/HomePage>`_. Aunque tiene paquete en *Debian*,
-  desgraciadamente no está disponible para *Bookworm*, por `problemas de
-  compilación con g++-11
-  <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=984418>`_.
+  + `xqilla <http://xqilla.sourceforge.net/HomePage>`_, que aunque tiene paquete
+    en *Debian*, desgraciadamente no está disponible para *Bookworm*, por
+    `problemas de compilación con g++-11
+    <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=984418>`_.
 
-  .. note:: `xidel <http://www.videlibri.de/xidel.html>`_, también software
-     libre, permite el uso de *XPath* **3.0** para la extracción de datos.
+  + `xidel <http://www.videlibri.de/xidel.html>`_, que no tiene paquete oficial,
+    pero puede descargarse de su página oficial.
 
-* La versión **3.1**, publicada en 2017, que añade soporte para consultar
-  también documentos |JSON|.
+`Versión 3.1 <https://www.w3.org/TR/xpath-31/>`_,
+  publicada en 2017, que añade soporte para consultar también documentos |JSON|.
 
-.. caution:: Estos apuntes desarrollan *XPath* **1.0**. 
+.. seealso:: El |W3C| mantiene una `página que enumera todas las versiones
+   <https://www.w3.org/TR/xpath/>`_. Para una exhaustiva comparación entre las
+   versiones **1.0** y **2.0** se encuentra `en este documento
+   <http://www.mulberrytech.com/papers/XPath-2-0-User-Grp-HTML/contents.html>`_.
+
+Estos apuntes desarrollan *XPath* **1.0**. 
 
 Sintaxis básica
 ***************
@@ -778,3 +783,4 @@ Ejercicios propuestos
 .. |W3C| replace:: :abbr:`W3C (W3 Consortium)`
 .. |DTD| replace:: :abbr:`DTD (Document Type Definition)`
 .. |XSLT| replace:: :abbr:`XSLT (eXtensible Stylesheet Language Transformations)`
+.. |CLI| replace:: :abbr:`CLI (Command Line Interface)`

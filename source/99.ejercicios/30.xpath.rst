@@ -1,5 +1,5 @@
-Ejercicios sobre *XPath*
-========================
+*XPath*
+=======
 #. Dada la solución propuesta para almacenar la información sobre las facturas de una empresa, determinar la expresión *XPath* que selecciona:
 
    #. Las facturas que tenían algún descuento

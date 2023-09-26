@@ -1,7 +1,7 @@
 .. _ej-val:
 
-Ejercicios sobre validación
-===========================
+Validación de documentos
+========================
 #. Indique si un nodo "x" puede tener un determinado contenido (y explique
    el por qué en caso de que no), sabiendo que su definición |DTD| es:
    

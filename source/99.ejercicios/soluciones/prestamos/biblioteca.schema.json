@@ -1,0 +1,102 @@
+{
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "$id": "biblioteca.schema.json",
+
+   "title": "Biblioteca",
+   "description": "Préstamos de una biblioteca",
+
+   "type": "object",
+   "properties": {
+      "biblioteca": {
+         "description": "Nombre de la biblioteca",
+         "type": "string"
+      },
+      "socios": {
+         "description": "Socio de la biblioteca",
+         "type": "array",
+         "items": { "$ref": "#/$defs/persona" }
+      },
+      "catalogo": {
+         "description": "Libros que tiene la biblioteca",
+         "type": "array",
+         "items": {"$ref": "#/$defs/libro"},
+         "minItems": 1,
+         "uniqueItems": true
+      },
+      "prestamos": {
+         "description": "Lista de préstamos de la biblioteca",
+         "type": "array",
+         "items": {"$ref": "#/$defs/prestamo"},
+         "uniqueItems": true
+      }
+   },
+   "required": ["biblioteca", "catalogo"],
+   "additionalProperties": false,
+
+   "$defs": {
+      "persona": {
+         "type": "object",
+         "properties": {
+            "id": {"$ref": "#/$defs/identificador"},
+            "dni": {
+               "type": "string",
+               "pattern": "[0-9]{8}[A-Z]"
+            },
+            "nombre": {
+               "type": "string"
+            },
+            "direccion": {"$ref": "#/$defs/direccion"}
+         }
+      },
+      "direccion": {
+         "description": "Dirección postal",
+         "type": "object",
+         "properties": {
+            "domicilio": { "type": "string" },
+            "cp": { "type": "integer" },
+            "poblacion": { "type": "string" }
+         },
+         "required": ["domicilio", "cp", "poblacion"],
+         "additionalProperties": false
+      },
+      "libro": {
+         "description": "Libro de lña bibliotecaa",
+         "type": "object",
+         "properties": {
+            "isbn": { "type": "string" },
+            "nombre": { "type": "string" },
+            "autor": { "type": "string" },
+            "año": { "type": "integer" },
+            "editorial": { "type": "string" },
+            "ejemplares": {
+               "type": "array",
+               "items": { "$ref": "#/$defs/identificador" },
+               "uniqueItems": true
+            }
+         },
+         "required": ["isbn", "nombre"],
+         "additionalProperties": false
+      },
+      "identificador": {
+         "description": "Campo identificador",
+         "type": "integer",
+         "minimum": 1
+      },
+      "prestamo": {
+            "type": "object",
+            "properties": {
+               "ejemplar": { "$ref": "#/$defs/identificador" },
+               "lector": { "$ref": "#/$defs/identificador" },
+               "fecha": { "type": "string", "format": "date"},
+               "plazo": {
+                  "description": "Plazo en días",
+                  "type": "integer",
+                  "minimum": 1
+               },
+               "devolucion": { "type": "string", "format": "date"}
+            },
+            "required":  [ "ejemplar", "lector", "fecha", "plazo"],
+            "additionalProperties": false
+      }
+   }
+}

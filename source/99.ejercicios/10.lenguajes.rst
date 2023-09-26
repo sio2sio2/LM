@@ -1,7 +1,7 @@
 .. _ej-li:
 
-Ejercicios sobre lenguajes de información
-=========================================
+Lenguajes para el intercambio de datos
+======================================
 
 Empecemos por algunos de identificación de nodos en lenguajes de serialización
 de datos:

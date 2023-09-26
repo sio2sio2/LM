@@ -6,7 +6,7 @@
          "nombre": "Don Quijote de La Mancha",
          "autor": "Miguel de Cervantes Saavedra",
          "año": 1997,
-         "editoral": "Castalia",
+         "editorial": "Castalia",
          "ejemplares": [1, 2]
       },
       {
@@ -14,7 +14,7 @@
          "nombre": "Historia de la vida del Buscón",
          "autor": "Francisco de Quevedo",
          "año": 2002,
-         "editoral": "Alianza",
+         "editorial": "Alianza",
          "ejemplares": [6, 7]
       }
    ],
