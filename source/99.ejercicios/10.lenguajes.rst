@@ -24,6 +24,9 @@ de datos:
       }
 
 #. Indique cuáles son los tipos de los nodos del ejercicio anterior.
+
+   .. _ej10-03:
+
 #. Determine y justifique cuántos nodos contiene el siguiente documento |YAML|:
 
    .. code-block:: yaml
@@ -34,20 +37,17 @@ de datos:
       casado: true
       nacimiento: 1991-05-07
       defuncion: null
-      direccion: {
+      direccion:
          calle: Callo
          num: 5
          cp: 12345
-      }
-
-   .. _ej10-03:
 
 #. Reescriba el documento anterior haciendo explícitos mediante etiquetas
    (``!!int``, ``!!str``,  etc.) los tipos que se deducen del aspecto de los
    nodos.
 
 Y, ahora, diseñemos documentos para transmitir o almacenar información. De cada
-uno de ellos cree una versión |YAML| y otra versión |XML|.
+uno de ellos cree versiones |JSON|, |YAML| y |XML|.
 
 .. _ej10-05:
 .. _ej-li-doc:
@@ -168,8 +168,8 @@ uno de ellos cree una versión |YAML| y otra versión |XML|.
    - *Punto*: Se definirá con dos coordenadas: x,y.
    - *Circunferencia*: se define por un centro (coordenadas x,y) y un radio.
    - *Recta*: se define por dos puntos: el inicial y el final.
-   - *Rectáculo*: se define por dos puntos: la esquina superior derecha y la esquina
-     superior izquierda.
+   - *Rectángulo*: se define por dos puntos: la esquina superior derecha y la
+     esquina superior izquierda.
 
    Todo elemento debe estar inequívocamente identificado, y debe conocerse de
    alguna forma cuál es la unidad de medida (m, cm, etc.) en que están expresados

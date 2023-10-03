@@ -95,28 +95,28 @@ de datos:</p>
 </pre></div>
 </div>
 </li>
-<li><p>Indique cuáles son los tipos de los nodos del ejercicio anterior.</p></li>
-<li><p>Determine y justifique cuántos nodos contiene el siguiente documento <abbr title="YAML Ain't Markup Language">YAML</abbr>:</p>
+<li><p>Indique cuáles son los tipos de los nodos del ejercicio anterior.</p>
+</li>
+<li id="ej10-03"><p>Determine y justifique cuántos nodos contiene el siguiente documento <abbr title="YAML Ain't Markup Language">YAML</abbr>:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="nt">nombre</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pedro Martínez Alvárez</span>
 <span class="nt">edad</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32</span>
 <span class="nt">casado</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">nacimiento</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1991-05-07</span>
 <span class="nt">defuncion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
-<span class="nt">direccion</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="nt">   calle</span><span class="p">:</span><span class="w"> </span><span class="nv">Callo</span>
-<span class="w">   </span><span class="nv">num</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">5</span>
-<span class="w">   </span><span class="nv">cp</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">12345</span>
-<span class="p p-Indicator">}</span>
+<span class="nt">direccion</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">calle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Callo</span>
+<span class="w">   </span><span class="nt">num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">   </span><span class="nt">cp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">12345</span>
 </pre></div>
 </div>
 </li>
-<li id="ej10-03"><p>Reescriba el documento anterior haciendo explícitos mediante etiquetas
+<li><p>Reescriba el documento anterior haciendo explícitos mediante etiquetas
 (<code class="docutils literal notranslate"><span class="pre">!!int</span></code>, <code class="docutils literal notranslate"><span class="pre">!!str</span></code>,  etc.) los tipos que se deducen del aspecto de los
 nodos.</p></li>
 </ol>
 <p>Y, ahora, diseñemos documentos para transmitir o almacenar información. De cada
-uno de ellos cree una versión <abbr title="YAML Ain't Markup Language">YAML</abbr> y otra versión <abbr title="eXtensible  Markup Language">XML</abbr>.</p>
+uno de ellos cree versiones <abbr title="JavaScript Object Notation">JSON</abbr>, <abbr title="YAML Ain't Markup Language">YAML</abbr> y <abbr title="eXtensible  Markup Language">XML</abbr>.</p>
 <span id="ej10-05"></span><ol class="arabic" id="ej-li-doc" start="5">
 <li><p>Diseñe un documento para almacenar las facturas generadas por una empresa.
 Téngase en cuenta que:</p>
@@ -233,8 +233,8 @@ en 2 dimensiones. Los elementos que pueden definirse en ese documento son:</p>
 <li><p><em>Punto</em>: Se definirá con dos coordenadas: x,y.</p></li>
 <li><p><em>Circunferencia</em>: se define por un centro (coordenadas x,y) y un radio.</p></li>
 <li><p><em>Recta</em>: se define por dos puntos: el inicial y el final.</p></li>
-<li><p><em>Rectáculo</em>: se define por dos puntos: la esquina superior derecha y la esquina
-superior izquierda.</p></li>
+<li><p><em>Rectángulo</em>: se define por dos puntos: la esquina superior derecha y la
+esquina superior izquierda.</p></li>
 </ul>
 <p>Todo elemento debe estar inequívocamente identificado, y debe conocerse de
 alguna forma cuál es la unidad de medida (m, cm, etc.) en que están expresados

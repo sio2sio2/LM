@@ -234,7 +234,7 @@ verborreico. Entre sus principales aplicaciones está:
   razón de su creación. |TEI| es un ejemplo de ello. Sin embargo, ha perdido
   algo de fuelle en la creación de documentos algo más generales, en donde
   soluciones basadas en :ref:`lenguajes de marcas ligeros <lml>` como Markdown_
-  o `ReStructured Text`_ le ha comido terreno.
+  o `ReStructured Text`_ le han comido terreno.
 
 - Como formato para el **intercambio de datos**, aunque en este campo pierde
   terreno frente a formatos con |JSON|.
