@@ -217,7 +217,7 @@ en versión |XML|:
 
 * MathML_, un lenguaje para escribir fórmulas matemáticas.
 
-* SVG_, un lennguaje para la descripción de gráficos vectorial. Las navegadores
+* SVG_, un lenguaje para la descripción de gráficos vectorial. Las navegadores
   web modernos tienen soporte directo para él.
 
 * OpenDocument_, lenguaje |XML|, establecido como estándar, para la composición
@@ -535,7 +535,7 @@ las menos importantes):
      acentuación, dólar, y punto y coma. Los dos puntos tienen un significado
      particular del que se hablará al tratar los espacios de nombres.
 
-   * Las nombres de etiquetas que empiecen por :code:`xml` se reservan para un
+   * Los nombres de etiquetas que empiecen por :code:`xml` se reservan para un
      uso específico.
 
    * |XML| es sensible a mayúsculas y minúsculas (esta regla, en realidad, es

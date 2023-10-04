@@ -18,7 +18,7 @@ Por ejemplo, supongamos lo siguiente:
 
 Está claro que hemos introducido una serie de marcas que nos informan de cuál es
 el título del documento y de que tiene un párrafo. Cada lenguaje dispone de unas
-etiquetas propias (su *vocabulario*) que se combinan mediante una determinadas
+etiquetas propias (su *vocabulario*) que se combinan mediante unas determinadas
 reglas (la *sintaxis*).
 
 .. _lml:
@@ -95,7 +95,7 @@ En el marcado se pueden distinguir cinco tipos distintos:
    Es el sistema de marcas que proporciona, fundamentalmente, información
    sintáctica sobre el texto. Los puntos o las comas en un texto manuscrito, por
    ejemplo, son marcado de puntuación. El problema de este marcado es que no es
-   inequívo y, además, está sujeto a variaciones en el estilo. Todos hemos
+   inequívoco y, además, está sujeto a variaciones en el estilo. Todos hemos
    dudado a la hora de poner una coma y, aún más, hasta entre reputados expertos
    podría haber disputa sobre si se debe escribir o no. O bien, ¿qué significa
    un punto? Porque a veces indica el final de una frase y a veces marca el
@@ -222,7 +222,7 @@ Atendiendo a la estrategia que siga un lenguaje al marcar, podemos distinguir:
       documento para obtener un texto cómodamente legible. Hay dos vías para
       ello:
 
-      #. Definir cómo debe debe representarse cada componente de la estructura
+      #. Definir cómo debe representarse cada componente de la estructura
          del texto mediante hojas de estilo como:
 
          * |DSSSL| para documentos |SGML|.
@@ -242,7 +242,7 @@ Atendiendo a la estrategia que siga un lenguaje al marcar, podemos distinguir:
            librerías para su manipulación.
 
    :dfn:`Marcado descriptivo orientado al dato`
-      En archvos que contienen datos, las marcas identifican el significado de
+      En archivos que contienen datos, las marcas identifican el significado de
       cada dato y los estructuran. Más adelante veremos :ref:`un ejemplo de
       documento con este tipo de marcado <xml-ejemplo>`.
 

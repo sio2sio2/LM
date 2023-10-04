@@ -32,7 +32,7 @@ siguientes:
 #. Todos los registros deben contener el mismo número de campos.
 #. Opcionalmente, el primer registro, puede ser un registro de cabecera que
    contenga los nombres de los campos. No hay forma de notar que este primer
-   registro es de cabecera, por lo que suu interpretación debe especificarse en
+   registro es de cabecera, por lo que su interpretación debe especificarse en
    el proceso de importación.
 #. Los campos, en general, no necesitan entrecomillarse (con comillas dobles) a
    menos que contenga un carácter que distorsione la lectura: el delimitador, el
@@ -102,7 +102,7 @@ Las ideas que inspiran este documento son las siguientes\ [#]_:
 
 * De cada profesor incluimos algunos datos que nos resultan relevantes.
 * Si no se expresa el apelativo, es que se le nombra con su nombre de pila.
-* Los profesores titulares, al darse de baja, pueden ser sustitutidos por otro.
+* Los profesores titulares, al darse de baja, pueden ser sustituidos por otro.
 * Los profesores deben pertenecer a un departamento, a menos que sean un
   sustituto, en cuyo caso pertenecerá forzosamente al departamento del profesor
   al que sustituye.
@@ -112,7 +112,7 @@ Las ideas que inspiran este documento son las siguientes\ [#]_:
     identificador  (p.e. el profesor **10** tiene el casillero **10**).
   + Los sustitutos no pueden expresar el casillero, porque forzosamente usarán
     el del titular al que sustituyen.
-  + Un profesor puede disponer de varios casilleros, así que que ese campo debe
+  + Un profesor puede disponer de varios casilleros, así que ese campo debe
     ser una lista.
   + Si la lista está vacía, el profesor ha renunciado a tener casillero.
 
@@ -148,7 +148,7 @@ Básicamente los datos en un documento |JSON| se estructuran en *nodos*. Un
    .. code-block:: json
 
       {
-         "nombre": "Pedro Martínez Alvárez",
+         "nombre": "Pedro Martínez Álvarez",
          "edad": 32,
          "casado": true
       }
@@ -159,7 +159,7 @@ Básicamente los datos en un documento |JSON| se estructuran en *nodos*. Un
    .. code-block:: json
 
       {
-         "nombre": "Pedro Martínez Alvárez",
+         "nombre": "Pedro Martínez Álvarez",
          "edad": 32,
          "casado": true,
          "hijos": [
@@ -193,7 +193,7 @@ Conocida su estructura, las reglas básicas son:
 
   .. code:: json
 
-     {"nombre":"Pedro Martínez Alvárez","edad":32,"casado":true}
+     {"nombre":"Pedro Martínez Álvarez","edad":32,"casado":true}
 
   es equivalente al primero que expusimos, aunque bastante menos legible porque
   hemos prescindido de todos los espacios. Dependiendo si queremos privilegiar
@@ -283,7 +283,7 @@ más completo de un documento |JSON| puede ser:
 .. code-block:: json
 
    {
-      "nombre": "Pedro Martínez Alvárez",
+      "nombre": "Pedro Martínez Álvarez",
       "edad": 32,
       "casado": true,
       "direccion": {
@@ -322,7 +322,7 @@ Un ejemplo sencillo de este tipo de documentos es:
    %YAML 1.2
    ---
    # Este hombre es muy amigo mío.
-   nombre: Pedro Martínez Alvárez
+   nombre: Pedro Martínez Álvarez
    edad: 32  # Empieza a ser un puretilla ya.
    casado: true
 
@@ -714,7 +714,7 @@ algún otro:
    .. code-block:: yaml
 
       ? nombre
-      : "Pedro Martínez Alvárez"
+      : "Pedro Martínez Álvarez"
       ? edad
       : 32
       ? casado
@@ -760,7 +760,7 @@ existen otros que suelen implementar los procesadores:
 
       %YAML 1.2
       ---
-      nombre: "Pedro Martínez Alvárez"
+      nombre: "Pedro Martínez Álvarez"
       edad: 32
       casado: true
       avatar: !!binary |
@@ -787,7 +787,7 @@ existen otros que suelen implementar los procesadores:
 
    .. code-block:: yaml
 
-      nombre: "Pedro Martínez Alvárez"
+      nombre: "Pedro Martínez Álvarez"
       edad: 32
       casado: true
       nacimiento: 1991-05-07
@@ -819,7 +819,7 @@ Pueden crear referencias tanto a escalares:
 
 .. code-block:: yaml
 
-   - nombre: &pedro "Pedro Martínez Alvárez"
+   - nombre: &pedro "Pedro Martínez Álvarez"
      edad: 32
      casado: true
    - nombre: "María Martínez Cansado"
@@ -843,7 +843,7 @@ como a mapas:
 .. code-block:: yaml
 
    - &pedro
-     nombre: "Pedro Martínez Alvárez"
+     nombre: "Pedro Martínez Álvarez"
      edad: 32
      casado: true
    - nombre: "María Martínez Cansado"
