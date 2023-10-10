@@ -1,3 +1,5 @@
+.. _jsonpath:
+
 |JSON|\ Path
 ************
 |JSON|\ Path es a :ref:`JSON <json>` lo que :ref:`XPath <xpath>` a :ref:`XML

@@ -79,14 +79,14 @@
           <div class="body" role="main">
             
   <section id="jsonpath">
-<h1><span class="section-number">3.1.2. </span><abbr title="JavaScript Object Notation">JSON</abbr>Path<a class="headerlink" href="#jsonpath" title="Enlace permanente a este encabezado">¶</a></h1>
+<span id="id1"></span><h1><span class="section-number">3.1.2. </span><abbr title="JavaScript Object Notation">JSON</abbr>Path<a class="headerlink" href="#jsonpath" title="Enlace permanente a este encabezado">¶</a></h1>
 <p><abbr title="JavaScript Object Notation">JSON</abbr>Path es a <a class="reference internal" href="../01.intro/02a.serial.html#json"><span class="std std-ref">JSON</span></a> lo que <a class="reference internal" href="01a.xpath.html#xpath"><span class="std std-ref">XPath</span></a> a <a class="reference internal" href="../01.intro/02b.marcas.html#xml"><span class="std std-ref">XML</span></a>, esto es, un lenguaje que nos permite indicar qué nodos del documento
 desean seleccionarse. No es aún un estándar (aunque podemos <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jsonpath-base-20">consultar sus
 borradores</a>), y su
 existencia surge por la necesidad de tener un equivalente a <em>XPath</em> para
 documentos <abbr title="JavaScript Object Notation">JSON</abbr> (véase el <a class="reference external" href="https://goessner.net/articles/JsonPath/">artículo original que lo propuso</a>).  Este estado de las cosas obedece
 a cuál ha sido la historia del intercambio de datos, a la cual se apuntó cuando
-se discutió <a class="reference internal" href="../01.intro/index.html#ut1"><span class="std std-ref">por qué este módulo se denomina lenguaje de marcas</span></a><a class="footnote-reference brackets" href="#id5" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>: las tecnologías alrededor de <abbr title="eXtensible  Markup Language">XML</abbr> se desarrollaron cuando éste
+se discutió <a class="reference internal" href="../01.intro/index.html#ut1"><span class="std std-ref">por qué este módulo se denomina lenguaje de marcas</span></a><a class="footnote-reference brackets" href="#id6" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>: las tecnologías alrededor de <abbr title="eXtensible  Markup Language">XML</abbr> se desarrollaron cuando éste
 monopolizaba el intercambio de datos, de suerte que los lenguajes que han
 empezado a despuntar después han ido inspirándose en ellas para lograr sus
 funcionalidades.</p>
@@ -169,7 +169,7 @@ seleccionar varias? La respuesta es sí. Esto escogería dos propiedades a la ve
 <em>dirección</em>.</p>
 <p>Por último, dentro de un mapa es posible mediante la notación «<code class="docutils literal notranslate"><span class="pre">..</span></code>»
 seleccionar propiedades que no se encuentran directamente en él, sino dentro de
-algún objeto anidado<a class="footnote-reference brackets" href="#id6" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. Por ejemplo:</p>
+algún objeto anidado<a class="footnote-reference brackets" href="#id7" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. Por ejemplo:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$..calle
 </pre></div>
 </div>
@@ -237,7 +237,7 @@ Por tanto:</p>
 </div>
 <p>En este caso, se escogen los hijos que ocupan posiciones pares en la secuencia.
 También pueden usarse números negativos, con el mismo significado que en
-<a class="reference external" href="https://www.python.org">Python</a><a class="footnote-reference brackets" href="#id7" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.</p>
+<a class="reference external" href="https://www.python.org">Python</a><a class="footnote-reference brackets" href="#id8" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.</p>
 </section>
 <section id="filtros">
 <h3><span class="section-number">3.1.2.1.3. </span>Filtros<a class="headerlink" href="#filtros" title="Enlace permanente a este encabezado">¶</a></h3>
@@ -330,8 +330,8 @@ Matemáticas. Otro ejemplo, puede ser:</p>
 <p>que devolverá los profesores cuyo nombre coincide exactamente con su apelativo
 (p.e. devolverá a <em>Luis</em>, pero no a <em>Verónica</em>, puesto que la llaman <em>Vero</em>).</p>
 <p>Para construir estas expresiones hay distintos operadores:</p>
-<table class="docutils align-default" id="id9">
-<caption><span class="caption-text"><strong>Operadores aritméticos</strong></span><a class="headerlink" href="#id9" title="Enlace permanente a esta tabla">¶</a></caption>
+<table class="docutils align-default" id="id10">
+<caption><span class="caption-text"><strong>Operadores aritméticos</strong></span><a class="headerlink" href="#id10" title="Enlace permanente a esta tabla">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operador</p></th>
 <th class="head"><p>Significado</p></th>
@@ -355,8 +355,8 @@ Matemáticas. Otro ejemplo, puede ser:</p>
 </tr>
 </tbody>
 </table>
-<table class="docutils align-default" id="id10">
-<caption><span class="caption-text"><strong>Operadores lógicos</strong></span><a class="headerlink" href="#id10" title="Enlace permanente a esta tabla">¶</a></caption>
+<table class="docutils align-default" id="id11">
+<caption><span class="caption-text"><strong>Operadores lógicos</strong></span><a class="headerlink" href="#id11" title="Enlace permanente a esta tabla">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operador</p></th>
 <th class="head"><p>Significado</p></th>
@@ -389,8 +389,8 @@ Matemáticas. Otro ejemplo, puede ser:</p>
 </tr>
 </tbody>
 </table>
-<table class="docutils align-default" id="id11">
-<caption><span class="caption-text"><strong>Operadores de  comparación</strong></span><a class="headerlink" href="#id11" title="Enlace permanente a esta tabla">¶</a></caption>
+<table class="docutils align-default" id="id12">
+<caption><span class="caption-text"><strong>Operadores de  comparación</strong></span><a class="headerlink" href="#id12" title="Enlace permanente a esta tabla">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operador</p></th>
 <th class="head"><p>Significado</p></th>
@@ -420,7 +420,7 @@ Matemáticas. Otro ejemplo, puede ser:</p>
 &quot;17&quot; (cadena)  no deberían ser iguales.</p></li>
 <li><p>Sólo está definido el orden para números y cadenas (el alfabético). En
 consecuencia, comparar con «<code class="docutils literal notranslate"><span class="pre">&lt;</span></code>»  o «<code class="docutils literal notranslate"><span class="pre">&gt;</span></code>» valores de otro tipo debería
-devolver siempre falso<a class="footnote-reference brackets" href="#id8" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.</p></li>
+devolver siempre falso<a class="footnote-reference brackets" href="#id9" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.</p></li>
 <li><p>Dos secuencias son iguales cuando contienen igual número de elementos y cada
 elemento de la primera secuencia es igual a su correspondiente de la segunda.</p></li>
 <li><p>Dos objetos son iguales cuando incluyen las mismas claves y sus
@@ -492,25 +492,25 @@ filtros.</p></li>
 </ul>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id5" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id6" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
 <p>Conviene, no obstante, aclarar que esto es una mera conjetura del autor,
 el cual está convencido que de haber nacido este módulo tiempo después de
 haber pasado la época del empacho del <abbr title="eXtensible  Markup Language">XML</abbr> no se habría denominado «Lenguaje
 de marcas» para no dejar excluidos a los <a class="reference internal" href="../01.intro/01.intro.html#l-ser"><span class="std std-ref">lenguajes de serialización de
 datos</span></a>.</p>
 </aside>
-<aside class="footnote brackets" id="id6" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id7" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
 <p>Pero no parecen tener buen soporte en las implementaciones que se han
 probado.</p>
 </aside>
-<aside class="footnote brackets" id="id7" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id8" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
 <p>O sea, es el equivalente a <code class="docutils literal notranslate"><span class="pre">//</span></code> en <em>XPath</em>.</p>
 </aside>
-<aside class="footnote brackets" id="id8" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id9" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">4</a><span class="fn-bracket">]</span></span>
 <p>Cosa que no ocurre con «<code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>»  y «<code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>» porque la igualdad sí está
 definida. Por eso, <code class="code docutils literal notranslate"><span class="pre">?(true</span> <span class="pre">&lt;=</span> <span class="pre">true)</span></code> es verdadero.</p>
 </aside>

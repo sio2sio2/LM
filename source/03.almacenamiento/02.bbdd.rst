@@ -1,12 +1,145 @@
 **************
 Bases de datos
 **************
+Hasta ahora hemos tratado exclusivamente el intercambio de documentos, esto es,
+el documento con los datos ya constituía un archivo o un flujo de datos, sin entrar
+a discutir cómo había sido posible que hubiera llegado a ese estado de archivo o
+flujo. Incluso, en el caso de un archivo, hemos considerado en muchas ocasiones
+hasta ahora que se había escrito a mano *ex novo*, lo cual es posible en algunos
+casos (p.e. un archivo de configuración escrito en |JSON|, |YAML| o |XML|).
 
-|JSON| en bases relacionales
-****************************
+Sin embargo, lo habitual cuando los datos son ingentes es que estos constituyan
+bases de datos y que a partir de éstas se obtenga la información requerida. Por
+ejemplo, el Gobierno español proporciona los `precios de los carburantes en
+todas las gasolineras de España
+<https://datos.gob.es/es/catalogo/e05068001-precio-de-carburantes-en-las-gasolineras-espanolas>`_
+y lo hace a través de `una API REST
+<https://sedeaplicaciones.minetur.gob.es/ServiciosRestCarburantes/PreciosCarburantes/help>`_,
+que devuelve datos en formato |JSON| o |XML|. Así:
+
+.. code-block:: console
+
+   $ wget -qO - 'https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/Listados/ProductosPetroliferos/' | jsonlint -f
+
+nos devolverá un |JSON| con el listado de todos los productos petrolíferos que
+podemos adquirir en una estación de servicio. Con este documento podemos saber
+que el identificador para la gasolina de 95 octanos es el **1**. Si hacemos otra
+consulta para averiguar qué código representa a la provincia de Cádiz:
+
+.. code-block:: console
+
+   $ wget -qO - 'https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/Listados/Provincias/' | jsonlint -f
+
+descubriremos que es **11** (su código postal, lo cual era lo previsible). Y con
+estos datos, podríamos obtener el listado de precios de la gasolina de 95
+octanos en la provincia de Cádiz:
+
+.. code-block:: console
+
+   $ wget -qO - 'https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/FiltroProvinciaProducto/11/1' | jsonlint -f
+
+Como vemos, estamos obteniendo documentos |JSON| cuya validez (más exactamente
+*bienformidad*) podemos comprobar o sobre el cual podemos realizar consultas a través de
+:ref:`JSONPath <jsonpath>`. Sin embargo, es obvio que estos datos se están
+obteniendo originariamente en el servidor de una base de datos en la que se
+encuentra almacenada la informacón, los resultados de cuyas consultas es lo que
+nos proporcionan las solicitudes. Esta segunda parte de la unidad discute
+precisamente ese almacenamiento.
+
+En principio, tenemos dos estrategias distintas:
+
+#. La base de datos es relacional y la solicitud provoca que una aplicación convierta
+   el típico resultado de la consulta relacional en un documento |JSON| (o
+   |XML|). Cómo se lleva a cabo esta transformación no forma parte de la materia
+   de este módulo.
+
+   Sin embargo, dentro de las bases de datos relacionales, puede ocurrir que
+   parte de los datos se almacenen en un formato de serialización de los datos y
+   esto sí forma parte de nuestros contenidos, por lo que le echaremos un
+   vistazo.
+
+#. La base de datos no es relacional, sino que nativamente almacena datos en
+   formato |XML| o |JSON|. Le dedicaremos también parte de la unidad.
+
+Inclusión en bases relacionales
+*******************************
+Desde hace algún tiempo, los principales |SGBD| relacionales permiten la
+definición de campos de tipo |JSON|\ [#]_, que son muy útiles para incluir
+dentro de ese campo multitud de datos, algunos de los cuales no se encuentran en todos
+los registros. De no existir este tipo, nos veríamos abocados a crear infinidad
+de campos en la tabla relacional, muchos con valor nulo. Imaginemos, por
+ejemplo, una tabla en la que almacenamos los datos de nuestros proveedores:
+
+.. code-block:: sql
+
+   CREATE TABLE Proveedor (
+      id          INTEGER  PRIMARY KEY,
+      nombre      VARCHAR(100) NOT NULL,
+      /* Todos estos datos son de contacto y algunos estarán vacíos */
+      tlfo        INTEGER,
+      fax         INTEGER,
+      web         VARCHAR(200),
+      mail        VARCHAR(100),
+      domicilio   VARCHAR(300)  /* Este campo es un batiburrillo no muy elegante */
+   );
+   
+Entre los datos hay una serie de datos de contacto que quizás necesitaremos
+consultar alguna vez, pero que no son determinates en filtros de consulta como
+el teléfono, el fax, la página web, el correo electrónico, el domicilio (que a
+su vez debería estar constituido por varios campos independientes), etc. Algunos
+de estos proveedores, además, carecerán de fax o de página web. En estos casos,
+lo mejor es crear un campo de tipo |JSON| que reúna todos estos datos, de manera
+que el campo "contacto" de la tabla "Proveedor" podría definirse así:
+
+.. code-block:: sql
+
+   CREATE TABLE Proveedor (
+      id          INTEGER  PRIMARY KEY,
+      nombre      VARCHAR(100),
+      contacto    JSON          /* Aquí en realidad se almacenan todos los datos anteriores */
+   );
+   
+Y dentro de este campo |JSON| se podría almacenar una estructura parecida a
+esta:
+
+.. code-block:: json
+
+   {
+      "tlfo": 34956010203,
+      "fax": null,
+      "web": "https://www.tuproveedordeconfianza.com/",
+      "mail": "clientes@tuproveedordeconfianza.com",
+      "domicilio": {
+         "tipo_via": "calle",
+         "via": "Callo",
+         "número": 25,
+         "puerta": null,
+         "bloque": null,
+         "escalera": 2,
+         "piso": 1,
+         "letra": null,
+         "cp": 11001,
+         "localidad": "Cádiz",
+         "provincia": 11
+      }
+   }
+
+.. note:: Hemos expresado los valores nulos para que se vean todos los campos
+   posibles, pero lo mejor es que estos campos ni siquiera se almacenaran en la
+   realidad.
+
 
 Bases nativas
 *************
 
 .. Bases XML.
    Bases documentales (mongoDB)
+
+.. rubric:: Notas al pie
+
+.. [#] De hecho, en la última revisión del estándar `SQL:2023
+   <https://en.wikipedia.org/wiki/SQL:2023>`_ se ha añadido el soporte para el
+   tipo de dato |JSON|.
+
+.. |SGBD| replace:: :abbr:`SGBD (Sistema Gestor de Bases de Datos)`
+.. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`
