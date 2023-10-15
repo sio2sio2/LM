@@ -19,7 +19,8 @@ que devuelve datos en formato |JSON| o |XML|. Así:
 
 .. code-block:: console
 
-   $ wget -qO - 'https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/Listados/ProductosPetroliferos/' | jsonlint -f
+   $ URL='https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/Listados/ProductosPetroliferos/'
+   $ wget -qO - "$URL" | jsonlint -f
 
 nos devolverá un |JSON| con el listado de todos los productos petrolíferos que
 podemos adquirir en una estación de servicio. Con este documento podemos saber
@@ -28,7 +29,8 @@ consulta para averiguar qué código representa a la provincia de Cádiz:
 
 .. code-block:: console
 
-   $ wget -qO - 'https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/Listados/Provincias/' | jsonlint -f
+   $ URL='https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/Listados/Provincias/'
+   $ wget -qO - "$URL" | jsonlint -f
 
 descubriremos que es **11** (su código postal, lo cual era lo previsible). Y con
 estos datos, podríamos obtener el listado de precios de la gasolina de 95
@@ -36,71 +38,178 @@ octanos en la provincia de Cádiz:
 
 .. code-block:: console
 
-   $ wget -qO - 'https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/FiltroProvinciaProducto/11/1' | jsonlint -f
+   $ URL='https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/FiltroProvinciaProducto/11/1'
+   $ wget -qO - "$URL" | jsonlint -f
 
 Como vemos, estamos obteniendo documentos |JSON| cuya validez (más exactamente
 *bienformidad*) podemos comprobar o sobre el cual podemos realizar consultas a través de
 :ref:`JSONPath <jsonpath>`. Sin embargo, es obvio que estos datos se están
-obteniendo originariamente en el servidor de una base de datos en la que se
-encuentra almacenada la informacón, los resultados de cuyas consultas es lo que
-nos proporcionan las solicitudes. Esta segunda parte de la unidad discute
-precisamente ese almacenamiento.
+obteniendo en el servidor originariamente de una base de datos en la que se
+encuentra almacenada la información, los resultados de cuyas consultas es lo que
+nos proporcionan las solicitudes. Es probable que internamente en el servidor
+esté ocurriendo esto:
 
-En principio, tenemos dos estrategias distintas:
+.. image:: files/sql2json.png
+   :alt: Consulta a una base de datos transformaba en un documento JSON
 
-#. La base de datos es relacional y la solicitud provoca que una aplicación convierta
-   el típico resultado de la consulta relacional en un documento |JSON| (o
-   |XML|). Cómo se lleva a cabo esta transformación no forma parte de la materia
-   de este módulo.
 
-   Sin embargo, dentro de las bases de datos relacionales, puede ocurrir que
-   parte de los datos se almacenen en un formato de serialización de los datos y
-   esto sí forma parte de nuestros contenidos, por lo que le echaremos un
-   vistazo.
+En principio, para el almacenamiento de la información tenemos tres estrategias
+distintas:
 
-#. La base de datos no es relacional, sino que nativamente almacena datos en
-   formato |XML| o |JSON|. Le dedicaremos también parte de la unidad.
+#. Crear y almacenar la información como archivos independientes que contienen
+   directamente los documentos, que es precisamente lo que hemos estado haciendo
+   al realizar las tareas propuestas. Esta estrategia, sin embargo, es probable
+   que no acabe bien a poco que crezca el volumen de datos o se produzca
+   concurrencia en las consultas.
+#. Almacenar en un base de datos relacional, pero obteniendo la información en
+   un formato para serialización de datos como |JSON| o |XML|\ [#]_. En este
+   caso hay dos vías:
 
-Inclusión en bases relacionales
-*******************************
-Desde hace algún tiempo, los principales |SGBD| relacionales permiten la
-definición de campos de tipo |JSON|\ [#]_, que son muy útiles para incluir
-dentro de ese campo multitud de datos, algunos de los cuales no se encuentran en todos
-los registros. De no existir este tipo, nos veríamos abocados a crear infinidad
-de campos en la tabla relacional, muchos con valor nulo. Imaginemos, por
-ejemplo, una tabla en la que almacenamos los datos de nuestros proveedores:
+   a. La solicitud de información provoca que una aplicación convierta
+      el típico resultado de la consulta relacional en un documento |JSON| (o
+      |XML|), esto es, lo que hemos supuesto que ocurre en el servidor del
+      Gobierno. Llevarlo a cabo requiere el conocimiento de un lenguaje de
+      programación (*Java*, *Python*, etc) con librerías para el acceso a la
+      base de datos relacional y para la conversión de la salida en documentos
+      |JSON|, |XML| u otros. No trataremos este aspecto por excederse en mucho
+      de la profundidad de nuestro módulo.
+
+   b. El propio |SGBD| relacional ofrece soporte para estos formatos de
+      serialización, bien porque es capaz de almacenar datos directamente en el
+      formato, bien porque es capaz de generar una salida en el formato de
+      serialización que requerimos.
+
+#. Almacenar en una base de datos no relacional, que nativamente almacena datos
+   en formato |XML| o |JSON|.
+
+Dedicaremos algo de tiempo, escaso en cualquier caso y sin profundizar, a estos
+dos últimos mecanismos.
+
+Serialización de datos en |BB.RR.|
+**********************************
+El moderno estándar |SQL| tiene soporte para incluir dentro de las bases
+relacionales:
+
+* |XML| desde `SQL:2003`_, que se conoce como |SQL|\ /|XML| y permite tanto
+  almacener información en |XML| como generar salida |XML|.
+* |JSON| desde `SQL:2016`_ y `SQL:2023`_. En este caso, el soporte es más reciente y limitado al
+  almacenamiento de información en |JSON|  (véanse `las funcionalidades del
+  estándar al respecto
+  <https://peter.eisentraut.org/blog/2023/04/04/sql-2023-is-finished-here-is-whats-new#new-json-features>`_) gracias
+  a la definición de un tipo de dato |JSON| y a la existencia de funciones que
+  permiten extraer valores concretos de este dato. No hay, sin embargo, conversión de
+  salida para obtener una salida |JSON| de datos almacenados en forma
+  tradicional, aunque algunos |SGBD| sí lo permiten como PostgreSQL_ con la
+  `función JSON_AGG
+  <https://www.commandprompt.com/education/postgresql-json_agg-function-by-practical-examples/>`_.
+
+.. seealso:: La norma de |SQL| (llamada |ANSI| |SQL| por ser esta institución
+   quien publicó la primera versión) ha ido evolucionando con el tiempo  y, en
+   consecuencia, se han publicado `sucesivas versiones
+   <https://en.wikipedia.org/wiki/SQL#Standardization_history>`_. Hasta su
+   segunda versión (`SQL-92`_) se ceñía al modelo propiamente relacional, pero a
+   partir de su tercera versión (`SQL:1999`_), empezó a incluir aspectos
+   adicionales como es el caso de estos dos que nos ocupan. La interesante
+   página `modern SQL <https://modern-sql.com>`_ explica muchas de estas
+   adiciones y sirve para investigar la evolución histórica del lenguaje.
+
+|XML|
+=====
+El soporte para |XML| es bastante irregular entre los distintos |SGBD| y mejor
+en aquellos comerciales (`SQL server`_, `Oracle Database`_, DB2_) que en los
+libres (MariaDB_, PostgreSQL_ o SQLite_, este último sin soporte en absoluto).
+No entraremos en mucho detalle, pero apuntaremos algunas de sus posibilidades:
+
+* Existe un tipo de datos específico para almacenar |XML|.
+* Permite la generación de una salida |XML| a partir de datos almacenados en
+  forma relacional a través de distintas funciones (``XMLELEMENT``, ``XMLROOT``,
+  etc.). 
+* Permite la generación de una salida |XML| a partir de datos almacenados en
+  forma |XML| (a través del tipo |XML|) gracias a la función ``XMLQUERY``, que
+  utiliza :ref:`XQuery` para generar la estructura |XML|.
+* Permite la extracción de valores de un |XML| mediante la función
+  ``EXTRACTVALUE``\ [#]_. que utiliza para referirlos :ref:`XPath`.
+
+.. seealso:: Para profundizar en la inclusión de |XML| dentro de los |SGBD|
+   relacionales con ejemplos ilustrativos de uso puede consultar:
+
+   * `SQL/XML and XPath <https://www.oratechinfo.co.uk/sqlxml.html>`_.
+   * `XML Support in Modern SQL Databases
+     <https://users.informatik.uni-halle.de/~brass/xml19/ca_sql.pdf>`_ (PDF).
+
+|JSON|
+======
+El soporte para |JSON| dentro de |SQL| se ha desarrollado hasta ahora en dos
+estándares:
+
+`SQL:2016`_
+   que definió cómo acceder a valores dentro de un documento |JSON| o cómo
+   comprobar si una cadena representa un documento |JSON| válido. No define, sin
+   embargo, un tipo específico para |JSON| por lo que los documentos |JSON| son
+   representados, en realidad, como cadenas de texto.
+
+`SQL:2023`_
+   que amplía el soporte añadiendo un tipo específico.
+   
+.. caution:: A diferencia de lo que ocurre con |XML|, el último estándar no
+   define (al menos, aún) cómo generar una salida en formato |JSON|, aunque hay
+   |SGBD| que ya lo hacen.
+
+Los principales |SGBD| relacionales permiten la manipulación de documentos
+|JSON| en mayor o menor medida. La utilidad de ello se ve cuando se necesita
+definir una tabla con muchos campos, algunos de los cuales no tienen por qué
+tener relevancia o valor en todos los registros. Recordemos que el modelo
+relacional se caracteriza porque todos los registros tienen los mismo campos a
+diferencia de un documento |JSON| en donde podemos tener una secuencia de
+objetos, cada uno de los cuales no presenta exactamente las mismas claves. Como
+consecuencia una solución |SQL| provocaría que necesitáramos crear una tabla con
+muchísimas columnas (campos), aunque muchos de ellos para muchos registros
+estarían vacíos.
+
+Para ilustrarlo, supongamos que tenemos una tabla en la que almacenamos los
+datos de nuestros proveedores y sus datos de contacto:
 
 .. code-block:: sql
 
-   CREATE TABLE Proveedor (
-      id          INTEGER  PRIMARY KEY,
-      nombre      VARCHAR(100) NOT NULL,
+   CREATE TABLE "Proveedor" (
+      "id"                INTEGER  PRIMARY KEY,
+      "nombre"            VARCHAR(100) NOT NULL,
       /* Todos estos datos son de contacto y algunos estarán vacíos */
-      tlfo        INTEGER,
-      fax         INTEGER,
-      web         VARCHAR(200),
-      mail        VARCHAR(100),
-      domicilio   VARCHAR(300)  /* Este campo es un batiburrillo no muy elegante */
+      "tlfo"              INTEGER,
+      "fax"               INTEGER,
+      "web"               VARCHAR(200),
+      "mail"              VARCHAR(100),
+      /* En realidad los tipos son más de los aquí expresados */
+      "dom_tipo_via"      CHAR(15) CHECK ("dom_tipo_via" IN ('calle', 'avenida', 'plaza')),
+      "dom_nombre_via"    VARCHAR(100),
+      "dom_numero"        INTEGER,
+      "dom_subnumero"     CHAR(1),
+      "dom_puerta"        CHAR(3),
+      "dom_bloque"        CHAR(3),
+      "dom_escalera"      CHAR(3),
+      "dom_piso"          INTEGER,
+      "dom_letra"         CHAR(2),
+      "dom_cp"            INTEGER,
+      "dom_localidad"     VARCHAR(75),
+      "dom_municipio"     VARCHAR(75),
+      "dom_provincia"     INTEGER
    );
    
-Entre los datos hay una serie de datos de contacto que quizás necesitaremos
-consultar alguna vez, pero que no son determinates en filtros de consulta como
-el teléfono, el fax, la página web, el correo electrónico, el domicilio (que a
-su vez debería estar constituido por varios campos independientes), etc. Algunos
-de estos proveedores, además, carecerán de fax o de página web. En estos casos,
-lo mejor es crear un campo de tipo |JSON| que reúna todos estos datos, de manera
-que el campo "contacto" de la tabla "Proveedor" podría definirse así:
+La tabla tiene muchísimas columnas, porque la casuística de los datos de
+contacto es muy grande, queremos cubrirla toda (o, al menos, una gran parte) y
+el modelo relacional nos obliga a crear un campo para todo. En cambio, si
+echamos manos de |JSON|, podremos definir la tabla de este modo:
 
 .. code-block:: sql
 
-   CREATE TABLE Proveedor (
-      id          INTEGER  PRIMARY KEY,
-      nombre      VARCHAR(100),
-      contacto    JSON          /* Aquí en realidad se almacenan todos los datos anteriores */
+   CREATE TABLE "Proveedor" (
+      "id"          INTEGER  PRIMARY KEY,
+      "nombre"      VARCHAR(100),
+      "contacto"    JSON    /* Aquí en realidad se almacenan todos los datos anteriores */
    );
    
-Y dentro de este campo |JSON| se podría almacenar una estructura parecida a
-esta:
+Y dentro del campo de contacto que se almacene una estructura |JSON| que
+facilita no tener definidos siempre todos los campos:
 
 .. code-block:: json
 
@@ -112,7 +221,8 @@ esta:
       "domicilio": {
          "tipo_via": "calle",
          "via": "Callo",
-         "número": 25,
+         "numero": 25,
+         "subnumero": "A"
          "puerta": null,
          "bloque": null,
          "escalera": 2,
@@ -120,26 +230,97 @@ esta:
          "letra": null,
          "cp": 11001,
          "localidad": "Cádiz",
+         "municipio": "Cádiz"
          "provincia": 11
       }
    }
 
-.. note:: Hemos expresado los valores nulos para que se vean todos los campos
-   posibles, pero lo mejor es que estos campos ni siquiera se almacenaran en la
-   realidad.
+.. note:: Hemos expresado los campos con valor nulo para que se vean cómo se
+   reproduce fielmente la estructura de la primera tabla, pero no son
+   necesarios y, de hecho, no estarán cuando tengan este valor.
 
+La idea que subyace en la incorporación de |JSON| al almacenamiento es ésta.
+Para rematar ilustrémoslo utilizando SQLite_, que `tiene soporte para JSON
+<https://www.sqlite.org/json1.html>`_, aunque sin llegar a crearse realmente un
+tipo de dato distinto (o sea, lo que estipula `SQL:2016`_).
+
+Descargue :download:`proveedor.sql <files/proveedor.sql>` que contiene la
+creación de la segunda versión propuesta de la tabla\ [#]_ y un par de registros
+de prueba, y pruebe cómo acceder a los campos individuales del |JSON|:
+
+.. code-block:: console
+
+   $ sqlite /tmp/proveedor.db < proveedor.sql
+   $ sqlite /tmp/proveedor
+   sqlite> .tables
+   Proveedor
+   sqlite> .mode columns
+   sqlite> SELECT "nombre", JSON_EXTRACT("contacto", '$.domicilio.localidad') AS 'localidad' FROM "Proveedor";
+   nombre                 Localidad
+   ---------------------  ---------
+   Helados Babuino        Cádiz    
+   Central de Chucherías  Málaga
+   sqlite> SELECT "id", "nombre" FROM "Proveedor" WHERE JSON_EXTRACT("contacto", '$.domicilio.localidad') = 'Cádiz';
+   id  nombre         
+   --  ---------------
+   1   Helados Babuino
+
+Como puede verse, estamos usando una sintaxis derivada de :ref:`JSONPath` para referir
+los valores individuales que contiene el |JSON| contenido en el campo ``contacto``\ [#]_.
 
 Bases nativas
 *************
 
-.. Bases XML.
+.. Bases XML: https://docs.basex.org/wiki/Getting_Started
    Bases documentales (mongoDB)
 
 .. rubric:: Notas al pie
 
-.. [#] De hecho, en la última revisión del estándar `SQL:2023
-   <https://en.wikipedia.org/wiki/SQL:2023>`_ se ha añadido el soporte para el
-   tipo de dato |JSON|.
+.. [#] |XML| no es un lenguaje de serialización de datos, sino de marcas como
+   ya se ha repetido en varias ocasiones, pero en este caso nuestra intención es
+   usarlo para estructurar información orientada al dato, esto es, para
+   serializar datos.
+
+.. [#] ``EXTRACTVALUE`` es la función equivalente ``JSON_EXTRACT`` que veremos
+   más en profundidad bajo el siguiente epígrafe.
+
+.. [#] :program:`SQLite` permite indicar un tipo ``JSON``,  aunque internamente
+   ese tipo será simplemente ``TEXT``.
+
+.. [#] :program:`SQLite` tiene  una `operador procedente de PostgreSQL
+   <https://www.postgresql.org/docs/9.5/functions-json.html>`_ alternativo a JSON_EXTRACT
+   como `azúcar sintáctico
+   <https://es.wikipedia.org/wiki/Az%C3%BAcar_sint%C3%A1ctico>`_:
+
+   .. code-block:: sql
+
+      SELECT "nombre", "contacto"->'domicilio'->>'localidad' AS 'localidad' FROM "Proveedor";
+
+   .. seealso:: Éche un vistazo a `este tutorial de JSON con SQLite
+      <https://tirkarthi.github.io/programming/2022/02/26/sqlite-json-improvements.html>`_.
+
+   Y `SQL:2023`_ ha definido el operador punto (".") con la misma intención:
+
+   .. code-block:: sql
+
+      SELECT "nombre", "contacto"."domicilio"."localidad" AS 'localidad' FROM "Proveedor";
+
+   aunque para ello :program:`SQLite` no tiene aún soporte.
 
 .. |SGBD| replace:: :abbr:`SGBD (Sistema Gestor de Bases de Datos)`
+.. |SQL| replace:: :abbr:`SQL (Structured Query Language)`
 .. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`
+.. |BB.RR.| replace:: :abbr:`BB.RR. (Bases Relacionales)`
+.. |ANSI| replace:: :abbr:`ANSI (American National Standards Institute)`
+
+.. _`SQL:2003`: https://en.wikipedia.org/wiki/SQL:2003
+.. _`SQL:2023`: https://en.wikipedia.org/wiki/SQL:2023
+.. _`SQL:2016`: https://en.wikipedia.org/wiki/SQL:2016
+.. _`SQL:1999`: https://en.wikipedia.org/wiki/SQL:2016
+.. _`SQL-92`: https://en.wikipedia.org/wiki/SQL-92
+.. _PostgreSQL: https://www.postgresql.org/
+.. _SQLite: https://sqlite.org
+.. _Oracle Database: https://es.wikipedia.org/wiki/Oracle_Database
+.. _DB2: https://en.wikipedia.org/wiki/IBM_Db2
+.. _SQL Server: https://en.wikipedia.org/wiki/Microsoft_SQL_Server
+.. _MariaDB: https://en.wikipedia.org/wiki/MariaDB

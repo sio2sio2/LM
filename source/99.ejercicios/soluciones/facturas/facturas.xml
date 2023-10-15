@@ -26,16 +26,19 @@
    </clientes>
 
    <inventario>
-      <producto codigo="p01" nombre="tomate" precio="0.8" iva="superreducido" />
-      <producto codigo="p02" nombre="mollete" precio="0.3" iva="superreducido" />
+      <!-- El precio no se incluye entre las propiedades del producto,
+           porque puede variar de factura a factura, ya que las facturas
+           pueden ser de fechas dispares y los precios son cambiantes -->
+      <producto codigo="p01" nombre="tomate"  iva="reducido" />
+      <producto codigo="p02" nombre="mollete" iva="superreducido" />
 
       <!-- Más productos -->
    </inventario>
 
    <!-- El descuento es en % -->
    <factura codigo="f01" cliente="c01" fecha="2018-10-15" descuento="10">
-      <item producto="p01" cantidad="1" />
-      <item producto="p02" cantidad="3" />
+      <item producto="p01" precio="0.8" cantidad="1" />
+      <item producto="p02" precio="0.3" cantidad="3" />
 
       <!-- Otros productos comprados por el cliente -->
    </factura>

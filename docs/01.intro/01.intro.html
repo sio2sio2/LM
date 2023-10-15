@@ -208,7 +208,7 @@ Los procesadores de textos <abbr title="What You See Is What You Get">WYSIWYG</a
 
    En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho
    que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín
-   flaco y galgo corredo.
+   flaco y galgo corredor.
 
 El Buscón, en cambio, ...
 </pre></div>
@@ -222,7 +222,7 @@ procese el texto, por lo general, para su presentación.</p>
 .<span class="k">sk</span> <span class="m">2</span> <span class="s">a;.in</span> <span class="s">+10</span> <span class="s">-10;.ls</span> <span class="m">0</span><span class="s">;.cp</span> <span class="m">2</span>
 En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho que
 vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y
-galgo corredo.
+galgo corredor.
 .<span class="k">sk</span> <span class="m">2</span> <span class="s">a;.in</span> <span class="s">-10</span> <span class="s">+10;.cp</span> <span class="m">2</span><span class="s">;.ls</span> <span class="m">1</span>
 El Buscón, en cambio, ...
 </pre></div>
@@ -243,7 +243,7 @@ general, sin proporcionar información de cómo debe ser procesado.</p>
 <span class="nt">&lt;blockquote&gt;</span>
 En<span class="w"> </span>un<span class="w"> </span>lugar<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>Mancha,<span class="w"> </span>de<span class="w"> </span>cuyo<span class="w"> </span>nombre<span class="w"> </span>no<span class="w"> </span>quiero<span class="w"> </span>acordarme,<span class="w"> </span>no<span class="w"> </span>ha<span class="w"> </span>mucho
 que<span class="w"> </span>vivía<span class="w"> </span>un<span class="w"> </span>hidalgo<span class="w"> </span>de<span class="w"> </span>los<span class="w"> </span>de<span class="w"> </span>lanza<span class="w"> </span>en<span class="w"> </span>astillero,<span class="w"> </span>adarga<span class="w"> </span>antigua,<span class="w"> </span>rocín
-flaco<span class="w"> </span>y<span class="w"> </span>galgo<span class="w"> </span>corredo.
+flaco<span class="w"> </span>y<span class="w"> </span>galgo<span class="w"> </span>corredor.
 <span class="nt">&lt;/blockquote&gt;</span>
 <span class="nt">&lt;p&gt;</span>El<span class="w"> </span>Buscón,<span class="w"> </span>en<span class="w"> </span>cambio,<span class="w"> </span>...
 </pre></div>
@@ -252,9 +252,9 @@ flaco<span class="w"> </span>y<span class="w"> </span>galgo<span class="w"> </sp
 distinguir entre:</p>
 <dl>
 <dt><em class="dfn">Marcado descriptivo orientado al documento</em></dt><dd><p>Las marcas describen cuál es la función semántica de cada parte del
-documento: <em>éste es el título</em>, <em>esto es un párrafo</em>, <em>esto otro es un
+documento: <em>éste es el título</em>, <em>esto es un párrafo</em>, <em>esto otro es una
 cita</em>, etc…  como en el ejemplo superior. <abbr title="HyperText Markup Language">HTML</abbr> es un típico ejemplo de
-lenguaje de este tipo de marcado. incluiremos su estudio en la parte del
+lenguaje de este tipo de marcado. Incluiremos su estudio en la parte del
 módulo dedicada a las tecnologías web.</p>
 <p>Un aspecto muy importante de esta estrategia es cómo procesar luego el
 documento para obtener un texto cómodamente legible. Hay dos vías para
@@ -270,15 +270,15 @@ del texto mediante hojas de estilo como:</p>
 <li><p>Transformarlo en otro documento que sí tenga representación. Para obrar
 la transformación es preciso utilizar un <em>procesador</em>. Por ejemplo:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="http://www.sphinx-doc.org/en/master/">Sphinx</a>, si el documentos está escrito en formato <em>reST</em>, que es capaz de
+<li><p><a class="reference external" href="http://www.sphinx-doc.org/en/master/">Sphinx</a>, si el documento está escrito en formato <em>reST</em>, que es capaz de
 generar un <abbr title="HyperText Markup Language">HTML</abbr> o un <abbr title="Portable Document Format">PDF</abbr>. Es la herramienta que usa este manual para
 obtener la página que ahora mismo está leyendo.</p></li>
 <li><p>En documentos <abbr title="eXtensible  Markup Language">XML</abbr>, <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr> que permite transformar a otro tipo de documento como
 <abbr title="HyperText Markup Language">HTML</abbr>, legible con navegador, o <abbr title="XSL Formatting Object">XSL-FO</abbr>, que a su vez ya tiene definidas
 transformaciones para <abbr title="Portable Document Format">PDF</abbr> o <a class="reference external" href="https://www.adobe.com/es/products/postscript.html">PostScript</a>.</p></li>
-<li><p>Crear nosotros mismo el procesador con un lenguaje de propósito general. Si
-el formato original es <abbr title="eXtensible  Markup Language">XML</abbr>, prácticamente todos los lenguajes tiene
-librerías para su manipulación.</p></li>
+<li><p>Crear nosotros mismos el procesador con un lenguaje de propósito general. Si
+el formato original es <abbr title="eXtensible  Markup Language">XML</abbr>, prácticamente todos los lenguajes
+tienen librerías para su manipulación.</p></li>
 </ul>
 </li>
 </ol>
@@ -304,7 +304,7 @@ segundo, que aborda la tecnología web, trata <abbr title="HyperText Markup Lang
 <p>Los lenguajes de marcas suelen ensayar preferentemente una estrategia de
 marcado, aunque puede tener marcas de alguna estrategia distinta. Por ejemplo,
 <abbr title="HyperText Markup Language">HTML</abbr> dispone, por lo general, de marcas descriptivas (como <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code> o
-<code class="docutils literal notranslate"><span class="pre">&lt;h1&gt;</span></code>), pero también de algunas marcas procedimientales (como <code class="docutils literal notranslate"><span class="pre">&lt;b&gt;</span></code> o
+<code class="docutils literal notranslate"><span class="pre">&lt;h1&gt;</span></code>), pero también de algunas marcas procedimentales (como <code class="docutils literal notranslate"><span class="pre">&lt;b&gt;</span></code> o
 <code class="docutils literal notranslate"><span class="pre">&lt;br&gt;</span></code>).</p>
 </section>
 </section>
@@ -332,8 +332,8 @@ lenguaje.</p></li>
 queramos introducir un párrafo deberemos usar esa marca. ¿Qué pasa si en vez de
 ella usamos la marca <code class="docutils literal notranslate"><span class="pre">&lt;parrafo&gt;</span></code>?  El documento seguirá siendo bien formado,
 puesto que esta nueva marca es una etiqueta válida para <abbr title="eXtensible  Markup Language">XML</abbr>. Sin embargo, la
-marca no está definida dentro del vocabulario de <abbr title="HyperText Markup Language">HTML</abbr>, porque lo que el
-documento no será valido.</p>
+marca no está definida dentro del vocabulario de <abbr title="HyperText Markup Language">HTML</abbr>, por lo que el documento
+no será válido.</p>
 </section>
 <section id="lenguajes-habituales">
 <h2><span class="section-number">1.1.4. </span>Lenguajes habituales<a class="headerlink" href="#lenguajes-habituales" title="Enlace permanente a este encabezado">¶</a></h2>

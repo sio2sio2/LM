@@ -422,8 +422,8 @@ Sección **CDATA**
 
 .. seealso:: Por lo general, la información puede expresarse como elemento
    hijo o como atributo de un elemento. `Este artículo de IBM
-   <https://www.ibm.com/developerworks/library/x-eleatt/index.html>`_ establece
-   algunos criterios para elegir entre uno u otro.
+   <https://web.archive.org/web/20201126053336/https://www.ibm.com/developerworks/library/x-eleatt/index.html>`_
+   establece algunos criterios para elegir entre uno u otro.
 
 Partes
 ------

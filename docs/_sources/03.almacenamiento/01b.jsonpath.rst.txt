@@ -33,10 +33,25 @@ Podemos resumir sus características en los siguientes puntos:
    uso (p.e. Oracle para los tipos |JSON| de sus bases relacionales), otros no lo
    han hecho, como el caso de la base de datos documental MongoDB_.
 
+Procesadores
+============
+Los procesadores existentes no tienen un soporte completo para la última versión
+del borrador. Proponemos tres:
+
+* `JSONPath.com <https://jsonpath.com>`_, que permite las pruebas online.
+* `Visual Studio Code`_ con la extensión `JSONPath Extraction
+  <https://marketplace.visualstudio.com/items?itemName=davidmarek.jsonpath-extract>`_,
+  que permite extraer información de un documento |JSON|. Para evaluar
+  expresiones, basta con pulsar :kbd:`Ctrl+Shift+P` y buscar por "*jsonpath*"
+  para acceder a las órdenes de la extensión.
+* El paquete :deb:`python3-jsonpath-ng`, que incluye la orden
+  :command:`jsonpath_ng`. La orden (aunque sí la librería de Python_) no soporta
+  filtros.
+
 Sintaxis
 ========
 |JSON|\ Path, por analogía con algunos lenguajes de programación utiliza el
-punto (":kbd:`.`") o los corchetes (":kbd:`[]`") para separar las claves de un
+punto (".") o los corchetes ("[]") para separar las claves de un
 objeto. Tomemos para ilustrarlo un documento ya analizado:
 
 .. code:: json
@@ -330,16 +345,6 @@ Debemos saber, además, que:
 
   .. note:: El soporte de los procesadores para estas funciones es precario.
 
-Procesadores
-============
-Los procesadores existentes no tienen un soporte completo para la última versión
-del borrador. Proponemos dos:
-
-* `JSONPath.com <https://jsonpath.com>`_, que permite las pruebas online.
-* El paquete :deb:`python3-jsonpath-ng`, que incluye la orden
-  :command:`jsonpath_ng`. La orden (aunque sí la librería de Python_) no soporta
-  filtros.
-
 .. rubric:: Notas al pie
 
 .. [#] Conviene, no obstante, aclarar que esto es una mera conjetura del autor,
@@ -359,3 +364,4 @@ del borrador. Proponemos dos:
 .. _Python: https://www.python.org
 .. _PHP: https://www.php.net
 .. _MongoDB: https://www.mongodb.com
+.. _Visual Studio Code:  https://code.visualstudio.com

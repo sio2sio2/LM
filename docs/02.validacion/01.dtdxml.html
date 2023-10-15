@@ -326,6 +326,13 @@ consulta la gramática definida en el <abbr title="Document Type Definition">DTD
 <li><p><strong class="command">xmlstarlet</strong>, que tiene paquete en las distribuciones basadas en
 <em>Debian</em> (<a class="reference external" href="https://packages.debian.org/stable/xmlstarlet">xmlstarlet</a>).</p></li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>La extensión propuesta de <strong class="program">Visual Studio Code</strong> parece ser
+incapaz de validar cuando la definición la gramática se ha hecho modular,
+esto es, cuando el <abbr title="Document Type Definition">DTD</abbr> referido por el <abbr title="eXtensible  Markup Language">XML</abbr> no contiene todo la
+definición, sino que a su vez usa <a class="reference internal" href="#dtd-ent-par"><span class="std std-ref">entidades parámetro externas</span></a> para transladar parte de la definición a otro <abbr title="Document Type Definition">DTD</abbr>.</p>
+</div>
 <p>Centrándonos en este último, es especialmente útil, porque permite:</p>
 <ul class="simple">
 <li><p>Comprobar si un <abbr title="eXtensible  Markup Language">XML</abbr> está bien formado.</p></li>

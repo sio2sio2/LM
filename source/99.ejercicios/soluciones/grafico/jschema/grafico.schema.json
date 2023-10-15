@@ -29,37 +29,33 @@
                      "tipo": {
                         "const": "punto"
                      },
-                     "x": { "$ref": "#$defs/coordenada" },
-                     "y": { "$ref": "#$defs/coordenada" }
+                     "coord": { "$ref": "#$defs/coordenada" }
                   },
-                  "required": ["x", "y"]
+                  "required": ["coord"]
                },
                {
                   "properties": {
                      "tipo": {
                         "const": "circunferencia"
                      },
-                     "x": { "$ref": "#$defs/coordenada" },
-                     "y": { "$ref": "#$defs/coordenada" },
+                     "centro": { "$ref": "#$defs/coordenada" },
                      "r": {
                         "description": "Radio",
                         "type": "integer",
                         "minimum": 1
                      }
                   },
-                  "required": ["x", "y", "r"]
+                  "required": ["centro", "r"]
                },
                {
                   "properties": {
                      "tipo": {
                         "enum": [ "rectangulo", "recta" ]
                      },
-                     "x1": { "$ref": "#$defs/coordenada" },
-                     "y1": { "$ref": "#$defs/coordenada" },
-                     "x2": { "$ref": "#$defs/coordenada" },
-                     "y2": { "$ref": "#$defs/coordenada" }
+                     "ini": { "$ref": "#$defs/coordenada" },
+                     "fin": { "$ref": "#$defs/coordenada" }
                   },
-                  "required": ["x1", "y1", "x2", "y2"]
+                  "required": ["ini", "fin"]
                }
             ],
             "unevaluatedProperties": false
@@ -69,8 +65,11 @@
    },
    "$defs": {
       "coordenada": {
-         "description": "Coordenada en el plano",
-         "type": "integer"
+         "description": "Coordenadas x,y en el plano",
+         "type": "array",
+         "items": {"type": "integer"},
+         "minItems": 2,
+         "maxItems": 2
       }
    }
 }

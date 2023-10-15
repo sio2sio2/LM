@@ -85,30 +85,31 @@ información o escribir reglas para su transformación es necesario referirse a
 nodos o conjuntos de nodos. <em class="dfn">XPath</em> es un sintaxis estándar para la
 selección de uno o varios componentes (nodos, atributos, etc.) dentro de un
 documento <abbr title="eXtensible  Markup Language">XML</abbr>.</p>
-<p><em>XPath</em> es, pues, un estandar del <abbr title="W3 Consortium">W3C</abbr><a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> que no tiene utilidad <em>per se</em>,
-sino como herramienta cuando se usan métodos de procesamiento del <abbr title="eXtensible  Markup Language">XML</abbr> (XQuery,
-<span class="xref std std-ref">XSLT</span>, bibliotecas para <abbr title="eXtensible  Markup Language">XML</abbr> de programas de propósito general,
-etc.). Las últimas versiones de <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a>, que fue un lenguaje
-diseñado específicamente para la manipulación de <abbr title="HyperText Markup Language">HTML</abbr>, soportan también la
-selección de nodos con <em>XPath</em>, mediante la función <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/JavaScript/Introduction_to_using_XPath_in_JavaScript">document.evaluate</a>.</p>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p><em>XPath</em> no es el único lenguaje para esta tarea. En la <abbr title="HyperText Markup Language">HTML</abbr> (que no
-es <abbr title="eXtensible  Markup Language">XML</abbr>, pero tiene bastantes semejanzas) es muy común usar para la
-identificación de nodos los <span class="xref std std-ref">selectores CSS</span>, diseñados
-en principio para definir el estilo (el aspecto) de cada nodo. Sin embargo,
-<a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a> los usa también en general para la manipulación de nodos (véase
+<p><em>XPath</em> es, pues, un estandar del <abbr title="W3 Consortium">W3C</abbr> para seleccionar con qué nodos de un
+documento <abbr title="eXtensible  Markup Language">XML</abbr> se desea operar para cuya operación posterior se requerirá el
+uso de otra herramienta como <span class="xref std std-ref">XQuery</span>, <span class="xref std std-ref">XSLT</span> o alguna biblioteca  de
+programas de propósito general. Es, por tanto, una herramienta que no tiene
+sentido utilizar aislada.</p>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p><em>XPath</em> no es el único lenguaje para esta tarea. En <abbr title="HyperText Markup Language">HTML</abbr> (que
+no es <abbr title="eXtensible  Markup Language">XML</abbr>, pero tiene bastantes semejanzas) es muy común usar para la
+selección de nodos los <span class="xref std std-ref">selectores CSS</span>, diseñados en
+principio para definir su estilo (o sea, su aspecto). A pesar de nacer para
+documentos <abbr title="HyperText Markup Language">HTML</abbr>, los <em>selectores CSS</em> son perfectamente válidos para
+identificar nodos <abbr title="eXtensible  Markup Language">XML</abbr>, por lo que son una alternativa muy utilizado. Por
+ejemplo, <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a> los soporta para la selección de nodos en general (véase
 <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/API/Document/querySelectorAll">document.querySelectorAll</a>),
-en vez de <em>XPath</em>.</p>
+en vez de <em>XPath</em>, a pesar de que existe  la función <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/JavaScript/Introduction_to_using_XPath_in_JavaScript">document.evaluate</a>,
+que permite usar <em>XPath</em>.</p>
 </div>
 <p>El nombre de la tecnología deriva de la fusión de <abbr title="eXtensible  Markup Language">XML</abbr> y la palabra inglesa
 <em>path</em>, que en un sistema de archivo es la manera de indicar la ruta que hay que
 seguir para llegar a un determinado archivo. La analogía no es gratuita, puesto
 que en el caso de los sistemas de archivos se habla del árbol de directorios, de
-la misma manera que en un documento <abbr title="eXtensible  Markup Language">XML</abbr> hay un árbol de nodos.</p>
-<p class="rubric">Versiones</p>
+la misma manera que en un documento <abbr title="eXtensible  Markup Language">XML</abbr> hay un <a class="reference internal" href="../01.intro/02b.marcas.html#xml-jerarq"><span class="std std-ref">árbol de nodos</span></a>.</p>
 <p>Desde su creación en 1999, <em>XPath</em> se ha ido actualizando con distintas
-versiones:</p>
+<strong>versiones</strong>:</p>
 <dl class="simple">
 <dt><a class="reference external" href="https://www.w3.org/TR/xpath-10/">Versión 1</a>,</dt><dd><p>que apareció en el año 1999, y es universalmente soportada. Es la versión que
 soporta <a class="reference external" href="http://xmlsoft.org/">libxml</a>, la librería que utiliza
@@ -117,35 +118,208 @@ soporta <a class="reference external" href="http://xmlsoft.org/">libxml</a>, la 
 <dt><a class="reference external" href="https://www.w3.org/TR/xpath-20/">Versión 2</a>,</dt><dd><p>que apareció en 2007, e introduce mejoras muy significativas. No todo el
 software soporta esta especificación.</p>
 </dd>
-<dt><a class="reference external" href="https://www.w3.org/TR/xpath-30/">Versión 3</a>,</dt><dd><p>que apareció en 2014. En el mundo del software libre soportan esta versión la
-librería <a class="reference external" href="http://saxon.sourceforge.net/saxon7.7/api-guide.html">Saxon</a> para
-<a class="reference external" href="https://www.java.com/">Java</a> y <a class="reference external" href="http://xerces.apache.org/">Xerces</a>, que
-tiene versión para <a class="reference external" href="https://es.wikipedia.org/wiki/C%2B%2B">C++</a>. En la <abbr title="Command Line Interface">CLI</abbr>
-de Linux puede usarse a través de algunos progamas de <em>software</em> libre:</p>
+<dt><a class="reference external" href="https://www.w3.org/TR/xpath-30/">Versión 3</a>,</dt><dd><p>que apareció en 2014. El cambio respecto a la versión anterior, <a class="reference external" href="https://en.wikipedia.org/wiki/XPath_3">no es tan
+significativo</a> como el que se produjo
+entre la <strong>1</strong> y la <strong>2</strong>.  En el mundo del software libre soportan esta
+versión la librería <a class="reference external" href="http://saxon.sourceforge.net/saxon7.7/api-guide.html">Saxon</a> para <a class="reference external" href="https://www.java.com/">Java</a> y <a class="reference external" href="http://xerces.apache.org/">Xerces</a>, que tiene
+versión para <a class="reference external" href="https://es.wikipedia.org/wiki/C%2B%2B">C++</a>. En la <abbr title="Command Line Interface">CLI</abbr> de
+Linux puede usarse a través de algunos programas de <em>software</em> libre:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="http://xqilla.sourceforge.net/HomePage">xqilla</a>, que aunque tiene paquete
 en <em>Debian</em>, desgraciadamente no está disponible para <em>Bookworm</em>, por
 <a class="reference external" href="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=984418">problemas de compilación con g++-11</a>.</p></li>
-<li><p><a class="reference external" href="http://www.videlibri.de/xidel.html">xidel</a>, que no tiene paquete oficial,
-pero puede descargarse de su página oficial.</p></li>
+<li><p><a class="reference external" href="https://www.videlibri.de/xidel.html">xidel</a>, que no tiene paquete oficial, pero puede descargarse de su página
+oficial.</p></li>
 </ul>
 </dd>
-<dt><a class="reference external" href="https://www.w3.org/TR/xpath-31/">Versión 3.1</a>,</dt><dd><p>publicada en 2017, que añade soporte para consultar también documentos <abbr title="JavaScript Object Notation">JSON</abbr>.</p>
+<dt><a class="reference external" href="https://www.w3.org/TR/xpath-31/">Versión 3.1</a>,</dt><dd><p>publicada en 2017, que añade soporte para dos tipos de datos nuevos, la
+secuencia y el mapa, lo que posibilita que el lenguaje sea apto para consultar
+también documentos <abbr title="JavaScript Object Notation">JSON</abbr>.</p>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">Ver también</p>
 <p>El <abbr title="W3 Consortium">W3C</abbr> mantiene una <a class="reference external" href="https://www.w3.org/TR/xpath/">página que enumera todas las versiones</a>. Para una exhaustiva comparación entre las
-versiones <strong>1.0</strong> y <strong>2.0</strong> se encuentra <a class="reference external" href="http://www.mulberrytech.com/papers/XPath-2-0-User-Grp-HTML/contents.html">en este documento</a>.</p>
+versiones <strong>1.0</strong> y <strong>2.0</strong> se encuentra <a class="reference external" href="http://www.mulberrytech.com/papers/XPath-2-0-User-Grp-HTML/contents.html">en este documento</a>
+y para una comparación más sucinta <a class="reference external" href="https://learn.microsoft.com/en-us/archive/msdn-magazine/2003/january/the-xml-files-introducing-xpath-2-0">este artículo en la web de Microsoft</a>.</p>
 </div>
-<p>Estos apuntes desarrollan <em>XPath</em> <strong>1.0</strong>.</p>
-<section id="sintaxis-basica">
-<h2><span class="section-number">3.1.1.1. </span>Sintaxis básica<a class="headerlink" href="#sintaxis-basica" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>Por analogía con las rutas de archivos, una ruta de <em>XPath</em> tiene una forma
-semejante:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">nodo1</span><span class="o">/</span><span class="n">nodo2</span><span class="o">/</span><span class="n">nodo3</span>
+<p>En estos apuntes desarrollaremos primero la norma de <em>XPath</em> 1.0 (por su amplio
+soporte) y expondremos luego cuáles son los cambios y ampliaciones que presenta
+<em>XPath</em> 2.0.</p>
+<section id="procesadores">
+<span id="xpath-procesadores"></span><h2><span class="section-number">3.1.1.1. </span>Procesadores<a class="headerlink" href="#procesadores" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Como en unidades anteriores, antes de entrar en profundidad en el asunto, es
+conveniente conocer qué herramientas tenemos para procesar nuestras expresiones
+<em>Xpath</em> tenemos muchas alternativas. Hay muchas entre las que señalaremos:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://xpather.com/">XPather</a>, que permite evaluar online expresiones
+<em>XPath</em> 2.0.</p></li>
+<li><p><a class="reference external" href="https://code.visualstudio.com">Visual Studio Code</a> con la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=creinbacher.xpathtester">XPath Tester</a>
+permite evaluar expresiones <em>XPath</em> 1.0. Para evaluar expresiones, basta con
+pulsar <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd></kbd> y buscar <em>XPath</em> para que accedamos al cuadro de
+diálogo que nos permite hacer evaluaciones.</p></li>
+<li><p>El paquete <a class="reference external" href="https://packages.debian.org/stable/xmlstarlet">xmlstarlet</a>, cuyo paquete homónimo permite utilizar
+expresiones <em>XPath</em> 1.0 tanto para seleccionar información del <abbr title="eXtensible  Markup Language">XML</abbr> original,
+como para modificarlo.</p></li>
+<li><p>El programa <a class="reference external" href="https://www.videlibri.de/xidel.html">xidel</a>, que soporta XPath 3.0.</p></li>
+</ul>
+<p>Expondremos estos dos últimos programas de línea de comandos, porque son los
+únicos que requieren alguna explicación sobre su funcionamiento:</p>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>A estas alturas aún, la lectura completa del siguiente epígrafe es
+empachante y nada recomendable. Nos basta con saber cómo evaluar las
+expresiones <em>XPath</em> que se van introduciendo gradualmente, con lo que nos sobra con
+saber cómo usar <a class="reference internal" href="#xpath-xidel"><span class="std std-ref">xidel</span></a>, si necesitamos probar expresiones
+validas únicas en <em>XPath</em> 2.0, o manejar la extensión de <a class="reference external" href="https://code.visualstudio.com">Visual Studio
+Code</a> que no requiere gran pericia.</p>
+</div>
+<section id="xidel">
+<span id="xpath-xidel"></span><h3><span class="section-number">3.1.1.1.1. </span><strong class="program">Xidel</strong><a class="headerlink" href="#xidel" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>La principal ventaja de usarlo frente a <a class="reference internal" href="#xpath-xidel"><span class="std std-ref">xmlstarlet</span></a> es que
+podremos probar expresiones <em>XPath</em> 2.0 ó 3.0.</p>
+<p>Para comprobar nuestras expresiones <em>XPath</em> podemos usarlo de dos modos
+distintos:</p>
+<ul>
+<li><p>Si el resultado es texto:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>xidel<span class="w"> </span>-s<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;//profesor[1]/@id&#39;</span><span class="w"> </span>casilleros.xml
+<span class="go">p1</span>
 </pre></div>
 </div>
+<p>donde «<kbd class="kbd docutils literal notranslate">-s</kbd>» evita mensajes de información innecesarios, y «<kbd class="kbd docutils literal notranslate">-e</kbd>» introduce
+la expresión <em>XPath</em>.</p>
+</li>
+<li><p>Si el resultado es un nodo o un conjunto de nodos, es necesario añadir
+<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">-</kbd>-<kbd class="kbd docutils literal notranslate">printed</kbd>-<kbd class="kbd docutils literal notranslate">node</kbd>-<kbd class="kbd docutils literal notranslate">format=xml</kbd></kbd>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>xidel<span class="w"> </span>-s<span class="w"> </span>--printed-node-format<span class="o">=</span>xml<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;//profesor/apelativo&#39;</span><span class="w"> </span>casilleros.xml
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="xmlstarlet">
+<span id="xpath-xmlstarlet"></span><h3><span class="section-number">3.1.1.1.2. </span><strong class="program">XMLStarlet</strong><a class="headerlink" href="#xmlstarlet" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Con este programa podemos usar <em>XPath</em> tanto para seleccionar datos como para
+introducir modificaciones al <abbr title="eXtensible  Markup Language">XML</abbr> original. Lo segundo no nos interesa
+demasiado, pero por completar la información sobre la orden incluiremos las
+posibilidades que brinda.</p>
+<section id="seleccion">
+<h4><span class="section-number">3.1.1.1.2.1. </span>Selección<a class="headerlink" href="#seleccion" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>Para lograrlo es necesario usar el comando <code class="docutils literal notranslate"><span class="pre">sel</span></code>, seguido de la opción <code class="docutils literal notranslate"><span class="pre">-t</span></code>, y
+la acción que se quiere realizar a continuación, que puede ser:</p>
+<dl>
+<dt><code class="code docutils literal notranslate"><span class="pre">-v</span> <span class="pre">&lt;expresión-xpath&gt;</span></code></dt><dd><p>Muestra el valor de lo seleccionado mediante la expresión. Se debe estar
+opción cuuando el resultado de la expresión es un valor escalar: un único
+atributo, un nodo que contiene texto o el evaluación de un función o una
+operación. Por ejemplo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet sel -t -v &#39;//profesor[1]/@id&#39; -n casilleros.xml
+p1
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Se ha añadido la opción <code class="docutils literal notranslate"><span class="pre">-n</span></code> para añadir un cambio de línea al
+final del resultado.</p>
+</div>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">-c</span> <span class="pre">&lt;expresion-path&gt;</span></code></dt><dd><p>Copia el nodo seleccionado, por tanto deberá usarse cuando el resultado de
+nuestra selección es un nodo elemento o un conjunto de nodos elemento. Por
+ejemplo, lo siguiente devuelve todos los nodos <em>apelativo</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet sel -t -c &#39;//profesor/apelativo&#39; -n casilleros.xml
+&lt;apelativo&gt;Pepe&lt;/apelativo&gt;&lt;apelativo&gt;Paco&lt;/apelativo&gt;&lt;apelativo&gt;Mari&lt;/apelativo&gt;
+</pre></div>
+</div>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">-m</span> <span class="pre">&lt;expresión-path&gt;</span></code></dt><dd><p>Selecciona un nodo o un conjunto de nodos para seguir trabajando sobre
+ellos. Por tanto, requerirá que luego se use <code class="docutils literal notranslate"><span class="pre">-v</span></code> o <code class="docutils literal notranslate"><span class="pre">-c</span></code>. Por ejemplo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet sel -t -m &#39;//profesor/apelativo&#39; -v &#39;.&#39; casilleros.xml
+PepePacoMari
+</pre></div>
+</div>
+<p>En este caso, habría sido fundamental usar <code class="docutils literal notranslate"><span class="pre">-n</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet sel -t -m &#39;//profesor/apelativo&#39; -v &#39;.&#39; -n casilleros.xml
+Pepe
+Paco
+Mari
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong class="command">xmlstarlet</strong> es capaz de devolvernos el código <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr>
+equivalente a nuestra selección añadiendo tras <code class="docutils literal notranslate"><span class="pre">sel</span></code> la opción <code class="docutils literal notranslate"><span class="pre">-C</span></code>.</p>
+</div>
+</section>
+<section id="edicion">
+<h4><span class="section-number">3.1.1.1.2.2. </span>Edición<a class="headerlink" href="#edicion" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>En este caso, debe usarse <code class="docutils literal notranslate"><span class="pre">ed</span></code>, una acción y el uso de expresiones <em>XPath</em>:</p>
+<dl>
+<dt><code class="code docutils literal notranslate"><span class="pre">-d</span> <span class="pre">&lt;expresion-xpath&gt;</span></code></dt><dd><p>Borra los nodos que selecciona la expresión:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet ed -d &#39;//profesor[last()]&#39; casilleros.xml
+</pre></div>
+</div>
+<p>Esta expresión elimnina el último de los profesores.</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">-u</span> <span class="pre">&lt;expresion-xpath&gt;</span> <span class="pre">-v</span> <span class="pre">valor</span></code></dt><dd><p>Actualiza el valor del nodo o nodos seleccionados:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet ed -u &#39;//profesor[1]/apelativo&#39; -v &quot;Manolo&quot; casilleros.xml
+</pre></div>
+</div>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">-i</span> <span class="pre">&lt;expresión-xpath&gt;</span> <span class="pre">-t</span> <span class="pre">(elem|text|attr)</span> <span class="pre">-n</span> <span class="pre">&lt;nombre&gt;</span> <span class="pre">-v</span> <span class="pre">&lt;valor&gt;</span></code></dt><dd><p>Permite insertar antes del nodo seleccionado (o los nodos) un nodo de tipo
+elemento, texto o atributo del nombre y valor referidos. Se deben hacer
+varias puntualizaciones:</p>
+<ul class="simple">
+<li><p>Los nodos de texto no tienen nombre, así que da igual el nombre que se les
+dé.</p></li>
+<li><p>El valor sólo puede ser texto, así que, directamente, sólo se pueden crear
+nodos elemento que contienen texto.</p></li>
+<li><p>Si se quiere crear nodos elemento que tienen atributos o contienen otros
+nodos elemento, entonces hay que componer varias acciones.</p></li>
+</ul>
+<p>Por ejemplo, esto añadiría un nuevo apelativo al primer profesor:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet ed -i &#39;//profesor[1]/nombre&#39; -t elem -n &quot;apelativo&quot; -v &quot;Pancho&quot; casilleros.xml
+</pre></div>
+</div>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">-a</span> <span class="pre">&lt;expresión-xpath&gt;</span> <span class="pre">-t</span> <span class="pre">(elem|text|attr)</span> <span class="pre">-n</span> <span class="pre">nombre</span> <span class="pre">-v</span> <span class="pre">valor</span></code></dt><dd><p>Como  <code class="docutils literal notranslate"><span class="pre">-i</span></code> pero añade el nodo después, no antes. Por ejemplo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet ed -a &#39;//profesor[1]/apelativo[last()]&#39; -t elem -n &quot;apelativo&quot; -v &quot;Pancho&quot; casilleros.xml
+</pre></div>
+</div>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">-s</span> <span class="pre">&lt;expresión-xpath&gt;</span> <span class="pre">-t</span> <span class="pre">(elemen|text|attr)</span> <span class="pre">-n</span> <span class="pre">nombre</span> <span class="pre">-v</span> <span class="pre">valor</span></code></dt><dd><p>Añade el nuevo elemento como último elemento del elemento seleccionado:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet ed -s &#39;//profesor[2]/nombre&#39; -t text -n foo -v &quot; María&quot; casilleros.xml
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Las transformaciones que podemos hacer de este modo son bastante
+limitadas. Un mecanismo más apropiado para realizarlas es usar <span class="xref std std-ref">XSLT</span>.</p>
+</div>
+</section>
+</section>
+</section>
+<section id="sintaxis">
+<h2><span class="section-number">3.1.1.2. </span>Sintaxis<a class="headerlink" href="#sintaxis" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Una expresión <em>XPath</em> es, simplemente, una expresión evaluable que devuelve un
+resultado. Por lo general, dentro de esta expresión se refieron nodos del <abbr title="eXtensible  Markup Language">XML</abbr>,
+pero no necesariamente. Ésta es una expresión <em>XPath</em> perfectamente válida:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>¿Es <strong>1</strong>  igual a <strong>1</strong>?  Al ser una tautología, la respuesta es obviamente
+verdadera, así que el resultado de es expresión será <code class="docutils literal notranslate"><span class="pre">true</span></code>. Cuando
+involucramos nodos en la expresión:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">nodo1</span><span class="p">/</span><span class="nt">nodo2</span><span class="p">/</span><span class="nt">nodo3</span>
+</pre></div>
+</div>
+<p>se advierte mejor la analogía entre <em>XPath</em> y las rutas de archivos. En este
+caso, la evaluación de expresión devolverá todos los <em>nodo3</em> incluídos dentro de
+los <em>nodo2</em> incluidos dentro del <em>nodo1</em>.  O sea, lo mismo que devolvería una
+ruta de archivos con la salvedad de que los directorios son únicos y no se
+podría devolver varios.</p>
 <p>Traigamos el ejemplo del claustro de profesores para ilustrar las rutas que
 expresemos a continuación:</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
@@ -222,28 +396,22 @@ XML de casilleros<div class="sd-summary-down docutils">
 </div>
 </div>
 </details><p>En este caso, la expresión:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">claustro</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span>
 </pre></div>
 </div>
 <p>representa el nodo raíz <em>claustro</em>, mientras que la expresión:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">claustro</span><span class="o">/</span><span class="n">profesor</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span>
 </pre></div>
 </div>
-<p>representa todos los nodos <em>profesor</em> que son hijos del <em>claustro</em>.</p>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>A diferencia de las rutas de archivos, en que cada ruta absoluta
-provee una ubicacion única, las rutas de <em>XPath</em> pueden seleccionar varios
-componentes a la vez.</p>
-</div>
-<p>Es posible también hacer referencia a descendientes como en:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">claustro</span><span class="o">//</span><span class="n">nombre</span>
+<p>representa todos los nodos <em>profesor</em> que son hijos del <em>claustro</em>.  Es posible
+también hacer referencia a descendientes no directos como en:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">//</span><span class="nt">nombre</span>
 </pre></div>
 </div>
 <p>en que seleccionamos todos los nodos <em>nombre</em> que son descendientes de claustro.
 Para este caso particular, obtenemos los nombres de todos profesores que
 pertenecen al claustro. Otro ejemplo podría ser:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">profesor</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span>
 </pre></div>
 </div>
 <p>Del mismo modo que en las rutas de archivos existen rutas relativas, en las
@@ -254,40 +422,37 @@ nos encontramos procesando un determinado nodo. Para las rutas relativas, como
 en el caso de los archivos, se usa el punto (<code class="docutils literal notranslate"><span class="pre">.</span></code>), que significa este nodo, y
 dos puntos seguidos (<code class="docutils literal notranslate"><span class="pre">..</span></code>), que significan el nodo padre. Así pues, si
 estuviésemos procesando un determinado nodo <em>profesor</em>, la ruta:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">nombre</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">./</span><span class="nt">nombre</span>
+</pre></div>
+</div>
+<p>o, simplemente:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nt">nombre</span>
 </pre></div>
 </div>
 <p>representaría el nodo <em>nombre</em> de ese profesor; mientras que, si procesando el
 nodo <em>apelativo</em> de un procesor, hacemos referencia a:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">../</span><span class="n">nombre</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">../</span><span class="nt">nombre</span>
 </pre></div>
 </div>
-<p>haremos referencia al nombre del profesor cuyo nodo estuviéramos procesando.</p>
-</section>
-<section id="sintaxis-completa">
-<h2><span class="section-number">3.1.1.2. </span>Sintaxis completa<a class="headerlink" href="#sintaxis-completa" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>El epígrafe anterior presenta una semblanza muy superficial de cómo <em>XPath</em>
-puede referir nodos <abbr title="eXtensible  Markup Language">XML</abbr>. <em>XPath</em>, sin embargo, es mucho más potente y este
-epígrafe está destinado a desentrañarlo. Por lo pronto, la sintaxis general de
-una expresión <em>XPath</em> es la siguiente:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">paso1</span><span class="o">/</span><span class="n">paso2</span><span class="o">/</span><span class="n">paso3</span>
+<p>haremos referencia al nombre del profesor cuyo nodo estuviéramos procesando. En
+realidad la expresión del nodo es algo más complicada que indicar simplemente su
+nombre como introdujimos antes:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">nodo1</span><span class="p">/</span><span class="nt">nodo2</span><span class="p">/</span><span class="nt">nodo3</span>
 </pre></div>
 </div>
-<p>donde cada <em>paso</em> tiene la siguiente estructura:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eje</span><span class="p">::</span><span class="n">filtro</span><span class="p">[</span><span class="n">predicado</span><span class="p">]</span>
+<p>Cada paso de la ruta tiene, en realidad, la siguiente estructura completa:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nt">eje</span><span class="p">::</span><span class="nt">filtro</span><span class="p">[</span><span class="nt">predicado</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>en que se distinguen tres partes (<strong>eje</strong>, <strong>filtro</strong> y <strong>predicado</strong>), que es
-conveniente precisar.</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Antes de proseguir es importante hacer una aclaración
-terminológica. Hasta ahora habíamos tratados los términos «<em>nodo</em>» y
-«<em>elemento</em>» como sinónimos. Pero ello no es así: un <em class="dfn">elemento</em>, en
-realidad, es un tipo de <em>nodo</em> llamado <em>nodo elemento</em>. <em>Nodo</em> es un término
-más general que engloba también otros tipos de nodos: los <em>atributos</em>, que
-son <em>nodos atributo</em>; los <em>comentarios</em>, que son <em>nodos comentario</em>; el
-texto, que son <em>nodos texto</em>.</p>
+terminológica. Hasta ahora es posible que hubiéramos tratado los términos
+«<em>nodo</em>» y «<em>elemento</em>» como sinónimos. Pero ello no es así: un
+<em class="dfn">elemento</em>, en realidad, es un tipo de <em>nodo</em> llamado <em>nodo elemento</em>.
+<em>Nodo</em> es un término más general que engloba también otros tipos de nodos:
+los <em>atributos</em>, que son <em>nodos atributo</em>; los <em>comentarios</em>, que son <em>nodos
+comentario</em>; el texto, que son <em>nodos texto</em>, etc.</p>
 </div>
 <section id="filtros">
 <h3><span class="section-number">3.1.1.2.1. </span>Filtros<a class="headerlink" href="#filtros" title="Enlace permanente a este encabezado">¶</a></h3>
@@ -295,23 +460,23 @@ texto, que son <em>nodos texto</em>.</p>
 quieren referirse con tal ruta. Puede ser:</p>
 <dl>
 <dt><strong>QName</strong></dt><dd><p>Es el nombre del nodo. Por ejemplo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">claustro</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span>
 </pre></div>
 </div>
 <p>selecciona el nodo <em>claustro</em>. Puede usarse un asterisco («*») para indicar
 cualquier nodo que sea elemento. Por ejemplo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">claustro</span><span class="o">/</span><span class="n">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/*</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]/</span><span class="nt">*</span>
 </pre></div>
 </div>
-<p>selecciona los elementos <em>apodo</em>, <em>nombre</em>, <em>apellidos</em> y <em>departamento</em>
+<p>selecciona los elementos <em>apelativo</em>, <em>nombre</em>, <em>apellidos</em> y <em>departamento</em>
 hijos del primer profesor.</p>
 </dd>
 <dt><strong>text()</strong></dt><dd><p>Selecciona los nodos de texto. Por ejemplo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">claustro</span><span class="o">/</span><span class="n">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">nombre</span><span class="o">/</span><span class="n">text</span><span class="p">()</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]/</span><span class="nt">nombre</span><span class="p">/</span><span class="nf">text</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>devuelve exclusivamente la cadena «<em>José</em>», mientras que la expresión:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">claustro</span><span class="o">/</span><span class="n">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">nombre</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]/</span><span class="nt">nombre</span>
 </pre></div>
 </div>
 <p>devuelve el nodo <em>nombre</em>, esto es:</p>
@@ -322,7 +487,7 @@ hijos del primer profesor.</p>
 <p class="admonition-title">Nota</p>
 <p>Nótese que a efectos de su definición gramatical este nodo:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p1&quot;</span><span class="w"> </span><span class="na">sexo=</span><span class="s">&quot;hombre&quot;</span><span class="nt">&gt;</span>
-<span class="w">   </span><span class="nt">&lt;apodo&gt;</span>Pepe<span class="nt">&lt;/apodo&gt;</span>
+<span class="w">   </span><span class="nt">&lt;apelativo&gt;</span>Pepe<span class="nt">&lt;/apelativo&gt;</span>
 <span class="w">   </span><span class="nt">&lt;nombre&gt;</span>José<span class="nt">&lt;/nombre&gt;</span>
 <span class="w">   </span><span class="nt">&lt;apellidos&gt;</span>Suárez<span class="w"> </span>Lantilla<span class="nt">&lt;/apellidos&gt;</span>
 <span class="w">   </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;ING;</span><span class="nt">&lt;/departamento&gt;</span>
@@ -330,18 +495,18 @@ hijos del primer profesor.</p>
 </pre></div>
 </div>
 <p>y este otro:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p1&quot;</span><span class="w"> </span><span class="na">sexo=</span><span class="s">&quot;hombre&quot;</span><span class="nt">&gt;&lt;apodo&gt;</span>Pepe<span class="nt">&lt;/apodo&gt;&lt;nombre&gt;</span>José<span class="nt">&lt;/nombre&gt;&lt;apellidos&gt;</span>Suárez<span class="w"> </span>Lantilla<span class="nt">&lt;/apellidos&gt;&lt;departamento&gt;</span><span class="ni">&amp;ING;</span><span class="nt">&lt;/departamento&gt;&lt;/profesor&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p1&quot;</span><span class="w"> </span><span class="na">sexo=</span><span class="s">&quot;hombre&quot;</span><span class="nt">&gt;&lt;apelativo&gt;</span>Pepe<span class="nt">&lt;/apelativo&gt;&lt;nombre&gt;</span>José<span class="nt">&lt;/nombre&gt;&lt;apellidos&gt;</span>Suárez<span class="w"> </span>Lantilla<span class="nt">&lt;/apellidos&gt;&lt;departamento&gt;</span><span class="ni">&amp;ING;</span><span class="nt">&lt;/departamento&gt;&lt;/profesor&gt;</span>
 </pre></div>
 </div>
 <p>son equivalentes: un nodo <em>profesor</em> que contiene cuatro nodos elemento:
-<em>apodo</em>, <em>nombre</em>, <em>apellidos</em> y <em>departamento</em>. En cambio, para <em>XPath</em>
+<em>apelativo</em>, <em>nombre</em>, <em>apellidos</em> y <em>departamento</em>. En cambio, para <em>XPath</em>
 la primera expresión de <em>profesor</em> contiene nodos texto entre los
 nodo elementos, cada uno de los cuales contiene, siemplemente, caracteres
 de espaciado.</p>
 </div>
 </dd>
 <dt><strong>node()</strong></dt><dd><p>Todos los nodos, sean del tipo que sean. Por ejemplo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">claustro</span><span class="o">/</span><span class="n">node</span><span class="p">()</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nf">node</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>selecciona todos los nodo <em>profesor</em> y todos los nodos texto hijo,
@@ -349,42 +514,69 @@ consecuencia de haber sangrado tan bien el documento.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>En cambio:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">claustro</span><span class="o">/*</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">*</span>
 </pre></div>
 </div>
 <p>selecciona exclusiamente los nodos <em>profesor</em>.</p>
 </div>
 </dd>
 <dt><strong>comment()</strong></dt><dd><p>Todos los nodos que sean comentarios:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">claustro</span><span class="o">/</span><span class="n">comment</span><span class="p">()</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nf">comment</span><span class="p">()</span>
 </pre></div>
 </div>
 </dd>
 <dt><strong>&#64;atributo</strong></dt><dd><p>Selecciona el atributo con el nombre expresado. Por ejemplo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">claustro</span><span class="o">/</span><span class="n">profesor</span><span class="o">/</span><span class="nd">@sexo</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">/</span><span class="na">@sexo</span>
 </pre></div>
 </div>
 <p>refiero los sexos de todos los profesores.</p>
 </dd>
 <dt><strong>processing-instruction()</strong></dt><dd><p>Todas las instrucciones de procesamiento. Por ejemplo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;//procesing-instruction()&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">xquery</span>
 </pre></div>
 </div>
+<blockquote>
+<div><p>“//procesing-instruction()”</p>
+</div></blockquote>
 <p>selecciona todas las instrucciones de procesamiento del documento.</p>
 </dd>
 <dt><strong>processing-instruction(destino)</strong></dt><dd><p>Todas las instrucciones de procesamiento cuyo destino sea el indicado. El
 <em class="dfn">destino</em> es la palabra adyacente al signo «?».</p>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Obsérvese que estas expresiones responden a cuáles son los siete tipos de
+nodos que el modelo de datos de <em>XPath</em> define:</p>
+<ol class="arabic simple">
+<li><p>Nodo de documento (o nodo raíz)</p></li>
+<li><p>Nodo elemento.</p></li>
+<li><p>Nodo texto.</p></li>
+<li><p>Nodo atributo.</p></li>
+<li><p>Nodo de espacio de nombres.</p></li>
+<li><p>Nodo de instrucción de procesamiento.</p></li>
+<li><p>Nodo comentario.</p></li>
+</ol>
+<p>De entre estos siete tipos, dos (los nodos texto y los nodos atributo) pueden
+a su ver estar tipados de distinta forma (ser cadenas, ser números, etc.).
+Más adelaten profundizaremos en ello.</p>
+</div>
+<p><em>XPath</em> permite <strong>agregar rutas</strong> de manera que los nodos seleccionados sean la
+unión de los nodos que seleccionan las distintas rutas. Para ello, usa el
+operador «<kbd class="kbd docutils literal notranslate">|</kbd>»:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">apelativo</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">nombre</span>
+</pre></div>
+</div>
+<p>selecciona todos los nodos <em>apelativo</em> y <em>nombre</em> de todos los profesores.</p>
 </section>
 <section id="ejes">
 <h3><span class="section-number">3.1.1.2.2. </span>Ejes<a class="headerlink" href="#ejes" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>El <em class="dfn">eje</em> es la parte de la ruta <em>XPath</em> que determina el sentido que se
-tomará al interpretar la siguiente parte de la ruta. Recordemos que si nos
+tomará al interpretar la siguiente parte de la ruta. Recordemos que, si nos
 encontramos procesando un nodo y queremos referirnos a otro, podemos buscar
 entre sus descendientes, entre sus ascendientes o entre sus hermanos.</p>
-<table class="tb-eje docutils align-default" id="id6">
-<caption><span class="caption-text"><strong>Ejes en XPath</strong></span><a class="headerlink" href="#id6" title="Enlace permanente a esta tabla">¶</a></caption>
+<table class="tb-eje docutils align-default" id="id7">
+<caption><span class="caption-text"><strong>Ejes en XPath</strong></span><a class="headerlink" href="#id7" title="Enlace permanente a esta tabla">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Sentido</p></th>
 <th class="head"><p>Nombre</p></th>
@@ -407,8 +599,8 @@ entre sus descendientes, entre sus ascendientes o entre sus hermanos.</p>
 <tr class="row-odd"><td><p>descendent</p></td>
 <td><p>/</p></td>
 <td><div class="line-block">
-<div class="line">/claustro//apodo</div>
-<div class="line">/claustro/descendent::apodo</div>
+<div class="line">/claustro//apelativo</div>
+<div class="line">/claustro/descendent::apelativo</div>
 </div>
 </td>
 <td><p>Selecciona descendientes.</p></td>
@@ -448,21 +640,21 @@ entre sus descendientes, entre sus ascendientes o entre sus hermanos.</p>
 <td><p>parent</p></td>
 <td><p>..</p></td>
 <td><div class="line-block">
-<div class="line">//profesor[1]/apodo/..</div>
-<div class="line">//profesor[1]/apodo/parent::*</div>
+<div class="line">//profesor[1]/apelativo/..</div>
+<div class="line">//profesor[1]/apelativo/parent::*</div>
 </div>
 </td>
 <td><p>Selecciona el nodo padre.</p></td>
 </tr>
 <tr class="row-even"><td colspan="2"><p>ancestor</p></td>
 <td><div class="line-block">
-<div class="line">//profesor[1]/apodo/ancestor::*</div>
+<div class="line">//profesor[1]/apelativo/ancestor::*</div>
 </div>
 </td>
 <td><p>Selecciona ascendientes.</p></td>
 </tr>
 <tr class="row-odd"><td colspan="2"><p>ancestor-or-self</p></td>
-<td><p>//profesor[1]/apodo/ancestor-or-self::*</p></td>
+<td><p>//profesor[1]/apelativo/ancestor-or-self::*</p></td>
 <td><p>Seleccioa ascendientes o el propio nodo</p></td>
 </tr>
 <tr class="row-even"><td colspan="2"><p>preceding</p></td>
@@ -478,9 +670,9 @@ entre sus descendientes, entre sus ascendientes o entre sus hermanos.</p>
 </section>
 <section id="predicados">
 <h3><span class="section-number">3.1.1.2.3. </span>Predicados<a class="headerlink" href="#predicados" title="Enlace permanente a este encabezado">¶</a></h3>
-<p>El <em class="dfn">predicado</em> es la parte de la estructura que permite añadir una
-condición a la ruta y se escribe entre corchetes. Por ejemplo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">profesor</span><span class="p">[</span><span class="nd">@sexo</span> <span class="o">=</span> <span class="s1">&#39;hombre&#39;</span><span class="p">]</span>
+<p>El <em class="dfn">predicado</em> es la parte de la ruta que permite añadir condiciones al
+filtro al que acompaña y se escribe entre corchetes. Por ejemplo:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="na">@sexo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;hombre&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>selecciona, entre todos los nodos <em>profesor</em>, sólo los que representan
@@ -495,18 +687,30 @@ consecuencia, <code class="docutils literal notranslate"><span class="pre">&#64;
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Para poder explicar mejor los predicados se supondrá que un <em>profesor</em>
-puede tener ninguno, uno o varios apodos, esto es, que su definición usando
-<abbr title="Document Type Definition">DTD</abbr> es:</p>
-<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">profesor</span> <span class="o">(</span><span class="nt">apodo</span><span class="o">*,</span> <span class="nt">nombre</span><span class="o">,</span> <span class="nt">apellidos</span><span class="o">,</span> <span class="nt">departamento</span><span class="o">)</span><span class="k">&gt;</span>
+<p>Para poder explicar mejor los predicados supondremos  a lo largo de
+estas explicaciones que un <em>profesor</em> puede tener ninguno, uno o varios
+apodos, esto es, que su definición usando <abbr title="Document Type Definition">DTD</abbr> es:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">profesor</span> <span class="o">(</span><span class="nt">apelativo</span><span class="o">*,</span> <span class="nt">nombre</span><span class="o">,</span> <span class="nt">apellidos</span><span class="o">,</span> <span class="nt">departamento</span><span class="o">)</span><span class="k">&gt;</span>
 </pre></div>
 </div>
 </div>
+<p>Para expresar condiciones necesitamos <em>operadores</em> y <em>funciones</em>, aunque ni unos
+ni otras deben forzosamente aparecer dentro de un predicado. Por ejemplo, esto
+es una expresión <em>XPath</em> válida:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>que devuelve <strong>2</strong> y esta otra, que devuelve el número de profesores, también:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">profesor</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sin embargo, como habitualmente aparecen dentro de predicados las introduciremos
+como apartados dentro de este epígrafe.</p>
 <section id="operadores">
 <h4><span class="section-number">3.1.1.2.3.1. </span>Operadores<a class="headerlink" href="#operadores" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Dentro de los predicados pueden usarse los siguientes operadores:</p>
-<table class="docutils align-default" id="id7">
-<caption><span class="caption-text"><strong>Operadores aritméticos</strong></span><a class="headerlink" href="#id7" title="Enlace permanente a esta tabla">¶</a></caption>
+<table class="docutils align-default" id="id8">
+<caption><span class="caption-text"><strong>Operadores aritméticos</strong></span><a class="headerlink" href="#id8" title="Enlace permanente a esta tabla">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operador</p></th>
 <th class="head"><p>Significado</p></th>
@@ -530,8 +734,8 @@ puede tener ninguno, uno o varios apodos, esto es, que su definición usando
 </tr>
 </tbody>
 </table>
-<table class="docutils align-default" id="id8">
-<caption><span class="caption-text"><strong>Operadores lógicos</strong></span><a class="headerlink" href="#id8" title="Enlace permanente a esta tabla">¶</a></caption>
+<table class="docutils align-default" id="id9">
+<caption><span class="caption-text"><strong>Operadores lógicos</strong></span><a class="headerlink" href="#id9" title="Enlace permanente a esta tabla">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operador</p></th>
 <th class="head"><p>Significado</p></th>
@@ -567,7 +771,7 @@ puede tener ninguno, uno o varios apodos, esto es, que su definición usando
 </tr>
 </tbody>
 </table>
-<p class="rubric">Ejemplos</p>
+<p><strong>Ejemplos</strong>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">profesor</span><span class="p">[</span><span class="nd">@sexo</span> <span class="o">=</span> <span class="s1">&#39;hombre&#39;</span><span class="p">]</span>
 <span class="o">//</span><span class="n">profesor</span><span class="p">[</span><span class="n">nombre</span> <span class="o">!=</span> <span class="s1">&#39;José&#39;</span><span class="p">]</span>
 <span class="o">//</span><span class="n">profesor</span><span class="p">[</span><span class="ow">not</span><span class="p">(</span><span class="n">nombre</span> <span class="o">=</span> <span class="s1">&#39;José&#39;</span><span class="p">)]</span>
@@ -578,30 +782,30 @@ puede tener ninguno, uno o varios apodos, esto es, que su definición usando
 <p class="admonition-title">Nota</p>
 <p>Pueden yuxtaponerse dos predicados y en ese caso deberán cumplirse
 ambos predicados. Por tanto, el último ejemplo es equivalente a:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">profesor</span><span class="p">[</span><span class="nd">@sexo</span> <span class="o">=</span> <span class="s1">&#39;hombre&#39;</span><span class="p">][</span><span class="n">departamento</span> <span class="o">=</span> <span class="s1">&#39;Historia&#39;</span><span class="p">]</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="na">@sexo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;hombre&#39;</span><span class="p">][</span><span class="nt">departamento</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Historia&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </section>
 <section id="funciones">
 <h4><span class="section-number">3.1.1.2.3.2. </span>Funciones<a class="headerlink" href="#funciones" title="Enlace permanente a este encabezado">¶</a></h4>
-<p>Junto a nodos y operadores, en los predicados<a class="footnote-reference brackets" href="#id5" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> también es posible usar
+<p>Junto a nodos y operadores, en los predicados<a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> también es posible usar
 funciones. En el sitio para desarrolladores de <strong class="program">mozilla</strong> puede
-consultarse <a class="reference external" href="https://developer.mozilla.org/es/docs/XPath/funciones-xpath">una relación completa de funciones para XPath 1.0</a>, de las cuales
+consultarse <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/XPath/Functions">una relación completa de funciones para XPath 1.0</a>, de las cuales
 aquí citaremos algunas muy socorridas:</p>
 <dl>
 <dt><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/count">count()</a></dt><dd><p>Cuenta el número de nodos. Por ejemplo, podemos seleccionar los profesores
-que tienen más de un apodo de este modo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">profesor</span><span class="p">[</span><span class="n">count</span><span class="p">(</span><span class="n">apodo</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span>
+que tienen más de un apelativo de este modo:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="nf">count</span><span class="p">(</span><span class="nt">apelativo</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </dd>
-<dt><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/local-name">local-name()</a></dt><dd><p>Devuelve el nombre del elemento (sin la espacio de nombres). Si no se incluye
+<dt><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/local-name">local-name()</a></dt><dd><p>Devuelve el nombre del elemento (sin el espacio de nombres). Si no se incluye
 como argumento un nodo, se devuelve el nombre del nodo actual. Por ejemplo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">profesor</span><span class="o">/*</span><span class="p">[</span><span class="n">local</span><span class="o">-</span><span class="n">name</span><span class="p">()</span> <span class="o">=</span> <span class="s1">&#39;apodo&#39;</span> <span class="ow">or</span> <span class="n">local</span><span class="o">-</span><span class="n">name</span><span class="p">()</span> <span class="o">=</span> <span class="s1">&#39;nombre&#39;</span><span class="p">]</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">*</span><span class="p">[</span><span class="nf">local-name</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;apelativo&#39;</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nf">local-name</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;nombre&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>selecciona los nodos hijo de profesor que son <em>apodo</em> o <em>nombre</em>.</p>
+<p>selecciona los nodos hijo de profesor que son <em>apelativo</em> o <em>nombre</em>.</p>
 </dd>
 <dt><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/not">not()</a></dt><dd><p>Invierte el resultado lógico de la expresión. Ya se trató al hablar de los
 operadores.</p>
@@ -610,58 +814,125 @@ operadores.</p>
 <dl id="xpath-position">
 <dt><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/position">position()</a></dt><dd><p>Devuelve la posición del elemento actual. Para seleccionar el segundo
 profesor se puede hacer:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">profesor</span><span class="p">[</span><span class="n">position</span><span class="p">()</span> <span class="o">=</span> <span class="mi">2</span><span class="p">]</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="nf">position</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
+</div>
+<p>que puede simplificarse simplemente a:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>A diferencia de lo que suele ocurrir en Informática, el primer
+elemento se identifica con la posición <strong>1</strong>, no con la <strong>0</strong>.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>En este caso particular, la expresión puede simplificarse a:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">profesor</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>Para indicar el último, puede usarse la función <cite>last()
-&lt;https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/last&gt;</cite>.</p>
+<p>Para indicar el último, puede usarse la función <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/last">last()</a>.</p>
 </div>
 </dd>
 <dt><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/sum">sum()</a></dt><dd><p>Suma los nodos que se incluyen como argumento, supuesto que estos sean
 números.</p>
 </dd>
 </dl>
+</section>
+</section>
+</section>
+<section id="xpath-1-0">
+<h2><span class="section-number">3.1.1.3. </span>XPath 1.0<a class="headerlink" href="#xpath-1-0" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Las aspectos introducidos hasta ahora sobre <em>XPath</em> son generales e
+independientes de qué versión utilicemos. Han sido expuestos de forma tan
+general que pecan (a sabiendas) de superficialidad y dejan aún muchos aspectos
+indefinidos. Por ejemplo, la expresión:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="na">@casillero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">28</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>¿Funciona o no funciona realmente? Porque quizás es necesario escribir el número
+28 entre comillas si el valor del atributo es una cadena. Hay, pues, que afinar
+para poder escribir las expresiones con propiedad.</p>
+<p>Para empezar hay que aclarar dos aspectos importantes:</p>
+<dl id="xpath1-result">
+<dt><strong>Resultado</strong></dt><dd><p>esto es, ¿qué devuelve una expresión <em>XPath</em>? En la versión 1.0, se pueden
+obtener resultados de dos naturalezas distintas:</p>
+<ol class="arabic">
+<li><p><em>Valores atómicos</em>, que se devuelven en expresiones como:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>o:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>o:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">profesor</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Un <em>conjunto de nodos</em> (a veces constituido por un solo nodo), que es lo que
+devuelven expresiones como:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">nombre</span>
+</pre></div>
+</div>
+<p>que devuelve un conjunto de nodos elemento, o esta:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">/</span><span class="na">@id</span>
+</pre></div>
+</div>
+<p>que devuelve un conjunto de nodos atributo, o esta:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="na">@id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;p28&#39;</span><span class="p">]/</span><span class="na">@casillero</span>
+</pre></div>
+</div>
+<p>que devuelve un conjunto de nodos atributo, constituido por un nodo solo.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Algunas funciones pueden usarse fuera de los predicados para devolver
-el resultado final de la expresión <em>XPath</em>. Por ejemplo, esto devolvería
-de cuántos profesores se compone el claustro:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">count</span><span class="p">(</span><span class="o">//</span><span class="n">profesores</span><span class="p">)</span>
+<p>Obsérvese que se ha usado la palabra «conjunto» y no
+«secuencia». Es importante el matiz, porque las secuencias ordenan sus
+elementos, mientra que los conjuntos, no. Esto quiere decir, que los
+conjuntos de nodos, en teoría no aseguran cuál es el orden en que se
+obtendrán nodos. En la práctica, sin embargo, los nodos siempre se
+devuelven en el orden en que se encuentran en el documento <abbr title="eXtensible  Markup Language">XML</abbr>.</p>
+</div>
+</li>
+</ol>
+</dd>
+</dl>
+<dl id="xpath1-datatypes">
+<dt><strong>Tipos de datos</strong></dt><dd><p>¿Cuáles son los tipos de datos (no de nodos, que ya hemos enumerado) que
+reconoce XPath 1.0? Solamente <strong>4</strong>:</p>
+<ol class="arabic simple">
+<li><p>Booleanos.</p></li>
+<li><p>Números.</p></li>
+<li><p>Cadenas.</p></li>
+<li><p>Conjuntos de nodos.</p></li>
+</ol>
+<p>Es muy conveniente tener presente esto, porque los operadores pueden
+comportarse de distinto modo según sea el tipo de los operandos y también
+habrá que saber cómo se actua cuando los operandos son de distinto tipo.</p>
+</dd>
+</dl>
+<p>Por tanto, para afinar por completo nuestro conocimiento de <em>XPath</em>, es
+necesario saber cómo realiza <em>XPath</em> la <strong>evaluación</strong> de las operaciones. Por
+ejemplo, observe esta expresión aparentemente simple:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="nt">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;José&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
-</div>
-</section>
-<section id="evaluacion">
-<h4><span class="section-number">3.1.1.2.3.3. </span>Evaluación<a class="headerlink" href="#evaluacion" title="Enlace permanente a este encabezado">¶</a></h4>
-<p>La evaluación de predicados no es tan simple como pueda resultar a simple
-vista. Los operandos de los predicados pueden ser una cadena, un número, un
-booleano, un nodo o un conjunto de nodos.</p>
-<p>Por ejemplo, en la expresión:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">profesor</span><span class="p">[</span><span class="n">nombre</span> <span class="o">=</span> <span class="s2">&quot;José&quot;</span><span class="p">]</span>
+<p>Intuitivamente entendemos que esta expresión devuelve el conjunto de profesores
+(en puridad, nodos profesor) cuyo nombre es «<em>José</em>». Sin embargo, si
+profundizamos un poco, llegaremos a la conclusión de que «José» es un cadena,
+pero el nodo <code class="docutils literal notranslate"><span class="pre">nombre</span></code> con el que se compara no lo es: es un nodo elemento que,
+a su vez contiene un nodo texto, cuyo valor si es una cadena:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="nt">nombre</span><span class="p">/</span><span class="nf">text</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;José&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>se compara un nodo elemento con una cadena; ya que, en puridad, para comparar
-texto con texto habría que haber hecho:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">profesor</span><span class="p">[</span><span class="n">nombre</span><span class="o">/</span><span class="n">text</span><span class="p">()</span> <span class="o">=</span> <span class="s2">&quot;José&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>En cambio, la primera expresión funciona ya que se realizan conversiones
-automáticas para igualar los tipos de los dos operados.</p>
-<p class="rubric">Conversión de tipos</p>
-<p>Al evaluarse predicados es posible que se realicen conversiones automáticas de
+<p>¿Tendríamos que haber expresado la comparación así para que ambos operandos
+fueran una cadena? Lo cierto es que no llega a ser necesario y la primera
+expresión también funciona, porque existen mecanismos de conversión automática
+de tipos. Este es un aspecto que debemos revisar.</p>
+<dl>
+<dt><strong>Conversión de tipos</strong></dt><dd><p>Al evaluarse expresiones es común que se realicen conversiones automáticas de
 tipos, aunque pueden forzarse algunas conversiones utilizando las funciones
 <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/boolean">boolean()</a>,
-<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/string">string()</a>
-o <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/number">number()</a>.</p>
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/string">string()</a> o
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/number">number()</a>.</p>
 <p>Las conversiones <strong>automáticas</strong> operan del siguiente modo:</p>
 <ol class="arabic simple">
 <li><p>Si el operador es <code class="docutils literal notranslate"><span class="pre">=</span></code> o <code class="docutils literal notranslate"><span class="pre">!=</span></code> y alguno de los dos operandos es booleano,
@@ -669,12 +940,26 @@ el otro se convertirá a booleano; si no es así y uno de los dos es número, el
 otro se convierte a número; y en cualquier otro caso, ambos se convierten a
 cadena.</p></li>
 <li><p>Si los operadores son de comparación (<code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> y <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>) los
-operandos se convierten a número. Nótese que esto implica que no pueden
-compararse alfabéticamente cadenas.</p></li>
+operandos se convierten a número.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Nótese que esto implica que en <em>XPath</em> 1.0 no pueden
+compararse alfabéticamente cadenas. Y como no existe el tipo «fecha»,
+no pueden compararse fechas (que son cadenas), aunque tengan el formato
+<code class="docutils literal notranslate"><span class="pre">AAAA-MM-DD</span></code>. Para comparar fechas, primero hay que quitar los
+guiones para que quede la cadena <code class="docutils literal notranslate"><span class="pre">AAAAMMDD</span></code> que sí puede convertirse
+en un número. Por ejemplo, si queremos comprobar si una nodo fecha es
+anterior al 21 de diciembre de 2020:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">translate</span><span class="p">(</span><span class="nt">fecha</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">20201221</span>
+</pre></div>
+</div>
+<p>En esta expresión hemos usado la función para cadenas <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/translate">translate</a>.</p>
+</div>
+</li>
 <li><p>Ante operadores aritméticos, ambos operandos se convierten a número.</p></li>
 </ol>
 <p>Otro aspecto a considerar es qué resultado produce la conversión a otro tipo:</p>
-<ul>
+<ul class="simple">
 <li><p><em>Conversión a cadena</em>:</p>
 <ul class="simple">
 <li><p>Los números se convierten a cadenas según lo que se esperaría de ellos.</p></li>
@@ -701,9 +986,9 @@ conjunto en cadena.</p></li>
 <li><p>Los números negativos y positivos se consideran verdaderos; <strong>0</strong> y <strong>NaN</strong>
 se consideran falsos.</p></li>
 <li><p>Un conjunto de nodos es verdadero, a menos que esté vacío. Esta es la razón
-por la que para seleccionar los profesores que no tienen apodo basta con
+por la que para seleccionar los profesores que no tienen apelativo basta con
 hacer:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">profesor</span><span class="p">[</span><span class="ow">not</span><span class="p">(</span><span class="n">apodo</span><span class="p">)]</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="nt">apelativo</span><span class="p">)]</span>
 </pre></div>
 </div>
 </li>
@@ -711,17 +996,36 @@ hacer:</p>
 </ul>
 </li>
 </ul>
-<p><strong>Lógica y pluralidad</strong></p>
-<p>Por lo general, los operandos de una operación lógica  representan valores
-únics. En cambio, en <em>XPath</em> es muy habitual que los operandos representen
-conjuntos de nodos. Por ejemplo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">profesor</span><span class="p">[</span><span class="n">apodo</span> <span class="o">=</span> <span class="s2">&quot;Pepe&quot;</span><span class="p">]</span>
+<p>Sabido esto ya podemos desentrañar el misterio de por qué funciona:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="nt">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;José&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Como puede haber varios nodos <em>apodo</em>, en algunos casos el operando izquierdo
-representa un conjunto de nodos, por lo que estaremos comparando varios valores
-(izquierda) con uno (derecha). Esto es lo que hemos denominado <em class="dfn">el problema
-de la pluralidad</em>. <em>XPath</em> lo resuelve del siguiente modo:</p>
+<p>El primer operando, «nombre», es un conjunto de nodos elemento que contiene
+un único nodo elemento y el segundo operando es una cadena. Como el operador
+es «=», esto implica que «nombre» se convierte a cadena. Esto implica que el
+primer elemento del conjunto (sólo hay uno en cualquier caso), se transforma
+a cadena. ¿Cómo se transforma un nodo elemento a cadena? Se yuxtaponen los
+valores de todos los nodos de texto que contiene. Sólo tiene uno, el que
+contiene el propio nombre, por lo que la comparación se puede llevar a cabo.</p>
+</dd>
+<dt><strong>Pluralidad</strong></dt><dd><p>Existe, además del de la conversión, otro aspecto a tener en cuenta.
+Recordemos que habíamos modificado el <abbr title="Document Type Definition">DTD</abbr> para que un profesor pudiera
+tener varios apodos. ¿Cómo encontraríamos los profesores a los que se conoce
+como «Pepe»? La  respuesta inmediata es:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="nt">apodo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Pepe&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>que es correcta, pero que tiene más miga de la que aparenta. Descontado el hecho
+de que hemos escrito <code class="code docutils literal notranslate"><span class="pre">apodo</span></code> y no <code class="code docutils literal notranslate"><span class="pre">apodo/text()</span></code> (que acabamos de
+explicar por qué funciona), un mismo profesor puede tener varios apodos, así
+que el operador de la izquierda no tiene que ser un único nodo, puede ser un
+conjunto de nodos, caso de que a nuestro profesor <em>don José</em>, lo conozcan
+como <em>Pepe</em>, pero también como <em>Pepito</em>. Así que esa comparación no es de uno
+contra uno, sino de varios contra uno, y en otros casos nos podríamos
+encontrar con operaciones binarias<a class="footnote-reference brackets" href="#id5" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> de varios contra varios.</p>
+<p>Cuando las operaciones implican conjuntos de nodos, nos encontramos con lo
+que denominaremos <em class="dfn">el problema de la pluralidad</em>. <em>XPath</em> lo resuelve
+del siguiente modo:</p>
 <ol class="arabic simple">
 <li><p>Cuando se compara una pluralidad de nodos con un único valor, la expresión es
 verdadera con que al menos uno de los nodos de la pluralidad cumpla con la
@@ -733,201 +1037,95 @@ expresión es verdadera si hay un nodo del primer conjunto y un nodo del
 segundo conjunto, que al ser comparados entre sí como cadenas hacen que la
 expresión sea verdadera.</p></li>
 </ol>
-<div class="admonition warning">
-<p class="admonition-title">Advertencia</p>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
 <p>Es importante tener presente que cuando uno o los dos operandos son
 una pluralidad, lo contrario a:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">profesor</span><span class="p">[</span><span class="n">apodo</span> <span class="o">=</span> <span class="s2">&quot;Pepe&quot;</span><span class="p">]</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="nt">apelativo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Pepe&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>no es:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">profesor</span><span class="p">[</span><span class="n">apodo</span> <span class="o">!=</span> <span class="s2">&quot;Pepe&quot;</span><span class="p">]</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="nt">apelativo</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&quot;Pepe&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>sino:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">profesor</span><span class="p">[</span><span class="ow">not</span><span class="p">(</span><span class="n">apodo</span> <span class="o">=</span> <span class="s2">&quot;Pepe&quot;</span><span class="p">)]</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="nt">apelativo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Pepe&quot;</span><span class="p">)]</span>
 </pre></div>
 </div>
 <p>Sólo esta segunda expresión nos devolvería los nodos de los profesores cuyo
-apodo no sea «Pepe», ya que la segunda expresión nos devolvería cualquier
-profesor en que uno de cuyos apodos no fuera «Pepe».</p>
-</div>
-</section>
-</section>
-<section id="agregacion-de-rutas">
-<h3><span class="section-number">3.1.1.2.4. </span>Agregación de rutas<a class="headerlink" href="#agregacion-de-rutas" title="Enlace permanente a este encabezado">¶</a></h3>
-<p><em>XPath</em> permite agregar rutas de manera que los nodos seleccionados sean la
-unión de los nodos que seleccionan las distintas rutas. Por ejemplo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">profesor</span><span class="o">/</span><span class="n">apodo</span> <span class="o">|</span> <span class="o">//</span><span class="n">profesor</span><span class="o">/</span><span class="n">nombre</span>
-</pre></div>
-</div>
-<p>selecciona todos los nodos <em>apodo</em> y <em>nombre</em>.</p>
-</section>
-</section>
-<section id="procesadores">
-<h2><span class="section-number">3.1.1.3. </span>Procesadores<a class="headerlink" href="#procesadores" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>Para procesar nuestras expresiones <em>XPath</em> tenemos muchas alternativas, dos de
-las cuales pueden ser:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://extendsclass.com/xpath-tester.html">XPath Tester</a>, que permite
-evaluar online nuestras expresiones.</p></li>
-<li><p>El paquete <a class="reference external" href="https://packages.debian.org/stable/xmlstarlet">xmlstarlet</a>, cuyo paquete homónimo permite utilizar
-expresiones <em>XPath</em> tanto para seleccionar información del <abbr title="eXtensible  Markup Language">XML</abbr> original,
-como para modificarlo.</p></li>
-</ul>
-<section id="seleccion">
-<h3><span class="section-number">3.1.1.3.1. </span>Selección<a class="headerlink" href="#seleccion" title="Enlace permanente a este encabezado">¶</a></h3>
-<p>Para lograrlo es necesario usar el comando <code class="docutils literal notranslate"><span class="pre">sel</span></code>, seguido de la opción <code class="docutils literal notranslate"><span class="pre">-t</span></code>, y
-la acción que se quiere realizar a continuación, que puede ser:</p>
-<dl>
-<dt><code class="code docutils literal notranslate"><span class="pre">-v</span> <span class="pre">&lt;expresión-xpath&gt;</span></code></dt><dd><p>Muestra el valor de lo seleccionado mediante la expresión. Se deberá usar esa
-opción cuando se quiere devolver texto simple, esto es, el valor de un
-atributo o de un nodo que contiene texto. Por ejemplo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet sel -t -v &#39;//profesor[1]/@id&#39; -n claustro.xml
-p1
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>Se ha añadido la opción <code class="docutils literal notranslate"><span class="pre">-n</span></code> para añadir un cambio de línea al
-final del resultado.</p>
-</div>
-</dd>
-<dt><code class="code docutils literal notranslate"><span class="pre">-c</span> <span class="pre">&lt;expresion-path&gt;</span></code></dt><dd><p>Copia el nodo seleccionado, por tanto deberá usarse cuando el resultado de
-nuestra selección es un nodo elemento o un conjunto de nodos elemento. Por
-ejemplo, lo siguiente devuelve todos los nodos <em>apodo</em>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet sel -t -c &#39;//profesor/apodo&#39; -n claustro.xml
-&lt;apodo&gt;Pepe&lt;/apodo&gt;&lt;apodo&gt;Paco&lt;/apodo&gt;&lt;apodo&gt;Mari&lt;/apodo&gt;
-</pre></div>
-</div>
-</dd>
-<dt><code class="code docutils literal notranslate"><span class="pre">-m</span> <span class="pre">&lt;expresión-path&gt;</span></code></dt><dd><p>Selecciona un nodo o un conjunto de nodos para seguir trabajando sobre
-ellos. Por tanto, requerirá que luego se use <code class="docutils literal notranslate"><span class="pre">-v</span></code> o <code class="docutils literal notranslate"><span class="pre">-c</span></code>. Por ejemplo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet sel -t -m &#39;//profesor/apodo&#39; -v &#39;.&#39; claustro.xml
-PepePacoMari
-</pre></div>
-</div>
-<p>En este caso, habría sido fundamental usar <code class="docutils literal notranslate"><span class="pre">-n</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet sel -t -m &#39;//profesor/apodo&#39; -v &#39;.&#39; -n claustro.xml
-Pepe
-Paco
-Mari
-</pre></div>
+apelativo no sea «Pepe», ya que la segunda expresión sería cierta con que
+alguno de los apodos del profesor no fuera «Pepe». Por ejemplo, un
+profesor que tenga por apodos «Pepe» y «Pepito» hace verdadero el primer
+predicado, pero también el segundo, ya que «Pepito» no es igual a «Pepe».
+Sólo el tercer predicado es cierto cuando ninguno de los apodos del
+profesor es «Pepe».</p>
 </div>
 </dd>
 </dl>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p><strong class="command">xmlstarlet</strong> es capaz de devolvernos el código <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr>
-equivalente a nuestra selección añadiendo tras <code class="docutils literal notranslate"><span class="pre">sel</span></code> la opción <code class="docutils literal notranslate"><span class="pre">-C</span></code>.</p>
-</div>
 </section>
-<section id="edicion">
-<h3><span class="section-number">3.1.1.3.2. </span>Edición<a class="headerlink" href="#edicion" title="Enlace permanente a este encabezado">¶</a></h3>
-<p>En este caso, debe usarse <code class="docutils literal notranslate"><span class="pre">ed</span></code>, una acción y el uso de expresiones <em>XPath</em>:</p>
-<dl>
-<dt><code class="code docutils literal notranslate"><span class="pre">-d</span> <span class="pre">&lt;expresion-xpath&gt;</span></code></dt><dd><p>Borra los nodos que selecciona la expresión:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet ed -d &#39;//profesor[last()]&#39; claustro.xml
-</pre></div>
-</div>
-<p>Esta expresión elimnina el último de los profesores.</p>
-</dd>
-<dt><code class="code docutils literal notranslate"><span class="pre">-u</span> <span class="pre">&lt;expresion-xpath&gt;</span> <span class="pre">-v</span> <span class="pre">valor</span></code></dt><dd><p>Actualiza el valor del nodo o nodos seleccionados:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet ed -u &#39;//profesor[1]/apodo&#39; -v &quot;Manolo&quot; claustro.xml
-</pre></div>
-</div>
-</dd>
-<dt><code class="code docutils literal notranslate"><span class="pre">-i</span> <span class="pre">&lt;expresión-xpath&gt;</span> <span class="pre">-t</span> <span class="pre">(elem|text|attr)</span> <span class="pre">-n</span> <span class="pre">&lt;nombre&gt;</span> <span class="pre">-v</span> <span class="pre">&lt;valor&gt;</span></code></dt><dd><p>Permite insertar antes del nodo seleccionado (o los nodos) un nodo de tipo
-elemento, texto o atributo del nombre y valor referidos. Se deben hacer
-varias puntualizaciones:</p>
-<ul class="simple">
-<li><p>Los nodos de texto no tienen nombre, así que da igual el nombre que se les
-dé.</p></li>
-<li><p>El valor sólo puede ser texto, así que, directamente, sólo se pueden crear
-nodos elemento que contienen texto.</p></li>
-<li><p>Si se quiere crear nodos elemento que tienen atributos o contienen otros
-nodos elemento, entonces hay que componer varias acciones.</p></li>
-</ul>
-<p>Por ejemplo, esto añadiría un nuevo apodo al primer profesor:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet ed -i &#39;//profesor[1]/nombre&#39; -t elem -n &quot;apodo&quot; -v &quot;Pancho&quot; claustro.xml
-</pre></div>
-</div>
-</dd>
-<dt><code class="code docutils literal notranslate"><span class="pre">-a</span> <span class="pre">&lt;expresión-xpath&gt;</span> <span class="pre">-t</span> <span class="pre">(elem|text|attr)</span> <span class="pre">-n</span> <span class="pre">nombre</span> <span class="pre">-v</span> <span class="pre">valor</span></code></dt><dd><p>Como  <code class="docutils literal notranslate"><span class="pre">-i</span></code> pero añade el nodo después, no antes. Por ejemplo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet ed -a &#39;//profesor[1]/apodo[last()]&#39; -t elem -n &quot;apodo&quot; -v &quot;Pancho&quot; claustro.xml
-</pre></div>
-</div>
-</dd>
-<dt><code class="code docutils literal notranslate"><span class="pre">-s</span> <span class="pre">&lt;expresión-xpath&gt;</span> <span class="pre">-t</span> <span class="pre">(elemen|text|attr)</span> <span class="pre">-n</span> <span class="pre">nombre</span> <span class="pre">-v</span> <span class="pre">valor</span></code></dt><dd><p>Añade el nuevo elemento como último elemento del elemento seleccionado:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet ed -s &#39;//profesor[2]/nombre&#39; -t text -n foo -v &quot; María&quot; claustro.xml
-</pre></div>
-</div>
-</dd>
-</dl>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>Las transformaciones que podemos hacer de este modo son bastante
-limitadas. Un mecanismo más apropiado para realizarlas es usar <span class="xref std std-ref">XSLT</span>.</p>
-</div>
+<section id="xpath-2-0">
+<h2><span class="section-number">3.1.1.4. </span>XPath 2.0<a class="headerlink" href="#xpath-2-0" title="Enlace permanente a este encabezado">¶</a></h2>
 </section>
+<section id="xquery">
+<h2><span class="section-number">3.1.1.5. </span>XQuery<a class="headerlink" href="#xquery" title="Enlace permanente a este encabezado">¶</a></h2>
 </section>
 <section id="ejercicio-resuelto">
-<h2><span class="section-number">3.1.1.4. </span>Ejercicio resuelto<a class="headerlink" href="#ejercicio-resuelto" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">3.1.1.6. </span>Ejercicio resuelto<a class="headerlink" href="#ejercicio-resuelto" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Dado el <abbr title="eXtensible  Markup Language">XML</abbr> <a class="reference internal" href="../01.intro/02b.marcas.html#xml-resueltos"><span class="std std-ref">propuesto para representar el negocio de una cadena de
 restaurantes</span></a>, determine las expresion <em>XPath</em> apropiadas para:</p>
 <ol class="arabic">
 <li><p>Obtener todas las recetas disponibles.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">receta</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span>
 </pre></div>
 </div>
 </li>
 <li><p>Obtener el nodo que representa la receta de nombre «ensalada».</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">receta</span><span class="p">[</span><span class="nd">@nombre</span><span class="o">=</span><span class="s2">&quot;ensalada&quot;</span><span class="p">]</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;ensalada&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </li>
 <li><p>Obtener la carta del restaurante de identificador «re01».</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">cadena</span><span class="o">/</span><span class="n">restaurante</span><span class="p">[</span><span class="nd">@id</span><span class="o">=</span><span class="s2">&quot;re01&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">carta</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="na">@id</span><span class="o">=</span><span class="s2">&quot;re01&quot;</span><span class="p">]/</span><span class="nt">carta</span>
 </pre></div>
 </div>
 </li>
 <li><p>Obtener el código postal del restaurante «El tragón feliz»-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">cadena</span><span class="o">/</span><span class="n">restaurante</span><span class="p">[</span><span class="nd">@nombre</span><span class="o">=</span><span class="s2">&quot;El dragon feliz&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">domicilio</span><span class="o">/</span><span class="n">cp</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;El dragon feliz&quot;</span><span class="p">]/</span><span class="nt">domicilio</span><span class="p">/</span><span class="nt">cp</span>
 </pre></div>
 </div>
 </li>
 <li><p>Contar las recetas de las que dispone la cadena.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">count</span><span class="p">(</span><span class="o">//</span><span class="n">receta</span><span class="p">)</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">receta</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
 <li><p>Contar cuántos ingredientes necesita la receta de la <em>ensalada</em>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">count</span><span class="p">(</span><span class="o">//</span><span class="n">receta</span><span class="p">[</span><span class="nd">@nombre</span><span class="o">=</span><span class="s2">&quot;ensalada&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">ingrediente</span><span class="p">)</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">receta</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;ensalada&quot;</span><span class="p">]/</span><span class="nt">ingrediente</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
 <li><p>Contar cuántos ingredientes de «ensalada» se deben medir en gramos.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">count</span><span class="p">(</span><span class="o">//</span><span class="n">receta</span><span class="p">[</span><span class="nd">@nombre</span><span class="o">=</span><span class="s2">&quot;ensalada&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">ingrediente</span><span class="p">[</span><span class="nd">@unidad</span><span class="o">=</span><span class="s2">&quot;gramo&quot;</span><span class="p">])</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">receta</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;ensalada&quot;</span><span class="p">]/</span><span class="nt">ingrediente</span><span class="p">[</span><span class="na">@unidad</span><span class="o">=</span><span class="s2">&quot;gramo&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </li>
 <li><p>Obtener la carta del restaurante «El tragón feliz».</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">cadena</span><span class="o">/</span><span class="n">restaurante</span><span class="p">[</span><span class="nd">@nombre</span><span class="o">=</span><span class="s2">&quot;El tragón feliz&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">carta</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;El tragón feliz&quot;</span><span class="p">]/</span><span class="nt">carta</span>
 </pre></div>
 </div>
 </li>
 <li><p>Obtener el nombre de las recetas en las que se usa <em>lechuga</em>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">receta</span><span class="p">[</span><span class="n">ingrediente</span><span class="o">/</span><span class="nd">@bombre</span> <span class="o">=</span> <span class="s2">&quot;lechuga&quot;</span><span class="p">]</span><span class="o">/</span><span class="nd">@nombre</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="nt">ingrediente</span><span class="p">/</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lechuga&quot;</span><span class="p">]/</span><span class="na">@nombre</span>
 </pre></div>
 </div>
 </li>
 <li><p>Obtener el nombre de las recetas en las que <strong>no</strong> se usa <em>lechuga</em>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">receta</span><span class="p">[</span><span class="ow">not</span><span class="p">(</span><span class="n">ingrediente</span><span class="o">/</span><span class="nd">@bombre</span> <span class="o">=</span> <span class="s2">&quot;lechuga&quot;</span><span class="p">)]</span><span class="o">/</span><span class="nd">@nombre</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="nt">ingrediente</span><span class="p">/</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lechuga&quot;</span><span class="p">)]/</span><span class="na">@nombre</span>
 </pre></div>
 </div>
 </li>
 <li><p>Obtener el identificador de los restaurantes en los que se sirven tapas.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">cadena</span><span class="o">/</span><span class="n">restaurante</span><span class="p">[</span><span class="n">carta</span><span class="o">/</span><span class="n">plato</span><span class="o">/</span><span class="nd">@tipo</span> <span class="o">=</span> <span class="s2">&quot;tapa&quot;</span> <span class="p">]</span><span class="o">/</span><span class="nd">@id</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">/</span><span class="na">@tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;tapa&quot;</span><span class="w"> </span><span class="p">]/</span><span class="na">@id</span>
 </pre></div>
 </div>
 <p>o mejor:</p>
@@ -936,55 +1134,55 @@ restaurantes</span></a>, determine las expresion <em>XPath</em> apropiadas para:
 </div>
 </li>
 <li><p>Obtener el identificador de los restaurantes en los que <strong>no</strong> se sirven tapas.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">cadena</span><span class="o">/</span><span class="n">restaurante</span><span class="p">[</span><span class="n">carta</span><span class="o">/</span><span class="n">plato</span><span class="p">[</span><span class="ow">not</span><span class="p">(</span><span class="n">contains</span><span class="p">(</span><span class="nd">@tipo</span><span class="p">,</span> <span class="s2">&quot;tapa&quot;</span><span class="p">))]]</span><span class="o">/</span><span class="nd">@id</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="nf">contains</span><span class="p">(</span><span class="na">@tipo</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tapa&quot;</span><span class="p">))]]/</span><span class="na">@id</span>
 </pre></div>
 </div>
 </li>
 <li><p>Obtener el nombre de los restaurantes con más de 10 platos en la carta.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">cadena</span><span class="o">/</span><span class="n">restaurante</span><span class="p">[</span><span class="n">count</span><span class="p">(</span><span class="n">carta</span><span class="o">/</span><span class="n">plato</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span><span class="o">/</span><span class="nd">@nombre</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nf">count</span><span class="p">(</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">]/</span><span class="na">@nombre</span>
 </pre></div>
 </div>
 </li>
 <li><p>Obtener los nombres de las recetas que se sirven en «El tragón feliz».</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">receta</span><span class="p">[</span><span class="nd">@id</span> <span class="o">=</span> <span class="o">/</span><span class="n">cadena</span><span class="o">/</span><span class="n">restaurante</span><span class="p">[</span><span class="nd">@nombre</span><span class="o">=</span><span class="s2">&quot;El tragón feliz&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">carta</span><span class="o">/</span><span class="n">plato</span><span class="o">/</span><span class="nd">@ref</span><span class="p">]</span><span class="o">/</span><span class="nd">@nombre</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="na">@id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;El tragón feliz&quot;</span><span class="p">]/</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">/</span><span class="na">@ref</span><span class="p">]/</span><span class="na">@nombre</span>
 </pre></div>
 </div>
 </li>
 <li><p>Obtener el nombre de los restaurantes situados en la provincia de Huelva
 (hágalo a partir del código postal)</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">cadena</span><span class="o">/</span><span class="n">restaurante</span><span class="p">[</span><span class="n">substring</span><span class="p">(</span><span class="n">domicilio</span><span class="o">/</span><span class="n">cp</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="s2">&quot;21&quot;</span><span class="p">]</span><span class="o">/</span><span class="nd">@nombre</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nf">substring</span><span class="p">(</span><span class="nt">domicilio</span><span class="p">/</span><span class="nt">cp</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;21&quot;</span><span class="p">]/</span><span class="na">@nombre</span>
 </pre></div>
 </div>
 </li>
 <li><p>Obtener el nombre de las recetas que se sirven como tapa en algún restaurante.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">receta</span><span class="p">[</span><span class="nd">@id</span> <span class="o">=</span> <span class="o">/</span><span class="n">cadena</span><span class="o">/</span><span class="n">restaurante</span><span class="o">/</span><span class="n">carta</span><span class="o">/</span><span class="n">plato</span><span class="p">[</span><span class="n">contains</span><span class="p">(</span><span class="nd">@tipo</span><span class="p">,</span> <span class="s2">&quot;tapa&quot;</span><span class="p">)]</span><span class="o">/</span><span class="nd">@ref</span><span class="p">]</span><span class="o">/</span><span class="nd">@nombre</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="na">@id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">/</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">[</span><span class="nf">contains</span><span class="p">(</span><span class="na">@tipo</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tapa&quot;</span><span class="p">)]/</span><span class="na">@ref</span><span class="p">]/</span><span class="na">@nombre</span>
 </pre></div>
 </div>
 </li>
 <li><p>Obtener el nombre de los restaurantes que sirven bocadillos de anchoa.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">cadena</span><span class="o">/</span><span class="n">restaurante</span><span class="p">[</span><span class="n">carta</span><span class="o">/</span><span class="n">plato</span><span class="o">/</span><span class="nd">@ref</span> <span class="o">=</span> <span class="o">//</span><span class="n">receta</span><span class="p">[</span><span class="nd">@nombre</span><span class="o">=</span><span class="s2">&quot;bocadillo de anchoas&quot;</span><span class="p">]</span><span class="o">/</span><span class="nd">@id</span><span class="p">]</span><span class="o">/</span><span class="nd">@nombre</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">/</span><span class="na">@ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;bocadillo de anchoas&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">]/</span><span class="na">@nombre</span>
 </pre></div>
 </div>
 </li>
 <li><p>Contar los restaurantes que usan lechuga en su carta.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">count</span><span class="p">(</span><span class="o">/</span><span class="n">cadena</span><span class="o">/</span><span class="n">restaurante</span><span class="p">[</span><span class="n">carta</span><span class="o">/</span><span class="n">plato</span><span class="o">/</span><span class="nd">@ref</span> <span class="o">=</span> <span class="o">//</span><span class="n">receta</span><span class="p">[</span><span class="n">ingrediente</span><span class="o">/</span><span class="nd">@nombre</span> <span class="o">=</span> <span class="s2">&quot;lechuga&quot;</span><span class="p">]</span><span class="o">/</span><span class="nd">@id</span><span class="p">])</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">/</span><span class="na">@ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="nt">ingrediente</span><span class="p">/</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lechuga&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">])</span>
 </pre></div>
 </div>
 </li>
 <li><p>Contar los restaurantes que <strong>no</strong> usan lechuga en su carta.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">count</span><span class="p">(</span><span class="o">/</span><span class="n">cadena</span><span class="o">/</span><span class="n">restaurante</span><span class="p">[</span><span class="ow">not</span><span class="p">(</span><span class="n">carta</span><span class="o">/</span><span class="n">plato</span><span class="o">/</span><span class="nd">@ref</span> <span class="o">=</span> <span class="o">//</span><span class="n">receta</span><span class="p">[</span><span class="n">ingrediente</span><span class="o">/</span><span class="nd">@nombre</span> <span class="o">=</span> <span class="s2">&quot;lechuga&quot;</span><span class="p">]</span><span class="o">/</span><span class="nd">@id</span><span class="p">)])</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">/</span><span class="na">@ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="nt">ingrediente</span><span class="p">/</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lechuga&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">)])</span>
 </pre></div>
 </div>
 </li>
 <li><p>¿Qué receta requiere más aceite? Suponga que el aceite siempre se mide en <em>cc</em>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">receta</span><span class="p">[</span><span class="n">ingrediente</span><span class="p">[</span><span class="nd">@nombre</span> <span class="o">=</span> <span class="s2">&quot;aceite&quot;</span><span class="p">]</span><span class="o">/</span><span class="nd">@cantidad</span> <span class="o">&gt;=</span> <span class="o">//</span><span class="n">receta</span><span class="o">/</span><span class="n">ingrediente</span><span class="p">[</span><span class="nd">@nombre</span> <span class="o">=</span> <span class="s2">&quot;aceite&quot;</span><span class="p">]</span><span class="o">/</span><span class="nd">@cantidad</span><span class="p">]</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="nt">ingrediente</span><span class="p">[</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aceite&quot;</span><span class="p">]/</span><span class="na">@cantidad</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="p">//</span><span class="nt">receta</span><span class="p">/</span><span class="nt">ingrediente</span><span class="p">[</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aceite&quot;</span><span class="p">]/</span><span class="na">@cantidad</span><span class="p">]</span>
 </pre></div>
 </div>
 </li>
 </ol>
 </section>
 <section id="ejercicios-propuestos">
-<h2><span class="section-number">3.1.1.5. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">3.1.1.7. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Enlace permanente a este encabezado">¶</a></h2>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>Las facturas que tenían algún descuento</p></li>
@@ -1147,11 +1345,13 @@ técnico en dos dimensiones, determinar la expresión <em>XPath</em> que selecci
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="id4" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
-<p>Puede consultar <a class="reference external" href="http://www.w3.org/TR/xpath10/">su especificación</a>.</p>
+<p>Y no sólo. Ya veremos más adelante.</p>
 </aside>
 <aside class="footnote brackets" id="id5" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
-<p>Y no sólo. Ya veremos más adelante.</p>
+<p><a class="reference external" href="https://es.wikipedia.org/wiki/Operaci%C3%B3n_binaria">Operación binaria</a> en el sentido de que
+hay involucrados dos operandos y un operador, no en el sentido de que los
+operadores sean números binarios.</p>
 </aside>
 </aside>
 </section>
@@ -1170,26 +1370,30 @@ técnico en dos dimensiones, determinar la expresión <em>XPath</em> que selecci
     <h3><a href="../index.html">Page contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">3.1.1. XPath</a><ul>
-<li><a class="reference internal" href="#sintaxis-basica">3.1.1.1. Sintaxis básica</a></li>
-<li><a class="reference internal" href="#sintaxis-completa">3.1.1.2. Sintaxis completa</a><ul>
+<li><a class="reference internal" href="#procesadores">3.1.1.1. Procesadores</a><ul>
+<li><a class="reference internal" href="#xidel">3.1.1.1.1. <strong class="program">Xidel</strong></a></li>
+<li><a class="reference internal" href="#xmlstarlet">3.1.1.1.2. <strong class="program">XMLStarlet</strong></a><ul>
+<li><a class="reference internal" href="#seleccion">3.1.1.1.2.1. Selección</a></li>
+<li><a class="reference internal" href="#edicion">3.1.1.1.2.2. Edición</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sintaxis">3.1.1.2. Sintaxis</a><ul>
 <li><a class="reference internal" href="#filtros">3.1.1.2.1. Filtros</a></li>
 <li><a class="reference internal" href="#ejes">3.1.1.2.2. Ejes</a></li>
 <li><a class="reference internal" href="#predicados">3.1.1.2.3. Predicados</a><ul>
 <li><a class="reference internal" href="#operadores">3.1.1.2.3.1. Operadores</a></li>
 <li><a class="reference internal" href="#funciones">3.1.1.2.3.2. Funciones</a></li>
-<li><a class="reference internal" href="#evaluacion">3.1.1.2.3.3. Evaluación</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#agregacion-de-rutas">3.1.1.2.4. Agregación de rutas</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#procesadores">3.1.1.3. Procesadores</a><ul>
-<li><a class="reference internal" href="#seleccion">3.1.1.3.1. Selección</a></li>
-<li><a class="reference internal" href="#edicion">3.1.1.3.2. Edición</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#ejercicio-resuelto">3.1.1.4. Ejercicio resuelto</a></li>
-<li><a class="reference internal" href="#ejercicios-propuestos">3.1.1.5. Ejercicios propuestos</a></li>
+<li><a class="reference internal" href="#xpath-1-0">3.1.1.3. XPath 1.0</a></li>
+<li><a class="reference internal" href="#xpath-2-0">3.1.1.4. XPath 2.0</a></li>
+<li><a class="reference internal" href="#xquery">3.1.1.5. XQuery</a></li>
+<li><a class="reference internal" href="#ejercicio-resuelto">3.1.1.6. Ejercicio resuelto</a></li>
+<li><a class="reference internal" href="#ejercicios-propuestos">3.1.1.7. Ejercicios propuestos</a></li>
 </ul>
 </li>
 </ul>

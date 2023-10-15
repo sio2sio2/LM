@@ -16,16 +16,18 @@ clientes:
       domicilio: "c/ BBBB, 23"
       cp: 54321
       poblacion: "Villaabajo"
+
 facturas:
   - codigo: 1
     cliente: 1
     fecha: 2018-10-15
+    # Descuento en %.
     descuento: 10
     contenido:
     - producto: "tomate"
       precio: 0.8
       cantidad: 1.0
-      iva:  "superreducido"
+      iva:  "reducido"
     - producto: "mollete"
       precio: 0.3
       cantidad: 3

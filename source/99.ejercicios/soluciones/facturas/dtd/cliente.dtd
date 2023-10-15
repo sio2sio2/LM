@@ -7,4 +7,3 @@
 <!ELEMENT domicilio (#PCDATA)>
 <!ELEMENT cp (#PCDATA)>
 <!ELEMENT poblacion (#PCDATA)>
-

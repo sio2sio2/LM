@@ -1,5 +1,10 @@
 <!ELEMENT producto EMPTY>
 <!ATTLIST producto codigo     ID                #REQUIRED
                    nombre     CDATA             #REQUIRED
-                   precio     CDATA             #REQUIRED
                    iva        (superreducido|reducido|normal)  "normal">
+
+<!ELEMENT factura (item+)>
+<!ATTLIST factura codigo      ID                #REQUIRED
+                  cliente     IDREF             #REQUIRED
+                  fecha       CDATA             #REQUIRED
+                  descuento   CDATA             "0">

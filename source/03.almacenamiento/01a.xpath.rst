@@ -9,33 +9,34 @@ nodos o conjuntos de nodos. :dfn:`XPath` es un sintaxis estándar para la
 selección de uno o varios componentes (nodos, atributos, etc.) dentro de un
 documento |XML|.
 
-*XPath* es, pues, un estandar del |W3C|\ [#]_ que no tiene utilidad *per se*,
-sino como herramienta cuando se usan métodos de procesamiento del |XML| (XQuery,
-:ref:`XSLT <xslt>`, bibliotecas para |XML| de programas de propósito general,
-etc.). Las últimas versiones de Javascript_, que fue un lenguaje
-diseñado específicamente para la manipulación de |HTML|, soportan también la
-selección de nodos con *XPath*, mediante la función `document.evaluate
-<https://developer.mozilla.org/es/docs/Web/JavaScript/Introduction_to_using_XPath_in_JavaScript>`_.
+*XPath* es, pues, un estandar del |W3C| para seleccionar con qué nodos de un
+documento |XML| se desea operar para cuya operación posterior se requerirá el
+uso de otra herramienta como :ref:`XQuery`, :ref:`XSLT` o alguna biblioteca  de
+programas de propósito general. Es, por tanto, una herramienta que no tiene
+sentido utilizar aislada.
 
-.. note:: *XPath* no es el único lenguaje para esta tarea. En la |HTML| (que no
-   es |XML|, pero tiene bastantes semejanzas) es muy común usar para la
-   identificación de nodos los :ref:`selectores CSS <css-selectors>`, diseñados
-   en principio para definir el estilo (el aspecto) de cada nodo. Sin embargo,
-   Javascript_ los usa también en general para la manipulación de nodos (véase
+.. caution:: *XPath* no es el único lenguaje para esta tarea. En |HTML| (que
+   no es |XML|, pero tiene bastantes semejanzas) es muy común usar para la
+   selección de nodos los :ref:`selectores CSS <css-selectors>`, diseñados en
+   principio para definir su estilo (o sea, su aspecto). A pesar de nacer para
+   documentos |HTML|, los *selectores CSS* son perfectamente válidos para
+   identificar nodos |XML|, por lo que son una alternativa muy utilizado. Por
+   ejemplo, Javascript_ los soporta para la selección de nodos en general (véase
    `document.querySelectorAll
    <https://developer.mozilla.org/es/docs/Web/API/Document/querySelectorAll>`_),
-   en vez de *XPath*.
+   en vez de *XPath*, a pesar de que existe  la función `document.evaluate
+   <https://developer.mozilla.org/es/docs/Web/JavaScript/Introduction_to_using_XPath_in_JavaScript>`_,
+   que permite usar *XPath*.
 
 El nombre de la tecnología deriva de la fusión de |XML| y la palabra inglesa
 *path*, que en un sistema de archivo es la manera de indicar la ruta que hay que
 seguir para llegar a un determinado archivo. La analogía no es gratuita, puesto
 que en el caso de los sistemas de archivos se habla del árbol de directorios, de
-la misma manera que en un documento |XML| hay un árbol de nodos.
-
-.. rubric:: Versiones
+la misma manera que en un documento |XML| hay un :ref:`árbol de nodos
+<xml-jerarq>`.
 
 Desde su creación en 1999, *XPath* se ha ido actualizando con distintas
-versiones:
+**versiones**:
 
 .. rst-class:: simple
 
@@ -49,36 +50,218 @@ versiones:
   software soporta esta especificación.
 
 `Versión 3 <https://www.w3.org/TR/xpath-30/>`_,
-  que apareció en 2014. En el mundo del software libre soportan esta versión la
-  librería `Saxon <http://saxon.sourceforge.net/saxon7.7/api-guide.html>`_ para
-  `Java <https://www.java.com/>`_ y `Xerces <http://xerces.apache.org/>`_, que
-  tiene versión para `C++ <https://es.wikipedia.org/wiki/C%2B%2B>`_. En la |CLI|
-  de Linux puede usarse a través de algunos progamas de *software* libre:
+  que apareció en 2014. El cambio respecto a la versión anterior, `no es tan
+  significativo <https://en.wikipedia.org/wiki/XPath_3>`_ como el que se produjo
+  entre la **1** y la **2**.  En el mundo del software libre soportan esta
+  versión la librería `Saxon
+  <http://saxon.sourceforge.net/saxon7.7/api-guide.html>`_ para `Java
+  <https://www.java.com/>`_ y `Xerces <http://xerces.apache.org/>`_, que tiene
+  versión para `C++ <https://es.wikipedia.org/wiki/C%2B%2B>`_. En la |CLI| de
+  Linux puede usarse a través de algunos programas de *software* libre:
 
   + `xqilla <http://xqilla.sourceforge.net/HomePage>`_, que aunque tiene paquete
     en *Debian*, desgraciadamente no está disponible para *Bookworm*, por
     `problemas de compilación con g++-11
     <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=984418>`_.
 
-  + `xidel <http://www.videlibri.de/xidel.html>`_, que no tiene paquete oficial,
-    pero puede descargarse de su página oficial.
+  + xidel_, que no tiene paquete oficial, pero puede descargarse de su página
+    oficial.
 
 `Versión 3.1 <https://www.w3.org/TR/xpath-31/>`_,
-  publicada en 2017, que añade soporte para consultar también documentos |JSON|.
+  publicada en 2017, que añade soporte para dos tipos de datos nuevos, la
+  secuencia y el mapa, lo que posibilita que el lenguaje sea apto para consultar
+  también documentos |JSON|.
 
 .. seealso:: El |W3C| mantiene una `página que enumera todas las versiones
    <https://www.w3.org/TR/xpath/>`_. Para una exhaustiva comparación entre las
    versiones **1.0** y **2.0** se encuentra `en este documento
-   <http://www.mulberrytech.com/papers/XPath-2-0-User-Grp-HTML/contents.html>`_.
+   <http://www.mulberrytech.com/papers/XPath-2-0-User-Grp-HTML/contents.html>`_
+   y para una comparación más sucinta `este artículo en la web de Microsoft
+   <https://learn.microsoft.com/en-us/archive/msdn-magazine/2003/january/the-xml-files-introducing-xpath-2-0>`_.
 
-Estos apuntes desarrollan *XPath* **1.0**. 
+En estos apuntes desarrollaremos primero la norma de *XPath* 1.0 (por su amplio
+soporte) y expondremos luego cuáles son los cambios y ampliaciones que presenta
+*XPath* 2.0.
 
-Sintaxis básica
-***************
-Por analogía con las rutas de archivos, una ruta de *XPath* tiene una forma
-semejante::
+.. _xpath-procesadores:
+
+Procesadores
+************
+Como en unidades anteriores, antes de entrar en profundidad en el asunto, es
+conveniente conocer qué herramientas tenemos para procesar nuestras expresiones
+*Xpath* tenemos muchas alternativas. Hay muchas entre las que señalaremos:
+
+* `XPather  <http://xpather.com/>`_, que permite evaluar online expresiones
+  *XPath* 2.0.
+* `Visual Studio Code`_ con la extensión `XPath Tester
+  <https://marketplace.visualstudio.com/items?itemName=creinbacher.xpathtester>`_
+  permite evaluar expresiones *XPath* 1.0. Para evaluar expresiones, basta con
+  pulsar :kbd:`Ctrl+Shift+P` y buscar *XPath* para que accedamos al cuadro de
+  diálogo que nos permite hacer evaluaciones.
+* El paquete :deb:`xmlstarlet`, cuyo paquete homónimo permite utilizar
+  expresiones *XPath* 1.0 tanto para seleccionar información del |XML| original,
+  como para modificarlo.
+* El programa xidel_, que soporta XPath 3.0.
+
+Expondremos estos dos últimos programas de línea de comandos, porque son los
+únicos que requieren alguna explicación sobre su funcionamiento:
+
+.. caution:: A estas alturas aún, la lectura completa del siguiente epígrafe es
+   empachante y nada recomendable. Nos basta con saber cómo evaluar las
+   expresiones *XPath* que se van introduciendo gradualmente, con lo que nos sobra con
+   saber cómo usar :ref:`xidel <xpath-xidel>`, si necesitamos probar expresiones
+   validas únicas en *XPath* 2.0, o manejar la extensión de `Visual Studio
+   Code`_ que no requiere gran pericia.
+
+.. _xpath-xidel:
+
+:program:`Xidel`
+================
+La principal ventaja de usarlo frente a :ref:`xmlstarlet <xpath-xidel>` es que
+podremos probar expresiones *XPath* 2.0 ó 3.0.
+
+Para comprobar nuestras expresiones *XPath* podemos usarlo de dos modos
+distintos:
+
+* Si el resultado es texto:
+
+  .. code-block:: console
+
+     $ xidel -s -e '//profesor[1]/@id' casilleros.xml
+     p1
+
+  donde ":kbd:`-s`" evita mensajes de información innecesarios, y ":kbd:`-e`" introduce
+  la expresión *XPath*.
+
+* Si el resultado es un nodo o un conjunto de nodos, es necesario añadir
+  :kbd:`--printed-node-format=xml`:
+
+  .. code-block:: console
+
+     $ xidel -s --printed-node-format=xml -e '//profesor/apelativo' casilleros.xml
+
+.. _xpath-xmlstarlet:
+
+:program:`XMLStarlet`
+=====================
+Con este programa podemos usar *XPath* tanto para seleccionar datos como para
+introducir modificaciones al |XML| original. Lo segundo no nos interesa
+demasiado, pero por completar la información sobre la orden incluiremos las
+posibilidades que brinda.
+
+Selección
+---------
+Para lograrlo es necesario usar el comando ``sel``, seguido de la opción ``-t``, y
+la acción que se quiere realizar a continuación, que puede ser:
+
+:code:`-v <expresión-xpath>`
+   Muestra el valor de lo seleccionado mediante la expresión. Se debe estar
+   opción cuuando el resultado de la expresión es un valor escalar: un único
+   atributo, un nodo que contiene texto o el evaluación de un función o una
+   operación. Por ejemplo::
+
+      $ xmlstarlet sel -t -v '//profesor[1]/@id' -n casilleros.xml
+      p1
+
+   .. note:: Se ha añadido la opción ``-n`` para añadir un cambio de línea al
+      final del resultado.
+
+:code:`-c <expresion-path>`
+   Copia el nodo seleccionado, por tanto deberá usarse cuando el resultado de
+   nuestra selección es un nodo elemento o un conjunto de nodos elemento. Por
+   ejemplo, lo siguiente devuelve todos los nodos *apelativo*::
+
+      $ xmlstarlet sel -t -c '//profesor/apelativo' -n casilleros.xml
+      <apelativo>Pepe</apelativo><apelativo>Paco</apelativo><apelativo>Mari</apelativo>
+
+:code:`-m <expresión-path>`
+   Selecciona un nodo o un conjunto de nodos para seguir trabajando sobre
+   ellos. Por tanto, requerirá que luego se use ``-v`` o ``-c``. Por ejemplo::
+
+      $ xmlstarlet sel -t -m '//profesor/apelativo' -v '.' casilleros.xml
+      PepePacoMari
+
+   En este caso, habría sido fundamental usar ``-n``::
+
+      $ xmlstarlet sel -t -m '//profesor/apelativo' -v '.' -n casilleros.xml
+      Pepe
+      Paco
+      Mari
+
+.. note:: :command:`xmlstarlet` es capaz de devolvernos el código |XSLT|
+   equivalente a nuestra selección añadiendo tras ``sel`` la opción ``-C``.
+
+Edición
+-------
+En este caso, debe usarse ``ed``, una acción y el uso de expresiones *XPath*:
+
+:code:`-d <expresion-xpath>`
+   Borra los nodos que selecciona la expresión::
+
+      $ xmlstarlet ed -d '//profesor[last()]' casilleros.xml
+
+   Esta expresión elimnina el último de los profesores.
+   
+:code:`-u <expresion-xpath> -v valor`
+   Actualiza el valor del nodo o nodos seleccionados::
+
+      $ xmlstarlet ed -u '//profesor[1]/apelativo' -v "Manolo" casilleros.xml
+
+:code:`-i <expresión-xpath> -t (elem|text|attr) -n <nombre> -v <valor>`
+   Permite insertar antes del nodo seleccionado (o los nodos) un nodo de tipo
+   elemento, texto o atributo del nombre y valor referidos. Se deben hacer
+   varias puntualizaciones:
+
+   * Los nodos de texto no tienen nombre, así que da igual el nombre que se les
+     dé.
+
+   * El valor sólo puede ser texto, así que, directamente, sólo se pueden crear
+     nodos elemento que contienen texto.
+
+   * Si se quiere crear nodos elemento que tienen atributos o contienen otros
+     nodos elemento, entonces hay que componer varias acciones.
+
+   Por ejemplo, esto añadiría un nuevo apelativo al primer profesor::
+
+    $ xmlstarlet ed -i '//profesor[1]/nombre' -t elem -n "apelativo" -v "Pancho" casilleros.xml
+
+:code:`-a <expresión-xpath> -t (elem|text|attr) -n nombre -v valor`
+   Como  ``-i`` pero añade el nodo después, no antes. Por ejemplo::
+
+    $ xmlstarlet ed -a '//profesor[1]/apelativo[last()]' -t elem -n "apelativo" -v "Pancho" casilleros.xml
+
+:code:`-s <expresión-xpath> -t (elemen|text|attr) -n nombre -v valor`
+   Añade el nuevo elemento como último elemento del elemento seleccionado::
+
+    $ xmlstarlet ed -s '//profesor[2]/nombre' -t text -n foo -v " María" casilleros.xml
+
+.. note:: Las transformaciones que podemos hacer de este modo son bastante
+   limitadas. Un mecanismo más apropiado para realizarlas es usar :ref:`XSLT
+   <xslt>`.
+
+Sintaxis
+********
+Una expresión *XPath* es, simplemente, una expresión evaluable que devuelve un
+resultado. Por lo general, dentro de esta expresión se refieron nodos del |XML|,
+pero no necesariamente. Ésta es una expresión *XPath* perfectamente válida:
+
+.. code-block:: xquery
+
+   1 = 1
+
+¿Es **1**  igual a **1**?  Al ser una tautología, la respuesta es obviamente
+verdadera, así que el resultado de es expresión será ``true``. Cuando
+involucramos nodos en la expresión:
+
+.. code-block:: xquery
 
    /nodo1/nodo2/nodo3
+
+se advierte mejor la analogía entre *XPath* y las rutas de archivos. En este
+caso, la evaluación de expresión devolverá todos los *nodo3* incluídos dentro de
+los *nodo2* incluidos dentro del *nodo1*.  O sea, lo mismo que devolvería una
+ruta de archivos con la salvedad de que los directorios son únicos y no se
+podría devolver varios.
 
 Traigamos el ejemplo del claustro de profesores para ilustrar las rutas que
 expresemos a continuación:
@@ -88,27 +271,30 @@ expresemos a continuación:
    .. literalinclude:: ../02.validacion/files/casilleros_v2.xml
       :language: xml
 
-En este caso, la expresión::
+En este caso, la expresión:
+
+.. code-block:: xquery
 
    /claustro
 
-representa el nodo raíz *claustro*, mientras que la expresión::
+representa el nodo raíz *claustro*, mientras que la expresión:
+
+.. code-block:: xquery
 
    /claustro/profesor
 
-representa todos los nodos *profesor* que son hijos del *claustro*.
+representa todos los nodos *profesor* que son hijos del *claustro*.  Es posible
+también hacer referencia a descendientes no directos como en:
 
-.. note:: A diferencia de las rutas de archivos, en que cada ruta absoluta
-   provee una ubicacion única, las rutas de *XPath* pueden seleccionar varios
-   componentes a la vez.
-
-Es posible también hacer referencia a descendientes como en::
+.. code-block:: xquery
 
    /claustro//nombre
 
 en que seleccionamos todos los nodos *nombre* que son descendientes de claustro.
 Para este caso particular, obtenemos los nombres de todos profesores que
-pertenecen al claustro. Otro ejemplo podría ser::
+pertenecen al claustro. Otro ejemplo podría ser:
+
+.. code-block:: xquery
 
    //profesor
 
@@ -119,40 +305,46 @@ directorio, es posible que necesitemos hacer referencia a otros nodos, cuando
 nos encontramos procesando un determinado nodo. Para las rutas relativas, como
 en el caso de los archivos, se usa el punto (``.``), que significa este nodo, y
 dos puntos seguidos (``..``), que significan el nodo padre. Así pues, si
-estuviésemos procesando un determinado nodo *profesor*, la ruta::
+estuviésemos procesando un determinado nodo *profesor*, la ruta:
+
+.. code-block:: xquery
 
    ./nombre
 
+o, simplemente:
+
+.. code-block:: xquery
+
+   nombre
+
 representaría el nodo *nombre* de ese profesor; mientras que, si procesando el
-nodo *apelativo* de un procesor, hacemos referencia a::
+nodo *apelativo* de un procesor, hacemos referencia a:
+
+.. code-block:: xquery
 
    ../nombre
 
-haremos referencia al nombre del profesor cuyo nodo estuviéramos procesando.
+haremos referencia al nombre del profesor cuyo nodo estuviéramos procesando. En
+realidad la expresión del nodo es algo más complicada que indicar simplemente su
+nombre como introdujimos antes:
 
-Sintaxis completa
-*****************
-El epígrafe anterior presenta una semblanza muy superficial de cómo *XPath*
-puede referir nodos |XML|. *XPath*, sin embargo, es mucho más potente y este
-epígrafe está destinado a desentrañarlo. Por lo pronto, la sintaxis general de
-una expresión *XPath* es la siguiente::
+.. code-block:: xquery
 
-   /paso1/paso2/paso3
+   /nodo1/nodo2/nodo3
 
-donde cada *paso* tiene la siguiente estructura::
+Cada paso de la ruta tiene, en realidad, la siguiente estructura completa:
+
+.. code-block:: xquery
 
    eje::filtro[predicado]
 
-en que se distinguen tres partes (**eje**, **filtro** y **predicado**), que es
-conveniente precisar.
-
 .. warning:: Antes de proseguir es importante hacer una aclaración
-   terminológica. Hasta ahora habíamos tratados los términos "*nodo*" y
-   "*elemento*" como sinónimos. Pero ello no es así: un :dfn:`elemento`, en
-   realidad, es un tipo de *nodo* llamado *nodo elemento*. *Nodo* es un término
-   más general que engloba también otros tipos de nodos: los *atributos*, que
-   son *nodos atributo*; los *comentarios*, que son *nodos comentario*; el
-   texto, que son *nodos texto*.
+   terminológica. Hasta ahora es posible que hubiéramos tratado los términos
+   "*nodo*" y "*elemento*" como sinónimos. Pero ello no es así: un
+   :dfn:`elemento`, en realidad, es un tipo de *nodo* llamado *nodo elemento*.
+   *Nodo* es un término más general que engloba también otros tipos de nodos:
+   los *atributos*, que son *nodos atributo*; los *comentarios*, que son *nodos
+   comentario*; el texto, que son *nodos texto*, etc.
 
 Filtros
 =======
@@ -160,24 +352,32 @@ El :dfn:`filtro` es aquella parte de la ruta *XPath* que expresa qué nodo o nod
 quieren referirse con tal ruta. Puede ser:
 
 **QName**
-   Es el nombre del nodo. Por ejemplo::
+   Es el nombre del nodo. Por ejemplo:
+
+   .. code-block:: xquery
 
       /claustro
 
    selecciona el nodo *claustro*. Puede usarse un asterisco ("*") para indicar
-   cualquier nodo que sea elemento. Por ejemplo::
+   cualquier nodo que sea elemento. Por ejemplo:
+
+   .. code-block:: xquery
 
       /claustro/profesor[1]/*
 
-   selecciona los elementos *apodo*, *nombre*, *apellidos* y *departamento*
+   selecciona los elementos *apelativo*, *nombre*, *apellidos* y *departamento*
    hijos del primer profesor.
 
 **text()**
-   Selecciona los nodos de texto. Por ejemplo::
+   Selecciona los nodos de texto. Por ejemplo:
+
+   .. code-block:: xquery
 
       /claustro/profesor[1]/nombre/text()
 
-   devuelve exclusivamente la cadena "*José*", mientras que la expresión::
+   devuelve exclusivamente la cadena "*José*", mientras que la expresión:
+
+   .. code-block:: xquery
 
       /claustro/profesor[1]/nombre
 
@@ -193,7 +393,7 @@ quieren referirse con tal ruta. Puede ser:
       .. code-block:: xml
 
          <profesor id="p1" sexo="hombre">
-            <apodo>Pepe</apodo>
+            <apelativo>Pepe</apelativo>
             <nombre>José</nombre>
             <apellidos>Suárez Lantilla</apellidos>
             <departamento>&ING;</departamento>
@@ -203,35 +403,43 @@ quieren referirse con tal ruta. Puede ser:
 
       .. code-block:: xml
 
-         <profesor id="p1" sexo="hombre"><apodo>Pepe</apodo><nombre>José</nombre><apellidos>Suárez Lantilla</apellidos><departamento>&ING;</departamento></profesor>
+         <profesor id="p1" sexo="hombre"><apelativo>Pepe</apelativo><nombre>José</nombre><apellidos>Suárez Lantilla</apellidos><departamento>&ING;</departamento></profesor>
 
       son equivalentes: un nodo *profesor* que contiene cuatro nodos elemento:
-      *apodo*, *nombre*, *apellidos* y *departamento*. En cambio, para *XPath*
+      *apelativo*, *nombre*, *apellidos* y *departamento*. En cambio, para *XPath*
       la primera expresión de *profesor* contiene nodos texto entre los
       nodo elementos, cada uno de los cuales contiene, siemplemente, caracteres
       de espaciado.
 
 **node()**
-   Todos los nodos, sean del tipo que sean. Por ejemplo::
+   Todos los nodos, sean del tipo que sean. Por ejemplo:
+
+   .. code-block:: xquery
 
       /claustro/node()
 
    selecciona todos los nodo *profesor* y todos los nodos texto hijo,
    consecuencia de haber sangrado tan bien el documento.
 
-   .. note:: En cambio::
+   .. note:: En cambio:
+
+      .. code-block:: xquery
 
          /claustro/*
 
       selecciona exclusiamente los nodos *profesor*.
 
 **comment()**
-   Todos los nodos que sean comentarios::
+   Todos los nodos que sean comentarios:
+
+   .. code-block:: xquery
 
       /claustro/comment()
 
 **@atributo**
-   Selecciona el atributo con el nombre expresado. Por ejemplo::
+   Selecciona el atributo con el nombre expresado. Por ejemplo:
+
+   .. code-block:: xquery
 
       /claustro/profesor/@sexo
 
@@ -239,6 +447,8 @@ quieren referirse con tal ruta. Puede ser:
 
 **processing-instruction()**
    Todas las instrucciones de procesamiento. Por ejemplo::
+
+   .. code-block:: xquery
 
       '//procesing-instruction()'
 
@@ -248,10 +458,35 @@ quieren referirse con tal ruta. Puede ser:
    Todas las instrucciones de procesamiento cuyo destino sea el indicado. El
    :dfn:`destino` es la palabra adyacente al signo "?".
 
+.. note:: Obsérvese que estas expresiones responden a cuáles son los siete tipos de
+   nodos que el modelo de datos de *XPath* define:
+
+   #. Nodo de documento (o nodo raíz)
+   #. Nodo elemento.
+   #. Nodo texto.
+   #. Nodo atributo.
+   #. Nodo de espacio de nombres.
+   #. Nodo de instrucción de procesamiento.
+   #. Nodo comentario.
+
+   De entre estos siete tipos, dos (los nodos texto y los nodos atributo) pueden
+   a su ver estar tipados de distinta forma (ser cadenas, ser números, etc.).
+   Más adelaten profundizaremos en ello.
+
+*XPath* permite **agregar rutas** de manera que los nodos seleccionados sean la
+unión de los nodos que seleccionan las distintas rutas. Para ello, usa el
+operador ":kbd:`|`":
+
+.. code-block:: xquery
+
+   //profesor/apelativo | //profesor/nombre
+
+selecciona todos los nodos *apelativo* y *nombre* de todos los profesores.
+
 Ejes
 ====
 El :dfn:`eje` es la parte de la ruta *XPath* que determina el sentido que se
-tomará al interpretar la siguiente parte de la ruta. Recordemos que si nos
+tomará al interpretar la siguiente parte de la ruta. Recordemos que, si nos
 encontramos procesando un nodo y queremos referirnos a otro, podemos buscar
 entre sus descendientes, entre sus ascendientes o entre sus hermanos.
 
@@ -264,8 +499,8 @@ entre sus descendientes, entre sus ascendientes o entre sus hermanos.
    | Descendente | child      |             | | /claustro/profesor                         | Selecciona hijos.                        |
    |             |            |             | | /claustro/child::profesor                  |                                          |
    |             +------------+-------------+----------------------------------------------+------------------------------------------+
-   |             | descendent | /           | | /claustro//apodo                           | Selecciona descendientes.                |
-   |             |            |             | | /claustro/descendent::apodo                |                                          |
+   |             | descendent | /           | | /claustro//apelativo                       | Selecciona descendientes.                |
+   |             |            |             | | /claustro/descendent::apelativo            |                                          |
    |             +------------+-------------+----------------------------------------------+------------------------------------------+
    |             | self       | .           | | /claustro/.                                | Selecciona el propio nodo.               |
    |             |            |             | | /claustro//self::*                         |                                          |
@@ -279,12 +514,12 @@ entre sus descendientes, entre sus ascendientes o entre sus hermanos.
    |             | attribute  | @           | | //profesor/\@sexo                          | Selecciona atributo (puede usarse        |
    |             |            |             | | //profesor/attribute::sexo                 | ``@*``)                                  |
    +-------------+------------+-------------+----------------------------------------------+------------------------------------------+
-   | Ascendente  | parent     | \.\.        | | //profesor[1]/apodo/..                     | Selecciona el nodo padre.                |
-   |             |            |             | | //profesor[1]/apodo/parent::*              |                                          |
+   | Ascendente  | parent     | \.\.        | | //profesor[1]/apelativo/..                 | Selecciona el nodo padre.                |
+   |             |            |             | | //profesor[1]/apelativo/parent::*          |                                          |
    |             +------------+-------------+----------------------------------------------+------------------------------------------+
-   |             | ancestor                 | | //profesor[1]/apodo/ancestor::*            | Selecciona ascendientes.                 |
+   |             | ancestor                 | | //profesor[1]/apelativo/ancestor::*        | Selecciona ascendientes.                 |
    |             +--------------------------+----------------------------------------------+------------------------------------------+
-   |             | ancestor-or-self         | //profesor[1]/apodo/ancestor-or-self::*      | Seleccioa ascendientes o el propio nodo  |
+   |             | ancestor-or-self         | //profesor[1]/apelativo/ancestor-or-self::*  | Seleccioa ascendientes o el propio nodo  |
    |             +--------------------------+----------------------------------------------+------------------------------------------+
    |             | preceding                | //profesor[2]/nombre/preceding::nombre       | Selecciona nodos anteriores              |
    |             +--------------------------+----------------------------------------------+------------------------------------------+
@@ -293,8 +528,10 @@ entre sus descendientes, entre sus ascendientes o entre sus hermanos.
 
 Predicados
 ==========
-El :dfn:`predicado` es la parte de la estructura que permite añadir una
-condición a la ruta y se escribe entre corchetes. Por ejemplo::
+El :dfn:`predicado` es la parte de la ruta que permite añadir condiciones al
+filtro al que acompaña y se escribe entre corchetes. Por ejemplo:
+
+.. code-block:: xquery
 
    //profesor[@sexo = 'hombre']
 
@@ -310,14 +547,31 @@ Dos son aspectos fundamentales a la hora de componer un predicado:
   relativas al nodo adyacente (*profesor* en el caso del ejemplo). En
   consecuencia, ``@sexo`` es el atributo *sexo* del profesor en cuestión.
 
-.. note:: Para poder explicar mejor los predicados se supondrá que un *profesor*
-   puede tener ninguno, uno o varios apodos, esto es, que su definición usando
-   |DTD| es:
+.. note:: Para poder explicar mejor los predicados supondremos  a lo largo de
+   estas explicaciones que un *profesor* puede tener ninguno, uno o varios
+   apodos, esto es, que su definición usando |DTD| es:
 
    .. code-block:: dtd
 
-      <!ELEMENT profesor (apodo*, nombre, apellidos, departamento)>
-      
+      <!ELEMENT profesor (apelativo*, nombre, apellidos, departamento)>
+
+Para expresar condiciones necesitamos *operadores* y *funciones*, aunque ni unos
+ni otras deben forzosamente aparecer dentro de un predicado. Por ejemplo, esto
+es una expresión *XPath* válida:
+
+.. code-block:: xquery
+
+   1 + 1
+
+que devuelve **2** y esta otra, que devuelve el número de profesores, también:
+
+.. code-block:: xquery
+
+   count(//profesor)
+
+Sin embargo, como habitualmente aparecen dentro de predicados las introduciremos
+como apartados dentro de este epígrafe.
+
 Operadores
 ----------
 Dentro de los predicados pueden usarse los siguientes operadores:
@@ -350,9 +604,7 @@ Dentro de los predicados pueden usarse los siguientes operadores:
     not()      Negación
    ========== ================
 
-.. rubric:: Ejemplos
-
-::
+**Ejemplos**::
 
    //profesor[@sexo = 'hombre']
    //profesor[nombre != 'José']
@@ -360,7 +612,9 @@ Dentro de los predicados pueden usarse los siguientes operadores:
    //profesor[@sexo = 'hombre' and departamento = 'Historia']
 
 .. note:: Pueden yuxtaponerse dos predicados y en ese caso deberán cumplirse
-   ambos predicados. Por tanto, el último ejemplo es equivalente a::
+   ambos predicados. Por tanto, el último ejemplo es equivalente a:
+
+   .. code-block:: xquery
 
       //profesor[@sexo = 'hombre'][departamento = 'Historia']
 
@@ -369,22 +623,26 @@ Funciones
 Junto a nodos y operadores, en los predicados\ [#]_ también es posible usar
 funciones. En el sitio para desarrolladores de :program:`mozilla` puede
 consultarse `una relación completa de funciones para XPath 1.0
-<https://developer.mozilla.org/es/docs/XPath/funciones-xpath>`_, de las cuales
+<https://developer.mozilla.org/en-US/docs/Web/XPath/Functions>`_, de las cuales
 aquí citaremos algunas muy socorridas:
 
 `count() <https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/count>`_
    Cuenta el número de nodos. Por ejemplo, podemos seleccionar los profesores
-   que tienen más de un apodo de este modo::
+   que tienen más de un apelativo de este modo:
 
-      //profesor[count(apodo) > 1]
+   .. code-block:: xquery
+
+      //profesor[count(apelativo) > 1]
 
 `local-name() <https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/local-name>`_
-   Devuelve el nombre del elemento (sin la espacio de nombres). Si no se incluye
-   como argumento un nodo, se devuelve el nombre del nodo actual. Por ejemplo::
+   Devuelve el nombre del elemento (sin el espacio de nombres). Si no se incluye
+   como argumento un nodo, se devuelve el nombre del nodo actual. Por ejemplo:
 
-      //profesor/*[local-name() = 'apodo' or local-name() = 'nombre']
+   .. code-block:: xquery
 
-   selecciona los nodos hijo de profesor que son *apodo* o *nombre*.
+      //profesor/*[local-name() = 'apelativo' or local-name() = 'nombre']
+
+   selecciona los nodos hijo de profesor que son *apelativo* o *nombre*.
 
 `not() <https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/not>`_
    Invierte el resultado lógico de la expresión. Ya se trató al hablar de los
@@ -394,248 +652,295 @@ aquí citaremos algunas muy socorridas:
 
 `position() <https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/position>`_
    Devuelve la posición del elemento actual. Para seleccionar el segundo
-   profesor se puede hacer::
+   profesor se puede hacer:
+
+   .. code-block:: xquery
 
       //profesor[position() = 2]
 
-   .. note:: En este caso particular, la expresión puede simplificarse a::
+   que puede simplificarse simplemente a:
 
-          //profesor[2]
+   .. code-block:: xquery
+
+      //profesor[2]
+
+   .. warning:: A diferencia de lo que suele ocurrir en Informática, el primer
+      elemento se identifica con la posición **1**, no con la **0**.
 
    .. note:: Para indicar el último, puede usarse la función `last()
-      <https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/last>`.
+      <https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/last>`_.
 
 `sum() <https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/sum>`_
    Suma los nodos que se incluyen como argumento, supuesto que estos sean
    números.
 
-.. note:: Algunas funciones pueden usarse fuera de los predicados para devolver
-   el resultado final de la expresión *XPath*. Por ejemplo, esto devolvería
-   de cuántos profesores se compone el claustro::
+XPath 1.0
+*********
+Las aspectos introducidos hasta ahora sobre *XPath* son generales e
+independientes de qué versión utilicemos. Han sido expuestos de forma tan
+general que pecan (a sabiendas) de superficialidad y dejan aún muchos aspectos
+indefinidos. Por ejemplo, la expresión:
 
-      count(//profesores)
+.. code-block:: xquery
 
-Evaluación
-----------
-La evaluación de predicados no es tan simple como pueda resultar a simple
-vista. Los operandos de los predicados pueden ser una cadena, un número, un
-booleano, un nodo o un conjunto de nodos.
+   //profesor[@casillero = 28]
 
-Por ejemplo, en la expresión::
+¿Funciona o no funciona realmente? Porque quizás es necesario escribir el número
+28 entre comillas si el valor del atributo es una cadena. Hay, pues, que afinar
+para poder escribir las expresiones con propiedad.
+
+Para empezar hay que aclarar dos aspectos importantes:
+
+.. _xpath1-result:
+
+**Resultado**
+   esto es, ¿qué devuelve una expresión *XPath*? En la versión 1.0, se pueden
+   obtener resultados de dos naturalezas distintas:
+
+   #. *Valores atómicos*, que se devuelven en expresiones como:
+
+      .. code-block:: xquery
+
+         1 = 1
+
+      o:
+
+      .. code-block:: xquery
+
+         1 + 1
+
+      o:
+
+      .. code-block:: xquery
+
+         count(//profesor)
+
+   #. Un *conjunto de nodos* (a veces constituido por un solo nodo), que es lo que
+      devuelven expresiones como:
+
+      .. code-block:: xquery
+
+         //profesor/nombre
+
+      que devuelve un conjunto de nodos elemento, o esta:
+
+      .. code-block:: xquery
+
+         //profesor/@id
+
+      que devuelve un conjunto de nodos atributo, o esta:
+
+      .. code-block:: xquery
+
+        //profesor[@id = 'p28']/@casillero
+
+      que devuelve un conjunto de nodos atributo, constituido por un nodo solo.
+
+      .. note:: Obsérvese que se ha usado la palabra "conjunto" y no
+         "secuencia". Es importante el matiz, porque las secuencias ordenan sus
+         elementos, mientra que los conjuntos, no. Esto quiere decir, que los
+         conjuntos de nodos, en teoría no aseguran cuál es el orden en que se
+         obtendrán nodos. En la práctica, sin embargo, los nodos siempre se
+         devuelven en el orden en que se encuentran en el documento |XML|.
+
+.. _xpath1-datatypes:
+
+**Tipos de datos**
+   ¿Cuáles son los tipos de datos (no de nodos, que ya hemos enumerado) que
+   reconoce XPath 1.0? Solamente **4**:
+
+   #. Booleanos.
+   #. Números.
+   #. Cadenas.
+   #. Conjuntos de nodos.
+
+   Es muy conveniente tener presente esto, porque los operadores pueden
+   comportarse de distinto modo según sea el tipo de los operandos y también
+   habrá que saber cómo se actua cuando los operandos son de distinto tipo.
+
+Por tanto, para afinar por completo nuestro conocimiento de *XPath*, es
+necesario saber cómo realiza *XPath* la **evaluación** de las operaciones. Por
+ejemplo, observe esta expresión aparentemente simple:
+
+.. code-block:: xquery
 
    //profesor[nombre = "José"]
 
-se compara un nodo elemento con una cadena; ya que, en puridad, para comparar
-texto con texto habría que haber hecho::
+Intuitivamente entendemos que esta expresión devuelve el conjunto de profesores
+(en puridad, nodos profesor) cuyo nombre es "*José*". Sin embargo, si
+profundizamos un poco, llegaremos a la conclusión de que "José" es un cadena,
+pero el nodo ``nombre`` con el que se compara no lo es: es un nodo elemento que,
+a su vez contiene un nodo texto, cuyo valor si es una cadena:
 
-    //profesor[nombre/text() = "José"]
+.. code-block:: xquery
 
-En cambio, la primera expresión funciona ya que se realizan conversiones
-automáticas para igualar los tipos de los dos operados.
+   //profesor[nombre/text() = "José"]
 
-.. rubric:: Conversión de tipos
+¿Tendríamos que haber expresado la comparación así para que ambos operandos
+fueran una cadena? Lo cierto es que no llega a ser necesario y la primera
+expresión también funciona, porque existen mecanismos de conversión automática
+de tipos. Este es un aspecto que debemos revisar.
 
-Al evaluarse predicados es posible que se realicen conversiones automáticas de
-tipos, aunque pueden forzarse algunas conversiones utilizando las funciones
-`boolean() <https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/boolean>`_,
-`string() <https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/string>`_
-o `number() <https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/number>`_.
+**Conversión de tipos**
+   Al evaluarse expresiones es común que se realicen conversiones automáticas de
+   tipos, aunque pueden forzarse algunas conversiones utilizando las funciones
+   `boolean()
+   <https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/boolean>`_,
+   `string()
+   <https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/string>`_ o
+   `number()
+   <https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/number>`_.
 
-Las conversiones **automáticas** operan del siguiente modo:
+   Las conversiones **automáticas** operan del siguiente modo:
 
-#. Si el operador es ``=`` o ``!=`` y alguno de los dos operandos es booleano,
-   el otro se convertirá a booleano; si no es así y uno de los dos es número, el
-   otro se convierte a número; y en cualquier otro caso, ambos se convierten a
-   cadena.
+   .. rst-class:: simple
 
-#. Si los operadores son de comparación (``<``, ``<=``, ``>`` y ``>=``) los
-   operandos se convierten a número. Nótese que esto implica que no pueden
-   compararse alfabéticamente cadenas.
+   #. Si el operador es ``=`` o ``!=`` y alguno de los dos operandos es booleano,
+      el otro se convertirá a booleano; si no es así y uno de los dos es número, el
+      otro se convierte a número; y en cualquier otro caso, ambos se convierten a
+      cadena.
 
-#. Ante operadores aritméticos, ambos operandos se convierten a número.
+   #. Si los operadores son de comparación (``<``, ``<=``, ``>`` y ``>=``) los
+      operandos se convierten a número.
 
-Otro aspecto a considerar es qué resultado produce la conversión a otro tipo:
+      .. warning:: Nótese que esto implica que en *XPath* 1.0 no pueden
+         compararse alfabéticamente cadenas. Y como no existe el tipo "fecha",
+         no pueden compararse fechas (que son cadenas), aunque tengan el formato
+         ``AAAA-MM-DD``. Para comparar fechas, primero hay que quitar los
+         guiones para que quede la cadena ``AAAAMMDD`` que sí puede convertirse
+         en un número. Por ejemplo, si queremos comprobar si una nodo fecha es
+         anterior al 21 de diciembre de 2020:
 
-* *Conversión a cadena*:
+         .. code-block:: xquery
 
-  - Los números se convierten a cadenas según lo que se esperaría de ellos.
-  - Los valores booleanos *false* y *true* se convierten a las cadenas "false" y
-    "true".
-  - Un conjunto de nodos se convierte a cadena, convirtiendo a cadena el primero
-    de los nodos. Si el conjunto está vacío, entonces se obtiene la cadena
-    vacía. El valor de cadena de un nodo es el valor del atributo, si el nodo es
-    un nodo atributo; o la concatenación de los nodos de texto descendientes, si
-    el nodo es un nodo elemento.
+            translate(fecha, "-", "") < 20201221
 
-* *Conversión a número*:
+         En esta expresión hemos usado la función para cadenas `translate
+         <https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/translate>`_.
 
-  - Las cadenas que representan número son convertidas al número equivalente; si
-    no representan ningún número, se obtiene **NaN**.
-  - *true* se convierte a **1**, y *false* a **0**.
-  - Para convertir en número un conjunto de nodos se convierte primero el
-    conjunto en cadena.
+   #. Ante operadores aritméticos, ambos operandos se convierten a número.
 
-* *Conversión a booleano*:
+   Otro aspecto a considerar es qué resultado produce la conversión a otro tipo:
 
-  - Los números negativos y positivos se consideran verdaderos; **0** y **NaN**
-    se consideran falsos.
-  - Un conjunto de nodos es verdadero, a menos que esté vacío. Esta es la razón
-    por la que para seleccionar los profesores que no tienen apodo basta con
-    hacer::
+   .. rst-class:: simple
 
-      //profesor[not(apodo)]
+   * *Conversión a cadena*:
 
-  - Una cadena es verdadera, a menos que sea la cadena vacía.
+     - Los números se convierten a cadenas según lo que se esperaría de ellos.
+     - Los valores booleanos *false* y *true* se convierten a las cadenas "false" y
+       "true".
+     - Un conjunto de nodos se convierte a cadena, convirtiendo a cadena el primero
+       de los nodos. Si el conjunto está vacío, entonces se obtiene la cadena
+       vacía. El valor de cadena de un nodo es el valor del atributo, si el nodo es
+       un nodo atributo; o la concatenación de los nodos de texto descendientes, si
+       el nodo es un nodo elemento.
 
-**Lógica y pluralidad**
+   * *Conversión a número*:
 
-Por lo general, los operandos de una operación lógica  representan valores
-únics. En cambio, en *XPath* es muy habitual que los operandos representen
-conjuntos de nodos. Por ejemplo::
+     - Las cadenas que representan número son convertidas al número equivalente; si
+       no representan ningún número, se obtiene **NaN**.
+     - *true* se convierte a **1**, y *false* a **0**.
+     - Para convertir en número un conjunto de nodos se convierte primero el
+       conjunto en cadena.
 
-   //profesor[apodo = "Pepe"]
+   * *Conversión a booleano*:
 
-Como puede haber varios nodos *apodo*, en algunos casos el operando izquierdo
-representa un conjunto de nodos, por lo que estaremos comparando varios valores
-(izquierda) con uno (derecha). Esto es lo que hemos denominado :dfn:`el problema
-de la pluralidad`. *XPath* lo resuelve del siguiente modo:
+     - Los números negativos y positivos se consideran verdaderos; **0** y **NaN**
+       se consideran falsos.
+     - Un conjunto de nodos es verdadero, a menos que esté vacío. Esta es la razón
+       por la que para seleccionar los profesores que no tienen apelativo basta con
+       hacer:
 
-#. Cuando se compara una pluralidad de nodos con un único valor, la expresión es
-   verdadera con que al menos uno de los nodos de la pluralidad cumpla con la
-   expresión. En consecuencia, en el ejemplo anterior bastaría con que uno de
-   los apodos del profesor fuera "Pepe" para que ese profesor quedara
-   seleccionado.
+       .. code-block:: xquery
 
-#. Cuando ambos operandos de las expresión son una pluralidad de nodos, la
-   expresión es verdadera si hay un nodo del primer conjunto y un nodo del
-   segundo conjunto, que al ser comparados entre sí como cadenas hacen que la
-   expresión sea verdadera.
+         //profesor[not(apelativo)]
 
-.. warning:: Es importante tener presente que cuando uno o los dos operandos son
-   una pluralidad, lo contrario a::
+     - Una cadena es verdadera, a menos que sea la cadena vacía.
+
+   Sabido esto ya podemos desentrañar el misterio de por qué funciona:
+
+   .. code-block:: xquery
+
+      //profesor[nombre = "José"]
+
+   El primer operando, "nombre", es un conjunto de nodos elemento que contiene
+   un único nodo elemento y el segundo operando es una cadena. Como el operador
+   es "=", esto implica que "nombre" se convierte a cadena. Esto implica que el
+   primer elemento del conjunto (sólo hay uno en cualquier caso), se transforma
+   a cadena. ¿Cómo se transforma un nodo elemento a cadena? Se yuxtaponen los
+   valores de todos los nodos de texto que contiene. Sólo tiene uno, el que
+   contiene el propio nombre, por lo que la comparación se puede llevar a cabo.
+
+**Pluralidad**
+   Existe, además del de la conversión, otro aspecto a tener en cuenta.
+   Recordemos que habíamos modificado el |DTD| para que un profesor pudiera
+   tener varios apodos. ¿Cómo encontraríamos los profesores a los que se conoce
+   como "Pepe"? La  respuesta inmediata es:
+
+   .. code-block:: xquery
 
       //profesor[apodo = "Pepe"]
 
-   no es::
+   que es correcta, pero que tiene más miga de la que aparenta. Descontado el hecho
+   de que hemos escrito :code:`apodo` y no :code:`apodo/text()` (que acabamos de
+   explicar por qué funciona), un mismo profesor puede tener varios apodos, así
+   que el operador de la izquierda no tiene que ser un único nodo, puede ser un
+   conjunto de nodos, caso de que a nuestro profesor *don José*, lo conozcan
+   como *Pepe*, pero también como *Pepito*. Así que esa comparación no es de uno
+   contra uno, sino de varios contra uno, y en otros casos nos podríamos
+   encontrar con operaciones binarias\ [#]_ de varios contra varios.
 
-      //profesor[apodo != "Pepe"]
+   Cuando las operaciones implican conjuntos de nodos, nos encontramos con lo
+   que denominaremos :dfn:`el problema de la pluralidad`. *XPath* lo resuelve
+   del siguiente modo:
 
-   sino::
+   #. Cuando se compara una pluralidad de nodos con un único valor, la expresión es
+      verdadera con que al menos uno de los nodos de la pluralidad cumpla con la
+      expresión. En consecuencia, en el ejemplo anterior bastaría con que uno de
+      los apodos del profesor fuera "Pepe" para que ese profesor quedara
+      seleccionado.
 
-      //profesor[not(apodo = "Pepe")]
+   #. Cuando ambos operandos de las expresión son una pluralidad de nodos, la
+      expresión es verdadera si hay un nodo del primer conjunto y un nodo del
+      segundo conjunto, que al ser comparados entre sí como cadenas hacen que la
+      expresión sea verdadera.
 
-   Sólo esta segunda expresión nos devolvería los nodos de los profesores cuyo
-   apodo no sea "Pepe", ya que la segunda expresión nos devolvería cualquier
-   profesor en que uno de cuyos apodos no fuera "Pepe".
+   .. caution:: Es importante tener presente que cuando uno o los dos operandos son
+      una pluralidad, lo contrario a:
 
-Agregación de rutas
-===================
-*XPath* permite agregar rutas de manera que los nodos seleccionados sean la
-unión de los nodos que seleccionan las distintas rutas. Por ejemplo::
+      .. code-block:: xquery
 
-   //profesor/apodo | //profesor/nombre
+         //profesor[apelativo = "Pepe"]
 
-selecciona todos los nodos *apodo* y *nombre*.
+      no es:
 
-Procesadores
-************
-Para procesar nuestras expresiones *XPath* tenemos muchas alternativas, dos de
-las cuales pueden ser:
+      .. code-block:: xquery
 
-* `XPath Tester <https://extendsclass.com/xpath-tester.html>`_, que permite
-  evaluar online nuestras expresiones.
-* El paquete :deb:`xmlstarlet`, cuyo paquete homónimo permite utilizar
-  expresiones *XPath* tanto para seleccionar información del |XML| original,
-  como para modificarlo.
+         //profesor[apelativo != "Pepe"]
 
-Selección
-=========
-Para lograrlo es necesario usar el comando ``sel``, seguido de la opción ``-t``, y
-la acción que se quiere realizar a continuación, que puede ser:
+      sino:
 
-:code:`-v <expresión-xpath>`
-   Muestra el valor de lo seleccionado mediante la expresión. Se deberá usar esa
-   opción cuando se quiere devolver texto simple, esto es, el valor de un
-   atributo o de un nodo que contiene texto. Por ejemplo::
+      .. code-block:: xquery
 
-      $ xmlstarlet sel -t -v '//profesor[1]/@id' -n claustro.xml
-      p1
+         //profesor[not(apelativo = "Pepe")]
 
-   .. note:: Se ha añadido la opción ``-n`` para añadir un cambio de línea al
-      final del resultado.
+      Sólo esta segunda expresión nos devolvería los nodos de los profesores cuyo
+      apelativo no sea "Pepe", ya que la segunda expresión sería cierta con que
+      alguno de los apodos del profesor no fuera "Pepe". Por ejemplo, un
+      profesor que tenga por apodos "Pepe" y "Pepito" hace verdadero el primer
+      predicado, pero también el segundo, ya que "Pepito" no es igual a "Pepe".
+      Sólo el tercer predicado es cierto cuando ninguno de los apodos del
+      profesor es "Pepe".
 
-:code:`-c <expresion-path>`
-   Copia el nodo seleccionado, por tanto deberá usarse cuando el resultado de
-   nuestra selección es un nodo elemento o un conjunto de nodos elemento. Por
-   ejemplo, lo siguiente devuelve todos los nodos *apodo*::
+XPath 2.0
+*********
 
-      $ xmlstarlet sel -t -c '//profesor/apodo' -n claustro.xml
-      <apodo>Pepe</apodo><apodo>Paco</apodo><apodo>Mari</apodo>
+XQuery
+******
 
-:code:`-m <expresión-path>`
-   Selecciona un nodo o un conjunto de nodos para seguir trabajando sobre
-   ellos. Por tanto, requerirá que luego se use ``-v`` o ``-c``. Por ejemplo::
-
-      $ xmlstarlet sel -t -m '//profesor/apodo' -v '.' claustro.xml
-      PepePacoMari
-
-   En este caso, habría sido fundamental usar ``-n``::
-
-      $ xmlstarlet sel -t -m '//profesor/apodo' -v '.' -n claustro.xml
-      Pepe
-      Paco
-      Mari
-
-.. note:: :command:`xmlstarlet` es capaz de devolvernos el código |XSLT|
-   equivalente a nuestra selección añadiendo tras ``sel`` la opción ``-C``.
-
-Edición
-=======
-En este caso, debe usarse ``ed``, una acción y el uso de expresiones *XPath*:
-
-:code:`-d <expresion-xpath>`
-   Borra los nodos que selecciona la expresión::
-
-      $ xmlstarlet ed -d '//profesor[last()]' claustro.xml
-
-   Esta expresión elimnina el último de los profesores.
-   
-:code:`-u <expresion-xpath> -v valor`
-   Actualiza el valor del nodo o nodos seleccionados::
-
-      $ xmlstarlet ed -u '//profesor[1]/apodo' -v "Manolo" claustro.xml
-
-:code:`-i <expresión-xpath> -t (elem|text|attr) -n <nombre> -v <valor>`
-   Permite insertar antes del nodo seleccionado (o los nodos) un nodo de tipo
-   elemento, texto o atributo del nombre y valor referidos. Se deben hacer
-   varias puntualizaciones:
-
-   * Los nodos de texto no tienen nombre, así que da igual el nombre que se les
-     dé.
-
-   * El valor sólo puede ser texto, así que, directamente, sólo se pueden crear
-     nodos elemento que contienen texto.
-
-   * Si se quiere crear nodos elemento que tienen atributos o contienen otros
-     nodos elemento, entonces hay que componer varias acciones.
-
-   Por ejemplo, esto añadiría un nuevo apodo al primer profesor::
-
-    $ xmlstarlet ed -i '//profesor[1]/nombre' -t elem -n "apodo" -v "Pancho" claustro.xml
-
-:code:`-a <expresión-xpath> -t (elem|text|attr) -n nombre -v valor`
-   Como  ``-i`` pero añade el nodo después, no antes. Por ejemplo::
-
-    $ xmlstarlet ed -a '//profesor[1]/apodo[last()]' -t elem -n "apodo" -v "Pancho" claustro.xml
-
-:code:`-s <expresión-xpath> -t (elemen|text|attr) -n nombre -v valor`
-   Añade el nuevo elemento como último elemento del elemento seleccionado::
-
-    $ xmlstarlet ed -s '//profesor[2]/nombre' -t text -n foo -v " María" claustro.xml
-
-.. note:: Las transformaciones que podemos hacer de este modo son bastante
-   limitadas. Un mecanismo más apropiado para realizarlas es usar :ref:`XSLT
-   <xslt>`.
+.. XQuery:
+   https://www.adictosaltrabajo.com/2013/08/06/introduccion-x-query/
+   https://www.ticarte.com/contenido/ejercicios-practicos-de-xquery
 
 Ejercicio resuelto
 ******************
@@ -644,67 +949,67 @@ restaurantes <xml-resueltos>`, determine las expresion *XPath* apropiadas para:
 
 #. Obtener todas las recetas disponibles.
 
-   ::
+   .. code-block:: xquery
 
       //receta
 
 #. Obtener el nodo que representa la receta de nombre "ensalada".
 
-   ::
+   .. code-block:: xquery
 
       //receta[@nombre="ensalada"]
 
 #. Obtener la carta del restaurante de identificador "re01".
 
-   ::
+   .. code-block:: xquery
 
       /cadena/restaurante[@id="re01"]/carta
 
 #. Obtener el código postal del restaurante "El tragón feliz"-
 
-   ::
+   .. code-block:: xquery
 
       /cadena/restaurante[@nombre="El dragon feliz"]/domicilio/cp
 
 #. Contar las recetas de las que dispone la cadena.
 
-   ::
+   .. code-block:: xquery
 
       count(//receta)
 
 #. Contar cuántos ingredientes necesita la receta de la *ensalada*.
 
-   ::
+   .. code-block:: xquery
 
       count(//receta[@nombre="ensalada"]/ingrediente)
 
 #. Contar cuántos ingredientes de "ensalada" se deben medir en gramos.
 
-   ::
+   .. code-block:: xquery
 
       count(//receta[@nombre="ensalada"]/ingrediente[@unidad="gramo"])
 
 #. Obtener la carta del restaurante "El tragón feliz".
 
-   ::
+   .. code-block:: xquery
 
       /cadena/restaurante[@nombre="El tragón feliz"]/carta
 
 #. Obtener el nombre de las recetas en las que se usa *lechuga*.
 
-   ::
+   .. code-block:: xquery
 
-      //receta[ingrediente/@bombre = "lechuga"]/@nombre
+      //receta[ingrediente/@nombre = "lechuga"]/@nombre
 
 #. Obtener el nombre de las recetas en las que **no** se usa *lechuga*.
 
-   ::
+   .. code-block:: xquery
 
-      //receta[not(ingrediente/@bombre = "lechuga")]/@nombre
+      //receta[not(ingrediente/@nombre = "lechuga")]/@nombre
 
 #. Obtener el identificador de los restaurantes en los que se sirven tapas.
 
-   ::
+   .. code-block:: xquery
 
       /cadena/restaurante[carta/plato/@tipo = "tapa" ]/@id
 
@@ -714,57 +1019,57 @@ restaurantes <xml-resueltos>`, determine las expresion *XPath* apropiadas para:
 
 #. Obtener el identificador de los restaurantes en los que **no** se sirven tapas.
 
-   ::
+   .. code-block:: xquery
 
       /cadena/restaurante[carta/plato[not(contains(@tipo, "tapa"))]]/@id
 
 #. Obtener el nombre de los restaurantes con más de 10 platos en la carta.
 
-   ::
+   .. code-block:: xquery
 
       /cadena/restaurante[count(carta/plato) > 10]/@nombre
 
 #. Obtener los nombres de las recetas que se sirven en "El tragón feliz".
 
-   ::
+   .. code-block:: xquery
 
       //receta[@id = /cadena/restaurante[@nombre="El tragón feliz"]/carta/plato/@ref]/@nombre
 
 #. Obtener el nombre de los restaurantes situados en la provincia de Huelva
    (hágalo a partir del código postal)
 
-   ::
+   .. code-block:: xquery
 
       /cadena/restaurante[substring(domicilio/cp, 1, 2) = "21"]/@nombre
 
 #. Obtener el nombre de las recetas que se sirven como tapa en algún restaurante.
 
-   ::
+   .. code-block:: xquery
 
       //receta[@id = /cadena/restaurante/carta/plato[contains(@tipo, "tapa")]/@ref]/@nombre
 
 #. Obtener el nombre de los restaurantes que sirven bocadillos de anchoa.
 
-   ::
+   .. code-block:: xquery
 
       /cadena/restaurante[carta/plato/@ref = //receta[@nombre="bocadillo de anchoas"]/@id]/@nombre
 
 #. Contar los restaurantes que usan lechuga en su carta.
 
-   ::
+   .. code-block:: xquery
 
       count(/cadena/restaurante[carta/plato/@ref = //receta[ingrediente/@nombre = "lechuga"]/@id])
 
 
 #. Contar los restaurantes que **no** usan lechuga en su carta.
 
-   ::
+   .. code-block:: xquery
 
       count(/cadena/restaurante[not(carta/plato/@ref = //receta[ingrediente/@nombre = "lechuga"]/@id)])
 
 #. ¿Qué receta requiere más aceite? Suponga que el aceite siempre se mide en *cc*.
 
-   ::
+   .. code-block:: xquery
 
       //receta[ingrediente[@nombre = "aceite"]/@cantidad >= //receta/ingrediente[@nombre = "aceite"]/@cantidad]
 
@@ -777,10 +1082,16 @@ Ejercicios propuestos
 
 .. rubric:: Notas al pie
 
-.. [#] Puede consultar `su especificación <http://www.w3.org/TR/xpath10/>`_. 
 .. [#] Y no sólo. Ya veremos más adelante.
+.. [#] `Operación binaria
+   <https://es.wikipedia.org/wiki/Operaci%C3%B3n_binaria>`_ en el sentido de que
+   hay involucrados dos operandos y un operador, no en el sentido de que los
+   operadores sean números binarios.
 
 .. |W3C| replace:: :abbr:`W3C (W3 Consortium)`
 .. |DTD| replace:: :abbr:`DTD (Document Type Definition)`
 .. |XSLT| replace:: :abbr:`XSLT (eXtensible Stylesheet Language Transformations)`
 .. |CLI| replace:: :abbr:`CLI (Command Line Interface)`
+
+.. _xidel: https://www.videlibri.de/xidel.html
+.. _Visual Studio Code: https://code.visualstudio.com

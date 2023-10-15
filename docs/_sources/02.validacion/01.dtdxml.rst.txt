@@ -150,6 +150,12 @@ validaciones. Se propone:
 - :command:`xmlstarlet`, que tiene paquete en las distribuciones basadas en
   *Debian* (:deb:`xmlstarlet`).
 
+.. warning:: La extensión propuesta de :program:`Visual Studio Code` parece ser
+   incapaz de validar cuando la definición la gramática se ha hecho modular,
+   esto es, cuando el |DTD| referido por el |XML| no contiene todo la
+   definición, sino que a su vez usa :ref:`entidades parámetro externas
+   <dtd-ent-par>` para transladar parte de la definición a otro |DTD|.
+
 Centrándonos en este último, es especialmente útil, porque permite:
 
 - Comprobar si un |XML| está bien formado.

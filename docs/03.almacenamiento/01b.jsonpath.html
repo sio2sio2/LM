@@ -108,10 +108,25 @@ de los procesadores. Además, aunque hay desarrollos que han apostado por su
 uso (p.e. Oracle para los tipos <abbr title="JavaScript Object Notation">JSON</abbr> de sus bases relacionales), otros no lo
 han hecho, como el caso de la base de datos documental <a class="reference external" href="https://www.mongodb.com">MongoDB</a>.</p>
 </div>
+<section id="procesadores">
+<h2><span class="section-number">3.1.2.1. </span>Procesadores<a class="headerlink" href="#procesadores" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Los procesadores existentes no tienen un soporte completo para la última versión
+del borrador. Proponemos tres:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://jsonpath.com">JSONPath.com</a>, que permite las pruebas online.</p></li>
+<li><p><a class="reference external" href="https://code.visualstudio.com">Visual Studio Code</a> con la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=davidmarek.jsonpath-extract">JSONPath Extraction</a>,
+que permite extraer información de un documento <abbr title="JavaScript Object Notation">JSON</abbr>. Para evaluar
+expresiones, basta con pulsar <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd></kbd> y buscar por «<em>jsonpath</em>»
+para acceder a las órdenes de la extensión.</p></li>
+<li><p>El paquete <a class="reference external" href="https://packages.debian.org/stable/python3-jsonpath-ng">python3-jsonpath-ng</a>, que incluye la orden
+<strong class="command">jsonpath_ng</strong>. La orden (aunque sí la librería de <a class="reference external" href="https://www.python.org">Python</a>) no soporta
+filtros.</p></li>
+</ul>
+</section>
 <section id="sintaxis">
-<h2><span class="section-number">3.1.2.1. </span>Sintaxis<a class="headerlink" href="#sintaxis" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">3.1.2.2. </span>Sintaxis<a class="headerlink" href="#sintaxis" title="Enlace permanente a este encabezado">¶</a></h2>
 <p><abbr title="JavaScript Object Notation">JSON</abbr>Path, por analogía con algunos lenguajes de programación utiliza el
-punto (»<kbd class="kbd docutils literal notranslate">.</kbd>») o los corchetes (»<kbd class="kbd docutils literal notranslate">[]</kbd>») para separar las claves de un
+punto («.») o los corchetes («[]») para separar las claves de un
 objeto. Tomemos para ilustrarlo un documento ya analizado:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Pedro Martínez Alvárez&quot;</span><span class="p">,</span>
@@ -135,7 +150,7 @@ objeto. Tomemos para ilustrarlo un documento ya analizado:</p>
 </pre></div>
 </div>
 <section id="mapas">
-<h3><span class="section-number">3.1.2.1.1. </span>Mapas<a class="headerlink" href="#mapas" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><span class="section-number">3.1.2.2.1. </span>Mapas<a class="headerlink" href="#mapas" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Como <code class="docutils literal notranslate"><span class="pre">$</span></code> es la forma de referirnos al nodo raíz el valor de la propiedad
 <em>centro</em>, podemos referirla así:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.nombre
@@ -176,7 +191,7 @@ algún objeto anidado<a class="footnote-reference brackets" href="#id7" id="id3"
 <p>selecciona cualquier propiedad «calle» del documento.</p>
 </section>
 <section id="secuencias">
-<h3><span class="section-number">3.1.2.1.2. </span>Secuencias<a class="headerlink" href="#secuencias" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><span class="section-number">3.1.2.2.2. </span>Secuencias<a class="headerlink" href="#secuencias" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>La expresión:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.hijos
 </pre></div>
@@ -240,7 +255,7 @@ También pueden usarse números negativos, con el mismo significado que en
 <a class="reference external" href="https://www.python.org">Python</a><a class="footnote-reference brackets" href="#id8" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.</p>
 </section>
 <section id="filtros">
-<h3><span class="section-number">3.1.2.1.3. </span>Filtros<a class="headerlink" href="#filtros" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><span class="section-number">3.1.2.2.3. </span>Filtros<a class="headerlink" href="#filtros" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Cuando el nodo es una secuencia, no sólo pueden seleccionarse elementos por su
 posición, sino utilizar filtros para escoger aquellos nodos que cumplen una
 determinada condición. Tomemos el ejemplo de casilleros para ilustrarlo:</p>
@@ -478,18 +493,6 @@ adicionales que defina el procesador.</p>
 </div>
 </li>
 </ul>
-</section>
-</section>
-<section id="procesadores">
-<h2><span class="section-number">3.1.2.2. </span>Procesadores<a class="headerlink" href="#procesadores" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>Los procesadores existentes no tienen un soporte completo para la última versión
-del borrador. Proponemos dos:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://jsonpath.com">JSONPath.com</a>, que permite las pruebas online.</p></li>
-<li><p>El paquete <a class="reference external" href="https://packages.debian.org/stable/python3-jsonpath-ng">python3-jsonpath-ng</a>, que incluye la orden
-<strong class="command">jsonpath_ng</strong>. La orden (aunque sí la librería de <a class="reference external" href="https://www.python.org">Python</a>) no soporta
-filtros.</p></li>
-</ul>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="id6" role="note">
@@ -517,6 +520,7 @@ definida. Por eso, <code class="code docutils literal notranslate"><span class="
 </aside>
 </section>
 </section>
+</section>
 
 
             <div class="clearer"></div>
@@ -531,13 +535,13 @@ definida. Por eso, <code class="code docutils literal notranslate"><span class="
     <h3><a href="../index.html">Page contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">3.1.2. <abbr title="JavaScript Object Notation">JSON</abbr>Path</a><ul>
-<li><a class="reference internal" href="#sintaxis">3.1.2.1. Sintaxis</a><ul>
-<li><a class="reference internal" href="#mapas">3.1.2.1.1. Mapas</a></li>
-<li><a class="reference internal" href="#secuencias">3.1.2.1.2. Secuencias</a></li>
-<li><a class="reference internal" href="#filtros">3.1.2.1.3. Filtros</a></li>
+<li><a class="reference internal" href="#procesadores">3.1.2.1. Procesadores</a></li>
+<li><a class="reference internal" href="#sintaxis">3.1.2.2. Sintaxis</a><ul>
+<li><a class="reference internal" href="#mapas">3.1.2.2.1. Mapas</a></li>
+<li><a class="reference internal" href="#secuencias">3.1.2.2.2. Secuencias</a></li>
+<li><a class="reference internal" href="#filtros">3.1.2.2.3. Filtros</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#procesadores">3.1.2.2. Procesadores</a></li>
 </ul>
 </li>
 </ul>

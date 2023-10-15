@@ -91,79 +91,187 @@ ejemplo, el Gobierno español proporciona los <a class="reference external" href
 todas las gasolineras de España</a>
 y lo hace a través de <a class="reference external" href="https://sedeaplicaciones.minetur.gob.es/ServiciosRestCarburantes/PreciosCarburantes/help">una API REST</a>,
 que devuelve datos en formato <abbr title="JavaScript Object Notation">JSON</abbr> o <abbr title="eXtensible  Markup Language">XML</abbr>. Así:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>wget<span class="w"> </span>-qO<span class="w"> </span>-<span class="w"> </span><span class="s1">&#39;https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/Listados/ProductosPetroliferos/&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jsonlint<span class="w"> </span>-f
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">URL</span><span class="o">=</span><span class="s1">&#39;https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/Listados/ProductosPetroliferos/&#39;</span>
+<span class="gp">$ </span>wget<span class="w"> </span>-qO<span class="w"> </span>-<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$URL</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jsonlint<span class="w"> </span>-f
 </pre></div>
 </div>
 <p>nos devolverá un <abbr title="JavaScript Object Notation">JSON</abbr> con el listado de todos los productos petrolíferos que
 podemos adquirir en una estación de servicio. Con este documento podemos saber
 que el identificador para la gasolina de 95 octanos es el <strong>1</strong>. Si hacemos otra
 consulta para averiguar qué código representa a la provincia de Cádiz:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>wget<span class="w"> </span>-qO<span class="w"> </span>-<span class="w"> </span><span class="s1">&#39;https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/Listados/Provincias/&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jsonlint<span class="w"> </span>-f
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">URL</span><span class="o">=</span><span class="s1">&#39;https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/Listados/Provincias/&#39;</span>
+<span class="gp">$ </span>wget<span class="w"> </span>-qO<span class="w"> </span>-<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$URL</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jsonlint<span class="w"> </span>-f
 </pre></div>
 </div>
 <p>descubriremos que es <strong>11</strong> (su código postal, lo cual era lo previsible). Y con
 estos datos, podríamos obtener el listado de precios de la gasolina de 95
 octanos en la provincia de Cádiz:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>wget<span class="w"> </span>-qO<span class="w"> </span>-<span class="w"> </span><span class="s1">&#39;https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/FiltroProvinciaProducto/11/1&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jsonlint<span class="w"> </span>-f
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">URL</span><span class="o">=</span><span class="s1">&#39;https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/FiltroProvinciaProducto/11/1&#39;</span>
+<span class="gp">$ </span>wget<span class="w"> </span>-qO<span class="w"> </span>-<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$URL</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jsonlint<span class="w"> </span>-f
 </pre></div>
 </div>
 <p>Como vemos, estamos obteniendo documentos <abbr title="JavaScript Object Notation">JSON</abbr> cuya validez (más exactamente
 <em>bienformidad</em>) podemos comprobar o sobre el cual podemos realizar consultas a través de
 <a class="reference internal" href="01b.jsonpath.html#jsonpath"><span class="std std-ref">JSONPath</span></a>. Sin embargo, es obvio que estos datos se están
-obteniendo originariamente en el servidor de una base de datos en la que se
-encuentra almacenada la informacón, los resultados de cuyas consultas es lo que
-nos proporcionan las solicitudes. Esta segunda parte de la unidad discute
-precisamente ese almacenamiento.</p>
-<p>En principio, tenemos dos estrategias distintas:</p>
-<ol class="arabic">
-<li><p>La base de datos es relacional y la solicitud provoca que una aplicación convierta
+obteniendo en el servidor originariamente de una base de datos en la que se
+encuentra almacenada la información, los resultados de cuyas consultas es lo que
+nos proporcionan las solicitudes. Es probable que internamente en el servidor
+esté ocurriendo esto:</p>
+<img alt="Consulta a una base de datos transformaba en un documento JSON" src="../_images/sql2json.png" />
+<p>En principio, para el almacenamiento de la información tenemos tres estrategias
+distintas:</p>
+<ol class="arabic simple">
+<li><p>Crear y almacenar la información como archivos independientes que contienen
+directamente los documentos, que es precisamente lo que hemos estado haciendo
+al realizar las tareas propuestas. Esta estrategia, sin embargo, es probable
+que no acabe bien a poco que crezca el volumen de datos o se produzca
+concurrencia en las consultas.</p></li>
+<li><p>Almacenar en un base de datos relacional, pero obteniendo la información en
+un formato para serialización de datos como <abbr title="JavaScript Object Notation">JSON</abbr> o <abbr title="eXtensible  Markup Language">XML</abbr><a class="footnote-reference brackets" href="#id5" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. En este
+caso hay dos vías:</p>
+<ol class="loweralpha simple">
+<li><p>La solicitud de información provoca que una aplicación convierta
 el típico resultado de la consulta relacional en un documento <abbr title="JavaScript Object Notation">JSON</abbr> (o
-<abbr title="eXtensible  Markup Language">XML</abbr>). Cómo se lleva a cabo esta transformación no forma parte de la materia
-de este módulo.</p>
-<p>Sin embargo, dentro de las bases de datos relacionales, puede ocurrir que
-parte de los datos se almacenen en un formato de serialización de los datos y
-esto sí forma parte de nuestros contenidos, por lo que le echaremos un
-vistazo.</p>
-</li>
-<li><p>La base de datos no es relacional, sino que nativamente almacena datos en
-formato <abbr title="eXtensible  Markup Language">XML</abbr> o <abbr title="JavaScript Object Notation">JSON</abbr>. Le dedicaremos también parte de la unidad.</p></li>
+<abbr title="eXtensible  Markup Language">XML</abbr>), esto es, lo que hemos supuesto que ocurre en el servidor del
+Gobierno. Llevarlo a cabo requiere el conocimiento de un lenguaje de
+programación (<em>Java</em>, <em>Python</em>, etc) con librerías para el acceso a la
+base de datos relacional y para la conversión de la salida en documentos
+<abbr title="JavaScript Object Notation">JSON</abbr>, <abbr title="eXtensible  Markup Language">XML</abbr> u otros. No trataremos este aspecto por excederse en mucho
+de la profundidad de nuestro módulo.</p></li>
+<li><p>El propio <abbr title="Sistema Gestor de Bases de Datos">SGBD</abbr> relacional ofrece soporte para estos formatos de
+serialización, bien porque es capaz de almacenar datos directamente en el
+formato, bien porque es capaz de generar una salida en el formato de
+serialización que requerimos.</p></li>
 </ol>
-<section id="inclusion-en-bases-relacionales">
-<h2><span class="section-number">3.2.1. </span>Inclusión en bases relacionales<a class="headerlink" href="#inclusion-en-bases-relacionales" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>Desde hace algún tiempo, los principales <abbr title="Sistema Gestor de Bases de Datos">SGBD</abbr> relacionales permiten la
-definición de campos de tipo <abbr title="JavaScript Object Notation">JSON</abbr><a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, que son muy útiles para incluir
-dentro de ese campo multitud de datos, algunos de los cuales no se encuentran en todos
-los registros. De no existir este tipo, nos veríamos abocados a crear infinidad
-de campos en la tabla relacional, muchos con valor nulo. Imaginemos, por
-ejemplo, una tabla en la que almacenamos los datos de nuestros proveedores:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Proveedor</span><span class="w"> </span><span class="p">(</span>
-<span class="w">   </span><span class="n">id</span><span class="w">          </span><span class="nb">INTEGER</span><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
-<span class="w">   </span><span class="n">nombre</span><span class="w">      </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+</li>
+<li><p>Almacenar en una base de datos no relacional, que nativamente almacena datos
+en formato <abbr title="eXtensible  Markup Language">XML</abbr> o <abbr title="JavaScript Object Notation">JSON</abbr>.</p></li>
+</ol>
+<p>Dedicaremos algo de tiempo, escaso en cualquier caso y sin profundizar, a estos
+dos últimos mecanismos.</p>
+<section id="serializacion-de-datos-en-bb-rr">
+<h2><span class="section-number">3.2.1. </span>Serialización de datos en <abbr title="Bases Relacionales">BB.RR.</abbr><a class="headerlink" href="#serializacion-de-datos-en-bb-rr" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>El moderno estándar <abbr title="Structured Query Language">SQL</abbr> tiene soporte para incluir dentro de las bases
+relacionales:</p>
+<ul class="simple">
+<li><p><abbr title="eXtensible  Markup Language">XML</abbr> desde <a class="reference external" href="https://en.wikipedia.org/wiki/SQL:2003">SQL:2003</a>, que se conoce como <abbr title="Structured Query Language">SQL</abbr>/<abbr title="eXtensible  Markup Language">XML</abbr> y permite tanto
+almacener información en <abbr title="eXtensible  Markup Language">XML</abbr> como generar salida <abbr title="eXtensible  Markup Language">XML</abbr>.</p></li>
+<li><p><abbr title="JavaScript Object Notation">JSON</abbr> desde <a class="reference external" href="https://en.wikipedia.org/wiki/SQL:2016">SQL:2016</a> y <a class="reference external" href="https://en.wikipedia.org/wiki/SQL:2023">SQL:2023</a>. En este caso, el soporte es más reciente y limitado al
+almacenamiento de información en <abbr title="JavaScript Object Notation">JSON</abbr>  (véanse <a class="reference external" href="https://peter.eisentraut.org/blog/2023/04/04/sql-2023-is-finished-here-is-whats-new#new-json-features">las funcionalidades del
+estándar al respecto</a>) gracias
+a la definición de un tipo de dato <abbr title="JavaScript Object Notation">JSON</abbr> y a la existencia de funciones que
+permiten extraer valores concretos de este dato. No hay, sin embargo, conversión de
+salida para obtener una salida <abbr title="JavaScript Object Notation">JSON</abbr> de datos almacenados en forma
+tradicional, aunque algunos <abbr title="Sistema Gestor de Bases de Datos">SGBD</abbr> sí lo permiten como <a class="reference external" href="https://www.postgresql.org/">PostgreSQL</a> con la
+<a class="reference external" href="https://www.commandprompt.com/education/postgresql-json_agg-function-by-practical-examples/">función JSON_AGG</a>.</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>La norma de <abbr title="Structured Query Language">SQL</abbr> (llamada <abbr title="American National Standards Institute">ANSI</abbr> <abbr title="Structured Query Language">SQL</abbr> por ser esta institución
+quien publicó la primera versión) ha ido evolucionando con el tiempo  y, en
+consecuencia, se han publicado <a class="reference external" href="https://en.wikipedia.org/wiki/SQL#Standardization_history">sucesivas versiones</a>. Hasta su
+segunda versión (<a class="reference external" href="https://en.wikipedia.org/wiki/SQL-92">SQL-92</a>) se ceñía al modelo propiamente relacional, pero a
+partir de su tercera versión (<a class="reference external" href="https://en.wikipedia.org/wiki/SQL:2016">SQL:1999</a>), empezó a incluir aspectos
+adicionales como es el caso de estos dos que nos ocupan. La interesante
+página <a class="reference external" href="https://modern-sql.com">modern SQL</a> explica muchas de estas
+adiciones y sirve para investigar la evolución histórica del lenguaje.</p>
+</div>
+<section id="xml">
+<h3><span class="section-number">3.2.1.1. </span><abbr title="eXtensible  Markup Language">XML</abbr><a class="headerlink" href="#xml" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>El soporte para <abbr title="eXtensible  Markup Language">XML</abbr> es bastante irregular entre los distintos <abbr title="Sistema Gestor de Bases de Datos">SGBD</abbr> y mejor
+en aquellos comerciales (<a class="reference external" href="https://en.wikipedia.org/wiki/Microsoft_SQL_Server">SQL server</a>, <a class="reference external" href="https://es.wikipedia.org/wiki/Oracle_Database">Oracle Database</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/IBM_Db2">DB2</a>) que en los
+libres (<a class="reference external" href="https://en.wikipedia.org/wiki/MariaDB">MariaDB</a>, <a class="reference external" href="https://www.postgresql.org/">PostgreSQL</a> o <a class="reference external" href="https://sqlite.org">SQLite</a>, este último sin soporte en absoluto).
+No entraremos en mucho detalle, pero apuntaremos algunas de sus posibilidades:</p>
+<ul class="simple">
+<li><p>Existe un tipo de datos específico para almacenar <abbr title="eXtensible  Markup Language">XML</abbr>.</p></li>
+<li><p>Permite la generación de una salida <abbr title="eXtensible  Markup Language">XML</abbr> a partir de datos almacenados en
+forma relacional a través de distintas funciones (<code class="docutils literal notranslate"><span class="pre">XMLELEMENT</span></code>, <code class="docutils literal notranslate"><span class="pre">XMLROOT</span></code>,
+etc.).</p></li>
+<li><p>Permite la generación de una salida <abbr title="eXtensible  Markup Language">XML</abbr> a partir de datos almacenados en
+forma <abbr title="eXtensible  Markup Language">XML</abbr> (a través del tipo <abbr title="eXtensible  Markup Language">XML</abbr>) gracias a la función <code class="docutils literal notranslate"><span class="pre">XMLQUERY</span></code>, que
+utiliza <span class="xref std std-ref">XQuery</span> para generar la estructura <abbr title="eXtensible  Markup Language">XML</abbr>.</p></li>
+<li><p>Permite la extracción de valores de un <abbr title="eXtensible  Markup Language">XML</abbr> mediante la función
+<code class="docutils literal notranslate"><span class="pre">EXTRACTVALUE</span></code><a class="footnote-reference brackets" href="#id6" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. que utiliza para referirlos <a class="reference internal" href="01a.xpath.html#xpath"><span class="std std-ref">XPath</span></a>.</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Para profundizar en la inclusión de <abbr title="eXtensible  Markup Language">XML</abbr> dentro de los <abbr title="Sistema Gestor de Bases de Datos">SGBD</abbr>
+relacionales con ejemplos ilustrativos de uso puede consultar:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.oratechinfo.co.uk/sqlxml.html">SQL/XML and XPath</a>.</p></li>
+<li><p><a class="reference external" href="https://users.informatik.uni-halle.de/~brass/xml19/ca_sql.pdf">XML Support in Modern SQL Databases</a> (PDF).</p></li>
+</ul>
+</div>
+</section>
+<section id="json">
+<h3><span class="section-number">3.2.1.2. </span><abbr title="JavaScript Object Notation">JSON</abbr><a class="headerlink" href="#json" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>El soporte para <abbr title="JavaScript Object Notation">JSON</abbr> dentro de <abbr title="Structured Query Language">SQL</abbr> se ha desarrollado hasta ahora en dos
+estándares:</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://en.wikipedia.org/wiki/SQL:2016">SQL:2016</a></dt><dd><p>que definió cómo acceder a valores dentro de un documento <abbr title="JavaScript Object Notation">JSON</abbr> o cómo
+comprobar si una cadena representa un documento <abbr title="JavaScript Object Notation">JSON</abbr> válido. No define, sin
+embargo, un tipo específico para <abbr title="JavaScript Object Notation">JSON</abbr> por lo que los documentos <abbr title="JavaScript Object Notation">JSON</abbr> son
+representados, en realidad, como cadenas de texto.</p>
+</dd>
+<dt><a class="reference external" href="https://en.wikipedia.org/wiki/SQL:2023">SQL:2023</a></dt><dd><p>que amplía el soporte añadiendo un tipo específico.</p>
+</dd>
+</dl>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>A diferencia de lo que ocurre con <abbr title="eXtensible  Markup Language">XML</abbr>, el último estándar no
+define (al menos, aún) cómo generar una salida en formato <abbr title="JavaScript Object Notation">JSON</abbr>, aunque hay
+<abbr title="Sistema Gestor de Bases de Datos">SGBD</abbr> que ya lo hacen.</p>
+</div>
+<p>Los principales <abbr title="Sistema Gestor de Bases de Datos">SGBD</abbr> relacionales permiten la manipulación de documentos
+<abbr title="JavaScript Object Notation">JSON</abbr> en mayor o menor medida. La utilidad de ello se ve cuando se necesita
+definir una tabla con muchos campos, algunos de los cuales no tienen por qué
+tener relevancia o valor en todos los registros. Recordemos que el modelo
+relacional se caracteriza porque todos los registros tienen los mismo campos a
+diferencia de un documento <abbr title="JavaScript Object Notation">JSON</abbr> en donde podemos tener una secuencia de
+objetos, cada uno de los cuales no presenta exactamente las mismas claves. Como
+consecuencia una solución <abbr title="Structured Query Language">SQL</abbr> provocaría que necesitáramos crear una tabla con
+muchísimas columnas (campos), aunque muchos de ellos para muchos registros
+estarían vacíos.</p>
+<p>Para ilustrarlo, supongamos que tenemos una tabla en la que almacenamos los
+datos de nuestros proveedores y sus datos de contacto:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="ss">&quot;Proveedor&quot;</span><span class="w"> </span><span class="p">(</span>
+<span class="w">   </span><span class="ss">&quot;id&quot;</span><span class="w">                </span><span class="nb">INTEGER</span><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">   </span><span class="ss">&quot;nombre&quot;</span><span class="w">            </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
 <span class="w">   </span><span class="cm">/* Todos estos datos son de contacto y algunos estarán vacíos */</span>
-<span class="w">   </span><span class="n">tlfo</span><span class="w">        </span><span class="nb">INTEGER</span><span class="p">,</span>
-<span class="w">   </span><span class="n">fax</span><span class="w">         </span><span class="nb">INTEGER</span><span class="p">,</span>
-<span class="w">   </span><span class="n">web</span><span class="w">         </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span>
-<span class="w">   </span><span class="n">mail</span><span class="w">        </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
-<span class="w">   </span><span class="n">domicilio</span><span class="w">   </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span><span class="w">  </span><span class="cm">/* Este campo es un batiburrillo no muy elegante */</span>
+<span class="w">   </span><span class="ss">&quot;tlfo&quot;</span><span class="w">              </span><span class="nb">INTEGER</span><span class="p">,</span>
+<span class="w">   </span><span class="ss">&quot;fax&quot;</span><span class="w">               </span><span class="nb">INTEGER</span><span class="p">,</span>
+<span class="w">   </span><span class="ss">&quot;web&quot;</span><span class="w">               </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span>
+<span class="w">   </span><span class="ss">&quot;mail&quot;</span><span class="w">              </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+<span class="w">   </span><span class="cm">/* En realidad los tipos son más de los aquí expresados */</span>
+<span class="w">   </span><span class="ss">&quot;dom_tipo_via&quot;</span><span class="w">      </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="w"> </span><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;dom_tipo_via&quot;</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;calle&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;avenida&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;plaza&#39;</span><span class="p">)),</span>
+<span class="w">   </span><span class="ss">&quot;dom_nombre_via&quot;</span><span class="w">    </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+<span class="w">   </span><span class="ss">&quot;dom_numero&quot;</span><span class="w">        </span><span class="nb">INTEGER</span><span class="p">,</span>
+<span class="w">   </span><span class="ss">&quot;dom_subnumero&quot;</span><span class="w">     </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">   </span><span class="ss">&quot;dom_puerta&quot;</span><span class="w">        </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+<span class="w">   </span><span class="ss">&quot;dom_bloque&quot;</span><span class="w">        </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+<span class="w">   </span><span class="ss">&quot;dom_escalera&quot;</span><span class="w">      </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+<span class="w">   </span><span class="ss">&quot;dom_piso&quot;</span><span class="w">          </span><span class="nb">INTEGER</span><span class="p">,</span>
+<span class="w">   </span><span class="ss">&quot;dom_letra&quot;</span><span class="w">         </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">   </span><span class="ss">&quot;dom_cp&quot;</span><span class="w">            </span><span class="nb">INTEGER</span><span class="p">,</span>
+<span class="w">   </span><span class="ss">&quot;dom_localidad&quot;</span><span class="w">     </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">75</span><span class="p">),</span>
+<span class="w">   </span><span class="ss">&quot;dom_municipio&quot;</span><span class="w">     </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">75</span><span class="p">),</span>
+<span class="w">   </span><span class="ss">&quot;dom_provincia&quot;</span><span class="w">     </span><span class="nb">INTEGER</span>
 <span class="p">);</span>
 </pre></div>
 </div>
-<p>Entre los datos hay una serie de datos de contacto que quizás necesitaremos
-consultar alguna vez, pero que no son determinates en filtros de consulta como
-el teléfono, el fax, la página web, el correo electrónico, el domicilio (que a
-su vez debería estar constituido por varios campos independientes), etc. Algunos
-de estos proveedores, además, carecerán de fax o de página web. En estos casos,
-lo mejor es crear un campo de tipo <abbr title="JavaScript Object Notation">JSON</abbr> que reúna todos estos datos, de manera
-que el campo «contacto» de la tabla «Proveedor» podría definirse así:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Proveedor</span><span class="w"> </span><span class="p">(</span>
-<span class="w">   </span><span class="n">id</span><span class="w">          </span><span class="nb">INTEGER</span><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
-<span class="w">   </span><span class="n">nombre</span><span class="w">      </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
-<span class="w">   </span><span class="n">contacto</span><span class="w">    </span><span class="n">JSON</span><span class="w">          </span><span class="cm">/* Aquí en realidad se almacenan todos los datos anteriores */</span>
+<p>La tabla tiene muchísimas columnas, porque la casuística de los datos de
+contacto es muy grande, queremos cubrirla toda (o, al menos, una gran parte) y
+el modelo relacional nos obliga a crear un campo para todo. En cambio, si
+echamos manos de <abbr title="JavaScript Object Notation">JSON</abbr>, podremos definir la tabla de este modo:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="ss">&quot;Proveedor&quot;</span><span class="w"> </span><span class="p">(</span>
+<span class="w">   </span><span class="ss">&quot;id&quot;</span><span class="w">          </span><span class="nb">INTEGER</span><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">   </span><span class="ss">&quot;nombre&quot;</span><span class="w">      </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+<span class="w">   </span><span class="ss">&quot;contacto&quot;</span><span class="w">    </span><span class="n">JSON</span><span class="w">    </span><span class="cm">/* Aquí en realidad se almacenan todos los datos anteriores */</span>
 <span class="p">);</span>
 </pre></div>
 </div>
-<p>Y dentro de este campo <abbr title="JavaScript Object Notation">JSON</abbr> se podría almacenar una estructura parecida a
-esta:</p>
+<p>Y dentro del campo de contacto que se almacene una estructura <abbr title="JavaScript Object Notation">JSON</abbr> que
+facilita no tener definidos siempre todos los campos:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">&quot;tlfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">34956010203</span><span class="p">,</span>
 <span class="w">   </span><span class="nt">&quot;fax&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
@@ -172,7 +280,8 @@ esta:</p>
 <span class="w">   </span><span class="nt">&quot;domicilio&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;tipo_via&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;calle&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;via&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Callo&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;número&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;numero&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;subnumero&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;A&quot;</span>
 <span class="w">      </span><span class="nt">&quot;puerta&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;bloque&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;escalera&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
@@ -180,6 +289,7 @@ esta:</p>
 <span class="w">      </span><span class="nt">&quot;letra&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;cp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">11001</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;localidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cádiz&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;municipio&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;Cádiz&quot;</span>
 <span class="w">      </span><span class="nt">&quot;provincia&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span>
 <span class="w">   </span><span class="p">}</span>
 <span class="p">}</span>
@@ -187,19 +297,73 @@ esta:</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Hemos expresado los valores nulos para que se vean todos los campos
-posibles, pero lo mejor es que estos campos ni siquiera se almacenaran en la
-realidad.</p>
+<p>Hemos expresado los campos con valor nulo para que se vean cómo se
+reproduce fielmente la estructura de la primera tabla, pero no son
+necesarios y, de hecho, no estarán cuando tengan este valor.</p>
 </div>
+<p>La idea que subyace en la incorporación de <abbr title="JavaScript Object Notation">JSON</abbr> al almacenamiento es ésta.
+Para rematar ilustrémoslo utilizando <a class="reference external" href="https://sqlite.org">SQLite</a>, que <a class="reference external" href="https://www.sqlite.org/json1.html">tiene soporte para JSON</a>, aunque sin llegar a crearse realmente un
+tipo de dato distinto (o sea, lo que estipula <a class="reference external" href="https://en.wikipedia.org/wiki/SQL:2016">SQL:2016</a>).</p>
+<p>Descargue <a class="reference download internal" download="" href="../_downloads/a17cdf95bcee7a9844f5ff64818dea4e/proveedor.sql"><code class="xref download docutils literal notranslate"><span class="pre">proveedor.sql</span></code></a> que contiene la
+creación de la segunda versión propuesta de la tabla<a class="footnote-reference brackets" href="#id7" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> y un par de registros
+de prueba, y pruebe cómo acceder a los campos individuales del <abbr title="JavaScript Object Notation">JSON</abbr>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sqlite<span class="w"> </span>/tmp/proveedor.db<span class="w"> </span>&lt;<span class="w"> </span>proveedor.sql
+<span class="gp">$ </span>sqlite<span class="w"> </span>/tmp/proveedor
+<span class="go">sqlite&gt; .tables</span>
+<span class="go">Proveedor</span>
+<span class="go">sqlite&gt; .mode columns</span>
+<span class="go">sqlite&gt; SELECT &quot;nombre&quot;, JSON_EXTRACT(&quot;contacto&quot;, &#39;$.domicilio.localidad&#39;) AS &#39;localidad&#39; FROM &quot;Proveedor&quot;;</span>
+<span class="go">nombre                 Localidad</span>
+<span class="go">---------------------  ---------</span>
+<span class="go">Helados Babuino        Cádiz</span>
+<span class="go">Central de Chucherías  Málaga</span>
+<span class="go">sqlite&gt; SELECT &quot;id&quot;, &quot;nombre&quot; FROM &quot;Proveedor&quot; WHERE JSON_EXTRACT(&quot;contacto&quot;, &#39;$.domicilio.localidad&#39;) = &#39;Cádiz&#39;;</span>
+<span class="go">id  nombre</span>
+<span class="go">--  ---------------</span>
+<span class="go">1   Helados Babuino</span>
+</pre></div>
+</div>
+<p>Como puede verse, estamos usando una sintaxis derivada de <a class="reference internal" href="01b.jsonpath.html#jsonpath"><span class="std std-ref">JSONPath</span></a> para referir
+los valores individuales que contiene el <abbr title="JavaScript Object Notation">JSON</abbr> contenido en el campo <code class="docutils literal notranslate"><span class="pre">contacto</span></code><a class="footnote-reference brackets" href="#id8" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.</p>
+</section>
 </section>
 <section id="bases-nativas">
 <h2><span class="section-number">3.2.2. </span>Bases nativas<a class="headerlink" href="#bases-nativas" title="Enlace permanente a este encabezado">¶</a></h2>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id2" role="note">
+<aside class="footnote brackets" id="id5" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>De hecho, en la última revisión del estándar <a class="reference external" href="https://en.wikipedia.org/wiki/SQL:2023">SQL:2023</a> se ha añadido el soporte para el
-tipo de dato <abbr title="JavaScript Object Notation">JSON</abbr>.</p>
+<p><abbr title="eXtensible  Markup Language">XML</abbr> no es un lenguaje de serialización de datos, sino de marcas como
+ya se ha repetido en varias ocasiones, pero en este caso nuestra intención es
+usarlo para estructurar información orientada al dato, esto es, para
+serializar datos.</p>
+</aside>
+<aside class="footnote brackets" id="id6" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p><code class="docutils literal notranslate"><span class="pre">EXTRACTVALUE</span></code> es la función equivalente <code class="docutils literal notranslate"><span class="pre">JSON_EXTRACT</span></code> que veremos
+más en profundidad bajo el siguiente epígrafe.</p>
+</aside>
+<aside class="footnote brackets" id="id7" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p><strong class="program">SQLite</strong> permite indicar un tipo <code class="docutils literal notranslate"><span class="pre">JSON</span></code>,  aunque internamente
+ese tipo será simplemente <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>.</p>
+</aside>
+<aside class="footnote brackets" id="id8" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p><strong class="program">SQLite</strong> tiene  una <a class="reference external" href="https://www.postgresql.org/docs/9.5/functions-json.html">operador procedente de PostgreSQL</a> alternativo a JSON_EXTRACT
+como <a class="reference external" href="https://es.wikipedia.org/wiki/Az%C3%BAcar_sint%C3%A1ctico">azúcar sintáctico</a>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="ss">&quot;nombre&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;contacto&quot;</span><span class="o">-&gt;</span><span class="s1">&#39;domicilio&#39;</span><span class="o">-&gt;&gt;</span><span class="s1">&#39;localidad&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s1">&#39;localidad&#39;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;Proveedor&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Éche un vistazo a <a class="reference external" href="https://tirkarthi.github.io/programming/2022/02/26/sqlite-json-improvements.html">este tutorial de JSON con SQLite</a>.</p>
+</div>
+<p>Y <a class="reference external" href="https://en.wikipedia.org/wiki/SQL:2023">SQL:2023</a> ha definido el operador punto («.») con la misma intención:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="ss">&quot;nombre&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;contacto&quot;</span><span class="p">.</span><span class="ss">&quot;domicilio&quot;</span><span class="p">.</span><span class="ss">&quot;localidad&quot;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s1">&#39;localidad&#39;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;Proveedor&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>aunque para ello <strong class="program">SQLite</strong> no tiene aún soporte.</p>
 </aside>
 </aside>
 </section>
@@ -218,7 +382,11 @@ tipo de dato <abbr title="JavaScript Object Notation">JSON</abbr>.</p>
     <h3><a href="../index.html">Page contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">3.2. Bases de datos</a><ul>
-<li><a class="reference internal" href="#inclusion-en-bases-relacionales">3.2.1. Inclusión en bases relacionales</a></li>
+<li><a class="reference internal" href="#serializacion-de-datos-en-bb-rr">3.2.1. Serialización de datos en <abbr title="Bases Relacionales">BB.RR.</abbr></a><ul>
+<li><a class="reference internal" href="#xml">3.2.1.1. <abbr title="eXtensible  Markup Language">XML</abbr></a></li>
+<li><a class="reference internal" href="#json">3.2.1.2. <abbr title="JavaScript Object Notation">JSON</abbr></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#bases-nativas">3.2.2. Bases nativas</a></li>
 </ul>
 </li>
