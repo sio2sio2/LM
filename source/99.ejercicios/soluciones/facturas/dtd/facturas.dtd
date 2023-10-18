@@ -4,23 +4,10 @@
 <!ELEMENT clientes (cliente*)>
 <!ENTITY % cliente SYSTEM "cliente.dtd">
 %cliente;
-<!ELEMENT cliente (dni, nombre, direccion)>
-<!ATTLIST cliente id          ID                #REQUIRED>
-
-<!ELEMENT dni (#PCDATA)>
-<!ELEMENT nombre (#PCDATA)>
-<!ELEMENT direccion (domicilio, cp, poblacion)>
-<!ELEMENT domicilio (#PCDATA)>
-<!ELEMENT cp (#PCDATA)>
-<!ELEMENT poblacion (#PCDATA)>
 
 <!ELEMENT inventario (producto+)>
 <!ENTITY % producto SYSTEM "producto.dtd">
 %producto;
-<!ELEMENT producto EMPTY>
-<!ATTLIST producto codigo     ID                #REQUIRED
-                   nombre     CDATA             #REQUIRED
-                   iva        (superreducido|reducido|normal)  "normal">
 
 <!ELEMENT factura (item+)>
 <!ATTLIST factura codigo      ID                #REQUIRED

@@ -277,13 +277,44 @@ En este caso, la expresión:
 
    /claustro
 
-representa el nodo raíz *claustro*, mientras que la expresión:
+representa el nodo *claustro*.
+
+.. note:: En *XPath* el nodo "claustro" no es el nodo raíz, sino "/", de ahí que
+   la expresión :code:`/claustro` indique el nodo claustro que es inmediatamente
+   hijo del nodo raíz. Por ese motivo, si este es el documento |XML|:
+
+   .. code-block:: xml
+
+      <?xml version="1.0" encoding="utf-8"?>
+      <!-- Este es un ejemplo de documento XML -->
+      <grafico unidades="cm">
+         <punto id="p01">
+            <x>4</x>
+            <y>10</y>
+         </punto>
+      </grafico>
+
+   La expresión:
+
+   .. code-block:: xquery
+
+      /claustro
+
+   devuelve, exclusivamente, el nodo claustro, mientras que la expresión
+
+   .. code-block:: xquery
+
+      /
+
+   devuelve también el nodo comentario (:code:`<!-- Este es un ejemplo de documento XML -->`).
+
+Por su parte, la expresión:
 
 .. code-block:: xquery
 
    /claustro/profesor
 
-representa todos los nodos *profesor* que son hijos del *claustro*.  Es posible
+representa todos los nodos *profesor* que son hijos de *claustro*.  Es posible
 también hacer referencia a descendientes no directos como en:
 
 .. code-block:: xquery
@@ -352,14 +383,16 @@ El :dfn:`filtro` es aquella parte de la ruta *XPath* que expresa qué nodo o nod
 quieren referirse con tal ruta. Puede ser:
 
 **QName**
-   Es el nombre del nodo. Por ejemplo:
+   Selecciona nodos elemento por nombre. Por ejemplo:
 
    .. code-block:: xquery
 
       /claustro
 
-   selecciona el nodo *claustro*. Puede usarse un asterisco ("*") para indicar
-   cualquier nodo que sea elemento. Por ejemplo:
+   selecciona el nodo *claustro*.
+
+**\***
+   Selecciona todos los nodos elemento, sea cual sea su nombre. Por ejemplo:
 
    .. code-block:: xquery
 
@@ -367,6 +400,33 @@ quieren referirse con tal ruta. Puede ser:
 
    selecciona los elementos *apelativo*, *nombre*, *apellidos* y *departamento*
    hijos del primer profesor.
+
+   .. _xpath-element():
+
+   .. note:: A partir de XPath 2.0, existe ``element()`` que tiene el mismo
+      efecto:
+
+      .. code-block:: xquery
+
+         /claustro/profesor[1]/element()
+
+      
+      La función permite expresar el nombre del elemento:
+
+      .. code-block:: xquery
+
+         /claustro/profesor[1]/element(apodo)
+
+      lo que sería equivalente a haber usado directamente el nombre. Sin
+      embargo, si el procesador es capaz de validar con una gramática el
+      documento, entonces conocerá el tipo de dato que almacena y puede
+      filtrarse por tipo de valor:
+
+      .. code-block:: xquery
+
+         /claustro/profesor[1]/element(*, xs:integer)
+
+      .. **
 
 **text()**
    Selecciona los nodos de texto. Por ejemplo:
@@ -427,7 +487,7 @@ quieren referirse con tal ruta. Puede ser:
 
          /claustro/*
 
-      selecciona exclusiamente los nodos *profesor*.
+      selecciona exclusivamente los nodos *profesor*.
 
 **comment()**
    Todos los nodos que sean comentarios:
@@ -444,6 +504,16 @@ quieren referirse con tal ruta. Puede ser:
       /claustro/profesor/@sexo
 
    refiero los sexos de todos los profesores.
+
+**@\***
+   Selecciona todos los atributos:
+
+   .. code-block:: xquery
+
+      /claustro/profesor/@*
+
+   .. note:: A partir de XPath 2, puede usarse la función ``attribute()`` con
+      idéntico fin y que admite :ref:`argumentos como element() <xpath-element()>`.
 
 **processing-instruction()**
    Todas las instrucciones de procesamiento. Por ejemplo::
@@ -472,6 +542,8 @@ quieren referirse con tal ruta. Puede ser:
    De entre estos siete tipos, dos (los nodos texto y los nodos atributo) pueden
    a su ver estar tipados de distinta forma (ser cadenas, ser números, etc.).
    Más adelaten profundizaremos en ello.
+
+.. _xpath1-union:
 
 *XPath* permite **agregar rutas** de manera que los nodos seleccionados sean la
 unión de los nodos que seleccionan las distintas rutas. Para ello, usa el
@@ -644,6 +716,19 @@ aquí citaremos algunas muy socorridas:
 
    selecciona los nodos hijo de profesor que son *apelativo* o *nombre*.
 
+   .. note:: Esto mismo hay modos alternativos de lograrlo:
+
+      .. code-block:: xquery
+
+         //profesor/*[self::apelativo or self::nombre]
+
+      o también usando el :ref:`operador de unión <xpath1-union>`
+
+      .. code-block:: xquery
+
+         //profesor/apelativo | //profesor/nombre
+
+
 `not() <https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/not>`_
    Invierte el resultado lógico de la expresión. Ya se trató al hablar de los
    operadores.
@@ -738,8 +823,8 @@ Para empezar hay que aclarar dos aspectos importantes:
 
       .. note:: Obsérvese que se ha usado la palabra "conjunto" y no
          "secuencia". Es importante el matiz, porque las secuencias ordenan sus
-         elementos, mientra que los conjuntos, no. Esto quiere decir, que los
-         conjuntos de nodos, en teoría no aseguran cuál es el orden en que se
+         elementos, mientra que los conjuntos, no. Esto quiere decir que los
+         conjuntos de nodos, en teoría, no aseguran cuál es el orden en que se
          obtendrán nodos. En la práctica, sin embargo, los nodos siempre se
          devuelven en el orden en que se encuentran en el documento |XML|.
 
@@ -749,14 +834,14 @@ Para empezar hay que aclarar dos aspectos importantes:
    ¿Cuáles son los tipos de datos (no de nodos, que ya hemos enumerado) que
    reconoce XPath 1.0? Solamente **4**:
 
-   #. Booleanos.
+   #. Booleanos (notados ``true`` y ``false``).
    #. Números.
    #. Cadenas.
    #. Conjuntos de nodos.
 
    Es muy conveniente tener presente esto, porque los operadores pueden
    comportarse de distinto modo según sea el tipo de los operandos y también
-   habrá que saber cómo se actua cuando los operandos son de distinto tipo.
+   habrá que saber cómo se actúa cuando los operandos son de distinto tipo.
 
 Por tanto, para afinar por completo nuestro conocimiento de *XPath*, es
 necesario saber cómo realiza *XPath* la **evaluación** de las operaciones. Por
@@ -770,7 +855,7 @@ Intuitivamente entendemos que esta expresión devuelve el conjunto de profesores
 (en puridad, nodos profesor) cuyo nombre es "*José*". Sin embargo, si
 profundizamos un poco, llegaremos a la conclusión de que "José" es un cadena,
 pero el nodo ``nombre`` con el que se compara no lo es: es un nodo elemento que,
-a su vez contiene un nodo texto, cuyo valor si es una cadena:
+a su vez contiene un nodo texto, cuyo valor sí es una cadena:
 
 .. code-block:: xquery
 
@@ -871,6 +956,8 @@ de tipos. Este es un aspecto que debemos revisar.
    valores de todos los nodos de texto que contiene. Sólo tiene uno, el que
    contiene el propio nombre, por lo que la comparación se puede llevar a cabo.
 
+.. _xpath-pluralidad:
+
 **Pluralidad**
    Existe, además del de la conversión, otro aspecto a tener en cuenta.
    Recordemos que habíamos modificado el |DTD| para que un profesor pudiera
@@ -932,8 +1019,112 @@ de tipos. Este es un aspecto que debemos revisar.
       Sólo el tercer predicado es cierto cuando ninguno de los apodos del
       profesor es "Pepe".
 
-XPath 2.0
-*********
+XPath 2.0/3.0
+*************
+La versión 2.0 del lenguaje supuso en gran cambio hasta el punto de que, aunque
+procuró mantenerse cierta compatibilidad con la primera versión, no todas las
+expresiones se evalúan del mismo modo. La especificación añadió muchísimas más
+funciones de las ya existentes, algunas novedosas construcciones y dos
+redefiniciones conceptuales de suma importancia:
+
+.. _xpath2-result:
+
+**Resultado**
+   A diferencia de :ref:`lo que ocurre en XPath 1.0 <xpath1-result>`, en las
+   versiones posteriores el resultado de una expresión es siempre una secuencia
+   de *ítems*, esto es, una serie ordenada de valores o nodos. Por tanto, la
+   expresión:
+
+   .. code-block:: xquery
+
+      1 = 1
+
+   devuelve una secuencia constituida por un único valor lógico (verdadero), o
+
+   .. code-block:: xquery
+
+      /claustro/profesor
+
+   devuelve una secuencia constituida por todos los nodos profesor ordenada
+   según aparecen en el documento. Las secuencias pueden construirse
+   explícitamente:
+
+   .. code-block:: xquery
+
+      (1 = 1, 1 + 1, "Soy una cadena", //profesor)
+
+   lo cual es muy útil porque nos sirve para predicados como este:
+
+   .. code-block:: xquery
+
+      //profesor[nombre = ("Manuel", "Luis")]
+
+   que devolverá todos los nodos profesor en que el profesor se llame "Manuel" o
+   "Luis", ya que el operando de la izquierda es único, el de la derecha varios
+   y ya sabe :ref:`cómo se resuelve el problema de la pluralidad
+   <xpath-pluralidad>`.
+
+   Las secuencias tienen algunas particularidades:
+
+   * Cuando están compuestas por un único ítem, pueden escribirse con o sin el
+     paréntesis. En consecuencia, esta expresión:
+
+     .. code-block:: xquery
+
+         1
+
+     y esta otra:
+
+     .. code-block:: xquery
+
+         (1)
+
+     son equivalentes.
+
+   * Las secuencias no se anidan a otras secuencias, sino que si se
+     produce este hecho, se *aplanan*. En consecuencia esto:
+
+     .. code-block:: xquery
+
+        (1, 2, (3, 4), 5)
+
+     es equivalente a esto otro:
+
+     .. code-block:: xquery
+
+        (1, 2, 3, 4, 5)
+
+   * Las secuencias que representan rangos de números enteros pueden expresarse
+     con una sintaxis abreviada. Así, la secuencia anterior puede escribirse
+     como:
+
+     .. code-block:: xquery
+
+        (1 to 5)
+
+**Tipos**
+   El otro gran cambio sustancial son los tipos atómicos de los datos (que no de
+   nodos, pues siguen siendo los siete mismos). De *XPath* 2.0 en adelante se
+   asumen los tipos definidos para :ref:`XML Schemas <xsd>`, más algún pequeño
+   añadido que resumidos por `cortesía de Wikipedia
+   <https://commons.wikimedia.org/wiki/File:XQuery_and_XPath_Data_Model_type_hierarchy.png>`
+   lo podemos ver en el siguiente esquema:
+
+   .. image:: https://upload.wikimedia.org/wikipedia/commons/9/91/XQuery_and_XPath_Data_Model_type_hierarchy.png
+
+   Así pues, nos encontraremos con tipos de datos como ``xs:integer``  o
+   ``xs:string``, pero sólo en caso de que el procesador haya sido capaz de
+   validar el documento con una gramática para discernir realmente el tipo de
+   dato. De lo contrario, ya veremos cómo el tipo queda indefinido.
+
+.. + https://www.mulberrytech.com/papers/XPath-2-0-User-Grp-HTML/slide025.html
+
+     Paréntesis en medio de rutas.
+
+   + (//cliente instance of element()+)
+
+.. https://www.oreilly.com/library/view/xslt-cookbook-2nd/0596009747/ch01.html
+   https://www.altova.com/training/xpath3/other-expressions#other-expressions
 
 XQuery
 ******
@@ -949,129 +1140,171 @@ restaurantes <xml-resueltos>`, determine las expresion *XPath* apropiadas para:
 
 #. Obtener todas las recetas disponibles.
 
-   .. code-block:: xquery
+   .. dropdown:: Solución...
 
-      //receta
+      .. code-block:: xquery
+
+         //receta
 
 #. Obtener el nodo que representa la receta de nombre "ensalada".
 
-   .. code-block:: xquery
+   .. dropdown:: Solución...
 
-      //receta[@nombre="ensalada"]
+      .. code-block:: xquery
+
+         //receta[@nombre="ensalada"]
 
 #. Obtener la carta del restaurante de identificador "re01".
 
-   .. code-block:: xquery
+   .. dropdown:: Solución...
 
-      /cadena/restaurante[@id="re01"]/carta
+      .. code-block:: xquery
+
+         /cadena/restaurante[@id="re01"]/carta
 
 #. Obtener el código postal del restaurante "El tragón feliz"-
 
-   .. code-block:: xquery
+   .. dropdown:: Solución...
 
-      /cadena/restaurante[@nombre="El dragon feliz"]/domicilio/cp
+      .. code-block:: xquery
+
+         /cadena/restaurante[@nombre="El dragon feliz"]/domicilio/cp
 
 #. Contar las recetas de las que dispone la cadena.
 
-   .. code-block:: xquery
+   .. dropdown:: Solución...
 
-      count(//receta)
+      .. code-block:: xquery
+
+         count(//receta)
 
 #. Contar cuántos ingredientes necesita la receta de la *ensalada*.
 
-   .. code-block:: xquery
+   .. dropdown:: Solución...
 
-      count(//receta[@nombre="ensalada"]/ingrediente)
+      .. code-block:: xquery
+
+         count(//receta[@nombre="ensalada"]/ingrediente)
 
 #. Contar cuántos ingredientes de "ensalada" se deben medir en gramos.
 
-   .. code-block:: xquery
+   .. dropdown:: Solución...
 
-      count(//receta[@nombre="ensalada"]/ingrediente[@unidad="gramo"])
+      .. code-block:: xquery
+
+         count(//receta[@nombre="ensalada"]/ingrediente[@unidad="gramo"])
 
 #. Obtener la carta del restaurante "El tragón feliz".
 
-   .. code-block:: xquery
+   .. dropdown:: Solución...
 
-      /cadena/restaurante[@nombre="El tragón feliz"]/carta
+      .. code-block:: xquery
+
+         /cadena/restaurante[@nombre="El tragón feliz"]/carta
 
 #. Obtener el nombre de las recetas en las que se usa *lechuga*.
 
-   .. code-block:: xquery
+   .. dropdown:: Solución...
 
-      //receta[ingrediente/@nombre = "lechuga"]/@nombre
+      .. code-block:: xquery
+
+         //receta[ingrediente/@nombre = "lechuga"]/@nombre
 
 #. Obtener el nombre de las recetas en las que **no** se usa *lechuga*.
 
-   .. code-block:: xquery
+   .. dropdown:: Solución...
 
-      //receta[not(ingrediente/@nombre = "lechuga")]/@nombre
+      .. code-block:: xquery
+
+         //receta[not(ingrediente/@nombre = "lechuga")]/@nombre
 
 #. Obtener el identificador de los restaurantes en los que se sirven tapas.
 
-   .. code-block:: xquery
+   .. dropdown:: Solución...
 
-      /cadena/restaurante[carta/plato/@tipo = "tapa" ]/@id
+      .. code-block:: xquery
 
-   o mejor::
+         /cadena/restaurante[carta/plato/@tipo = "tapa" ]/@id
 
-      /cadena/restaurante[carta/plato[contains(@tipo, "tapa")]]/@id
+      o mejor:
+
+      .. code-block:: xquery
+
+         /cadena/restaurante[carta/plato[contains(@tipo, "tapa")]]/@id
 
 #. Obtener el identificador de los restaurantes en los que **no** se sirven tapas.
 
-   .. code-block:: xquery
+   .. dropdown:: Solución...
 
-      /cadena/restaurante[carta/plato[not(contains(@tipo, "tapa"))]]/@id
+      .. code-block:: xquery
+
+         /cadena/restaurante[carta/plato[not(contains(@tipo, "tapa"))]]/@id
 
 #. Obtener el nombre de los restaurantes con más de 10 platos en la carta.
 
-   .. code-block:: xquery
+   .. dropdown:: Solución...
 
-      /cadena/restaurante[count(carta/plato) > 10]/@nombre
+      .. code-block:: xquery
+
+         /cadena/restaurante[count(carta/plato) > 10]/@nombre
 
 #. Obtener los nombres de las recetas que se sirven en "El tragón feliz".
 
-   .. code-block:: xquery
+   .. dropdown:: Solución...
 
-      //receta[@id = /cadena/restaurante[@nombre="El tragón feliz"]/carta/plato/@ref]/@nombre
+      .. code-block:: xquery
+
+         //receta[@id = /cadena/restaurante[@nombre="El tragón feliz"]/carta/plato/@ref]/@nombre
 
 #. Obtener el nombre de los restaurantes situados en la provincia de Huelva
    (hágalo a partir del código postal)
 
-   .. code-block:: xquery
+   .. dropdown:: Solución...
 
-      /cadena/restaurante[substring(domicilio/cp, 1, 2) = "21"]/@nombre
+      .. code-block:: xquery
+
+         /cadena/restaurante[substring(domicilio/cp, 1, 2) = "21"]/@nombre
 
 #. Obtener el nombre de las recetas que se sirven como tapa en algún restaurante.
 
-   .. code-block:: xquery
+   .. dropdown:: Solución...
 
-      //receta[@id = /cadena/restaurante/carta/plato[contains(@tipo, "tapa")]/@ref]/@nombre
+      .. code-block:: xquery
+
+         //receta[@id = /cadena/restaurante/carta/plato[contains(@tipo, "tapa")]/@ref]/@nombre
 
 #. Obtener el nombre de los restaurantes que sirven bocadillos de anchoa.
 
-   .. code-block:: xquery
+   .. dropdown:: Solución...
 
-      /cadena/restaurante[carta/plato/@ref = //receta[@nombre="bocadillo de anchoas"]/@id]/@nombre
+      .. code-block:: xquery
+
+         /cadena/restaurante[carta/plato/@ref = //receta[@nombre="bocadillo de anchoas"]/@id]/@nombre
 
 #. Contar los restaurantes que usan lechuga en su carta.
 
-   .. code-block:: xquery
+   .. dropdown:: Solución...
 
-      count(/cadena/restaurante[carta/plato/@ref = //receta[ingrediente/@nombre = "lechuga"]/@id])
+      .. code-block:: xquery
+
+         count(/cadena/restaurante[carta/plato/@ref = //receta[ingrediente/@nombre = "lechuga"]/@id])
 
 
 #. Contar los restaurantes que **no** usan lechuga en su carta.
 
-   .. code-block:: xquery
+   .. dropdown:: Solución...
 
-      count(/cadena/restaurante[not(carta/plato/@ref = //receta[ingrediente/@nombre = "lechuga"]/@id)])
+      .. code-block:: xquery
+
+         count(/cadena/restaurante[not(carta/plato/@ref = //receta[ingrediente/@nombre = "lechuga"]/@id)])
 
 #. ¿Qué receta requiere más aceite? Suponga que el aceite siempre se mide en *cc*.
 
-   .. code-block:: xquery
+   .. dropdown:: Solución...
 
-      //receta[ingrediente[@nombre = "aceite"]/@cantidad >= //receta/ingrediente[@nombre = "aceite"]/@cantidad]
+      .. code-block:: xquery
+
+         //receta[ingrediente[@nombre = "aceite"]/@cantidad >= //receta/ingrediente[@nombre = "aceite"]/@cantidad]
 
 Ejercicios propuestos
 *********************

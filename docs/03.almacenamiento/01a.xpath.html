@@ -399,11 +399,37 @@ XML de casilleros<div class="sd-summary-down docutils">
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span>
 </pre></div>
 </div>
-<p>representa el nodo raíz <em>claustro</em>, mientras que la expresión:</p>
+<p>representa el nodo <em>claustro</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>En <em>XPath</em> el nodo «claustro» no es el nodo raíz, sino «/», de ahí que
+la expresión <code class="code docutils literal notranslate"><span class="pre">/claustro</span></code> indique el nodo claustro que es inmediatamente
+hijo del nodo raíz. Por ese motivo, si este es el documento <abbr title="eXtensible  Markup Language">XML</abbr>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="cm">&lt;!-- Este es un ejemplo de documento XML --&gt;</span>
+<span class="nt">&lt;grafico</span><span class="w"> </span><span class="na">unidades=</span><span class="s">&quot;cm&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;punto</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p01&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;x&gt;</span>4<span class="nt">&lt;/x&gt;</span>
+<span class="w">      </span><span class="nt">&lt;y&gt;</span>10<span class="nt">&lt;/y&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/punto&gt;</span>
+<span class="nt">&lt;/grafico&gt;</span>
+</pre></div>
+</div>
+<p>La expresión:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span>
+</pre></div>
+</div>
+<p>devuelve, exclusivamente, el nodo claustro, mientras que la expresión</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span>
+</pre></div>
+</div>
+<p>devuelve también el nodo comentario (<code class="code docutils literal notranslate"><span class="pre">&lt;!--</span> <span class="pre">Este</span> <span class="pre">es</span> <span class="pre">un</span> <span class="pre">ejemplo</span> <span class="pre">de</span> <span class="pre">documento</span> <span class="pre">XML</span> <span class="pre">--&gt;</span></code>).</p>
+</div>
+<p>Por su parte, la expresión:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span>
 </pre></div>
 </div>
-<p>representa todos los nodos <em>profesor</em> que son hijos del <em>claustro</em>.  Es posible
+<p>representa todos los nodos <em>profesor</em> que son hijos de <em>claustro</em>.  Es posible
 también hacer referencia a descendientes no directos como en:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">//</span><span class="nt">nombre</span>
 </pre></div>
@@ -459,17 +485,37 @@ comentario</em>; el texto, que son <em>nodos texto</em>, etc.</p>
 <p>El <em class="dfn">filtro</em> es aquella parte de la ruta <em>XPath</em> que expresa qué nodo o nodos
 quieren referirse con tal ruta. Puede ser:</p>
 <dl>
-<dt><strong>QName</strong></dt><dd><p>Es el nombre del nodo. Por ejemplo:</p>
+<dt><strong>QName</strong></dt><dd><p>Selecciona nodos elemento por nombre. Por ejemplo:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span>
 </pre></div>
 </div>
-<p>selecciona el nodo <em>claustro</em>. Puede usarse un asterisco («*») para indicar
-cualquier nodo que sea elemento. Por ejemplo:</p>
+<p>selecciona el nodo <em>claustro</em>.</p>
+</dd>
+<dt><strong>*</strong></dt><dd><p>Selecciona todos los nodos elemento, sea cual sea su nombre. Por ejemplo:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]/</span><span class="nt">*</span>
 </pre></div>
 </div>
 <p>selecciona los elementos <em>apelativo</em>, <em>nombre</em>, <em>apellidos</em> y <em>departamento</em>
 hijos del primer profesor.</p>
+<div class="admonition note" id="xpath-element">
+<p class="admonition-title">Nota</p>
+<p>A partir de XPath 2.0, existe <code class="docutils literal notranslate"><span class="pre">element()</span></code> que tiene el mismo
+efecto:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]/</span><span class="nf">element</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>La función permite expresar el nombre del elemento:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]/</span><span class="nf">element</span><span class="p">(</span><span class="nt">apodo</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>lo que sería equivalente a haber usado directamente el nombre. Sin
+embargo, si el procesador es capaz de validar con una gramática el
+documento, entonces conocerá el tipo de dato que almacena y puede
+filtrarse por tipo de valor:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]/</span><span class="nf">element</span><span class="p">(</span><span class="nt">*</span><span class="p">,</span><span class="w"> </span><span class="nt">xs:integer</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </dd>
 <dt><strong>text()</strong></dt><dd><p>Selecciona los nodos de texto. Por ejemplo:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]/</span><span class="nt">nombre</span><span class="p">/</span><span class="nf">text</span><span class="p">()</span>
@@ -517,7 +563,7 @@ consecuencia de haber sangrado tan bien el documento.</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">*</span>
 </pre></div>
 </div>
-<p>selecciona exclusiamente los nodos <em>profesor</em>.</p>
+<p>selecciona exclusivamente los nodos <em>profesor</em>.</p>
 </div>
 </dd>
 <dt><strong>comment()</strong></dt><dd><p>Todos los nodos que sean comentarios:</p>
@@ -530,6 +576,16 @@ consecuencia de haber sangrado tan bien el documento.</p>
 </pre></div>
 </div>
 <p>refiero los sexos de todos los profesores.</p>
+</dd>
+<dt><strong>&#64;*</strong></dt><dd><p>Selecciona todos los atributos:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">/</span><span class="na">@*</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>A partir de XPath 2, puede usarse la función <code class="docutils literal notranslate"><span class="pre">attribute()</span></code> con
+idéntico fin y que admite <a class="reference internal" href="#xpath-element"><span class="std std-ref">argumentos como element()</span></a>.</p>
+</div>
 </dd>
 <dt><strong>processing-instruction()</strong></dt><dd><p>Todas las instrucciones de procesamiento. Por ejemplo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">xquery</span>
@@ -561,7 +617,7 @@ nodos que el modelo de datos de <em>XPath</em> define:</p>
 a su ver estar tipados de distinta forma (ser cadenas, ser números, etc.).
 Más adelaten profundizaremos en ello.</p>
 </div>
-<p><em>XPath</em> permite <strong>agregar rutas</strong> de manera que los nodos seleccionados sean la
+<p id="xpath1-union"><em>XPath</em> permite <strong>agregar rutas</strong> de manera que los nodos seleccionados sean la
 unión de los nodos que seleccionan las distintas rutas. Para ello, usa el
 operador «<kbd class="kbd docutils literal notranslate">|</kbd>»:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">apelativo</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">nombre</span>
@@ -806,6 +862,17 @@ como argumento un nodo, se devuelve el nombre del nodo actual. Por ejemplo:</p>
 </pre></div>
 </div>
 <p>selecciona los nodos hijo de profesor que son <em>apelativo</em> o <em>nombre</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Esto mismo hay modos alternativos de lograrlo:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">*</span><span class="p">[</span><span class="k">self</span><span class="p">::</span><span class="nt">apelativo</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="k">self</span><span class="p">::</span><span class="nt">nombre</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>o también usando el <a class="reference internal" href="#xpath1-union"><span class="std std-ref">operador de unión</span></a></p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">apelativo</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">nombre</span>
+</pre></div>
+</div>
+</div>
 </dd>
 <dt><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/XPath/Functions/not">not()</a></dt><dd><p>Invierte el resultado lógico de la expresión. Ya se trató al hablar de los
 operadores.</p>
@@ -886,8 +953,8 @@ devuelven expresiones como:</p>
 <p class="admonition-title">Nota</p>
 <p>Obsérvese que se ha usado la palabra «conjunto» y no
 «secuencia». Es importante el matiz, porque las secuencias ordenan sus
-elementos, mientra que los conjuntos, no. Esto quiere decir, que los
-conjuntos de nodos, en teoría no aseguran cuál es el orden en que se
+elementos, mientra que los conjuntos, no. Esto quiere decir que los
+conjuntos de nodos, en teoría, no aseguran cuál es el orden en que se
 obtendrán nodos. En la práctica, sin embargo, los nodos siempre se
 devuelven en el orden en que se encuentran en el documento <abbr title="eXtensible  Markup Language">XML</abbr>.</p>
 </div>
@@ -899,14 +966,14 @@ devuelven en el orden en que se encuentran en el documento <abbr title="eXtensib
 <dt><strong>Tipos de datos</strong></dt><dd><p>¿Cuáles son los tipos de datos (no de nodos, que ya hemos enumerado) que
 reconoce XPath 1.0? Solamente <strong>4</strong>:</p>
 <ol class="arabic simple">
-<li><p>Booleanos.</p></li>
+<li><p>Booleanos (notados <code class="docutils literal notranslate"><span class="pre">true</span></code> y <code class="docutils literal notranslate"><span class="pre">false</span></code>).</p></li>
 <li><p>Números.</p></li>
 <li><p>Cadenas.</p></li>
 <li><p>Conjuntos de nodos.</p></li>
 </ol>
 <p>Es muy conveniente tener presente esto, porque los operadores pueden
 comportarse de distinto modo según sea el tipo de los operandos y también
-habrá que saber cómo se actua cuando los operandos son de distinto tipo.</p>
+habrá que saber cómo se actúa cuando los operandos son de distinto tipo.</p>
 </dd>
 </dl>
 <p>Por tanto, para afinar por completo nuestro conocimiento de <em>XPath</em>, es
@@ -919,7 +986,7 @@ ejemplo, observe esta expresión aparentemente simple:</p>
 (en puridad, nodos profesor) cuyo nombre es «<em>José</em>». Sin embargo, si
 profundizamos un poco, llegaremos a la conclusión de que «José» es un cadena,
 pero el nodo <code class="docutils literal notranslate"><span class="pre">nombre</span></code> con el que se compara no lo es: es un nodo elemento que,
-a su vez contiene un nodo texto, cuyo valor si es una cadena:</p>
+a su vez contiene un nodo texto, cuyo valor sí es una cadena:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="nt">nombre</span><span class="p">/</span><span class="nf">text</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;José&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1008,6 +1075,8 @@ a cadena. ¿Cómo se transforma un nodo elemento a cadena? Se yuxtaponen los
 valores de todos los nodos de texto que contiene. Sólo tiene uno, el que
 contiene el propio nombre, por lo que la comparación se puede llevar a cabo.</p>
 </dd>
+</dl>
+<dl id="xpath-pluralidad">
 <dt><strong>Pluralidad</strong></dt><dd><p>Existe, además del de la conversión, otro aspecto a tener en cuenta.
 Recordemos que habíamos modificado el <abbr title="Document Type Definition">DTD</abbr> para que un profesor pudiera
 tener varios apodos. ¿Cómo encontraríamos los profesores a los que se conoce
@@ -1063,8 +1132,83 @@ profesor es «Pepe».</p>
 </dd>
 </dl>
 </section>
-<section id="xpath-2-0">
-<h2><span class="section-number">3.1.1.4. </span>XPath 2.0<a class="headerlink" href="#xpath-2-0" title="Enlace permanente a este encabezado">¶</a></h2>
+<section id="xpath-2-0-3-0">
+<h2><span class="section-number">3.1.1.4. </span>XPath 2.0/3.0<a class="headerlink" href="#xpath-2-0-3-0" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>La versión 2.0 del lenguaje supuso en gran cambio hasta el punto de que, aunque
+procuró mantenerse cierta compatibilidad con la primera versión, no todas las
+expresiones se evalúan del mismo modo. La especificación añadió muchísimas más
+funciones de las ya existentes, algunas novedosas construcciones y dos
+redefiniciones conceptuales de suma importancia:</p>
+<dl id="xpath2-result">
+<dt><strong>Resultado</strong></dt><dd><p>A diferencia de <a class="reference internal" href="#xpath1-result"><span class="std std-ref">lo que ocurre en XPath 1.0</span></a>, en las
+versiones posteriores el resultado de una expresión es siempre una secuencia
+de <em>ítems</em>, esto es, una serie ordenada de valores o nodos. Por tanto, la
+expresión:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>devuelve una secuencia constituida por un único valor lógico (verdadero), o</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span>
+</pre></div>
+</div>
+<p>devuelve una secuencia constituida por todos los nodos profesor ordenada
+según aparecen en el documento. Las secuencias pueden construirse
+explícitamente:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Soy una cadena&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>lo cual es muy útil porque nos sirve para predicados como este:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="nt">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;Manuel&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Luis&quot;</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>que devolverá todos los nodos profesor en que el profesor se llame «Manuel» o
+«Luis», ya que el operando de la izquierda es único, el de la derecha varios
+y ya sabe <a class="reference internal" href="#xpath-pluralidad"><span class="std std-ref">cómo se resuelve el problema de la pluralidad</span></a>.</p>
+<p>Las secuencias tienen algunas particularidades:</p>
+<ul>
+<li><p>Cuando están compuestas por un único ítem, pueden escribirse con o sin el
+paréntesis. En consecuencia, esta expresión:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>y esta otra:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>son equivalentes.</p>
+</li>
+<li><p>Las secuencias no se anidan a otras secuencias, sino que si se
+produce este hecho, se <em>aplanan</em>. En consecuencia esto:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>es equivalente a esto otro:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las secuencias que representan rangos de números enteros pueden expresarse
+con una sintaxis abreviada. Así, la secuencia anterior puede escribirse
+como:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+<dt><strong>Tipos</strong></dt><dd><p>El otro gran cambio sustancial son los tipos atómicos de los datos (que no de
+nodos, pues siguen siendo los siete mismos). De <em>XPath</em> 2.0 en adelante se
+asumen los tipos definidos para <a class="reference internal" href="../98.apendices/21.xsd.html#xsd"><span class="std std-ref">XML Schemas</span></a>, más algún pequeño
+añadido que resumidos por <cite>cortesía de Wikipedia
+&lt;https://commons.wikimedia.org/wiki/File:XQuery_and_XPath_Data_Model_type_hierarchy.png&gt;</cite>
+lo podemos ver en el siguiente esquema:</p>
+<img alt="https://upload.wikimedia.org/wikipedia/commons/9/91/XQuery_and_XPath_Data_Model_type_hierarchy.png" src="https://upload.wikimedia.org/wikipedia/commons/9/91/XQuery_and_XPath_Data_Model_type_hierarchy.png" />
+<p>Así pues, nos encontraremos con tipos de datos como <code class="docutils literal notranslate"><span class="pre">xs:integer</span></code>  o
+<code class="docutils literal notranslate"><span class="pre">xs:string</span></code>, pero sólo en caso de que el procesador haya sido capaz de
+validar el documento con una gramática para discernir realmente el tipo de
+dato. De lo contrario, ya veremos cómo el tipo queda indefinido.</p>
+</dd>
+</dl>
 </section>
 <section id="xquery">
 <h2><span class="section-number">3.1.1.5. </span>XQuery<a class="headerlink" href="#xquery" title="Enlace permanente a este encabezado">¶</a></h2>
@@ -1075,110 +1219,270 @@ profesor es «Pepe».</p>
 restaurantes</span></a>, determine las expresion <em>XPath</em> apropiadas para:</p>
 <ol class="arabic">
 <li><p>Obtener todas las recetas disponibles.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución…<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span>
 </pre></div>
 </div>
-</li>
+</div>
+</details></li>
 <li><p>Obtener el nodo que representa la receta de nombre «ensalada».</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución…<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;ensalada&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
-</li>
+</div>
+</details></li>
 <li><p>Obtener la carta del restaurante de identificador «re01».</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución…<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="na">@id</span><span class="o">=</span><span class="s2">&quot;re01&quot;</span><span class="p">]/</span><span class="nt">carta</span>
 </pre></div>
 </div>
-</li>
+</div>
+</details></li>
 <li><p>Obtener el código postal del restaurante «El tragón feliz»-</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución…<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;El dragon feliz&quot;</span><span class="p">]/</span><span class="nt">domicilio</span><span class="p">/</span><span class="nt">cp</span>
 </pre></div>
 </div>
-</li>
+</div>
+</details></li>
 <li><p>Contar las recetas de las que dispone la cadena.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución…<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">receta</span><span class="p">)</span>
 </pre></div>
 </div>
-</li>
+</div>
+</details></li>
 <li><p>Contar cuántos ingredientes necesita la receta de la <em>ensalada</em>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución…<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">receta</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;ensalada&quot;</span><span class="p">]/</span><span class="nt">ingrediente</span><span class="p">)</span>
 </pre></div>
 </div>
-</li>
+</div>
+</details></li>
 <li><p>Contar cuántos ingredientes de «ensalada» se deben medir en gramos.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución…<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">receta</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;ensalada&quot;</span><span class="p">]/</span><span class="nt">ingrediente</span><span class="p">[</span><span class="na">@unidad</span><span class="o">=</span><span class="s2">&quot;gramo&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
-</li>
+</div>
+</details></li>
 <li><p>Obtener la carta del restaurante «El tragón feliz».</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución…<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;El tragón feliz&quot;</span><span class="p">]/</span><span class="nt">carta</span>
 </pre></div>
 </div>
-</li>
+</div>
+</details></li>
 <li><p>Obtener el nombre de las recetas en las que se usa <em>lechuga</em>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución…<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="nt">ingrediente</span><span class="p">/</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lechuga&quot;</span><span class="p">]/</span><span class="na">@nombre</span>
 </pre></div>
 </div>
-</li>
+</div>
+</details></li>
 <li><p>Obtener el nombre de las recetas en las que <strong>no</strong> se usa <em>lechuga</em>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución…<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="nt">ingrediente</span><span class="p">/</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lechuga&quot;</span><span class="p">)]/</span><span class="na">@nombre</span>
 </pre></div>
 </div>
-</li>
+</div>
+</details></li>
 <li><p>Obtener el identificador de los restaurantes en los que se sirven tapas.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución…<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">/</span><span class="na">@tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;tapa&quot;</span><span class="w"> </span><span class="p">]/</span><span class="na">@id</span>
 </pre></div>
 </div>
-<p>o mejor:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">cadena</span><span class="o">/</span><span class="n">restaurante</span><span class="p">[</span><span class="n">carta</span><span class="o">/</span><span class="n">plato</span><span class="p">[</span><span class="n">contains</span><span class="p">(</span><span class="nd">@tipo</span><span class="p">,</span> <span class="s2">&quot;tapa&quot;</span><span class="p">)]]</span><span class="o">/</span><span class="nd">@id</span>
+<p class="sd-card-text">o mejor:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">[</span><span class="nf">contains</span><span class="p">(</span><span class="na">@tipo</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tapa&quot;</span><span class="p">)]]/</span><span class="na">@id</span>
 </pre></div>
 </div>
-</li>
+</div>
+</details></li>
 <li><p>Obtener el identificador de los restaurantes en los que <strong>no</strong> se sirven tapas.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución…<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="nf">contains</span><span class="p">(</span><span class="na">@tipo</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tapa&quot;</span><span class="p">))]]/</span><span class="na">@id</span>
 </pre></div>
 </div>
-</li>
+</div>
+</details></li>
 <li><p>Obtener el nombre de los restaurantes con más de 10 platos en la carta.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución…<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nf">count</span><span class="p">(</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">]/</span><span class="na">@nombre</span>
 </pre></div>
 </div>
-</li>
+</div>
+</details></li>
 <li><p>Obtener los nombres de las recetas que se sirven en «El tragón feliz».</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución…<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="na">@id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;El tragón feliz&quot;</span><span class="p">]/</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">/</span><span class="na">@ref</span><span class="p">]/</span><span class="na">@nombre</span>
 </pre></div>
 </div>
-</li>
+</div>
+</details></li>
 <li><p>Obtener el nombre de los restaurantes situados en la provincia de Huelva
 (hágalo a partir del código postal)</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución…<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nf">substring</span><span class="p">(</span><span class="nt">domicilio</span><span class="p">/</span><span class="nt">cp</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;21&quot;</span><span class="p">]/</span><span class="na">@nombre</span>
 </pre></div>
 </div>
-</li>
+</div>
+</details></li>
 <li><p>Obtener el nombre de las recetas que se sirven como tapa en algún restaurante.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución…<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="na">@id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">/</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">[</span><span class="nf">contains</span><span class="p">(</span><span class="na">@tipo</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tapa&quot;</span><span class="p">)]/</span><span class="na">@ref</span><span class="p">]/</span><span class="na">@nombre</span>
 </pre></div>
 </div>
-</li>
+</div>
+</details></li>
 <li><p>Obtener el nombre de los restaurantes que sirven bocadillos de anchoa.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución…<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">/</span><span class="na">@ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;bocadillo de anchoas&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">]/</span><span class="na">@nombre</span>
 </pre></div>
 </div>
-</li>
+</div>
+</details></li>
 <li><p>Contar los restaurantes que usan lechuga en su carta.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución…<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">/</span><span class="na">@ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="nt">ingrediente</span><span class="p">/</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lechuga&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">])</span>
 </pre></div>
 </div>
-</li>
+</div>
+</details></li>
 <li><p>Contar los restaurantes que <strong>no</strong> usan lechuga en su carta.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución…<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">/</span><span class="na">@ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="nt">ingrediente</span><span class="p">/</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lechuga&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">)])</span>
 </pre></div>
 </div>
-</li>
+</div>
+</details></li>
 <li><p>¿Qué receta requiere más aceite? Suponga que el aceite siempre se mide en <em>cc</em>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución…<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="nt">ingrediente</span><span class="p">[</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aceite&quot;</span><span class="p">]/</span><span class="na">@cantidad</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="p">//</span><span class="nt">receta</span><span class="p">/</span><span class="nt">ingrediente</span><span class="p">[</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aceite&quot;</span><span class="p">]/</span><span class="na">@cantidad</span><span class="p">]</span>
 </pre></div>
 </div>
-</li>
+</div>
+</details></li>
 </ol>
 </section>
 <section id="ejercicios-propuestos">
@@ -1390,7 +1694,7 @@ operadores sean números binarios.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#xpath-1-0">3.1.1.3. XPath 1.0</a></li>
-<li><a class="reference internal" href="#xpath-2-0">3.1.1.4. XPath 2.0</a></li>
+<li><a class="reference internal" href="#xpath-2-0-3-0">3.1.1.4. XPath 2.0/3.0</a></li>
 <li><a class="reference internal" href="#xquery">3.1.1.5. XQuery</a></li>
 <li><a class="reference internal" href="#ejercicio-resuelto">3.1.1.6. Ejercicio resuelto</a></li>
 <li><a class="reference internal" href="#ejercicios-propuestos">3.1.1.7. Ejercicios propuestos</a></li>

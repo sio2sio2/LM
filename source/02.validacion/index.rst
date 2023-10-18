@@ -18,7 +18,7 @@ si son (además de bien formados) válidos. Entiéndase:
 Si ha realizado los :ref:`ejercicios propuestos de la unidad anterior <ej-li>`,
 ya habrá diseñado bastantes documentos para intercambiar información
 a partir de unas especificaciones dadas. Sin embargo, aún no tiene medios para
-saber qué el documento de ejemplo que ha escrito se ajusta a la gramática
+saber que el documento de ejemplo que ha escrito se ajusta a la gramática
 *mental* que ha desarrollado en su cabeza para cumplir tales especificaciones.
 Por ejemplo, la solución |XML| del :ref:`primer ejercicio resuelto
 <xml-resueltos>` era esta:
@@ -28,11 +28,11 @@ Por ejemplo, la solución |XML| del :ref:`primer ejercicio resuelto
    .. literalinclude:: /01.intro/files/ejxml1.recetas.xml
       :language: xml
 
-Esto implica mucho: que la etiqueda del nodo raíz es :code:`<recetas>` y que
+Esto implica mucho: que la etiqueta del nodo raíz es :code:`<recetas>` y que
 no tiene ninguna propiedad, pero sí varios nodos  :code:`<receta>`  dentro, etc.
 ¿Cómo podemos comprobar que un |XML| de ejemplo cumple todos estos requisitos
 (p.e. que :code:`<recetas>` no tiene propiedades), esto es, que cumple con la
-gramática específica que hemos diseñado. El propósito que nos planteamos ahora
+gramática específica que hemos diseñado? El propósito que nos planteamos ahora
 implica aprender dos tareas:
 
 #. Escribir esa gramática específica.

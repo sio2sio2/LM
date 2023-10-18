@@ -1,0 +1,36 @@
+{
+   "unidad": "cm",
+   "entidades": {
+      "puntos": [
+         {
+            "id": 1,
+            "coord": [0, 0]
+         },
+         {
+            "id": 5,
+            "coord": [-1, 10]
+         }
+      ],
+      "rectas": [
+         {
+            "id": 2,
+            "ini": [0, 0],
+            "fin": [5, 10]
+         }
+      ],
+      "circunferencias": [
+         {
+            "id": 3,
+            "centro": [10, 10],
+            "r": 5
+         }
+      ],
+      "rectangulos": [
+         {
+            "id": 4,
+            "ini": [4, 4],
+            "fin": [10, 10]
+         }
+      ]
+   }
+}

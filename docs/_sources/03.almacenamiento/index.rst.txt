@@ -10,7 +10,7 @@ bloque del módulo dedicado a ellos:
 #. Cómo almacenarlos.
 #. Cómo acceder selectivamente a la información incluida en ellos. Por ejemplo,
    dado el :ref:`XML sobre casilleros <xml-ejemplo>` extraer el departamento
-   al que pertenece el profesor llamado *Luis Márquez Vázquez*\ ?
+   al que pertenece el profesor llamado *Luis Márquez Vázquez*\ .
 
 .. toctree::
    :caption: Contenidos

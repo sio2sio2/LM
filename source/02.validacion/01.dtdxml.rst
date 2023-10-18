@@ -63,7 +63,7 @@ declaración:
 
    .. code-block:: xml
 
-      <!DOCTYPE claustro SYSTEM "clasutro.dtd">
+      <!DOCTYPE claustro SYSTEM "claustro.dtd">
 
    En este caso, entre comillas debe incluirse la ruta y el nombre de archivo
    correspondiente al |DTD|. En ausencia de ruta, se sobreentiende que el |DTD|
@@ -151,7 +151,7 @@ validaciones. Se propone:
   *Debian* (:deb:`xmlstarlet`).
 
 .. warning:: La extensión propuesta de :program:`Visual Studio Code` parece ser
-   incapaz de validar cuando la definición la gramática se ha hecho modular,
+   incapaz de validar cuando la definición de la gramática se ha hecho modular,
    esto es, cuando el |DTD| referido por el |XML| no contiene todo la
    definición, sino que a su vez usa :ref:`entidades parámetro externas
    <dtd-ent-par>` para transladar parte de la definición a otro |DTD|.
@@ -183,7 +183,7 @@ Para *validar* realmente puede hacerse:
 
    $ xmlstarlet val -e -d claustro.dtd claustro.xml
 
-Pero si el |DTD| esta declarado en el |XML| (en la declaración de tipo de
+Pero si el |DTD| está declarado en el |XML| (en la declaración de tipo de
 documento), puede simplificarse a:
 
 .. code-block:: console
@@ -242,7 +242,7 @@ sino varios lo que lleva a definir dos conceptos:
 
       <!ELEMENT claustro (profesor|lector)>
 
-     En este caso, estamos afirmado que un claustro está compuesto por o *un*
+     En este caso, estamos afirmando que un claustro está compuesto por o *un*
      profesor o por *un* lector, pero no por ambos. Sí, es algo estúpido, pero
      aún no sabemos cardinalidad.
 
@@ -294,7 +294,7 @@ sino varios lo que lleva a definir dos conceptos:
 
          <!ELEMENT claustro (profesor)*>
 
-     Con esta definición, el *clasutro* podría estar vacío.
+     Con esta definición, el *claustro* podría estar vacío.
 
 .. note:: Pueden existir nodos de contenido mixto, es decir, nodos que mezclan
    texto con nodos hijos. En este caso, se debe escribir así::
@@ -538,9 +538,10 @@ un |XML| que use espacios de nombres. Ahora bien, si revisamos :ref:`el epígraf
 que introduce los espacios de nombres <xmlns>`, veremos que tenemos libertad en
 el |XML| para escoger prefijos y espacios de nombres predeterminados. En métodos
 de definición de la gramática como :ref:`XSD <xsd>` o :ref:`Relax-NG <rnc>` esto
-no es un problema, por lo que podremos escribir el |XML| como mejor nos convega,
-pero sí lo es en |DTD|, ya que al entender *c:apelativo* como un nombre, y no
-como un nombre con un prefijo, la etiqueta siempre tendrá que ser *c:apelativo*.
+no es un problema, por lo que podremos escribir el |XML| como mejor nos
+convenga, pero sí lo es en |DTD|, ya que al entender *c:apelativo* como un
+nombre, y no como un nombre con un prefijo, la etiqueta siempre tendrá que ser
+*c:apelativo*.
 
 Para el caso particular del ejemplo de profesores y direcciones, dado que no se
 entremezclan los elementos de los espacios de nombres, lo más fácil es escribir
