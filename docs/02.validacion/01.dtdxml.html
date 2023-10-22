@@ -128,7 +128,7 @@ declaración:</p>
 </div>
 </li>
 <li><p><strong>Externo privado</strong>, que será el que habitualmente usemos en estos apuntes:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE claustro SYSTEM &quot;clasutro.dtd&quot;&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE claustro SYSTEM &quot;claustro.dtd&quot;&gt;</span>
 </pre></div>
 </div>
 <p>En este caso, entre comillas debe incluirse la ruta y el nombre de archivo
@@ -144,7 +144,7 @@ encuentra el propio <abbr title="Document Type Definition">DTD</abbr>, mientras 
 Formal) es un modo de identificar inequívocamente ese <abbr title="Document Type Definition">DTD</abbr> público, por lo
 que cumple el papel de un <abbr title="Uniform Resource Identifier">URI</abbr>. Que en este caso se use <abbr title="Formal Public Identifier">FPI</abbr> y no <abbr title="Uniform Resource Identifier">URI</abbr> es
 una cuestión heredada de tiempos en que no existía aún el segundo concepto,
-por lo que los <abbr title="Formal Public Identifier">FPI</abbr>s constituyen un <a class="reference external" href="https://es.wikipedia.org/wiki/Sistema_heredado">sistema heredado</a><a class="footnote-reference brackets" href="#id7" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+por lo que los <abbr title="Formal Public Identifier">FPI</abbr>s constituyen un <a class="reference external" href="https://es.wikipedia.org/wiki/Sistema_heredado">sistema heredado</a><a class="footnote-reference brackets" href="#id8" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 <p>Un ejemplo de declaración es la que define la versión 1.0 de <abbr title="eXtensible HyperText Markup Language">XHTML</abbr>:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</span>
 </pre></div>
@@ -171,7 +171,7 @@ reglas incluidas en la propia declaración:</p>
 <section id="ejemplo">
 <h3><span class="section-number">2.1.1.2. </span>Ejemplo<a class="headerlink" href="#ejemplo" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Antes de entrar en harina, no esta de más ver qué aspecto tiene un <abbr title="Document Type Definition">DTD</abbr>. Para
-ello tomemos el <a class="reference internal" href="../01.intro/02b.marcas.html#xml-ejemplo"><span class="std std-ref">documento XML usado como ejemplo introductorio</span></a>, aunque con una ligera variación<a class="footnote-reference brackets" href="#id8" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> (descárguelo de <a class="reference download internal" download="" href="../_downloads/4cb21890aa27e222184ac6820327e0c7/casilleros_v2.xml"><code class="xref download docutils literal notranslate"><span class="pre">aquí</span></code></a>):</p>
+ello tomemos el <a class="reference internal" href="../01.intro/02b.marcas.html#xml-ejemplo"><span class="std std-ref">documento XML usado como ejemplo introductorio</span></a>, aunque con una ligera variación<a class="footnote-reference brackets" href="#id9" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> (descárguelo de <a class="reference download internal" download="" href="../_downloads/4cb21890aa27e222184ac6820327e0c7/casilleros_v2.xml"><code class="xref download docutils literal notranslate"><span class="pre">aquí</span></code></a>):</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 XML de casilleros<div class="sd-summary-down docutils">
@@ -284,7 +284,7 @@ DTD de casilleros<div class="sd-summary-down docutils">
 </div>
 </div>
 </details><p>Este <abbr title="Document Type Definition">DTD</abbr>, a su vez, llama a otro que contiene exclusivamente <a class="reference download internal" download="" href="../_downloads/4a4a530913f66a6de7951e6d554d5941/departamentos.ent"><code class="xref download docutils literal notranslate"><span class="pre">las</span>
-<span class="pre">entidades</span> <span class="pre">que</span> <span class="pre">definen</span> <span class="pre">los</span> <span class="pre">departamentos</span></code></a><a class="footnote-reference brackets" href="#id9" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>:</p>
+<span class="pre">entidades</span> <span class="pre">que</span> <span class="pre">definen</span> <span class="pre">los</span> <span class="pre">departamentos</span></code></a><a class="footnote-reference brackets" href="#id10" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>:</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 DTD de definición de entidades<div class="sd-summary-down docutils">
@@ -322,17 +322,22 @@ validaciones. Se propone:</p>
 <li><p>Una solución en línea como <a class="reference external" href="https://www.xmlvalidation.com/">xmlvalidation.com</a>, que permite validar documentos <abbr title="eXtensible  Markup Language">XML</abbr> a
 partir de su <abbr title="Document Type Definition">DTD</abbr>.</p></li>
 <li><p><a class="reference external" href="https://code.visualstudio.com">Visual Studio Code</a>, cuya <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml">extensión XML</a>,
-consulta la gramática definida en el <abbr title="Document Type Definition">DTD</abbr> que se refiera en la declaración<a class="footnote-reference brackets" href="#id10" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> e indica las violaciones a ella según se escribe.</p></li>
+consulta la gramática definida en el <abbr title="Document Type Definition">DTD</abbr> que se refiera en la declaración<a class="footnote-reference brackets" href="#id11" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> e indica las violaciones a ella según se escribe.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Por defecto, la extensión no atiende las definiciones hechas en
+un <abbr title="Document Type Definition">DTD</abbr> referido desde otro <abbr title="Document Type Definition">DTD</abbr> mediante una <a class="reference internal" href="#dtd-ent-par"><span class="std std-ref">entidad parámetro</span></a>, lo que malogra una gramática que querramos hacer modular<a class="footnote-reference brackets" href="#id12" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>. Puede corregirse esto haciendo verdadera la opción
+<code class="docutils literal notranslate"><span class="pre">xml.validation.resolveExternalEntities</span></code>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;xml.validation.resolveExternalEntities&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</li>
 <li><p><strong class="command">xmlstarlet</strong>, que tiene paquete en las distribuciones basadas en
 <em>Debian</em> (<a class="reference external" href="https://packages.debian.org/stable/xmlstarlet">xmlstarlet</a>).</p></li>
 </ul>
-<div class="admonition warning">
-<p class="admonition-title">Advertencia</p>
-<p>La extensión propuesta de <strong class="program">Visual Studio Code</strong> parece ser
-incapaz de validar cuando la definición la gramática se ha hecho modular,
-esto es, cuando el <abbr title="Document Type Definition">DTD</abbr> referido por el <abbr title="eXtensible  Markup Language">XML</abbr> no contiene todo la
-definición, sino que a su vez usa <a class="reference internal" href="#dtd-ent-par"><span class="std std-ref">entidades parámetro externas</span></a> para transladar parte de la definición a otro <abbr title="Document Type Definition">DTD</abbr>.</p>
-</div>
 <p>Centrándonos en este último, es especialmente útil, porque permite:</p>
 <ul class="simple">
 <li><p>Comprobar si un <abbr title="eXtensible  Markup Language">XML</abbr> está bien formado.</p></li>
@@ -354,7 +359,7 @@ comprueba si el <abbr title="eXtensible  Markup Language">XML</abbr> se ajusta a
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>xmlstarlet<span class="w"> </span>val<span class="w"> </span>-e<span class="w"> </span>-d<span class="w"> </span>claustro.dtd<span class="w"> </span>claustro.xml
 </pre></div>
 </div>
-<p>Pero si el <abbr title="Document Type Definition">DTD</abbr> esta declarado en el <abbr title="eXtensible  Markup Language">XML</abbr> (en la declaración de tipo de
+<p>Pero si el <abbr title="Document Type Definition">DTD</abbr> está declarado en el <abbr title="eXtensible  Markup Language">XML</abbr> (en la declaración de tipo de
 documento), puede simplificarse a:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>xmlstarlet<span class="w"> </span>val<span class="w"> </span>-e<span class="w"> </span>-E<span class="w"> </span>claustro.xml
 </pre></div>
@@ -411,7 +416,7 @@ dos secuencias:</p>
 <div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">claustro</span> <span class="o">(</span><span class="nt">profesor</span><span class="o">|</span><span class="nt">lector</span><span class="o">)</span><span class="k">&gt;</span>
 </pre></div>
 </div>
-<p>En este caso, estamos afirmado que un claustro está compuesto por o <em>un</em>
+<p>En este caso, estamos afirmando que un claustro está compuesto por o <em>un</em>
 profesor o por <em>un</em> lector, pero no por ambos. Sí, es algo estúpido, pero
 aún no sabemos cardinalidad.</p>
 </li>
@@ -428,6 +433,8 @@ incluso, usar paréntesis para agruparlas. Suponiendo dos nodos hijos llamados
 </pre></div>
 </div>
 </dd>
+</dl>
+<dl id="dtd-cardinalidad">
 <dt><strong>Cardinalidad</strong></dt><dd><p>que representa la posible repetición de un elemento y que <abbr title="Document Type Definition">DTD</abbr> la significa
 añadiendo tras el elemento un modificador. El modificador permite expresar:</p>
 <ul>
@@ -462,7 +469,7 @@ haber uno.</p>
 <div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">claustro</span> <span class="o">(</span><span class="nt">profesor</span><span class="o">)*</span><span class="k">&gt;</span>
 </pre></div>
 </div>
-<p>Con esta definición, el <em>clasutro</em> podría estar vacío.</p>
+<p>Con esta definición, el <em>claustro</em> podría estar vacío.</p>
 </li>
 </ul>
 </dd>
@@ -611,7 +618,7 @@ como privadas:</p>
 <span class="k">&lt;!NOTATION</span> <span class="nt">nombre</span> <span class="kc">PUBLIC</span> <span class="s2">&quot;IDPublico&quot;</span> <span class="s2">&quot;IDSistema&quot;</span><span class="k">&gt;</span>
 </pre></div>
 </div>
-<p>El identificador del sistema suele ser el tipo <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> asociado a ese formato<a class="footnote-reference brackets" href="#id11" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>:</p>
+<p>El identificador del sistema suele ser el tipo <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> asociado a ese formato<a class="footnote-reference brackets" href="#id13" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>:</p>
 <div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!NOTATION</span> <span class="nt">JPG</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;image/jpeg&quot;</span><span class="k">&gt;</span>
 <span class="k">&lt;!NOTATION</span> <span class="nt">PNG</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;image/png&quot;</span><span class="k">&gt;</span>
 <span class="k">&lt;!NOTATION</span> <span class="nt">GIF</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;image/gif&quot;</span><span class="k">&gt;</span>
@@ -674,7 +681,7 @@ de los atributos cuyo tipo es una <em>entidad</em>.</p>
 </section>
 <section id="parametro">
 <span id="dtd-ent-par"></span><h4><span class="section-number">2.1.2.4.2. </span>Parámetro<a class="headerlink" href="#parametro" title="Enlace permanente a este encabezado">¶</a></h4>
-<p>Operan su sustitución en el propio <abbr title="Document Type Definition">DTD</abbr> por lo que sólo tiene sentido que sean
+<p>Operan su sustitución en el propio <abbr title="Document Type Definition">DTD</abbr>, por lo que sólo tiene sentido que sean
 procesables (internas, externas privadas o externas públicas):</p>
 <div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">nombre</span> <span class="s2">&quot;valor&quot;</span><span class="k">&gt;</span>              <span class="c">&lt;!-- interna --&gt;</span>
 <span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">nombre</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;URL&quot;</span><span class="k">&gt;</span>         <span class="c">&lt;!-- externa privada --&gt;</span>
@@ -703,9 +710,10 @@ un <abbr title="eXtensible  Markup Language">XML</abbr> que use espacios de nomb
 que introduce los espacios de nombres</span></a>, veremos que tenemos libertad en
 el <abbr title="eXtensible  Markup Language">XML</abbr> para escoger prefijos y espacios de nombres predeterminados. En métodos
 de definición de la gramática como <a class="reference internal" href="../98.apendices/21.xsd.html#xsd"><span class="std std-ref">XSD</span></a> o <a class="reference internal" href="../98.apendices/22.rnc.html#rnc"><span class="std std-ref">Relax-NG</span></a> esto
-no es un problema, por lo que podremos escribir el <abbr title="eXtensible  Markup Language">XML</abbr> como mejor nos convega,
-pero sí lo es en <abbr title="Document Type Definition">DTD</abbr>, ya que al entender <em>c:apelativo</em> como un nombre, y no
-como un nombre con un prefijo, la etiqueta siempre tendrá que ser <em>c:apelativo</em>.</p>
+no es un problema, por lo que podremos escribir el <abbr title="eXtensible  Markup Language">XML</abbr> como mejor nos
+convenga, pero sí lo es en <abbr title="Document Type Definition">DTD</abbr>, ya que al entender <em>c:apelativo</em> como un
+nombre, y no como un nombre con un prefijo, la etiqueta siempre tendrá que ser
+<em>c:apelativo</em>.</p>
 <p>Para el caso particular del ejemplo de profesores y direcciones, dado que no se
 entremezclan los elementos de los espacios de nombres, lo más fácil es escribir
 siempre el <abbr title="eXtensible  Markup Language">XML</abbr> de la última forma que se propuso, o sea, cambiando el espacio
@@ -793,7 +801,7 @@ DTD para el XML propuesto<div class="sd-summary-down docutils">
 <span class="k">&lt;!ELEMENT</span> <span class="nt">ingrediente</span> <span class="kc">EMPTY</span><span class="k">&gt;</span>
 <span class="k">&lt;!ATTLIST</span> <span class="nt">ingrediente</span> <span class="na">nombre</span>     <span class="kc">CDATA</span>             <span class="kc">#REQUIRED</span>
                       <span class="na">unidad</span>     <span class="o">(</span><span class="na">pieza</span><span class="o">|</span><span class="na">gramo</span><span class="o">|</span><span class="na">cc</span><span class="o">)</span>  <span class="kc">#REQUIRED</span>
-                      <span class="na">cantidad</span>   <span class="kc">CDATA</span>             <span class="kc">#REQUIRED</span><span class="k">&gt;</span>
+                      <span class="na">cantidad</span>   <span class="kc">NMTOKEN</span>           <span class="kc">#REQUIRED</span><span class="k">&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -865,17 +873,17 @@ elemento se pueda repetir entre 3 y 25 veces.</p></li>
 </dl>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id7" role="note">
+<aside class="footnote brackets" id="id8" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
 <p>De hecho, para la definición de <a class="reference internal" href="../98.apendices/22.rnc.html#rnc-ns"><span class="std std-ref">espacios de nombres</span></a>, que
 son más modernos, ya sólo se usa una <abbr title="Uniform Resource Identifier">URI</abbr> para identificarlos.</p>
 </aside>
-<aside class="footnote brackets" id="id8" role="note">
+<aside class="footnote brackets" id="id9" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
 <p>La variación es que hemos incluido la definición del tipo de documento
 con <code class="code docutils literal notranslate"><span class="pre">&lt;!DOCTYPE</span> <span class="pre">...</span> <span class="pre">&gt;</span></code>.</p>
 </aside>
-<aside class="footnote brackets" id="id9" role="note">
+<aside class="footnote brackets" id="id10" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
 <p>Podríamos haber introducido esas definiciones dentro del propio
 <code class="file docutils literal notranslate"><span class="pre">casilleros.dtd</span></code> o incluso haberlas incluido como adición a la propia
@@ -973,12 +981,18 @@ XML de casilleros con entidades empotradas<div class="sd-summary-down docutils">
 </div>
 </div>
 </details></aside>
-<aside class="footnote brackets" id="id10" role="note">
+<aside class="footnote brackets" id="id11" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">4</a><span class="fn-bracket">]</span></span>
 <p>También soporta <a class="reference internal" href="../98.apendices/22.rnc.html#rnc"><span class="std std-ref">Relax-NG Compact</span></a> y <a class="reference internal" href="../98.apendices/21.xsd.html#xsd"><span class="std std-ref">XML Schemas</span></a>.</p>
 </aside>
-<aside class="footnote brackets" id="id11" role="note">
+<aside class="footnote brackets" id="id12" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">5</a><span class="fn-bracket">]</span></span>
+<p>Sin ir más lejos, el ejemplo propuesto para los casilleros es modular:
+las entidades que definen los nombres de los departamentos está en un <abbr title="Document Type Definition">DTD</abbr>
+aparte, que es referido en <code class="file docutils literal notranslate"><span class="pre">casilleros.dtd</span></code>.</p>
+</aside>
+<aside class="footnote brackets" id="id13" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">6</a><span class="fn-bracket">]</span></span>
 <p>Los tipos <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> identifican de forma única los distintos tipos de
 archivos y se crearon en un principio para los adjuntos al correo
 electrónico. Véase una explicación más detallada <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/HTTP/Basics_of_HTTP/MIME_types">aquí</a>.

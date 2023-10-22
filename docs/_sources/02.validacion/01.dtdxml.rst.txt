@@ -63,7 +63,7 @@ declaración:
 
    .. code-block:: xml
 
-      <!DOCTYPE claustro SYSTEM "clasutro.dtd">
+      <!DOCTYPE claustro SYSTEM "claustro.dtd">
 
    En este caso, entre comillas debe incluirse la ruta y el nombre de archivo
    correspondiente al |DTD|. En ausencia de ruta, se sobreentiende que el |DTD|
@@ -140,6 +140,8 @@ Validación
 Antes de entrar en harina, conviene que sepamos cómo llevar a cabo las
 validaciones. Se propone:
 
+.. rst-class:: simple
+
 - Una solución en línea como `xmlvalidation.com
   <https://www.xmlvalidation.com/>`_, que permite validar documentos |XML| a
   partir de su |DTD|.
@@ -147,14 +149,21 @@ validaciones. Se propone:
   <https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml>`_,
   consulta la gramática definida en el |DTD| que se refiera en la declaración\
   [#]_ e indica las violaciones a ella según se escribe.
+
+  .. warning:: Por defecto, la extensión no atiende las definiciones hechas en
+     un |DTD| referido desde otro |DTD| mediante una :ref:`entidad parámetro
+     <dtd-ent-par>`, lo que malogra una gramática que querramos hacer modular\
+     [#]_. Puede corregirse esto haciendo verdadera la opción
+     ``xml.validation.resolveExternalEntities``:
+
+     .. code-block:: json
+
+        {
+          "xml.validation.resolveExternalEntities": true
+        }
+
 - :command:`xmlstarlet`, que tiene paquete en las distribuciones basadas en
   *Debian* (:deb:`xmlstarlet`).
-
-.. warning:: La extensión propuesta de :program:`Visual Studio Code` parece ser
-   incapaz de validar cuando la definición la gramática se ha hecho modular,
-   esto es, cuando el |DTD| referido por el |XML| no contiene todo la
-   definición, sino que a su vez usa :ref:`entidades parámetro externas
-   <dtd-ent-par>` para transladar parte de la definición a otro |DTD|.
 
 Centrándonos en este último, es especialmente útil, porque permite:
 
@@ -183,7 +192,7 @@ Para *validar* realmente puede hacerse:
 
    $ xmlstarlet val -e -d claustro.dtd claustro.xml
 
-Pero si el |DTD| esta declarado en el |XML| (en la declaración de tipo de
+Pero si el |DTD| está declarado en el |XML| (en la declaración de tipo de
 documento), puede simplificarse a:
 
 .. code-block:: console
@@ -242,7 +251,7 @@ sino varios lo que lleva a definir dos conceptos:
 
       <!ELEMENT claustro (profesor|lector)>
 
-     En este caso, estamos afirmado que un claustro está compuesto por o *un*
+     En este caso, estamos afirmando que un claustro está compuesto por o *un*
      profesor o por *un* lector, pero no por ambos. Sí, es algo estúpido, pero
      aún no sabemos cardinalidad.
 
@@ -258,6 +267,8 @@ sino varios lo que lleva a definir dos conceptos:
       ((a,b)|c)
       (a,(b|c),d)
       (a,((b,c)|d))
+
+.. _dtd-cardinalidad:
 
 **Cardinalidad**
    que representa la posible repetición de un elemento y que |DTD| la significa
@@ -294,7 +305,7 @@ sino varios lo que lleva a definir dos conceptos:
 
          <!ELEMENT claustro (profesor)*>
 
-     Con esta definición, el *clasutro* podría estar vacío.
+     Con esta definición, el *claustro* podría estar vacío.
 
 .. note:: Pueden existir nodos de contenido mixto, es decir, nodos que mezclan
    texto con nodos hijos. En este caso, se debe escribir así::
@@ -510,7 +521,7 @@ Las entidades generales pueden ser:
 
 Parámetro
 ---------
-Operan su sustitución en el propio |DTD| por lo que sólo tiene sentido que sean
+Operan su sustitución en el propio |DTD|, por lo que sólo tiene sentido que sean
 procesables (internas, externas privadas o externas públicas)::
 
    <!ENTITY % nombre "valor">              <!-- interna -->
@@ -538,9 +549,10 @@ un |XML| que use espacios de nombres. Ahora bien, si revisamos :ref:`el epígraf
 que introduce los espacios de nombres <xmlns>`, veremos que tenemos libertad en
 el |XML| para escoger prefijos y espacios de nombres predeterminados. En métodos
 de definición de la gramática como :ref:`XSD <xsd>` o :ref:`Relax-NG <rnc>` esto
-no es un problema, por lo que podremos escribir el |XML| como mejor nos convega,
-pero sí lo es en |DTD|, ya que al entender *c:apelativo* como un nombre, y no
-como un nombre con un prefijo, la etiqueta siempre tendrá que ser *c:apelativo*.
+no es un problema, por lo que podremos escribir el |XML| como mejor nos
+convenga, pero sí lo es en |DTD|, ya que al entender *c:apelativo* como un
+nombre, y no como un nombre con un prefijo, la etiqueta siempre tendrá que ser
+*c:apelativo*.
 
 Para el caso particular del ejemplo de profesores y direcciones, dado que no se
 entremezclan los elementos de los espacios de nombres, lo más fácil es escribir
@@ -629,6 +641,10 @@ inconvenientes.
          :language: xml
 
 .. [#] También soporta :ref:`Relax-NG Compact <rnc>` y :ref:`XML Schemas <xsd>`.
+
+.. [#] Sin ir más lejos, el ejemplo propuesto para los casilleros es modular:
+   las entidades que definen los nombres de los departamentos está en un |DTD|
+   aparte, que es referido en :file:`casilleros.dtd`.
 
 .. [#] Los tipos |MIME| identifican de forma única los distintos tipos de
    archivos y se crearon en un principio para los adjuntos al correo

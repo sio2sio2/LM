@@ -250,7 +250,7 @@ pero no necesariamente. Ésta es una expresión *XPath* perfectamente válida:
    1 = 1
 
 ¿Es **1**  igual a **1**?  Al ser una tautología, la respuesta es obviamente
-verdadera, así que el resultado de es expresión será ``true``. Cuando
+verdadera, así que el resultado de esa expresión será ``true``. Cuando
 involucramos nodos en la expresión:
 
 .. code-block:: xquery
@@ -279,7 +279,7 @@ En este caso, la expresión:
 
 representa el nodo *claustro*.
 
-.. note:: En *XPath* el nodo "claustro" no es el nodo raíz, sino "/", de ahí que
+.. note:: En *XPath* el nodo *claustro* no es el nodo raíz, sino "/", de ahí que
    la expresión :code:`/claustro` indique el nodo claustro que es inmediatamente
    hijo del nodo raíz. Por ese motivo, si este es el documento |XML|:
 
@@ -607,6 +607,9 @@ filtro al que acompaña y se escribe entre corchetes. Por ejemplo:
 
    //profesor[@sexo = 'hombre']
 
+.. note:: En *XPath* las cadenas pueden notarse indistintamente con comillas
+   simples o con comillas dobles.
+
 selecciona, entre todos los nodos *profesor*, sólo los que representan
 profesores varones.
 
@@ -648,6 +651,8 @@ Operadores
 ----------
 Dentro de los predicados pueden usarse los siguientes operadores:
 
+.. _xpath-op-arit:
+
 .. table:: **Operadores aritméticos**
 
    ========== ================
@@ -659,6 +664,8 @@ Dentro de los predicados pueden usarse los siguientes operadores:
     div        División
     mod        Módulo (resto)
    ========== ================
+
+.. _xpath-op-log:
 
 .. table:: **Operadores lógicos**
 
@@ -866,6 +873,8 @@ fueran una cadena? Lo cierto es que no llega a ser necesario y la primera
 expresión también funciona, porque existen mecanismos de conversión automática
 de tipos. Este es un aspecto que debemos revisar.
 
+.. _xpath1-conversion:
+
 **Conversión de tipos**
    Al evaluarse expresiones es común que se realicen conversiones automáticas de
    tipos, aunque pueden forzarse algunas conversiones utilizando las funciones
@@ -1023,9 +1032,16 @@ XPath 2.0/3.0
 *************
 La versión 2.0 del lenguaje supuso en gran cambio hasta el punto de que, aunque
 procuró mantenerse cierta compatibilidad con la primera versión, no todas las
-expresiones se evalúan del mismo modo. La especificación añadió muchísimas más
-funciones de las ya existentes, algunas novedosas construcciones y dos
-redefiniciones conceptuales de suma importancia:
+expresiones se evalúan del mismo modo. La especificación añadió:
+
+#. Dos redefiniciones conceptuales de suma importancia referentes al :ref:`resultado de
+   evaluar la expresión <xpath2-result>` y a los :ref:`tipos de datos
+   <xpath2-tipos>`.
+#. Nuevos operadores.
+#. Algunas construcciones novedosas.
+#. Nuevas funciones.
+#. *XPath* 3.1 incorporó soporte para arrays y mapas y, con ello,  soporte para
+   |JSON|.
 
 .. _xpath2-result:
 
@@ -1102,26 +1118,215 @@ redefiniciones conceptuales de suma importancia:
 
         (1 to 5)
 
+.. _xpath2-tipos:
+
 **Tipos**
    El otro gran cambio sustancial son los tipos atómicos de los datos (que no de
    nodos, pues siguen siendo los siete mismos). De *XPath* 2.0 en adelante se
    asumen los tipos definidos para :ref:`XML Schemas <xsd>`, más algún pequeño
-   añadido que resumidos por `cortesía de Wikipedia
-   <https://commons.wikimedia.org/wiki/File:XQuery_and_XPath_Data_Model_type_hierarchy.png>`
-   lo podemos ver en el siguiente esquema:
+   añadido que, resumidos por `cortesía de Wikipedia
+   <https://commons.wikimedia.org/wiki/File:XQuery_and_XPath_Data_Model_type_hierarchy.png>`_,
+   los podemos ver en el siguiente esquema:
 
    .. image:: https://upload.wikimedia.org/wikipedia/commons/9/91/XQuery_and_XPath_Data_Model_type_hierarchy.png
 
    Así pues, nos encontraremos con tipos de datos como ``xs:integer``  o
    ``xs:string``, pero sólo en caso de que el procesador haya sido capaz de
    validar el documento con una gramática para discernir realmente el tipo de
-   dato. De lo contrario, ya veremos cómo el tipo queda indefinido.
+   dato. De lo contrario, el tipo quedará indefinido (``xs:untypedAtomic``).
+
+   .. caution:: Recuerde, pues, que el procesador sólo sabrá el tipo concreto
+      del dato almacenado en un nodo si ha sido capaz de utilizar una gramática
+      para determinarlo. Por ese motivo, ante este |XML|:
+
+      .. code-block:: xml
+
+         <cifras>
+            <n>11</n>
+            <n>9</n>
+            <n>123</n>
+         </cifras>
+
+      la expresión:
+
+      .. code-block:: xquery
+      
+         //n[not(. < //n)]
+
+      devuelve el segundo nodo "n" (**9**) en vez de devolver el nodo tercero
+      que es el que tiene el número mayor (**123**).
+
+   Al haberse ampliado la cantidad de tipos, ha aumentado la complejidad y ha
+   cambiado la forma de tratarlos respecto a *XPath* 1.0, por lo que :ref:`mucho de lo
+   indicado respecto a sus conversiones en XPath 1.0 <xpath1-conversion>` ya no
+   es válido. Muy resumidamente:
+
+   * Existen los constructores ``xs:string()``, ``xs:integer()``,
+     ``xs:boolean()``, etc. que permiten convertir el tipo del valor que se
+     proporcione como argumento. El argumento debe ser un valor único o, si se
+     prefiere decir así, una secuencia con uno y sólo un ítem. Por tanto, la
+     expresión:
+
+     .. code-block:: xquery
+
+        xs:string((1, false()))
+
+     provocá un error, ya que intenta convertirse una secuencia de dos
+     elementos. Como alternativa al uso de estos constructores como funciones para realizar
+     una conversión, existe ``cast as`` que tiene el mismo efecto. Por tanto,
+     vale tanto hacer:
+
+     .. code-block:: xquery
+
+        xs:boolean("false")
+
+     como hacer:
+
+     .. code-block:: xquery
+
+        "false" cast as xs:boolean
+
+     y, en ambos casos, la expresión devuelve el valor lógico *falso*. Para
+     prevenir un posible error, existe ``castable as``, que permite inquirir si
+     una conversión es posible o no. Así, es *verdadera* la expresión:
+
+     .. code-block:: xquery
+
+        "false" castable as xs:boolean
+
+     pero *falsa*:
+
+     .. code-block:: xquery
+
+        (1, false()) castable as xs:string
+
+   * Además de los constructores, siguen existiendo las funciones `fn:boolean()
+     <https://www.w3.org/TR/xpath-functions-31/#func-boolean>`_, `fn:string()
+     <https://www.w3.org/TR/xpath-functions-31/#func-string>`_ y `fn:number()
+     <https://www.w3.org/TR/xpath-functions-31/#func-number>`_, que se comportan
+     de un modo más parecido a *XPath* 1.0 de como lo hacen los constructores.
+     Por ejemplo, :code:`boolean("false")` es *verdadero* y :code:`boolean("")`
+     es *falso*, mientras que al usar el constructor ``xs:boolean`` la primera
+     expresión es falsa y la segunda devuelve un error. Sin embargo, a
+     diferencia de lo que ocurría en *XPath* 1.0 al convertir un conjunto de
+     nodos en que se devolvía la conversión a cadena del primer elemento, la
+     conversión con la función ``string()`` de una secuencia de dos o más
+     elementos provoca un error.
+
+   * No existen los constantes ``true`` ni ``false``, sino las funciones
+     `true() <https://www.w3.org/TR/xpath-functions-31/#func-true>`_ y `false()
+     <https://www.w3.org/TR/xpath-functions-31/#func-false>`_.
+
+   * El `valor efectivo booleano <https://www.w3.org/TR/xpath-31/#id-ebv>`_ que
+     es el valor lógico que el procesador tiene que calcular automáticamente en
+     determinados casos (para el resultado de un predicado, para el argumento de
+     la función `not <https://www.w3.org/TR/xpath-31/#func-not>`_, etc.) se
+     obtiene al aplicar la función ``boolean()`` y no el constructor
+     ``xs:boolean()``. Por ese motivo, la expresión:
+
+     .. code-block:: xquery
+
+        /claustro/profesor[apodo]
+
+     devolverá los profesores con algún apodo (tal como ocurre en *XPath* 1.0)
+     en vez de generar un error si algún profesor presentara más de un apodo.
+
+   * ``instance of`` permite preguntar sobre el tipo del ítem. Así:
+
+     .. code-block:: xquery
+
+        'Luis' instance of xs:string
+
+     devolverá verdadero, o:
+
+     .. code-block:: xquery
+
+        /claustro/profesor[1]/nombre instance of element()
+
+     también lo hará. Es también verdadero:
+
+     .. code-block:: xquery
+
+        /claustro/profesor[1]/nombre instance of node()
+
+     ya que un elemento es un tipo particular de nodo. Cuando se pregunta
+     sobre secuencias de ítems, es posible usar la nomenclatura que se usa al
+     definir la :ref:`cardinalidad en DTD <dtd-cardinalidad>`:
+
+     .. code-block:: xquery
+
+        /claustro/profesor/nombre instance of element()+
+
+   * La función `data() <https://www.w3.org/TR/xpath-functions-31/#func-data>`_
+     devuelve el valor atómico del nodo que se le proporciona como argumento.
+     Por ello, la expresión:
+
+     .. code-block:: xquery
+
+       data(/claustro/profesor[1]/nombre)
+
+     devolverá el valor atómico del elemento *nombre* del primer profesor en el
+     documento y no el elemento en sí. Por tanto, es verdadera la expresión:
+
+     .. code-block:: xquery
+
+        data(/claustro/profesor[1]/nombre) instance of xs:untypedAtomic
+
+     ya que se ha supuesto que el procesador no ha analizado una gramática que proporcione
+     el tipo del elemento\ [#]_. A la función se le puede proporcionar una
+     secuencia para que obtenga el valor atómico de cada ítem de la secuencia:
+
+     .. code-block:: xquery
+
+       data(/claustro/profesor/nombre)
+
+     La expresión devuelve los valores atómicos que contiene cada uno de los elementos *nombre*
+     de profesor. Lo habitual es que no haya que usar esta función al construir
+     las expresiones *XPath*, puesto que, cuando un nodo actúa como operando, el
+     procesador obtiene su valor atómico automáticamente. Así, por ejemplo:
+
+     .. code-block:: xquery
+
+        /claustro/profesor/nombre/concat('Hola, ', .)
+
+     logrará concatenar a la cadena literal \"Hola, \" el valor atómico del
+     elemento *nombre* de cada profesor sin necesidad de usar ``data()``.
+
+     .. warning:: Note que esta expresión **no es válida** en *XPath* 1.0, a
+        pesar de que  existe la función ``concat``,  ya que una función no puede
+        formar parte de la ruta: o forma parte del predicado o engloba toda la
+        ruta\ [#]_.
+
+   * Los tipos de los valores atómicos de los atributos y los elementos
+     :ref:`pueden servir como filtro <xpath-element()>` en las expresiones.
+
+**Operadores**
+   Los operadores que ya existían en *XPath* 1.0 se mantienen, aunque con
+   algunos cambios, y se añaden otros nuevos.
+
+**Funciones**
+
+**Construcciones**
+
 
 .. + https://www.mulberrytech.com/papers/XPath-2-0-User-Grp-HTML/slide025.html
 
      Paréntesis en medio de rutas.
 
-   + (//cliente instance of element()+)
+   + //cliente instance of element()+
+   + Si no se usa una gramática, los tipos atómicos son xs:untypedAtomic:
+
+     data(//profesor/@id) instance of xs:untypedAtomic+
+
+   + /claustro/profesor/(apodo, nombre) frente /claustro/profesor!(apodo, nombre)
+
+
+.. seealso:: La página `altova.com <https://www.altova.com>`_ tiene una `guía
+   bastante completa de XPath 3.1 <https://www.altova.com/training/xpath3>`_ que
+   incluye bastante ejemplos de uso. También es bastante revelador `el primer
+   capítulo del libro "XSLT Cookbook"
+   <https://www.oreilly.com/library/view/xslt-cookbook-2nd/0596009747/ch01.html>`_,
+   que trata sobre *XPath* y que ofrece de gratis la editorial O'Reilly.
 
 .. https://www.oreilly.com/library/view/xslt-cookbook-2nd/0596009747/ch01.html
    https://www.altova.com/training/xpath3/other-expressions#other-expressions
@@ -1132,6 +1337,7 @@ XQuery
 .. XQuery:
    https://www.adictosaltrabajo.com/2013/08/06/introduccion-x-query/
    https://www.ticarte.com/contenido/ejercicios-practicos-de-xquery
+   https://www.altova.com/training/xquery3
 
 Ejercicio resuelto
 ******************
@@ -1320,6 +1526,15 @@ Ejercicios propuestos
    <https://es.wikipedia.org/wiki/Operaci%C3%B3n_binaria>`_ en el sentido de que
    hay involucrados dos operandos y un operador, no en el sentido de que los
    operadores sean números binarios.
+.. [#] De haberlo hecho, la expresión verdadera hubiera sido:
+
+   .. code-block:: xquery
+
+      data(/claustro/profesor/nombre) instance of xs:string+
+
+.. [#] En *XPath* 1.0 el resultado ha de ser un valor atómico o un conjunto de
+   nodos. No existe la posibilidad de que una expresión devuelva una secuencia
+   de valores atómicos, que es lo que devuelve este ejemplo.
 
 .. |W3C| replace:: :abbr:`W3C (W3 Consortium)`
 .. |DTD| replace:: :abbr:`DTD (Document Type Definition)`

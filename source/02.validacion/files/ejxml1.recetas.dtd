@@ -8,4 +8,4 @@
 <!ELEMENT ingrediente EMPTY>
 <!ATTLIST ingrediente nombre     CDATA             #REQUIRED
                       unidad     (pieza|gramo|cc)  #REQUIRED
-                      cantidad   CDATA             #REQUIRED>
+                      cantidad   NMTOKEN           #REQUIRED>

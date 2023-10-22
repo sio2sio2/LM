@@ -29,7 +29,7 @@
       <!-- El precio no se incluye entre las propiedades del producto,
            porque puede variar de factura a factura, ya que las facturas
            pueden ser de fechas dispares y los precios son cambiantes -->
-      <producto codigo="p01" nombre="tomate"  iva="reducido" />
+      <producto codigo="p01" nombre="tomate" iva="reducido" />
       <producto codigo="p02" nombre="mollete" iva="superreducido" />
 
       <!-- Más productos -->
