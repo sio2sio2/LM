@@ -82,7 +82,7 @@
 <span id="id1"></span><h1><span class="section-number">3.1.1. </span>XPath<a class="headerlink" href="#xpath" title="Enlace permanente a este encabezado">¶</a></h1>
 <p>En muchas de las operaciones que se hacen con un documento <abbr title="eXtensible  Markup Language">XML</abbr>, como extraer
 información o escribir reglas para su transformación es necesario referirse a
-nodos o conjuntos de nodos. <em class="dfn">XPath</em> es un sintaxis estándar para la
+nodos o conjuntos de nodos. <em class="dfn">XPath</em> es un lenguaje estándar para la
 selección de uno o varios componentes (nodos, atributos, etc.) dentro de un
 documento <abbr title="eXtensible  Markup Language">XML</abbr>.</p>
 <p><em>XPath</em> es, pues, un estandar del <abbr title="W3 Consortium">W3C</abbr> para seleccionar con qué nodos de un
@@ -461,15 +461,19 @@ nodo <em>apelativo</em> de un procesor, hacemos referencia a:</p>
 </pre></div>
 </div>
 <p>haremos referencia al nombre del profesor cuyo nodo estuviéramos procesando. En
-realidad la expresión del nodo es algo más complicada que indicar simplemente su
-nombre como introdujimos antes:</p>
+realidad la expresión de la ruta es algo más complicada que indicar simplemente su
+nombre como hemos ilustrado:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">nodo1</span><span class="p">/</span><span class="nt">nodo2</span><span class="p">/</span><span class="nt">nodo3</span>
 </pre></div>
 </div>
-<p>Cada paso de la ruta tiene, en realidad, la siguiente estructura completa:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nt">eje</span><span class="p">::</span><span class="nt">filtro</span><span class="p">[</span><span class="nt">predicado</span><span class="p">]</span>
+<p>Cada paso de la ruta (ésta consta de tres) tiene, en realidad, la siguiente
+estructura completa:</p>
+<blockquote>
+<div><div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
+<p>eje::filtro[predicado]</p>
+</div></blockquote>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Antes de proseguir es importante hacer una aclaración
@@ -631,8 +635,8 @@ operador «<kbd class="kbd docutils literal notranslate">|</kbd>»:</p>
 tomará al interpretar la siguiente parte de la ruta. Recordemos que, si nos
 encontramos procesando un nodo y queremos referirnos a otro, podemos buscar
 entre sus descendientes, entre sus ascendientes o entre sus hermanos.</p>
-<table class="tb-eje docutils align-default" id="id12">
-<caption><span class="caption-text"><strong>Ejes en XPath</strong></span><a class="headerlink" href="#id12" title="Enlace permanente a esta tabla">¶</a></caption>
+<table class="tb-eje docutils align-default" id="id10">
+<caption><span class="caption-text"><strong>Ejes en XPath</strong></span><a class="headerlink" href="#id10" title="Enlace permanente a esta tabla">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Sentido</p></th>
 <th class="head"><p>Nombre</p></th>
@@ -770,8 +774,8 @@ como apartados dentro de este epígrafe.</p>
 <section id="operadores">
 <h4><span class="section-number">3.1.1.2.3.1. </span>Operadores<a class="headerlink" href="#operadores" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Dentro de los predicados pueden usarse los siguientes operadores:</p>
-<span id="xpath-op-arit"></span><table class="docutils align-default" id="id13">
-<caption><span class="caption-text"><strong>Operadores aritméticos</strong></span><a class="headerlink" href="#id13" title="Enlace permanente a esta tabla">¶</a></caption>
+<span id="xpath-op-arit"></span><table class="docutils align-default" id="id11">
+<caption><span class="caption-text"><strong>Operadores aritméticos</strong></span><a class="headerlink" href="#id11" title="Enlace permanente a esta tabla">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operador</p></th>
 <th class="head"><p>Significado</p></th>
@@ -795,8 +799,8 @@ como apartados dentro de este epígrafe.</p>
 </tr>
 </tbody>
 </table>
-<span id="xpath-op-log"></span><table class="docutils align-default" id="id14">
-<caption><span class="caption-text"><strong>Operadores lógicos</strong></span><a class="headerlink" href="#id14" title="Enlace permanente a esta tabla">¶</a></caption>
+<span id="xpath-op-log"></span><table class="docutils align-default" id="id12">
+<caption><span class="caption-text"><strong>Operadores lógicos</strong></span><a class="headerlink" href="#id12" title="Enlace permanente a esta tabla">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operador</p></th>
 <th class="head"><p>Significado</p></th>
@@ -850,7 +854,7 @@ ambos predicados. Por tanto, el último ejemplo es equivalente a:</p>
 </section>
 <section id="funciones">
 <h4><span class="section-number">3.1.1.2.3.2. </span>Funciones<a class="headerlink" href="#funciones" title="Enlace permanente a este encabezado">¶</a></h4>
-<p>Junto a nodos y operadores, en los predicados<a class="footnote-reference brackets" href="#id7" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> también es posible usar
+<p>Junto a nodos y operadores, en los predicados<a class="footnote-reference brackets" href="#id6" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> también es posible usar
 funciones. En el sitio para desarrolladores de <strong class="program">mozilla</strong> puede
 consultarse <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/XPath/Functions">una relación completa de funciones para XPath 1.0</a>, de las cuales
 aquí citaremos algunas muy socorridas:</p>
@@ -1096,7 +1100,7 @@ que el operador de la izquierda no tiene que ser un único nodo, puede ser un
 conjunto de nodos, caso de que a nuestro profesor <em>don José</em>, lo conozcan
 como <em>Pepe</em>, pero también como <em>Pepito</em>. Así que esa comparación no es de uno
 contra uno, sino de varios contra uno, y en otros casos nos podríamos
-encontrar con operaciones binarias<a class="footnote-reference brackets" href="#id8" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> de varios contra varios.</p>
+encontrar con operaciones binarias<a class="footnote-reference brackets" href="#id7" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> de varios contra varios.</p>
 <p>Cuando las operaciones implican conjuntos de nodos, nos encontramos con lo
 que denominaremos <em class="dfn">el problema de la pluralidad</em>. <em>XPath</em> lo resuelve
 del siguiente modo:</p>
@@ -1141,14 +1145,18 @@ profesor es «Pepe».</p>
 <h2><span class="section-number">3.1.1.4. </span>XPath 2.0/3.0<a class="headerlink" href="#xpath-2-0-3-0" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>La versión 2.0 del lenguaje supuso en gran cambio hasta el punto de que, aunque
 procuró mantenerse cierta compatibilidad con la primera versión, no todas las
-expresiones se evalúan del mismo modo. La especificación añadió:</p>
+expresiones se evalúan del mismo modo. Además, la especificación permite que los
+procesadores se ejecuten en dos modos de funcionamiento: uno de <a class="reference external" href="https://www.w3.org/TR/xpath-31/#dt-xpath-compat-mode">compatibilidad
+con XPath 1.0</a> y otro
+sin ella, en que las incompatibilidades son mayores. A grandes rasgos las
+novedades se pueden resumir en estos puntos:</p>
 <ol class="arabic simple">
 <li><p>Dos redefiniciones conceptuales de suma importancia referentes al <a class="reference internal" href="#xpath2-result"><span class="std std-ref">resultado de
 evaluar la expresión</span></a> y a los <a class="reference internal" href="#xpath2-tipos"><span class="std std-ref">tipos de datos</span></a>.</p></li>
 <li><p>Nuevos operadores.</p></li>
 <li><p>Algunas construcciones novedosas.</p></li>
 <li><p>Nuevas funciones.</p></li>
-<li><p><em>XPath</em> 3.1 incorporó soporte para arrays y mapas y, con ello,  soporte para
+<li><p><em>XPath</em> 3.1 incorporó soporte para arrays y mapas y, con ello, soporte para
 <abbr title="JavaScript Object Notation">JSON</abbr>.</p></li>
 </ol>
 <dl id="xpath2-result">
@@ -1176,6 +1184,17 @@ explícitamente:</p>
 <p>que devolverá todos los nodos profesor en que el profesor se llame «Manuel» o
 «Luis», ya que el operando de la izquierda es único, el de la derecha varios
 y ya sabe <a class="reference internal" href="#xpath-pluralidad"><span class="std std-ref">cómo se resuelve el problema de la pluralidad</span></a>.</p>
+<p>Una consecuencia de que la naturaleza del resultado haya cambiado, es que
+empiezan a tener sentido expresiones que en la versión 1.0 estaban vetadas.
+Por ejemplo, la expresión</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">nombre</span><span class="p">/</span><span class="nf">concat</span><span class="p">(</span><span class="s2">&quot;don/doña &quot;</span><span class="p">,</span><span class="w"> </span><span class="p">.)</span>
+</pre></div>
+</div>
+<p>ahora sí es válida, puesto que concatenar el tratamiento «don» o «doña» al
+elemento nombre de cada profesor genera una cadena y en consecuencia, la
+expresión genera una secuencia de cadenas. Tal resultado, sin embargo, era
+imposible en <em>XPath</em> 1.0, pues éste sólo permite como resultado un valor
+atómico o un conjunto de nodos, lo que hacía inválida la expresión.</p>
 <p>Las secuencias tienen algunas particularidades:</p>
 <ul>
 <li><p>Cuando están compuestas por un único ítem, pueden escribirse con o sin el
@@ -1285,7 +1304,7 @@ conversión con la función <code class="docutils literal notranslate"><span cla
 elementos provoca un error.</p></li>
 <li><p>No existen los constantes <code class="docutils literal notranslate"><span class="pre">true</span></code> ni <code class="docutils literal notranslate"><span class="pre">false</span></code>, sino las funciones
 <a class="reference external" href="https://www.w3.org/TR/xpath-functions-31/#func-true">true()</a> y <a class="reference external" href="https://www.w3.org/TR/xpath-functions-31/#func-false">false()</a>.</p></li>
-<li><p>El <a class="reference external" href="https://www.w3.org/TR/xpath-31/#id-ebv">valor efectivo booleano</a> que
+<li><p>El <a class="reference external" href="https://www.w3.org/TR/xpath-31/#id-ebv">valor efectivo booleano</a>, que
 es el valor lógico que el procesador tiene que calcular automáticamente en
 determinados casos (para el resultado de un predicado, para el argumento de
 la función <a class="reference external" href="https://www.w3.org/TR/xpath-31/#func-not">not</a>, etc.) se
@@ -1305,13 +1324,35 @@ en vez de generar un error si algún profesor presentara más de un apodo.</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]/</span><span class="nt">nombre</span><span class="w"> </span><span class="k">instance</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nt">element</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>también lo hará. Es también verdadero:</p>
+<p>también lo hará.Es también verdadero:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]/</span><span class="nt">nombre</span><span class="w"> </span><span class="k">instance</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nt">node</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>ya que un elemento es un tipo particular de nodo. Cuando se pregunta
-sobre secuencias de ítems, es posible usar la nomenclatura que se usa al
-definir la <a class="reference internal" href="../02.validacion/01.dtdxml.html#dtd-cardinalidad"><span class="std std-ref">cardinalidad en DTD</span></a>:</p>
+<p>ya que un elemento es un tipo particular de nodo. <code class="docutils literal notranslate"><span class="pre">element()</span></code> (no
+<code class="docutils literal notranslate"><span class="pre">node()</span></code>) permite ser más exhaustivo e indicar como primer argumento el
+nombre del nodo. Por tanto, es verdadera esta expresión:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]/</span><span class="nt">nombre</span><span class="w"> </span><span class="k">instance</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nt">element</span><span class="p">(</span><span class="n">nombre</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Como segundo argumento de <code class="docutils literal notranslate"><span class="pre">element()</span></code>, además, se puede indicar el tipo
+del contenido, por lo que también podríamos hacer:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>/claustro/profesor[1]/nombre instance of element(nombre, xs:string)
+</pre></div>
+</div>
+<p>si existiera una gramática con la que el procesador hubiera validado el
+documento. En ausencia de ésta, sería cierto:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>/claustro/profesor[1]/nombre instance of element(nombre, xs:untypedAtomic)
+</pre></div>
+</div>
+<p>ya que el contenido del elemento <em>nombre</em> es un valor atómico. Para
+documentos no validados el tipo de todos los elementos (incluido el de
+aquellos que contienen a su vez elementos y, por tanto, su contenido no es
+un valor atómico) es <code class="docutils literal notranslate"><span class="pre">xs:untyped</span></code>:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>/claustro/profesor[1] instance of element(profesor, xs:untyped)
+</pre></div>
+</div>
+<p>Cuando se pregunta sobre secuencias de ítems, es posible usar la
+nomenclatura que se usa al definir la <a class="reference internal" href="../02.validacion/01.dtdxml.html#dtd-cardinalidad"><span class="std std-ref">cardinalidad en DTD</span></a>:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">nombre</span><span class="w"> </span><span class="k">instance</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nt">element</span><span class="p">()+</span>
 </pre></div>
 </div>
@@ -1328,34 +1369,45 @@ documento y no el elemento en sí. Por tanto, es verdadera la expresión:</p>
 </pre></div>
 </div>
 <p>ya que se ha supuesto que el procesador no ha analizado una gramática que proporcione
-el tipo del elemento<a class="footnote-reference brackets" href="#id9" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>. A la función se le puede proporcionar una
+el tipo del elemento<a class="footnote-reference brackets" href="#id8" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>. A la función se le puede proporcionar una
 secuencia para que obtenga el valor atómico de cada ítem de la secuencia:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">data</span><span class="p">(/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">nombre</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>La expresión devuelve los valores atómicos que contiene cada uno de los elementos <em>nombre</em>
-de profesor. Lo habitual es que no haya que usar esta función al construir
-las expresiones <em>XPath</em>, puesto que, cuando un nodo actúa como operando, el
-procesador obtiene su valor atómico automáticamente. Así, por ejemplo:</p>
+<p>La expresión devuelve los valores atómicos que contiene cada uno de los
+elementos <em>nombre</em> de <em>profesor</em>. Lo habitual es que no haya que usar esta
+función al construir las expresiones <em>XPath</em>, puesto que, cuando un nodo
+actúa como operando, el procesador obtiene su valor atómico
+automáticamente, en un proceso denominado <a class="reference external" href="https://www.w3.org/TR/xpath-31/#id-atomization">atomización</a>. Así, por ejemplo:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">nombre</span><span class="p">/</span><span class="nf">concat</span><span class="p">(</span><span class="s1">&#39;Hola, &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">.)</span>
 </pre></div>
 </div>
 <p>logrará concatenar a la cadena literal &quot;Hola, &quot; el valor atómico del
 elemento <em>nombre</em> de cada profesor sin necesidad de usar <code class="docutils literal notranslate"><span class="pre">data()</span></code>.</p>
-<div class="admonition warning">
-<p class="admonition-title">Advertencia</p>
-<p>Note que esta expresión <strong>no es válida</strong> en <em>XPath</em> 1.0, a
-pesar de que  existe la función <code class="docutils literal notranslate"><span class="pre">concat</span></code>,  ya que una función no puede
-formar parte de la ruta: o forma parte del predicado o engloba toda la
-ruta<a class="footnote-reference brackets" href="#id10" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.</p>
-</div>
 </li>
 <li><p>Los tipos de los valores atómicos de los atributos y los elementos
-<a class="reference internal" href="#xpath-element"><span class="std std-ref">pueden servir como filtro</span></a> en las expresiones.</p></li>
+<a class="reference internal" href="#xpath-element"><span class="std std-ref">pueden servir como filtro</span></a> en las expresiones. Por
+ejemplo, esta expresión devolvería los nodo atributo de <em>profesor</em>  cuyo
+valor fuera un entero:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">/</span><span class="nf">attribute</span><span class="p">(</span><span class="nt">*</span><span class="p">,</span><span class="w"> </span><span class="nt">xs:integer</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>aunque si el procesador no hubiera validado con una gramática el documento,
+la expresión anterior sería inútil, ya que todos los atributos será de tipo
+<code class="docutils literal notranslate"><span class="pre">xs:untypedAtomic</span></code>:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">/</span><span class="nf">attribute</span><span class="p">(</span><span class="nt">*</span><span class="p">,</span><span class="w"> </span><span class="nt">xs:untypedAtomic</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
 </ul>
 </dd>
 <dt><strong>Operadores</strong></dt><dd><p>Los operadores que ya existían en <em>XPath</em> 1.0 se mantienen, aunque con
-algunos cambios, y se añaden otros nuevos.</p>
+algunos cambios, y se añaden otros nuevos. Además, el comportamiento de los
+valores como operando (o como argumentos de funciones o dentro de las
+construcciones, que veremos más adelante) puede variar dependiendo de si los
+valores atómicos están definidos (al haber usado el procesador una
+gramática) o indefinidos, o de si el procesador se corre en el modo
+compatible con la versión 1.0.</p>
 </dd>
 </dl>
 <p><strong>Funciones</strong></p>
@@ -1806,28 +1858,22 @@ técnico en dos dimensiones, determinar la expresión <em>XPath</em> que selecci
 </ol>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id7" role="note">
+<aside class="footnote brackets" id="id6" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
 <p>Y no sólo. Ya veremos más adelante.</p>
 </aside>
-<aside class="footnote brackets" id="id8" role="note">
+<aside class="footnote brackets" id="id7" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
 <p><a class="reference external" href="https://es.wikipedia.org/wiki/Operaci%C3%B3n_binaria">Operación binaria</a> en el sentido de que
 hay involucrados dos operandos y un operador, no en el sentido de que los
 operadores sean números binarios.</p>
 </aside>
-<aside class="footnote brackets" id="id9" role="note">
+<aside class="footnote brackets" id="id8" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">3</a><span class="fn-bracket">]</span></span>
 <p>De haberlo hecho, la expresión verdadera hubiera sido:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">data</span><span class="p">(/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">instance</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="kt">xs:string</span><span class="o">+</span>
 </pre></div>
 </div>
-</aside>
-<aside class="footnote brackets" id="id10" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">4</a><span class="fn-bracket">]</span></span>
-<p>En <em>XPath</em> 1.0 el resultado ha de ser un valor atómico o un conjunto de
-nodos. No existe la posibilidad de que una expresión devuelva una secuencia
-de valores atómicos, que es lo que devuelve este ejemplo.</p>
 </aside>
 </aside>
 </section>

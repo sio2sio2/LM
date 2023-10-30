@@ -58,7 +58,8 @@
                   "required": ["departamento"],
                   "not": { "required": ["sustituye"] }
                },
-               { "required": ["sustituye"], 
+               {
+                  "required": ["sustituye"], 
                   "allOf": [
                      {"not": { "required": ["departamento"] }},
                      {"not": { "required": ["casillero"] }}

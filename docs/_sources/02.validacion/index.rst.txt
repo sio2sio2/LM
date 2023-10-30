@@ -1,8 +1,8 @@
-.. _ut2:
+.. _lm-ut2:
 
 Validación
 **********
-En la primera parte de la :ref:`unidad anterior <ut1>` introdujimos el concepto
+En la primera parte de la :ref:`unidad anterior <lm-ut1>` introdujimos el concepto
 de  :ref:`validez <lm-validez>` e hicimos la distinción entre un documento *bien
 formado* (ajustado a las reglas gramaticales generales) y un documento *válido*
 (ajustado a las reglas gramaticales específicas). La segunda parte de la unidad

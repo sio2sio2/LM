@@ -79,12 +79,11 @@
             
   <section id="json-schema">
 <span id="id1"></span><h1><span class="section-number">2.2. </span><abbr title="JavaScript Object Notation">JSON</abbr> Schema<a class="headerlink" href="#json-schema" title="Enlace permanente a este encabezado">¶</a></h1>
-<p>La definición de gramáticas para documentos <abbr title="JavaScript Object Notation">JSON</abbr> no es tan madura como lo es
+<p>La definición de gramáticas para documentos <abbr title="JavaScript Object Notation">JSON</abbr> no está tan madura como
 para documentos <abbr title="eXtensible  Markup Language">XML</abbr>. Hay distintas alternativas, de las cuales la más
-extendida es <a class="reference external" href="https://json-schema.org/">JSON Schema</a>, que puede utilizarse para definir gramáticas de
-documentos <abbr title="JavaScript Object Notation">JSON</abbr> y <abbr title="YAML Ain't Markup Language">YAML</abbr>.</p>
-<p>Dedicaremos el epígrafe a describir cómo escribir la gramática de un documento
-<abbr title="JavaScript Object Notation">JSON</abbr> utilizando <a class="reference external" href="https://json-schema.org/">JSON Schema</a>.</p>
+extendida es <a class="reference external" href="https://json-schema.org/">JSON Schema</a>, que puede utilizarse tanto en la definición de
+documentos <abbr title="JavaScript Object Notation">JSON</abbr> como de documentos <abbr title="YAML Ain't Markup Language">YAML</abbr>.</p>
+<p>Dedicaremos el epígrafe a describir cómo se utiliza <a class="reference external" href="https://json-schema.org/">JSON Schema</a>.</p>
 <section id="preliminares">
 <h2><span class="section-number">2.2.1. </span>Preliminares<a class="headerlink" href="#preliminares" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Antes de entrar a definir su sintaxis es conveniente saber algunos aspectos de
@@ -99,15 +98,17 @@ redacción de este documento el borrador más reciente es el <em>2020-12</em>.</
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Obviamente, si se pretende definir una gramática de <abbr title="YAML Ain't Markup Language">YAML</abbr> con <abbr title="JavaScript Object Notation">JSON</abbr>Schema, sólo podremos escribir en el <abbr title="YAML Ain't Markup Language">YAML</abbr> aquello que puede escribirse en
-un <abbr title="JavaScript Object Notation">JSON</abbr>. Por ejemplo, no podremos usar <code class="docutils literal notranslate"><span class="pre">undefined</span></code> o todas las claves
-tendrán que ser cadenas, a pesar de que <abbr title="YAML Ain't Markup Language">YAML</abbr> no tiene esas limitaciones.</p>
+<p>Obviamente, si se pretende definir una gramática de <abbr title="YAML Ain't Markup Language">YAML</abbr> con <em>JSON
+Schema</em>, sólo podremos escribir en el <abbr title="YAML Ain't Markup Language">YAML</abbr> aquello que puede escribirse en
+un <abbr title="JavaScript Object Notation">JSON</abbr>. Por ejemplo, no podremos usar <code class="docutils literal notranslate"><span class="pre">undefined</span></code> o deberemos hacer que
+todas las claves sean cadenas, a pesar de que <abbr title="YAML Ain't Markup Language">YAML</abbr> no tiene esas
+limitaciones.</p>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">Ver también</p>
-<p>Como la especificación es muy árida, ilustraremos aquí los aspectos más básicos,
-pero para mayor profundización puede echarse mano de la guía oficial
-<a class="reference external" href="https://json-schema.org/understanding-json-schema/index.html">Understanding JSON Schema</a>.</p>
+<p>Como la especificación es muy árida, ilustraremos aquí los aspectos
+más básicos, pero para mayor profundización puede echarse mano de la guía
+oficial <a class="reference external" href="https://json-schema.org/understanding-json-schema">Understanding JSON Schema</a>.</p>
 </div>
 <section id="ejemplo">
 <span id="json-schema-ejemplo"></span><h3><span class="section-number">2.2.1.1. </span>Ejemplo<a class="headerlink" href="#ejemplo" title="Enlace permanente a este encabezado">¶</a></h3>
@@ -248,7 +249,8 @@ Gramática de Casilleros con JSON Schema<div class="sd-summary-down docutils">
 <span class="w">                  </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;departamento&quot;</span><span class="p">],</span>
 <span class="w">                  </span><span class="nt">&quot;not&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;sustituye&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
 <span class="w">               </span><span class="p">},</span>
-<span class="w">               </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;sustituye&quot;</span><span class="p">],</span><span class="w"> </span>
+<span class="w">               </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;sustituye&quot;</span><span class="p">],</span><span class="w"> </span>
 <span class="w">                  </span><span class="nt">&quot;allOf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                     </span><span class="p">{</span><span class="nt">&quot;not&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;departamento&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">}},</span>
 <span class="w">                     </span><span class="p">{</span><span class="nt">&quot;not&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;casillero&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">}}</span>

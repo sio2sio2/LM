@@ -2,13 +2,12 @@
 
 |JSON| Schema
 *************
-La definición de gramáticas para documentos |JSON| no es tan madura como lo es
+La definición de gramáticas para documentos |JSON| no está tan madura como
 para documentos |XML|. Hay distintas alternativas, de las cuales la más
-extendida es `JSON Schema`_, que puede utilizarse para definir gramáticas de
-documentos |JSON| y |YAML|.
+extendida es `JSON Schema`_, que puede utilizarse tanto en la definición de
+documentos |JSON| como de documentos |YAML|.
 
-Dedicaremos el epígrafe a describir cómo escribir la gramática de un documento
-|JSON| utilizando `JSON Schema`_.
+Dedicaremos el epígrafe a describir cómo se utiliza `JSON Schema`_.
 
 Preliminares
 ============
@@ -23,15 +22,16 @@ Antes de entrar a definir su sintaxis es conveniente saber algunos aspectos de
   <https://json-schema.org/specification.html>`_. En consecuencia a fecha de
   redacción de este documento el borrador más reciente es el *2020-12*.
 
-.. note:: Obviamente, si se pretende definir una gramática de |YAML| con |JSON|\
-   Schema, sólo podremos escribir en el |YAML| aquello que puede escribirse en
-   un |JSON|. Por ejemplo, no podremos usar ``undefined`` o todas las claves
-   tendrán que ser cadenas, a pesar de que |YAML| no tiene esas limitaciones.
+.. note:: Obviamente, si se pretende definir una gramática de |YAML| con *JSON
+   Schema*, sólo podremos escribir en el |YAML| aquello que puede escribirse en
+   un |JSON|. Por ejemplo, no podremos usar ``undefined`` o deberemos hacer que
+   todas las claves sean cadenas, a pesar de que |YAML| no tiene esas
+   limitaciones.
 
-.. seealso:: Como la especificación es muy árida, ilustraremos aquí los aspectos más básicos,
-   pero para mayor profundización puede echarse mano de la guía oficial
-   `Understanding JSON Schema
-   <https://json-schema.org/understanding-json-schema/index.html>`_.
+.. seealso:: Como la especificación es muy árida, ilustraremos aquí los aspectos
+   más básicos, pero para mayor profundización puede echarse mano de la guía
+   oficial `Understanding JSON Schema
+   <https://json-schema.org/understanding-json-schema>`_.
 
 .. _json-schema-ejemplo:
 

@@ -1,10 +1,10 @@
-.. _ut3:
+.. _lm-ut3:
 
 Almacenamiento
 ==============
 Vistos ya de los lenguajes para el intercambio de datos, :ref:`su concepto <lm>`, la
 :ref:`sintaxis de algunos de ellos <sintaxis>` y :ref:`su
-validación <ut2>`, toca ahora conocer dos aspectos más para completar\ [#]_ este
+validación <lm-ut2>`, toca ahora conocer dos aspectos más para completar\ [#]_ este
 bloque del módulo dedicado a ellos:
 
 #. Cómo almacenarlos.
