@@ -11,7 +11,7 @@ existencia surge por la necesidad de tener un equivalente a *XPath* para
 documentos |JSON| (véase el `artículo original que lo propuso
 <https://goessner.net/articles/JsonPath/>`_).  Este estado de las cosas obedece
 a cuál ha sido la historia del intercambio de datos, a la cual se apuntó cuando
-se discutió :ref:`por qué este módulo se denomina lenguaje de marcas <ut1>`\
+se discutió :ref:`por qué este módulo se denomina lenguaje de marcas <lm-ut1>`\
 [#]_: las tecnologías alrededor de |XML| se desarrollaron cuando éste
 monopolizaba el intercambio de datos, de suerte que los lenguajes que han
 empezado a despuntar después han ido inspirándose en ellas para lograr sus

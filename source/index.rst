@@ -37,10 +37,10 @@ unidades con el de éstos.
    :glob:
    :numbered:
 
-   0[1-3]*/index
+   0[1-5]*/index
 
 **Bloque 2: Tecnologías web**
-   No menos extenso bloque, dedicado a las tecnologías web, fundamentalmente
+   No menos extenso bloque dedicado a las tecnologías web, fundamentalmente
    |HTML|\ 5, |CSS| y Javascript_. La idea es proporcionar al alumno una base
    sólida de estas tres tecnologías para abordar sin preámbulos el módulo
    posterior de *Desarrollo web en entorno cliente* (supuesto que se curse
@@ -82,7 +82,7 @@ Referencias rápidas
 .. _Javascript: https://es.wikipedia.org/wiki/JavaScript
 
 .. |DAM| replace:: :abbr:`DAM (Desarrollo de Aplicaciones Multiplataforma)`
-.. |DAW| replace:: :abbr:`DAM (Desarrollo de Aplicaciones Web)`
+.. |DAW| replace:: :abbr:`DAW (Desarrollo de Aplicaciones Web)`
 .. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`
 
 .. Página que desarrolla los contenidos de Lenguajes de Marcas:

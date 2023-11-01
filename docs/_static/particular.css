@@ -11,7 +11,7 @@ table.rraa-uutt th p {
 }
 
 table.rraa-uutt td:not(:first-child):not(:empty) {
-   background-color: lightgray;
+   background-color: #f98;
 }
 
 table.rraa-uutt td:not(:first-child):not(:empty) p {
@@ -24,3 +24,14 @@ table.rraa-uutt td:not(:first-child):not(:empty) p {
    }
 }
 
+table.rraa-uutt th,  table.rraa-uutt td {
+   border:  solid #999 1px;
+}
+
+table.rraa-uutt th {
+   background-color: #bce5ff;
+}
+
+.xpath-oper td:first-child {
+   font-family: monospace;
+}

@@ -11,25 +11,25 @@ Las unidades se han diseñado atendiendo a los siguientes criterios:
 .. table:: Relación entre |RRAA| y |UUTT|
    :class: rraa-uutt
 
-   +----------+-----------------+-----------+-----------------+
-   |          |  1ª Ev          |   2ª Ev   |   3ª Ev         |
-   |          +-----+-----+-----+-----+-----+-----+-----+-----+
-   |          | UT1 | UT2 | UT3 | UT4 | UT5 | UT6 | UT7 | UT8 |
-   +==========+=====+=====+=====+=====+=====+=====+=====+=====+
-   | RA1      |   X |     |     |     |     |     |     |     |
-   +----------+-----+-----+-----+-----+-----+-----+-----+-----+
-   | RA2      |     |     |     |  X  |  X  |     |     |     |
-   +----------+-----+-----+-----+-----+-----+-----+-----+-----+
-   | RA3      |     |     |     |     |     |  X  |     |     |
-   +----------+-----+-----+-----+-----+-----+-----+-----+-----+
-   | RA4      |     |  X  |     |     |     |     |     |     |
-   +----------+-----+-----+-----+-----+-----+-----+-----+-----+
-   | RA5      |     |     |     |     |     |     |  X  |     |
-   +----------+-----+-----+-----+-----+-----+-----+-----+-----+
-   | RA6      |     |     |  X  |     |     |     |     |     |
-   +----------+-----+-----+-----+-----+-----+-----+-----+-----+
-   | RA7      |     |     |     |     |     |     |     |  X  |
-   +----------+-----+-----+-----+-----+-----+-----+-----+-----+
+   +----------+-----------------------------+-----------+-----------+
+   |          |  1ª Ev                      |   2ª Ev   |  3ª Ev    |
+   |          +-----+-----+-----+-----+-----+-----+-----+-----+-----+
+   |          | UT1 | UT2 | UT3 | UT4 | UT5 | UT6 | UT7 | UT8 | UT9 |
+   +==========+=====+=====+=====+=====+=====+=====+=====+=====+=====+
+   | RA1      |   X |     |     |     |     |     |     |     |     |
+   +----------+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+   | RA2      |     |     |     |     |     |     |     |     |     |
+   +----------+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+   | RA3      |     |     |     |     |     |  X  |  X  |  X  |     |
+   +----------+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+   | RA4      |     |  X  |     |     |     |     |     |     |     |
+   +----------+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+   | RA5      |     |     |     |  X  |     |     |     |     |     |
+   +----------+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+   | RA6      |     |     |  X  |     |  X  |     |     |     |     |
+   +----------+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+   | RA7      |     |     |     |     |     |     |     |     |  X  |
+   +----------+-----+-----+-----+-----+-----+-----+-----+-----+-----+
 
 **RA 1**
    Reconoce las características de lenguajes de marcas analizando e
@@ -58,7 +58,7 @@ Las unidades se han diseñado atendiendo a los siguientes criterios:
    a través de la web analizando la estructura de los documentos e identificando
    sus elementos.
 
-   UT **4**: :ref:`lm-ut4`
+   UT **6**: :ref:`lm-ut6`
 
    a. Se han identificado y clasificado los lenguajes de marcas relacionados con
       la web y sus diferentes versiones y estándares.
@@ -72,7 +72,7 @@ Las unidades se han diseñado atendiendo a los siguientes criterios:
    i. Se han identificado las tecnologías en que se basa la sindicación de contenidos.
    #. Se han reconocido los ámbitos de aplicación de la sindicación de contenidos.
 
-   UT **5**: :ref:`lm-ut5`
+   UT **7**: :ref:`lm-ut7`
 
    f. Se han identificado las ventajas que aporta la utilización de hojas de estilo.
    #. Se han aplicado hojas de estilo.
@@ -81,7 +81,7 @@ Las unidades se han diseñado atendiendo a los siguientes criterios:
 **RA 3**
    Accede y manipula documentos web utilizando lenguajes de *script* de cliente.
 
-   UT **6**: :ref:`lm-ut6`
+   UT **8**: :ref:`lm-ut8`
 
    a. Se han identificado y clasificado los lenguajes de script de cliente
       relacionados con la web y sus diferentes versiones y estándares.
@@ -114,7 +114,7 @@ Las unidades se han diseñado atendiendo a los siguientes criterios:
    Realiza conversiones sobre documentos para el intercambio de información
    utilizando técnicas, lenguajes y herramientas de procesamiento.
 
-   UT **7**: :ref:`lm-ut7`
+   UT **4**: :ref:`lm-ut4`
 
    a. Se ha identificado la necesidad de la conversión de documentos para el
       intercambio de la información.
@@ -134,18 +134,22 @@ Las unidades se han diseñado atendiendo a los siguientes criterios:
 
    UT **3**: :ref:`lm-ut3`
 
+   d. Se han identificado lenguajes y herramientas para el tratamiento y
+      almacenamiento de información y su inclusión en documentos de intercambio
+      de datos. 
+   #. Se han utilizado lenguajes de consulta y manipulación en documentos de
+      intercambio de datos.
+
+   UT **5**: :ref:`lm-ut5`
+
    a. Se han identificado los principales métodos de almacenamiento de la
       información utilizados en documentos de intercambio de datos.
    #. Se han identificado las ventajas e inconvenientes de almacenar información
       en formatos de intercambio de datos.
    #. Se han establecido tecnologías eficientes de almacenamiento de información
       en función de sus características.
-   #. Se han identificado lenguajes y herramientas para el tratamiento y
-      almacenamiento de información y su inclusión en documentos de intercambio
-      de datos. 
-   #. Se han utilizado lenguajes de consulta y manipulación en documentos de
-      intercambio de datos.
-   #. Se han utilizado sistemas gestores de bases de datos relacionales en el
+
+   f. Se han utilizado sistemas gestores de bases de datos relacionales en el
       almacenamiento de información en formatos de intercambio de datos.
    #. Se han utilizado técnicas específicas para crear documentos de intercambio
       de datos a partir de información almacenada en bases de datos
@@ -156,7 +160,7 @@ Las unidades se han diseñado atendiendo a los siguientes criterios:
 
 **RA 7**
 
-   UT **8**: :ref:`lm-ut8`
+   UT **9**: :ref:`lm-ut9`
 
    a. Se han identificado los principales sistemas de gestión empresarial.
    #. Se han reconocido las ventajas de los sistemas de gestión de información

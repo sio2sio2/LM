@@ -10,7 +10,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>3.1.2. JSONPath &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <title>3.2. JSONPath &#8212; documentación de Lenguajes de Marcas - rolling</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
@@ -45,8 +45,8 @@
 
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
-    <link rel="next" title="3.2. Bases de datos" href="02.bbdd.html" />
-    <link rel="prev" title="3.1.1. XPath" href="01a.xpath.html" /> 
+    <link rel="next" title="4. Transformación de datos" href="../04.transformacion/index.html" />
+    <link rel="prev" title="3.1. XPath" href="01.xpath.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head><body>
     <div class="relbar-top">
@@ -58,16 +58,15 @@
           <a href="../genindex.html" title="Índice General"
              accesskey="I">índice</a></li>
         <li class="right" >
-          <a href="02.bbdd.html" title="3.2. Bases de datos"
+          <a href="../04.transformacion/index.html" title="4. Transformación de datos"
              accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="01a.xpath.html" title="3.1.1. XPath"
+          <a href="01.xpath.html" title="3.1. XPath"
              accesskey="P">anterior</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
 
-          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">3. </span>Almacenamiento</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="01.consulta.html" accesskey="U"><span class="section-number">3.1. </span>Tecnologías de consulta</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3.1.2. </span><abbr title="JavaScript Object Notation">JSON</abbr>Path</a></li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">3. </span>Consulta de datos</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3.2. </span><abbr title="JavaScript Object Notation">JSON</abbr>Path</a></li> 
       </ul>
     </div>
     </div>
@@ -79,14 +78,14 @@
           <div class="body" role="main">
             
   <section id="jsonpath">
-<span id="id1"></span><h1><span class="section-number">3.1.2. </span><abbr title="JavaScript Object Notation">JSON</abbr>Path<a class="headerlink" href="#jsonpath" title="Enlace permanente a este encabezado">¶</a></h1>
-<p><abbr title="JavaScript Object Notation">JSON</abbr>Path es a <a class="reference internal" href="../01.intro/02a.serial.html#json"><span class="std std-ref">JSON</span></a> lo que <a class="reference internal" href="01a.xpath.html#xpath"><span class="std std-ref">XPath</span></a> a <a class="reference internal" href="../01.intro/02b.marcas.html#xml"><span class="std std-ref">XML</span></a>, esto es, un lenguaje que nos permite indicar qué nodos del documento
+<span id="id1"></span><h1><span class="section-number">3.2. </span><abbr title="JavaScript Object Notation">JSON</abbr>Path<a class="headerlink" href="#jsonpath" title="Enlace permanente a este encabezado">¶</a></h1>
+<p><abbr title="JavaScript Object Notation">JSON</abbr>Path es a <a class="reference internal" href="../01.intro/02a.serial.html#json"><span class="std std-ref">JSON</span></a> lo que <a class="reference internal" href="01.xpath.html#xpath"><span class="std std-ref">XPath</span></a> a <a class="reference internal" href="../01.intro/02b.marcas.html#xml"><span class="std std-ref">XML</span></a>, esto es, un lenguaje que nos permite indicar qué nodos del documento
 desean seleccionarse. No es aún un estándar (aunque podemos <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jsonpath-base-20">consultar sus
 borradores</a>), y su
 existencia surge por la necesidad de tener un equivalente a <em>XPath</em> para
 documentos <abbr title="JavaScript Object Notation">JSON</abbr> (véase el <a class="reference external" href="https://goessner.net/articles/JsonPath/">artículo original que lo propuso</a>).  Este estado de las cosas obedece
 a cuál ha sido la historia del intercambio de datos, a la cual se apuntó cuando
-se discutió <a class="reference internal" href="../01.intro/index.html#ut1"><span class="std std-ref">por qué este módulo se denomina lenguaje de marcas</span></a><a class="footnote-reference brackets" href="#id6" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>: las tecnologías alrededor de <abbr title="eXtensible  Markup Language">XML</abbr> se desarrollaron cuando éste
+se discutió <a class="reference internal" href="../01.intro/index.html#lm-ut1"><span class="std std-ref">por qué este módulo se denomina lenguaje de marcas</span></a><a class="footnote-reference brackets" href="#id6" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>: las tecnologías alrededor de <abbr title="eXtensible  Markup Language">XML</abbr> se desarrollaron cuando éste
 monopolizaba el intercambio de datos, de suerte que los lenguajes que han
 empezado a despuntar después han ido inspirándose en ellas para lograr sus
 funcionalidades.</p>
@@ -109,7 +108,7 @@ uso (p.e. Oracle para los tipos <abbr title="JavaScript Object Notation">JSON</a
 han hecho, como el caso de la base de datos documental <a class="reference external" href="https://www.mongodb.com">MongoDB</a>.</p>
 </div>
 <section id="procesadores">
-<h2><span class="section-number">3.1.2.1. </span>Procesadores<a class="headerlink" href="#procesadores" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">3.2.1. </span>Procesadores<a class="headerlink" href="#procesadores" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Los procesadores existentes no tienen un soporte completo para la última versión
 del borrador. Proponemos tres:</p>
 <ul class="simple">
@@ -124,7 +123,7 @@ filtros.</p></li>
 </ul>
 </section>
 <section id="sintaxis">
-<h2><span class="section-number">3.1.2.2. </span>Sintaxis<a class="headerlink" href="#sintaxis" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">3.2.2. </span>Sintaxis<a class="headerlink" href="#sintaxis" title="Enlace permanente a este encabezado">¶</a></h2>
 <p><abbr title="JavaScript Object Notation">JSON</abbr>Path, por analogía con algunos lenguajes de programación utiliza el
 punto («.») o los corchetes («[]») para separar las claves de un
 objeto. Tomemos para ilustrarlo un documento ya analizado:</p>
@@ -150,7 +149,7 @@ objeto. Tomemos para ilustrarlo un documento ya analizado:</p>
 </pre></div>
 </div>
 <section id="mapas">
-<h3><span class="section-number">3.1.2.2.1. </span>Mapas<a class="headerlink" href="#mapas" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><span class="section-number">3.2.2.1. </span>Mapas<a class="headerlink" href="#mapas" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Como <code class="docutils literal notranslate"><span class="pre">$</span></code> es la forma de referirnos al nodo raíz el valor de la propiedad
 <em>centro</em>, podemos referirla así:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.nombre
@@ -191,7 +190,7 @@ algún objeto anidado<a class="footnote-reference brackets" href="#id7" id="id3"
 <p>selecciona cualquier propiedad «calle» del documento.</p>
 </section>
 <section id="secuencias">
-<h3><span class="section-number">3.1.2.2.2. </span>Secuencias<a class="headerlink" href="#secuencias" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><span class="section-number">3.2.2.2. </span>Secuencias<a class="headerlink" href="#secuencias" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>La expresión:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$.hijos
 </pre></div>
@@ -255,7 +254,7 @@ También pueden usarse números negativos, con el mismo significado que en
 <a class="reference external" href="https://www.python.org">Python</a><a class="footnote-reference brackets" href="#id8" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.</p>
 </section>
 <section id="filtros">
-<h3><span class="section-number">3.1.2.2.3. </span>Filtros<a class="headerlink" href="#filtros" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><span class="section-number">3.2.2.3. </span>Filtros<a class="headerlink" href="#filtros" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Cuando el nodo es una secuencia, no sólo pueden seleccionarse elementos por su
 posición, sino utilizar filtros para escoger aquellos nodos que cumplen una
 determinada condición. Tomemos el ejemplo de casilleros para ilustrarlo:</p>
@@ -534,12 +533,12 @@ definida. Por eso, <code class="code docutils literal notranslate"><span class="
         </a></p><div class="sphinx-toc sphinxlocaltoc">
     <h3><a href="../index.html">Page contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">3.1.2. <abbr title="JavaScript Object Notation">JSON</abbr>Path</a><ul>
-<li><a class="reference internal" href="#procesadores">3.1.2.1. Procesadores</a></li>
-<li><a class="reference internal" href="#sintaxis">3.1.2.2. Sintaxis</a><ul>
-<li><a class="reference internal" href="#mapas">3.1.2.2.1. Mapas</a></li>
-<li><a class="reference internal" href="#secuencias">3.1.2.2.2. Secuencias</a></li>
-<li><a class="reference internal" href="#filtros">3.1.2.2.3. Filtros</a></li>
+<li><a class="reference internal" href="#">3.2. <abbr title="JavaScript Object Notation">JSON</abbr>Path</a><ul>
+<li><a class="reference internal" href="#procesadores">3.2.1. Procesadores</a></li>
+<li><a class="reference internal" href="#sintaxis">3.2.2. Sintaxis</a><ul>
+<li><a class="reference internal" href="#mapas">3.2.2.1. Mapas</a></li>
+<li><a class="reference internal" href="#secuencias">3.2.2.2. Secuencias</a></li>
+<li><a class="reference internal" href="#filtros">3.2.2.3. Filtros</a></li>
 </ul>
 </li>
 </ul>
@@ -549,18 +548,18 @@ definida. Por eso, <code class="code docutils literal notranslate"><span class="
   </div>
   <div class="sphinxprev">
     <h4>Previous page</h4>
-    <p class="topless"><a href="01a.xpath.html"
-                          title="Previous page">&larr; <span class="section-number">3.1.1. </span>XPath</a></p>
+    <p class="topless"><a href="01.xpath.html"
+                          title="Previous page">&larr; <span class="section-number">3.1. </span>XPath</a></p>
   </div>
   <div class="sphinxnext">
     <h4>Next page</h4>
-    <p class="topless"><a href="02.bbdd.html"
-                          title="Next page">&rarr; <span class="section-number">3.2. </span>Bases de datos</a></p>
+    <p class="topless"><a href="../04.transformacion/index.html"
+                          title="Next page">&rarr; <span class="section-number">4. </span>Transformación de datos</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>Esta página</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/03.almacenamiento/01b.jsonpath.rst.txt"
+      <li><a href="../_sources/03.consulta/02.jsonpath.rst.txt"
             rel="nofollow">Mostrar el código</a></li>
     </ul>
    </div>
@@ -604,16 +603,15 @@ definida. Por eso, <code class="code docutils literal notranslate"><span class="
           <a href="../genindex.html" title="Índice General"
              >índice</a></li>
         <li class="right" >
-          <a href="02.bbdd.html" title="3.2. Bases de datos"
+          <a href="../04.transformacion/index.html" title="4. Transformación de datos"
              >siguiente</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="01a.xpath.html" title="3.1.1. XPath"
+          <a href="01.xpath.html" title="3.1. XPath"
              >anterior</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
 
-          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">3. </span>Almacenamiento</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="01.consulta.html" ><span class="section-number">3.1. </span>Tecnologías de consulta</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3.1.2. </span><abbr title="JavaScript Object Notation">JSON</abbr>Path</a></li> 
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">3. </span>Consulta de datos</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3.2. </span><abbr title="JavaScript Object Notation">JSON</abbr>Path</a></li> 
       </ul>
     </div>
     </div>

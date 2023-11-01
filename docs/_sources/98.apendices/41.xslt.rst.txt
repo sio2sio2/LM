@@ -1,0 +1,9 @@
+.. _xslt:
+
+|XSLT|
+******
+
+.. todo:: Trasladar la versión antigua.
+
+
+.. |XSLT| replace:: :abbr:`XSLT (eXtensible Stylesheet Language Transformations)`

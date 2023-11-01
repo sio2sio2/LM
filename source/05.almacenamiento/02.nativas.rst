@@ -1,0 +1,7 @@
+Bases nativas
+*************
+
+.. Bases XML: https://docs.basex.org/wiki/Getting_Started
+   Bases documentales (mongoDB)
+
+
