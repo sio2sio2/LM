@@ -35,7 +35,7 @@ Las unidades se han diseñado atendiendo a los siguientes criterios:
    Reconoce las características de lenguajes de marcas analizando e
    interpretando fragmentos de código.
 
-   UT **1**: :ref:`lm-ut1`
+   UT **1**: :ref:`lm-ut1`  (18 horas)
 
    a. Se han identificado las características generales de los lenguajes de
       marcas. 
@@ -58,7 +58,7 @@ Las unidades se han diseñado atendiendo a los siguientes criterios:
    a través de la web analizando la estructura de los documentos e identificando
    sus elementos.
 
-   UT **6**: :ref:`lm-ut6`
+   UT **6**: :ref:`lm-ut6` (16 horas)
 
    a. Se han identificado y clasificado los lenguajes de marcas relacionados con
       la web y sus diferentes versiones y estándares.
@@ -72,7 +72,7 @@ Las unidades se han diseñado atendiendo a los siguientes criterios:
    i. Se han identificado las tecnologías en que se basa la sindicación de contenidos.
    #. Se han reconocido los ámbitos de aplicación de la sindicación de contenidos.
 
-   UT **7**: :ref:`lm-ut7`
+   UT **7**: :ref:`lm-ut7` (16 horas)
 
    f. Se han identificado las ventajas que aporta la utilización de hojas de estilo.
    #. Se han aplicado hojas de estilo.
@@ -81,7 +81,7 @@ Las unidades se han diseñado atendiendo a los siguientes criterios:
 **RA 3**
    Accede y manipula documentos web utilizando lenguajes de *script* de cliente.
 
-   UT **8**: :ref:`lm-ut8`
+   UT **8**: :ref:`lm-ut8` (32 horas)
 
    a. Se han identificado y clasificado los lenguajes de script de cliente
       relacionados con la web y sus diferentes versiones y estándares.
@@ -96,7 +96,7 @@ Las unidades se han diseñado atendiendo a los siguientes criterios:
    Establece mecanismos de validación de documentos para el intercambio de
    información utilizando métodos para definir su sintaxis y estructura.
 
-   UT **2**: :ref:`lm-ut2`
+   UT **2**: :ref:`lm-ut2` (16 horas)
 
    a. Se ha establecido la necesidad de describir la información transmitida en
       los documentos y sus reglas.
@@ -114,7 +114,7 @@ Las unidades se han diseñado atendiendo a los siguientes criterios:
    Realiza conversiones sobre documentos para el intercambio de información
    utilizando técnicas, lenguajes y herramientas de procesamiento.
 
-   UT **4**: :ref:`lm-ut4`
+   UT **4**: :ref:`lm-ut4` (4 horas)
 
    a. Se ha identificado la necesidad de la conversión de documentos para el
       intercambio de la información.
@@ -132,7 +132,7 @@ Las unidades se han diseñado atendiendo a los siguientes criterios:
    Gestiona la información en formatos de intercambio de datos analizando y
    utilizando tecnologías de almacenamiento y lenguajes de consulta.
 
-   UT **3**: :ref:`lm-ut3`
+   UT **3**: :ref:`lm-ut3` (8 horas)
 
    d. Se han identificado lenguajes y herramientas para el tratamiento y
       almacenamiento de información y su inclusión en documentos de intercambio
@@ -140,7 +140,7 @@ Las unidades se han diseñado atendiendo a los siguientes criterios:
    #. Se han utilizado lenguajes de consulta y manipulación en documentos de
       intercambio de datos.
 
-   UT **5**: :ref:`lm-ut5`
+   UT **5**: :ref:`lm-ut5` (4 horas)
 
    a. Se han identificado los principales métodos de almacenamiento de la
       información utilizados en documentos de intercambio de datos.
@@ -160,7 +160,7 @@ Las unidades se han diseñado atendiendo a los siguientes criterios:
 
 **RA 7**
 
-   UT **9**: :ref:`lm-ut9`
+   UT **9**: :ref:`lm-ut9` (14 horas)
 
    a. Se han identificado los principales sistemas de gestión empresarial.
    #. Se han reconocido las ventajas de los sistemas de gestión de información

@@ -1261,6 +1261,8 @@ novedades se pueden resumir en estos puntos:
      `true() <https://www.w3.org/TR/xpath-functions-31/#func-true>`_ y `false()
      <https://www.w3.org/TR/xpath-functions-31/#func-false>`_.
 
+     .. _xpath2-valor-efect-bool:
+
    * El `valor efectivo booleano <https://www.w3.org/TR/xpath-31/#id-ebv>`_, que
      es el valor lógico que el procesador tiene que calcular automáticamente en
      determinados casos (para el resultado de un predicado, para el argumento de
@@ -1484,7 +1486,7 @@ novedades se pueden resumir en estos puntos:
             genera un error.
 
             .. note:: Advierta que esta expresión en *XPath* 1.0 devuelve falso
-               sólo si no existen ningún elemento *x*.
+               sólo si no existe ningún elemento *x*.
 
            - Ante tipos como ``xs:NMTOKENS`` o ``xs:IDREFS`` la comparación de
              igualdad será cierta con que haya igualdad con uno de los

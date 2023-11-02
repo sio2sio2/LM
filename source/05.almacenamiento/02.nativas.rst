@@ -1,7 +1,10 @@
+.. _basex:
+
 Bases nativas
 *************
 
 .. Bases XML: https://docs.basex.org/wiki/Getting_Started
+              https://www.adictosaltrabajo.com/2013/08/06/introduccion-x-query/
    Bases documentales (mongoDB)
 
 

@@ -79,7 +79,7 @@
   <section id="transformacion-de-datos">
 <span id="lm-ut4"></span><h1><span class="section-number">4. </span>Transformación de datos<a class="headerlink" href="#transformacion-de-datos" title="Enlace permanente a este encabezado">¶</a></h1>
 <p>Habitualmente de los datos almacenados en documentos sólo requerimos obtener una
-parte de ellos u obtenerlos, todos pero en un formato distinto. En esta unidad
+parte de ellos u obtenerlos todos, pero en un formato distinto. En esta unidad
 trataremos los lenguajes que permiten la conversión entre distintos documentos de
 datos, en particular entre distintos documentos <abbr title="eXtensible  Markup Language">XML</abbr>, para lo cual requeriremos
 las técnicas de <a class="reference internal" href="../03.consulta/index.html#lm-ut3"><span class="std std-ref">Consulta de datos</span></a> aprendidas en la unidad anterior.</p>
@@ -92,19 +92,249 @@ generar una salida (<a class="reference internal" href="#lm-ut4"><span class="st
 </div>
 <p>Centraremos el estudio en el <abbr title="eXtensible  Markup Language">XML</abbr>, para lo cual existen dos grandes lenguajes:</p>
 <ul class="simple">
-<li><p><em>XQuery</em>, que permite las conversiones sencillas y al que dedicaremos el resto
+<li><p><em>XQuery</em>, que permite conversiones sencillas y al que dedicaremos el resto
 de la unidad.</p></li>
 <li><p><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr>, que permite conversiones mucho más complejas y que, por ello, requiere
 un estudio más detallado y extenso.</p></li>
 </ul>
 <section id="xquery">
 <span id="id1"></span><h2><span class="section-number">4.1. </span>XQuery<a class="headerlink" href="#xquery" title="Enlace permanente a este encabezado">¶</a></h2>
+<p><em class="dfn">XQuery</em> es un lenguaje de consulta que permite obtener una salida <abbr title="eXtensible  Markup Language">XML</abbr>
+(aunque no necesariamente) a partir de una fuente que también es <abbr title="eXtensible  Markup Language">XML</abbr>. Para
+ello, usa <a class="reference internal" href="../03.consulta/01.xpath.html#xpath"><span class="std std-ref">XPath</span></a> como herramienta para seleccionar la información y una
+estructura prototípica llamada <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> por las cinco sentencias con las que se
+construye originariamente<a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Cumple en el mundo <abbr title="eXtensible  Markup Language">XML</abbr> exactamente la misma
+función que las sentencias <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> en el mundo <abbr title="Strctured Query Language">SQL</abbr>.</p>
+<p>Tres son las versiones que ha tenido este lenguaje:</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://www.w3.org/TR/2007/REC-xquery-20070123/">Versión 1</a></dt><dd><p>Desarrollada desde los comienzos de <em>XPath</em> en 1999, se publicó
+definitivamente en 2007, con lo que hace uso de <em>XPath</em> 2.0.</p>
+</dd>
+<dt><a class="reference external" href="https://www.w3.org/TR/xquery-30/">Versión 3</a></dt><dd><p>Publicada en 2014, con lo que incorpora <em>XPath</em> 3.0, añade como novedad
+fundamental convertir a las funciones en ciudadanas de primera clase.</p>
+</dd>
+<dt><a class="reference external" href="https://www.w3.org/TR/xquery-31/">Versión 3.1</a></dt><dd><p>Es el última estándar aparecido en 2017, con lo que incorpora <em>XPath</em> 3.1.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>No existe versión <strong>2</strong>. La relación entre <em>XQuery</em> y <em>XPath</em> es tan
+íntima que se prefirió alinear las versiones de <em>XQuery</em> con las de <em>XPath</em>.</p>
+</div>
+<p>Una característica importante de <em>XQuery</em> es que, a diferencia de <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr>, no
+tiene sintaxis <abbr title="eXtensible  Markup Language">XML</abbr>, aunque existe una versión normativa (<a class="reference external" href="https://www.w3.org/TR/xqueryx-31/">XQueryX</a>) que la implementa.</p>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>Téngase presente que <em>XQuery</em> comparte el modelo de datos de
+<em>XPath</em> y, por tanto, todo lo indicado respecto a los tipos en las
+expresiones es también aplicable. Por ejemplo, si no se ha validado el
+documento, los datos serán <code class="docutils literal notranslate"><span class="pre">xs:untypedAtomic</span></code>, que se comportan más o menos
+como cadenas, nunca como números.</p>
+</div>
+<section id="procesadores">
+<h3><span class="section-number">4.1.1. </span>Procesadores<a class="headerlink" href="#procesadores" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Tenemos varias alternativas para ejecutar consultas <em>XQuery</em>:</p>
+<ul>
+<li><p>El programa <a class="reference external" href="https://www.videlibri.de/xidel.html">xidel</a>, que ya usamos para probar <em>XPath</em>. Como es capaz de
+dilucidar si la expresión proporcionada es <em>XQuery</em> o <em>XPath</em>, podemos seguir
+usándolo igual.</p></li>
+<li><p><a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a> con la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml">XML Tools</a>,
+que requiere alguna configuración:</p>
+<ol class="arabic simple">
+<li><p>Instalar <a class="reference internal" href="../05.almacenamiento/02.nativas.html#basex"><span class="std std-ref">BaseX</span></a>, que a su vez necesita la máquina virtual
+de <a class="reference external" href="https://es.wikipedia.org/wiki/Java_(lenguaje_de_programaci%C3%B3n)">Java</a>.  En las distribuciones basadas en <em>Debian</em> hay paquete
+disponible con lo que echarlo a andar es trivial.</p></li>
+<li><p>Configurar la extensión para que use <em>BaseX</em> como procesador. Para ello,
+necesitamos editar la configuración y añadir:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;xmlTools.xqueryExecutionEngine&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/bin/basex&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;xmlTools.xqueryExecutionArguments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;-i&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;$(input)&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;-o&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;$(input).output.xml&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;$(script)&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>En <em>Windows</em> la ruta será algo parecido a
+<code class="file docutils literal notranslate"><span class="pre">c:\\Program</span> <span class="pre">Files</span>
+<span class="pre">(x86)\\BaseX\\bin\\basex.bat</span></code>.  Obsérvese que habrá que
+escapar las contrabarras.</p>
+</div>
+</li>
+</ol>
+<p>Una vez bien configurada, el modo de ejecutar la consulta es el siguiente:</p>
+<ol class="loweralpha simple">
+<li><p>Escribimos el archivo <code class="file docutils literal notranslate"><span class="pre">.xq</span></code> con el código de <em>XQuery</em> y con el
+archivo abierto y seleccionado en el editor…</p></li>
+<li><p>Ejecutamos <cite>XML Tools: Execute Query</cite>.</p></li>
+<li><p>Si hay varios <abbr title="eXtensible  Markup Language">XML</abbr> en el directorio se nos preguntará sobre cual
+queremos hacer la consulta, y, si hemos incluido, la opción <kbd class="kbd docutils literal notranslate">-o</kbd> en
+la configuración (tal como se ha sugerido antes), se nos pedirá confirmar
+el archivo de salida. Si no la incluimos, la salida se volcará
+directamente en una subventana.</p></li>
+<li><p>Abrimos el archivo de salida para consultar el resultado.</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="flwor-basico">
+<h3><span class="section-number">4.1.2. </span><abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> básico<a class="headerlink" href="#flwor-basico" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>La estructura <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> es una estructura iterativa (esto es, un bucle), que en
+<em>XQuery</em> (ya veremos que la versión 3 añade otras) está constituida por la
+sucesión de cinco sentencias:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(FOR | LET)+ - WHERE? - ORDER BY? - RETURN
+</pre></div>
+</div>
+<p>donde <cite>FOR</cite> es una sentencia iterativa que asigna a una variable los ítems de
+una secuencia, <cite>LET</cite> permite definir variables asignándoles valor, <cite>WHERE</cite>
+define una condición para que la iteración del bucle se lleve a cabo, <cite>ORDER BY</cite>
+permite ordenadar los resultados, y <cite>RETURN</cite> incluye la expresión que resultará
+de cada iteración. Hemos expresado también la cardinalidad, de la que se deduce
+que debe haber siempre al menos una sentencia <cite>FOR</cite> o <cite>LET</cite> y una <cite>RETURN</cite>.</p>
+<p>Como las expresiones se construyen para transformar documentos <abbr title="eXtensible  Markup Language">XML</abbr> se hará
+referencia a los nodos de un documento, pero nuestros primeros ejemplos los
+haremos utilizando expresiones <em>XPath</em> ajenas a cualquier nodo:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;perro&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gato&quot;</span><span class="p">)</span>
+<span class="k">return</span>
+<span class="w">   </span><span class="s2">&quot;Mi mascota es un &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;.&quot;</span>
+</pre></div>
+</div>
+<p>Este código devolverá como resultado</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Mi mascota es un perro.
+Mi mascota es un gato.
+</pre></div>
+</div>
+<p>Obsérvese que para construir la secuencia hemos usado una expresión <em>XPath</em> y
+para expresar cuál debe ser el resultado otra. Añadamos algunos elementos más a
+la construcción:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;perro&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gato&quot;</span><span class="p">)</span>
+<span class="k">let</span><span class="w"> </span><span class="nv">$</span><span class="n">como</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s2">&quot;bonito&quot;</span>
+<span class="k">return</span>
+<span class="w">   </span><span class="s2">&quot;Mi mascota es un &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">como</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;.&quot;</span>
+</pre></div>
+</div>
+<p>Este código devuelve:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Mi mascota es un perro bonito.
+Mi mascota es un gato bonito.
+</pre></div>
+</div>
+<p>También podemos probar a ordenar los resultados:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;perro&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gato&quot;</span><span class="p">)</span>
+<span class="k">let</span><span class="w"> </span><span class="nv">$</span><span class="n">como</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s2">&quot;bonito&quot;</span>
+<span class="k">order by</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span>
+<span class="k">return</span>
+<span class="w">   </span><span class="s2">&quot;Mi mascota es un &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">como</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;.&quot;</span>
+</pre></div>
+</div>
+<p>lo cual ordenará los resultados según la expresión <em>XPath</em> <code class="code docutils literal notranslate"><span class="pre">$animal</span></code>, o
+sea, el valor de esa variable para cada iteración. Como los valores son cadenas
+y las cadenas tienen ordenación, es posible hacerlo. Podríamos haber utilizado
+cualquier otra expresión que devolviera valores ordenados según los criterios e
+<em>XPath</em> como, por ejemplo, <code class="code docutils literal notranslate"><span class="pre">fn:string-length($animal)</span></code>.</p>
+<p>Por último, podemos añadir también una condición que será una expresión <em>XPath</em>
+que devuelva un resultado lógico:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;perro&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gato&quot;</span><span class="p">)</span>
+<span class="k">let</span><span class="w"> </span><span class="nv">$</span><span class="n">como</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s2">&quot;bonito&quot;</span>
+<span class="k">where</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&quot;perro&quot;</span>
+<span class="k">order by</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span>
+<span class="k">return</span>
+<span class="w">   </span><span class="s2">&quot;Mi mascota es un &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">como</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;.&quot;</span>
+</pre></div>
+</div>
+<p>En esta ocasión evitaremos tener como mascota un «<em>perro bonito</em>».</p>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>Es importante tener claro que esta sentencia iterativa, aunque
+formalmente parecida a la de la programación estructurada, no actúa del mismo
+modo. Las iteraciones, aunque respeten el orden al mostrar los resultados, no
+tienen por qué evaluarse sucesivamente y en orden, sino que lo harán de un
+modo imprecedible e incluso en paralelo. Por ello, no pueden redefinirse
+variables cuyo valor cambie en el cuerpo de cada iteración (p.e. definir
+nosotros un contador al que sumenos <strong>1</strong> cada vez que se ejecuta el bucle).</p>
+</div>
+<p>Analicemos más pormenorizadamente cada parte:</p>
+<dl>
+<dt><strong>FOR</strong></dt><dd><p>La sentencia permite añadir un contador usando la palabra <code class="docutils literal notranslate"><span class="pre">at</span></code>. Por
+ejemplo, el código</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="nv">$</span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;perro&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gato&quot;</span><span class="p">)</span>
+<span class="k">return</span>
+<span class="w">   </span><span class="nv">$</span><span class="n">i</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;. Mi mascota es un &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;.&quot;</span>
+</pre></div>
+</div>
+<p>mostrará:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. Mi mascota es un perro.
+2. Mi mascota es un gato.
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>El contador hace referencia al orden del animal en la secuencia, no
+al orden de las iteraciones. Por ello, el resultado que muestra el <em>gato</em>
+siempre estará asociado al <strong>2</strong>, incluso aunque usando <code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">by</span></code> se
+llegue a mostrar antes.</p>
+</div>
+<p>Como deja vislumbrar la cardinalidad antes mostrada, puede haber varios
+<code class="docutils literal notranslate"><span class="pre">for</span></code> en la misma estructura:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $animal in (&quot;perro&quot;, &quot;gato&quot;)
+for $dueño in (&quot;Marta&quot;, &quot;Francisco&quot;)
+return
+   $dueño || &quot; tiene un &quot; || $animal || &quot;.&quot;
+</pre></div>
+</div>
+<p>El código devuelve:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Marta tiene un perro.
+Francisco tiene un perro.
+Marta tiene un gato.
+Francisco tiene un gato.
+</pre></div>
+</div>
+<p>Lo anterior también puede ser escrito con un único <code class="docutils literal notranslate"><span class="pre">for</span></code>:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $animal in (&quot;perro&quot;, &quot;gato&quot;),
+    $dueño in (&quot;Marta&quot;, &quot;Francisco&quot;)
+return
+   $dueño || &quot; tiene un &quot; || $animal || &quot;.&quot;
+</pre></div>
+</div>
+</dd>
+<dt><strong>LET</strong></dt><dd><p>La sintaxis es la misma que para <code class="docutils literal notranslate"><span class="pre">for</span></code>: podemos usar varias sentencias con
+una definición o poner varias definiciones en una sentencia separándolas con
+coma.</p>
+</dd>
+<dt><strong>WHERE</strong></dt><dd><p>No tiene especiales dificultades, salvo tener claro que se evalúa usando el
+<a class="reference internal" href="../03.consulta/01.xpath.html#xpath2-valor-efect-bool"><span class="std std-ref">valor efectivo booleano</span></a> de la expresión.</p>
+</dd>
+<dt><strong>ORDER BY</strong></dt><dd><p>La expresión <em>XPath</em> que se evalúa debe devolver un valor para el que haya
+definida un orden (un número o una cadena, por ejemplo). Los resultados  se
+ordenarán de menor a mayor. Sin embargo, podemos añadir las palabras reservadas
+<code class="docutils literal notranslate"><span class="pre">ascending</span></code> (que no tendrá efecto) o <code class="docutils literal notranslate"><span class="pre">descending</span></code>  que invertirá la
+ordenación para que se haga de mayor a menor.</p>
+</dd>
+</dl>
+<p><strong>RETURN</strong></p>
+</section>
+<section id="construccion-de-salida-xml">
+<h3><span class="section-number">4.1.3. </span>Construcción de salida <abbr title="eXtensible  Markup Language">XML</abbr><a class="headerlink" href="#construccion-de-salida-xml" title="Enlace permanente a este encabezado">¶</a></h3>
+</section>
+<section id="sentencias-adicionales">
+<h3><span class="section-number">4.1.4. </span>Sentencias adicionales<a class="headerlink" href="#sentencias-adicionales" title="Enlace permanente a este encabezado">¶</a></h3>
+</section>
 </section>
 <section id="xslt">
 <h2><span class="section-number">4.2. </span><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr><a class="headerlink" href="#xslt" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Un estudio consistente de este lenguaje de transformación es demasiado amplio
 para la escasa carga lectiva del módulo, pero pertinente a la vista del
 currículo. Por ello, trasladamos su desarrollo al <a class="reference internal" href="../98.apendices/41.xslt.html#xslt"><span class="std std-ref">apendice correspondiente</span></a>.</p>
+<p class="rubric">Nota al pie</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id3" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>Porque estas son las sentencias de las que podía constar la estructura. La
+versión <strong>3</strong> añadió otras sentencias adicionales.</p>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -121,7 +351,13 @@ currículo. Por ello, trasladamos su desarrollo al <a class="reference internal"
     <h3><a href="../index.html">Page contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">4. Transformación de datos</a><ul>
-<li><a class="reference internal" href="#xquery">4.1. XQuery</a></li>
+<li><a class="reference internal" href="#xquery">4.1. XQuery</a><ul>
+<li><a class="reference internal" href="#procesadores">4.1.1. Procesadores</a></li>
+<li><a class="reference internal" href="#flwor-basico">4.1.2. <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> básico</a></li>
+<li><a class="reference internal" href="#construccion-de-salida-xml">4.1.3. Construcción de salida <abbr title="eXtensible  Markup Language">XML</abbr></a></li>
+<li><a class="reference internal" href="#sentencias-adicionales">4.1.4. Sentencias adicionales</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#xslt">4.2. <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
 </ul>
 </li>
@@ -198,7 +434,7 @@ currículo. Por ello, trasladamos su desarrollo al <a class="reference internal"
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Derechos de autor 2023, José Miguel Sánchez Alés.
+        &#169; Derechos de autor CC BY 4.0, 2023-2023, José Miguel Sánchez Alés.
       Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
     <!-- cloud_sptheme 1.4 -->

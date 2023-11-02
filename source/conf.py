@@ -5,9 +5,11 @@
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
+from datetime import date
 
 project = 'Lenguajes de Marcas'
-copyright = '2023, José Miguel Sánchez Alés'
+copyright = ('CC BY 4.0, 2023-' + str(date.today().year) +
+             ', José Miguel Sánchez Alés')
 author = 'José Miguel Sánchez Alés'
 release = 'rolling'
 

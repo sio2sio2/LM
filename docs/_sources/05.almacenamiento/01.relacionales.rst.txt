@@ -40,7 +40,7 @@ No entraremos en mucho detalle, pero apuntaremos algunas de sus posibilidades:
 * Permite la generación de una salida |XML| a partir de datos almacenados en
   forma |XML| (a través del tipo |XML|) gracias a la función ``XMLQUERY``, que
   utiliza :ref:`XQuery` para generar la estructura |XML|.
-* Permite la extracción de valores de un |XML| mediante la función
+* Permite la extracción de valores de un dato de tipo |XML| mediante la función
   ``EXTRACTVALUE``\ [#]_. que utiliza para referirlos :ref:`XPath`.
 
 .. seealso:: Para profundizar en la inclusión de |XML| dentro de los |SGBD|
@@ -164,12 +164,12 @@ de prueba, y pruebe cómo acceder a los campos individuales del |JSON|:
 .. code-block:: console
 
    $ sqlite /tmp/proveedor.db < proveedor.sql
-   $ sqlite /tmp/proveedor
+   $ sqlite /tmp/proveedor.db
    sqlite> .tables
    Proveedor
    sqlite> .mode columns
    sqlite> SELECT "nombre", JSON_EXTRACT("contacto", '$.domicilio.localidad') AS 'localidad' FROM "Proveedor";
-   nombre                 Localidad
+   nombre                 localidad
    ---------------------  ---------
    Helados Babuino        Cádiz    
    Central de Chucherías  Málaga
@@ -183,7 +183,7 @@ los valores individuales que contiene el |JSON| contenido en el campo ``contacto
 
 .. rubric:: Notas al pie
 
-.. [#] ``EXTRACTVALUE`` es la función equivalente ``JSON_EXTRACT`` que veremos
+.. [#] ``EXTRACTVALUE`` es la función equivalente a ``JSON_EXTRACT`` que veremos
    más en profundidad bajo el siguiente epígrafe.
 
 .. [#] :program:`SQLite` permite indicar un tipo ``JSON``,  aunque internamente

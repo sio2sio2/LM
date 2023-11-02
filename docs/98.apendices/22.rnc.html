@@ -77,7 +77,7 @@
           <div class="body" role="main">
             
   <section id="relax-ng-compact">
-<span id="rnc"></span><h1><span class="section-number">2. </span>Relax-NG Compact<a class="headerlink" href="#relax-ng-compact" title="Enlace permanente a este encabezado">¶</a></h1>
+<span id="rnc"></span><h1>Relax-NG Compact<a class="headerlink" href="#relax-ng-compact" title="Enlace permanente a este encabezado">¶</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Se presupone que el lector ya sabe describir la gramática con
@@ -141,9 +141,9 @@ contexto, es perfectamente posible que ambos nodos se llamen <em>direccion</em>.
 cardinalidad, recuerda a <abbr title="Document Type Definition">DTD</abbr>.</p></li>
 </ul>
 <section id="preliminares">
-<h2><span class="section-number">2.1. </span>Preliminares<a class="headerlink" href="#preliminares" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Preliminares<a class="headerlink" href="#preliminares" title="Enlace permanente a este encabezado">¶</a></h2>
 <section id="declaracion">
-<h3><span class="section-number">2.1.1. </span>Declaración<a class="headerlink" href="#declaracion" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Declaración<a class="headerlink" href="#declaracion" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>A diferencia del <abbr title="Document Type Definition">DTD</abbr>, no hay un modo estándar de relacionar un documento <abbr title="eXtensible  Markup Language">XML</abbr>
 con el fichero <abbr title="Relax-NG Compact">RNC</abbr> que describe su gramática. Un modo habitual de hacerlo es
 usar una instrucción de procesamiento:</p>
@@ -152,7 +152,7 @@ usar una instrucción de procesamiento:</p>
 </div>
 </section>
 <section id="ejemplo">
-<span id="rnc-ejemplo-inicial"></span><h3><span class="section-number">2.1.2. </span>Ejemplo<a class="headerlink" href="#ejemplo" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="rnc-ejemplo-inicial"></span><h3>Ejemplo<a class="headerlink" href="#ejemplo" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Si retomamos el <a class="reference internal" href="../01.intro/02b.marcas.html#xml-ejemplo"><span class="std std-ref">ejemplo sobre el claustro de profesores</span></a><a class="footnote-reference brackets" href="#id14" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>:</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
@@ -267,7 +267,7 @@ de la misma forma que en <abbr title="Document Type Definition">DTD</abbr> y que
 precisión cuál es el formato del identificador que tiene cada profesor.</p>
 </section>
 <section id="validacion">
-<h3><span class="section-number">2.1.3. </span>Validación<a class="headerlink" href="#validacion" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Validación<a class="headerlink" href="#validacion" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Para validar documentos cuya gramática se ha definido mediante un <abbr title="Relax-NG Compact">RNC</abbr> podemos
 valernos de <a class="reference external" href="http://www.thaiopensource.com/relaxng/jing.html">jing</a>
 (disponible a través del paquete <a class="reference external" href="https://packages.debian.org/stable/jing">jing</a>), que soporta la sintaxis compacta
@@ -308,10 +308,10 @@ perfilar la gramática.</p>
 </section>
 </section>
 <section id="sintaxis-basica">
-<h2><span class="section-number">2.2. </span>Sintaxis básica<a class="headerlink" href="#sintaxis-basica" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Sintaxis básica<a class="headerlink" href="#sintaxis-basica" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>La sintaxis es, hasta cierto punto, semejante a la de un <abbr title="Document Type Definition">DTD</abbr></p>
 <section id="elementos">
-<h3><span class="section-number">2.2.1. </span>Elementos<a class="headerlink" href="#elementos" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Elementos<a class="headerlink" href="#elementos" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Se definen con la construcción:</p>
 <div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">element</span><span class="nv"> nombre_del_elemento </span><span class="p">{</span>
    contenido
@@ -391,7 +391,7 @@ patrón:</p>
 </div>
 </div>
 <section id="elementos-de-solo-texto">
-<span id="rnc-solo-texto"></span><h4><span class="section-number">2.2.1.1. </span>Elementos de sólo texto<a class="headerlink" href="#elementos-de-solo-texto" title="Enlace permanente a este encabezado">¶</a></h4>
+<span id="rnc-solo-texto"></span><h4>Elementos de sólo texto<a class="headerlink" href="#elementos-de-solo-texto" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Los elementos que sólo contienen texto, y que se corresponden con <code class="docutils literal notranslate"><span class="pre">#PCDATA</span></code>
 permiten una expresión muchísimo más rica que la que ofrece la palabra reservada
 <em>text</em>, de manera que al final el contenido no sea texto libre:</p>
@@ -447,7 +447,7 @@ espacios. Por ejemplo, si queremos que el contenido sean dos números enteros:</
 </ul>
 </section>
 <section id="secuencia">
-<h4><span class="section-number">2.2.1.2. </span>Secuencia<a class="headerlink" href="#secuencia" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4>Secuencia<a class="headerlink" href="#secuencia" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Ya se definió la <em class="dfn">secuencia</em> como el modo en que varios elementos se
 suceden dentro del contenido de otro y que <abbr title="Document Type Definition">DTD</abbr> permitía definir dos: la
 sucesión representada por la coma, y la alternativa, representada por la tubería
@@ -478,7 +478,7 @@ varios elementos a la vez para complicar la secuencia.</p>
 </section>
 </section>
 <section id="atributos">
-<h3><span class="section-number">2.2.2. </span>Atributos<a class="headerlink" href="#atributos" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Atributos<a class="headerlink" href="#atributos" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>La definición de atributos es idéntica a la de <a class="reference internal" href="#rnc-solo-texto"><span class="std std-ref">elementos de sólo texto</span></a> con la salvedad de que la palabra reservada para definirlos es
 <code class="docutils literal notranslate"><span class="pre">attribute</span></code>:</p>
 <div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">attribute</span><span class="nv"> sexo </span><span class="p">{</span> <span class="s2">&quot;hombre&quot;</span> <span class="o">|</span> <span class="s2">&quot;mujer&quot;</span> <span class="p">}</span>
@@ -505,14 +505,14 @@ no se incluye en el <abbr title="eXtensible  Markup Language">XML</abbr>.</p>
 datos</span></a>, como es el caso del atributo <em>id</em> del elemento <em>profesor</em>.</p>
 </section>
 <section id="comentarios-anotaciones">
-<h3><span class="section-number">2.2.3. </span>Comentarios. Anotaciones<a class="headerlink" href="#comentarios-anotaciones" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Comentarios. Anotaciones<a class="headerlink" href="#comentarios-anotaciones" title="Enlace permanente a este encabezado">¶</a></h3>
 <div class="admonition-todo admonition" id="id5">
 <p class="admonition-title">Por hacer</p>
 <p>Por escribir</p>
 </div>
 </section>
 <section id="y-las-entidades">
-<h3><span class="section-number">2.2.4. </span>¿Y las entidades?<a class="headerlink" href="#y-las-entidades" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>¿Y las entidades?<a class="headerlink" href="#y-las-entidades" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Las entidades generales definidas por el usuario permitían expresar un contenido
 con un nombre:</p>
 <div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ENTITY</span> <span class="ni">HyG</span> <span class="s2">&quot;Historia y Geografía&quot;</span><span class="k">&gt;</span>
@@ -589,7 +589,7 @@ dedicada a <abbr title="Document Type Definition">DTD</abbr>.</p>
 </section>
 </section>
 <section id="tipos-de-datos">
-<span id="rnc-datatype"></span><h2><span class="section-number">2.3. </span>Tipos de datos<a class="headerlink" href="#tipos-de-datos" title="Enlace permanente a este encabezado">¶</a></h2>
+<span id="rnc-datatype"></span><h2>Tipos de datos<a class="headerlink" href="#tipos-de-datos" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Ya se ha apuntado que <abbr title="Relax-NG Compact">RNC</abbr> soporta tipos, pero no los define, sino que usa las
 definiciones ya establecidas para <abbr title="XML Schema Definition">XSD</abbr>. Estos tipos pueden consultarse en la
 <a class="reference external" href="https://www.w3.org/TR/xmlschema-2/">documentación de del propio W3C XML Schemas</a>,
@@ -597,7 +597,7 @@ o mejor aún, en el <a class="reference external" href="http://books.xmlschemata
 reseñado</a>, que hace
 un resumen de la anterior.</p>
 <section id="relacion">
-<h3><span class="section-number">2.3.1. </span>Relación<a class="headerlink" href="#relacion" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Relación<a class="headerlink" href="#relacion" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Sin ánimo de ser exahustivos, pueden sernos de mucha utilidad:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="http://books.xmlschemata.org/relaxng/ch19-77151.html">xsd:ID</a>, para
@@ -627,7 +627,7 @@ definir un valor lógico (<em>true</em>/<em>false</em>).</p></li>
 </div>
 </section>
 <section id="restricciones">
-<h3><span class="section-number">2.3.2. </span>Restricciones<a class="headerlink" href="#restricciones" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Restricciones<a class="headerlink" href="#restricciones" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Al declarar el tipo también se pueden introducir restricciones. Hay distintos
 tipos de restricciones y dependiendo de la naturaleza del tipo de dato unas
 serán aplicables y otras no. Por ejemplo, en los tipos de datos de naturaleza
@@ -650,7 +650,7 @@ añada un número después.</p>
 </section>
 </section>
 <section id="definicion-modular">
-<h2><span class="section-number">2.4. </span>Definición modular<a class="headerlink" href="#definicion-modular" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Definición modular<a class="headerlink" href="#definicion-modular" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Con lo visto hasta ahora, tenemos ya la mayor parte de los componentes
 necesarios para definir la gramática de un <abbr title="eXtensible  Markup Language">XML</abbr> en un sólo documento <abbr title="Relax-NG Compact">RNC</abbr>.
 Ahora bien, cuando la definición es larga o cuando queremos reaprovechar
@@ -668,7 +668,7 @@ gramática.</p></li>
 <li><p><strong>include</strong> qie permite importar una gramática completa</p></li>
 </ul>
 <section id="importacion-de-patrones">
-<h3><span class="section-number">2.4.1. </span>Importación de patrones<a class="headerlink" href="#importacion-de-patrones" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Importación de patrones<a class="headerlink" href="#importacion-de-patrones" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>En este caso, requerimos el uso de <code class="docutils literal notranslate"><span class="pre">external</span></code>. Un ejemplo tan ilustrativo como
 inútil es éste:</p>
 <div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="c1"># ejemplo.rnc</span>
@@ -691,7 +691,7 @@ elemento <em>raiz</em>. Por ejemplo:</p>
 sólo, es incapaz de servir para validar.</p>
 </section>
 <section id="importacion-de-gramaticas">
-<h3><span class="section-number">2.4.2. </span>Importación de gramáticas<a class="headerlink" href="#importacion-de-gramaticas" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Importación de gramáticas<a class="headerlink" href="#importacion-de-gramaticas" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Podemos también con <code class="docutils literal notranslate"><span class="pre">include</span></code> importar una gramática definida en un archivo
 externo. Por ejemplo, consideremos el siguiente <abbr title="eXtensible  Markup Language">XML</abbr>:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;</span>
@@ -804,7 +804,7 @@ nueva_definicion <span class="o">=</span> ...
 </div>
 </section>
 <section id="espacios-de-nombres">
-<span id="rnc-ns"></span><h3><span class="section-number">2.4.3. </span>Espacios de nombres<a class="headerlink" href="#espacios-de-nombres" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="rnc-ns"></span><h3>Espacios de nombres<a class="headerlink" href="#espacios-de-nombres" title="Enlace permanente a este encabezado">¶</a></h3>
 <p><abbr title="Relax-NG Compact">RNC</abbr> soporta la definición de espacios de nombres.</p>
 <p>Por ejemplo, recordemos que antes jugamos con dos gramáticas: una que definía
 <em>persona</em> y otra que definía <em>direccion</em>. Supongamos que asociamos un espacio de
@@ -876,7 +876,7 @@ ya que las herramientas de validación lo dan por supuesto.</p>
 </section>
 </section>
 <section id="ejercicios-resueltos">
-<h2><span class="section-number">2.5. </span>Ejercicios resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Ejercicios resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Enlace permanente a este encabezado">¶</a></h2>
 <ol class="arabic">
 <li><p>Tomando el <abbr title="eXtensible  Markup Language">XML</abbr> sobre recetas, <a class="reference internal" href="../01.intro/02a.serial.html#yaml-resueltos"><span class="std std-ref">ya resuelto en un epígrafe anterior</span></a>, escriba un <abbr title="Relax-NG Compact">RNC</abbr> para validarlo.</p>
 <div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span>start <span class="o">=</span> recetas
@@ -1139,7 +1139,7 @@ ejemplo:</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Derechos de autor 2023, José Miguel Sánchez Alés.
+        &#169; Derechos de autor CC BY 4.0, 2023-2023, José Miguel Sánchez Alés.
       Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
     <!-- cloud_sptheme 1.4 -->

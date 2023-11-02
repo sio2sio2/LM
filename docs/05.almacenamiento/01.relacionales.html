@@ -118,7 +118,7 @@ etc.).</p></li>
 <li><p>Permite la generación de una salida <abbr title="eXtensible  Markup Language">XML</abbr> a partir de datos almacenados en
 forma <abbr title="eXtensible  Markup Language">XML</abbr> (a través del tipo <abbr title="eXtensible  Markup Language">XML</abbr>) gracias a la función <code class="docutils literal notranslate"><span class="pre">XMLQUERY</span></code>, que
 utiliza <a class="reference internal" href="../04.transformacion/index.html#xquery"><span class="std std-ref">XQuery</span></a> para generar la estructura <abbr title="eXtensible  Markup Language">XML</abbr>.</p></li>
-<li><p>Permite la extracción de valores de un <abbr title="eXtensible  Markup Language">XML</abbr> mediante la función
+<li><p>Permite la extracción de valores de un dato de tipo <abbr title="eXtensible  Markup Language">XML</abbr> mediante la función
 <code class="docutils literal notranslate"><span class="pre">EXTRACTVALUE</span></code><a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. que utiliza para referirlos <a class="reference internal" href="../03.consulta/01.xpath.html#xpath"><span class="std std-ref">XPath</span></a>.</p></li>
 </ul>
 <div class="admonition seealso">
@@ -236,12 +236,12 @@ tipo de dato distinto (o sea, lo que estipula <a class="reference external" href
 creación de la segunda versión propuesta de la tabla<a class="footnote-reference brackets" href="#id5" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> y un par de registros
 de prueba, y pruebe cómo acceder a los campos individuales del <abbr title="JavaScript Object Notation">JSON</abbr>:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sqlite<span class="w"> </span>/tmp/proveedor.db<span class="w"> </span>&lt;<span class="w"> </span>proveedor.sql
-<span class="gp">$ </span>sqlite<span class="w"> </span>/tmp/proveedor
+<span class="gp">$ </span>sqlite<span class="w"> </span>/tmp/proveedor.db
 <span class="go">sqlite&gt; .tables</span>
 <span class="go">Proveedor</span>
 <span class="go">sqlite&gt; .mode columns</span>
 <span class="go">sqlite&gt; SELECT &quot;nombre&quot;, JSON_EXTRACT(&quot;contacto&quot;, &#39;$.domicilio.localidad&#39;) AS &#39;localidad&#39; FROM &quot;Proveedor&quot;;</span>
-<span class="go">nombre                 Localidad</span>
+<span class="go">nombre                 localidad</span>
 <span class="go">---------------------  ---------</span>
 <span class="go">Helados Babuino        Cádiz</span>
 <span class="go">Central de Chucherías  Málaga</span>
@@ -257,7 +257,7 @@ los valores individuales que contiene el <abbr title="JavaScript Object Notation
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="id4" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p><code class="docutils literal notranslate"><span class="pre">EXTRACTVALUE</span></code> es la función equivalente <code class="docutils literal notranslate"><span class="pre">JSON_EXTRACT</span></code> que veremos
+<p><code class="docutils literal notranslate"><span class="pre">EXTRACTVALUE</span></code> es la función equivalente a <code class="docutils literal notranslate"><span class="pre">JSON_EXTRACT</span></code> que veremos
 más en profundidad bajo el siguiente epígrafe.</p>
 </aside>
 <aside class="footnote brackets" id="id5" role="note">
@@ -377,7 +377,7 @@ como <a class="reference external" href="https://es.wikipedia.org/wiki/Az%C3%BAc
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Derechos de autor 2023, José Miguel Sánchez Alés.
+        &#169; Derechos de autor CC BY 4.0, 2023-2023, José Miguel Sánchez Alés.
       Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
     <!-- cloud_sptheme 1.4 -->

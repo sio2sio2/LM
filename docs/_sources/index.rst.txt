@@ -11,7 +11,7 @@ autonómica de 16 de junio de 2011
 <https://www.juntadeandalucia.es/boja/2011/142/20>`_, pero fue actualizado a
 través del `Real Decreto 405/2023
 <https://www.boe.es/eli/es/rd/2023/05/29/405>`_ para incluir, fundamentalmente,
-el estudio de Javascript_ y ampliar el de los lenguajes de marcas a otros
+Javascript_ y ampliar el estudio de tecnologías de lenguajes de marcas a otros
 distintos a |XML|. El manual tiene en cuenta estas últimas actualizaciones.
 
 * :ref:`lm-secuenciacion`
@@ -58,7 +58,6 @@ Apéndices
 .. toctree::
    :maxdepth: 1
    :glob:
-   :numbered:
 
    98.apendices/[0-9]*
 
