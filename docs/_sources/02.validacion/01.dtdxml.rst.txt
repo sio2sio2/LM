@@ -434,7 +434,7 @@ valor predeterminado del atributo, para lo cual hay cuatro posibilidades:
    en el |XML|, su valor queda indefinido.
 
 #. ``#REQUIRED``, que significa que no hay valor predeterminado, pero que
-   obligaritoriamente se necesita un valor, porque lo que forzosamente habrá
+   obligaritoriamente se necesita un valor, por lo que forzosamente habrá
    que incluir el atributo en el |XML|.
 
 #. ``#FIXED``, que significa que el valor obligatoriamente debe ser el que se
@@ -643,7 +643,7 @@ inconvenientes.
 .. [#] También soporta :ref:`Relax-NG Compact <rnc>` y :ref:`XML Schemas <xsd>`.
 
 .. [#] Sin ir más lejos, el ejemplo propuesto para los casilleros es modular:
-   las entidades que definen los nombres de los departamentos está en un |DTD|
+   las entidades que definen los nombres de los departamentos están en un |DTD|
    aparte, que es referido en :file:`casilleros.dtd`.
 
 .. [#] Los tipos |MIME| identifican de forma única los distintos tipos de

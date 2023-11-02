@@ -122,7 +122,7 @@ Antes de empezar, no obstante, es conveniente saber cómo validar:
    <https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml>`_ y,
    como en el caso anterior, relacionar el archivo con su esquema correspondiente.
    La configuración es muy semejante, salvo que se encuentra dentro de la
-   extensión |YAML| en, y que el |JSON| de configuración no es exactamente
+   extensión |YAML|, y que el |JSON| de configuración no es exactamente
    igual:
 
    .. code:: json
@@ -159,13 +159,13 @@ los :ref:`DTD <dtd>`.
 Esquema del nodo raíz
 ---------------------
 Antes de analizar cómo se define el esquema de cada nodo en general, es preciso
-indicar las particularidades del nodo raíz.  Un nodo raz tiene este aspecto:
+indicar las particularidades del nodo raíz.  Un nodo raíz tiene este aspecto:
 
 .. code-block:: yaml
 
    {
       "$schema": "URN-del-esquema-JSON-que-se-usa",
-      "$id": "URL-del-documentoo",
+      "$id": "URL-del-documento",
 
       # Descripción del nodo
    }

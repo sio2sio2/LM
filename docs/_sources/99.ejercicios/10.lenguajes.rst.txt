@@ -14,7 +14,7 @@ de datos:
    .. code-block::  json
 
       {
-         "nombre": "Pedro Martínez Alvárez",
+         "nombre": "Pedro Martínez Álvarez",
          "edad": 32,
          "casado": true,
          "hijos": [
@@ -32,7 +32,7 @@ de datos:
    .. code-block:: yaml
 
       ---
-      nombre: Pedro Martínez Alvárez
+      nombre: Pedro Martínez Álvarez
       edad: 32
       casado: true
       nacimiento: 1991-05-07
@@ -62,7 +62,7 @@ uno de ellos cree versiones |JSON|, |YAML| y |XML|.
    * De cada producto que se ha comprado debe aparecer la cantidad de productos
      comprados, la denominación y el precio unitario.
    * Se debe guardar el :abbr:`IVA (Impuesto sobre el Valor Añadido)` de cada producto.
-   * Si es necesario se indicara un descuento al importe total de la factura.
+   * Si es necesario se indicará un descuento al importe total de la factura.
 
    .. rst-class:: sol-oculta
 
@@ -80,7 +80,7 @@ uno de ellos cree versiones |JSON|, |YAML| y |XML|.
    * De cada libro podemos tener uno o varios ejemplares. Cada ejemplar se
      diferencia de otro por un código numérico.
    * Se prestan los ejemplares, y de cada préstamo hay que indicar el ejemplar
-     del libro, el socio al que se ha prestado y la fecha de prestamo.
+     del libro, el socio al que se ha prestado y la fecha de préstamo.
    * Del socio hay que guadar DNI, nombre y dirección.
 
    .. rst-class:: sol-oculta
