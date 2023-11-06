@@ -15,8 +15,6 @@
       <departamento>Biología y Geología</departamento>
    </profesor>
 
-   <!-- Si se sustituye a sí mismo es que está de baja -->
-
    <profesor id="p15">
       <apelativo>Manolo</apelativo>
       <nombre>Manuel</nombre>
@@ -38,7 +36,7 @@
         pero se puede asignar uno distinto.
     -->
 
-   <profesor id="p28" casillero="28">
+   <profesor id="p28" casillero="52">
       <apelativo>Miguel Ángel</apelativo>
       <nombre>Miguel Ángel</nombre>
       <apellidos>Campos Sánchez</apellidos>
@@ -56,7 +54,7 @@
 
    <!-- Profesor sustituto -->
 
-   <profesor id="p86" sustituye="p86">
+   <profesor id="p86" sustituye="p81">
       <apelativo>Roberto</apelativo>
       <nombre>Roberto</nombre>
       <apellidos>Mínguez Torralbo</apellidos>

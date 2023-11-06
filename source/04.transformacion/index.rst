@@ -26,11 +26,19 @@ Centraremos el estudio en el |XML|, para lo cual existen dos grandes lenguajes:
 XQuery
 ******
 :dfn:`XQuery` es un lenguaje de consulta que permite obtener una salida |XML|
-(aunque no necesariamente) a partir de una fuente que también es |XML|. Para
-ello, usa :ref:`xpath` como herramienta para seleccionar la información y una
-estructura prototípica llamada |FLWOR| por las cinco sentencias con las que se
-construye originariamente\ [#]_. Cumple en el mundo |XML| exactamente la misma
-función que las sentencias ``SELECT`` en el mundo |SQL|.
+(aunque no necesariamente) a partir de una fuente |XML| (aunque, de nuevo, no
+necesariamente). Para ello, usa :ref:`xpath` como herramienta de selección la
+información y una estructura prototípica llamada |FLWOR| por las cinco
+cláusulas con las que se construye originariamente\ [#]_. Cumple en el mundo
+|XML| exactamente la misma función que las cláusula ``SELECT`` en el mundo
+|SQL|.
+
+En cualquier caso, aunque lo que caracteriza a *XQuery* es la estructura
+|FLWOR|, esta no es obligatoria, y una consulta *XQuery* puede crearse
+únicamente con el contenido del :ref:`RETURN del FLWOR <xquery-return>`. Como
+este contenido puede ser cualquier expresión *XPath* valida, resulta que
+*XQuery* es un supercojunto de *XPath*, o lo que es lo mismo, toda expresión
+*XPath* es una consulta *XQuery* válida.
 
 Tres son las versiones que ha tenido este lenguaje:
 
@@ -52,17 +60,22 @@ Una característica importante de *XQuery* es que, a diferencia de |XSLT|, no
 tiene sintaxis |XML|, aunque existe una versión normativa (`XQueryX
 <https://www.w3.org/TR/xqueryx-31/>`_) que la implementa.
 
-.. XQuery:
-   https://www.ticarte.com/contenido/ejercicios-practicos-de-xquery
-   https://www.altova.com/training/xquery3
-   https://en.wikibooks.org/wiki/XQuery
-   http://www.datypic.com/services/xquery/whatsnew3.html
-
 .. caution:: Téngase presente que *XQuery* comparte el modelo de datos de
    *XPath* y, por tanto, todo lo indicado respecto a los tipos en las
    expresiones es también aplicable. Por ejemplo, si no se ha validado el
    documento, los datos serán ``xs:untypedAtomic``, que se comportan más o menos
    como cadenas, nunca como números.
+
+Como complemento a estos apuntes, puede consultar, además de las propias
+especificaciones, estas dos extensísimas fuentes:
+
+* `XQuery 3.1 Training <https://www.altova.com/training/xquery3>`_.
+* `Wiki sobre XQuery <https://en.wikibooks.org/wiki/XQuery>`_, con abundantes
+  ejemplos sobre cómo resolver muchos problemas concretos.
+* `Novedades de XQuery 3
+  <http://www.datypic.com/services/xquery/whatsnew3.html>`_, que es el índice de
+  un curso los añadidos de la versión 3. El curso no está, pero el solo índice
+  nos permite tener una enumeración de cuáles son las novedades.
 
 Procesadores
 ============
@@ -113,22 +126,38 @@ Tenemos varias alternativas para ejecutar consultas *XQuery*:
      directamente en una subventana.
   #. Abrimos el archivo de salida para consultar el resultado.
 
+.. _xquery-version-declaration:
+
+Otro aspecto a tener presente al usar los procesadores es que *XQuery*, al
+comienzo del código, permite especificar cuál es la versión mínima que permite
+ejecutar dicho código. Por ejemplo, si usamos algo de lo indicado en :ref:`xquery3`,
+el código no será compatible con *XQuery* 1.0. Los procesadores están obligados
+a leer la declaración y, si no soportan esa versión de *XQuery*, a abortar la
+ejecución confesando su incapacidad:
+
+.. code-block:: xquery
+
+   xquery version "1.0";
+
+En ausencia de la declaración, se entenderá que se soporta la versión más baja,
+esto es, 1.0.
+
 |FLWOR| básico
 ==============
 La estructura |FLWOR| es una estructura iterativa (esto es, un bucle), que en
 *XQuery* (ya veremos que la versión 3 añade otras) está constituida por la
-sucesión de cinco sentencias:
+sucesión de cinco cláusulas:
 
 .. code-block:: none
 
    (FOR | LET)+ - WHERE? - ORDER BY? - RETURN
 
-donde `FOR` es una sentencia iterativa que asigna a una variable los ítems de
+donde `FOR` es una cláusula iterativa que asigna a una variable los ítems de
 una secuencia, `LET` permite definir variables asignándoles valor, `WHERE`
 define una condición para que la iteración del bucle se lleve a cabo, `ORDER BY`
 permite ordenadar los resultados, y `RETURN` incluye la expresión que resultará
 de cada iteración. Hemos expresado también la cardinalidad, de la que se deduce
-que debe haber siempre al menos una sentencia `FOR` o `LET` y una `RETURN`.
+que debe haber siempre al menos una cláusula `FOR` o `LET` y una `RETURN`.
 
 Como las expresiones se construyen para transformar documentos |XML| se hará
 referencia a los nodos de un documento, pero nuestros primeros ejemplos los
@@ -136,6 +165,7 @@ haremos utilizando expresiones *XPath* ajenas a cualquier nodo:
 
 .. code-block:: xquery
 
+   (: Mi primer código XQuery :)
    for $animal in ("perro", "gato")
    return
       "Mi mascota es un " || $animal || "."
@@ -147,9 +177,10 @@ Este código devolverá como resultado
    Mi mascota es un perro.
    Mi mascota es un gato.
 
-Obsérvese que para construir la secuencia hemos usado una expresión *XPath* y
-para expresar cuál debe ser el resultado otra. Añadamos algunos elementos más a
-la construcción:
+Obsérvese que para construir la secuencia hemos usado una expresión *XPath*\
+[#]_ y para expresar cuál debe ser el resultado otra. Además, hemos aprovechado
+para presentar **cómo escribir comentarios** dentro del código. Añadamos algunos
+elementos más a la construcción:
 
 .. code-block:: xquery
 
@@ -195,7 +226,7 @@ que devuelva un resultado lógico:
 
 En esta ocasión evitaremos tener como mascota un "*perro bonito*".
 
-.. caution:: Es importante tener claro que esta sentencia iterativa, aunque
+.. caution:: Es importante tener claro que esta estructura iterativa, aunque
    formalmente parecida a la de la programación estructurada, no actúa del mismo
    modo. Las iteraciones, aunque respeten el orden al mostrar los resultados, no
    tienen por qué evaluarse sucesivamente y en orden, sino que lo harán de un
@@ -205,8 +236,10 @@ En esta ocasión evitaremos tener como mascota un "*perro bonito*".
 
 Analicemos más pormenorizadamente cada parte:
 
+.. _xquery-for:
+
 **FOR**
-   La sentencia permite añadir un contador usando la palabra ``at``. Por
+   La cláusula permite añadir un contador usando la palabra ``at``. Por
    ejemplo, el código
 
    .. code-block:: xquery
@@ -255,14 +288,20 @@ Analicemos más pormenorizadamente cada parte:
       return
          $dueño || " tiene un " || $animal || "."
 
+.. _xquery-let:
+
 **LET**
-   La sintaxis es la misma que para ``for``: podemos usar varias sentencias con
-   una definición o poner varias definiciones en una sentencia separándolas con
+   La sintaxis es la misma que para ``for``: podemos usar varias cláusulas con
+   una definición o poner varias definiciones en una cláusula separándolas con
    coma.
+
+.. _xquery-where:
 
 **WHERE**
    No tiene especiales dificultades, salvo tener claro que se evalúa usando el
    :ref:`valor efectivo booleano <xpath2-valor-efect-bool>` de la expresión.
+
+.. _xquery-order_by:
 
 **ORDER BY**
    La expresión *XPath* que se evalúa debe devolver un valor para el que haya
@@ -271,13 +310,465 @@ Analicemos más pormenorizadamente cada parte:
    ``ascending`` (que no tendrá efecto) o ``descending``  que invertirá la
    ordenación para que se haga de mayor a menor.
 
+.. _xquery-return:
+
 **RETURN**
+   Indica mediante una expresión *XPath* qué debe devolver cada iteración del
+   bucle. Tenga presente que, si no generamos :ref:`una salida XML
+   <xquery-output-xml>`, esta cláusula sólo podrá contener una expresión
+   *XPath*. En caso de que la cláusula devuelva una secuencia, el procesador
+   suele escribir cada ítem en una línea distinta. Por eso motivo:
+
+   .. code-block:: xquery
+
+      for $animal in ("perro", "gato")
+      return
+         ("animal:", $animal)
+
+   devuelve:
+
+   .. code-block::
+
+      animal:
+      perro
+      animal:
+      gato
+
+   Puede, además, incluirse otra estructura |FLWOR| lo que
+   creará un bucle anidado:
+
+   .. code-block:: xquery
+
+      for $animal in ("perro", "gato")
+      return
+         (
+            "Nombres habituales de " || $animal || " son:",
+            for $nombre in ("misho", "babo")
+            return 
+               "  - " || $nombre
+         )
+      
+   El código anterior devuelve la salida:
+
+   .. code-block:: none
+
+      Nombres habituales de perro son:
+        - misho
+        - babo
+      Nombres habituales de gato son:
+        - misho
+        - babo
+   
+.. _xquery-output-xml:
 
 Construcción de salida |XML|
 ============================
+Hasta ahora, para ilustrar los principios de la estructura |FLWOR|, estamos
+generando resultados que son mero texto. Sin embargo, podemos también generar
+una salida |XML| y en este caso, el uso y comportamiento de *XQuery* será
+ligeramente distinto:
 
-Sentencias adicionales
-======================
+* Antes de la estructura |FLWOR| podemos añadir el contenido |XML| que prologa
+  el que generan las iteraciones.
+* Para expresar la estructura del documento |XML|, tenemos dos alternativas: los
+  contructores directos y los constructores computados, que podemos usar a
+  voluntad.
+
+**Constructores directos**
+   Los :dfn:`constructores directos` son aquellos que consisten en escribir
+   literalmente la salida |XML| y hacerle notar al procesador que algo es una
+   expresión *XPath* a evaluar mediante el uso de corchetes ``{}``.
+
+   Por ejemplo:
+
+   .. code-block:: xquery
+
+      <mascotas>
+      <!-- Ejemplo de salida XML -->
+      {
+         for $animal at $i in ("perro", "gato")
+         return
+            <animal id="{$i}">{$animal}</animal>
+      }
+      </mascotas>
+
+   Sin embargo, cuando la entrada es un documento |XML| tenemos que tener
+   cuidado, porque las expresiones no siempre serán devolverán valores atómicos
+   y eso influye enn el comportamiento. Por ejemplo, si generamos un |XML| a
+   partir del :ref:`ejemplo sobre casilleros <xml-ejemplo>` usando este código
+
+   .. code-block:: xquery
+
+      <lista>
+      <!-- Una lista muy simple -->
+      {
+         for $p in //profesor
+         return
+            <p>{$p/@id}</p>
+      }
+      </lista>
+
+   resultará el siguiente |XML|
+
+   .. code-block:: xml
+
+      <lista>
+      <!-- Una lista muy simple -->
+        <p id="p1"/>
+        <p id="p13"/>
+        <p id="p15"/>
+        <p id="p17"/>
+        <p id="p28"/>
+        <p id="p81"/>
+        <p id="p86"/>
+      </lista>
+      
+   porque ``$p/@id`` es un nodo atributo, no una cadena. Para que el
+   identificador hubiera pasado a ser el contenido de los elementos *p*,
+   deberiamos haberlo atomizado expresamente:
+
+   .. code-block:: xquery
+
+      <lista>
+      <!-- Una lista muy simple -->
+      {
+         for $p in //profesor
+         return
+            <p>{data($p/@id)}</p>
+      }
+      </lista>
+
+   Si evaluamos un nodo elemento, nos pasará lo mismo: se escribirá el elemento,
+   no su valor atómico.
+
+**Constructores evaluados**
+   Los :dfn:`constructores evaluados` utilizan una sintaxis no |XML| para
+   expresar la estructura del |XML| de salida. Son especialmente útiles cuando
+   el nombre del elemento o del atributo son dinámicos y dependen del contenido
+   de la entrada:
+
+   .. code-block:: xquery
+
+      element lista {
+         for $p in //profesor
+         return
+            element p {$p/@id}
+      }
+
+   Como puede verse, se usa la palabra ``element`` con dos argumentos: el nombre
+   del elemento (*lista*), que es literal y la expresión de su contenido, que,
+   como se obtiene a través de una expresión *XPath*, hay que encerrar entre
+   llaves. Por supuesto, el primer argumento también podría ser una expresión
+   evaluada:
+
+   .. code-block:: xquery
+
+      element {name(/*)} {
+         for $p in //profesor
+         return
+            element p {$p/@id}
+      }
+
+   De esta forma, el nodo raíz de la salida tendrá el mismo nombre (*claustro*)
+   que el del documento original. Obsérvese, además, que la evaluación de
+   :code:`$p/@id` resulta un nodo atributo, por lo que el elemento *p* estará
+   vacío y tendrá un atributo que se llama igual que el de profesoor y con su
+   mismo valor.
+
+   Si quisiéramos dotar de más contenido a *p*, podríamos expresar tal contenido
+   como una secuencia:
+
+   .. code-block:: xquery
+      :emphasize-lines: 4
+
+      element {name(/*)} {
+         for $p in //profesor
+         return
+            element p {($p/@id, $p/nombre)}
+      }
+
+   Ahora *p*, dispondrá de un atributo y de un elemento *nombre* como contenido.
+   Por supuesto, podemos cambiar los nombres de los atributos o los elementos
+   complicado un poco la expresión. Por ejemplo:
+
+   .. code-block:: xquery
+      :emphasize-lines: 6
+
+      element {name(/*)} {
+         for $p in //profesor
+         return
+            element p {(
+               $p/@id,
+               element nombre_completo {$p/nombre || " " || $p/apellidos}
+            )}
+      }
+
+   o lo mismo si queremos mezclar contructores directos y evaluados:
+
+   .. code-block:: xquery
+      :emphasize-lines: 6
+
+      element {name(/*)} {
+         for $p in //profesor
+         return
+            element p {(
+               $p/@id,
+               <nombre_completo>{$p/nombre || " " ||  $p/apellidos}</nombre_completo>
+            )}
+      }
+
+   Sólo hemos ilustrado los constructores evaluados para elementos, pero los hay
+   también para los demás componentes de un |XML| como atributos
+   (:code:`attribute nombre contenido`), comentarios (:code:`comment contenido`)
+   o instrucciones de procesamiento (:code:`processing-instruction nombre
+   contenido`):
+
+   .. code-block:: xquery
+      :emphasize-lines: 4,9,11
+
+
+      let $href    := "claustro.xsl"
+      return
+         (
+            processing-instruction xml-stylesheet {'type="text/xsl" href="' || $href || '"'},
+            element {name(/*)} {
+               for $p at $i in //profesor
+               return
+                  (
+                     comment {"Profesor #" || $i},
+                     element p {(
+                        attribute codigo {$p/@id},
+                        $p/nombre
+                     )}
+                  )
+            }
+         )
+
+.. *aaa*
+
+.. _xquery-user-functions:
+
+Funciones de usuario
+====================
+*XQuery* permite, antes de la estructura |FLWOR|, definir funciones de usuario
+que piensen usarse luego en la estructura. Por ejemplo:
+
+.. code-block:: xquery
+   :emphasize-lines: 2-4,8
+
+   (: funcion propia :)
+   declare function local:declara-estilo($href) {
+      processing-instruction xml-stylesheet {'type="text/xsl" href="' || $href || '"'}
+   };
+
+   (: Como no necesitamos for ni let usamos directamente el contenido de 'return' :)
+   (
+      local:declara-estilo("claustro.xsl"),
+      element {name(/*)} {
+         for $p at $i in //profesor
+         return
+            (
+               comment {"Profesor #" || $i},
+               element p {(
+                  attribute codigo {$p/@id},
+                  $p/nombre
+               )}
+            )
+      }
+   )
+
+.. _xquery3:
+
+Cláusulas adicionales
+=====================
+*XQuery* 3 hizo algunos añadidos a la estructura original |FLWOR|:
+
+.. code-block:: none
+
+   (FOR | LET | WINDOW)+ - WHERE? - ORDER BY? - GROUP BY? - COUNT? - RETURN
+
+**COUNT**
+   permite definir un contador para las iteraciones:
+
+   .. code-block:: xquery
+      :emphasize-lines: 5
+         
+      xquery version "3.0";
+
+      for $animal in ("perro", "gato", "jilguero")
+      where $animal != "perro"
+      count $n
+      return
+         $n || ". Mi mascota es un " || $animal || "." 
+
+**GROUP BY**
+   como su homónimo en |SQL| permite agrupar los resultados según un determinado
+   criterio. Por ejemplo, esto sacaría un nuevo :file:`casillero.xml` en que los
+   profesores están agrupados por casilleros:
+
+   .. code-block:: xquery
+      :emphasize-lines: 7
+
+      xquery version "3.0";
+
+      element {name(/*)} {
+         for $p in //profesor
+         let $depart := $p/departamento
+         where $depart
+         group by $depart
+         return
+            <departamento nombre="{$depart}">
+               {$p}
+            </departamento>
+      }
+
+   Y si queremos incluir los sustitutos, podríamos echar mano de *XPath* 2:
+
+   .. code-block:: xquery
+      :emphasize-lines: 7
+
+      xquery version "3.0";
+
+      element {name(/*)} {
+         for $p in //profesor
+         let $depart := if ($p/departamento) then $p/departamento else //profesor[@id = $p/@sustituye]/departamento
+         where $depart
+         group by $depart
+         return
+            <departamento nombre="{$depart}">
+               {$p}
+            </departamento>
+      }
+
+**WINDOW**
+   La cláusula (posiblemente la más compleja de las incorporadas) permite
+   agrupar datos al igual que ``group by``, pero en vez de agrupar por valor,
+   agrupa por secuencias de ítems consecutivos. Por ejemplo, nos permitiría
+   agrupar los tres primeros ítems, luego los tres siguientes, y así sucesivamente
+   en grupos de tres.
+
+   Cada uno de estos grupos o rangos recibe el nombre de :dfn:`windows` y puede
+   haber de dos tipos:
+
+   #. :dfn:`tumbling window`, que son rangos que nunca se solapan, esto es, que
+      no comparten ítems, por lo que el ítem que abre una ventana siempre tiene
+      que ser posterior al último que cierra la ventana anterior.
+
+      .. image:: files/tumbling.png
+
+   #. :dfn:`sliding window`, que son rangos solapables y, por tanto, dos
+      ventanas consecutivas podrań tener uno o más ítems comunes.
+
+      .. image:: files/sliding.png
+
+
+   Para definir los límites de la ventana la sintaxis permite definir una
+   condición de comienzo y otra de fin. Por ejemplo:
+
+   .. code-block:: xquery
+
+      xquery version "3.0";
+
+      for tumbling window $w in (1 to 10)
+      start when true()
+      end at $e when $e mod 3 = 0
+      return
+         "- " || string-join($w, ",")
+
+   establece una condición de comienzo que siempre que cumple y una de final en
+   los múltiplos de 3. Como las ventanas no pueden solaparse, lo que significa
+   que la ventana siguiente sólo puede comenzar después de que haya acabado la
+   anterior, el resultado es éste:
+
+   .. code-block:: none
+
+      - 1,2,3
+      - 4,5,6
+      - 7,8,9
+      - 10
+
+   .. note:: Percátese de que puede asignar una variable al elemento (inicial o
+      final) de la ventana usando ``at``, aunque puede hacerse elisión
+      (:code:`end $e` en vez de :code:`end at $e`).
+
+   A las condiciones podemos añadirle ``only`` para forzar a que se cumpla y, si
+   no es así, que no se llegue a constituir la ventana. Por tanto, el código:
+
+   .. code-block:: xquery
+
+      xquery version "3.0";
+
+      for tumbling window $w in (1 to 10)
+      start when true()
+      only end at $e when $e mod 3 = 0
+      return
+         "- " || string-join($w, ",")
+
+   no llegará a constituir la última ventana anterior, ya que ésta no acababa en
+   un múltiplo de tres:
+
+   .. code-block:: none
+
+      - 1,2,3
+      - 4,5,6
+      - 7,8,9
+
+   En cambio, si cambiamos el tipo de ventana...
+
+   .. code-block:: xquery
+
+      xquery version "3.0";
+
+      for sliding window $w in (1 to 10)
+      start when true()
+      only end at $e when $e mod 3 = 0
+      return
+         "- " || string-join($w, ",")
+
+   ...ahora las ventanas se pueden solapar y cómo cualquier ítem es susceptible
+   de ser el comienzo de una el resultado es el siguiente:
+
+   .. code-block:: none
+
+      - 1,2,3
+      - 2,3
+      - 3
+      - 4,5,6
+      - 5,6
+      - 6
+      - 7,8,9
+      - 8,9
+      - 9
+      - 10
+
+   Por último, existe también la posibilidad de asignar una variable al
+   siguiente elemento al que comienza o termina una ventana con la palabra
+   ``next``:
+
+   .. code-block:: xquery
+
+      xquery version "3.0";
+
+      for tumbling window $w in (1 to 10)
+      start at $i next $i_next when $i_next mod 2 = 0
+      only end at $e when $e mod 3 = 0
+      return
+         "- " || string-join($w, ",")
+
+   Este código provoca que sólo se tome como comienzo de ventana aquel ítem
+   cuyo siguiente en la secuencia sea múltiplo de dos. Como consecuencia, el
+   resultado es:
+
+   .. code-block:: none
+
+      - 1,2,3
+      - 5,6
+      - 7,8,9
+
+   .. note:: La variable ``$i`` no la usamos para nada, por lo que podríamos
+      ahorrárnosla: :code:`start next $i_next when $i_next mod 2 = 0`.
+
+   .. https://media.datadirect.com/download/docs/ddxquery/allddxq/reference/wwhelp/wwhimpl/common/html/wwhelp.htm?context=reference&file=tutorial_xquery5.html
 
 |XSLT|
 ******
@@ -285,10 +776,18 @@ Un estudio consistente de este lenguaje de transformación es demasiado amplio
 para la escasa carga lectiva del módulo, pero pertinente a la vista del
 currículo. Por ello, trasladamos su desarrollo al :ref:`apendice correspondiente <xslt>`.
 
+.. XQuery:
+   https://www.ticarte.com/contenido/ejercicios-practicos-de-xquery
+
 .. rubric:: Nota al pie
 
-.. [#] Porque estas son las sentencias de las que podía constar la estructura. La
-   versión **3** añadió otras sentencias adicionales.
+.. [#] Porque estas son las cláusulas de las que podía constar la estructura. La
+   versión **3** añadió otras cláusulas adicionales.
+
+.. [#] En realidad, se puede escribir conjunto mayor de expresiones de las
+       validas para *XPath*, ya que *XQuery* soportas cláusulas inexistentes en
+       *XPath* como la propia estructura |FLWOR| o los :ref:`constructores para
+       generar una salida XML <xquery-output-xml>`.
 
 .. |XSLT| replace:: :abbr:`XSLT (eXtensible Stylesheet Language Transformations)`
 .. |FLWOR| replace:: :abbr:`FLWOR (For, Let, Where, Order by, Return)`

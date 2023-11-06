@@ -100,11 +100,18 @@ un estudio más detallado y extenso.</p></li>
 <section id="xquery">
 <span id="id1"></span><h2><span class="section-number">4.1. </span>XQuery<a class="headerlink" href="#xquery" title="Enlace permanente a este encabezado">¶</a></h2>
 <p><em class="dfn">XQuery</em> es un lenguaje de consulta que permite obtener una salida <abbr title="eXtensible  Markup Language">XML</abbr>
-(aunque no necesariamente) a partir de una fuente que también es <abbr title="eXtensible  Markup Language">XML</abbr>. Para
-ello, usa <a class="reference internal" href="../03.consulta/01.xpath.html#xpath"><span class="std std-ref">XPath</span></a> como herramienta para seleccionar la información y una
-estructura prototípica llamada <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> por las cinco sentencias con las que se
-construye originariamente<a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Cumple en el mundo <abbr title="eXtensible  Markup Language">XML</abbr> exactamente la misma
-función que las sentencias <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> en el mundo <abbr title="Strctured Query Language">SQL</abbr>.</p>
+(aunque no necesariamente) a partir de una fuente <abbr title="eXtensible  Markup Language">XML</abbr> (aunque, de nuevo, no
+necesariamente). Para ello, usa <a class="reference internal" href="../03.consulta/01.xpath.html#xpath"><span class="std std-ref">XPath</span></a> como herramienta de selección la
+información y una estructura prototípica llamada <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> por las cinco
+cláusulas con las que se construye originariamente<a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Cumple en el mundo
+<abbr title="eXtensible  Markup Language">XML</abbr> exactamente la misma función que las cláusula <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> en el mundo
+<abbr title="Strctured Query Language">SQL</abbr>.</p>
+<p>En cualquier caso, aunque lo que caracteriza a <em>XQuery</em> es la estructura
+<abbr title="For, Let, Where, Order by, Return">FLWOR</abbr>, esta no es obligatoria, y una consulta <em>XQuery</em> puede crearse
+únicamente con el contenido del <a class="reference internal" href="#xquery-return"><span class="std std-ref">RETURN del FLWOR</span></a>. Como
+este contenido puede ser cualquier expresión <em>XPath</em> valida, resulta que
+<em>XQuery</em> es un supercojunto de <em>XPath</em>, o lo que es lo mismo, toda expresión
+<em>XPath</em> es una consulta <em>XQuery</em> válida.</p>
 <p>Tres son las versiones que ha tenido este lenguaje:</p>
 <dl class="simple">
 <dt><a class="reference external" href="https://www.w3.org/TR/2007/REC-xquery-20070123/">Versión 1</a></dt><dd><p>Desarrollada desde los comienzos de <em>XPath</em> en 1999, se publicó
@@ -131,6 +138,16 @@ expresiones es también aplicable. Por ejemplo, si no se ha validado el
 documento, los datos serán <code class="docutils literal notranslate"><span class="pre">xs:untypedAtomic</span></code>, que se comportan más o menos
 como cadenas, nunca como números.</p>
 </div>
+<p>Como complemento a estos apuntes, puede consultar, además de las propias
+especificaciones, estas dos extensísimas fuentes:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.altova.com/training/xquery3">XQuery 3.1 Training</a>.</p></li>
+<li><p><a class="reference external" href="https://en.wikibooks.org/wiki/XQuery">Wiki sobre XQuery</a>, con abundantes
+ejemplos sobre cómo resolver muchos problemas concretos.</p></li>
+<li><p><a class="reference external" href="http://www.datypic.com/services/xquery/whatsnew3.html">Novedades de XQuery 3</a>, que es el índice de
+un curso los añadidos de la versión 3. El curso no está, pero el solo índice
+nos permite tener una enumeración de cuáles son las novedades.</p></li>
+</ul>
 <section id="procesadores">
 <h3><span class="section-number">4.1.1. </span>Procesadores<a class="headerlink" href="#procesadores" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Tenemos varias alternativas para ejecutar consultas <em>XQuery</em>:</p>
@@ -179,25 +196,37 @@ directamente en una subventana.</p></li>
 </ol>
 </li>
 </ul>
+<p id="xquery-version-declaration">Otro aspecto a tener presente al usar los procesadores es que <em>XQuery</em>, al
+comienzo del código, permite especificar cuál es la versión mínima que permite
+ejecutar dicho código. Por ejemplo, si usamos algo de lo indicado en <a class="reference internal" href="#xquery3"><span class="std std-ref">Cláusulas adicionales</span></a>,
+el código no será compatible con <em>XQuery</em> 1.0. Los procesadores están obligados
+a leer la declaración y, si no soportan esa versión de <em>XQuery</em>, a abortar la
+ejecución confesando su incapacidad:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="kp">xquery</span><span class="w"> </span><span class="kp">version</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>En ausencia de la declaración, se entenderá que se soporta la versión más baja,
+esto es, 1.0.</p>
 </section>
 <section id="flwor-basico">
 <h3><span class="section-number">4.1.2. </span><abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> básico<a class="headerlink" href="#flwor-basico" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>La estructura <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> es una estructura iterativa (esto es, un bucle), que en
 <em>XQuery</em> (ya veremos que la versión 3 añade otras) está constituida por la
-sucesión de cinco sentencias:</p>
+sucesión de cinco cláusulas:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(FOR | LET)+ - WHERE? - ORDER BY? - RETURN
 </pre></div>
 </div>
-<p>donde <cite>FOR</cite> es una sentencia iterativa que asigna a una variable los ítems de
+<p>donde <cite>FOR</cite> es una cláusula iterativa que asigna a una variable los ítems de
 una secuencia, <cite>LET</cite> permite definir variables asignándoles valor, <cite>WHERE</cite>
 define una condición para que la iteración del bucle se lleve a cabo, <cite>ORDER BY</cite>
 permite ordenadar los resultados, y <cite>RETURN</cite> incluye la expresión que resultará
 de cada iteración. Hemos expresado también la cardinalidad, de la que se deduce
-que debe haber siempre al menos una sentencia <cite>FOR</cite> o <cite>LET</cite> y una <cite>RETURN</cite>.</p>
+que debe haber siempre al menos una cláusula <cite>FOR</cite> o <cite>LET</cite> y una <cite>RETURN</cite>.</p>
 <p>Como las expresiones se construyen para transformar documentos <abbr title="eXtensible  Markup Language">XML</abbr> se hará
 referencia a los nodos de un documento, pero nuestros primeros ejemplos los
 haremos utilizando expresiones <em>XPath</em> ajenas a cualquier nodo:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;perro&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gato&quot;</span><span class="p">)</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="c">(: Mi primer código XQuery :)</span>
+<span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;perro&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gato&quot;</span><span class="p">)</span>
 <span class="k">return</span>
 <span class="w">   </span><span class="s2">&quot;Mi mascota es un &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;.&quot;</span>
 </pre></div>
@@ -207,9 +236,9 @@ haremos utilizando expresiones <em>XPath</em> ajenas a cualquier nodo:</p>
 Mi mascota es un gato.
 </pre></div>
 </div>
-<p>Obsérvese que para construir la secuencia hemos usado una expresión <em>XPath</em> y
-para expresar cuál debe ser el resultado otra. Añadamos algunos elementos más a
-la construcción:</p>
+<p>Obsérvese que para construir la secuencia hemos usado una expresión <em>XPath</em><a class="footnote-reference brackets" href="#id5" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> y para expresar cuál debe ser el resultado otra. Además, hemos aprovechado
+para presentar <strong>cómo escribir comentarios</strong> dentro del código. Añadamos algunos
+elementos más a la construcción:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;perro&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gato&quot;</span><span class="p">)</span>
 <span class="k">let</span><span class="w"> </span><span class="nv">$</span><span class="n">como</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s2">&quot;bonito&quot;</span>
 <span class="k">return</span>
@@ -247,7 +276,7 @@ que devuelva un resultado lógico:</p>
 <p>En esta ocasión evitaremos tener como mascota un «<em>perro bonito</em>».</p>
 <div class="admonition caution">
 <p class="admonition-title">Prudencia</p>
-<p>Es importante tener claro que esta sentencia iterativa, aunque
+<p>Es importante tener claro que esta estructura iterativa, aunque
 formalmente parecida a la de la programación estructurada, no actúa del mismo
 modo. Las iteraciones, aunque respeten el orden al mostrar los resultados, no
 tienen por qué evaluarse sucesivamente y en orden, sino que lo harán de un
@@ -256,8 +285,8 @@ variables cuyo valor cambie en el cuerpo de cada iteración (p.e. definir
 nosotros un contador al que sumenos <strong>1</strong> cada vez que se ejecuta el bucle).</p>
 </div>
 <p>Analicemos más pormenorizadamente cada parte:</p>
-<dl>
-<dt><strong>FOR</strong></dt><dd><p>La sentencia permite añadir un contador usando la palabra <code class="docutils literal notranslate"><span class="pre">at</span></code>. Por
+<dl id="xquery-for">
+<dt><strong>FOR</strong></dt><dd><p>La cláusula permite añadir un contador usando la palabra <code class="docutils literal notranslate"><span class="pre">at</span></code>. Por
 ejemplo, el código</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="nv">$</span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;perro&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gato&quot;</span><span class="p">)</span>
 <span class="k">return</span>
@@ -299,13 +328,19 @@ return
 </pre></div>
 </div>
 </dd>
-<dt><strong>LET</strong></dt><dd><p>La sintaxis es la misma que para <code class="docutils literal notranslate"><span class="pre">for</span></code>: podemos usar varias sentencias con
-una definición o poner varias definiciones en una sentencia separándolas con
+</dl>
+<dl class="simple" id="xquery-let">
+<dt><strong>LET</strong></dt><dd><p>La sintaxis es la misma que para <code class="docutils literal notranslate"><span class="pre">for</span></code>: podemos usar varias cláusulas con
+una definición o poner varias definiciones en una cláusula separándolas con
 coma.</p>
 </dd>
+</dl>
+<dl class="simple" id="xquery-where">
 <dt><strong>WHERE</strong></dt><dd><p>No tiene especiales dificultades, salvo tener claro que se evalúa usando el
 <a class="reference internal" href="../03.consulta/01.xpath.html#xpath2-valor-efect-bool"><span class="std std-ref">valor efectivo booleano</span></a> de la expresión.</p>
 </dd>
+</dl>
+<dl class="simple" id="xquery-order-by">
 <dt><strong>ORDER BY</strong></dt><dd><p>La expresión <em>XPath</em> que se evalúa debe devolver un valor para el que haya
 definida un orden (un número o una cadena, por ejemplo). Los resultados  se
 ordenarán de menor a mayor. Sin embargo, podemos añadir las palabras reservadas
@@ -313,13 +348,397 @@ ordenarán de menor a mayor. Sin embargo, podemos añadir las palabras reservada
 ordenación para que se haga de mayor a menor.</p>
 </dd>
 </dl>
-<p><strong>RETURN</strong></p>
+<dl id="xquery-return">
+<dt><strong>RETURN</strong></dt><dd><p>Indica mediante una expresión <em>XPath</em> qué debe devolver cada iteración del
+bucle. Tenga presente que, si no generamos <a class="reference internal" href="#xquery-output-xml"><span class="std std-ref">una salida XML</span></a>, esta cláusula sólo podrá contener una expresión
+<em>XPath</em>. En caso de que la cláusula devuelva una secuencia, el procesador
+suele escribir cada ítem en una línea distinta. Por eso motivo:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;perro&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gato&quot;</span><span class="p">)</span>
+<span class="k">return</span>
+<span class="w">   </span><span class="p">(</span><span class="s2">&quot;animal:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>devuelve:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">animal</span><span class="p">:</span>
+<span class="n">perro</span>
+<span class="n">animal</span><span class="p">:</span>
+<span class="n">gato</span>
+</pre></div>
+</div>
+<p>Puede, además, incluirse otra estructura <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> lo que
+creará un bucle anidado:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;perro&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gato&quot;</span><span class="p">)</span>
+<span class="k">return</span>
+<span class="w">   </span><span class="p">(</span>
+<span class="w">      </span><span class="s2">&quot;Nombres habituales de &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot; son:&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">nombre</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;misho&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;babo&quot;</span><span class="p">)</span>
+<span class="w">      </span><span class="k">return</span>
+<span class="w">         </span><span class="s2">&quot;  - &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">nombre</span>
+<span class="w">   </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>El código anterior devuelve la salida:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Nombres habituales de perro son:
+  - misho
+  - babo
+Nombres habituales de gato son:
+  - misho
+  - babo
+</pre></div>
+</div>
+</dd>
+</dl>
 </section>
 <section id="construccion-de-salida-xml">
-<h3><span class="section-number">4.1.3. </span>Construcción de salida <abbr title="eXtensible  Markup Language">XML</abbr><a class="headerlink" href="#construccion-de-salida-xml" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="xquery-output-xml"></span><h3><span class="section-number">4.1.3. </span>Construcción de salida <abbr title="eXtensible  Markup Language">XML</abbr><a class="headerlink" href="#construccion-de-salida-xml" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Hasta ahora, para ilustrar los principios de la estructura <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr>, estamos
+generando resultados que son mero texto. Sin embargo, podemos también generar
+una salida <abbr title="eXtensible  Markup Language">XML</abbr> y en este caso, el uso y comportamiento de <em>XQuery</em> será
+ligeramente distinto:</p>
+<ul class="simple">
+<li><p>Antes de la estructura <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> podemos añadir el contenido <abbr title="eXtensible  Markup Language">XML</abbr> que prologa
+el que generan las iteraciones.</p></li>
+<li><p>Para expresar la estructura del documento <abbr title="eXtensible  Markup Language">XML</abbr>, tenemos dos alternativas: los
+contructores directos y los constructores computados, que podemos usar a
+voluntad.</p></li>
+</ul>
+<dl>
+<dt><strong>Constructores directos</strong></dt><dd><p>Los <em class="dfn">constructores directos</em> son aquellos que consisten en escribir
+literalmente la salida <abbr title="eXtensible  Markup Language">XML</abbr> y hacerle notar al procesador que algo es una
+expresión <em>XPath</em> a evaluar mediante el uso de corchetes <code class="docutils literal notranslate"><span class="pre">{}</span></code>.</p>
+<p>Por ejemplo:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;mascotas&gt;</span>
+<span class="sd">&lt;!--</span><span class="l"> Ejemplo de salida XML </span><span class="sd">--&gt;</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="nv">$</span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;perro&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gato&quot;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">return</span>
+<span class="w">      </span><span class="nt">&lt;animal</span><span class="w"> </span><span class="nt">id</span><span class="o">=</span><span class="p">&quot;{</span><span class="nv">$</span><span class="n">i</span><span class="p">}&quot;</span><span class="nt">&gt;</span><span class="p">{</span><span class="nv">$</span><span class="n">animal</span><span class="p">}</span><span class="nt">&lt;/animal&gt;</span>
+<span class="p">}</span>
+<span class="nt">&lt;/mascotas&gt;</span>
+</pre></div>
+</div>
+<p>Sin embargo, cuando la entrada es un documento <abbr title="eXtensible  Markup Language">XML</abbr> tenemos que tener
+cuidado, porque las expresiones no siempre serán devolverán valores atómicos
+y eso influye enn el comportamiento. Por ejemplo, si generamos un <abbr title="eXtensible  Markup Language">XML</abbr> a
+partir del <a class="reference internal" href="../01.intro/02b.marcas.html#xml-ejemplo"><span class="std std-ref">ejemplo sobre casilleros</span></a> usando este código</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;lista&gt;</span>
+<span class="sd">&lt;!--</span><span class="l"> Una lista muy simple </span><span class="sd">--&gt;</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span>
+<span class="w">   </span><span class="k">return</span>
+<span class="w">      </span><span class="nt">&lt;p&gt;</span><span class="p">{</span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="na">@id</span><span class="p">}</span><span class="nt">&lt;/p&gt;</span>
+<span class="p">}</span>
+<span class="nt">&lt;/lista&gt;</span>
+</pre></div>
+</div>
+<p>resultará el siguiente <abbr title="eXtensible  Markup Language">XML</abbr></p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;lista&gt;</span>
+<span class="cm">&lt;!-- Una lista muy simple --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;p</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p1&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;p</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p13&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;p</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p15&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;p</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p17&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;p</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p28&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;p</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p81&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;p</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p86&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/lista&gt;</span>
+</pre></div>
+</div>
+<p>porque <code class="docutils literal notranslate"><span class="pre">$p/&#64;id</span></code> es un nodo atributo, no una cadena. Para que el
+identificador hubiera pasado a ser el contenido de los elementos <em>p</em>,
+deberiamos haberlo atomizado expresamente:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;lista&gt;</span>
+<span class="sd">&lt;!--</span><span class="l"> Una lista muy simple </span><span class="sd">--&gt;</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span>
+<span class="w">   </span><span class="k">return</span>
+<span class="w">      </span><span class="nt">&lt;p&gt;</span><span class="p">{</span><span class="nf">data</span><span class="p">(</span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="na">@id</span><span class="p">)}</span><span class="nt">&lt;/p&gt;</span>
+<span class="p">}</span>
+<span class="nt">&lt;/lista&gt;</span>
+</pre></div>
+</div>
+<p>Si evaluamos un nodo elemento, nos pasará lo mismo: se escribirá el elemento,
+no su valor atómico.</p>
+</dd>
+<dt><strong>Constructores evaluados</strong></dt><dd><p>Los <em class="dfn">constructores evaluados</em> utilizan una sintaxis no <abbr title="eXtensible  Markup Language">XML</abbr> para
+expresar la estructura del <abbr title="eXtensible  Markup Language">XML</abbr> de salida. Son especialmente útiles cuando
+el nombre del elemento o del atributo son dinámicos y dependen del contenido
+de la entrada:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">element</span><span class="w"> </span><span class="nv">lista</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span>
+<span class="w">   </span><span class="k">return</span>
+<span class="w">      </span><span class="k">element</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="p">{</span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="na">@id</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Como puede verse, se usa la palabra <code class="docutils literal notranslate"><span class="pre">element</span></code> con dos argumentos: el nombre
+del elemento (<em>lista</em>), que es literal y la expresión de su contenido, que,
+como se obtiene a través de una expresión <em>XPath</em>, hay que encerrar entre
+llaves. Por supuesto, el primer argumento también podría ser una expresión
+evaluada:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">element</span><span class="w"> </span><span class="p">{</span><span class="nf">name</span><span class="p">(/</span><span class="nt">*</span><span class="p">)}</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span>
+<span class="w">   </span><span class="k">return</span>
+<span class="w">      </span><span class="k">element</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="p">{</span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="na">@id</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>De esta forma, el nodo raíz de la salida tendrá el mismo nombre (<em>claustro</em>)
+que el del documento original. Obsérvese, además, que la evaluación de
+<code class="code docutils literal notranslate"><span class="pre">$p/&#64;id</span></code> resulta un nodo atributo, por lo que el elemento <em>p</em> estará
+vacío y tendrá un atributo que se llama igual que el de profesoor y con su
+mismo valor.</p>
+<p>Si quisiéramos dotar de más contenido a <em>p</em>, podríamos expresar tal contenido
+como una secuencia:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">element</span><span class="w"> </span><span class="p">{</span><span class="nf">name</span><span class="p">(/</span><span class="nt">*</span><span class="p">)}</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span>
+<span class="w">   </span><span class="k">return</span>
+<span class="hll"><span class="w">      </span><span class="k">element</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="p">{(</span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="na">@id</span><span class="p">,</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="nt">nombre</span><span class="p">)}</span>
+</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Ahora <em>p</em>, dispondrá de un atributo y de un elemento <em>nombre</em> como contenido.
+Por supuesto, podemos cambiar los nombres de los atributos o los elementos
+complicado un poco la expresión. Por ejemplo:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">element</span><span class="w"> </span><span class="p">{</span><span class="nf">name</span><span class="p">(/</span><span class="nt">*</span><span class="p">)}</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span>
+<span class="w">   </span><span class="k">return</span>
+<span class="w">      </span><span class="k">element</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="p">{(</span>
+<span class="w">         </span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="na">@id</span><span class="p">,</span>
+<span class="hll"><span class="w">         </span><span class="k">element</span><span class="w"> </span><span class="nv">nombre_completo</span><span class="w"> </span><span class="p">{</span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="nt">nombre</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="nt">apellidos</span><span class="p">}</span>
+</span><span class="w">      </span><span class="p">)}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>o lo mismo si queremos mezclar contructores directos y evaluados:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">element</span><span class="w"> </span><span class="p">{</span><span class="nf">name</span><span class="p">(/</span><span class="nt">*</span><span class="p">)}</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span>
+<span class="w">   </span><span class="k">return</span>
+<span class="w">      </span><span class="k">element</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="p">{(</span>
+<span class="w">         </span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="na">@id</span><span class="p">,</span>
+<span class="hll"><span class="w">         </span><span class="nt">&lt;nombre_completo&gt;</span><span class="p">{</span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="nt">nombre</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span><span class="o">||</span><span class="w">  </span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="nt">apellidos</span><span class="p">}</span><span class="nt">&lt;/nombre_completo&gt;</span>
+</span><span class="w">      </span><span class="p">)}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Sólo hemos ilustrado los constructores evaluados para elementos, pero los hay
+también para los demás componentes de un <abbr title="eXtensible  Markup Language">XML</abbr> como atributos
+(<code class="code docutils literal notranslate"><span class="pre">attribute</span> <span class="pre">nombre</span> <span class="pre">contenido</span></code>), comentarios (<code class="code docutils literal notranslate"><span class="pre">comment</span> <span class="pre">contenido</span></code>)
+o instrucciones de procesamiento (<code class="code docutils literal notranslate"><span class="pre">processing-instruction</span> <span class="pre">nombre</span>
+<span class="pre">contenido</span></code>):</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">let</span><span class="w"> </span><span class="nv">$</span><span class="n">href</span><span class="w">    </span><span class="o">:=</span><span class="w"> </span><span class="s2">&quot;claustro.xsl&quot;</span>
+<span class="k">return</span>
+<span class="w">   </span><span class="p">(</span>
+<span class="hll"><span class="w">      </span><span class="k">processing-instruction</span><span class="w"> </span><span class="nv">xml-stylesheet</span><span class="w"> </span><span class="p">{</span><span class="s1">&#39;type=&quot;text/xsl&quot; href=&quot;&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">href</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;&quot;&#39;</span><span class="p">},</span>
+</span><span class="w">      </span><span class="k">element</span><span class="w"> </span><span class="p">{</span><span class="nf">name</span><span class="p">(/</span><span class="nt">*</span><span class="p">)}</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="nv">$</span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span>
+<span class="w">         </span><span class="k">return</span>
+<span class="w">            </span><span class="p">(</span>
+<span class="hll"><span class="w">               </span><span class="k">comment</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;Profesor #&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">i</span><span class="p">},</span>
+</span><span class="w">               </span><span class="k">element</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="p">{(</span>
+<span class="hll"><span class="w">                  </span><span class="k">attribute</span><span class="w"> </span><span class="nv">codigo</span><span class="w"> </span><span class="p">{</span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="na">@id</span><span class="p">},</span>
+</span><span class="w">                  </span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="nt">nombre</span>
+<span class="w">               </span><span class="p">)}</span>
+<span class="w">            </span><span class="p">)</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">   </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
 </section>
-<section id="sentencias-adicionales">
-<h3><span class="section-number">4.1.4. </span>Sentencias adicionales<a class="headerlink" href="#sentencias-adicionales" title="Enlace permanente a este encabezado">¶</a></h3>
+<section id="funciones-de-usuario">
+<span id="xquery-user-functions"></span><h3><span class="section-number">4.1.4. </span>Funciones de usuario<a class="headerlink" href="#funciones-de-usuario" title="Enlace permanente a este encabezado">¶</a></h3>
+<p><em>XQuery</em> permite, antes de la estructura <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr>, definir funciones de usuario
+que piensen usarse luego en la estructura. Por ejemplo:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="c">(: funcion propia :)</span>
+<span class="hll"><span class="kd">declare</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nf">local:declara-estilo</span><span class="p">(</span><span class="nv">$</span><span class="n">href</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="w">   </span><span class="k">processing-instruction</span><span class="w"> </span><span class="nv">xml-stylesheet</span><span class="w"> </span><span class="p">{</span><span class="s1">&#39;type=&quot;text/xsl&quot; href=&quot;&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">href</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;&quot;&#39;</span><span class="p">}</span>
+</span><span class="hll"><span class="p">};</span>
+</span>
+<span class="c">(: Como no necesitamos for ni let usamos directamente el contenido de &#39;return&#39; :)</span>
+<span class="p">(</span>
+<span class="hll"><span class="w">   </span><span class="nf">local:declara-estilo</span><span class="p">(</span><span class="s2">&quot;claustro.xsl&quot;</span><span class="p">),</span>
+</span><span class="w">   </span><span class="k">element</span><span class="w"> </span><span class="p">{</span><span class="nf">name</span><span class="p">(/</span><span class="nt">*</span><span class="p">)}</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="nv">$</span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span>
+<span class="w">      </span><span class="k">return</span>
+<span class="w">         </span><span class="p">(</span>
+<span class="w">            </span><span class="k">comment</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;Profesor #&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">i</span><span class="p">},</span>
+<span class="w">            </span><span class="k">element</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="p">{(</span>
+<span class="w">               </span><span class="k">attribute</span><span class="w"> </span><span class="nv">codigo</span><span class="w"> </span><span class="p">{</span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="na">@id</span><span class="p">},</span>
+<span class="w">               </span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="nt">nombre</span>
+<span class="w">            </span><span class="p">)}</span>
+<span class="w">         </span><span class="p">)</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="clausulas-adicionales">
+<span id="xquery3"></span><h3><span class="section-number">4.1.5. </span>Cláusulas adicionales<a class="headerlink" href="#clausulas-adicionales" title="Enlace permanente a este encabezado">¶</a></h3>
+<p><em>XQuery</em> 3 hizo algunos añadidos a la estructura original <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(FOR | LET | WINDOW)+ - WHERE? - ORDER BY? - GROUP BY? - COUNT? - RETURN
+</pre></div>
+</div>
+<dl>
+<dt><strong>COUNT</strong></dt><dd><p>permite definir un contador para las iteraciones:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="kp">xquery</span><span class="w"> </span><span class="kp">version</span><span class="w"> </span><span class="s2">&quot;3.0&quot;</span><span class="p">;</span>
+
+<span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;perro&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gato&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;jilguero&quot;</span><span class="p">)</span>
+<span class="k">where</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&quot;perro&quot;</span>
+<span class="hll"><span class="k">count</span><span class="w"> </span><span class="nv">$</span><span class="n">n</span>
+</span><span class="k">return</span>
+<span class="w">   </span><span class="nv">$</span><span class="n">n</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;. Mi mascota es un &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;.&quot;</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>GROUP BY</strong></dt><dd><p>como su homónimo en <abbr title="Strctured Query Language">SQL</abbr> permite agrupar los resultados según un determinado
+criterio. Por ejemplo, esto sacaría un nuevo <code class="file docutils literal notranslate"><span class="pre">casillero.xml</span></code> en que los
+profesores están agrupados por casilleros:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="kp">xquery</span><span class="w"> </span><span class="kp">version</span><span class="w"> </span><span class="s2">&quot;3.0&quot;</span><span class="p">;</span>
+
+<span class="k">element</span><span class="w"> </span><span class="p">{</span><span class="nf">name</span><span class="p">(/</span><span class="nt">*</span><span class="p">)}</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span>
+<span class="w">   </span><span class="k">let</span><span class="w"> </span><span class="nv">$</span><span class="n">depart</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="nt">departamento</span>
+<span class="w">   </span><span class="k">where</span><span class="w"> </span><span class="nv">$</span><span class="n">depart</span>
+<span class="hll"><span class="w">   </span><span class="k">group by</span><span class="w"> </span><span class="nv">$</span><span class="n">depart</span>
+</span><span class="w">   </span><span class="k">return</span>
+<span class="w">      </span><span class="nt">&lt;departamento</span><span class="w"> </span><span class="nt">nombre</span><span class="o">=</span><span class="p">&quot;{</span><span class="nv">$</span><span class="n">depart</span><span class="p">}&quot;</span><span class="nt">&gt;</span>
+<span class="l">         </span><span class="p">{</span><span class="nv">$</span><span class="n">p</span><span class="p">}</span>
+<span class="l">      </span><span class="nt">&lt;/departamento&gt;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Y si queremos incluir los sustitutos, podríamos echar mano de <em>XPath</em> 2:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="kp">xquery</span><span class="w"> </span><span class="kp">version</span><span class="w"> </span><span class="s2">&quot;3.0&quot;</span><span class="p">;</span>
+
+<span class="k">element</span><span class="w"> </span><span class="p">{</span><span class="nf">name</span><span class="p">(/</span><span class="nt">*</span><span class="p">)}</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span>
+<span class="w">   </span><span class="k">let</span><span class="w"> </span><span class="nv">$</span><span class="n">depart</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="nt">departamento</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="nt">departamento</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="na">@id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="na">@sustituye</span><span class="p">]/</span><span class="nt">departamento</span>
+<span class="w">   </span><span class="k">where</span><span class="w"> </span><span class="nv">$</span><span class="n">depart</span>
+<span class="hll"><span class="w">   </span><span class="k">group by</span><span class="w"> </span><span class="nv">$</span><span class="n">depart</span>
+</span><span class="w">   </span><span class="k">return</span>
+<span class="w">      </span><span class="nt">&lt;departamento</span><span class="w"> </span><span class="nt">nombre</span><span class="o">=</span><span class="p">&quot;{</span><span class="nv">$</span><span class="n">depart</span><span class="p">}&quot;</span><span class="nt">&gt;</span>
+<span class="l">         </span><span class="p">{</span><span class="nv">$</span><span class="n">p</span><span class="p">}</span>
+<span class="l">      </span><span class="nt">&lt;/departamento&gt;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>WINDOW</strong></dt><dd><p>La cláusula (posiblemente la más compleja de las incorporadas) permite
+agrupar datos al igual que <code class="docutils literal notranslate"><span class="pre">group</span> <span class="pre">by</span></code>, pero en vez de agrupar por valor,
+agrupa por secuencias de ítems consecutivos. Por ejemplo, nos permitiría
+agrupar los tres primeros ítems, luego los tres siguientes, y así sucesivamente
+en grupos de tres.</p>
+<p>Cada uno de estos grupos o rangos recibe el nombre de <em class="dfn">windows</em> y puede
+haber de dos tipos:</p>
+<ol class="arabic">
+<li><p><em class="dfn">tumbling window</em>, que son rangos que nunca se solapan, esto es, que
+no comparten ítems, por lo que el ítem que abre una ventana siempre tiene
+que ser posterior al último que cierra la ventana anterior.</p>
+<img alt="../_images/tumbling.png" src="../_images/tumbling.png" />
+</li>
+<li><p><em class="dfn">sliding window</em>, que son rangos solapables y, por tanto, dos
+ventanas consecutivas podrań tener uno o más ítems comunes.</p>
+<img alt="../_images/sliding.png" src="../_images/sliding.png" />
+</li>
+</ol>
+<p>Para definir los límites de la ventana la sintaxis permite definir una
+condición de comienzo y otra de fin. Por ejemplo:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>xquery version &quot;3.0&quot;;
+
+for tumbling window $w in (1 to 10)
+start when true()
+end at $e when $e mod 3 = 0
+return
+   &quot;- &quot; || string-join($w, &quot;,&quot;)
+</pre></div>
+</div>
+<p>establece una condición de comienzo que siempre que cumple y una de final en
+los múltiplos de 3. Como las ventanas no pueden solaparse, lo que significa
+que la ventana siguiente sólo puede comenzar después de que haya acabado la
+anterior, el resultado es éste:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- 1,2,3
+- 4,5,6
+- 7,8,9
+- 10
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Percátese de que puede asignar una variable al elemento (inicial o
+final) de la ventana usando <code class="docutils literal notranslate"><span class="pre">at</span></code>, aunque puede hacerse elisión
+(<code class="code docutils literal notranslate"><span class="pre">end</span> <span class="pre">$e</span></code> en vez de <code class="code docutils literal notranslate"><span class="pre">end</span> <span class="pre">at</span> <span class="pre">$e</span></code>).</p>
+</div>
+<p>A las condiciones podemos añadirle <code class="docutils literal notranslate"><span class="pre">only</span></code> para forzar a que se cumpla y, si
+no es así, que no se llegue a constituir la ventana. Por tanto, el código:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>xquery version &quot;3.0&quot;;
+
+for tumbling window $w in (1 to 10)
+start when true()
+only end at $e when $e mod 3 = 0
+return
+   &quot;- &quot; || string-join($w, &quot;,&quot;)
+</pre></div>
+</div>
+<p>no llegará a constituir la última ventana anterior, ya que ésta no acababa en
+un múltiplo de tres:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- 1,2,3
+- 4,5,6
+- 7,8,9
+</pre></div>
+</div>
+<p>En cambio, si cambiamos el tipo de ventana…</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>xquery version &quot;3.0&quot;;
+
+for sliding window $w in (1 to 10)
+start when true()
+only end at $e when $e mod 3 = 0
+return
+   &quot;- &quot; || string-join($w, &quot;,&quot;)
+</pre></div>
+</div>
+<p>…ahora las ventanas se pueden solapar y cómo cualquier ítem es susceptible
+de ser el comienzo de una el resultado es el siguiente:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- 1,2,3
+- 2,3
+- 3
+- 4,5,6
+- 5,6
+- 6
+- 7,8,9
+- 8,9
+- 9
+- 10
+</pre></div>
+</div>
+<p>Por último, existe también la posibilidad de asignar una variable al
+siguiente elemento al que comienza o termina una ventana con la palabra
+<code class="docutils literal notranslate"><span class="pre">next</span></code>:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="kp">xquery</span><span class="w"> </span><span class="kp">version</span><span class="w"> </span><span class="s2">&quot;3.0&quot;</span><span class="p">;</span>
+
+<span class="k">for</span><span class="w"> </span><span class="k">tumbling</span><span class="w"> </span><span class="k">window</span><span class="w"> </span><span class="nv">$</span><span class="n">w</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="k">start</span><span class="w"> </span><span class="nt">at</span><span class="w"> </span><span class="nv">$</span><span class="n">i</span><span class="w"> </span><span class="k">next</span><span class="w"> </span><span class="nv">$</span><span class="n">i_next</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="nv">$</span><span class="n">i_next</span><span class="w"> </span><span class="k">mod</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="k">only</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="nt">at</span><span class="w"> </span><span class="nv">$</span><span class="n">e</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="nv">$</span><span class="n">e</span><span class="w"> </span><span class="k">mod</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="k">return</span>
+<span class="w">   </span><span class="s2">&quot;- &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nf">string-join</span><span class="p">(</span><span class="nv">$</span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Este código provoca que sólo se tome como comienzo de ventana aquel ítem
+cuyo siguiente en la secuencia sea múltiplo de dos. Como consecuencia, el
+resultado es:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- 1,2,3
+- 5,6
+- 7,8,9
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>La variable <code class="docutils literal notranslate"><span class="pre">$i</span></code> no la usamos para nada, por lo que podríamos
+ahorrárnosla: <code class="code docutils literal notranslate"><span class="pre">start</span> <span class="pre">next</span> <span class="pre">$i_next</span> <span class="pre">when</span> <span class="pre">$i_next</span> <span class="pre">mod</span> <span class="pre">2</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p>
+</div>
+</dd>
+</dl>
 </section>
 </section>
 <section id="xslt">
@@ -329,10 +748,17 @@ para la escasa carga lectiva del módulo, pero pertinente a la vista del
 currículo. Por ello, trasladamos su desarrollo al <a class="reference internal" href="../98.apendices/41.xslt.html#xslt"><span class="std std-ref">apendice correspondiente</span></a>.</p>
 <p class="rubric">Nota al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id3" role="note">
+<aside class="footnote brackets" id="id4" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
-<p>Porque estas son las sentencias de las que podía constar la estructura. La
-versión <strong>3</strong> añadió otras sentencias adicionales.</p>
+<p>Porque estas son las cláusulas de las que podía constar la estructura. La
+versión <strong>3</strong> añadió otras cláusulas adicionales.</p>
+</aside>
+<aside class="footnote brackets" id="id5" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
+<p>En realidad, se puede escribir conjunto mayor de expresiones de las
+validas para <em>XPath</em>, ya que <em>XQuery</em> soportas cláusulas inexistentes en
+<em>XPath</em> como la propia estructura <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> o los <a class="reference internal" href="#xquery-output-xml"><span class="std std-ref">constructores para
+generar una salida XML</span></a>.</p>
 </aside>
 </aside>
 </section>
@@ -355,7 +781,8 @@ versión <strong>3</strong> añadió otras sentencias adicionales.</p>
 <li><a class="reference internal" href="#procesadores">4.1.1. Procesadores</a></li>
 <li><a class="reference internal" href="#flwor-basico">4.1.2. <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> básico</a></li>
 <li><a class="reference internal" href="#construccion-de-salida-xml">4.1.3. Construcción de salida <abbr title="eXtensible  Markup Language">XML</abbr></a></li>
-<li><a class="reference internal" href="#sentencias-adicionales">4.1.4. Sentencias adicionales</a></li>
+<li><a class="reference internal" href="#funciones-de-usuario">4.1.4. Funciones de usuario</a></li>
+<li><a class="reference internal" href="#clausulas-adicionales">4.1.5. Cláusulas adicionales</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#xslt">4.2. <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>

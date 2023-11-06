@@ -27,8 +27,8 @@ profesores:
     apellidos: Gálvez Ruiz
     departamento: Inglés
     # Ocupa un casillero distinto al de su ID.
-  - id: 17
-    casillero: [28]
+  - id: 28
+    casillero: [52]
     apelativo: Migue
     nombre: Miguel Ángel
     apellidos: Campos Sánchez

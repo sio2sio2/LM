@@ -743,7 +743,7 @@ sea cual sea el tipo del nodo. Ahora bien, ¿cuáles son específicas?
             "required": ["nombre"],
             "additionalProperties": false,
             "dependentRequired": {
-               "edad": [ "casado" ]
+               "casado": [ "edad" ]
             }
          }
 

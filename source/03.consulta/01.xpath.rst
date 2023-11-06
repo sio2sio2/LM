@@ -1684,6 +1684,51 @@ novedades se pueden resumir en estos puntos:
 
              ("a", "b", "c")
 
+        + ``fn:codepoints-to-string()`` y ``fn:string-to-codepoints()`` que
+          permiten respectivamente generar los caracteres Unicode que representan
+          una cadena o viceversa. Por ejemplo, la expresión
+
+          .. code-block:: xquery
+
+             fn:string-to-codepoints("Hola")
+
+          devuelve los números:
+
+          .. code-block:: none
+            
+             72
+             111
+             108
+             97
+
+          por lo que:
+
+          .. code-block:: xquery
+
+             fn:codepoints-to-string((72, 111, 108, 97))
+
+          devuelve la cadena \"*Hola*\".
+
+          .. note:: Ya hemos tratado los caracteres unicode al hablar de las
+             :ref:`entidades predefinidas de XML <xml-entity>`. Allí ya se
+             explicó un modo de averiguar el código asociado a un carácter
+             extraño (como la |uostr| danesa). Tenga presente, no obstante, que
+             en *XPath* deberemos escribir el código hexadecimal como :kbd:`0xd8`
+             o directamente el código decimal equivalente (:kbd:`216`). Por
+             tanto:
+
+             .. code-block:: xquery
+
+                fn:string-to-codepoints(0xd8) || "rsted"
+
+             devolverá el apellido del padre del electromagnetismo (|uostr|\
+             rsted).
+
+         .. note:: *XPath* no entiende el socorrido ":kbd:`\n`" para
+            escribir un salto de línea. Pero no es un problema, ya que ahora
+            sabemos qué podemos escribirlo como
+            :code:`fn:codepoints-to-string(10)`.
+
    * Hay muchas funciones para los tipos relacionados con las fechas.
    * También hay funciones relacionadas con las secuencias como:
 
@@ -2024,5 +2069,8 @@ Ejercicios propuestos
 .. |XSLT| replace:: :abbr:`XSLT (eXtensible Stylesheet Language Transformations)`
 .. |CLI| replace:: :abbr:`CLI (Command Line Interface)`
 
+.. |uostr| unicode:: U+00D8 .. LATIN CAPITAL LETTER O WITH STROKE
+
 .. _xidel: https://www.videlibri.de/xidel.html
 .. _Visual Studio Code: https://code.visualstudio.com
+

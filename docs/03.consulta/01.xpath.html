@@ -1692,7 +1692,49 @@ proporciona  en el segundo argumento. Así, la expresión:</p>
 </pre></div>
 </div>
 </li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fn:codepoints-to-string()</span></code> y <code class="docutils literal notranslate"><span class="pre">fn:string-to-codepoints()</span></code> que
+permiten respectivamente generar los caracteres Unicode que representan
+una cadena o viceversa. Por ejemplo, la expresión</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">fn:string-to-codepoints</span><span class="p">(</span><span class="s2">&quot;Hola&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>devuelve los números:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>72
+111
+108
+97
+</pre></div>
+</div>
+<p>por lo que:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">fn:codepoints-to-string</span><span class="p">((</span><span class="mi">72</span><span class="p">,</span><span class="w"> </span><span class="mi">111</span><span class="p">,</span><span class="w"> </span><span class="mi">108</span><span class="p">,</span><span class="w"> </span><span class="mi">97</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>devuelve la cadena &quot;<em>Hola</em>&quot;.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Ya hemos tratado los caracteres unicode al hablar de las
+<a class="reference internal" href="../01.intro/02b.marcas.html#xml-entity"><span class="std std-ref">entidades predefinidas de XML</span></a>. Allí ya se
+explicó un modo de averiguar el código asociado a un carácter
+extraño (como la Ø danesa). Tenga presente, no obstante, que
+en <em>XPath</em> deberemos escribir el código hexadecimal como <kbd class="kbd docutils literal notranslate">0xd8</kbd>
+o directamente el código decimal equivalente (<kbd class="kbd docutils literal notranslate">216</kbd>). Por
+tanto:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>fn:string-to-codepoints(0xd8) || &quot;rsted&quot;
+</pre></div>
+</div>
+<p>devolverá el apellido del padre del electromagnetismo (Ørsted).</p>
+</div>
+</li>
 </ul>
+<blockquote class="simple">
+<div><div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><em>XPath</em> no entiende el socorrido «<kbd class="kbd docutils literal notranslate">n</kbd>» para
+escribir un salto de línea. Pero no es un problema, ya que ahora
+sabemos qué podemos escribirlo como
+<code class="code docutils literal notranslate"><span class="pre">fn:codepoints-to-string(10)</span></code>.</p>
+</div>
+</div></blockquote>
 </li>
 <li><p>Hay muchas funciones para los tipos relacionados con las fechas.</p></li>
 <li><p>También hay funciones relacionadas con las secuencias como:</p>
