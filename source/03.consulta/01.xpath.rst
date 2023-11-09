@@ -98,19 +98,22 @@ conveniente conocer qué herramientas tenemos para procesar nuestras expresiones
   permite evaluar expresiones *XPath* 1.0. Para evaluar expresiones, basta con
   pulsar :kbd:`Ctrl+Shift+P` y buscar *XPath* para que accedamos al cuadro de
   diálogo que nos permite hacer evaluaciones.
+* :ref:`BaseX`, que soporta :ref:`XQuery` 3.0 (y consecuentemente *XPath* 3.1).
+  Podemos usarlo directamente o :ref:`a través de Visual Studio Code
+  <xquery-vscode>`.
 * El paquete :deb:`xmlstarlet`, cuyo paquete homónimo permite utilizar
   expresiones *XPath* 1.0 tanto para seleccionar información del |XML| original,
   como para modificarlo.
 * El programa xidel_, que soporta XPath 3.0.
 
 Expondremos estos dos últimos programas de línea de comandos, porque son los
-únicos que requieren alguna explicación sobre su funcionamiento:
+únicos que requieren alguna explicación sobre su funcionamiento.
 
 .. caution:: A estas alturas aún, la lectura completa del siguiente epígrafe es
    empachante y nada recomendable. Nos basta con saber cómo evaluar las
    expresiones *XPath* que se van introduciendo gradualmente, con lo que nos sobra con
    saber cómo usar :ref:`xidel <xpath-xidel>`, si necesitamos probar expresiones
-   validas únicas en *XPath* 2.0, o manejar la extensión de `Visual Studio
+   validas únicas en *XPath* 3.0, o manejar la extensión de `Visual Studio
    Code`_ que no requiere gran pericia.
 
 .. _xpath-xidel:
@@ -623,7 +626,7 @@ profesores varones.
 Dos son aspectos fundamentales a la hora de componer un predicado:
 
 * Al representar el predicado una condición, la expresión se evalúa a verdadero
-  o falso. En el ejemplo, comprobábamos unas igualdad.
+  o falso. En el ejemplo, comprobábamos una igualdad.
 
 * Las rutas *XPath* expresadas dentro del predicado, si son relativas, son
   relativas al nodo adyacente (*profesor* en el caso del ejemplo). En
@@ -1631,6 +1634,9 @@ novedades se pueden resumir en estos puntos:
    lenguaje se encuentran en el espacio de nombres *fn*, aunque este puede no
    expresarse. Por tanto, la función ``concat()``, aunque puede escribirse así,
    es ``fn:concat()``.
+
+   .. todo:: Explicar el `operador flecha
+      <https://www.altova.com/training/xpath3/xpath-31#arrow-operator>`_.
 
    * Hay muchísimas funciones matemáticas que permiten redondear, calcular
      razones trigonométricas, realizar operaciones complejas (algoritmos,

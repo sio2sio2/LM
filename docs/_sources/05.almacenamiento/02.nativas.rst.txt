@@ -1,3 +1,4 @@
+.. _nativas:
 .. _basex:
 
 Bases nativas

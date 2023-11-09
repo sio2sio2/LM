@@ -108,10 +108,10 @@ cláusulas con las que se construye originariamente<a class="footnote-reference 
 <abbr title="Strctured Query Language">SQL</abbr>.</p>
 <p>En cualquier caso, aunque lo que caracteriza a <em>XQuery</em> es la estructura
 <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr>, esta no es obligatoria, y una consulta <em>XQuery</em> puede crearse
-únicamente con el contenido del <a class="reference internal" href="#xquery-return"><span class="std std-ref">RETURN del FLWOR</span></a>. Como
-este contenido puede ser cualquier expresión <em>XPath</em> valida, resulta que
-<em>XQuery</em> es un supercojunto de <em>XPath</em>, o lo que es lo mismo, toda expresión
-<em>XPath</em> es una consulta <em>XQuery</em> válida.</p>
+únicamente con el contenido del <a class="reference internal" href="#xquery-return"><span class="std std-ref">RETURN del FLWOR</span></a> (sin
+expresar el propio <code class="docutils literal notranslate"><span class="pre">return</span></code>. Como este contenido puede ser cualquier expresión
+<em>XPath</em> valida, resulta que <em>XQuery</em> es un supercojunto de <em>XPath</em>, o lo que es
+lo mismo, toda expresión <em>XPath</em> es una consulta <em>XQuery</em> válida.</p>
 <p>Tres son las versiones que ha tenido este lenguaje:</p>
 <dl class="simple">
 <dt><a class="reference external" href="https://www.w3.org/TR/2007/REC-xquery-20070123/">Versión 1</a></dt><dd><p>Desarrollada desde los comienzos de <em>XPath</em> en 1999, se publicó
@@ -152,15 +152,21 @@ nos permite tener una enumeración de cuáles son las novedades.</p></li>
 <h3><span class="section-number">4.1.1. </span>Procesadores<a class="headerlink" href="#procesadores" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Tenemos varias alternativas para ejecutar consultas <em>XQuery</em>:</p>
 <ul>
-<li><p>El programa <a class="reference external" href="https://www.videlibri.de/xidel.html">xidel</a>, que ya usamos para probar <em>XPath</em>. Como es capaz de
-dilucidar si la expresión proporcionada es <em>XQuery</em> o <em>XPath</em>, podemos seguir
-usándolo igual.</p></li>
-<li><p><a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a> con la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml">XML Tools</a>,
-que requiere alguna configuración:</p>
+<li><p>El programa <a class="reference external" href="https://www.videlibri.de/xidel.html">xidel</a>, que ya usamos para probar <em>XPath</em>. Podemos seguir
+introduciendo la expresión con <kbd class="kbd docutils literal notranslate">-e</kbd>, ya que en principio es capaz
+de distiguir una expresión <em>XQuery</em> de una de <em>XPath</em>, pero en caso de algún
+problema de interpretación puede usarse la opción <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">-</kbd>-<kbd class="kbd docutils literal notranslate">xquery</kbd></kbd> en su
+sustitución.</p></li>
+<li><p><a class="reference internal" href="../05.almacenamiento/02.nativas.html#basex"><span class="std std-ref">Bases nativas</span></a>, que introduciremos mejor más adelante y tiene tanto interfaz
+gráfica como de línea de comandos. Es un programa hecho en <a class="reference external" href="https://es.wikipedia.org/wiki/Java_(lenguaje_de_programaci%C3%B3n)">Java</a>, así que
+necesitaremos tener instalada antes la máquina virtual. En las distribuciones
+basadas en <em>Debian</em> hay paquete disponible con lo que echarlo a andar es
+trivial.</p>
+</li>
+<li id="xquery-vscode"><p><a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a> con la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml">XML Tools</a>,
+que requiere alguna configuración adicional:</p>
 <ol class="arabic simple">
-<li><p>Instalar <a class="reference internal" href="../05.almacenamiento/02.nativas.html#basex"><span class="std std-ref">BaseX</span></a>, que a su vez necesita la máquina virtual
-de <a class="reference external" href="https://es.wikipedia.org/wiki/Java_(lenguaje_de_programaci%C3%B3n)">Java</a>.  En las distribuciones basadas en <em>Debian</em> hay paquete
-disponible con lo que echarlo a andar es trivial.</p></li>
+<li><p>Instalar previamente <a class="reference internal" href="../05.almacenamiento/02.nativas.html#basex"><span class="std std-ref">Bases nativas</span></a>.</p></li>
 <li><p>Configurar la extensión para que use <em>BaseX</em> como procesador. Para ello,
 necesitamos editar la configuración y añadir:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -185,7 +191,7 @@ escapar las contrabarras.</p>
 <p>Una vez bien configurada, el modo de ejecutar la consulta es el siguiente:</p>
 <ol class="loweralpha simple">
 <li><p>Escribimos el archivo <code class="file docutils literal notranslate"><span class="pre">.xq</span></code> con el código de <em>XQuery</em> y con el
-archivo abierto y seleccionado en el editor…</p></li>
+archivo abierto y seleccionado en el editor.</p></li>
 <li><p>Ejecutamos <cite>XML Tools: Execute Query</cite>.</p></li>
 <li><p>Si hay varios <abbr title="eXtensible  Markup Language">XML</abbr> en el directorio se nos preguntará sobre cual
 queremos hacer la consulta, y, si hemos incluido, la opción <kbd class="kbd docutils literal notranslate">-o</kbd> en
@@ -402,7 +408,7 @@ el que generan las iteraciones.</p></li>
 contructores directos y los constructores computados, que podemos usar a
 voluntad.</p></li>
 </ul>
-<dl>
+<dl id="xquery-const-directo">
 <dt><strong>Constructores directos</strong></dt><dd><p>Los <em class="dfn">constructores directos</em> son aquellos que consisten en escribir
 literalmente la salida <abbr title="eXtensible  Markup Language">XML</abbr> y hacerle notar al procesador que algo es una
 expresión <em>XPath</em> a evaluar mediante el uso de corchetes <code class="docutils literal notranslate"><span class="pre">{}</span></code>.</p>
@@ -460,6 +466,8 @@ deberiamos haberlo atomizado expresamente:</p>
 <p>Si evaluamos un nodo elemento, nos pasará lo mismo: se escribirá el elemento,
 no su valor atómico.</p>
 </dd>
+</dl>
+<dl id="xquery-const-eval">
 <dt><strong>Constructores evaluados</strong></dt><dd><p>Los <em class="dfn">constructores evaluados</em> utilizan una sintaxis no <abbr title="eXtensible  Markup Language">XML</abbr> para
 expresar la estructura del <abbr title="eXtensible  Markup Language">XML</abbr> de salida. Son especialmente útiles cuando
 el nombre del elemento o del atributo son dinámicos y dependen del contenido
@@ -740,6 +748,125 @@ ahorrárnosla: <code class="code docutils literal notranslate"><span class="pre"
 </dd>
 </dl>
 </section>
+<section id="actualizacion-de-datos">
+<h3><span class="section-number">4.1.6. </span>Actualización de datos<a class="headerlink" href="#actualizacion-de-datos" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Estrictamente <em>XQuery</em> permite la consulta de datos y la generación de una
+salida en forma de nuevo <abbr title="eXtensible  Markup Language">XML</abbr>. Buscando la analogía con <abbr title="Strctured Query Language">SQL</abbr>, esto lo hace
+equivalente a <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> que obtiene datos de una base de datos relacional y
+genera una salida en forma de tabla. Sin embargo, el <abbr title="Data Manipulation Language">DML</abbr> de <abbr title="Strctured Query Language">SQL</abbr> lo
+componen, además de <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>, <code class="docutils literal notranslate"><span class="pre">INSERT</span></code>, <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> y <code class="docutils literal notranslate"><span class="pre">DELETE</span></code>, los cuales
+permiten alterar el contenido. Para dotar a <em>XQuery</em> de la capacidad de
+modificación que confieran estas tres sentencias, el <abbr title="World Wide Web Consortium">W3C</abbr> definió como
+extensión al lenguaje (<a class="reference external" href="https://www.w3.org/TR/xquery-update-30">XQuery Update Facility 3.0</a>) cuatro nuevas expresiones que puede
+incluirse en la cláusula <a class="reference internal" href="#xquery-return"><span class="std std-ref">RETURN</span></a> para modificar la fuente
+original, en vez de generar una salida:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#xquery-insert"><span class="std std-ref">insert</span></a>, que permite añadir nodos.</p></li>
+<li><p><a class="reference internal" href="#xquery-delete"><span class="std std-ref">delete</span></a>, que permite borrar nodos.</p></li>
+<li><p><a class="reference internal" href="#xquery-replace"><span class="std std-ref">replace</span></a>, que permite reemplazar nodos</p></li>
+<li><p><a class="reference internal" href="#xquery-rename"><span class="std std-ref">rename</span></a>, que permite renombrar nodos.</p></li>
+</ul>
+<section id="modificacion">
+<h4><span class="section-number">4.1.6.1. </span>Modificación<a class="headerlink" href="#modificacion" title="Enlace permanente a este encabezado">¶</a></h4>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>Estas sentencias de actualización de la fuente tienen sentido
+cuando el origen <abbr title="eXtensible  Markup Language">XML</abbr> se utiliza como una base de datos, no como un archivo
+independiente, por lo que es más pertienente practicarlas en la próxima
+<a class="reference internal" href="../05.almacenamiento/index.html#lm-ut5"><span class="std std-ref">unidad dedicada al almacenamiento</span></a> y, en particular, en la
+parte dedicada a <a class="reference internal" href="../05.almacenamiento/02.nativas.html#nativas"><span class="std std-ref">bases nativas</span></a>. Se incluye aquí su
+explicación para no desgajarla del resto del lenguaje <em>XQuery</em>.</p>
+</div>
+<dl id="xquery-insert">
+<dt><code class="docutils literal notranslate"><span class="pre">insert</span></code></dt><dd><p>Podemos insertar tanto elementos como atributos y especificando exactamente
+dónde. Por ejemplo, la expresión:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>insert node &lt;foo/&gt; into //profesor[1]
+</pre></div>
+</div>
+<p>Añade un elemento <em>foo</em> al final del primer profesor. Variantes a esto
+podrían haber sido:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>insert node &lt;foo/&gt; as last into //profesor[1]
+</pre></div>
+</div>
+<p>o, si lo queremos añadir al comienzo del elemento:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>insert node &lt;foo/&gt; as first into //profesor[1]
+</pre></div>
+</div>
+<p>Para agregarlo en algún punto intermedio, tendríamos que echar mano de
+<code class="docutils literal notranslate"><span class="pre">before</span></code> o <code class="docutils literal notranslate"><span class="pre">after</span></code>:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>insert node &lt;foo/&gt; after //profesor[1]/nombre
+</pre></div>
+</div>
+<p>Obsérvese que estamos agregando un nodo y, en consecuencia, el destino debe
+ser otro y no varios, ya que un nodo sólo puede añadirse en un lugar. Si
+quisiéramos agregar un nodo <em>foo</em> a cada profesor, entonces tendríamos que
+echar mano de la estructura <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> explícita:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $p at $n in //profesor
+return
+   insert node &lt;foo&gt;{$n}&lt;/foo&gt; after //profesor[1]/nombre
+</pre></div>
+</div>
+<p>Hemos complicado un poco la inserción para que se vea que estamos usando un
+<a class="reference internal" href="#xquery-const-directo"><span class="std std-ref">constructor directo</span></a> para el elemento <em>foo</em>. De
+hecho, también podríamos haber usado un <a class="reference internal" href="#xquery-const-eval"><span class="std std-ref">constructor evaluado</span></a>:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $p at $n in //profesor
+return
+   insert node element foo {$n} after //profesor[1]/nombre
+</pre></div>
+</div>
+<p>En realidad, es posible insertar una secuencia de nodos:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>insert node (&lt;foo/&gt;, &lt;bar/&gt;) into //profesor[1]
+</pre></div>
+</div>
+<p>Y también atributos, aunque usando un <em>constructor evaluado</em>:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>insert node attribute foo {&quot;bar&quot;} into //profesor[1]
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl id="xquery-delete">
+<dt><code class="docutils literal notranslate"><span class="pre">delete</span></code></dt><dd><p>Borra la secuencia de nodos que se exprese como argumento. Por ejemplo,
+la siguiente expresión elimina el atributo casillero de todos los profesores
+que lo tengan.</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>delete node //profesor/@casillero
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl id="xquery-replace">
+<dt><code class="docutils literal notranslate"><span class="pre">replace</span></code></dt><dd><p>Remplaza el nodo indicado por otro que se le facilite:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>replace node //profesor[1]/apelativo with &lt;apelativo&gt;Luisito&lt;/apelativo&gt;
+</pre></div>
+</div>
+<p>Aunque en este caso, como nuestra intención era cambiar el contenido y no el
+nombre del nodo, quizás habría sido mejor:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>replace node //profesor[1]/apelativo/text() with &quot;Luisito&quot;
+</pre></div>
+</div>
+<p>Por supuesto, también podemos cambiar atributos:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>replace node //profesor[1]/@id with attribute id {&quot;p22&quot;}
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl id="xquery-rename">
+<dt><code class="docutils literal notranslate"><span class="pre">rename</span></code></dt><dd><p><code class="docutils literal notranslate"><span class="pre">replace</span></code> sustituye por completo el nodo, lo cual incluye todos sus
+descendientes. <code class="docutils literal notranslate"><span class="pre">rename</span></code>, en cambio, nos permite cambiar el nombre del nodo
+sin anterar en absoluto su contenido:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>rename //profesor[1]/apelativo as &quot;apodo&quot;
+</pre></div>
+</div>
+<p>Y, de nuevo, también permite cambiar el nombre de un atributo:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>rename //profesor[1]/@id as &quot;codigo&quot;
+</pre></div>
+</div>
+</dd>
+</dl>
+</section>
+<section id="modificacion-en-memoria">
+<h4><span class="section-number">4.1.6.2. </span>Modificación en memoria<a class="headerlink" href="#modificacion-en-memoria" title="Enlace permanente a este encabezado">¶</a></h4>
+</section>
+</section>
 </section>
 <section id="xslt">
 <h2><span class="section-number">4.2. </span><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr><a class="headerlink" href="#xslt" title="Enlace permanente a este encabezado">¶</a></h2>
@@ -783,6 +910,11 @@ generar una salida XML</span></a>.</p>
 <li><a class="reference internal" href="#construccion-de-salida-xml">4.1.3. Construcción de salida <abbr title="eXtensible  Markup Language">XML</abbr></a></li>
 <li><a class="reference internal" href="#funciones-de-usuario">4.1.4. Funciones de usuario</a></li>
 <li><a class="reference internal" href="#clausulas-adicionales">4.1.5. Cláusulas adicionales</a></li>
+<li><a class="reference internal" href="#actualizacion-de-datos">4.1.6. Actualización de datos</a><ul>
+<li><a class="reference internal" href="#modificacion">4.1.6.1. Modificación</a></li>
+<li><a class="reference internal" href="#modificacion-en-memoria">4.1.6.2. Modificación en memoria</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#xslt">4.2. <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>

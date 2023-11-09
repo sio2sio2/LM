@@ -157,20 +157,22 @@ conveniente conocer qué herramientas tenemos para procesar nuestras expresiones
 permite evaluar expresiones <em>XPath</em> 1.0. Para evaluar expresiones, basta con
 pulsar <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd></kbd> y buscar <em>XPath</em> para que accedamos al cuadro de
 diálogo que nos permite hacer evaluaciones.</p></li>
+<li><p><a class="reference internal" href="../05.almacenamiento/02.nativas.html#basex"><span class="std std-ref">Bases nativas</span></a>, que soporta <a class="reference internal" href="../04.transformacion/index.html#xquery"><span class="std std-ref">XQuery</span></a> 3.0 (y consecuentemente <em>XPath</em> 3.1).
+Podemos usarlo directamente o <a class="reference internal" href="../04.transformacion/index.html#xquery-vscode"><span class="std std-ref">a través de Visual Studio Code</span></a>.</p></li>
 <li><p>El paquete <a class="reference external" href="https://packages.debian.org/stable/xmlstarlet">xmlstarlet</a>, cuyo paquete homónimo permite utilizar
 expresiones <em>XPath</em> 1.0 tanto para seleccionar información del <abbr title="eXtensible  Markup Language">XML</abbr> original,
 como para modificarlo.</p></li>
 <li><p>El programa <a class="reference external" href="https://www.videlibri.de/xidel.html">xidel</a>, que soporta XPath 3.0.</p></li>
 </ul>
 <p>Expondremos estos dos últimos programas de línea de comandos, porque son los
-únicos que requieren alguna explicación sobre su funcionamiento:</p>
+únicos que requieren alguna explicación sobre su funcionamiento.</p>
 <div class="admonition caution">
 <p class="admonition-title">Prudencia</p>
 <p>A estas alturas aún, la lectura completa del siguiente epígrafe es
 empachante y nada recomendable. Nos basta con saber cómo evaluar las
 expresiones <em>XPath</em> que se van introduciendo gradualmente, con lo que nos sobra con
 saber cómo usar <a class="reference internal" href="#xpath-xidel"><span class="std std-ref">xidel</span></a>, si necesitamos probar expresiones
-validas únicas en <em>XPath</em> 2.0, o manejar la extensión de <a class="reference external" href="https://code.visualstudio.com">Visual Studio
+validas únicas en <em>XPath</em> 3.0, o manejar la extensión de <a class="reference external" href="https://code.visualstudio.com">Visual Studio
 Code</a> que no requiere gran pericia.</p>
 </div>
 <section id="xidel">
@@ -641,8 +643,8 @@ operador «<kbd class="kbd docutils literal notranslate">|</kbd>»:</p>
 tomará al interpretar la siguiente parte de la ruta. Recordemos que, si nos
 encontramos procesando un nodo y queremos referirnos a otro, podemos buscar
 entre sus descendientes, entre sus ascendientes o entre sus hermanos.</p>
-<table class="tb-eje docutils align-default" id="id21">
-<caption><span class="caption-text"><strong>Ejes en XPath</strong></span><a class="headerlink" href="#id21" title="Enlace permanente a esta tabla">¶</a></caption>
+<table class="tb-eje docutils align-default" id="id22">
+<caption><span class="caption-text"><strong>Ejes en XPath</strong></span><a class="headerlink" href="#id22" title="Enlace permanente a esta tabla">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Sentido</p></th>
 <th class="head"><p>Nombre</p></th>
@@ -751,7 +753,7 @@ profesores varones.</p>
 <p>Dos son aspectos fundamentales a la hora de componer un predicado:</p>
 <ul class="simple">
 <li><p>Al representar el predicado una condición, la expresión se evalúa a verdadero
-o falso. En el ejemplo, comprobábamos unas igualdad.</p></li>
+o falso. En el ejemplo, comprobábamos una igualdad.</p></li>
 <li><p>Las rutas <em>XPath</em> expresadas dentro del predicado, si son relativas, son
 relativas al nodo adyacente (<em>profesor</em> en el caso del ejemplo). En
 consecuencia, <code class="docutils literal notranslate"><span class="pre">&#64;sexo</span></code> es el atributo <em>sexo</em> del profesor en cuestión.</p></li>
@@ -780,8 +782,8 @@ como apartados dentro de este epígrafe.</p>
 <section id="operadores">
 <h4><span class="section-number">3.1.2.3.1. </span>Operadores<a class="headerlink" href="#operadores" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Dentro de los predicados pueden usarse los siguientes operadores:</p>
-<span id="xpath-op-arit"></span><table class="xpath-oper docutils align-default" id="id22">
-<caption><span class="caption-text"><strong>Operadores aritméticos</strong></span><a class="headerlink" href="#id22" title="Enlace permanente a esta tabla">¶</a></caption>
+<span id="xpath-op-arit"></span><table class="xpath-oper docutils align-default" id="id23">
+<caption><span class="caption-text"><strong>Operadores aritméticos</strong></span><a class="headerlink" href="#id23" title="Enlace permanente a esta tabla">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operador</p></th>
 <th class="head"><p>Significado</p></th>
@@ -805,8 +807,8 @@ como apartados dentro de este epígrafe.</p>
 </tr>
 </tbody>
 </table>
-<span id="xpath-op-comp"></span><table class="xpath-oper docutils align-default" id="id23">
-<caption><span class="caption-text"><strong>Operadores de comparación</strong></span><a class="headerlink" href="#id23" title="Enlace permanente a esta tabla">¶</a></caption>
+<span id="xpath-op-comp"></span><table class="xpath-oper docutils align-default" id="id24">
+<caption><span class="caption-text"><strong>Operadores de comparación</strong></span><a class="headerlink" href="#id24" title="Enlace permanente a esta tabla">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operador</p></th>
 <th class="head"><p>Significado</p></th>
@@ -833,8 +835,8 @@ como apartados dentro de este epígrafe.</p>
 </tr>
 </tbody>
 </table>
-<span id="xpath-op-log"></span><table class="xpath-oper docutils align-default" id="id24">
-<caption><span class="caption-text"><strong>Operadores lógicos</strong></span><a class="headerlink" href="#id24" title="Enlace permanente a esta tabla">¶</a></caption>
+<span id="xpath-op-log"></span><table class="xpath-oper docutils align-default" id="id25">
+<caption><span class="caption-text"><strong>Operadores lógicos</strong></span><a class="headerlink" href="#id25" title="Enlace permanente a esta tabla">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operador</p></th>
 <th class="head"><p>Significado</p></th>
@@ -847,7 +849,7 @@ como apartados dentro de este epígrafe.</p>
 <tr class="row-odd"><td><p>or</p></td>
 <td><p>Disyunción</p></td>
 </tr>
-<tr class="row-even"><td><p>not()<a class="footnote-reference brackets" href="#id12" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
+<tr class="row-even"><td><p>not()<a class="footnote-reference brackets" href="#id13" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
 <td><p>Negación</p></td>
 </tr>
 </tbody>
@@ -870,7 +872,7 @@ ambos predicados. Por tanto, el último ejemplo es equivalente a:</p>
 </section>
 <section id="funciones">
 <h4><span class="section-number">3.1.2.3.2. </span>Funciones<a class="headerlink" href="#funciones" title="Enlace permanente a este encabezado">¶</a></h4>
-<p>Junto a nodos y operadores, en los predicados<a class="footnote-reference brackets" href="#id13" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> también es posible usar
+<p>Junto a nodos y operadores, en los predicados<a class="footnote-reference brackets" href="#id14" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> también es posible usar
 funciones. En el sitio para desarrolladores de <strong class="program">mozilla</strong> puede
 consultarse <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/XPath/Functions">una relación completa de funciones para XPath 1.0</a>, de las cuales
 aquí citaremos algunas muy socorridas:</p>
@@ -1116,7 +1118,7 @@ que el operador de la izquierda no tiene que ser un único nodo, puede ser un
 conjunto de nodos, caso de que a nuestro profesor <em>don José</em>, lo conozcan
 como <em>Pepe</em>, pero también como <em>Pepito</em>. Así que esa comparación no es de uno
 contra uno, sino de varios contra uno, y en otros casos nos podríamos
-encontrar con operaciones binarias<a class="footnote-reference brackets" href="#id14" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> de varios contra varios.</p>
+encontrar con operaciones binarias<a class="footnote-reference brackets" href="#id15" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> de varios contra varios.</p>
 <p>Cuando las operaciones implican conjuntos de nodos, nos encontramos con lo
 que denominaremos <em class="dfn">el problema de la pluralidad</em>. <em>XPath</em> lo resuelve
 del siguiente modo:</p>
@@ -1401,7 +1403,7 @@ documento y no el elemento en sí. Por tanto, es verdadera la expresión:</p>
 </pre></div>
 </div>
 <p>ya que se ha supuesto que el procesador no ha analizado una gramática que proporcione
-el tipo del elemento<a class="footnote-reference brackets" href="#id15" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>. A la función se le puede proporcionar una
+el tipo del elemento<a class="footnote-reference brackets" href="#id16" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>. A la función se le puede proporcionar una
 secuencia para que obtenga el valor atómico de cada ítem de la secuencia:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">data</span><span class="p">(/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">nombre</span><span class="p">)</span>
 </pre></div>
@@ -1467,7 +1469,7 @@ tienen sentido para valores numéricos:</p>
 <li><p>Si uno de los operandos es un conjunto de nodos (una secuencia, en
 realidad), se generará un error en vez de tomar el primero, que es lo
 que ocurre en <em>XPath</em> 1.0.</p></li>
-<li><p>Si los tipos están definidos<a class="footnote-reference brackets" href="#id16" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>, se producirá un error en caso de
+<li><p>Si los tipos están definidos<a class="footnote-reference brackets" href="#id17" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>, se producirá un error en caso de
 que alguno de los operandos no sea numérico.</p></li>
 </ul>
 </li>
@@ -1534,8 +1536,8 @@ componentes de la serie. Por ejemplo, ante <code class="code docutils literal no
 </li>
 </ul>
 <p>Además de estos operadores hay definidos unos nuevos:</p>
-<table class="xpath-oper docutils align-default" id="id25">
-<caption><span class="caption-text"><strong>Nuevos operadores de comparación</strong></span><a class="headerlink" href="#id25" title="Enlace permanente a esta tabla">¶</a></caption>
+<table class="xpath-oper docutils align-default" id="id26">
+<caption><span class="caption-text"><strong>Nuevos operadores de comparación</strong></span><a class="headerlink" href="#id26" title="Enlace permanente a esta tabla">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operador</p></th>
 <th class="head"><p>Significado</p></th>
@@ -1609,7 +1611,7 @@ acción que se indique en el operando de la derecha:</p>
 </pre></div>
 </div>
 <p>La expresión devuelve la secuencia <code class="code docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">4,</span> <span class="pre">6)</span></code>. Cuando el operando
-de la izquierda es un conjunto de nodos<a class="footnote-reference brackets" href="#id17" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>, tiene un efecto similar al
+de la izquierda es un conjunto de nodos<a class="footnote-reference brackets" href="#id18" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>, tiene un efecto similar al
 operador <code class="docutils literal notranslate"><span class="pre">/</span></code> que se usa en las rutas, por lo que la expresión que se usó
 como ejemplo para ilustrar el operador de concatenación, también podría
 haberse escrito como:</p>
@@ -1652,6 +1654,10 @@ algunas muy socorridas a las que referimos al hablar de <em>XPath</em> 1.0.</p>
 lenguaje se encuentran en el espacio de nombres <em>fn</em>, aunque este puede no
 expresarse. Por tanto, la función <code class="docutils literal notranslate"><span class="pre">concat()</span></code>, aunque puede escribirse así,
 es <code class="docutils literal notranslate"><span class="pre">fn:concat()</span></code>.</p>
+<div class="admonition-todo admonition" id="id9">
+<p class="admonition-title">Por hacer</p>
+<p>Explicar el <a class="reference external" href="https://www.altova.com/training/xpath3/xpath-31#arrow-operator">operador flecha</a>.</p>
+</div>
 <ul>
 <li><p>Hay muchísimas funciones matemáticas que permiten redondear, calcular
 razones trigonométricas, realizar operaciones complejas (algoritmos,
@@ -1660,7 +1666,7 @@ exponenciación, etc.).</p></li>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">fn:string-join()</span></code> que permite concatenar cadenas usando una cadena
 como elemento de yuxtaposición. Es, por tanto, una generalización de
-<code class="docutils literal notranslate"><span class="pre">fn:concat()</span></code><a class="footnote-reference brackets" href="#id18" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>. Por ejemplo:</p>
+<code class="docutils literal notranslate"><span class="pre">fn:concat()</span></code><a class="footnote-reference brackets" href="#id19" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>. Por ejemplo:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">fn:string-join</span><span class="p">((</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1763,7 +1769,7 @@ valor que se proporciona. Por ejemplo, la expresión:</p>
 </ul>
 </li>
 <li><p>Hay funciones relacionadas con los identificadores.</p></li>
-<li><p>Funciones que permiten crear <abbr title="eXtensible  Markup Language">XML</abbr> a partir de una cadena<a class="footnote-reference brackets" href="#id19" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>.</p></li>
+<li><p>Funciones que permiten crear <abbr title="eXtensible  Markup Language">XML</abbr> a partir de una cadena<a class="footnote-reference brackets" href="#id20" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>.</p></li>
 <li><p>Y funciones relacionadas con programación funcional como por ejemplo
 <code class="docutils literal notranslate"><span class="pre">fn:for-each()</span></code>, que si se usa así:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">fn:for-each</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="nv">$</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">$</span><span class="n">e</span><span class="p">})</span>
@@ -1832,7 +1838,7 @@ incluye bastante ejemplos de uso. También es bastante revelador <a class="refer
 capítulo del libro «XSLT Cookbook»</a>,
 que trata sobre <em>XPath</em> y que ofrece de gratis la editorial O’Reilly.</p>
 </div>
-<div class="admonition-todo admonition" id="id11">
+<div class="admonition-todo admonition" id="id12">
 <p class="admonition-title">Por hacer</p>
 <p>Añadir explicaciones sobre mapas, arrays y consulta de documentos
 <abbr title="JavaScript Object Notation">JSON</abbr> con <em>XPath</em>.</p>
@@ -2272,28 +2278,28 @@ técnico en dos dimensiones, determinar la expresión <em>XPath</em> que selecci
 </ol>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id12" role="note">
+<aside class="footnote brackets" id="id13" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
 <p>En realidad, <code class="docutils literal notranslate"><span class="pre">not()</span></code> es una función, no un operador.</p>
 </aside>
-<aside class="footnote brackets" id="id13" role="note">
+<aside class="footnote brackets" id="id14" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
 <p>Y no sólo. Ya veremos más adelante.</p>
 </aside>
-<aside class="footnote brackets" id="id14" role="note">
+<aside class="footnote brackets" id="id15" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
 <p><a class="reference external" href="https://es.wikipedia.org/wiki/Operaci%C3%B3n_binaria">Operación binaria</a> en el sentido de que
 hay involucrados dos operandos y un operador, no en el sentido de que los
 operadores sean números binarios.</p>
 </aside>
-<aside class="footnote brackets" id="id15" role="note">
+<aside class="footnote brackets" id="id16" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">4</a><span class="fn-bracket">]</span></span>
 <p>De haberlo hecho, la expresión verdadera hubiera sido:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">data</span><span class="p">(/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">instance</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="kt">xs:string</span><span class="o">+</span>
 </pre></div>
 </div>
 </aside>
-<aside class="footnote brackets" id="id16" role="note">
+<aside class="footnote brackets" id="id17" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">5</a><span class="fn-bracket">]</span></span>
 <p>O sea, los operandos o son literales:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;1&quot;</span>
@@ -2301,19 +2307,19 @@ operadores sean números binarios.</p>
 </div>
 <p>o son nodos cuyo tipo se conoce gracias a una validación.</p>
 </aside>
-<aside class="footnote brackets" id="id17" role="note">
+<aside class="footnote brackets" id="id18" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">6</a><span class="fn-bracket">]</span></span>
 <p>No estamos hablando de la versión 1.0, así que, en realidad, nos
 referimos a una secuencia de nodos.</p>
 </aside>
-<aside class="footnote brackets" id="id18" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">7</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id19" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">7</a><span class="fn-bracket">]</span></span>
 <p>Con la diferencia de que ésta función espera recibir las cadenas como
 ítems de una secuencia, mientras que a <code class="docutils literal notranslate"><span class="pre">fn:concat</span></code> hay que proporcionarle
 cada cadena  en argumento independiente.</p>
 </aside>
-<aside class="footnote brackets" id="id19" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">8</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id20" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">8</a><span class="fn-bracket">]</span></span>
 <p>Lo cierto es que muchas de estas nuevas funciones de <em>XPath</em> 3 implementen
 funciones para las que en <em>XPath</em> 1.0 había que recurrir a <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/EXSLT/exsl">exslt</a>.</p>
 </aside>

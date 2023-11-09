@@ -35,10 +35,10 @@ cláusulas con las que se construye originariamente\ [#]_. Cumple en el mundo
 
 En cualquier caso, aunque lo que caracteriza a *XQuery* es la estructura
 |FLWOR|, esta no es obligatoria, y una consulta *XQuery* puede crearse
-únicamente con el contenido del :ref:`RETURN del FLWOR <xquery-return>`. Como
-este contenido puede ser cualquier expresión *XPath* valida, resulta que
-*XQuery* es un supercojunto de *XPath*, o lo que es lo mismo, toda expresión
-*XPath* es una consulta *XQuery* válida.
+únicamente con el contenido del :ref:`RETURN del FLWOR <xquery-return>` (sin
+expresar el propio ``return``. Como este contenido puede ser cualquier expresión
+*XPath* valida, resulta que *XQuery* es un supercojunto de *XPath*, o lo que es
+lo mismo, toda expresión *XPath* es una consulta *XQuery* válida.
 
 Tres son las versiones que ha tenido este lenguaje:
 
@@ -81,19 +81,27 @@ Procesadores
 ============
 Tenemos varias alternativas para ejecutar consultas *XQuery*:
 
-* El programa xidel_, que ya usamos para probar *XPath*. Como es capaz de
-  dilucidar si la expresión proporcionada es *XQuery* o *XPath*, podemos seguir
-  usándolo igual.
+* El programa xidel_, que ya usamos para probar *XPath*. Podemos seguir
+  introduciendo la expresión con :kbd:`-e`, ya que en principio es capaz
+  de distiguir una expresión *XQuery* de una de *XPath*, pero en caso de algún
+  problema de interpretación puede usarse la opción :kbd:`--xquery` en su
+  sustitución.
+
+* :ref:`BaseX`, que introduciremos mejor más adelante y tiene tanto interfaz
+  gráfica como de línea de comandos. Es un programa hecho en Java_, así que
+  necesitaremos tener instalada antes la máquina virtual. En las distribuciones
+  basadas en *Debian* hay paquete disponible con lo que echarlo a andar es
+  trivial.
+
+  .. _xquery-vscode:
 
 * `Visual Studio Code`_ con la extensión `XML Tools
   <https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml>`_,
-  que requiere alguna configuración:
+  que requiere alguna configuración adicional:
 
   .. rst-class:: simple
 
-  #. Instalar :ref:`BaseX <basex>`, que a su vez necesita la máquina virtual
-     de Java_.  En las distribuciones basadas en *Debian* hay paquete
-     disponible con lo que echarlo a andar es trivial.
+  #. Instalar previamente :ref:`BaseX`.
 
   #. Configurar la extensión para que use *BaseX* como procesador. Para ello,
      necesitamos editar la configuración y añadir:
@@ -117,7 +125,7 @@ Tenemos varias alternativas para ejecutar consultas *XQuery*:
   Una vez bien configurada, el modo de ejecutar la consulta es el siguiente:
 
   a. Escribimos el archivo :file:`.xq` con el código de *XQuery* y con el
-     archivo abierto y seleccionado en el editor...
+     archivo abierto y seleccionado en el editor.
   #. Ejecutamos `XML Tools: Execute Query`.
   #. Si hay varios |XML| en el directorio se nos preguntará sobre cual
      queremos hacer la consulta, y, si hemos incluido, la opción :kbd:`-o` en
@@ -374,6 +382,8 @@ ligeramente distinto:
   contructores directos y los constructores computados, que podemos usar a
   voluntad.
 
+.. _xquery-const-directo:
+
 **Constructores directos**
    Los :dfn:`constructores directos` son aquellos que consisten en escribir
    literalmente la salida |XML| y hacerle notar al procesador que algo es una
@@ -440,6 +450,8 @@ ligeramente distinto:
 
    Si evaluamos un nodo elemento, nos pasará lo mismo: se escribirá el elemento,
    no su valor atómico.
+
+.. _xquery-const-eval:
 
 **Constructores evaluados**
    Los :dfn:`constructores evaluados` utilizan una sintaxis no |XML| para
@@ -770,6 +782,161 @@ Cláusulas adicionales
 
    .. https://media.datadirect.com/download/docs/ddxquery/allddxq/reference/wwhelp/wwhimpl/common/html/wwhelp.htm?context=reference&file=tutorial_xquery5.html
 
+Actualización de datos
+======================
+Estrictamente *XQuery* permite la consulta de datos y la generación de una
+salida en forma de nuevo |XML|. Buscando la analogía con |SQL|, esto lo hace
+equivalente a ``SELECT`` que obtiene datos de una base de datos relacional y
+genera una salida en forma de tabla. Sin embargo, el |DML| de |SQL| lo
+componen, además de ``SELECT``, ``INSERT``, ``UPDATE`` y ``DELETE``, los cuales
+permiten alterar el contenido. Para dotar a *XQuery* de la capacidad de
+modificación que confieran estas tres sentencias, el |W3C| definió como
+extensión al lenguaje (`XQuery Update Facility 3.0
+<https://www.w3.org/TR/xquery-update-30>`_) cuatro nuevas expresiones que puede
+incluirse en la cláusula :ref:`RETURN <xquery-return>` para modificar la fuente
+original, en vez de generar una salida:
+
+* :ref:`insert <xquery-insert>`, que permite añadir nodos.
+* :ref:`delete <xquery-delete>`, que permite borrar nodos.
+* :ref:`replace <xquery-replace>`, que permite reemplazar nodos
+* :ref:`rename <xquery-rename>`, que permite renombrar nodos.
+
+Modificación
+------------
+.. caution:: Estas sentencias de actualización de la fuente tienen sentido
+   cuando el origen |XML| se utiliza como una base de datos, no como un archivo
+   independiente, por lo que es más pertienente practicarlas en la próxima
+   :ref:`unidad dedicada al almacenamiento <lm-ut5>` y, en particular, en la
+   parte dedicada a :ref:`bases nativas <nativas>`. Se incluye aquí su
+   explicación para no desgajarla del resto del lenguaje *XQuery*.
+
+.. _xquery-insert:
+
+``insert``
+   Podemos insertar tanto elementos como atributos y especificando exactamente
+   dónde. Por ejemplo, la expresión:
+
+   .. code-block:: xquery
+
+      insert node <foo/> into //profesor[1]
+
+   Añade un elemento *foo* al final del primer profesor. Variantes a esto
+   podrían haber sido:
+
+   .. code-block:: xquery
+
+      insert node <foo/> as last into //profesor[1]
+
+   o, si lo queremos añadir al comienzo del elemento:
+
+   .. code-block:: xquery
+
+      insert node <foo/> as first into //profesor[1]
+
+   Para agregarlo en algún punto intermedio, tendríamos que echar mano de
+   ``before`` o ``after``:
+
+   .. code-block:: xquery
+
+      insert node <foo/> after //profesor[1]/nombre
+
+   Obsérvese que estamos agregando un nodo y, en consecuencia, el destino debe
+   ser otro y no varios, ya que un nodo sólo puede añadirse en un lugar. Si
+   quisiéramos agregar un nodo *foo* a cada profesor, entonces tendríamos que
+   echar mano de la estructura |FLWOR| explícita:
+
+   .. code-block:: xquery
+
+      for $p at $n in //profesor
+      return
+         insert node <foo>{$n}</foo> after //profesor[1]/nombre
+
+   Hemos complicado un poco la inserción para que se vea que estamos usando un
+   :ref:`constructor directo <xquery-const-directo>` para el elemento *foo*. De
+   hecho, también podríamos haber usado un :ref:`constructor evaluado
+   <xquery-const-eval>`:
+
+   .. code-block:: xquery
+
+      for $p at $n in //profesor
+      return
+         insert node element foo {$n} after //profesor[1]/nombre
+
+   En realidad, es posible insertar una secuencia de nodos:
+
+   .. code-block:: xquery
+
+      insert node (<foo/>, <bar/>) into //profesor[1]
+
+   Y también atributos, aunque usando un *constructor evaluado*:
+
+   .. code-block:: xquery
+
+      insert node attribute foo {"bar"} into //profesor[1]
+
+   .. secuencia en vez de nodo.
+
+   .. https://www.youtube.com/watch?v=tgQrfKOmlRw 
+
+.. _xquery-delete:
+
+``delete``
+   Borra la secuencia de nodos que se exprese como argumento. Por ejemplo,
+   la siguiente expresión elimina el atributo casillero de todos los profesores
+   que lo tengan.
+
+   .. code-block:: xquery
+
+      delete node //profesor/@casillero
+
+.. _xquery-replace:
+
+``replace``
+   Remplaza el nodo indicado por otro que se le facilite:
+
+   .. code-block:: xquery
+
+      replace node //profesor[1]/apelativo with <apelativo>Luisito</apelativo>
+
+   Aunque en este caso, como nuestra intención era cambiar el contenido y no el
+   nombre del nodo, quizás habría sido mejor:
+
+   .. code-block:: xquery
+
+      replace node //profesor[1]/apelativo/text() with "Luisito"
+
+
+   Por supuesto, también podemos cambiar atributos:
+
+   .. code-block:: xquery
+
+      replace node //profesor[1]/@id with attribute id {"p22"}
+
+.. _xquery-rename:
+
+``rename``
+   ``replace`` sustituye por completo el nodo, lo cual incluye todos sus
+   descendientes. ``rename``, en cambio, nos permite cambiar el nombre del nodo
+   sin anterar en absoluto su contenido:
+
+   .. code-block:: xquery
+
+      rename //profesor[1]/apelativo as "apodo"
+
+   Y, de nuevo, también permite cambiar el nombre de un atributo:
+
+   .. code-block:: xquery
+
+      rename //profesor[1]/@id as "codigo"
+
+Modificación en memoria
+-----------------------
+
+.. Véase: https://stackoverflow.com/a/38220535
+   Se puede generar una salida, copiando y modificando en memoria
+
+.. https://docs.basex.org/wiki/XQuery_Update#Main-Memory_Updates
+
 |XSLT|
 ******
 Un estudio consistente de este lenguaje de transformación es demasiado amplio
@@ -792,6 +959,8 @@ currículo. Por ello, trasladamos su desarrollo al :ref:`apendice correspondient
 .. |XSLT| replace:: :abbr:`XSLT (eXtensible Stylesheet Language Transformations)`
 .. |FLWOR| replace:: :abbr:`FLWOR (For, Let, Where, Order by, Return)`
 .. |SQL| replace:: :abbr:`SQL (Strctured Query Language)`
+.. |DML| replace:: :abbr:`DML (Data Manipulation Language)`
+.. |W3C| replace:: :abbr:`W3C (World Wide Web Consortium)`
 
 .. _Visual Studio Code: https://code.visualstudio.com/
 .. _xidel: https://www.videlibri.de/xidel.html
