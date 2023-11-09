@@ -756,11 +756,10 @@ sea cual sea el tipo del nodo. Ahora bien, ¿cuáles son específicas?
    ``dependentSchemas``
       permite definir con más precisión la dependencia, ya que no se limita a
       comprobar la existencia, sino también a comprobar  si los valores se
-      ajustan a un determinado esquema. Por ejemplo, supongamos una sociedad en
-      la que no se pudiera tener hijos (o al menos que recen legalmente como
-      reconocidos), si no hay casamiento. En ese caso, la propiedad ``hijos`` no
-      sólo depende de que exista ``casado``, sino que además ésta tenga un
-      valor verdadero. Podríamos hacerlo así:
+      ajustan a un determinado esquema. Por ejemplo, legalmente no es posible
+      casarse hasta los 16 años, de modo que tal vez no nos interese sólo
+      asegurarnos de que está expresada la edad, sino de que ésta es de al menos
+      16 años:
 
       .. code-block:: json
 
@@ -778,11 +777,11 @@ sea cual sea el tipo del nodo. Ahora bien, ¿cuáles son específicas?
             "required": ["nombre"],
             "additionalProperties": false,
             "dependentSchemas": {
-               "hijos": {
+               "casado": {
                   "properties": {
-                     "casado": { "const": true }
+                     "edad": { "minimum": 16 }
                   },
-                  "required": ["casado"]
+                  "required": ["edad"]
                }
             }
          }

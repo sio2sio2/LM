@@ -868,11 +868,10 @@ requeridas.</p>
 <dl id="json-schema-dependentschemas">
 <dt><code class="docutils literal notranslate"><span class="pre">dependentSchemas</span></code></dt><dd><p>permite definir con más precisión la dependencia, ya que no se limita a
 comprobar la existencia, sino también a comprobar  si los valores se
-ajustan a un determinado esquema. Por ejemplo, supongamos una sociedad en
-la que no se pudiera tener hijos (o al menos que recen legalmente como
-reconocidos), si no hay casamiento. En ese caso, la propiedad <code class="docutils literal notranslate"><span class="pre">hijos</span></code> no
-sólo depende de que exista <code class="docutils literal notranslate"><span class="pre">casado</span></code>, sino que además ésta tenga un
-valor verdadero. Podríamos hacerlo así:</p>
+ajustan a un determinado esquema. Por ejemplo, legalmente no es posible
+casarse hasta los 16 años, de modo que tal vez no nos interese sólo
+asegurarnos de que está expresada la edad, sino de que ésta es de al menos
+16 años:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
 <span class="w">   </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -887,11 +886,11 @@ valor verdadero. Podríamos hacerlo así:</p>
 <span class="w">   </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">],</span>
 <span class="w">   </span><span class="nt">&quot;additionalProperties&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <span class="w">   </span><span class="nt">&quot;dependentSchemas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;hijos&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;casado&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">         </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;casado&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;const&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="nt">&quot;edad&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;minimum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="p">}</span>
 <span class="w">         </span><span class="p">},</span>
-<span class="w">         </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;casado&quot;</span><span class="p">]</span>
+<span class="w">         </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;edad&quot;</span><span class="p">]</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">   </span><span class="p">}</span>
 <span class="p">}</span>
