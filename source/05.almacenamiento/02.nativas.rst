@@ -1,11 +1,188 @@
 .. _nativas:
-.. _basex:
 
 Bases nativas
 *************
 
-.. Bases XML: https://docs.basex.org/wiki/Getting_Started
-              https://www.adictosaltrabajo.com/2013/08/06/introduccion-x-query/
-   Bases documentales (mongoDB)
+Bases documentales
+==================
+Las :dfn:`bases de datos documentales` o, más exactamente,  las :dfn:`bases de
+datos orientadas al documento` son bases de datos no relacionales cuya
+característica principal es que se estructuran sobre la base de un
+:dfn:`documento`, que no es más que un conjunto de datos semiestructurados. Un
+archivo |XML| o un archivo |JSON| o |YAML| son un documento.
+
+Internamente pueden almacenar su información en distintos formatos, pero lo
+habitual es que lo hagan en |XML| (como :ref:`BaseX`), |JSON| (como CouchDB_) o
+|BSON| (como MongoDB_), que es una representación binaria del formato |JSON|.
+
+.. Bases documentales (mongoDB)
+
+.. _basex:
+
+BaseX
+=====
+*BaseX* es un motor de bases de datos |XML| desarrollado en Java_ que permite el
+acceso y la modificación de datos a través de expresiones :ref:`XQuery
+<xquery>`. Las bases de datos pueden crearse a través de un archivo origen |XML|
+y, una vez creadas, el propio motor se encarga de la concurrencia. Es importante
+entender que el archivo sirve para crear la base de datos y dotarla de
+información, pero una vez creada, se almacena independiente al archivo original
+(en *Linux* dentro de :file:`~/basex/data`) y, por tanto, está dotada de vida
+propia al margen del archivo, esto es, si se alterá, sus cambios no afectarán al
+archivo; y viceversa. 
+
+Tiene varias versiones de ejecución:
+
+#. Una cómoda versión |GUI| pensada para gestionar la bases de datos y hacer
+   consultas desde la propia aplicación gráfica.
+
+#. Una versión |CLI| que permite otro tanto, pero desde la terminal. Esta
+   versión tiene la ventaja de permitir consultas (de lectura, no de
+   manipulación) usando directamente el archivo |XML| sin necesidad de crear
+   ninguna base de datos. Es, por tanto, ideal para comprobar la validez de
+   expresión *XPath* y *XQuery*.
+
+#. Una aplicación dividida en cliente y servidor, cuyo servidor queda escuchando
+   en un puerto y cuyo cliente permite hacerle consultas de modo semejante a la
+   versión |CLI|.
+
+#. Una aplicación que crea un servidor |HTTP| al que se le pueden hacer
+   consultas a través de una |API| |REST| (véase `la explicación de su uso
+   en la wiki del proyecto <https://docs.basex.org/wiki/REST>`_).
+   Lamentablemente, esta versión está ausente en `el paquete de Debian
+   <https://packages.debian.org/stable/basex>`_.
+
+Las dos últimas versiones, pues, permiten la consulta remota.
+
+En realidad, con saber :ref:`XQuery` (incluida la extensión al lenguaje para la
+:ref:`actualización de datos <xquery-update>`), tenemos prácticamente toda la
+lección aprendida y sólo nos falta conocer o las particularidades de la interfaz
+gráfica, si usamos la |GUI|, o las órdenes que permiten manipular las bases de
+datos (crear, borrar, abrir, cerrar, etc.) en caso de no hacerlo.
+
+|GUI|
+-----
+Tiene el aspecto de la imagen:
+
+.. image:: files/basexgui.png
+
+donde hemos marcado las zonas más interesantes.
+
+* En **1** podemos manipular las bases de datos. Por ejemplo, para empezar a hacer
+  consultas lo primero que necesitamos es abrir la base de datos correspondiente, y,
+  si esta no existe, crearla a partir de un archivo |XML|.
+
+* **2** permite interpretar el tipo de expresiones definidas al seleccionar un
+  ítem de la lista **3**:
+
+  - `Command` es una órden propia de *BaseX*. Por ejemplo, si escribiéramos
+    ``CLOSE`` se cerraría la base de datos que está abierta.
+
+  - `Find` y `XQuery` permiten escribir expresiones *XPath* y *XQuery*, respectivamente
+    para consultar la base de datos.
+
+* **4** permite escribir, cargar y grabar expresiones de consulta más complejas
+  que puedan ocuparnos varias líneas y que, por tanto, resulte engorrosas
+  escribir en **2**. Al pinchar sobre el icono del triángulo verde, la expresión
+  se evaluará. 
+
+* **5** representa de forma gráfica los datos incluidos en la base de datos y,
+  además, marcará en rojo los elementos extraídos en la consulta.
+
+* **6** muestra el resultado de la consulta.
+
+.. seealso:: Échele un vistazo a `este vídeo de Cristian González
+   <https://www.youtube.com/watch?v=-gItnmBu_qI>`_ si quiere revisar algo más
+   ilustrativo que esta simple descripción.
+
+|CLI|
+-----
+La aplicación |CLI| permite su uso interactivo:
+
+.. code-block:: console
+
+   $ basex
+   > HELP
+   [... La lista y explicación de todas las órdenes ...]
+   > CREATE DATABASE casilleros /ruta/a/casilleros.xml
+   > LIST
+   Name        Resources  Size  Input Path
+   ----------------------------------------------------------
+   casilleros  1          6989  /ruta/casilleros.xml
+
+   1 database(s).
+   > OPEN casilleros
+   > XQUERY //profesor[1]/nombre
+   <nombre>Luis</nombre>
+   > CLOSE
+   > QUIT
+
+o pasar argumentos al ejecutable para no entrar en el modo interactivo. Este
+modo de ejecución permite la consulta directa del archivo |XML| sin ni siquiera
+haber creado la base de datos:
+
+.. code-block:: console
+
+   $ basex -i /ruta/a/casilleros.xml '//profesor[1]/nombre'
+   <nombre>Luis</nombre>
+   $ basex -i /ruta/a/casilleros.xml una_consulta_compleja.xq
+
+.. caution:: Directamente sobre el archivo |XML| podremos hacer consultas, pero
+   no podremos alterarlo usando las :ref:`órdenes XQuery para la manipulación de
+   los datos <xquery-update>`. Para ello, forzosamente, deberemos crear la base
+   de datos.
+
+Cliente/Servidor
+----------------
+Primero hay que arrancar el servidor para que quede escuchando en el puerto
+1984/|TCP|:
+
+.. code-block:: console
+
+   $ basexserver -S
+   BaseX 9.7.2 [Server]
+   Server was started (port: 1984).
+   $ ss -ltn
+   State      Recv-Q     Send-Q     Local Address:Port     Peer Address:Port    Process 
+   LISTEN     0          50         *:1984                 *:*
+
+Hecho, lo cual podremos usar el cliente de modo semejante a como usamos la
+versión |CLI|, aunque no podremos usar directamente un archivo y además
+tendremos que indicar un usuario y una contraseña con permisos de acceso. Al
+instalar la aplicación en el sistema, se debió pedir una contraseña que es la
+contraseña que tiene el usuario administrador (*admin*):
+
+.. code-block:: console
+
+   $ basexclient -Uadmin -Pcontraseña -i casilleros  '//profesor[1]/nombre'
+   <nombre>Luis</nombre>
+
+Por último, para parar el servidor:
+
+.. code-block:: console
+
+   $ basexserver stop
+   BaseX 9.7.2 [Server]
+   Server was stopped (port: 1984).
+
+Servidor |HTTP|
+---------------
+
+.. todo:: Escribir una breve reseña del servidor |HTTP| y la |API| |REST| de
+   BaseX.
+
+.. https://www.youtube.com/watch?v=tgQrfKOmlRw 
 
 
+.. |GUI| replace:: :abbr:`GUI (Graphical User Interface)`
+.. |CLI| replace:: :abbr:`CLI (Command Line Interface)`
+.. |HTTP| replace:: :abbr:`HTTP (HyperText Transfer Protocol)`
+.. |API| replace:: :abbr:`API (Application Programming Interface)`
+.. |REST| replace:: :abbr:`REST (REpresentational State Transfer)`
+.. |TCP| replace:: :abbr:`TCP (Transmission Control Protocol)`
+.. |BSON| replace:: :abbr:`BSON (Binary JSON)`
+.. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`
+
+.. _Java: https://es.wikipedia.org/wiki/Java_(lenguaje_de_programaci%C3%B3n)
+.. _CouchDB: https://couchdb.apache.org/
+.. _MongoDB: https://www.mongodb.com/

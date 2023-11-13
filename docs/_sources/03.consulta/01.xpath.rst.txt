@@ -526,7 +526,7 @@ quieren referirse con tal ruta. Puede ser:
       idéntico fin y que admite :ref:`argumentos como element() <xpath-element()>`.
 
 **processing-instruction()**
-   Todas las instrucciones de procesamiento. Por ejemplo::
+   Todas las instrucciones de procesamiento. Por ejemplo:
 
    .. code-block:: xquery
 
@@ -1635,8 +1635,36 @@ novedades se pueden resumir en estos puntos:
    expresarse. Por tanto, la función ``concat()``, aunque puede escribirse así,
    es ``fn:concat()``.
 
-   .. todo:: Explicar el `operador flecha
-      <https://www.altova.com/training/xpath3/xpath-31#arrow-operator>`_.
+   .. _xpath-arrow-op:
+
+   Otra novedad relativa a las funciones que incorpora *XPath* a partir de su
+   versión 3.1 es el operador flecha (``=>``), que por su relación con las
+   funciones incluimos bajo este epígrafe y no bajo el dedicado a los
+   operadores.
+
+   La nueva sintaxis alternativa es :code:`argumento => funcion()` y equivale a
+   :code:`funcion(argumento)`.
+
+   Este operador no es más que azúcar sintáctico para mejorar la legibilidad del
+   código, sobre todo cuando se usan nciones anidadas. Por ejemplo, imaginemos
+   que nuestra intención es hacer un `cifrado César
+   <https://es.wikipedia.org/wiki/Cifrado_C%C3%A9sar>`_ de la cadena "*hola*":
+
+   .. code-block:: xquery
+
+      fn:codepoints-to-string(for $c in fn:string-to-codepoints('hola') return $c + 3)
+
+   Pues bien, gracias al operador flecha, podemos pasarle el argumento a la
+   función de este modo:
+
+   .. code-block:: xquery
+
+      for $c in fn:string-to-codepoints('hola') return $c + 3 => fn:codepoints-to-string()
+
+   .. note:: En realidad, en esta expresión hemos seguido escribiendo el
+      argumento pasado a ``fn:string-to-codepoints()`` del modo tradicional
+
+   En cuanto a las nuevas funciones:
 
    * Hay muchísimas funciones matemáticas que permiten redondear, calcular
      razones trigonométricas, realizar operaciones complejas (algoritmos,

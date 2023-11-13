@@ -1,0 +1,359 @@
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>XSLT &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" href="../_static/general.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+
+    
+    
+     
+        <script src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="prev" title="XPath" href="30.xpath.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="30.xpath.html" title="XPath"
+             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href=""><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="xslt">
+<h1><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr><a class="headerlink" href="#xslt" title="Enlace permanente a este encabezado">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Los ejercicios está organizados según el <abbr title="eXtensible  Markup Language">XML</abbr> que traducen y
+no según dificultad. Si prefiere hacerlos según su dificultad un orden
+apropiado (incluyendo sólo los que generan una salida de texto) es: 1,
+7, 9, 10, 11, 8, 12, 21, 3, 22, 11, 5, 6, 15, 16, 17, 18 Terminar de ordenarlos…</p>
+</div>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Por hacer</p>
+<p>Añadir problemas que consistan en manipular el <abbr title="eXtensible  Markup Language">XML</abbr> original quitando
+o añadiendo nodos.</p>
+</div>
+<ol class="arabic">
+<li><p>Dada la solución propuesta para almacenar la información de un dibujo técnico
+en dos dimensiones, hacer una lista con las entidades que se encuentran en el
+dibujo: cada item constará del nombre de la entidad y, entre paréntesis, el
+identificador.</p>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/12588743247d3cb991afb8cc8a420e71/01-grafico.txt.xsl"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Haga una transformación semejante a la anterior, pero genere una salida
+<abbr title="HyperText Markup Language">HTML</abbr> en forma de tabla de dos columnas, la primera columna contendrá el
+nombre de la entidad y la segunda el identificador.</p></li>
+<li><p>Ídem al ejercicio 1, pero cada ítem debe tener el siguiente aspecto:</p>
+<ul class="simple">
+<li><p>Si es punto: <code class="code docutils literal notranslate"><span class="pre">P=(x,y)</span></code>.</p></li>
+<li><p>Si es circunferencia: <code class="code docutils literal notranslate"><span class="pre">C=(x,</span> <span class="pre">y);</span> <span class="pre">R=r</span></code>.</p></li>
+<li><p>Si es recta: <code class="code docutils literal notranslate"><span class="pre">R=(x1,</span> <span class="pre">y1)-(x2,</span> <span class="pre">y2)</span></code>.</p></li>
+<li><p>Si es rectángulo: <code class="code docutils literal notranslate"><span class="pre">R=(x1,</span> <span class="pre">y1)+(x2,</span> <span class="pre">y2)</span></code>.</p></li>
+</ul>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/9874be3e03648c89ca733fa0809a1019/03-grafico.txt.xsl"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Vuelva a hacer el ejercicio anterior, pero genere una tabla <abbr title="HyperText Markup Language">HTML</abbr> como salida
+parecida a la del ejercicio <strong>2</strong>. En este caso la segunda columna contendrá
+las expresiones anteriores para identificar a cada entidad, en vez del
+identificador.</p></li>
+<li><p>Sobre el mismo <abbr title="eXtensible  Markup Language">XML</abbr> crear una lista con el siguiente aspecto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LISTA</span> <span class="n">DE</span> <span class="n">ENTIDADES</span>
+
+<span class="mf">1.</span> <span class="n">circunferencia</span><span class="p">:</span>
+   <span class="o">-</span> <span class="n">e03</span>
+
+<span class="mf">2.</span> <span class="n">punto</span><span class="p">:</span>
+   <span class="o">-</span> <span class="n">e01</span>
+   <span class="o">-</span> <span class="n">e05</span>
+
+<span class="mf">3.</span> <span class="n">recta</span><span class="p">:</span>
+   <span class="o">-</span> <span class="n">e02</span>
+
+<span class="mf">4.</span> <span class="n">rectangulo</span><span class="p">:</span>
+   <span class="o">-</span> <span class="n">e04</span>
+</pre></div>
+</div>
+<p>es decir, una lista organizada por tipos de entidad. De cada entidad sólo hay
+que indicar su identificador.</p>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/36064238b95342af29fc82557c7db037/05-grafico.txt.xsl"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Haga una lista semejante a la del ejercicio 3, pero las entidades deberán
+estar ordenadas por tipo y junto a la información del tipo, deberá incluirse
+la cantidad de entidades que hay de ese tipo. Por ejemplo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">)</span> <span class="n">circunferencia</span><span class="p">:</span> <span class="mi">5</span>
+   <span class="mf">1.</span> <span class="n">C</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span> <span class="n">R</span><span class="o">=</span><span class="mi">2</span>
+   <span class="mf">2.</span> <span class="o">...</span>
+
+<span class="n">b</span><span class="p">)</span> <span class="n">punto</span><span class="p">:</span> <span class="mi">2</span>
+   <span class="mf">1.</span> <span class="n">P</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+   <span class="mf">2.</span> <span class="n">P</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+   <span class="mf">3.</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/23e688abcb209b18ded83481f3d5645d/06-grafico.txt.xsl"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Tomando el <a class="reference internal" href="../01.intro/02b.marcas.html#xml-ejemplo"><span class="std std-ref">XML introductorio</span></a>, obtenga una lista numerada
+de profesores ordenada alfabéticamente por apellidos.</p>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/6a1fce76e4eedf0c2d40adc91e08d792/07-profesores.txt.xsl"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Haga lo mismo que en el caso anterior, pero la lista dividida en cuatro secciones:</p>
+<ol class="loweralpha simple">
+<li><p>Profesores activos (incluye titulares y sustitutos).</p></li>
+<li><p>Profesores sustituidos.</p></li>
+<li><p>Profesores sin sustituto (son aquellos cuyo atributo  <code class="docutils literal notranslate"><span class="pre">id</span></code> coincide
+con el valor del atributo <code class="docutils literal notranslate"><span class="pre">sustituto</span></code>).</p></li>
+<li><p>Profesores sustitutos.</p></li>
+</ol>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/9b7ebe3afef7c42e5635630d8d962554/08-profesores.txt.xsl"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Dada la solución propuesta para almacenar la información sobre las facturas
+de una empresa, muestre una lista numerada de clientes de la empresa.</p>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/756c48c6199fbd7c23f8e1df47de29ce/09-facturas.txt.xsl"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Haga lo mismo que en el ejercicio anterior, pero muestre en la lista sólo los
+clientes que han comprado algo.</p>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/73243ff9dff208ec266fb509572e0e8d/10-facturas.txt.xsl"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Haga una lista de facturas, en cada una de las cuales aparezca la cantidad de productos
+distintos que se han comprado.</p>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/aaa63c524f8fd02f7f1820860338695d/11-facturas.txt.xsl"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Repita la lista, pero incluyendo sólo las facturas con más de un producto distinto.</p>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/f4d98a3114fc489ebf20fed4e0b9a51d/12-facturas.txt.xsl"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>A partir del <abbr title="eXtensible  Markup Language">XML</abbr> de las facturas, haga una lista de clientes para cada uno
+de los cuales se desglosen sus facturas. De las facturas se debe mostrar el
+identificador y la fecha.</p>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/9976455e98f4cca1ac8043f1e1159234/13-facturas.txt.xsl"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Haga lo mismo que en el ejercicio anterior, pero el documento resultante debe
+ser una tabla <abbr title="HyperText Markup Language">HTML</abbr> de dos columnas: la primera indicará el cliente; y la
+segunda las facturas.</p></li>
+<li><p>Sobre el mismo <abbr title="eXtensible  Markup Language">XML</abbr> devuelva una lista de facturas, de cada una de las cuales
+debe desglosarse cuáles son productos que incluye y qué cantidad de ellos.
+Por ejemplo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">f01</span> <span class="p">(</span><span class="mi">2018</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">15</span><span class="p">):</span>
+   <span class="o">+</span> <span class="n">mollete</span><span class="p">:</span> <span class="mi">3</span>
+   <span class="o">+</span> <span class="n">tomate</span><span class="p">:</span> <span class="mi">1</span>
+<span class="mf">2.</span> <span class="n">f02</span> <span class="p">(</span><span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">15</span><span class="p">):</span>
+   <span class="o">+</span> <span class="n">tomate</span><span class="p">:</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/2547bb33b280cca6538561b50f6dad9d/15-facturas.txt.xsl"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Dada la solución propuesta para almacenar la información sobre los libros y
+préstamos en una biblioteca, crear un listado de lectores que hayan pedido al
+menos dos préstamos.</p>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/a7be88e3e559b19e2495c43210ca4ed8/16-biblioteca.txt.xsl"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Sobre el <abbr title="eXtensible  Markup Language">XML</abbr> del ejercicio anterior, vuelva a hacer la lista de lectores,
+pero ordenados por el número de préstamos que han realizado.</p>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/678e04897edb0eef0d4797a084bb152c/17-biblioteca.txt.xsl"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Partiendo del <abbr title="eXtensible  Markup Language">XML</abbr> anterior, devuelva un listado de libros ordenados por año
+de edición y en el que se indique el número de ejemplares de los que se
+dispone en la biblioteca.</p>
+<ul class="sol-oculta simple">
+<li><p><a class="reference download internal" download="" href="../_downloads/172d3c7bc17c2428f44c7a2104805580/18-biblioteca.txt.xsl"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a>
+suponiendo que disponible significa que es propiedad de la biblioteca.</p></li>
+<li><p><a class="reference download internal" download="" href="../_downloads/a0804b665ac8c5ef4d8d32bc4225f166/18b-biblioteca.txt.xsl"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a>
+suponiendo que disponible significa que está físicamente en la biblioteca y no en la casa
+de un lector.</p></li>
+</ul>
+</li>
+<li><p>A partir del mismo <abbr title="eXtensible  Markup Language">XML</abbr>, genere una lista de libros que incluya cuántas
+veces se ha prestado y que desglose para cada uno de ellos a quién se le
+prestó:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">Don</span> <span class="n">Quijote</span> <span class="n">de</span> <span class="n">la</span> <span class="n">Mancha</span><span class="p">:</span> <span class="mi">2</span> <span class="n">préstamos</span>
+   <span class="mf">1.</span> <span class="n">Lector</span> <span class="mf">1.</span>
+   <span class="mf">2.</span> <span class="n">Lector</span> <span class="mf">2.</span>
+
+<span class="o">-</span> <span class="n">Tirante</span> <span class="n">el</span> <span class="n">Blanco</span><span class="p">:</span> <span class="mi">1</span> <span class="n">préstamo</span>
+   <span class="mf">2.</span> <span class="n">Lector</span> <span class="mf">2.</span>
+</pre></div>
+</div>
+<p>Órdene la lista del más prestado al menos prestado.</p>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/138afd8089d60fb3d3f02c0cf23a9bf4/19-biblioteca.txt.xsl"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Sobre el mismo <abbr title="eXtensible  Markup Language">XML</abbr>, cree una tabla <abbr title="HyperText Markup Language">HTML</abbr> que cuyas columnas sean:</p>
+<ul class="simple">
+<li><p>Los libros ordenados por número de prestamos.</p></li>
+<li><p>Los préstamos realizados de ese libro (indíquese la fecha y el plazo).</p></li>
+<li><p>El cliente que pidió el préstamo (su nombre y DNI).</p></li>
+</ul>
+</li>
+<li><p>Dada la solución propuesta para almacenar la información sobre los coches que
+vende un concesionario, presente un listado de modelos de coche ordenados
+como primer criterio por marca y como segundo por potencia. De cada modelo
+deberá verse nombre del modelo (nombre de la marca): potencia.</p>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/a4ab8f612eb29d7c655d316199225c54/21-concesionario.txt.xsl"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Sobre el <abbr title="eXtensible  Markup Language">XML</abbr> anterior, repita la lista, pero haciéndola de dos niveles: el
+primero serán las marcas y el segundo los modelos (incluya también la
+información sobre la potencia).</p></li>
+<li><p>Dada la solución propuesta para almacenar la información sobre los parques
+nacionales, devuelva el listado de parques nacionales y dentro de cada uno de
+ellos dos listas más: el de la fauna en alto peligro de extinción y el de la
+flora en alto peligro de extinción.</p>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/686bd06fd910b6b464e45ce0cd83ba88/23-parques.txt.xsl"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Sobre el <abbr title="eXtensible  Markup Language">XML</abbr> anterior, devuelva un listado con primero la flora y luego la
+fauna. De cada uno de ellos habrá que indicar los parques nacionales en los
+que se encuentran.</p>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/8746d4cf60bb1e4e97d11214b1474f67/24-parques.txt.xsl"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Del mismo <abbr title="eXtensible  Markup Language">XML</abbr>, saque un listado de animales en alto peligro de extinción en
+que se indique el total ejemplares que hay de cada uno.</p>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/2e107a5fed8733433419d6b7732af1d9/25-parques.txt.xsl"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Soble el mismo <abbr title="eXtensible  Markup Language">XML</abbr>, obtener un listado de parques para cada uno de los cuales
+se indique la cantidad de especies animales y vegetales protegidas.</p>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/9264854fbf202aada694e8cb3b9e246b/26-parques.txt.xsl"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Dada la solución propuesta para almacenar la información sobre los habitantes
+de un municipio, muestre aquellos de los que se conoce padre y madre.</p>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/feeb06043db90c7ab71a82ceb273f19d/27-ayuntamiento.txt.xsl"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a></p>
+</li>
+<li><p>Sobre el mismo <abbr title="eXtensible  Markup Language">XML</abbr>, saque un listado de padres y otro de madres.</p></li>
+<li><p>Sobre el mismo <abbr title="eXtensible  Markup Language">XML</abbr>, saque un listado de habitantes con algún abuelo conocido.</p></li>
+<li><p>Sobre el <abbr title="eXtensible  Markup Language">XML</abbr> de facturas tratado en el ejercicio 5, haga un listado de
+clientes que hayan comprado el producto Altramuces.</p></li>
+<li><p>Sobre el mismo <abbr title="eXtensible  Markup Language">XML</abbr> de facturas haga un listado de facturas (incluya en ella
+el indentificador y el nombre del cliente) que indique cuál ha sido el gasto en
+cada producto.</p></li>
+<li><p>Saque el mismo listado de facturas, pero en el que se indique cuál ha sido el
+importe total de la factura, en vez de el importe en cada producto.</p></li>
+</ol>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/logo.png" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="30.xpath.html"
+                          title="Previous page">&larr; <em>XPath</em></a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/99.ejercicios/41.xslt.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="30.xpath.html" title="XPath"
+             >anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href=""><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor CC BY 4.0, 2023-2023, José Miguel Sánchez Alés.
+      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE discoteca [
+   <!ELEMENT discoteca (disco+)>
+   <!ELEMENT disco (nombre, autor)>
+   <!ATTLIST disco id     ID   #REQUIRED
+                   tipo   (clasica|rock|pop|jazz|folk)  #REQUIRED>
+   <!ELEMENT nombre (#PCDATA)>
+   <!ELEMENT autor  (#PCDATA)>
+]>
+<?xml-stylesheet type="text/xsl" href="discos.txt.xsl"?>
+<!--
+- Almacena información sobre discos personales.
+- "discos.txt.xsl" genera una lista en texto plano.
+-->
+<discoteca>
+   <disco id="d1" tipo="clasica">
+      <nombre>Nueve sinfonías</nombre>
+      <autor>Ludwing van Beethoven</autor>
+   </disco>
+   <disco id="d2" tipo="jazz">
+      <nombre>Kind of Blue</nombre>
+      <autor>Miles Davis</autor>
+   </disco>
+   <disco id="d3" tipo="rock">
+      <nombre>Metalmorfosis</nombre>
+      <autor>Barón Rojo</autor>
+   </disco>
+   <disco id="d4" tipo="rock">
+      <nombre>Más madera</nombre>
+      <autor>Leño</autor>
+   </disco>
+   <disco id="d5" tipo="jazz">
+      <nombre>Ella and Louis</nombre>
+      <autor>Ella Fitzgerald/Louis Armstrong</autor>
+   </disco>
+   <disco id="d6" tipo="clasica">
+      <nombre>El Mesías</nombre>
+      <autor>G.F. Haendel</autor>
+   </disco>
+</discoteca>

@@ -45,6 +45,7 @@
 
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="XSLT" href="41.xslt.html" />
     <link rel="prev" title="Validación de documentos" href="20.val.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head><body>
@@ -56,6 +57,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="Índice General"
              accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="41.xslt.html" title="XSLT"
+             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="20.val.html" title="Validación de documentos"
              accesskey="P">anterior</a> &nbsp; &nbsp;</li>
@@ -74,31 +78,116 @@
             
   <section id="xpath">
 <h1><em>XPath</em><a class="headerlink" href="#xpath" title="Enlace permanente a este encabezado">¶</a></h1>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Dada la solución propuesta para almacenar la información sobre las facturas de una empresa, determinar la expresión <em>XPath</em> que selecciona:</p>
 <ol class="arabic simple">
-<li><p>Las facturas que tenían algún descuento</p></li>
-<li><p>Las facturas anteriores al año en curso</p></li>
-<li><p>El número de facturas a las que se les aplicó un descuento mayor del 5%</p></li>
-<li><p>Las facturas con cinco productos diferentes.</p></li>
-<li><p>Las facturas en las que se facturó el producto «p01».</p></li>
-<li><p>Los clientes que viven en Isla Cristina.</p></li>
-<li><p>Los clientes que viven en la provincia de Huelva (el código postal puede servir para ello).</p></li>
-<li><p>Los nombres de los productos con iva superreducido.</p></li>
-<li><p>El número de productos que tienen un iva superreducido.</p></li>
-<li><p>Los productos cuyo precio es mayor a 2 euros.</p></li>
+<li><p>Las facturas que tenían algún descuento</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@descuento</span><span class="p">)</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="na">@descuento</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las facturas anteriores al año en curso</p>
+<p class="sol-oculta"><em>XPath</em> 1.0: no hay función que devuelva en año en curso.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="nf">substring</span><span class="p">(</span><span class="na">@fecha</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2023</span><span class="p">]</span>
+</pre></div>
+</div>
+<p class="sol-oculta"><em>XPath</em> 2/3:</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>//factura[fn:year-from-date(@fecha) &lt; fn:current-date  =&gt; fn:year-from-date()]
+</pre></div>
+</div>
+</li>
+<li><p>El número de facturas a las que se les aplicó un descuento mayor del 5%</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">factura</span><span class="p">[</span><span class="na">@descuento</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las facturas con cinco productos diferentes.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="nf">count</span><span class="p">(</span><span class="nt">item</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las facturas en las que se facturó el producto «p01».</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="nt">item</span><span class="p">/</span><span class="na">@producto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;p01&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los clientes que viven en Isla Cristina.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">cliente</span><span class="p">[</span><span class="nt">direccion</span><span class="p">/</span><span class="nt">poblacion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Isla Cristina&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los clientes que viven en la provincia de Huelva (el código postal puede servir para ello).</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">cliente</span><span class="p">[</span><span class="nf">substring</span><span class="p">(</span><span class="nt">direccion</span><span class="p">/</span><span class="nt">cp</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">21</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los nombres de los productos con iva superreducido.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">producto</span><span class="p">[</span><span class="na">@iva</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;superreducido&quot;</span><span class="p">]/</span><span class="na">@nombre</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número de productos que tienen un iva superreducido.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">producto</span><span class="p">[</span><span class="na">@iva</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;superreducido&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
 <li><p>Todas las facturas en las que el número total de artículos comprados
 fuese de más de 10. Para que tenga sentido esta pregunta, hágase la suposición
-de que todos los productos que se venden, se venden por unidades.</p></li>
-<li><p>El número de facturas de emitidas en noviembre de 2012.</p></li>
-<li><p>El número de facturas que sólo contienen un producto.</p></li>
-<li><p>Las facturas a nombre de Perico de los Palotes.</p></li>
-<li><p>Las productos de la factura con identificador «f01» cuyo iva es normal.</p></li>
-<li><p>Todas las facturas en las que se facturaron altramuces.</p></li>
-<li><p>El total de sandías vendidas.</p></li>
-<li><p>Las facturas emitidas a residentes en Isla Cristina.</p></li>
-<li><p>Las facturas sin productos gravados con iva normal.</p></li>
-<li><p>Las facturas cuyos productos están todos gravados con iva normal.</p></li>
+de que todos los productos que se venden, se venden por unidades.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="nf">sum</span><span class="p">(</span><span class="nt">item</span><span class="p">/</span><span class="na">@cantidad</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número de facturas de emitidas en noviembre de 2012.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">factura</span><span class="p">[</span><span class="nf">substring</span><span class="p">(</span><span class="na">@fecha</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="s2">&quot;2012-11&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número de facturas que sólo contienen un producto.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">factura</span><span class="p">[</span><span class="nf">count</span><span class="p">(</span><span class="nt">item</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los productos que se han vendido al menos una vez.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">producto</span><span class="p">[</span><span class="na">@codigo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">item</span><span class="p">/</span><span class="na">@producto</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las facturas a nombre de Perico de los Palotes.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="na">@cliente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">cliente</span><span class="p">[</span><span class="nt">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Perico de los Palotes&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las productos de la factura con identificador «f01» cuyo iva es normal.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">producto</span><span class="p">[</span><span class="na">@iva</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;normal&quot;</span><span class="p">][</span><span class="na">@codigo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="na">@codigo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;f01&quot;</span><span class="p">]/</span><span class="nt">item</span><span class="p">/</span><span class="na">@producto</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Todas las facturas en las que se facturaron altramuces.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="nt">item</span><span class="p">/</span><span class="na">@producto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">producto</span><span class="p">[</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;altramuces&quot;</span><span class="p">]/</span><span class="na">@codigo</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>El total de sandías vendidas.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">sum</span><span class="p">(//</span><span class="nt">factura</span><span class="p">/</span><span class="nt">item</span><span class="p">[</span><span class="na">@producto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">producto</span><span class="p">[</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sandía&quot;</span><span class="p">]/</span><span class="na">@codigo</span><span class="p">]/</span><span class="na">@cantidad</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las facturas emitidas a residentes en Isla Cristina.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="na">@cliente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">cliente</span><span class="p">[</span><span class="nt">direccion</span><span class="p">/</span><span class="nt">poblacion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Isla Cristina&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las facturas sin productos gravados con iva normal.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="nt">item</span><span class="p">[</span><span class="na">@producto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">producto</span><span class="p">[</span><span class="na">@iva</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;normal&quot;</span><span class="p">]/</span><span class="na">@codigo</span><span class="p">])]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las facturas cuyos productos están todos gravados con iva normal.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="nt">item</span><span class="p">[</span><span class="na">@producto</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="p">//</span><span class="nt">producto</span><span class="p">[</span><span class="na">@iva</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;normal&quot;</span><span class="p">]/</span><span class="na">@codigo</span><span class="p">])]</span>
+</pre></div>
+</div>
+</li>
 </ol>
 </li>
 <li><p>Dada la solución propuesta para almacenar la información sobre los libros y préstamos en una biblioteca,
@@ -249,6 +338,11 @@ técnico en dos dimensiones, determinar la expresión <em>XPath</em> que selecci
     <p class="topless"><a href="20.val.html"
                           title="Previous page">&larr; Validación de documentos</a></p>
   </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="41.xslt.html"
+                          title="Next page">&rarr; <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>Esta página</h3>
     <ul class="this-page-menu">
@@ -295,6 +389,9 @@ técnico en dos dimensiones, determinar la expresión <em>XPath</em> que selecci
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="Índice General"
              >índice</a></li>
+        <li class="right" >
+          <a href="41.xslt.html" title="XSLT"
+             >siguiente</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="20.val.html" title="Validación de documentos"
              >anterior</a> &nbsp; &nbsp;</li>

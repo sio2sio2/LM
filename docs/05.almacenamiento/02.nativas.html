@@ -78,7 +78,156 @@
           <div class="body" role="main">
             
   <section id="bases-nativas">
-<span id="basex"></span><span id="nativas"></span><h1><span class="section-number">5.2. </span>Bases nativas<a class="headerlink" href="#bases-nativas" title="Enlace permanente a este encabezado">¶</a></h1>
+<span id="nativas"></span><h1><span class="section-number">5.2. </span>Bases nativas<a class="headerlink" href="#bases-nativas" title="Enlace permanente a este encabezado">¶</a></h1>
+<section id="bases-documentales">
+<h2><span class="section-number">5.2.1. </span>Bases documentales<a class="headerlink" href="#bases-documentales" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Las <em class="dfn">bases de datos documentales</em> o, más exactamente,  las <em class="dfn">bases de
+datos orientadas al documento</em> son bases de datos no relacionales cuya
+característica principal es que se estructuran sobre la base de un
+<em class="dfn">documento</em>, que no es más que un conjunto de datos semiestructurados. Un
+archivo <abbr title="eXtensible  Markup Language">XML</abbr> o un archivo <abbr title="JavaScript Object Notation">JSON</abbr> o <abbr title="YAML Ain't Markup Language">YAML</abbr> son un documento.</p>
+<p>Internamente pueden almacenar su información en distintos formatos, pero lo
+habitual es que lo hagan en <abbr title="eXtensible  Markup Language">XML</abbr> (como <a class="reference internal" href="#basex"><span class="std std-ref">BaseX</span></a>), <abbr title="JavaScript Object Notation">JSON</abbr> (como <a class="reference external" href="https://couchdb.apache.org/">CouchDB</a>) o
+<abbr title="Binary JSON">BSON</abbr> (como <a class="reference external" href="https://www.mongodb.com/">MongoDB</a>), que es una representación binaria del formato <abbr title="JavaScript Object Notation">JSON</abbr>.</p>
+</section>
+<section id="basex">
+<span id="id1"></span><h2><span class="section-number">5.2.2. </span>BaseX<a class="headerlink" href="#basex" title="Enlace permanente a este encabezado">¶</a></h2>
+<p><em>BaseX</em> es un motor de bases de datos <abbr title="eXtensible  Markup Language">XML</abbr> desarrollado en <a class="reference external" href="https://es.wikipedia.org/wiki/Java_(lenguaje_de_programaci%C3%B3n)">Java</a> que permite el
+acceso y la modificación de datos a través de expresiones <a class="reference internal" href="../04.transformacion/index.html#xquery"><span class="std std-ref">XQuery</span></a>. Las bases de datos pueden crearse a través de un archivo origen <abbr title="eXtensible  Markup Language">XML</abbr>
+y, una vez creadas, el propio motor se encarga de la concurrencia. Es importante
+entender que el archivo sirve para crear la base de datos y dotarla de
+información, pero una vez creada, se almacena independiente al archivo original
+(en <em>Linux</em> dentro de <code class="file docutils literal notranslate"><span class="pre">~/basex/data</span></code>) y, por tanto, está dotada de vida
+propia al margen del archivo, esto es, si se alterá, sus cambios no afectarán al
+archivo; y viceversa.</p>
+<p>Tiene varias versiones de ejecución:</p>
+<ol class="arabic simple">
+<li><p>Una cómoda versión <abbr title="Graphical User Interface">GUI</abbr> pensada para gestionar la bases de datos y hacer
+consultas desde la propia aplicación gráfica.</p></li>
+<li><p>Una versión <abbr title="Command Line Interface">CLI</abbr> que permite otro tanto, pero desde la terminal. Esta
+versión tiene la ventaja de permitir consultas (de lectura, no de
+manipulación) usando directamente el archivo <abbr title="eXtensible  Markup Language">XML</abbr> sin necesidad de crear
+ninguna base de datos. Es, por tanto, ideal para comprobar la validez de
+expresión <em>XPath</em> y <em>XQuery</em>.</p></li>
+<li><p>Una aplicación dividida en cliente y servidor, cuyo servidor queda escuchando
+en un puerto y cuyo cliente permite hacerle consultas de modo semejante a la
+versión <abbr title="Command Line Interface">CLI</abbr>.</p></li>
+<li><p>Una aplicación que crea un servidor <abbr title="HyperText Transfer Protocol">HTTP</abbr> al que se le pueden hacer
+consultas a través de una <abbr title="Application Programming Interface">API</abbr> <abbr title="REpresentational State Transfer">REST</abbr> (véase <a class="reference external" href="https://docs.basex.org/wiki/REST">la explicación de su uso
+en la wiki del proyecto</a>).
+Lamentablemente, esta versión está ausente en <a class="reference external" href="https://packages.debian.org/stable/basex">el paquete de Debian</a>.</p></li>
+</ol>
+<p>Las dos últimas versiones, pues, permiten la consulta remota.</p>
+<p>En realidad, con saber <a class="reference internal" href="../04.transformacion/index.html#xquery"><span class="std std-ref">XQuery</span></a> (incluida la extensión al lenguaje para la
+<a class="reference internal" href="../04.transformacion/index.html#xquery-update"><span class="std std-ref">actualización de datos</span></a>), tenemos prácticamente toda la
+lección aprendida y sólo nos falta conocer o las particularidades de la interfaz
+gráfica, si usamos la <abbr title="Graphical User Interface">GUI</abbr>, o las órdenes que permiten manipular las bases de
+datos (crear, borrar, abrir, cerrar, etc.) en caso de no hacerlo.</p>
+<section id="gui">
+<h3><span class="section-number">5.2.2.1. </span><abbr title="Graphical User Interface">GUI</abbr><a class="headerlink" href="#gui" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Tiene el aspecto de la imagen:</p>
+<img alt="../_images/basexgui.png" src="../_images/basexgui.png" />
+<p>donde hemos marcado las zonas más interesantes.</p>
+<ul class="simple">
+<li><p>En <strong>1</strong> podemos manipular las bases de datos. Por ejemplo, para empezar a hacer
+consultas lo primero que necesitamos es abrir la base de datos correspondiente, y,
+si esta no existe, crearla a partir de un archivo <abbr title="eXtensible  Markup Language">XML</abbr>.</p></li>
+<li><p><strong>2</strong> permite interpretar el tipo de expresiones definidas al seleccionar un
+ítem de la lista <strong>3</strong>:</p>
+<ul>
+<li><p><cite>Command</cite> es una órden propia de <em>BaseX</em>. Por ejemplo, si escribiéramos
+<code class="docutils literal notranslate"><span class="pre">CLOSE</span></code> se cerraría la base de datos que está abierta.</p></li>
+<li><p><cite>Find</cite> y <cite>XQuery</cite> permiten escribir expresiones <em>XPath</em> y <em>XQuery</em>, respectivamente
+para consultar la base de datos.</p></li>
+</ul>
+</li>
+<li><p><strong>4</strong> permite escribir, cargar y grabar expresiones de consulta más complejas
+que puedan ocuparnos varias líneas y que, por tanto, resulte engorrosas
+escribir en <strong>2</strong>. Al pinchar sobre el icono del triángulo verde, la expresión
+se evaluará.</p></li>
+<li><p><strong>5</strong> representa de forma gráfica los datos incluidos en la base de datos y,
+además, marcará en rojo los elementos extraídos en la consulta.</p></li>
+<li><p><strong>6</strong> muestra el resultado de la consulta.</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Échele un vistazo a <a class="reference external" href="https://www.youtube.com/watch?v=-gItnmBu_qI">este vídeo de Cristian González</a> si quiere revisar algo más
+ilustrativo que esta simple descripción.</p>
+</div>
+</section>
+<section id="cli">
+<h3><span class="section-number">5.2.2.2. </span><abbr title="Command Line Interface">CLI</abbr><a class="headerlink" href="#cli" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>La aplicación <abbr title="Command Line Interface">CLI</abbr> permite su uso interactivo:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>basex
+<span class="go">&gt; HELP</span>
+<span class="go">[... La lista y explicación de todas las órdenes ...]</span>
+<span class="go">&gt; CREATE DATABASE casilleros /ruta/a/casilleros.xml</span>
+<span class="go">&gt; LIST</span>
+<span class="go">Name        Resources  Size  Input Path</span>
+<span class="go">----------------------------------------------------------</span>
+<span class="go">casilleros  1          6989  /ruta/casilleros.xml</span>
+
+<span class="go">1 database(s).</span>
+<span class="go">&gt; OPEN casilleros</span>
+<span class="go">&gt; XQUERY //profesor[1]/nombre</span>
+<span class="go">&lt;nombre&gt;Luis&lt;/nombre&gt;</span>
+<span class="go">&gt; CLOSE</span>
+<span class="go">&gt; QUIT</span>
+</pre></div>
+</div>
+<p>o pasar argumentos al ejecutable para no entrar en el modo interactivo. Este
+modo de ejecución permite la consulta directa del archivo <abbr title="eXtensible  Markup Language">XML</abbr> sin ni siquiera
+haber creado la base de datos:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>basex<span class="w"> </span>-i<span class="w"> </span>/ruta/a/casilleros.xml<span class="w"> </span><span class="s1">&#39;//profesor[1]/nombre&#39;</span>
+<span class="go">&lt;nombre&gt;Luis&lt;/nombre&gt;</span>
+<span class="gp">$ </span>basex<span class="w"> </span>-i<span class="w"> </span>/ruta/a/casilleros.xml<span class="w"> </span>una_consulta_compleja.xq
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>Directamente sobre el archivo <abbr title="eXtensible  Markup Language">XML</abbr> podremos hacer consultas, pero
+no podremos alterarlo usando las <a class="reference internal" href="../04.transformacion/index.html#xquery-update"><span class="std std-ref">órdenes XQuery para la manipulación de
+los datos</span></a>. Para ello, forzosamente, deberemos crear la base
+de datos.</p>
+</div>
+</section>
+<section id="cliente-servidor">
+<h3><span class="section-number">5.2.2.3. </span>Cliente/Servidor<a class="headerlink" href="#cliente-servidor" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Primero hay que arrancar el servidor para que quede escuchando en el puerto
+1984/<abbr title="Transmission Control Protocol">TCP</abbr>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>basexserver<span class="w"> </span>-S
+<span class="go">BaseX 9.7.2 [Server]</span>
+<span class="go">Server was started (port: 1984).</span>
+<span class="gp">$ </span>ss<span class="w"> </span>-ltn
+<span class="go">State      Recv-Q     Send-Q     Local Address:Port     Peer Address:Port    Process</span>
+<span class="go">LISTEN     0          50         *:1984                 *:*</span>
+</pre></div>
+</div>
+<p>Hecho, lo cual podremos usar el cliente de modo semejante a como usamos la
+versión <abbr title="Command Line Interface">CLI</abbr>, aunque no podremos usar directamente un archivo y además
+tendremos que indicar un usuario y una contraseña con permisos de acceso. Al
+instalar la aplicación en el sistema, se debió pedir una contraseña que es la
+contraseña que tiene el usuario administrador (<em>admin</em>):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>basexclient<span class="w"> </span>-Uadmin<span class="w"> </span>-Pcontraseña<span class="w"> </span>-i<span class="w"> </span>casilleros<span class="w">  </span><span class="s1">&#39;//profesor[1]/nombre&#39;</span>
+<span class="go">&lt;nombre&gt;Luis&lt;/nombre&gt;</span>
+</pre></div>
+</div>
+<p>Por último, para parar el servidor:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>basexserver<span class="w"> </span>stop
+<span class="go">BaseX 9.7.2 [Server]</span>
+<span class="go">Server was stopped (port: 1984).</span>
+</pre></div>
+</div>
+</section>
+<section id="servidor-http">
+<h3><span class="section-number">5.2.2.4. </span>Servidor <abbr title="HyperText Transfer Protocol">HTTP</abbr><a class="headerlink" href="#servidor-http" title="Enlace permanente a este encabezado">¶</a></h3>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Por hacer</p>
+<p>Escribir una breve reseña del servidor <abbr title="HyperText Transfer Protocol">HTTP</abbr> y la <abbr title="Application Programming Interface">API</abbr> <abbr title="REpresentational State Transfer">REST</abbr> de
+BaseX.</p>
+</div>
+</section>
+</section>
 </section>
 
 
@@ -90,7 +239,23 @@
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/logo.png" alt="Logo"/>
-        </a></p>
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">5.2. Bases nativas</a><ul>
+<li><a class="reference internal" href="#bases-documentales">5.2.1. Bases documentales</a></li>
+<li><a class="reference internal" href="#basex">5.2.2. BaseX</a><ul>
+<li><a class="reference internal" href="#gui">5.2.2.1. <abbr title="Graphical User Interface">GUI</abbr></a></li>
+<li><a class="reference internal" href="#cli">5.2.2.2. <abbr title="Command Line Interface">CLI</abbr></a></li>
+<li><a class="reference internal" href="#cliente-servidor">5.2.2.3. Cliente/Servidor</a></li>
+<li><a class="reference internal" href="#servidor-http">5.2.2.4. Servidor <abbr title="HyperText Transfer Protocol">HTTP</abbr></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div class="sphinxprev">
     <h4>Previous page</h4>
     <p class="topless"><a href="01.relacionales.html"

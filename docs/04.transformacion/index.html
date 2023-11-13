@@ -157,7 +157,7 @@ introduciendo la expresión con <kbd class="kbd docutils literal notranslate">-e
 de distiguir una expresión <em>XQuery</em> de una de <em>XPath</em>, pero en caso de algún
 problema de interpretación puede usarse la opción <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">-</kbd>-<kbd class="kbd docutils literal notranslate">xquery</kbd></kbd> en su
 sustitución.</p></li>
-<li><p><a class="reference internal" href="../05.almacenamiento/02.nativas.html#basex"><span class="std std-ref">Bases nativas</span></a>, que introduciremos mejor más adelante y tiene tanto interfaz
+<li><p><a class="reference internal" href="../05.almacenamiento/02.nativas.html#basex"><span class="std std-ref">BaseX</span></a>, que introduciremos mejor más adelante y tiene tanto interfaz
 gráfica como de línea de comandos. Es un programa hecho en <a class="reference external" href="https://es.wikipedia.org/wiki/Java_(lenguaje_de_programaci%C3%B3n)">Java</a>, así que
 necesitaremos tener instalada antes la máquina virtual. En las distribuciones
 basadas en <em>Debian</em> hay paquete disponible con lo que echarlo a andar es
@@ -166,7 +166,7 @@ trivial.</p>
 <li id="xquery-vscode"><p><a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a> con la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml">XML Tools</a>,
 que requiere alguna configuración adicional:</p>
 <ol class="arabic simple">
-<li><p>Instalar previamente <a class="reference internal" href="../05.almacenamiento/02.nativas.html#basex"><span class="std std-ref">Bases nativas</span></a>.</p></li>
+<li><p>Instalar previamente <a class="reference internal" href="../05.almacenamiento/02.nativas.html#basex"><span class="std std-ref">BaseX</span></a>.</p></li>
 <li><p>Configurar la extensión para que use <em>BaseX</em> como procesador. Para ello,
 necesitamos editar la configuración y añadir:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -749,7 +749,7 @@ ahorrárnosla: <code class="code docutils literal notranslate"><span class="pre"
 </dl>
 </section>
 <section id="actualizacion-de-datos">
-<h3><span class="section-number">4.1.6. </span>Actualización de datos<a class="headerlink" href="#actualizacion-de-datos" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="xquery-update"></span><h3><span class="section-number">4.1.6. </span>Actualización de datos<a class="headerlink" href="#actualizacion-de-datos" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Estrictamente <em>XQuery</em> permite la consulta de datos y la generación de una
 salida en forma de nuevo <abbr title="eXtensible  Markup Language">XML</abbr>. Buscando la analogía con <abbr title="Strctured Query Language">SQL</abbr>, esto lo hace
 equivalente a <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> que obtiene datos de una base de datos relacional y
@@ -865,6 +865,64 @@ sin anterar en absoluto su contenido:</p>
 </section>
 <section id="modificacion-en-memoria">
 <h4><span class="section-number">4.1.6.2. </span>Modificación en memoria<a class="headerlink" href="#modificacion-en-memoria" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>Los ejemplos anteriores sirven todos para modificar el documento original. Ahora
+bien, supongamos que queremos generar una salida que es muy parecida al archivo
+original. Con las técnicas vistas antes de este <a class="reference internal" href="#xquery-update"><span class="std std-ref">epígrafe de actualización</span></a>, esa generación a pesar de ser una pequeña variante del
+original, nos supondría bastante esfuerzo. Por ese motivo, <em>XQuery</em> permite la
+posibilidad de copiar parte del documento original en memoria, hacer los cambios
+usando las técnicas arriba vistas y, finalmente, volcar en la salida la copia.</p>
+<p>Por ejemplo, imaginemos que quisiéramos generar una salida del documento de
+casilleros exactamente igual al original con la única diferencia de que el
+elemento <em>casillero</em> para a ser un atributo. El ejercicio podríamos realizarlo
+así:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>element {fn:local-name(/*)} {(
+    /*/@*,
+    for $p in //profesor
+    return
+<span class="hll">        (: Estructura copy-modify-return :)
+</span><span class="hll">        copy $p_mod := $p
+</span><span class="hll">        modify (
+</span><span class="hll">            insert node attribute departamento {$p/departamento} into $p_mod,
+</span><span class="hll">            delete node $p_mod/departamento
+</span><span class="hll">        )
+</span>        return $p_mod
+)}
+</pre></div>
+</div>
+<p>Esto es:</p>
+<ul class="simple">
+<li><p>Creamos un elemento raíz con el mismo y nombre y con los mismos atributos.</p></li>
+<li><p>Recorremos cada uno de los nodos profesor (<code class="docutils literal notranslate"><span class="pre">$p</span></code>).</p></li>
+<li><p>En vez de volcarlo directamente, lo cual provocaría que obtuviéramos como
+salida la misma entrada, echamos mano de la estructura <code class="docutils literal notranslate"><span class="pre">copy</span></code>-<code class="docutils literal notranslate"><span class="pre">modify</span></code>- <code class="docutils literal notranslate"><span class="pre">return</span></code>:</p>
+<ul>
+<li><p>Con <code class="docutils literal notranslate"><span class="pre">copy</span></code> copiamos el elemento en una variable (<code class="docutils literal notranslate"><span class="pre">$p_mod</span></code>).</p></li>
+<li><p>Con <code class="docutils literal notranslate"><span class="pre">modify</span></code> modificamos la copia. Como tenemos que hacer dos cambios,
+utilizamos una secuencia de dos ítems, el primero el atributo <em>departamento</em>
+a la copia y el segundo borra el ya inútil elemento <em>departamento</em>.</p></li>
+<li><p>Con <code class="docutils literal notranslate"><span class="pre">return</span></code> devolvemos el nodo modificado.</p></li>
+</ul>
+</li>
+</ul>
+<p>Para no enmarañar el ejemplo, hemos evitado tener en cuenta que hay
+profesores sin departamento a los que, por tanto, no hay que hacerle ninguna
+modificación. Esto, no obstante, no es algo que no podamos resolver con
+<a class="reference internal" href="../03.consulta/01.xpath.html#xpath2-const-if"><span class="std std-ref">if</span></a>:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>element {fn:local-name(/*)} {(
+    /*/@*,
+    for $p in //profesor
+    return
+<span class="hll">        copy $p_mod := $p
+</span><span class="hll">        modify (
+</span><span class="hll">            if ($p/departamento) then (
+</span><span class="hll">                insert node attribute departamento {$p/departamento} into $p_mod,
+</span><span class="hll">                delete node $p_mod/departamento
+</span><span class="hll">            ) else ( (: No hay modificación alguna :) )
+</span><span class="hll">        )
+</span><span class="hll">        return $p_mod
+</span>)}
+</pre></div>
+</div>
 </section>
 </section>
 </section>
@@ -873,6 +931,52 @@ sin anterar en absoluto su contenido:</p>
 <p>Un estudio consistente de este lenguaje de transformación es demasiado amplio
 para la escasa carga lectiva del módulo, pero pertinente a la vista del
 currículo. Por ello, trasladamos su desarrollo al <a class="reference internal" href="../98.apendices/41.xslt.html#xslt"><span class="std std-ref">apendice correspondiente</span></a>.</p>
+</section>
+<section id="ejercicios-propuestos">
+<h2><span class="section-number">4.3. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Enlace permanente a este encabezado">¶</a></h2>
+<ol class="arabic">
+<li><p>A partir del <abbr title="eXtensible  Markup Language">XML</abbr> sobre facturas obtenga un lista de clientes en que se
+exprese para cada uno de ellos su nombre y la cantidad de facturas emitidas
+a su nombre. Por ejemplo:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Clientes del negocio:
+   - Perico de los Palotes: 3 facturas.
+   - Mariquilla de la O: 2 facturas.
+</pre></div>
+</div>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/a7d6e8d06892485a6d0f5a5b96627bd5/facturas-01.xq"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a>.</p>
+</li>
+<li><p>A partir del <abbr title="eXtensible  Markup Language">XML</abbr> sobre facturas obtenga un listado de facturas en
+que se expresa de cada una de ellas el código y el nombre del cliente al que
+se facturó. Por ejemplo:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Listado de facturas:
+   - f01: Perico de los Palotes
+   - f02: Mariquilla de la O
+</pre></div>
+</div>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/4acf48b89b861e2c93122fb7051b2842/facturas-02.xq"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a>.</p>
+</li>
+<li><p>A partir del <abbr title="eXtensible  Markup Language">XML</abbr> sobre facturas obtenga un listado de facturas
+en que se exprese de cada una de ellas el código y el coste total. Por
+ejemplo:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Coste de las facturas:
+   - f01: 1.7€
+   - f02: 5.2€
+</pre></div>
+</div>
+<div class="sol-oculta line-block">
+<div class="line"><a class="reference download internal" download="" href="../_downloads/6da16ef0a5477665626b660764c83c01/facturas-04.xq"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span> <span class="pre">1</span></code></a>.</div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/5e9d6e4a9c299d6ec1d2c3a4a9a714aa/facturas-04b.xq"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span> <span class="pre">2</span></code></a> (usando <em>XPath</em> 1.0).</div>
+</div>
+</li>
+<li><p>Tome el <abbr title="eXtensible  Markup Language">XML</abbr> sobre facturas y componga otro similar en que
+las facturas, en vez de estar aparte, sean hijas del cliente
+a nombre del que se han emitido.</p>
+<div class="sol-oculta line-block">
+<div class="line"><a class="reference download internal" download="" href="../_downloads/ff1201c0f78f6ac846331f319dd2fc3c/facturas-05.xq"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span> <span class="pre">1</span></code></a> (sin modificaciones en memoria).</div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/f50cbc6f48a804e5cf9fade9de69a066/facturas-05b.xq"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span> <span class="pre">2</span></code></a> (con modificaciones en memoria).</div>
+</div>
+</li>
+</ol>
 <p class="rubric">Nota al pie</p>
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="id4" role="note">
@@ -918,6 +1022,7 @@ generar una salida XML</span></a>.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#xslt">4.2. <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li><a class="reference internal" href="#ejercicios-propuestos">4.3. Ejercicios propuestos</a></li>
 </ul>
 </li>
 </ul>

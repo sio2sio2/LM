@@ -157,7 +157,7 @@ conveniente conocer qué herramientas tenemos para procesar nuestras expresiones
 permite evaluar expresiones <em>XPath</em> 1.0. Para evaluar expresiones, basta con
 pulsar <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd></kbd> y buscar <em>XPath</em> para que accedamos al cuadro de
 diálogo que nos permite hacer evaluaciones.</p></li>
-<li><p><a class="reference internal" href="../05.almacenamiento/02.nativas.html#basex"><span class="std std-ref">Bases nativas</span></a>, que soporta <a class="reference internal" href="../04.transformacion/index.html#xquery"><span class="std std-ref">XQuery</span></a> 3.0 (y consecuentemente <em>XPath</em> 3.1).
+<li><p><a class="reference internal" href="../05.almacenamiento/02.nativas.html#basex"><span class="std std-ref">BaseX</span></a>, que soporta <a class="reference internal" href="../04.transformacion/index.html#xquery"><span class="std std-ref">XQuery</span></a> 3.0 (y consecuentemente <em>XPath</em> 3.1).
 Podemos usarlo directamente o <a class="reference internal" href="../04.transformacion/index.html#xquery-vscode"><span class="std std-ref">a través de Visual Studio Code</span></a>.</p></li>
 <li><p>El paquete <a class="reference external" href="https://packages.debian.org/stable/xmlstarlet">xmlstarlet</a>, cuyo paquete homónimo permite utilizar
 expresiones <em>XPath</em> 1.0 tanto para seleccionar información del <abbr title="eXtensible  Markup Language">XML</abbr> original,
@@ -600,12 +600,9 @@ idéntico fin y que admite <a class="reference internal" href="#xpath-element"><
 </div>
 </dd>
 <dt><strong>processing-instruction()</strong></dt><dd><p>Todas las instrucciones de procesamiento. Por ejemplo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">xquery</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;//procesing-instruction()&#39;</span>
 </pre></div>
 </div>
-<blockquote>
-<div><p>“//procesing-instruction()”</p>
-</div></blockquote>
 <p>selecciona todas las instrucciones de procesamiento del documento.</p>
 </dd>
 <dt><strong>processing-instruction(destino)</strong></dt><dd><p>Todas las instrucciones de procesamiento cuyo destino sea el indicado. El
@@ -643,8 +640,8 @@ operador «<kbd class="kbd docutils literal notranslate">|</kbd>»:</p>
 tomará al interpretar la siguiente parte de la ruta. Recordemos que, si nos
 encontramos procesando un nodo y queremos referirnos a otro, podemos buscar
 entre sus descendientes, entre sus ascendientes o entre sus hermanos.</p>
-<table class="tb-eje docutils align-default" id="id22">
-<caption><span class="caption-text"><strong>Ejes en XPath</strong></span><a class="headerlink" href="#id22" title="Enlace permanente a esta tabla">¶</a></caption>
+<table class="tb-eje docutils align-default" id="id21">
+<caption><span class="caption-text"><strong>Ejes en XPath</strong></span><a class="headerlink" href="#id21" title="Enlace permanente a esta tabla">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Sentido</p></th>
 <th class="head"><p>Nombre</p></th>
@@ -782,8 +779,8 @@ como apartados dentro de este epígrafe.</p>
 <section id="operadores">
 <h4><span class="section-number">3.1.2.3.1. </span>Operadores<a class="headerlink" href="#operadores" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Dentro de los predicados pueden usarse los siguientes operadores:</p>
-<span id="xpath-op-arit"></span><table class="xpath-oper docutils align-default" id="id23">
-<caption><span class="caption-text"><strong>Operadores aritméticos</strong></span><a class="headerlink" href="#id23" title="Enlace permanente a esta tabla">¶</a></caption>
+<span id="xpath-op-arit"></span><table class="xpath-oper docutils align-default" id="id22">
+<caption><span class="caption-text"><strong>Operadores aritméticos</strong></span><a class="headerlink" href="#id22" title="Enlace permanente a esta tabla">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operador</p></th>
 <th class="head"><p>Significado</p></th>
@@ -807,8 +804,8 @@ como apartados dentro de este epígrafe.</p>
 </tr>
 </tbody>
 </table>
-<span id="xpath-op-comp"></span><table class="xpath-oper docutils align-default" id="id24">
-<caption><span class="caption-text"><strong>Operadores de comparación</strong></span><a class="headerlink" href="#id24" title="Enlace permanente a esta tabla">¶</a></caption>
+<span id="xpath-op-comp"></span><table class="xpath-oper docutils align-default" id="id23">
+<caption><span class="caption-text"><strong>Operadores de comparación</strong></span><a class="headerlink" href="#id23" title="Enlace permanente a esta tabla">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operador</p></th>
 <th class="head"><p>Significado</p></th>
@@ -835,8 +832,8 @@ como apartados dentro de este epígrafe.</p>
 </tr>
 </tbody>
 </table>
-<span id="xpath-op-log"></span><table class="xpath-oper docutils align-default" id="id25">
-<caption><span class="caption-text"><strong>Operadores lógicos</strong></span><a class="headerlink" href="#id25" title="Enlace permanente a esta tabla">¶</a></caption>
+<span id="xpath-op-log"></span><table class="xpath-oper docutils align-default" id="id24">
+<caption><span class="caption-text"><strong>Operadores lógicos</strong></span><a class="headerlink" href="#id24" title="Enlace permanente a esta tabla">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operador</p></th>
 <th class="head"><p>Significado</p></th>
@@ -849,7 +846,7 @@ como apartados dentro de este epígrafe.</p>
 <tr class="row-odd"><td><p>or</p></td>
 <td><p>Disyunción</p></td>
 </tr>
-<tr class="row-even"><td><p>not()<a class="footnote-reference brackets" href="#id13" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
+<tr class="row-even"><td><p>not()<a class="footnote-reference brackets" href="#id12" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
 <td><p>Negación</p></td>
 </tr>
 </tbody>
@@ -872,7 +869,7 @@ ambos predicados. Por tanto, el último ejemplo es equivalente a:</p>
 </section>
 <section id="funciones">
 <h4><span class="section-number">3.1.2.3.2. </span>Funciones<a class="headerlink" href="#funciones" title="Enlace permanente a este encabezado">¶</a></h4>
-<p>Junto a nodos y operadores, en los predicados<a class="footnote-reference brackets" href="#id14" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> también es posible usar
+<p>Junto a nodos y operadores, en los predicados<a class="footnote-reference brackets" href="#id13" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> también es posible usar
 funciones. En el sitio para desarrolladores de <strong class="program">mozilla</strong> puede
 consultarse <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/XPath/Functions">una relación completa de funciones para XPath 1.0</a>, de las cuales
 aquí citaremos algunas muy socorridas:</p>
@@ -1118,7 +1115,7 @@ que el operador de la izquierda no tiene que ser un único nodo, puede ser un
 conjunto de nodos, caso de que a nuestro profesor <em>don José</em>, lo conozcan
 como <em>Pepe</em>, pero también como <em>Pepito</em>. Así que esa comparación no es de uno
 contra uno, sino de varios contra uno, y en otros casos nos podríamos
-encontrar con operaciones binarias<a class="footnote-reference brackets" href="#id15" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> de varios contra varios.</p>
+encontrar con operaciones binarias<a class="footnote-reference brackets" href="#id14" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> de varios contra varios.</p>
 <p>Cuando las operaciones implican conjuntos de nodos, nos encontramos con lo
 que denominaremos <em class="dfn">el problema de la pluralidad</em>. <em>XPath</em> lo resuelve
 del siguiente modo:</p>
@@ -1403,7 +1400,7 @@ documento y no el elemento en sí. Por tanto, es verdadera la expresión:</p>
 </pre></div>
 </div>
 <p>ya que se ha supuesto que el procesador no ha analizado una gramática que proporcione
-el tipo del elemento<a class="footnote-reference brackets" href="#id16" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>. A la función se le puede proporcionar una
+el tipo del elemento<a class="footnote-reference brackets" href="#id15" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>. A la función se le puede proporcionar una
 secuencia para que obtenga el valor atómico de cada ítem de la secuencia:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">data</span><span class="p">(/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">nombre</span><span class="p">)</span>
 </pre></div>
@@ -1469,7 +1466,7 @@ tienen sentido para valores numéricos:</p>
 <li><p>Si uno de los operandos es un conjunto de nodos (una secuencia, en
 realidad), se generará un error en vez de tomar el primero, que es lo
 que ocurre en <em>XPath</em> 1.0.</p></li>
-<li><p>Si los tipos están definidos<a class="footnote-reference brackets" href="#id17" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>, se producirá un error en caso de
+<li><p>Si los tipos están definidos<a class="footnote-reference brackets" href="#id16" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>, se producirá un error en caso de
 que alguno de los operandos no sea numérico.</p></li>
 </ul>
 </li>
@@ -1536,8 +1533,8 @@ componentes de la serie. Por ejemplo, ante <code class="code docutils literal no
 </li>
 </ul>
 <p>Además de estos operadores hay definidos unos nuevos:</p>
-<table class="xpath-oper docutils align-default" id="id26">
-<caption><span class="caption-text"><strong>Nuevos operadores de comparación</strong></span><a class="headerlink" href="#id26" title="Enlace permanente a esta tabla">¶</a></caption>
+<table class="xpath-oper docutils align-default" id="id25">
+<caption><span class="caption-text"><strong>Nuevos operadores de comparación</strong></span><a class="headerlink" href="#id25" title="Enlace permanente a esta tabla">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operador</p></th>
 <th class="head"><p>Significado</p></th>
@@ -1611,7 +1608,7 @@ acción que se indique en el operando de la derecha:</p>
 </pre></div>
 </div>
 <p>La expresión devuelve la secuencia <code class="code docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">4,</span> <span class="pre">6)</span></code>. Cuando el operando
-de la izquierda es un conjunto de nodos<a class="footnote-reference brackets" href="#id18" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>, tiene un efecto similar al
+de la izquierda es un conjunto de nodos<a class="footnote-reference brackets" href="#id17" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>, tiene un efecto similar al
 operador <code class="docutils literal notranslate"><span class="pre">/</span></code> que se usa en las rutas, por lo que la expresión que se usó
 como ejemplo para ilustrar el operador de concatenación, también podría
 haberse escrito como:</p>
@@ -1654,10 +1651,29 @@ algunas muy socorridas a las que referimos al hablar de <em>XPath</em> 1.0.</p>
 lenguaje se encuentran en el espacio de nombres <em>fn</em>, aunque este puede no
 expresarse. Por tanto, la función <code class="docutils literal notranslate"><span class="pre">concat()</span></code>, aunque puede escribirse así,
 es <code class="docutils literal notranslate"><span class="pre">fn:concat()</span></code>.</p>
-<div class="admonition-todo admonition" id="id9">
-<p class="admonition-title">Por hacer</p>
-<p>Explicar el <a class="reference external" href="https://www.altova.com/training/xpath3/xpath-31#arrow-operator">operador flecha</a>.</p>
+<p id="xpath-arrow-op">Otra novedad relativa a las funciones que incorpora <em>XPath</em> a partir de su
+versión 3.1 es el operador flecha (<code class="docutils literal notranslate"><span class="pre">=&gt;</span></code>), que por su relación con las
+funciones incluimos bajo este epígrafe y no bajo el dedicado a los
+operadores.</p>
+<p>La nueva sintaxis alternativa es <code class="code docutils literal notranslate"><span class="pre">argumento</span> <span class="pre">=&gt;</span> <span class="pre">funcion()</span></code> y equivale a
+<code class="code docutils literal notranslate"><span class="pre">funcion(argumento)</span></code>.</p>
+<p>Este operador no es más que azúcar sintáctico para mejorar la legibilidad del
+código, sobre todo cuando se usan nciones anidadas. Por ejemplo, imaginemos
+que nuestra intención es hacer un <a class="reference external" href="https://es.wikipedia.org/wiki/Cifrado_C%C3%A9sar">cifrado César</a> de la cadena «<em>hola</em>»:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">fn:codepoints-to-string</span><span class="p">(</span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">c</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nf">fn:string-to-codepoints</span><span class="p">(</span><span class="s1">&#39;hola&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nv">$</span><span class="n">c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
 </div>
+<p>Pues bien, gracias al operador flecha, podemos pasarle el argumento a la
+función de este modo:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $c in fn:string-to-codepoints(&#39;hola&#39;) return $c + 3 =&gt; fn:codepoints-to-string()
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>En realidad, en esta expresión hemos seguido escribiendo el
+argumento pasado a <code class="docutils literal notranslate"><span class="pre">fn:string-to-codepoints()</span></code> del modo tradicional</p>
+</div>
+<p>En cuanto a las nuevas funciones:</p>
 <ul>
 <li><p>Hay muchísimas funciones matemáticas que permiten redondear, calcular
 razones trigonométricas, realizar operaciones complejas (algoritmos,
@@ -1666,7 +1682,7 @@ exponenciación, etc.).</p></li>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">fn:string-join()</span></code> que permite concatenar cadenas usando una cadena
 como elemento de yuxtaposición. Es, por tanto, una generalización de
-<code class="docutils literal notranslate"><span class="pre">fn:concat()</span></code><a class="footnote-reference brackets" href="#id19" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>. Por ejemplo:</p>
+<code class="docutils literal notranslate"><span class="pre">fn:concat()</span></code><a class="footnote-reference brackets" href="#id18" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>. Por ejemplo:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">fn:string-join</span><span class="p">((</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1769,7 +1785,7 @@ valor que se proporciona. Por ejemplo, la expresión:</p>
 </ul>
 </li>
 <li><p>Hay funciones relacionadas con los identificadores.</p></li>
-<li><p>Funciones que permiten crear <abbr title="eXtensible  Markup Language">XML</abbr> a partir de una cadena<a class="footnote-reference brackets" href="#id20" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>.</p></li>
+<li><p>Funciones que permiten crear <abbr title="eXtensible  Markup Language">XML</abbr> a partir de una cadena<a class="footnote-reference brackets" href="#id19" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>.</p></li>
 <li><p>Y funciones relacionadas con programación funcional como por ejemplo
 <code class="docutils literal notranslate"><span class="pre">fn:for-each()</span></code>, que si se usa así:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">fn:for-each</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="nv">$</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">$</span><span class="n">e</span><span class="p">})</span>
@@ -1838,7 +1854,7 @@ incluye bastante ejemplos de uso. También es bastante revelador <a class="refer
 capítulo del libro «XSLT Cookbook»</a>,
 que trata sobre <em>XPath</em> y que ofrece de gratis la editorial O’Reilly.</p>
 </div>
-<div class="admonition-todo admonition" id="id12">
+<div class="admonition-todo admonition" id="id11">
 <p class="admonition-title">Por hacer</p>
 <p>Añadir explicaciones sobre mapas, arrays y consulta de documentos
 <abbr title="JavaScript Object Notation">JSON</abbr> con <em>XPath</em>.</p>
@@ -2120,28 +2136,113 @@ Solución…<div class="sd-summary-down docutils">
 <h2><span class="section-number">3.1.6. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Enlace permanente a este encabezado">¶</a></h2>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>Las facturas que tenían algún descuento</p></li>
-<li><p>Las facturas anteriores al año en curso</p></li>
-<li><p>El número de facturas a las que se les aplicó un descuento mayor del 5%</p></li>
-<li><p>Las facturas con cinco productos diferentes.</p></li>
-<li><p>Las facturas en las que se facturó el producto «p01».</p></li>
-<li><p>Los clientes que viven en Isla Cristina.</p></li>
-<li><p>Los clientes que viven en la provincia de Huelva (el código postal puede servir para ello).</p></li>
-<li><p>Los nombres de los productos con iva superreducido.</p></li>
-<li><p>El número de productos que tienen un iva superreducido.</p></li>
-<li><p>Los productos cuyo precio es mayor a 2 euros.</p></li>
+<li><p>Las facturas que tenían algún descuento</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@descuento</span><span class="p">)</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="na">@descuento</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las facturas anteriores al año en curso</p>
+<p class="sol-oculta"><em>XPath</em> 1.0: no hay función que devuelva en año en curso.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="nf">substring</span><span class="p">(</span><span class="na">@fecha</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2023</span><span class="p">]</span>
+</pre></div>
+</div>
+<p class="sol-oculta"><em>XPath</em> 2/3:</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>//factura[fn:year-from-date(@fecha) &lt; fn:current-date  =&gt; fn:year-from-date()]
+</pre></div>
+</div>
+</li>
+<li><p>El número de facturas a las que se les aplicó un descuento mayor del 5%</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">factura</span><span class="p">[</span><span class="na">@descuento</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las facturas con cinco productos diferentes.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="nf">count</span><span class="p">(</span><span class="nt">item</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las facturas en las que se facturó el producto «p01».</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="nt">item</span><span class="p">/</span><span class="na">@producto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;p01&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los clientes que viven en Isla Cristina.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">cliente</span><span class="p">[</span><span class="nt">direccion</span><span class="p">/</span><span class="nt">poblacion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Isla Cristina&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los clientes que viven en la provincia de Huelva (el código postal puede servir para ello).</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">cliente</span><span class="p">[</span><span class="nf">substring</span><span class="p">(</span><span class="nt">direccion</span><span class="p">/</span><span class="nt">cp</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">21</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los nombres de los productos con iva superreducido.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">producto</span><span class="p">[</span><span class="na">@iva</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;superreducido&quot;</span><span class="p">]/</span><span class="na">@nombre</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número de productos que tienen un iva superreducido.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">producto</span><span class="p">[</span><span class="na">@iva</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;superreducido&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
 <li><p>Todas las facturas en las que el número total de artículos comprados
 fuese de más de 10. Para que tenga sentido esta pregunta, hágase la suposición
-de que todos los productos que se venden, se venden por unidades.</p></li>
-<li><p>El número de facturas de emitidas en noviembre de 2012.</p></li>
-<li><p>El número de facturas que sólo contienen un producto.</p></li>
-<li><p>Las facturas a nombre de Perico de los Palotes.</p></li>
-<li><p>Las productos de la factura con identificador «f01» cuyo iva es normal.</p></li>
-<li><p>Todas las facturas en las que se facturaron altramuces.</p></li>
-<li><p>El total de sandías vendidas.</p></li>
-<li><p>Las facturas emitidas a residentes en Isla Cristina.</p></li>
-<li><p>Las facturas sin productos gravados con iva normal.</p></li>
-<li><p>Las facturas cuyos productos están todos gravados con iva normal.</p></li>
+de que todos los productos que se venden, se venden por unidades.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="nf">sum</span><span class="p">(</span><span class="nt">item</span><span class="p">/</span><span class="na">@cantidad</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número de facturas de emitidas en noviembre de 2012.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">factura</span><span class="p">[</span><span class="nf">substring</span><span class="p">(</span><span class="na">@fecha</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="s2">&quot;2012-11&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número de facturas que sólo contienen un producto.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">factura</span><span class="p">[</span><span class="nf">count</span><span class="p">(</span><span class="nt">item</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los productos que se han vendido al menos una vez.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">producto</span><span class="p">[</span><span class="na">@codigo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">item</span><span class="p">/</span><span class="na">@producto</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las facturas a nombre de Perico de los Palotes.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="na">@cliente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">cliente</span><span class="p">[</span><span class="nt">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Perico de los Palotes&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las productos de la factura con identificador «f01» cuyo iva es normal.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">producto</span><span class="p">[</span><span class="na">@iva</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;normal&quot;</span><span class="p">][</span><span class="na">@codigo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="na">@codigo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;f01&quot;</span><span class="p">]/</span><span class="nt">item</span><span class="p">/</span><span class="na">@producto</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Todas las facturas en las que se facturaron altramuces.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="nt">item</span><span class="p">/</span><span class="na">@producto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">producto</span><span class="p">[</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;altramuces&quot;</span><span class="p">]/</span><span class="na">@codigo</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>El total de sandías vendidas.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">sum</span><span class="p">(//</span><span class="nt">factura</span><span class="p">/</span><span class="nt">item</span><span class="p">[</span><span class="na">@producto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">producto</span><span class="p">[</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sandía&quot;</span><span class="p">]/</span><span class="na">@codigo</span><span class="p">]/</span><span class="na">@cantidad</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las facturas emitidas a residentes en Isla Cristina.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="na">@cliente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">cliente</span><span class="p">[</span><span class="nt">direccion</span><span class="p">/</span><span class="nt">poblacion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Isla Cristina&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las facturas sin productos gravados con iva normal.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="nt">item</span><span class="p">[</span><span class="na">@producto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">producto</span><span class="p">[</span><span class="na">@iva</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;normal&quot;</span><span class="p">]/</span><span class="na">@codigo</span><span class="p">])]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las facturas cuyos productos están todos gravados con iva normal.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="nt">item</span><span class="p">[</span><span class="na">@producto</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="p">//</span><span class="nt">producto</span><span class="p">[</span><span class="na">@iva</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;normal&quot;</span><span class="p">]/</span><span class="na">@codigo</span><span class="p">])]</span>
+</pre></div>
+</div>
+</li>
 </ol>
 </div></blockquote>
 <ol class="arabic simple">
@@ -2278,28 +2379,28 @@ técnico en dos dimensiones, determinar la expresión <em>XPath</em> que selecci
 </ol>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id13" role="note">
+<aside class="footnote brackets" id="id12" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
 <p>En realidad, <code class="docutils literal notranslate"><span class="pre">not()</span></code> es una función, no un operador.</p>
 </aside>
-<aside class="footnote brackets" id="id14" role="note">
+<aside class="footnote brackets" id="id13" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
 <p>Y no sólo. Ya veremos más adelante.</p>
 </aside>
-<aside class="footnote brackets" id="id15" role="note">
+<aside class="footnote brackets" id="id14" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
 <p><a class="reference external" href="https://es.wikipedia.org/wiki/Operaci%C3%B3n_binaria">Operación binaria</a> en el sentido de que
 hay involucrados dos operandos y un operador, no en el sentido de que los
 operadores sean números binarios.</p>
 </aside>
-<aside class="footnote brackets" id="id16" role="note">
+<aside class="footnote brackets" id="id15" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">4</a><span class="fn-bracket">]</span></span>
 <p>De haberlo hecho, la expresión verdadera hubiera sido:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">data</span><span class="p">(/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">instance</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="kt">xs:string</span><span class="o">+</span>
 </pre></div>
 </div>
 </aside>
-<aside class="footnote brackets" id="id17" role="note">
+<aside class="footnote brackets" id="id16" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">5</a><span class="fn-bracket">]</span></span>
 <p>O sea, los operandos o son literales:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;1&quot;</span>
@@ -2307,19 +2408,19 @@ operadores sean números binarios.</p>
 </div>
 <p>o son nodos cuyo tipo se conoce gracias a una validación.</p>
 </aside>
-<aside class="footnote brackets" id="id18" role="note">
+<aside class="footnote brackets" id="id17" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">6</a><span class="fn-bracket">]</span></span>
 <p>No estamos hablando de la versión 1.0, así que, en realidad, nos
 referimos a una secuencia de nodos.</p>
 </aside>
-<aside class="footnote brackets" id="id19" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">7</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id18" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">7</a><span class="fn-bracket">]</span></span>
 <p>Con la diferencia de que ésta función espera recibir las cadenas como
 ítems de una secuencia, mientras que a <code class="docutils literal notranslate"><span class="pre">fn:concat</span></code> hay que proporcionarle
 cada cadena  en argumento independiente.</p>
 </aside>
-<aside class="footnote brackets" id="id20" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">8</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id19" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">8</a><span class="fn-bracket">]</span></span>
 <p>Lo cierto es que muchas de estas nuevas funciones de <em>XPath</em> 3 implementen
 funciones para las que en <em>XPath</em> 1.0 había que recurrir a <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/EXSLT/exsl">exslt</a>.</p>
 </aside>

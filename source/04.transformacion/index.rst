@@ -782,6 +782,8 @@ Cláusulas adicionales
 
    .. https://media.datadirect.com/download/docs/ddxquery/allddxq/reference/wwhelp/wwhimpl/common/html/wwhelp.htm?context=reference&file=tutorial_xquery5.html
 
+.. _xquery-update:
+
 Actualización de datos
 ======================
 Estrictamente *XQuery* permite la consulta de datos y la generación de una
@@ -874,10 +876,6 @@ Modificación
 
       insert node attribute foo {"bar"} into //profesor[1]
 
-   .. secuencia en vez de nodo.
-
-   .. https://www.youtube.com/watch?v=tgQrfKOmlRw 
-
 .. _xquery-delete:
 
 ``delete``
@@ -931,11 +929,75 @@ Modificación
 
 Modificación en memoria
 -----------------------
+Los ejemplos anteriores sirven todos para modificar el documento original. Ahora
+bien, supongamos que queremos generar una salida que es muy parecida al archivo
+original. Con las técnicas vistas antes de este :ref:`epígrafe de actualización
+<xquery-update>`, esa generación a pesar de ser una pequeña variante del
+original, nos supondría bastante esfuerzo. Por ese motivo, *XQuery* permite la
+posibilidad de copiar parte del documento original en memoria, hacer los cambios
+usando las técnicas arriba vistas y, finalmente, volcar en la salida la copia.
 
-.. Véase: https://stackoverflow.com/a/38220535
-   Se puede generar una salida, copiando y modificando en memoria
+Por ejemplo, imaginemos que quisiéramos generar una salida del documento de
+casilleros exactamente igual al original con la única diferencia de que el
+elemento *casillero* para a ser un atributo. El ejercicio podríamos realizarlo
+así:
+
+.. code-block:: xquery
+   :emphasize-lines: 5-10
+
+   element {fn:local-name(/*)} {(
+       /*/@*,
+       for $p in //profesor
+       return
+           (: Estructura copy-modify-return :)
+           copy $p_mod := $p
+           modify (
+               insert node attribute departamento {$p/departamento} into $p_mod,
+               delete node $p_mod/departamento
+           )
+           return $p_mod
+   )}
+
+Esto es:
+
+* Creamos un elemento raíz con el mismo y nombre y con los mismos atributos.
+* Recorremos cada uno de los nodos profesor (``$p``).
+* En vez de volcarlo directamente, lo cual provocaría que obtuviéramos como
+  salida la misma entrada, echamos mano de la estructura ``copy``\ -\
+  ``modify``\ - ``return``:
+
+  * Con ``copy`` copiamos el elemento en una variable (``$p_mod``).
+  * Con ``modify`` modificamos la copia. Como tenemos que hacer dos cambios,
+    utilizamos una secuencia de dos ítems, el primero el atributo *departamento*
+    a la copia y el segundo borra el ya inútil elemento *departamento*.
+  * Con ``return`` devolvemos el nodo modificado.
+
+Para no enmarañar el ejemplo, hemos evitado tener en cuenta que hay
+profesores sin departamento a los que, por tanto, no hay que hacerle ninguna
+modificación. Esto, no obstante, no es algo que no podamos resolver con
+:ref:`if <xpath2-const-if>`:
+
+.. code-block:: xquery
+   :emphasize-lines: 5-12
+
+   element {fn:local-name(/*)} {(
+       /*/@*,
+       for $p in //profesor
+       return
+           copy $p_mod := $p
+           modify (
+               if ($p/departamento) then (
+                   insert node attribute departamento {$p/departamento} into $p_mod,
+                   delete node $p_mod/departamento
+               ) else ( (: No hay modificación alguna :) )
+           )
+           return $p_mod
+   )}
 
 .. https://docs.basex.org/wiki/XQuery_Update#Main-Memory_Updates
+
+.. XQuery:
+   https://www.ticarte.com/contenido/ejercicios-practicos-de-xquery
 
 |XSLT|
 ******
@@ -943,8 +1005,11 @@ Un estudio consistente de este lenguaje de transformación es demasiado amplio
 para la escasa carga lectiva del módulo, pero pertinente a la vista del
 currículo. Por ello, trasladamos su desarrollo al :ref:`apendice correspondiente <xslt>`.
 
-.. XQuery:
-   https://www.ticarte.com/contenido/ejercicios-practicos-de-xquery
+Ejercicios propuestos
+*********************
+
+.. include:: /99.ejercicios/40.xquery.rst
+   :start-line: 3
 
 .. rubric:: Nota al pie
 

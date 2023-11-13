@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE prestados [
+   <!ELEMENT prestados (disco+)>
+   <!ELEMENT disco EMPTY>
+   <!ATTLIST disco id    ID      #REQUIRED
+                   a     CDATA   #REQUIRED
+                   fecha NMTOKEN #REQUIRED>
+]>
+<prestados>
+   <disco id="d1" a="Periquito" fecha="2014-01-01" />
+   <disco id="d4" a="Mariquita" fecha="2014-03-01" />
+</prestados>
