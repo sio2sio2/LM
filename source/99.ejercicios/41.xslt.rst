@@ -1,3 +1,5 @@
+.. _ej-xslt:
+
 |XSLT|
 ******
 .. |XSLT| replace:: :abbr:`XSLT (eXtensible Stylesheet Language Transformations)`
@@ -23,6 +25,8 @@
    |HTML| en forma de tabla de dos columnas, la primera columna contendrá el
    nombre de la entidad y la segunda el identificador.
 
+   .. _ej-xslt-3:
+
 #. Ídem al ejercicio 1, pero cada ítem debe tener el siguiente aspecto:
 
    * Si es punto: :code:`P=(x,y)`.
@@ -38,6 +42,8 @@
    parecida a la del ejercicio **2**. En este caso la segunda columna contendrá
    las expresiones anteriores para identificar a cada entidad, en vez del
    identificador.
+
+   .. _ej-xslt-5:
 
 #. Sobre el mismo |XML| crear una lista con el siguiente aspecto::
 
@@ -137,6 +143,8 @@
 #. Haga lo mismo que en el ejercicio anterior, pero el documento resultante debe
    ser una tabla |HTML| de dos columnas: la primera indicará el cliente; y la
    segunda las facturas.
+
+   .. _ej-xslt-15:
 
 #. Sobre el mismo |XML| devuelva una lista de facturas, de cada una de las cuales
    debe desglosarse cuáles son productos que incluye y qué cantidad de ellos.

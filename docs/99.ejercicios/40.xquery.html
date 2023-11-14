@@ -83,8 +83,8 @@
 exprese para cada uno de ellos su nombre y la cantidad de facturas emitidas
 a su nombre. Por ejemplo:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Clientes del negocio:
-   - Perico de los Palotes: 3 facturas.
-   - Mariquilla de la O: 2 facturas.
+   - Perico de los Palotes: 3 factura(s).
+   - Mariquilla de la O: 2 factura(s).
 </pre></div>
 </div>
 <p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/a7d6e8d06892485a6d0f5a5b96627bd5/facturas-01.xq"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a>.</p>
@@ -99,7 +99,9 @@ se facturó. Por ejemplo:</p>
 </div>
 <p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/4acf48b89b861e2c93122fb7051b2842/facturas-02.xq"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a>.</p>
 </li>
-<li><p>A partir del <abbr title="eXtensible  Markup Language">XML</abbr> sobre facturas obtenga un listado de facturas
+<li><p>A partir del <abbr title="eXtensible  Markup Language">XML</abbr> sobre facturas, obtenga un listado de facturas
+como el descrito en el <a class="reference internal" href="41.xslt.html#ej-xslt-15"><span class="std std-ref">ejercicio 15 de XSLT</span></a>.</p></li>
+<li><p>A partir del <abbr title="eXtensible  Markup Language">XML</abbr> sobre facturas, obtenga un listado de facturas
 en que se exprese de cada una de ellas el código y el coste total. Por
 ejemplo:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Coste de las facturas:
@@ -120,6 +122,59 @@ a nombre del que se han emitido.</p>
 <div class="line"><a class="reference download internal" download="" href="../_downloads/f50cbc6f48a804e5cf9fade9de69a066/facturas-05b.xq"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span> <span class="pre">2</span></code></a> (con modificaciones en memoria).</div>
 </div>
 </li>
+<li><p>A partir del <abbr title="eXtensible  Markup Language">XML</abbr> sobre préstamos en una biblioteca, obtenga un listado de
+libros ordenados por año de publicación, en que se incluya el nombre y el
+número total de ejemplares. Por ejemplo:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Libros en la biblioteca:
+   - Don Quijote de la Mancha: 5 ejemplar(es).
+   - Las aventuras del bachiller Trapaza: 3 ejemplar(es).
+</pre></div>
+</div>
+</li>
+<li><p>A partir del <abbr title="eXtensible  Markup Language">XML</abbr> sobre préstamos en una biblioteca, obtenga un listado de
+socios con el número de préstamos que han solicitado. Por ejemplo:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Listado de socios:
+   - Perico de los Palotes: 5 préstamo(s).
+   - Mariquilla de la O: 2 préstamo(s).
+   - Ana al-Fabeta: 0 préstamo(s).
+</pre></div>
+</div>
+</li>
+<li><p>Como el ejercicio anterior, pero sin que aparezcan los socios que no han
+pedido ningún prestamos. Por tanto, en el ejemplo anterior, no aparecería el
+último socio.</p></li>
+<li><p>Tome el <abbr title="eXtensible  Markup Language">XML</abbr> de préstamos en una biblioteca y componga otro en que los
+préstamos hechos por un lector, en vez de aparte como en el original,
+aparezcan como elementos hijo de dicho lector.</p></li>
+<li><p>A partir del <abbr title="eXtensible  Markup Language">XML</abbr> sobre ventas de coches, haga un listado de modelos de
+coches con la expresión de los coches totales de los que hay de cada uno. Por
+ejemplo:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Modelos disponibles:
+   - León: 5 coches.
+   - Ibiza: 6 coches.
+</pre></div>
+</div>
+</li>
+<li><p>Haga un listado como el del ejercicio anterior, pero sólo cuente los coches
+que no han sido reservados.</p></li>
+<li><p>A partir del <abbr title="eXtensible  Markup Language">XML</abbr> sobre ventas de coches, haga un listado de clientes que
+incluya su nombre y la cantidad de coches que ha reservado. Por ejemplo:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Listado de clientes:
+   - Perico de los Palotes: 2 coche(s).
+   - Mariquilla de la O: 1 coche(s).
+</pre></div>
+</div>
+</li>
+<li><p>Tome el <abbr title="eXtensible  Markup Language">XML</abbr> de venta de coches y componga otro similar en que los coches
+sean elementos hijo del modelo correspondiente.</p></li>
+<li><p>A partir del <abbr title="eXtensible  Markup Language">XML</abbr> sobre figuras 2D, haga un listado de figuras como en el
+que se pide para el <a class="reference internal" href="41.xslt.html#ej-xslt"><span class="std std-ref">ejercicio 1 de XSLT</span></a></p></li>
+<li><p>A partir del <abbr title="eXtensible  Markup Language">XML</abbr> sobre figuras 2D, haga un listado de figuras como en el
+que se pide para el <a class="reference internal" href="41.xslt.html#ej-xslt-3"><span class="std std-ref">ejercicio 3 de XSLT</span></a></p>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/e1213269c830a7dbed170c54307a46eb/grafico-02.xq"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a>.</p>
+</li>
+<li><p>A partir del <abbr title="eXtensible  Markup Language">XML</abbr> sobre figuras 2D, haga un listado de figuras como en el
+que se pide para el <a class="reference internal" href="41.xslt.html#ej-xslt-5"><span class="std std-ref">ejercicio 5 de XSLT</span></a></p></li>
 </ol>
 </section>
 

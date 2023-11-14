@@ -1784,7 +1784,7 @@ Ejercicios propuestos
 =====================
 
 .. include:: /99.ejercicios/41.xslt.rst
-   :start-line: 4
+   :start-line: 6
 
 .. rubric:: Notas al pie
 
