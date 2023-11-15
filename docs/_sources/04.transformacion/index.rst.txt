@@ -599,6 +599,17 @@ Cláusulas adicionales
 
    (FOR | LET | WINDOW)+ - WHERE? - ORDER BY? - GROUP BY? - COUNT? - RETURN
 
+.. caution:: En realidad, la expresión de arriba es una simplificación que busca
+   la simetría con la que facilitamos antes y que es la propia de *XQuery* 1.0.
+   En la versión 3, las únicas limitaciones a la estructura |FLWOR| es que debe
+   empezar por un ``FOR``, un ``LET`` o un ``WINDOW``, y que debe rematarse con
+   un único ``RETURN``; entre media puede haber todas las cláusulas que
+   querramos (excepto ``RETURN``) en el orden y número que queramos, o sea:
+
+   .. code-block::
+
+      (FOR | LET | WINDOW) - (FOR | LET | WINDOW | WHERE | ORDER BY | GROUP BY | COUNT)* - RETURN
+
 **COUNT**
    permite definir un contador para las iteraciones:
 
@@ -651,6 +662,11 @@ Cláusulas adicionales
                {$p}
             </departamento>
       }
+
+   .. note:: Obsérvese que al usar el ``FOR`` sin la cláusula ``GROUP BY`` en
+      cada iteración, la variable ``$p`` contiene un elemento *profesor*.  En
+      cambio, cuando se usa ``GROUP BY``, ``$p`` pasa a contener una secuencia con
+      todos los elementos *profesor* de un mismo departamento.
 
 **WINDOW**
    La cláusula (posiblemente la más compleja de las incorporadas) permite

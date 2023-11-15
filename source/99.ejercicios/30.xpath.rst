@@ -180,19 +180,124 @@
    .. rst-class:: simple
 
    #. El número de socios de la biblioteca
+
+      .. rst-class:: sol-oculta
+
+         .. code-block:: xquery
+
+            count(//lector)
+
    #. La dirección del socio que se llama Perico de los Palotes.
+
+      .. rst-class:: sol-oculta
+
+         .. code-block:: xquery
+
+            //lector[nombre="Perico de los Palotes"]/direccion
+
    #. Los libros cuyo año de edición sea 1985.
+
+      .. rst-class:: sol-oculta
+
+         .. code-block:: xquery
+
+            //libro[año=1985]
+
    #. Los libros de la editorial Alfaguara.
+
+      .. rst-class:: sol-oculta
+
+         .. code-block:: xquery
+
+            //libro[editorial="Alfaguara"]
+
    #. El número total de ejemplares que hay en la biblioteca.
+
+      .. rst-class:: sol-oculta
+
+         .. code-block:: xquery
+
+            count(//ejemplar)
+
    #. Todos los libros cuyo autor sea "Miguel de Cervantes Saavedra".
+
+      .. rst-class:: sol-oculta
+
+         .. code-block:: xquery
+
+            //libro[autor="Miguel de Cervantes Saavedra"]
+
    #. El número de ejemplares del libro con ISBN 00-9081-234.
-   #. El número total de ejemplares prestados.
-   #. El número total de ejemplares no prestados.
+
+      .. rst-class:: sol-oculta
+
+         .. code-block:: xquery
+
+            count(//libro[isbn="00-9081-234"]//ejemplar)
+
+   #. El número total de ejemplares actualmente en préstamo.
+
+      .. rst-class:: sol-oculta
+
+         .. code-block:: xquery
+
+            count(//prestamo[not(@entrega)])
+
+   #. El número total de ejemplares que no se encuentran prestados.
+
+      .. rst-class:: sol-oculta
+
+         .. code-block:: xquery
+
+            count(//ejemplar) - count(//prestamo[not(@entrega)])
+
    #. Los libros que se han prestado al socio c1.
-   #. Los libros que no están prestados al socio c1.
-   #. Los libros que se han prestado al socio c1, pero no al socio c2.
-   #. El número de ejemplares de libros de la editorial Castalia.
+
+      .. rst-class:: sol-oculta
+
+         .. code-block:: xquery
+
+            count(//ejemplar) - count(//prestamo[not(@entrega)])
+
+   #. La cantidad de ejemplares de libros de la editorial Castalia.
+
+
+      .. rst-class:: sol-oculta
+
+         .. code-block:: xquery
+
+            count(//libro[editorial="Castalia"]//ejemplar)
+
    #. Los identificadores de los socios que tiene algún libro en préstamo.
+
+      .. rst-class:: sol-oculta
+
+         .. code-block:: xquery
+
+            //lector[@registro = //prestamo[not(@entrega)]/@lector]/@registro
+
+         Pero si usamos *XPath* 2/3 podemos hacer:
+
+         .. code-block:: xquery
+
+            fn:distinct-values(//prestamo[not(@entrega)]/@lector)
+
+   #. Los libros que no están prestados al socio l01.
+
+      .. rst-class:: sol-oculta
+
+         .. code-block:: xquery
+
+            //libro[not(.//@codigo = //prestamo[not(@entrega)][@lector = "l01"]/@ejemplar)]
+
+   #. Los libros que se han prestado al socio l01, pero no al socio l02.
+
+      .. rst-class:: sol-oculta
+
+         .. code-block:: xquery
+
+            //libro[.//@codigo = //prestamo[@lector = "l01"]/@ejemplar][not(.//@codigo = //prestamo[@lector = "l02"]/@ejemplar)]
+
    #. Los ejemplares aún disponibles (no prestados) de Don Quijote de La Mancha.
    #. Los libros de los que quedan menos de dos ejemplares en la biblioteca.
    #. Los libros de los que no se ha prestado ningún ejemplar.

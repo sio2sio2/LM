@@ -121,3 +121,8 @@ XQuery
 
 #. A partir del |XML| sobre figuras 2D, haga un listado de figuras como en el
    que se pide para el :ref:`ejercicio 5 de XSLT <ej-xslt-5>`
+
+   .. rst-class:: sol-oculta
+
+      :download:`Solución propuesta </99.ejercicios/soluciones/grafico/xquery/grafico-03.xq>`.
+

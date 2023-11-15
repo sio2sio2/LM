@@ -588,6 +588,18 @@ que piensen usarse luego en la estructura. Por ejemplo:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(FOR | LET | WINDOW)+ - WHERE? - ORDER BY? - GROUP BY? - COUNT? - RETURN
 </pre></div>
 </div>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>En realidad, la expresión de arriba es una simplificación que busca
+la simetría con la que facilitamos antes y que es la propia de <em>XQuery</em> 1.0.
+En la versión 3, las únicas limitaciones a la estructura <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> es que debe
+empezar por un <code class="docutils literal notranslate"><span class="pre">FOR</span></code>, un <code class="docutils literal notranslate"><span class="pre">LET</span></code> o un <code class="docutils literal notranslate"><span class="pre">WINDOW</span></code>, y que debe rematarse con
+un único <code class="docutils literal notranslate"><span class="pre">RETURN</span></code>; entre media puede haber todas las cláusulas que
+querramos (excepto <code class="docutils literal notranslate"><span class="pre">RETURN</span></code>) en el orden y número que queramos, o sea:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">FOR</span> <span class="o">|</span> <span class="n">LET</span> <span class="o">|</span> <span class="n">WINDOW</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">FOR</span> <span class="o">|</span> <span class="n">LET</span> <span class="o">|</span> <span class="n">WINDOW</span> <span class="o">|</span> <span class="n">WHERE</span> <span class="o">|</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="o">|</span> <span class="n">GROUP</span> <span class="n">BY</span> <span class="o">|</span> <span class="n">COUNT</span><span class="p">)</span><span class="o">*</span> <span class="o">-</span> <span class="n">RETURN</span>
+</pre></div>
+</div>
+</div>
 <dl>
 <dt><strong>COUNT</strong></dt><dd><p>permite definir un contador para las iteraciones:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="kp">xquery</span><span class="w"> </span><span class="kp">version</span><span class="w"> </span><span class="s2">&quot;3.0&quot;</span><span class="p">;</span>
@@ -631,6 +643,13 @@ profesores están agrupados por casilleros:</p>
 <span class="l">      </span><span class="nt">&lt;/departamento&gt;</span>
 <span class="p">}</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Obsérvese que al usar el <code class="docutils literal notranslate"><span class="pre">FOR</span></code> sin la cláusula <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> en
+cada iteración, la variable <code class="docutils literal notranslate"><span class="pre">$p</span></code> contiene un elemento <em>profesor</em>.  En
+cambio, cuando se usa <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code>, <code class="docutils literal notranslate"><span class="pre">$p</span></code> pasa a contener una secuencia con
+todos los elementos <em>profesor</em> de un mismo departamento.</p>
 </div>
 </dd>
 <dt><strong>WINDOW</strong></dt><dd><p>La cláusula (posiblemente la más compleja de las incorporadas) permite
@@ -1030,7 +1049,9 @@ que se pide para el <a class="reference internal" href="../99.ejercicios/41.xslt
 <p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/e1213269c830a7dbed170c54307a46eb/grafico-02.xq"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a>.</p>
 </li>
 <li><p>A partir del <abbr title="eXtensible  Markup Language">XML</abbr> sobre figuras 2D, haga un listado de figuras como en el
-que se pide para el <a class="reference internal" href="../99.ejercicios/41.xslt.html#ej-xslt-5"><span class="std std-ref">ejercicio 5 de XSLT</span></a></p></li>
+que se pide para el <a class="reference internal" href="../99.ejercicios/41.xslt.html#ej-xslt-5"><span class="std std-ref">ejercicio 5 de XSLT</span></a></p>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/338e2a660f67c86f9827055cd4eea3f1/grafico-03.xq"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a>.</p>
+</li>
 </ol>
 <p class="rubric">Nota al pie</p>
 <aside class="footnote-list brackets">
