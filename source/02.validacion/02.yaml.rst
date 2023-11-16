@@ -786,109 +786,6 @@ sea cual sea el tipo del nodo. Ahora bien, ¿cuáles son específicas?
             }
          }
 
-Combinación de esquemas
-=======================
-¿Qué ocurre si el valor del nodo no es exclusivamente de un tipo? Por ejemplo,
-un nodo que pueda ser un entero o un booleano. Para ese caso, hay definidos en
-`JSON Schema`_ unos operadores lógicos que permiten combinar distintos esquemas
-y que, a causa de la sintaxis, tiene que adoptar la forma de propiedades:
-
-.. _json-schema-oneof:
-
-`oneOf <https://json-schema.org/understanding-json-schema/reference/combining.html#allof>`_
-   El esquema es válido sólo si uno de los propuestos en la lista es válido. Por ejemplo:
-
-   .. code-block:: json
-
-      {
-         "oneOf": [
-            { "type": "integer", "maximum": 10 },
-            { "type": "boolean" }
-         ]
-      }
-
-   En este caso, el valor puede ser un entero hasta **10** o un valor lógico. La
-   alternativa no tiene por qué ser únicamente sobre tipos:
-
-   .. code-block:: json
-
-      {
-         "oneOf": [
-            { "type": "integer", "maximum": 10 },
-            { "const": false }
-         ]
-      }
-
-   Y ni siquiera tiene abarcar toda la definición del subesquema:
-
-   .. code-block:: json
-
-      {
-         "type": "integer",
-         "oneOf":  [
-            {"maximum": 10},
-            {"minimum": 20}
-         ]
-      }
-
-   En este caso, cumplirían con el esquema todos los enteros,  excepto
-   aquellos comprendidos entre **11** y **19**.
-
-.. _json-schema-anyof:
-
-`anyOf <https://json-schema.org/understanding-json-schema/reference/combining.html#anyof>`_
-   La diferencia respecto a :ref:`oneOf <json-schema-oneof>` es que basta con
-   que se cumpla uno, pero no necesariamente uno. Por ejemplo:
-
-   .. code-block:: json
-
-      {
-         "type": "integer",
-         "anyOf":  [
-            {"maximum": 10, "minimum": 0},
-            {"multipleOf": 5}
-         ]
-      }
-
-   En este caso, serán válidos todos los enteros hasta **10** y cualquier múltiple
-   de 5. Sin embargo, si hubiéramos construido la combinación con :ref:`oneOf
-   <json-schema-oneof>`, **0**, **5** y **10** incumplirían el esquema, porque
-   cumplen ambas condiciones y sólo puede cumplirse una.
-
-.. _json-schema-allof:
-
-`allOf <https://json-schema.org/understanding-json-schema/reference/combining.html#allof>`_
-   Como las dos anterior pero obliga a que se cumplan todos los esquemas
-   incluidos en la lista. Por tanto:
-
-   .. code-block:: json
-
-      {
-         "type": "integer",
-         "allOf":  [
-            {"maximum": 10, "minimum": 0},
-            {"multipleOf": 5}
-         ]
-      }
-
-   sólo sería válido para **0**, **5** y **10**.
-
-.. _json-schema-not:
-
-`not <https://json-schema.org/understanding-json-schema/reference/combining.html#not>`_
-   Invierte la validez del esquema, es decir, el valor será valido, si el
-   esquema negado es inválido para el valor. Por ejemplo:
-
-   .. code-block:: json
-
-      {
-         "not": {
-            "type": "integer"
-         }
-      }
-
-   Cualquier valor será válido siempre que no sea un entero.
-
 .. _json-schema-ref:
 
 Referencias
@@ -1099,8 +996,10 @@ Un :dfn:`esquema condicional` es aquel cuyas características dependen de que se
 cumplan uno o varios requisitos. Por ejemplo, que una propiedad sea obligatoria
 sólo si se presenta otra. Ya hemos visto dos propiedades que crean esquemas
 condicionales: :ref:`dependentRequired <json-schema-dependentrequired>` y
-:ref:`dependentSchemas <json-schema-dependentschemas>`. Pero hay otro modo de
-crearlos:
+:ref:`dependentSchemas <json-schema-dependentschemas>`. Hay, si embargo, otros
+modos de crearlos:
+
+.. _json-schema-if:
 
 `if/then/else <https://json-schema.org/understanding-json-schema/reference/conditionals.html#if-then-else>`_
    Estas propiedades funcionen de forma semejante a como lo hace la estructura
@@ -1132,19 +1031,115 @@ crearlos:
          "required": ["nombre"],
          "additionalProperties": false,
          "if": {
-            "required": ["hijos"]
+            "required": ["casado"]
          },
          "then": {
             "properties": {
-               "casado": {"const": true}
+               "edad": {"minimum": 16}
             },
-            "required": ["casado"]
+            "required": ["edad"]
          }
       }
 
    .. note:: Puede probar a rescribir con estas propiedades los requisitos de presencia de
       ``casillero``, ``departamento`` y ``sustituye`` del :ref:`ejemplo inicial
       <json-schema-ejemplo>`.
+
+.. _json-schema-oneof:
+
+`oneOf <https://json-schema.org/understanding-json-schema/reference/combining.html#allof>`_
+   El esquema es válido sólo si uno de los propuestos en la lista es válido. Por ejemplo:
+
+   .. code-block:: json
+
+      {
+         "oneOf": [
+            { "type": "integer", "maximum": 10 },
+            { "type": "boolean" }
+         ]
+      }
+
+   En este caso, el valor puede ser un entero hasta **10** o un valor lógico. La
+   alternativa no tiene por qué ser únicamente sobre tipos:
+
+   .. code-block:: json
+
+      {
+         "oneOf": [
+            { "type": "integer", "maximum": 10 },
+            { "const": false }
+         ]
+      }
+
+   Y ni siquiera tiene abarcar toda la definición del subesquema:
+
+   .. code-block:: json
+
+      {
+         "type": "integer",
+         "oneOf":  [
+            {"maximum": 10},
+            {"minimum": 20}
+         ]
+      }
+
+   En este caso, cumplirían con el esquema todos los enteros, excepto
+   aquellos comprendidos entre **11** y **19**.
+
+.. _json-schema-anyof:
+
+`anyOf <https://json-schema.org/understanding-json-schema/reference/combining.html#anyof>`_
+   La diferencia respecto a :ref:`oneOf <json-schema-oneof>` es que basta con
+   que se cumpla uno, pero no necesariamente uno. Por ejemplo:
+
+   .. code-block:: json
+
+      {
+         "type": "integer",
+         "anyOf":  [
+            {"maximum": 10, "minimum": 0},
+            {"multipleOf": 5}
+         ]
+      }
+
+   En este caso, serán válidos todos los enteros hasta **10** y cualquier múltiple
+   de 5. Sin embargo, si hubiéramos construido la combinación con :ref:`oneOf
+   <json-schema-oneof>`, **0**, **5** y **10** incumplirían el esquema, porque
+   cumplen ambas condiciones y sólo puede cumplirse una.
+
+.. _json-schema-allof:
+
+`allOf <https://json-schema.org/understanding-json-schema/reference/combining.html#allof>`_
+   Como las dos anterior pero obliga a que se cumplan todos los esquemas
+   incluidos en la lista. Por tanto:
+
+   .. code-block:: json
+
+      {
+         "type": "integer",
+         "allOf":  [
+            {"maximum": 10, "minimum": 0},
+            {"multipleOf": 5}
+         ]
+      }
+
+   sólo sería válido para **0**, **5** y **10**.
+
+.. _json-schema-not:
+
+`not <https://json-schema.org/understanding-json-schema/reference/combining.html#not>`_
+   Invierte la validez del esquema, es decir, el valor será valido, si el
+   esquema negado es inválido para el valor. Por ejemplo:
+
+   .. code-block:: json
+
+      {
+         "not": {
+            "type": "integer"
+         }
+      }
+
+   Cualquier valor será válido siempre que no sea un entero.
 
 Ejercicios resueltos
 ====================

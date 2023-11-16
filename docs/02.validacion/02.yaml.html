@@ -902,94 +902,8 @@ asegurarnos de que está expresada la edad, sino de que ésta es de al menos
 </dl>
 </section>
 </section>
-<section id="combinacion-de-esquemas">
-<h2><span class="section-number">2.2.3. </span>Combinación de esquemas<a class="headerlink" href="#combinacion-de-esquemas" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>¿Qué ocurre si el valor del nodo no es exclusivamente de un tipo? Por ejemplo,
-un nodo que pueda ser un entero o un booleano. Para ese caso, hay definidos en
-<a class="reference external" href="https://json-schema.org/">JSON Schema</a> unos operadores lógicos que permiten combinar distintos esquemas
-y que, a causa de la sintaxis, tiene que adoptar la forma de propiedades:</p>
-<dl id="json-schema-oneof">
-<dt><a class="reference external" href="https://json-schema.org/understanding-json-schema/reference/combining.html#allof">oneOf</a></dt><dd><p>El esquema es válido sólo si uno de los propuestos en la lista es válido. Por ejemplo:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">   </span><span class="nt">&quot;oneOf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;maximum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">},</span>
-<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;boolean&quot;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">   </span><span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>En este caso, el valor puede ser un entero hasta <strong>10</strong> o un valor lógico. La
-alternativa no tiene por qué ser únicamente sobre tipos:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">   </span><span class="nt">&quot;oneOf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;maximum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">},</span>
-<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;const&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">}</span>
-<span class="w">   </span><span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>Y ni siquiera tiene abarcar toda la definición del subesquema:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;oneOf&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span><span class="nt">&quot;maximum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">},</span>
-<span class="w">      </span><span class="p">{</span><span class="nt">&quot;minimum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">}</span>
-<span class="w">   </span><span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>En este caso, cumplirían con el esquema todos los enteros,  excepto
-aquellos comprendidos entre <strong>11</strong> y <strong>19</strong>.</p>
-</dd>
-</dl>
-<dl id="json-schema-anyof">
-<dt><a class="reference external" href="https://json-schema.org/understanding-json-schema/reference/combining.html#anyof">anyOf</a></dt><dd><p>La diferencia respecto a <a class="reference internal" href="#json-schema-oneof"><span class="std std-ref">oneOf</span></a> es que basta con
-que se cumpla uno, pero no necesariamente uno. Por ejemplo:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;anyOf&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span><span class="nt">&quot;maximum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;minimum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">},</span>
-<span class="w">      </span><span class="p">{</span><span class="nt">&quot;multipleOf&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">}</span>
-<span class="w">   </span><span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>En este caso, serán válidos todos los enteros hasta <strong>10</strong> y cualquier múltiple
-de 5. Sin embargo, si hubiéramos construido la combinación con <a class="reference internal" href="#json-schema-oneof"><span class="std std-ref">oneOf</span></a>, <strong>0</strong>, <strong>5</strong> y <strong>10</strong> incumplirían el esquema, porque
-cumplen ambas condiciones y sólo puede cumplirse una.</p>
-</dd>
-</dl>
-<dl id="json-schema-allof">
-<dt><a class="reference external" href="https://json-schema.org/understanding-json-schema/reference/combining.html#allof">allOf</a></dt><dd><p>Como las dos anterior pero obliga a que se cumplan todos los esquemas
-incluidos en la lista. Por tanto:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;allOf&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span><span class="nt">&quot;maximum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;minimum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">},</span>
-<span class="w">      </span><span class="p">{</span><span class="nt">&quot;multipleOf&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">}</span>
-<span class="w">   </span><span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>sólo sería válido para <strong>0</strong>, <strong>5</strong> y <strong>10</strong>.</p>
-</dd>
-</dl>
-<dl id="json-schema-not">
-<dt><a class="reference external" href="https://json-schema.org/understanding-json-schema/reference/combining.html#not">not</a></dt><dd><p>Invierte la validez del esquema, es decir, el valor será valido, si el
-esquema negado es inválido para el valor. Por ejemplo:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">   </span><span class="nt">&quot;not&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span>
-<span class="w">   </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>Cualquier valor será válido siempre que no sea un entero.</p>
-</dd>
-</dl>
-</section>
 <section id="referencias">
-<span id="json-schema-ref"></span><h2><span class="section-number">2.2.4. </span>Referencias<a class="headerlink" href="#referencias" title="Enlace permanente a este encabezado">¶</a></h2>
+<span id="json-schema-ref"></span><h2><span class="section-number">2.2.3. </span>Referencias<a class="headerlink" href="#referencias" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Por la naturaleza del formato <abbr title="JavaScript Object Notation">JSON</abbr>, la definición de los subesquemas de los
 nodos se va anidando a otros subesquemas en los que se han definido secuencias o
 mapas. Ilustrémoslo con un <abbr title="JavaScript Object Notation">JSON</abbr> muy sencillo reciclado de ejemplos anteriores:</p>
@@ -1175,14 +1089,14 @@ Esquema con referencia interna<div class="sd-summary-down docutils">
 </dl>
 </section>
 <section id="esquemas-condicionales">
-<span id="json-schema-condicional"></span><h2><span class="section-number">2.2.5. </span>Esquemas condicionales<a class="headerlink" href="#esquemas-condicionales" title="Enlace permanente a este encabezado">¶</a></h2>
+<span id="json-schema-condicional"></span><h2><span class="section-number">2.2.4. </span>Esquemas condicionales<a class="headerlink" href="#esquemas-condicionales" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Un <em class="dfn">esquema condicional</em> es aquel cuyas características dependen de que se
 cumplan uno o varios requisitos. Por ejemplo, que una propiedad sea obligatoria
 sólo si se presenta otra. Ya hemos visto dos propiedades que crean esquemas
 condicionales: <a class="reference internal" href="#json-schema-dependentrequired"><span class="std std-ref">dependentRequired</span></a> y
-<a class="reference internal" href="#json-schema-dependentschemas"><span class="std std-ref">dependentSchemas</span></a>. Pero hay otro modo de
-crearlos:</p>
-<dl>
+<a class="reference internal" href="#json-schema-dependentschemas"><span class="std std-ref">dependentSchemas</span></a>. Hay, si embargo, otros
+modos de crearlos:</p>
+<dl id="json-schema-if">
 <dt><a class="reference external" href="https://json-schema.org/understanding-json-schema/reference/conditionals.html#if-then-else">if/then/else</a></dt><dd><p>Estas propiedades funcionen de forma semejante a como lo hace la estructura
 condicional en los lenguajes de programación:</p>
 <ol class="arabic simple">
@@ -1207,13 +1121,13 @@ debe resultar verdadero.</p></li>
 <span class="w">   </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">],</span>
 <span class="w">   </span><span class="nt">&quot;additionalProperties&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <span class="hll"><span class="w">   </span><span class="nt">&quot;if&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span class="hll"><span class="w">      </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;hijos&quot;</span><span class="p">]</span>
+</span><span class="hll"><span class="w">      </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;casado&quot;</span><span class="p">]</span>
 </span><span class="hll"><span class="w">   </span><span class="p">},</span>
 </span><span class="hll"><span class="w">   </span><span class="nt">&quot;then&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 </span><span class="hll"><span class="w">      </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span class="hll"><span class="w">         </span><span class="nt">&quot;casado&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;const&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span>
+</span><span class="hll"><span class="w">         </span><span class="nt">&quot;edad&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;minimum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">}</span>
 </span><span class="hll"><span class="w">      </span><span class="p">},</span>
-</span><span class="hll"><span class="w">      </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;casado&quot;</span><span class="p">]</span>
+</span><span class="hll"><span class="w">      </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;edad&quot;</span><span class="p">]</span>
 </span><span class="hll"><span class="w">   </span><span class="p">}</span>
 </span><span class="p">}</span>
 </pre></div>
@@ -1225,9 +1139,88 @@ debe resultar verdadero.</p></li>
 </div>
 </dd>
 </dl>
+<dl id="json-schema-oneof">
+<dt><a class="reference external" href="https://json-schema.org/understanding-json-schema/reference/combining.html#allof">oneOf</a></dt><dd><p>El esquema es válido sólo si uno de los propuestos en la lista es válido. Por ejemplo:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;oneOf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;maximum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;boolean&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">   </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>En este caso, el valor puede ser un entero hasta <strong>10</strong> o un valor lógico. La
+alternativa no tiene por qué ser únicamente sobre tipos:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;oneOf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;maximum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;const&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">}</span>
+<span class="w">   </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Y ni siquiera tiene abarcar toda la definición del subesquema:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;oneOf&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span><span class="nt">&quot;maximum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span><span class="nt">&quot;minimum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">}</span>
+<span class="w">   </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>En este caso, cumplirían con el esquema todos los enteros, excepto
+aquellos comprendidos entre <strong>11</strong> y <strong>19</strong>.</p>
+</dd>
+</dl>
+<dl id="json-schema-anyof">
+<dt><a class="reference external" href="https://json-schema.org/understanding-json-schema/reference/combining.html#anyof">anyOf</a></dt><dd><p>La diferencia respecto a <a class="reference internal" href="#json-schema-oneof"><span class="std std-ref">oneOf</span></a> es que basta con
+que se cumpla uno, pero no necesariamente uno. Por ejemplo:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;anyOf&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span><span class="nt">&quot;maximum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;minimum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span><span class="nt">&quot;multipleOf&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">}</span>
+<span class="w">   </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>En este caso, serán válidos todos los enteros hasta <strong>10</strong> y cualquier múltiple
+de 5. Sin embargo, si hubiéramos construido la combinación con <a class="reference internal" href="#json-schema-oneof"><span class="std std-ref">oneOf</span></a>, <strong>0</strong>, <strong>5</strong> y <strong>10</strong> incumplirían el esquema, porque
+cumplen ambas condiciones y sólo puede cumplirse una.</p>
+</dd>
+</dl>
+<dl id="json-schema-allof">
+<dt><a class="reference external" href="https://json-schema.org/understanding-json-schema/reference/combining.html#allof">allOf</a></dt><dd><p>Como las dos anterior pero obliga a que se cumplan todos los esquemas
+incluidos en la lista. Por tanto:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;allOf&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span><span class="nt">&quot;maximum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;minimum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span><span class="nt">&quot;multipleOf&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">}</span>
+<span class="w">   </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>sólo sería válido para <strong>0</strong>, <strong>5</strong> y <strong>10</strong>.</p>
+</dd>
+</dl>
+<dl id="json-schema-not">
+<dt><a class="reference external" href="https://json-schema.org/understanding-json-schema/reference/combining.html#not">not</a></dt><dd><p>Invierte la validez del esquema, es decir, el valor será valido, si el
+esquema negado es inválido para el valor. Por ejemplo:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;not&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Cualquier valor será válido siempre que no sea un entero.</p>
+</dd>
+</dl>
 </section>
 <section id="ejercicios-resueltos">
-<h2><span class="section-number">2.2.6. </span>Ejercicios resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">2.2.5. </span>Ejercicios resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Enlace permanente a este encabezado">¶</a></h2>
 <div class="admonition-todo admonition" id="id7">
 <p class="admonition-title">Por hacer</p>
 <p>Resolver los <a class="reference internal" href="../01.intro/02a.serial.html#yaml-resueltos"><span class="std std-ref">ejercicios de recetas y cadena</span></a>.</p>
@@ -1272,10 +1265,9 @@ describir cómo son, sino expresar simplemente qué palabras contienen.</p>
 <li><a class="reference internal" href="#subesquemas-de-nodo">2.2.2.2. Subesquemas de nodo</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#combinacion-de-esquemas">2.2.3. Combinación de esquemas</a></li>
-<li><a class="reference internal" href="#referencias">2.2.4. Referencias</a></li>
-<li><a class="reference internal" href="#esquemas-condicionales">2.2.5. Esquemas condicionales</a></li>
-<li><a class="reference internal" href="#ejercicios-resueltos">2.2.6. Ejercicios resueltos</a></li>
+<li><a class="reference internal" href="#referencias">2.2.3. Referencias</a></li>
+<li><a class="reference internal" href="#esquemas-condicionales">2.2.4. Esquemas condicionales</a></li>
+<li><a class="reference internal" href="#ejercicios-resueltos">2.2.5. Ejercicios resueltos</a></li>
 </ul>
 </li>
 </ul>

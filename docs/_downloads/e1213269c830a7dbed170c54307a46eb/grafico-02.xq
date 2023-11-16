@@ -4,7 +4,7 @@ declare function local:punto($x, $y) {
 
 (
   "Figuras del dibujo",
-  for $f in //* 
+  for $f in /grafico/* 
   return
     if ($f[self::punto]) then
        " - P=" || local:punto($f/@x, $f/@y)

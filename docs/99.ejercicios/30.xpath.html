@@ -45,7 +45,7 @@
 
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
-    <link rel="next" title="XSLT" href="41.xslt.html" />
+    <link rel="next" title="XQuery" href="40.xquery.html" />
     <link rel="prev" title="Validación de documentos" href="20.val.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head><body>
@@ -58,7 +58,7 @@
           <a href="../genindex.html" title="Índice General"
              accesskey="I">índice</a></li>
         <li class="right" >
-          <a href="41.xslt.html" title="XSLT"
+          <a href="40.xquery.html" title="XQuery"
              accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="20.val.html" title="Validación de documentos"
@@ -193,20 +193,80 @@ de que todos los productos que se venden, se venden por unidades.</p>
 <li><p>Dada la solución propuesta para almacenar la información sobre los libros y préstamos en una biblioteca,
 determinar la expresión <em>XPath</em> que devuelve:</p>
 <ol class="arabic simple">
-<li><p>El número de socios de la biblioteca</p></li>
-<li><p>La dirección del socio que se llama Perico de los Palotes.</p></li>
-<li><p>Los libros cuyo año de edición sea 1985.</p></li>
-<li><p>Los libros de la editorial Alfaguara.</p></li>
-<li><p>El número total de ejemplares que hay en la biblioteca.</p></li>
-<li><p>Todos los libros cuyo autor sea «Miguel de Cervantes Saavedra».</p></li>
-<li><p>El número de ejemplares del libro con ISBN 00-9081-234.</p></li>
-<li><p>El número total de ejemplares prestados.</p></li>
-<li><p>El número total de ejemplares no prestados.</p></li>
-<li><p>Los libros que se han prestado al socio c1.</p></li>
-<li><p>Los libros que no están prestados al socio c1.</p></li>
-<li><p>Los libros que se han prestado al socio c1, pero no al socio c2.</p></li>
-<li><p>El número de ejemplares de libros de la editorial Castalia.</p></li>
-<li><p>Los identificadores de los socios que tiene algún libro en préstamo.</p></li>
+<li><p>El número de socios de la biblioteca</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">lector</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>La dirección del socio que se llama Perico de los Palotes.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">lector</span><span class="p">[</span><span class="nt">nombre</span><span class="o">=</span><span class="s2">&quot;Perico de los Palotes&quot;</span><span class="p">]/</span><span class="nt">direccion</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los libros cuyo año de edición sea 1985.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>//libro[año=1985]
+</pre></div>
+</div>
+</li>
+<li><p>Los libros de la editorial Alfaguara.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">libro</span><span class="p">[</span><span class="nt">editorial</span><span class="o">=</span><span class="s2">&quot;Alfaguara&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número total de ejemplares que hay en la biblioteca.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">ejemplar</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Todos los libros cuyo autor sea «Miguel de Cervantes Saavedra».</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">libro</span><span class="p">[</span><span class="nt">autor</span><span class="o">=</span><span class="s2">&quot;Miguel de Cervantes Saavedra&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número de ejemplares del libro con ISBN 00-9081-234.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">libro</span><span class="p">[</span><span class="nt">isbn</span><span class="o">=</span><span class="s2">&quot;00-9081-234&quot;</span><span class="p">]//</span><span class="nt">ejemplar</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número total de ejemplares actualmente en préstamo.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">prestamo</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@entrega</span><span class="p">)])</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número total de ejemplares que no se encuentran prestados.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">ejemplar</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">count</span><span class="p">(//</span><span class="nt">prestamo</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@entrega</span><span class="p">)])</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los libros que se han prestado al socio c1.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">ejemplar</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">count</span><span class="p">(//</span><span class="nt">prestamo</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@entrega</span><span class="p">)])</span>
+</pre></div>
+</div>
+</li>
+<li><p>La cantidad de ejemplares de libros de la editorial Castalia.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">libro</span><span class="p">[</span><span class="nt">editorial</span><span class="o">=</span><span class="s2">&quot;Castalia&quot;</span><span class="p">]//</span><span class="nt">ejemplar</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los identificadores de los socios que tiene algún libro en préstamo.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">lector</span><span class="p">[</span><span class="na">@registro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">prestamo</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@entrega</span><span class="p">)]/</span><span class="na">@lector</span><span class="p">]/</span><span class="na">@registro</span>
+</pre></div>
+</div>
+<p class="sol-oculta">Pero si usamos <em>XPath</em> 2/3 podemos hacer:</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">fn:distinct-values</span><span class="p">(//</span><span class="nt">prestamo</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@entrega</span><span class="p">)]/</span><span class="na">@lector</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los libros que no están prestados al socio l01.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">libro</span><span class="p">[</span><span class="nf">not</span><span class="p">(.//</span><span class="na">@codigo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">prestamo</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@entrega</span><span class="p">)][</span><span class="na">@lector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;l01&quot;</span><span class="p">]/</span><span class="na">@ejemplar</span><span class="p">)]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los libros que se han prestado al socio l01, pero no al socio l02.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">libro</span><span class="p">[.//</span><span class="na">@codigo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">prestamo</span><span class="p">[</span><span class="na">@lector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;l01&quot;</span><span class="p">]/</span><span class="na">@ejemplar</span><span class="p">][</span><span class="nf">not</span><span class="p">(.//</span><span class="na">@codigo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">prestamo</span><span class="p">[</span><span class="na">@lector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;l02&quot;</span><span class="p">]/</span><span class="na">@ejemplar</span><span class="p">)]</span>
+</pre></div>
+</div>
+</li>
 <li><p>Los ejemplares aún disponibles (no prestados) de Don Quijote de La Mancha.</p></li>
 <li><p>Los libros de los que quedan menos de dos ejemplares en la biblioteca.</p></li>
 <li><p>Los libros de los que no se ha prestado ningún ejemplar.</p></li>
@@ -340,8 +400,8 @@ técnico en dos dimensiones, determinar la expresión <em>XPath</em> que selecci
   </div>
   <div class="sphinxnext">
     <h4>Next page</h4>
-    <p class="topless"><a href="41.xslt.html"
-                          title="Next page">&rarr; <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></p>
+    <p class="topless"><a href="40.xquery.html"
+                          title="Next page">&rarr; XQuery</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>Esta página</h3>
@@ -390,7 +450,7 @@ técnico en dos dimensiones, determinar la expresión <em>XPath</em> que selecci
           <a href="../genindex.html" title="Índice General"
              >índice</a></li>
         <li class="right" >
-          <a href="41.xslt.html" title="XSLT"
+          <a href="40.xquery.html" title="XQuery"
              >siguiente</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="20.val.html" title="Validación de documentos"

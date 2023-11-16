@@ -251,7 +251,7 @@
 
             count(//ejemplar) - count(//prestamo[not(@entrega)])
 
-   #. Los libros que se han prestado al socio c1.
+   #. Los libros que se han prestado al socio l01.
 
       .. rst-class:: sol-oculta
 
@@ -299,11 +299,52 @@
             //libro[.//@codigo = //prestamo[@lector = "l01"]/@ejemplar][not(.//@codigo = //prestamo[@lector = "l02"]/@ejemplar)]
 
    #. Los ejemplares aún disponibles (no prestados) de Don Quijote de La Mancha.
-   #. Los libros de los que quedan menos de dos ejemplares en la biblioteca.
-   #. Los libros de los que no se ha prestado ningún ejemplar.
-   #. Los libros que tiene todos los ejemplares prestados
-   #. Los libros que tiene más ejemplares prestados que en la biblioteca.
+
+      .. rst-class:: sol-oculta
+
+         .. code-block:: xquery
+
+            //libro[nombre="Don Quijote de la Mancha"]//ejemplar[not(@codigo = //prestamo[not(@entrega)]/@ejemplar)]
+
+   #. Los libros de los que quedan menos de dos ejemplares disponibles en la biblioteca.
+
+      .. rst-class:: sol-oculta
+
+         .. code-block:: xquery
+
+            //libro[count(.//ejemplar[not(@codigo = //prestamo[not(@entrega)]/@ejemplar)]) < 2]
+
+   #. Los libros de los que no se ha prestado nunca ningún ejemplar.
+
+      .. rst-class:: sol-oculta
+
+         .. code-block:: xquery
+
+            //libro[not(.//ejemplar/@codigo = //prestamo/@ejemplar))]
+
    #. El número de ejemplares prestados al socio Perico de los Palotes.
+
+      .. rst-class:: sol-oculta
+
+         .. code-block:: xquery
+
+            count(//prestamo[not(@entrega)][@lector = //lector[nombre="Perico de los Palotes"]/@registro])
+
+   #. Los libros que tiene todos los ejemplares prestados
+
+      .. rst-class:: sol-oculta
+
+         .. code-block:: xquery
+
+            //libro[count(.//ejemplar) = count(.//ejemplar[@codigo = //prestamo[not(@entrega)]/@ejemplar])]
+
+   #. Los libros que tiene más ejemplares prestados que en la biblioteca.
+
+      .. rst-class:: sol-oculta
+
+         .. code-block:: xquery
+
+            //libro[2*count(.//ejemplar[@codigo = //prestamo[not(@entrega)]/@ejemplar]) > count(.//ejemplar)]
 
 #. Dada la solución propuesta para almacenar la información sobre los coches
    que vende un concesionario, determinar la expresión *XPath* que devuelve:
