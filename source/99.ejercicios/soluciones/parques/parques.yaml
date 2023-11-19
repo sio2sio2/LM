@@ -19,6 +19,8 @@ parques:
     nombre: "Doñana"
     provincia: "Huelva"
     ca: "Andalucia"
+    extension: 10000  #En hectáreas
+    presupuesto: 100  #En millones de euros.
     especimenes:
       - ref: 1
         ejemplares: 150

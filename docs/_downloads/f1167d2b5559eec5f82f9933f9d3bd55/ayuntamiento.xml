@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE habitantes SYSTEM "ayuntamiento.dtd">
 <habitantes ayuntamiento="Isla Cristina">
-   <persona id="p01">
+   <!-- Si el padre o la madre está registrados,
+        se indican como atributo, si no, como elemento -->
+   <persona id="p01" sexo="hombre">
       <nombre>José Manuel</nombre>
       <apellidos>Pérez Bermúdez</apellidos>
       <direccion>
@@ -15,7 +17,7 @@
       <padre>Manuel</padre>
       <madre>María</madre>
    </persona>
-   <persona id="p02">
+   <persona id="p02" sexo="mujer">
       <nombre>María</nombre>
       <apellidos>González Faneca</apellidos>
       <direccion>
@@ -29,7 +31,7 @@
       <padre>José</padre>
       <madre>Cristina</madre>
    </persona>
-   <persona id="p03" madre="p02" padre="p01">
+   <persona id="p03" madre="p02" padre="p01" sexo="hombre">
       <nombre>Manuel</nombre>
       <apellidos>Pérez González</apellidos>
       <direccion>

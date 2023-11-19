@@ -9,7 +9,7 @@ nodos o conjuntos de nodos. :dfn:`XPath` es un lenguaje estándar para la
 selección de uno o varios componentes (nodos, atributos, etc.) dentro de un
 documento |XML|.
 
-*XPath* es, pues, un estandar del |W3C| para seleccionar con qué nodos de un
+*XPath* es, pues, un estándar del |W3C| para seleccionar con qué nodos de un
 documento |XML| se desea operar para cuya operación posterior se requerirá el
 uso de otra herramienta como :ref:`XQuery`, :ref:`XSLT` o alguna biblioteca  de
 programas de propósito general. Es, por tanto, una herramienta que no tiene
@@ -20,7 +20,7 @@ sentido utilizar aislada.
    selección de nodos los :ref:`selectores CSS <css-selectors>`, diseñados en
    principio para definir su estilo (o sea, su aspecto). A pesar de nacer para
    documentos |HTML|, los *selectores CSS* son perfectamente válidos para
-   identificar nodos |XML|, por lo que son una alternativa muy utilizado. Por
+   identificar nodos |XML|, por lo que son una alternativa muy utilizada. Por
    ejemplo, Javascript_ los soporta para la selección de nodos en general (véase
    `document.querySelectorAll
    <https://developer.mozilla.org/es/docs/Web/API/Document/querySelectorAll>`_),
@@ -59,7 +59,7 @@ Desde su creación en 1999, *XPath* se ha ido actualizando con distintas
   versión para `C++ <https://es.wikipedia.org/wiki/C%2B%2B>`_. En la |CLI| de
   Linux puede usarse a través de algunos programas de *software* libre:
 
-  + `xqilla <http://xqilla.sourceforge.net/HomePage>`_, que aunque tiene paquete
+  + `xqilla <http://xqilla.sourceforge.net/HomePage>`_, que, aunque tiene paquete
     en *Debian*, desgraciadamente no está disponible para *Bookworm*, por
     `problemas de compilación con g++-11
     <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=984418>`_.
@@ -102,7 +102,7 @@ conveniente conocer qué herramientas tenemos para procesar nuestras expresiones
   Podemos usarlo directamente o :ref:`a través de Visual Studio Code
   <xquery-vscode>`.
 * El paquete :deb:`xmlstarlet`, cuyo paquete homónimo permite utilizar
-  expresiones *XPath* 1.0 tanto para seleccionar información del |XML| original,
+  expresiones *XPath* 1.0 tanto para seleccionar información del |XML| original
   como para modificarlo.
 * El programa xidel_, que soporta XPath 3.0.
 
@@ -143,7 +143,7 @@ distintos:
 
      $ xidel --printed-node-format=xml -s -e '//profesor/apelativo' casilleros.xml
 
-.. note:: El programa no permite validar el documento por lo que cabría la
+.. note:: El programa no permite validar el documento, por lo que cabría la
    posibilidad de preguntarse si actúa o no en modo de compatibilidad con
    *XPath* 1.0. No existe ninguna opción al respectoo, pero  por el modo en el
    que actúa, si no se especifica, parece actuar en modo semejante al de
@@ -164,9 +164,9 @@ Para lograrlo es necesario usar el comando ``sel``, seguido de la opción ``-t``
 la acción que se quiere realizar a continuación, que puede ser:
 
 :code:`-v <expresión-xpath>`
-   Muestra el valor de lo seleccionado mediante la expresión. Se debe estar
-   opción cuuando el resultado de la expresión es un valor escalar: un único
-   atributo, un nodo que contiene texto o el evaluación de un función o una
+   Muestra el valor de lo seleccionado mediante la expresión. Se debe usar esta
+   opción cuando el resultado de la expresión es un valor escalar: un único
+   atributo, un nodo que contiene texto o la evaluación de una función o una
    operación. Por ejemplo::
 
       $ xmlstarlet sel -t -v '//profesor[1]/@id' -n casilleros.xml
@@ -209,7 +209,7 @@ En este caso, debe usarse ``ed``, una acción y el uso de expresiones *XPath*:
 
       $ xmlstarlet ed -d '//profesor[last()]' casilleros.xml
 
-   Esta expresión elimnina el último de los profesores.
+   Esta expresión elimina el último de los profesores.
    
 :code:`-u <expresion-xpath> -v valor`
    Actualiza el valor del nodo o nodos seleccionados::
@@ -251,7 +251,7 @@ En este caso, debe usarse ``ed``, una acción y el uso de expresiones *XPath*:
 Sintaxis
 ********
 Una expresión *XPath* es, simplemente, una expresión evaluable que devuelve un
-resultado. Por lo general, dentro de esta expresión se refieron nodos del |XML|,
+resultado. Por lo general, dentro de esta expresión se refirieron nodos del |XML|,
 pero no necesariamente. Ésta es una expresión *XPath* perfectamente válida:
 
 .. code-block:: xquery
@@ -267,10 +267,10 @@ involucramos nodos en la expresión:
    /nodo1/nodo2/nodo3
 
 se advierte mejor la analogía entre *XPath* y las rutas de archivos. En este
-caso, la evaluación de expresión devolverá todos los *nodo3* incluídos dentro de
+caso, la evaluación de expresión devolverá todos los *nodo3* incluidos dentro de
 los *nodo2* incluidos dentro del *nodo1*.  O sea, lo mismo que devolvería una
-ruta de archivos con la salvedad de que los directorios son únicos y no se
-podría devolver varios.
+ruta de archivos, con la salvedad de que los directorios son únicos y no se
+podrían devolver varios.
 
 Traigamos el ejemplo del claustro de profesores para ilustrar las rutas que
 expresemos a continuación:
@@ -341,7 +341,7 @@ pertenecen al claustro. Otro ejemplo podría ser:
 Del mismo modo que en las rutas de archivos existen rutas relativas, en las
 rutas *XPath* también existen, y del mismo modo que puede surgir la necesidad de
 seleccionar un directorio o archivo cuando nos encontramos trabajando en otro
-directorio, es posible que necesitemos hacer referencia a otros nodos, cuando
+directorio, es posible que necesitemos hacer referencia a otros nodos cuando
 nos encontramos procesando un determinado nodo. Para las rutas relativas, como
 en el caso de los archivos, se usa el punto (``.``), que significa este nodo, y
 dos puntos seguidos (``..``), que significan el nodo padre. Así pues, si
@@ -550,8 +550,8 @@ quieren referirse con tal ruta. Puede ser:
    #. Nodo comentario.
 
    De entre estos siete tipos, dos (los nodos texto y los nodos atributo) pueden
-   a su ver estar tipados de distinta forma (ser cadenas, ser números, etc.).
-   Más adelaten profundizaremos en ello.
+   a su vez estar tipados de distinta forma (ser cadenas, ser números, etc.).
+   Más adelante profundizaremos en ello.
 
 .. _xpath1-union:
 
@@ -863,7 +863,7 @@ Para empezar hay que aclarar dos aspectos importantes:
    ¿Cuáles son los tipos de datos (no de nodos, que ya hemos enumerado) que
    reconoce XPath 1.0? Solamente **4**:
 
-   #. Booleanos (notados ``true`` y ``false``).
+   #. Booleanos (notados mediante las funciones ``true()`` y ``false()``).
    #. Números.
    #. Cadenas.
    #. Conjuntos de nodos.
@@ -913,10 +913,10 @@ de tipos. Este es un aspecto que debemos revisar.
 
    #. Si el operador es ``=`` o ``!=`` y alguno de los dos operandos es booleano,
       el otro se convertirá a booleano; si no es así y uno de los dos es número, el
-      otro se convierte a número; y en cualquier otro caso, ambos se convierten a
+      otro se convierte a número; y, en cualquier otro caso, ambos se convierten a
       cadena.
 
-   #. Si los operadores son de comparación (``<``, ``<=``, ``>`` y ``>=``) los
+   #. Si los operadores son de comparación (``<``, ``<=``, ``>`` y ``>=``), los
       operandos se convierten a número.
 
       .. warning:: Nótese que esto implica que en *XPath* 1.0 no pueden
@@ -971,7 +971,8 @@ de tipos. Este es un aspecto que debemos revisar.
 
          //profesor[not(apelativo)]
 
-     - Una cadena es verdadera, a menos que sea la cadena vacía.
+     - Una cadena es verdadera, a menos que sea la cadena vacía. Nótese que la
+       conversión de la cadena \"*false*\" resulta en un valor verdadero.
 
    Sabido esto ya podemos desentrañar el misterio de por qué funciona:
 
@@ -2047,13 +2048,14 @@ restaurantes <xml-resueltos>`, determine las expresion *XPath* apropiadas para:
 
          count(/cadena/restaurante[not(carta/plato/@ref = //receta[ingrediente/@nombre = "lechuga"]/@id)])
 
-#. ¿Qué receta requiere más aceite? Suponga que el aceite siempre se mide en *cc*.
+#. ¿Qué receta requiere más aceite? Suponga que el aceite siempre se mide en las
+   mismas unidades.
 
    .. dropdown:: Solución...
 
       .. code-block:: xquery
 
-         //receta[ingrediente[@nombre = "aceite"]/@cantidad >= //receta/ingrediente[@nombre = "aceite"]/@cantidad]
+         //receta[not(ingrediente[@nombre = "aceite"]/@cantidad < //receta/ingrediente[@nombre = "aceite"]/@cantidad)]
 
 Ejercicios propuestos
 *********************

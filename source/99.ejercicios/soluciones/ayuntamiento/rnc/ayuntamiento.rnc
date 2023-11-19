@@ -7,7 +7,8 @@ habitantes = element habitantes { persona+,
 persona = element persona { nombre, apellidos, direccion, tlfo, origen, padre?, madre?,
    attribute id { xsd:ID { pattern="p\d+" } },
    attribute padre { xsd:IDREF { pattern="p\d+" } }?,
-   attribute madre { xsd:IDREF { pattern="p\d+" } }?
+   attribute madre { xsd:IDREF { pattern="p\d+" } }?,
+   attribute sexo  { "hombre" | "mujer" }
 }
 
 nombre = element nombre { text }

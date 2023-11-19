@@ -84,7 +84,7 @@ información o escribir reglas para su transformación es necesario referirse a
 nodos o conjuntos de nodos. <em class="dfn">XPath</em> es un lenguaje estándar para la
 selección de uno o varios componentes (nodos, atributos, etc.) dentro de un
 documento <abbr title="eXtensible  Markup Language">XML</abbr>.</p>
-<p><em>XPath</em> es, pues, un estandar del <abbr title="W3 Consortium">W3C</abbr> para seleccionar con qué nodos de un
+<p><em>XPath</em> es, pues, un estándar del <abbr title="W3 Consortium">W3C</abbr> para seleccionar con qué nodos de un
 documento <abbr title="eXtensible  Markup Language">XML</abbr> se desea operar para cuya operación posterior se requerirá el
 uso de otra herramienta como <a class="reference internal" href="../04.transformacion/index.html#xquery"><span class="std std-ref">XQuery</span></a>, <a class="reference internal" href="../98.apendices/41.xslt.html#xslt"><span class="std std-ref">XSLT</span></a> o alguna biblioteca  de
 programas de propósito general. Es, por tanto, una herramienta que no tiene
@@ -96,7 +96,7 @@ no es <abbr title="eXtensible  Markup Language">XML</abbr>, pero tiene bastantes
 selección de nodos los <span class="xref std std-ref">selectores CSS</span>, diseñados en
 principio para definir su estilo (o sea, su aspecto). A pesar de nacer para
 documentos <abbr title="HyperText Markup Language">HTML</abbr>, los <em>selectores CSS</em> son perfectamente válidos para
-identificar nodos <abbr title="eXtensible  Markup Language">XML</abbr>, por lo que son una alternativa muy utilizado. Por
+identificar nodos <abbr title="eXtensible  Markup Language">XML</abbr>, por lo que son una alternativa muy utilizada. Por
 ejemplo, <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a> los soporta para la selección de nodos en general (véase
 <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/API/Document/querySelectorAll">document.querySelectorAll</a>),
 en vez de <em>XPath</em>, a pesar de que existe  la función <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/JavaScript/Introduction_to_using_XPath_in_JavaScript">document.evaluate</a>,
@@ -124,7 +124,7 @@ versión la librería <a class="reference external" href="http://saxon.sourcefor
 versión para <a class="reference external" href="https://es.wikipedia.org/wiki/C%2B%2B">C++</a>. En la <abbr title="Command Line Interface">CLI</abbr> de
 Linux puede usarse a través de algunos programas de <em>software</em> libre:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="http://xqilla.sourceforge.net/HomePage">xqilla</a>, que aunque tiene paquete
+<li><p><a class="reference external" href="http://xqilla.sourceforge.net/HomePage">xqilla</a>, que, aunque tiene paquete
 en <em>Debian</em>, desgraciadamente no está disponible para <em>Bookworm</em>, por
 <a class="reference external" href="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=984418">problemas de compilación con g++-11</a>.</p></li>
 <li><p><a class="reference external" href="https://www.videlibri.de/xidel.html">xidel</a>, que no tiene paquete oficial, pero puede descargarse de su página
@@ -160,7 +160,7 @@ diálogo que nos permite hacer evaluaciones.</p></li>
 <li><p><a class="reference internal" href="../05.almacenamiento/02.nativas.html#basex"><span class="std std-ref">BaseX</span></a>, que soporta <a class="reference internal" href="../04.transformacion/index.html#xquery"><span class="std std-ref">XQuery</span></a> 3.0 (y consecuentemente <em>XPath</em> 3.1).
 Podemos usarlo directamente o <a class="reference internal" href="../04.transformacion/index.html#xquery-vscode"><span class="std std-ref">a través de Visual Studio Code</span></a>.</p></li>
 <li><p>El paquete <a class="reference external" href="https://packages.debian.org/stable/xmlstarlet">xmlstarlet</a>, cuyo paquete homónimo permite utilizar
-expresiones <em>XPath</em> 1.0 tanto para seleccionar información del <abbr title="eXtensible  Markup Language">XML</abbr> original,
+expresiones <em>XPath</em> 1.0 tanto para seleccionar información del <abbr title="eXtensible  Markup Language">XML</abbr> original
 como para modificarlo.</p></li>
 <li><p>El programa <a class="reference external" href="https://www.videlibri.de/xidel.html">xidel</a>, que soporta XPath 3.0.</p></li>
 </ul>
@@ -199,7 +199,7 @@ la expresión <em>XPath</em>.</p>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>El programa no permite validar el documento por lo que cabría la
+<p>El programa no permite validar el documento, por lo que cabría la
 posibilidad de preguntarse si actúa o no en modo de compatibilidad con
 <em>XPath</em> 1.0. No existe ninguna opción al respectoo, pero  por el modo en el
 que actúa, si no se especifica, parece actuar en modo semejante al de
@@ -217,9 +217,9 @@ posibilidades que brinda.</p>
 <p>Para lograrlo es necesario usar el comando <code class="docutils literal notranslate"><span class="pre">sel</span></code>, seguido de la opción <code class="docutils literal notranslate"><span class="pre">-t</span></code>, y
 la acción que se quiere realizar a continuación, que puede ser:</p>
 <dl>
-<dt><code class="code docutils literal notranslate"><span class="pre">-v</span> <span class="pre">&lt;expresión-xpath&gt;</span></code></dt><dd><p>Muestra el valor de lo seleccionado mediante la expresión. Se debe estar
-opción cuuando el resultado de la expresión es un valor escalar: un único
-atributo, un nodo que contiene texto o el evaluación de un función o una
+<dt><code class="code docutils literal notranslate"><span class="pre">-v</span> <span class="pre">&lt;expresión-xpath&gt;</span></code></dt><dd><p>Muestra el valor de lo seleccionado mediante la expresión. Se debe usar esta
+opción cuando el resultado de la expresión es un valor escalar: un único
+atributo, un nodo que contiene texto o la evaluación de una función o una
 operación. Por ejemplo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet sel -t -v &#39;//profesor[1]/@id&#39; -n casilleros.xml
 p1
@@ -268,7 +268,7 @@ equivalente a nuestra selección añadiendo tras <code class="docutils literal n
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet ed -d &#39;//profesor[last()]&#39; casilleros.xml
 </pre></div>
 </div>
-<p>Esta expresión elimnina el último de los profesores.</p>
+<p>Esta expresión elimina el último de los profesores.</p>
 </dd>
 <dt><code class="code docutils literal notranslate"><span class="pre">-u</span> <span class="pre">&lt;expresion-xpath&gt;</span> <span class="pre">-v</span> <span class="pre">valor</span></code></dt><dd><p>Actualiza el valor del nodo o nodos seleccionados:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet ed -u &#39;//profesor[1]/apelativo&#39; -v &quot;Manolo&quot; casilleros.xml
@@ -313,7 +313,7 @@ limitadas. Un mecanismo más apropiado para realizarlas es usar <a class="refere
 <section id="sintaxis">
 <h2><span class="section-number">3.1.2. </span>Sintaxis<a class="headerlink" href="#sintaxis" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Una expresión <em>XPath</em> es, simplemente, una expresión evaluable que devuelve un
-resultado. Por lo general, dentro de esta expresión se refieron nodos del <abbr title="eXtensible  Markup Language">XML</abbr>,
+resultado. Por lo general, dentro de esta expresión se refirieron nodos del <abbr title="eXtensible  Markup Language">XML</abbr>,
 pero no necesariamente. Ésta es una expresión <em>XPath</em> perfectamente válida:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
 </pre></div>
@@ -325,10 +325,10 @@ involucramos nodos en la expresión:</p>
 </pre></div>
 </div>
 <p>se advierte mejor la analogía entre <em>XPath</em> y las rutas de archivos. En este
-caso, la evaluación de expresión devolverá todos los <em>nodo3</em> incluídos dentro de
+caso, la evaluación de expresión devolverá todos los <em>nodo3</em> incluidos dentro de
 los <em>nodo2</em> incluidos dentro del <em>nodo1</em>.  O sea, lo mismo que devolvería una
-ruta de archivos con la salvedad de que los directorios son únicos y no se
-podría devolver varios.</p>
+ruta de archivos, con la salvedad de que los directorios son únicos y no se
+podrían devolver varios.</p>
 <p>Traigamos el ejemplo del claustro de profesores para ilustrar las rutas que
 expresemos a continuación:</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
@@ -452,7 +452,7 @@ pertenecen al claustro. Otro ejemplo podría ser:</p>
 <p>Del mismo modo que en las rutas de archivos existen rutas relativas, en las
 rutas <em>XPath</em> también existen, y del mismo modo que puede surgir la necesidad de
 seleccionar un directorio o archivo cuando nos encontramos trabajando en otro
-directorio, es posible que necesitemos hacer referencia a otros nodos, cuando
+directorio, es posible que necesitemos hacer referencia a otros nodos cuando
 nos encontramos procesando un determinado nodo. Para las rutas relativas, como
 en el caso de los archivos, se usa el punto (<code class="docutils literal notranslate"><span class="pre">.</span></code>), que significa este nodo, y
 dos puntos seguidos (<code class="docutils literal notranslate"><span class="pre">..</span></code>), que significan el nodo padre. Así pues, si
@@ -623,8 +623,8 @@ nodos que el modelo de datos de <em>XPath</em> define:</p>
 <li><p>Nodo comentario.</p></li>
 </ol>
 <p>De entre estos siete tipos, dos (los nodos texto y los nodos atributo) pueden
-a su ver estar tipados de distinta forma (ser cadenas, ser números, etc.).
-Más adelaten profundizaremos en ello.</p>
+a su vez estar tipados de distinta forma (ser cadenas, ser números, etc.).
+Más adelante profundizaremos en ello.</p>
 </div>
 <p id="xpath1-union"><em>XPath</em> permite <strong>agregar rutas</strong> de manera que los nodos seleccionados sean la
 unión de los nodos que seleccionan las distintas rutas. Para ello, usa el
@@ -990,7 +990,7 @@ devuelven en el orden en que se encuentran en el documento <abbr title="eXtensib
 <dt><strong>Tipos de datos</strong></dt><dd><p>¿Cuáles son los tipos de datos (no de nodos, que ya hemos enumerado) que
 reconoce XPath 1.0? Solamente <strong>4</strong>:</p>
 <ol class="arabic simple">
-<li><p>Booleanos (notados <code class="docutils literal notranslate"><span class="pre">true</span></code> y <code class="docutils literal notranslate"><span class="pre">false</span></code>).</p></li>
+<li><p>Booleanos (notados mediante las funciones <code class="docutils literal notranslate"><span class="pre">true()</span></code> y <code class="docutils literal notranslate"><span class="pre">false()</span></code>).</p></li>
 <li><p>Números.</p></li>
 <li><p>Cadenas.</p></li>
 <li><p>Conjuntos de nodos.</p></li>
@@ -1028,9 +1028,9 @@ tipos, aunque pueden forzarse algunas conversiones utilizando las funciones
 <ol class="arabic simple">
 <li><p>Si el operador es <code class="docutils literal notranslate"><span class="pre">=</span></code> o <code class="docutils literal notranslate"><span class="pre">!=</span></code> y alguno de los dos operandos es booleano,
 el otro se convertirá a booleano; si no es así y uno de los dos es número, el
-otro se convierte a número; y en cualquier otro caso, ambos se convierten a
+otro se convierte a número; y, en cualquier otro caso, ambos se convierten a
 cadena.</p></li>
-<li><p>Si los operadores son de comparación (<code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> y <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>) los
+<li><p>Si los operadores son de comparación (<code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> y <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>), los
 operandos se convierten a número.</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
@@ -1083,7 +1083,8 @@ hacer:</p>
 </pre></div>
 </div>
 </li>
-<li><p>Una cadena es verdadera, a menos que sea la cadena vacía.</p></li>
+<li><p>Una cadena es verdadera, a menos que sea la cadena vacía. Nótese que la
+conversión de la cadena &quot;<em>false</em>&quot; resulta en un valor verdadero.</p></li>
 </ul>
 </li>
 </ul>
@@ -2117,7 +2118,8 @@ Solución…<div class="sd-summary-down docutils">
 </div>
 </div>
 </details></li>
-<li><p>¿Qué receta requiere más aceite? Suponga que el aceite siempre se mide en <em>cc</em>.</p>
+<li><p>¿Qué receta requiere más aceite? Suponga que el aceite siempre se mide en las
+mismas unidades.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 Solución…<div class="sd-summary-down docutils">
@@ -2125,7 +2127,7 @@ Solución…<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="nt">ingrediente</span><span class="p">[</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aceite&quot;</span><span class="p">]/</span><span class="na">@cantidad</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="p">//</span><span class="nt">receta</span><span class="p">/</span><span class="nt">ingrediente</span><span class="p">[</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aceite&quot;</span><span class="p">]/</span><span class="na">@cantidad</span><span class="p">]</span>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="nt">ingrediente</span><span class="p">[</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aceite&quot;</span><span class="p">]/</span><span class="na">@cantidad</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">//</span><span class="nt">receta</span><span class="p">/</span><span class="nt">ingrediente</span><span class="p">[</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aceite&quot;</span><span class="p">]/</span><span class="na">@cantidad</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -2294,7 +2296,7 @@ determinar la expresión <em>XPath</em> que devuelve:</p>
 </pre></div>
 </div>
 </li>
-<li><p>Los libros que se han prestado al socio c1.</p>
+<li><p>Los libros que se han prestado al socio l01.</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">ejemplar</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">count</span><span class="p">(//</span><span class="nt">prestamo</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@entrega</span><span class="p">)])</span>
 </pre></div>
 </div>
@@ -2323,117 +2325,486 @@ determinar la expresión <em>XPath</em> que devuelve:</p>
 </pre></div>
 </div>
 </li>
-<li><p>Los ejemplares aún disponibles (no prestados) de Don Quijote de La Mancha.</p></li>
-<li><p>Los libros de los que quedan menos de dos ejemplares en la biblioteca.</p></li>
-<li><p>Los libros de los que no se ha prestado ningún ejemplar.</p></li>
-<li><p>Los libros que tiene todos los ejemplares prestados</p></li>
-<li><p>Los libros que tiene más ejemplares prestados que en la biblioteca.</p></li>
-<li><p>El número de ejemplares prestados al socio Perico de los Palotes.</p></li>
+<li><p>Los ejemplares aún disponibles (no prestados) de Don Quijote de La Mancha.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">libro</span><span class="p">[</span><span class="nt">nombre</span><span class="o">=</span><span class="s2">&quot;Don Quijote de la Mancha&quot;</span><span class="p">]//</span><span class="nt">ejemplar</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@codigo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">prestamo</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@entrega</span><span class="p">)]/</span><span class="na">@ejemplar</span><span class="p">)]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los libros de los que quedan menos de dos ejemplares disponibles en la biblioteca.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">libro</span><span class="p">[</span><span class="nf">count</span><span class="p">(.//</span><span class="nt">ejemplar</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@codigo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">prestamo</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@entrega</span><span class="p">)]/</span><span class="na">@ejemplar</span><span class="p">)])</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los libros de los que no se ha prestado nunca ningún ejemplar.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">libro</span><span class="p">[</span><span class="nf">not</span><span class="p">(.//</span><span class="nt">ejemplar</span><span class="p">/</span><span class="na">@codigo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">prestamo</span><span class="p">/</span><span class="na">@ejemplar</span><span class="p">))]</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número de ejemplares prestados al socio Perico de los Palotes.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">prestamo</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@entrega</span><span class="p">)][</span><span class="na">@lector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">lector</span><span class="p">[</span><span class="nt">nombre</span><span class="o">=</span><span class="s2">&quot;Perico de los Palotes&quot;</span><span class="p">]/</span><span class="na">@registro</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los libros que tiene todos los ejemplares prestados</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">libro</span><span class="p">[</span><span class="nf">count</span><span class="p">(.//</span><span class="nt">ejemplar</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">count</span><span class="p">(.//</span><span class="nt">ejemplar</span><span class="p">[</span><span class="na">@codigo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">prestamo</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@entrega</span><span class="p">)]/</span><span class="na">@ejemplar</span><span class="p">])]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los libros que tiene más ejemplares prestados que en la biblioteca.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">libro</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="nf">count</span><span class="p">(.//</span><span class="nt">ejemplar</span><span class="p">[</span><span class="na">@codigo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">prestamo</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@entrega</span><span class="p">)]/</span><span class="na">@ejemplar</span><span class="p">])</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nf">count</span><span class="p">(.//</span><span class="nt">ejemplar</span><span class="p">)]</span>
+</pre></div>
+</div>
+</li>
 </ol>
 </li>
 <li><p>Dada la solución propuesta para almacenar la información sobre los coches
 que vende un concesionario, determinar la expresión <em>XPath</em> que devuelve:</p>
 <ol class="arabic simple">
-<li><p>Los nombres de las marchas que vende el concesionario.</p></li>
-<li><p>El nombre de los modelos de la marca Renault que vende el concesionario.</p></li>
-<li><p>Los modelos de cinco plazas.</p></li>
-<li><p>Los modelos que tienen una cilindrada mayor a 300.</p></li>
-<li><p>El modelo Megane.</p></li>
-<li><p>El último modelo de todas las marcas.</p></li>
-<li><p>El número de marcas que vende el concesionario.</p></li>
-<li><p>El número de modelos que vende el concesionario.</p></li>
-<li><p>El cliente de identificador p1.</p></li>
-<li><p>El número de clientes.</p></li>
-<li><p>Los coches que ha reservado el cliente p1</p></li>
-<li><p>Los coches nuevos (no tienen kilometraje)</p></li>
-<li><p>Los coches reservados.</p></li>
-<li><p>El número de coches Clio.</p></li>
-<li><p>Los Clio reservados</p></li>
-<li><p>Los coches de segunda mano reservados.</p></li>
-<li><p>Los coches reservados que sean Clio o Megane</p></li>
-<li><p>Los coches nuevos no reservados aún.</p></li>
-<li><p>El número de coches de la marca Renault</p></li>
-<li><p>Los coches reservados a los habitantes de Villaconejos</p></li>
+<li><p>La marca de coches que vende el concesionario.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">concesionario</span><span class="p">/</span><span class="na">@marca</span>
+</pre></div>
+</div>
+</li>
+<li><p>El nombre de los modelos que vende el concesionario.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">modelo</span><span class="p">/</span><span class="na">@nombre</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los modelos de cinco plazas.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">modelo</span><span class="p">[</span><span class="nt">plazas</span><span class="o">=</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los modelos que tienen una cilindrada mayor a 300.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">modelo</span><span class="p">[</span><span class="nt">cilindrada</span><span class="o">&gt;</span><span class="mi">300</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>El modelo León.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">modelo</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;León&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>El último modelo del archivo</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">modelo</span><span class="p">[</span><span class="nf">last</span><span class="p">()]</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número de modelos que vende el concesionario.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">modelo</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número de modelos que no son de cinco plazas</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">modelo</span><span class="p">[</span><span class="nt">plazas</span><span class="o">!=</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p>El cliente de identificador c01.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">modelo</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número de clientes.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">cliente</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los coches que ha reservado el cliente c01</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">coche</span><span class="p">[</span><span class="na">@reservado</span><span class="o">=</span><span class="s2">&quot;c01&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los coches nuevos</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">coche</span><span class="p">[</span><span class="na">@tipo</span><span class="o">=</span><span class="s2">&quot;nuevo&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los coches reservados.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">coche</span><span class="p">[</span><span class="na">@reservado</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número de coches León.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">coche</span><span class="p">[</span><span class="na">@modelo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">modelo</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;León&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los ibiza reservados</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">coche</span><span class="p">[</span><span class="na">@modelo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">modelo</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;Ibiza&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">][</span><span class="na">@reservado</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los coches de segunda mano reservados.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">coche</span><span class="p">[</span><span class="na">@tipo</span><span class="o">=</span><span class="s2">&quot;2mano&quot;</span><span class="p">][</span><span class="na">@reservado</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los coches reservados que sean ibiza o león</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">coche</span><span class="p">[</span><span class="na">@modelo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">modelo</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;León&quot;</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;Ibiza&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">][</span><span class="na">@reservado</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los coches nuevos no reservados aún.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">coche</span><span class="p">[</span><span class="na">@tipo</span><span class="o">=</span><span class="s2">&quot;nuevo&quot;</span><span class="p">][</span><span class="nf">not</span><span class="p">(</span><span class="na">@reservado</span><span class="p">)]</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número de coches del modelo León</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">coche</span><span class="p">[</span><span class="na">@modelo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">modelo</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;León&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los coches reservados a los habitantes de Villaabajo.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">coche</span><span class="p">[</span><span class="na">@reservado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">cliente</span><span class="p">[.//</span><span class="nt">poblacion</span><span class="o">=</span><span class="s2">&quot;Villaabajo&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
 </ol>
 </li>
 <li><p>Dada la solución propuesta para almacenar la información sobre los parques
 nacionales, determinar la expresión <em>XPath</em> que devuelve:</p>
 <ol class="arabic simple">
-<li><p>El número de especies vegetales.</p></li>
-<li><p>Las especies vegetales con un peligro alto de extinción.</p></li>
-<li><p>El número de especies animales en peligro bajo de extinción.</p></li>
-<li><p>El número de especies en peligro alto de extinción.</p></li>
-<li><p>El nombre común de las especies vegetales en peligro alto de extinción</p></li>
-<li><p>El peligro de extinción del animal de nombre común «Lince ibérico».</p></li>
-<li><p>El número de parques nacionales.</p></li>
-<li><p>El número de parques en Canarias.</p></li>
-<li><p>Los parques de la provincia de Huelva.</p></li>
-<li><p>Los parques con una extensión mayor de 30.000 hectáreas.</p></li>
-<li><p>El total de presupuestos.</p></li>
-<li><p>El total de ejemplares de Lince ibérico que hay en los parques.</p></li>
-<li><p>El número de especies de interés en Doñana.</p></li>
-<li><p>El número de ejemplares animales de interés en Doñana.</p></li>
-<li><p>El parque de Timanfaya.</p></li>
-<li><p>Los especies animales de interés de Garajonay.</p></li>
-<li><p>Las comunidades autónomas con parques nacionales.</p></li>
-<li><p>Los parques nacionales con menos de veinte especies de interés</p></li>
-<li><p>El número de parque nacionales que sólo tiene como especies de interés animales.</p></li>
-<li><p>Los parques donde hay más especies animales de interés que vegetales</p></li>
+<li><p>El número de especies vegetales.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">especie</span><span class="p">[</span><span class="na">@tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;flora&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las especies vegetales con un peligro alto de extinción.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">especie</span><span class="p">[</span><span class="na">@tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;flora&quot;</span><span class="p">][</span><span class="na">@peligro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;alto&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número de especies animales en peligro bajo de extinción.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">especie</span><span class="p">[</span><span class="na">@tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;fauna&quot;</span><span class="p">][</span><span class="na">@peligro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bajo&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número de especies en peligro alto de extinción.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">especie</span><span class="p">[</span><span class="na">@peligro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;alto&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p>El nombre común de las especies vegetales en peligro alto de extinción</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">especie</span><span class="p">[</span><span class="na">@tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;flora&quot;</span><span class="p">][</span><span class="na">@peligro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;alto&quot;</span><span class="p">]/</span><span class="nt">comun</span>
+</pre></div>
+</div>
+</li>
+<li><p>El peligro de extinción del animal de nombre común «Lince ibérico».</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">especie</span><span class="p">[</span><span class="nt">comun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Lince ibérico&quot;</span><span class="p">]/</span><span class="na">@peligro</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número de parques nacionales.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">parque</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número de parques en Canarias.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">parque</span><span class="p">[</span><span class="na">@ca</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Canarias&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los parques de la provincia de Huelva.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">parque</span><span class="p">[</span><span class="na">@provincia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Huelva&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los parques con una extensión mayor de 30.000 hectáreas.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">parque</span><span class="p">[</span><span class="na">@extension</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">30000</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>El total de presupuestos.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">sum</span><span class="p">(//</span><span class="nt">parque</span><span class="p">/</span><span class="na">@presupuesto</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>El parque de Timanfaya.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">parque</span><span class="p">[</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Timanfaya&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>El total de ejemplares de Lince ibérico que hay en los parques.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">sum</span><span class="p">(//</span><span class="nt">parque</span><span class="p">/</span><span class="nt">especimen</span><span class="p">[</span><span class="na">@ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">especie</span><span class="p">[</span><span class="nt">comun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Lince ibérico&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">]/</span><span class="na">@ejemplares</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número de especies de interés en Doñana.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">parque</span><span class="p">[</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Doñana&quot;</span><span class="p">]/</span><span class="nt">especimen</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número de ejemplares animales de interés en Doñana.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">sum</span><span class="p">(//</span><span class="nt">parque</span><span class="p">[</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Doñana&quot;</span><span class="p">]/</span><span class="nt">especimen</span><span class="p">[</span><span class="na">@ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">especie</span><span class="p">[</span><span class="na">@tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;fauna&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">]/</span><span class="na">@ejemplares</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los especies animales de interés del parque de Garajonay.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">especie</span><span class="p">[</span><span class="na">@tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;fauna&quot;</span><span class="p">][</span><span class="na">@id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">parque</span><span class="p">[</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Garajonay&quot;</span><span class="p">]/</span><span class="nt">especimen</span><span class="p">/</span><span class="na">@ref</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las comunidades autónomas con parques nacionales.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">parque</span><span class="p">/</span><span class="na">@ca</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los parques nacionales con menos de veinte especies de interés</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">parque</span><span class="p">/[</span><span class="nf">count</span><span class="p">(</span><span class="nt">especimen</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">20</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número de parque nacionales que sólo tiene como especies de interés animales.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">parque</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="nt">especimen</span><span class="p">[</span><span class="na">@ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">especie</span><span class="p">[</span><span class="na">@tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;flora&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">])])</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los parques donde hay más especies animales de interés que vegetales</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">parque</span><span class="p">[</span><span class="nf">count</span><span class="p">(</span><span class="nt">especimen</span><span class="p">[</span><span class="na">@ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">especie</span><span class="p">[</span><span class="na">@tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;fauna&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">])</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nf">count</span><span class="p">(</span><span class="nt">especimen</span><span class="p">[</span><span class="na">@ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">especie</span><span class="p">[</span><span class="na">@tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;flora&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">])]</span>
+</pre></div>
+</div>
+</li>
 </ol>
 </li>
 <li><p>Dada la solución propuesta para almacenar la información sobre los
 habitantes de un municipio, determinar la expresión <em>XPath</em> que devuelve:</p>
 <ol class="arabic simple">
-<li><p>El número de habitantes del municipio.</p></li>
-<li><p>Los varones del municipio.</p></li>
-<li><p>Las mujeres del municipio.</p></li>
-<li><p>El número de habitantes de los que se tiene registrado el padre.</p></li>
-<li><p>El número de habitantes de los que se tienen registrados padre y madre.</p></li>
-<li><p>El número de habitantes de los que no se conoce padre ni madre.</p></li>
-<li><p>Los nombres de los habitantes de los que se conoce la madre, pero no el padre.</p></li>
-<li><p>Los varones cazorleños de los que se conoce el padre.</p></li>
-<li><p>Los habitantes que se llaman Perico.</p></li>
-<li><p>El listado de identificadores de personas que son padre.</p></li>
-<li><p>El listado de identificadores de personas que son madre.</p></li>
-<li><p>Los habitantes de padre conocido que han nacido en Cazorla.</p></li>
-<li><p>Los datos de los habitantes cuyo padre tienen identificador h01.</p></li>
-<li><p>Los habitantes que son padre de alguien.</p></li>
-<li><p>Las habitantes que son madre de alguien.</p></li>
-<li><p>Los habitantes que son padre de alguien y, a la vez, tienen padre conocido.</p></li>
-<li><p>¿Hay alguna persona que haya nacido en Villaconejos.</p></li>
-<li><p>El listado de localidades en las que hayan nacido los habitantes que son padre.</p></li>
-<li><p>Los varones que no son padre.</p></li>
-<li><p>Las mujeres que no son madre de ninguna niña.</p></li>
+<li><p>El número de habitantes del municipio.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">persona</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los varones del municipio.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">persona</span><span class="p">[</span><span class="na">@sexo</span><span class="o">=</span><span class="s2">&quot;hombre&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las mujeres del municipio.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">persona</span><span class="p">[</span><span class="na">@sexo</span><span class="o">=</span><span class="s2">&quot;mujer&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número de habitantes de los que se tiene registrado el padre.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">persona</span><span class="p">[</span><span class="na">@padre</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número de habitantes de los que se tienen registrados padre y madre.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">persona</span><span class="p">[</span><span class="na">@padre</span><span class="p">][</span><span class="na">@madre</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>El número de habitantes de los que no se tiene registrado padre ni madre.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">persona</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@padre</span><span class="p">)][</span><span class="nf">not</span><span class="p">(</span><span class="na">@madre</span><span class="p">)]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los nombres de los habitantes de los que se tiene registrada la madre, pero no el padre.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">persona</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@padre</span><span class="p">)][</span><span class="na">@madre</span><span class="p">]/</span><span class="nt">nombre</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los varones cazorleños de los que se tiene registrado el padre.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">persona</span><span class="p">[</span><span class="na">@sexo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hombre&quot;</span><span class="p">][</span><span class="na">@padre</span><span class="p">][</span><span class="nt">origen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Cazorla&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los habitantes que se llaman Perico.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">persona</span><span class="p">[</span><span class="nt">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Perico&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>El listado de identificadores de personas que son padre.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">persona</span><span class="p">/</span><span class="na">@padre</span>
+</pre></div>
+</div>
+</li>
+<li><p>El listado de identificadores de personas que son madre.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">persona</span><span class="p">/</span><span class="na">@madre</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los habitantes de padre registrado que han nacido en Cazorla.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">persona</span><span class="p">[</span><span class="na">@padre</span><span class="p">][</span><span class="nt">origen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Cazorla&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los datos de los habitantes cuyo padre tienen identificador p01.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">persona</span><span class="p">[</span><span class="na">@padre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;p01&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los habitantes que son padre de alguien.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">persona</span><span class="p">[</span><span class="na">@id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">persona</span><span class="p">/</span><span class="na">@padre</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las habitantes que son madre de alguien.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">persona</span><span class="p">[</span><span class="na">@id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">persona</span><span class="p">/</span><span class="na">@madre</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los habitantes que son padre de alguien y, a la vez, tienen padre registrado.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">persona</span><span class="p">[</span><span class="na">@id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">persona</span><span class="p">/</span><span class="na">@padre</span><span class="p">][</span><span class="na">@padre</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>¿Hay alguna persona que haya nacido en Villaconejos.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">boolean</span><span class="p">(//</span><span class="nt">persona</span><span class="p">[</span><span class="nt">origen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Villaconejos&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p>El listado de localidades en las que hayan nacido los habitantes que son padre.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">persona</span><span class="p">[</span><span class="na">@id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">persona</span><span class="p">/</span><span class="na">@padre</span><span class="p">]/</span><span class="nt">origen</span>
+</pre></div>
+</div>
+<div class="sol-oculta admonition note">
+<p class="admonition-title">Nota</p>
+<p>En <em>XPath</em> 2/3 podríamos aññadir <code class="docutils literal notranslate"><span class="pre">fn:distinct-values()</span></code>
+para evitar las repeticiones.</p>
+</div>
+</li>
+<li><p>Los varones que no son padre.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">persona</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">persona</span><span class="p">/</span><span class="na">@padre</span><span class="p">)][</span><span class="na">@sexo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hombre&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las mujeres que no son madre de ninguna niña.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">persona</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">persona</span><span class="p">[</span><span class="na">@sexo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mujer&quot;</span><span class="p">]/</span><span class="na">@madre</span><span class="p">)][</span><span class="na">@sexo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mujer&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
 </ol>
 </li>
 <li><p>Dada la solución propuesta para almacenar la información de un dibujo
 técnico en dos dimensiones, determinar la expresión <em>XPath</em> que selecciona:</p>
 <ol class="arabic simple">
-<li><p>Todas las circunferencias.</p></li>
-<li><p>La cuarta recta.</p></li>
-<li><p>Los centros de las circunferencias.</p></li>
-<li><p>El último punto.</p></li>
-<li><p>El rectángulo con identificador «e32».</p></li>
-<li><p>Todos los radios de las circunferencias.</p></li>
-<li><p>El radio de la circunferencia de identificador «e2».</p></li>
-<li><p>El radio de la quinta circunferencia.</p></li>
-<li><p>Todos los radios de circunferencia mayores de 10.</p></li>
-<li><p>Las unidades en las que se han expresado todos los números.</p></li>
-<li><p>El identificador de la quinta entidad de dibujo.</p></li>
-<li><p>Las rectas cuyo punto inicial (p1) sea el centro de coordenadas (0,0).</p></li>
-<li><p>Las rectas cuyo punto inicial esté en el segundo cuadrante.</p></li>
-<li><p>Los puntos que se encuentren en el cuarto cuadrante.</p></li>
-<li><p>El cuarto de los rectángulos</p></li>
-<li><p>Todas las coordenadas y de todas las rectas.</p></li>
-<li><p>Todas las coordenadas y de todas las entidades de dibujo.</p></li>
-<li><p>Los puntos finales de todos los rectángulos.</p></li>
-<li><p>Todas las rectas cuya coordenada x del punto inicial sea mayor que la coordenada x del punto final.</p></li>
-<li><p>¿Cuántos puntos hay en total?</p></li>
-<li><p>¿Cuántos puntos hay en el primer cuadrante?</p></li>
-<li><p>¿Cuántas circunferencias tienen radio mayor de 20?</p></li>
-<li><p>¿Cuántas entidades de dibujo hay en total?</p></li>
-<li><p>¿Cuántas coordenadas x hay definidas en total?</p></li>
-<li><p>Todas los rectángulos cuyo lado horizontal sea el doble de largo que el vertical.</p></li>
+<li><p>Todas las circunferencias.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">circunferencia</span>
+</pre></div>
+</div>
+</li>
+<li><p>La cuarta recta.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">recta</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los centros de las circunferencias.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">circunferencia</span><span class="p">/</span><span class="na">@x</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">//</span><span class="nt">cicunferencia</span><span class="p">/</span><span class="na">@y</span>
+</pre></div>
+</div>
+</li>
+<li><p>El último punto.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">punto</span><span class="p">[</span><span class="nf">last</span><span class="p">()]</span>
+</pre></div>
+</div>
+</li>
+<li><p>El rectángulo con identificador «e32».</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">rectangulo</span><span class="p">[</span><span class="na">@id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;e32&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Todos los radios de las circunferencias.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">circunferencia</span><span class="p">/</span><span class="na">@r</span>
+</pre></div>
+</div>
+</li>
+<li><p>El radio de la circunferencia de identificador «e2».</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">circunferencia</span><span class="p">[</span><span class="na">@id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;e32&#39;</span><span class="p">]/</span><span class="na">@r</span>
+</pre></div>
+</div>
+</li>
+<li><p>El radio de la quinta circunferencia.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">circunferencia</span><span class="p">[</span><span class="mi">5</span><span class="p">]/</span><span class="na">@r</span>
+</pre></div>
+</div>
+</li>
+<li><p>Todos los radios de circunferencia mayores de 10.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">circunferencia</span><span class="p">/</span><span class="na">@r</span><span class="p">[.</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las unidades en las que se han expresado todos los números.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">grafico</span><span class="p">/</span><span class="na">@unidad</span>
+</pre></div>
+</div>
+</li>
+<li><p>El identificador de la quinta entidad de dibujo.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">grafico</span><span class="p">/</span><span class="nt">*</span><span class="p">[</span><span class="mi">5</span><span class="p">]/</span><span class="na">@id</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las rectas cuyo punto inicial sea el centro de coordenadas (0,0).</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">recta</span><span class="p">[</span><span class="na">@x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">][</span><span class="na">@y1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las rectas cuyo punto inicial esté en el segundo cuadrante.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">recta</span><span class="p">[</span><span class="na">@x1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">][</span><span class="na">@y1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los puntos que se encuentren en el cuarto cuadrante.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">recta</span><span class="p">[</span><span class="na">@x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">][</span><span class="na">@y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>El cuarto de los rectángulos</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">rectangulo</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Todas las coordenadas y de todas las rectas.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">recta</span><span class="p">/</span><span class="na">@y</span>
+</pre></div>
+</div>
+</li>
+<li><p>Todas las coordenadas y de todas las entidades de dibujo.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">grafico</span><span class="p">/</span><span class="nt">*</span><span class="p">/</span><span class="na">@y</span>
+</pre></div>
+</div>
+</li>
+<li><p>Los puntos finales de todos los rectángulos.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">rectangulo</span><span class="p">/</span><span class="na">@x2</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">//</span><span class="nt">rectangulo</span><span class="p">/</span><span class="na">@y2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Todas las rectas cuya coordenada x del punto inicial sea mayor que la coordenada x del punto final.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">recta</span><span class="p">[</span><span class="na">@x1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="na">@x2</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>¿Cuántos puntos hay en total?</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">punto</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>¿Cuántos puntos hay en el primer cuadrante?</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">punto</span><span class="p">[</span><span class="na">@x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">][</span><span class="na">@y</span><span class="w"> </span><span class="o">&gt;</span><span class="w">  </span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p>¿Cuántas circunferencias tienen radio mayor de 20?</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">circunferencia</span><span class="p">[</span><span class="na">@r</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">20</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p>¿Cuántas entidades de dibujo hay en total?</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(/</span><span class="nt">grafico</span><span class="p">/</span><span class="nt">*</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>¿Cuántas coordenadas x hay definidas en total?</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(/</span><span class="nt">grafico</span><span class="p">/</span><span class="nt">*</span><span class="p">/</span><span class="na">@x</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">/</span><span class="nt">grafico</span><span class="p">/</span><span class="nt">*</span><span class="p">/</span><span class="na">@x1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">/</span><span class="nt">grafico</span><span class="p">/</span><span class="nt">*</span><span class="p">/</span><span class="na">@x2</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Todas los rectángulos cuyo lado horizontal sea el doble de largo que el vertical.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>//rectangulo[(@x2-@x1)*(@x2-@x1) = 4(@y2-@y1)*(@y2-@y1)]
+</pre></div>
+</div>
+</li>
 </ol>
 </li>
 </ol>

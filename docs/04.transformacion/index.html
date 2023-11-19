@@ -944,6 +944,115 @@ modificación. Esto, no obstante, no es algo que no podamos resolver con
 </div>
 </section>
 </section>
+<section id="ejercicios-resueltos">
+<h3><span class="section-number">4.1.7. </span>Ejercicios resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Para ilustrar el uso de <em>XQuery</em> tomemos el <a class="reference internal" href="../01.intro/02b.marcas.html#xml-resueltos"><span class="std std-ref">primer ejercicio XML resuelto
+sobre recetas</span></a>:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+XML propuesto<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;recetas&gt;</span>
+<span class="w">   </span><span class="cm">&lt;!-- El tiempo está en minutos --&gt;</span>
+<span class="w">   </span><span class="nt">&lt;receta</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;r01&quot;</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;ensalada&quot;</span><span class="w"> </span><span class="na">preparacion=</span><span class="s">&quot;5&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;tomate&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;pieza&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;cebolla&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;pieza&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;.25&quot;</span><span class="w"> </span><span class="nt">/&gt;</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;lechuga&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;gramo&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;150&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;sal&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;gramo&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;vinagre&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;cc&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;3&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;aceite&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;cc&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;6&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/receta&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;receta</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;r02&quot;</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;bocadillo de anchoas&quot;</span><span class="w"> </span><span class="na">preparacion=</span><span class="s">&quot;4&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;pan&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;pieza&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;anchoa&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;pieza&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;3&quot;</span><span class="w"> </span><span class="nt">/&gt;</span><span class="w"> </span>
+<span class="w">   </span><span class="nt">&lt;/receta&gt;</span>
+
+<span class="w">   </span><span class="cm">&lt;!-- Más recetas --&gt;</span>
+<span class="nt">&lt;/recetas&gt;</span>
+</pre></div>
+</div>
+</div>
+</details><ol class="loweralpha">
+<li><p>Obtener un listado de texto ordenado alfabéticamente con las recetas de más
+de tres ingredientes:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recetas de cocina:
+  1. ensalada (5 minutos)
+     * tomate (2 pieza)
+     * cebolla (.25 pieza)
+     * lechuga (150 gramo)
+     * sal (2 gramo)
+     * vinagre (3 cc)
+     * aceite (6 cc)
+  2. etc...
+</pre></div>
+</div>
+<p>Este listado se puede obtener con el siguiente código:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+XQuery propuesto<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+<span class="w">   </span><span class="s2">&quot;Recetas de cocina:&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">receta</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">//</span><span class="nt">receta</span>
+<span class="w">   </span><span class="c">(: Sólo mostramos las recetas complicadas: +3 ingredietes :)</span>
+<span class="w">   </span><span class="k">where</span><span class="w"> </span><span class="nf">count</span><span class="p">(</span><span class="nv">$</span><span class="n">receta</span><span class="p">/</span><span class="nt">ingrediente</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span>
+<span class="w">   </span><span class="k">order by</span><span class="w"> </span><span class="nv">$</span><span class="n">receta</span><span class="p">/</span><span class="na">@nombre</span>
+<span class="w">   </span><span class="k">count</span><span class="w"> </span><span class="nv">$</span><span class="n">num</span>
+<span class="w">   </span><span class="k">return</span>
+<span class="w">      </span><span class="p">(</span>
+<span class="w">       </span><span class="s2">&quot;  &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">num</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;. &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">receta</span><span class="p">/</span><span class="na">@nombre</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot; (&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">receta</span><span class="p">/</span><span class="na">@preparacion</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot; minutos)&quot;</span><span class="p">,</span>
+<span class="w">       </span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">ingrediente</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nv">$</span><span class="n">receta</span><span class="p">/</span><span class="nt">ingrediente</span>
+<span class="w">       </span><span class="k">return</span>
+<span class="w">         </span><span class="s2">&quot;     * &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">ingrediente</span><span class="p">/</span><span class="na">@nombre</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot; (&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">ingrediente</span><span class="p">/</span><span class="na">@cantidad</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">ingrediente</span><span class="p">/</span><span class="na">@unidad</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;)&quot;</span>
+<span class="w">      </span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details></li>
+<li><p>Generar otro <abbr title="eXtensible  Markup Language">XML</abbr> idéntico en que los atributos <em>nombre</em> y <em>cantidad</em> de
+cada ingrediente, se conviertan en nodos elemento:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+XQuery propuesto<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>element {fn:local-name(/*)} {(
+   /*/@*,
+   for $receta in //receta
+   return
+      element receta {
+         $receta/@*,
+         for $ingrediente in $receta/ingrediente
+         return
+            (: En vez de reconstruir de 0 un elemento ingrediente
+               tomamos una copia e insertamos y eliminamos :)
+            copy $i := $ingrediente
+            modify (
+               insert node element nombre {data($i/@nombre)} into $i,
+               insert node element cantidad {data($i/@cantidad)} into $i,
+               delete node $i/@nombre,
+               delete node $i/@cantidad
+            )
+            return $i
+      }
+)}
+</pre></div>
+</div>
+</div>
+</details></li>
+</ol>
+</section>
 </section>
 <section id="xslt">
 <h2><span class="section-number">4.2. </span><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr><a class="headerlink" href="#xslt" title="Enlace permanente a este encabezado">¶</a></h2>
@@ -1095,6 +1204,7 @@ generar una salida XML</span></a>.</p>
 <li><a class="reference internal" href="#modificacion-en-memoria">4.1.6.2. Modificación en memoria</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#ejercicios-resueltos">4.1.7. Ejercicios resueltos</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#xslt">4.2. <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>

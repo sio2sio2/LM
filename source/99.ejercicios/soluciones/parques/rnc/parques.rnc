@@ -17,7 +17,9 @@ parque = element parque { especimen+,
    attribute id { xsd:ID { pattern="p\d+" } },
    attribute nombre { text },
    attribute provincia { text },
-   attribute ca { text }
+   attribute ca { text },
+   attribute extension { xsd:positiveInteger },
+   attribute presupuesto { xsd:decimal }
 }
 
 especimen = element especimen { empty,

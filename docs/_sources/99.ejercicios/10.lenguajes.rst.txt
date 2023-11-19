@@ -71,6 +71,7 @@ uno de ellos cree versiones |JSON|, |YAML| y |XML|.
       | :download:`YAML </99.ejercicios/soluciones/facturas/facturas.yaml>`
       | :download:`DTD </99.ejercicios/soluciones/facturas/dtd/facturas.dtd>`
       | :download:`RNC </99.ejercicios/soluciones/facturas/rnc/facturas.rnc>`
+      | :download:`JSON Schema </99.ejercicios/soluciones/facturas/facturas.schema.json>`
 
 #. Diseñe un documento para almacenar la información sobre los préstamos de
    libros que se realizan en una biblioteca:
@@ -123,6 +124,7 @@ uno de ellos cree versiones |JSON|, |YAML| y |XML|.
       | :download:`YAML </99.ejercicios/soluciones/cochesclientes/concesionario.yaml>`
       | :download:`DTD </99.ejercicios/soluciones/cochesclientes/dtd/concesionario.dtd>`
       | :download:`RNC </99.ejercicios/soluciones/cochesclientes/rnc/concesionario.rnc>`
+      | :download:`JSON Schema </99.ejercicios/soluciones/cochesclientes/jschema/concesionario.schema.json>`
 
 
 #. Diseñe un documento que recoja la información referente a los Parques
@@ -183,6 +185,7 @@ uno de ellos cree versiones |JSON|, |YAML| y |XML|.
       | :download:`YAML </99.ejercicios/soluciones/grafico/grafico.yaml>`
       | :download:`DTD </99.ejercicios/soluciones/grafico/dtd/grafico.dtd>`
       | :download:`RNC </99.ejercicios/soluciones/grafico/rnc/grafico.rnc>`
+      | :download:`JSON Schema </99.ejercicios/soluciones/grafico/jschema/grafico.schema.json>`
 
 
 .. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`

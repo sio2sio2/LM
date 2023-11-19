@@ -539,7 +539,7 @@ sea cual sea el tipo del nodo. Ahora bien, ¿cuáles son específicas?
 .. _json-schema-map:
 
 :jsonschema:`object`
-   El subesquema que describe un mapa es el que entraña más dificulta. La
+   El subesquema que describe un mapa es el que entraña más dificultad. La
    propiedad fundamental es:
 
    .. _json-schema-properties:
@@ -578,9 +578,10 @@ sea cual sea el tipo del nodo. Ahora bien, ¿cuáles son específicas?
          }
 
       Como puede apreciarse la claves de ``properties`` definen las claves del
-      propio mapa a definir y los valores el subquema que define el nodo valor.
-      De los nodos que representan las claves, no hay en principio mucho que
-      definir, puesto que deben ser cadenas, así que no hay esquema para ellos.
+      propio mapa a definir y los valores el subesquema que define el nodo
+      valor. De los nodos que representan las claves, no hay en principio mucho
+      que definir, puesto que deben ser cadenas, así que no hay esquema para
+      ellos.
 
    La definición de ``properties``, sin embargo, no obliga a que las únicas
    claves posibles sean las definidas ni a que aparezcan todas. Para ello,
@@ -589,7 +590,7 @@ sea cual sea el tipo del nodo. Ahora bien, ¿cuáles son específicas?
    .. _json-schema-required:
 
    ``required``
-      Lista la propiedades que son obligatorias. Por ejemplo:
+      Lista las propiedades que son obligatorias. Por ejemplo:
 
       .. code-block:: json
 
@@ -634,7 +635,7 @@ sea cual sea el tipo del nodo. Ahora bien, ¿cuáles son específicas?
             "additionalProperties": {"type": "string"}
          }
 
-      provocaría que los valores de las propiedades no definidas expresameente
+      provocaría que los valores de las propiedades no definidas expresamente
       sólo pudieran ser cadenas. Si el valor, en vez de un subesquema, es
       ``false``, **no se permitirá ninguna propiedad adicional**.
 
@@ -643,7 +644,7 @@ sea cual sea el tipo del nodo. Ahora bien, ¿cuáles son específicas?
    ``patternProperties``
       Funciona como :ref:`properties  <json-schema-properties>`, pero en vez de
       definir propiedades con un nombre concreto, define propiedades cuya clave
-      cumple con un patron (una `expresión regular`_).  Por ejemplo, este
+      cumple con un patrón (una `expresión regular`_).  Por ejemplo, este
       esquema:
 
       .. code-block:: json
@@ -671,13 +672,14 @@ sea cual sea el tipo del nodo. Ahora bien, ¿cuáles son específicas?
    ``unevaluatedProperties``
       no entraremos a tratarla extensamente, pero básicamente viene a
       complementar a :ref:`additionalProperties
-      <json-schema-additionalproperties>`. Esta segunda sólo es afectada por las
+      <json-schema-additionalproperties>`, la cual sólo es afectada por las
       propiedades enumeradas dentro de :ref:`properties
       <json-schema-properties>` o a las que se ajustan en los patrones incluidos
-      en :ref:`patternProperties <json-schema-patternproperties>`. En cambio, la
-      segunda es capaz de comprobar propiedades que se encuentran dentro de
-      :ref:`esquemas condicionales <json-schema-condicional>` o en
-      :ref:`esquemas referenciados <json-schema-ref>`. Por ejemplo:
+      en :ref:`patternProperties <json-schema-patternproperties>`. En cambio,
+      ``unevaluatedProperties`` es capaz de comprobar propiedades que se
+      encuentran dentro de :ref:`esquemas condicionales
+      <json-schema-condicional>` o en :ref:`esquemas referenciados
+      <json-schema-ref>`. Por ejemplo:
 
       .. code-block:: json
 
@@ -724,7 +726,7 @@ sea cual sea el tipo del nodo. Ahora bien, ¿cuáles son específicas?
    ``dependentRequired``
       define qué propiedades deben existir en el objeto para que otra pueda
       aparecer. Por ejemplo, imaginemos que queremos que ``casado`` aparezca
-      sólo si ``edad`` se incluyo en el mapa (que en principio no es obligatoria).
+      sólo si ``edad`` se incluyó en el mapa (que en principio no es obligatoria).
       En ese caso, habría que definir el esquema así:
 
       .. code-block:: json
@@ -841,7 +843,7 @@ Su esquema, a estas alturas, no debería entrañar ninguna dificultad:
       "uniqueItems": true
    }
 
-Como puede apreciarse, el subesquema que describa a la persona está anidado
+Como puede apreciarse, el subesquema que describe a la persona está anidado
 dentro de la definición de la secuencia, concretamente, en su propiedad
 ``properties``. Como el esquema completo es sencillo, no hay problemas. Sin
 embargo, en esquemas más complejos con varios niveles de anidación, podemos
@@ -962,7 +964,7 @@ definidos en otra parte del archivo. Con este fin existe la propiedad
             "type": "array",
             "title": "Ejemplo de referencia",
             "description": "Un porrón de personas dentro de una secuencia",
-            "items": { "$ref": "#$defs/persona" },
+            "items": { "$ref": "#/$defs/persona" },
             "uniqueItems": true,
 
             "$defs": {
@@ -1002,7 +1004,7 @@ modos de crearlos:
 .. _json-schema-if:
 
 `if/then/else <https://json-schema.org/understanding-json-schema/reference/conditionals.html#if-then-else>`_
-   Estas propiedades funcionen de forma semejante a como lo hace la estructura
+   Estas propiedades funcionan de forma semejante a como lo hace la estructura
    condicional en los lenguajes de programación:
 
    #. El valor ``if`` es un esquema que se evalúa.
@@ -1041,11 +1043,11 @@ modos de crearlos:
          }
       }
 
-   .. note:: Puede probar a rescribir con estas propiedades los requisitos de presencia de
-      ``casillero``, ``departamento`` y ``sustituye`` del :ref:`ejemplo inicial
-      <json-schema-ejemplo>`.
+   .. note:: Puede probar a reescribir con estas propiedades los requisitos de
+      presencia de ``casillero``, ``departamento`` y ``sustituye`` del
+      :ref:`ejemplo inicial <json-schema-ejemplo>`.
 
-.. _json-schema-oneof:
+   .. _json-schema-oneof:
 
 `oneOf <https://json-schema.org/understanding-json-schema/reference/combining.html#allof>`_
    El esquema es válido sólo si uno de los propuestos en la lista es válido. Por ejemplo:
@@ -1102,7 +1104,7 @@ modos de crearlos:
          ]
       }
 
-   En este caso, serán válidos todos los enteros hasta **10** y cualquier múltiple
+   En este caso, serán válidos todos los enteros hasta **10** y cualquier múltiplo
    de 5. Sin embargo, si hubiéramos construido la combinación con :ref:`oneOf
    <json-schema-oneof>`, **0**, **5** y **10** incumplirían el esquema, porque
    cumplen ambas condiciones y sólo puede cumplirse una.
@@ -1110,7 +1112,7 @@ modos de crearlos:
 .. _json-schema-allof:
 
 `allOf <https://json-schema.org/understanding-json-schema/reference/combining.html#allof>`_
-   Como las dos anterior pero obliga a que se cumplan todos los esquemas
+   Como las dos anteriores, pero obliga a que se cumplan todos los esquemas
    incluidos en la lista. Por tanto:
 
    .. code-block:: json
@@ -1128,7 +1130,7 @@ modos de crearlos:
 .. _json-schema-not:
 
 `not <https://json-schema.org/understanding-json-schema/reference/combining.html#not>`_
-   Invierte la validez del esquema, es decir, el valor será valido, si el
+   Invierte la validez del esquema, es decir, el valor será válido, si el
    esquema negado es inválido para el valor. Por ejemplo:
 
    .. code-block:: json

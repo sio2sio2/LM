@@ -1015,6 +1015,47 @@ modificación. Esto, no obstante, no es algo que no podamos resolver con
 .. XQuery:
    https://www.ticarte.com/contenido/ejercicios-practicos-de-xquery
 
+Ejercicios resueltos
+====================
+Para ilustrar el uso de *XQuery* tomemos el :ref:`primer ejercicio XML resuelto
+sobre recetas <xml-resueltos>`:
+
+.. dropdown:: XML propuesto
+
+   .. literalinclude:: /01.intro/files/ejxml1.recetas.xml
+      :language: xml
+
+
+a. Obtener un listado de texto ordenado alfabéticamente con las recetas de más
+   de tres ingredientes:
+
+   .. code-block:: none
+
+      Recetas de cocina:
+        1. ensalada (5 minutos)
+           * tomate (2 pieza)
+           * cebolla (.25 pieza)
+           * lechuga (150 gramo)
+           * sal (2 gramo)
+           * vinagre (3 cc)
+           * aceite (6 cc)
+        2. etc...
+
+   Este listado se puede obtener con el siguiente código:
+
+   .. dropdown:: XQuery propuesto
+
+      .. literalinclude:: files/recetas-txt.xq
+         :language: xquery
+
+#. Generar otro |XML| idéntico en que los atributos *nombre* y *cantidad* de
+   cada ingrediente, se conviertan en nodos elemento:
+
+   .. dropdown:: XQuery propuesto
+
+      .. literalinclude:: files/recetas-xml.xq
+         :language: xquery
+
 |XSLT|
 ******
 Un estudio consistente de este lenguaje de transformación es demasiado amplio

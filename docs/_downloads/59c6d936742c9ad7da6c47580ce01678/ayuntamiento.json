@@ -12,6 +12,7 @@
             "piso": 1,
             "letra": "A"
          },
+         "sexo": "hombre",
          "tlfo": 959010203,
          "origen": "Lepe"
       },
@@ -26,6 +27,7 @@
             "piso": 1,
             "letra": "A"
          },
+         "sexo": "mujer",
          "tlfo": 959010203,
          "origen": "Isla Cristina"
       },
@@ -40,6 +42,7 @@
             "piso": 1,
             "letra": "A"
          },
+         "sexo": "hombre",
          "tlfo": 959010203,
          "origen": "Isla Cristina",
          "padre": 1,

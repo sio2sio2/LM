@@ -22,6 +22,8 @@
          "nombre": "Doñana",
          "provincia": "Huelva",
          "ca": "Andalucía",
+         "extension": 10000,
+         "presupuesto": 100,
          "especimenes": [
             {"ref": 1, "ejemplares": 150},
             {"ref": 2}

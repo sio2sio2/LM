@@ -13,7 +13,7 @@
 
    <!-- Mas especies -->
 
-   <parque id="p01" nombre="Doñana" provincia="Huelva" ca="Andalucía">
+   <parque id="p01" nombre="Doñana" provincia="Huelva" ca="Andalucía" extension="10000" presupuesto="100">
       <especimen ref="e01" ejemplares="150" />
       <especimen ref="e02" />
       <!-- Más especímenes -->

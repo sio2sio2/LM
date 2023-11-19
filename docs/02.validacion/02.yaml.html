@@ -682,7 +682,7 @@ el número <strong>32</strong>).</p>
 </dd>
 </dl>
 <dl id="json-schema-map">
-<dt><a class="reference external" href="https://json-schema.org/understanding-json-schema/reference/object.html">object</a></dt><dd><p>El subesquema que describe un mapa es el que entraña más dificulta. La
+<dt><a class="reference external" href="https://json-schema.org/understanding-json-schema/reference/object.html">object</a></dt><dd><p>El subesquema que describe un mapa es el que entraña más dificultad. La
 propiedad fundamental es:</p>
 <dl id="json-schema-properties">
 <dt><code class="docutils literal notranslate"><span class="pre">properties</span></code></dt><dd><p>que permite describir las propiedades que pueden encontrarse en el objeto.
@@ -714,16 +714,17 @@ Por ejemplo, un mapa con este aspecto:</p>
 </pre></div>
 </div>
 <p>Como puede apreciarse la claves de <code class="docutils literal notranslate"><span class="pre">properties</span></code> definen las claves del
-propio mapa a definir y los valores el subquema que define el nodo valor.
-De los nodos que representan las claves, no hay en principio mucho que
-definir, puesto que deben ser cadenas, así que no hay esquema para ellos.</p>
+propio mapa a definir y los valores el subesquema que define el nodo
+valor. De los nodos que representan las claves, no hay en principio mucho
+que definir, puesto que deben ser cadenas, así que no hay esquema para
+ellos.</p>
 </dd>
 </dl>
 <p>La definición de <code class="docutils literal notranslate"><span class="pre">properties</span></code>, sin embargo, no obliga a que las únicas
 claves posibles sean las definidas ni a que aparezcan todas. Para ello,
 podemos añadir otras propiedades:</p>
 <dl id="json-schema-required">
-<dt><code class="docutils literal notranslate"><span class="pre">required</span></code></dt><dd><p>Lista la propiedades que son obligatorias. Por ejemplo:</p>
+<dt><code class="docutils literal notranslate"><span class="pre">required</span></code></dt><dd><p>Lista las propiedades que son obligatorias. Por ejemplo:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
 <span class="w">   </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -762,7 +763,7 @@ listadas en <a class="reference internal" href="#json-schema-properties"><span c
 </span><span class="p">}</span>
 </pre></div>
 </div>
-<p>provocaría que los valores de las propiedades no definidas expresameente
+<p>provocaría que los valores de las propiedades no definidas expresamente
 sólo pudieran ser cadenas. Si el valor, en vez de un subesquema, es
 <code class="docutils literal notranslate"><span class="pre">false</span></code>, <strong>no se permitirá ninguna propiedad adicional</strong>.</p>
 </dd>
@@ -770,7 +771,7 @@ sólo pudieran ser cadenas. Si el valor, en vez de un subesquema, es
 <dl id="json-schema-patternproperties">
 <dt><code class="docutils literal notranslate"><span class="pre">patternProperties</span></code></dt><dd><p>Funciona como <a class="reference internal" href="#json-schema-properties"><span class="std std-ref">properties</span></a>, pero en vez de
 definir propiedades con un nombre concreto, define propiedades cuya clave
-cumple con un patron (una <a class="reference external" href="https://json-schema.org/understanding-json-schema/reference/regular_expressions.html">expresión regular</a>).  Por ejemplo, este
+cumple con un patrón (una <a class="reference external" href="https://json-schema.org/understanding-json-schema/reference/regular_expressions.html">expresión regular</a>).  Por ejemplo, este
 esquema:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
@@ -793,12 +794,11 @@ cualquier clave que empiece por «<em>s-</em>» y cualquier clave que empiece po
 </dl>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">unevaluatedProperties</span></code></dt><dd><p>no entraremos a tratarla extensamente, pero básicamente viene a
-complementar a <a class="reference internal" href="#json-schema-additionalproperties"><span class="std std-ref">additionalProperties</span></a>. Esta segunda sólo es afectada por las
+complementar a <a class="reference internal" href="#json-schema-additionalproperties"><span class="std std-ref">additionalProperties</span></a>, la cual sólo es afectada por las
 propiedades enumeradas dentro de <a class="reference internal" href="#json-schema-properties"><span class="std std-ref">properties</span></a> o a las que se ajustan en los patrones incluidos
-en <a class="reference internal" href="#json-schema-patternproperties"><span class="std std-ref">patternProperties</span></a>. En cambio, la
-segunda es capaz de comprobar propiedades que se encuentran dentro de
-<a class="reference internal" href="#json-schema-condicional"><span class="std std-ref">esquemas condicionales</span></a> o en
-<a class="reference internal" href="#json-schema-ref"><span class="std std-ref">esquemas referenciados</span></a>. Por ejemplo:</p>
+en <a class="reference internal" href="#json-schema-patternproperties"><span class="std std-ref">patternProperties</span></a>. En cambio,
+<code class="docutils literal notranslate"><span class="pre">unevaluatedProperties</span></code> es capaz de comprobar propiedades que se
+encuentran dentro de <a class="reference internal" href="#json-schema-condicional"><span class="std std-ref">esquemas condicionales</span></a> o en <a class="reference internal" href="#json-schema-ref"><span class="std std-ref">esquemas referenciados</span></a>. Por ejemplo:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
 <span class="w">   </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -839,7 +839,7 @@ objeto.</p>
 <dl id="json-schema-dependentrequired">
 <dt><code class="docutils literal notranslate"><span class="pre">dependentRequired</span></code></dt><dd><p>define qué propiedades deben existir en el objeto para que otra pueda
 aparecer. Por ejemplo, imaginemos que queremos que <code class="docutils literal notranslate"><span class="pre">casado</span></code> aparezca
-sólo si <code class="docutils literal notranslate"><span class="pre">edad</span></code> se incluyo en el mapa (que en principio no es obligatoria).
+sólo si <code class="docutils literal notranslate"><span class="pre">edad</span></code> se incluyó en el mapa (que en principio no es obligatoria).
 En ese caso, habría que definir el esquema así:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
@@ -951,7 +951,7 @@ mapas. Ilustrémoslo con un <abbr title="JavaScript Object Notation">JSON</abbr>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Como puede apreciarse, el subesquema que describa a la persona está anidado
+<p>Como puede apreciarse, el subesquema que describe a la persona está anidado
 dentro de la definición de la secuencia, concretamente, en su propiedad
 <code class="docutils literal notranslate"><span class="pre">properties</span></code>. Como el esquema completo es sencillo, no hay problemas. Sin
 embargo, en esquemas más complejos con varios niveles de anidación, podemos
@@ -1057,7 +1057,7 @@ Esquema con referencia interna<div class="sd-summary-down docutils">
 <span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">,</span>
 <span class="w">   </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ejemplo de referencia&quot;</span><span class="p">,</span>
 <span class="w">   </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Un porrón de personas dentro de una secuencia&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;$ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#$defs/persona&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">   </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;$ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#/$defs/persona&quot;</span><span class="w"> </span><span class="p">},</span>
 <span class="w">   </span><span class="nt">&quot;uniqueItems&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 
 <span class="w">   </span><span class="nt">&quot;$defs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1097,7 +1097,7 @@ condicionales: <a class="reference internal" href="#json-schema-dependentrequire
 <a class="reference internal" href="#json-schema-dependentschemas"><span class="std std-ref">dependentSchemas</span></a>. Hay, si embargo, otros
 modos de crearlos:</p>
 <dl id="json-schema-if">
-<dt><a class="reference external" href="https://json-schema.org/understanding-json-schema/reference/conditionals.html#if-then-else">if/then/else</a></dt><dd><p>Estas propiedades funcionen de forma semejante a como lo hace la estructura
+<dt><a class="reference external" href="https://json-schema.org/understanding-json-schema/reference/conditionals.html#if-then-else">if/then/else</a></dt><dd><p>Estas propiedades funcionan de forma semejante a como lo hace la estructura
 condicional en los lenguajes de programación:</p>
 <ol class="arabic simple">
 <li><p>El valor <code class="docutils literal notranslate"><span class="pre">if</span></code> es un esquema que se evalúa.</p></li>
@@ -1134,12 +1134,11 @@ debe resultar verdadero.</p></li>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Puede probar a rescribir con estas propiedades los requisitos de presencia de
-<code class="docutils literal notranslate"><span class="pre">casillero</span></code>, <code class="docutils literal notranslate"><span class="pre">departamento</span></code> y <code class="docutils literal notranslate"><span class="pre">sustituye</span></code> del <a class="reference internal" href="#json-schema-ejemplo"><span class="std std-ref">ejemplo inicial</span></a>.</p>
+<p>Puede probar a reescribir con estas propiedades los requisitos de
+presencia de <code class="docutils literal notranslate"><span class="pre">casillero</span></code>, <code class="docutils literal notranslate"><span class="pre">departamento</span></code> y <code class="docutils literal notranslate"><span class="pre">sustituye</span></code> del
+<a class="reference internal" href="#json-schema-ejemplo"><span class="std std-ref">ejemplo inicial</span></a>.</p>
 </div>
 </dd>
-</dl>
-<dl id="json-schema-oneof">
 <dt><a class="reference external" href="https://json-schema.org/understanding-json-schema/reference/combining.html#allof">oneOf</a></dt><dd><p>El esquema es válido sólo si uno de los propuestos en la lista es válido. Por ejemplo:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">&quot;oneOf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -1185,13 +1184,13 @@ que se cumpla uno, pero no necesariamente uno. Por ejemplo:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>En este caso, serán válidos todos los enteros hasta <strong>10</strong> y cualquier múltiple
+<p>En este caso, serán válidos todos los enteros hasta <strong>10</strong> y cualquier múltiplo
 de 5. Sin embargo, si hubiéramos construido la combinación con <a class="reference internal" href="#json-schema-oneof"><span class="std std-ref">oneOf</span></a>, <strong>0</strong>, <strong>5</strong> y <strong>10</strong> incumplirían el esquema, porque
 cumplen ambas condiciones y sólo puede cumplirse una.</p>
 </dd>
 </dl>
 <dl id="json-schema-allof">
-<dt><a class="reference external" href="https://json-schema.org/understanding-json-schema/reference/combining.html#allof">allOf</a></dt><dd><p>Como las dos anterior pero obliga a que se cumplan todos los esquemas
+<dt><a class="reference external" href="https://json-schema.org/understanding-json-schema/reference/combining.html#allof">allOf</a></dt><dd><p>Como las dos anteriores, pero obliga a que se cumplan todos los esquemas
 incluidos en la lista. Por tanto:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span>
@@ -1206,7 +1205,7 @@ incluidos en la lista. Por tanto:</p>
 </dd>
 </dl>
 <dl id="json-schema-not">
-<dt><a class="reference external" href="https://json-schema.org/understanding-json-schema/reference/combining.html#not">not</a></dt><dd><p>Invierte la validez del esquema, es decir, el valor será valido, si el
+<dt><a class="reference external" href="https://json-schema.org/understanding-json-schema/reference/combining.html#not">not</a></dt><dd><p>Invierte la validez del esquema, es decir, el valor será válido, si el
 esquema negado es inválido para el valor. Por ejemplo:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">&quot;not&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>

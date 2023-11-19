@@ -109,7 +109,7 @@ declaración:
 
 Ejemplo
 =======
-Antes de entrar en harina, no esta de más ver qué aspecto tiene un |DTD|. Para
+Antes de entrar en harina, no está de más ver qué aspecto tiene un |DTD|. Para
 ello tomemos el :ref:`documento XML usado como ejemplo introductorio
 <xml-ejemplo>`, aunque con una ligera variación\ [#]_ (descárguelo de :download:`aquí
 <files/casilleros_v2.xml>`):
@@ -434,7 +434,7 @@ valor predeterminado del atributo, para lo cual hay cuatro posibilidades:
    en el |XML|, su valor queda indefinido.
 
 #. ``#REQUIRED``, que significa que no hay valor predeterminado, pero que
-   obligaritoriamente se necesita un valor, por lo que forzosamente habrá
+   obligatoriamente se necesita un valor, por lo que forzosamente habrá
    que incluir el atributo en el |XML|.
 
 #. ``#FIXED``, que significa que el valor obligatoriamente debe ser el que se
@@ -486,7 +486,7 @@ Las entidades generales pueden ser:
    que son aquellas de las que se puede hacer sustitución. Como |XML| es texto
    plano, sólo son procesables aquellas cuando la sustitución es texto plano.
    Pueden ser **internas** en que se escribe directamente cuál debe ser la
-   sutitución::
+   sustitución::
 
       <!ENTITY ING "Inglés">
 
@@ -613,7 +613,7 @@ inconvenientes.
    * No tiene soporte para tipos de datos, por lo que la definición del contenido
      de elementos de texto y atributos es muy vaga.
 
-   * La definición de cada elemento no depende de su contexto (o sea, de cual sea
+   * La definición de cada elemento no depende de su contexto (o sea, de cuál sea
      su padre), por lo que no puede haber dos elementos de distinto padre con igual
      nombre, si su definición es diferente.
 
