@@ -174,6 +174,30 @@
 
             //factura[not(item[@producto != //producto[@iva = "normal"]/@codigo])]
 
+   #. [XPath 2/3] El importe total de la primera factura sin tener en cuenta el descuento.
+
+      .. rst-class:: sol-oculta
+
+         .. code-block:: xquery
+
+            sum(//factura[1]/item/(@precio * @cantidad))
+
+   #. [XPath 2/3] El importe total de cada factura sin tener en cuenta el descuento.
+
+      .. rst-class:: sol-oculta
+
+         .. code-block:: xquery
+
+            //factura/sum(item/(@precio * @cantidad))
+
+   #. [XPath 2/3] El importe total de cada factura.
+
+      .. rst-class:: sol-oculta
+
+         .. code-block:: xquery
+
+            //factura/((1 - (if (@descuento) then @descuento else 0) div 100)*sum(item/(@precio * @cantidad)))
+
 #. Dada la solución propuesta para almacenar la información sobre los libros y préstamos en una biblioteca,
    determinar la expresión *XPath* que devuelve:
 

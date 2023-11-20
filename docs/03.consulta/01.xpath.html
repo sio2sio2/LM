@@ -2245,6 +2245,21 @@ de que todos los productos que se venden, se venden por unidades.</p>
 </pre></div>
 </div>
 </li>
+<li><p>[XPath 2/3] El importe total de la primera factura sin tener en cuenta el descuento.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">sum</span><span class="p">(//</span><span class="nt">factura</span><span class="p">[</span><span class="mi">1</span><span class="p">]/</span><span class="nt">item</span><span class="p">/(</span><span class="na">@precio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="na">@cantidad</span><span class="p">))</span>
+</pre></div>
+</div>
+</li>
+<li><p>[XPath 2/3] El importe total de cada factura sin tener en cuenta el descuento.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">factura</span><span class="p">/</span><span class="nf">sum</span><span class="p">(</span><span class="nt">item</span><span class="p">/(</span><span class="na">@precio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="na">@cantidad</span><span class="p">))</span>
+</pre></div>
+</div>
+</li>
+<li><p>[XPath 2/3] El importe total de cada factura.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">factura</span><span class="p">/((</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="na">@descuento</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="na">@descuento</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">div</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="o">*</span><span class="nf">sum</span><span class="p">(</span><span class="nt">item</span><span class="p">/(</span><span class="na">@precio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="na">@cantidad</span><span class="p">)))</span>
+</pre></div>
+</div>
+</li>
 </ol>
 </div></blockquote>
 <ol class="arabic">

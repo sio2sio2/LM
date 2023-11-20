@@ -136,7 +136,8 @@ si esta no existe, crearla a partir de un archivo <abbr title="eXtensible  Marku
 ítem de la lista <strong>3</strong>:</p>
 <ul>
 <li><p><cite>Command</cite> es una órden propia de <em>BaseX</em>. Por ejemplo, si escribiéramos
-<code class="docutils literal notranslate"><span class="pre">CLOSE</span></code> se cerraría la base de datos que está abierta.</p></li>
+<code class="docutils literal notranslate"><span class="pre">CLOSE</span></code> se cerraría la base de datos que está abierta. Y si <code class="docutils literal notranslate"><span class="pre">HELP</span></code>,
+obtendríamos un listado de todas las órdenes posibles.</p></li>
 <li><p><cite>Find</cite> y <cite>XQuery</cite> permiten escribir expresiones <em>XPath</em> y <em>XQuery</em>, respectivamente
 para consultar la base de datos.</p></li>
 </ul>
@@ -180,8 +181,17 @@ modo de ejecución permite la consulta directa del archivo <abbr title="eXtensib
 haber creado la base de datos:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>basex<span class="w"> </span>-i<span class="w"> </span>/ruta/a/casilleros.xml<span class="w"> </span><span class="s1">&#39;//profesor[1]/nombre&#39;</span>
 <span class="go">&lt;nombre&gt;Luis&lt;/nombre&gt;</span>
+<span class="gp">$ </span>basex<span class="w"> </span>-i<span class="w"> </span>/ruta/a/casilleros.xml<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;XQUERY //profesor[1]/nombre&#39;</span>
+<span class="go">&lt;nombre&gt;Luis&lt;/nombre&gt;</span>
 <span class="gp">$ </span>basex<span class="w"> </span>-i<span class="w"> </span>/ruta/a/casilleros.xml<span class="w"> </span>una_consulta_compleja.xq
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>La opción <kbd class="kbd docutils literal notranslate">-c</kbd> permite introducir las órdenes propias de <em>BaseX</em>
+que también podemos usar de forma interactiva. Por ejemplo, <code class="code docutils literal notranslate"><span class="pre">-c</span>
+<span class="pre">HELP</span></code> nos devolvería un listado de todas las órdenes posibles que podemos
+introducir en el cajetín <strong>2</strong> de la <abbr title="Graphical User Interface">GUI</abbr>.</p>
 </div>
 <div class="admonition caution">
 <p class="admonition-title">Prudencia</p>

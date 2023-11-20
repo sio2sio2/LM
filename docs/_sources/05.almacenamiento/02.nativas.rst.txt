@@ -76,7 +76,8 @@ donde hemos marcado las zonas más interesantes.
   ítem de la lista **3**:
 
   - `Command` es una órden propia de *BaseX*. Por ejemplo, si escribiéramos
-    ``CLOSE`` se cerraría la base de datos que está abierta.
+    ``CLOSE`` se cerraría la base de datos que está abierta. Y si ``HELP``,
+    obtendríamos un listado de todas las órdenes posibles.
 
   - `Find` y `XQuery` permiten escribir expresiones *XPath* y *XQuery*, respectivamente
     para consultar la base de datos.
@@ -125,7 +126,14 @@ haber creado la base de datos:
 
    $ basex -i /ruta/a/casilleros.xml '//profesor[1]/nombre'
    <nombre>Luis</nombre>
+   $ basex -i /ruta/a/casilleros.xml -c 'XQUERY //profesor[1]/nombre'
+   <nombre>Luis</nombre>
    $ basex -i /ruta/a/casilleros.xml una_consulta_compleja.xq
+
+.. note:: La opción :kbd:`-c` permite introducir las órdenes propias de *BaseX*
+   que también podemos usar de forma interactiva. Por ejemplo, :code:`-c
+   HELP` nos devolvería un listado de todas las órdenes posibles que podemos
+   introducir en el cajetín **2** de la |GUI|.
 
 .. caution:: Directamente sobre el archivo |XML| podremos hacer consultas, pero
    no podremos alterarlo usando las :ref:`órdenes XQuery para la manipulación de
