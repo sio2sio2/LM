@@ -21,7 +21,9 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.githubpages',
     'sphinx.ext.extlinks',
-    'sphinx_design'
+    'sphinx.ext.intersphinx',
+    'sphinx_design',
+    'sphinx_multitoc_numbering'
 ]
 
 templates_path = ['_templates']
@@ -50,7 +52,13 @@ rst_epilog = """
 .. _Javascript: https://es.wikipedia.org/wiki/JavaScript
 """
 
+intersphinx_mapping = {
+    'linux': ('https://sio2sio2.github.io/doc-linux/', None),
+}
+
 extlinks = {
+    'devmoz': ('https://developer.mozilla.org/en-US/docs/Web/HTML/Element/%s',
+               'developer.mozilla.org: %s'),
     'deb': ('https://packages.debian.org/stable/%s','%s'),
     'jsonschema': ('https://json-schema.org/understanding-json-schema/reference/%s.html','%s')
 }

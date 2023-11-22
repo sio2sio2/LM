@@ -35,3 +35,96 @@ table.rraa-uutt th {
 .xpath-oper td:first-child {
    font-family: monospace;
 }
+
+table.el-html {
+    border: solid #aaa 2px;
+    margin: auto;
+    width: 800px;
+}
+
+table.el-html tr td {
+   border: solid #aaa 1px;
+}
+
+table.el-html tr td:first-child {
+   font-family: monospace;
+   background-color: #ee9;
+   font-size: larger;
+   font-weight: bold;
+   vertical-align: middle;
+   width: 30%;
+}
+
+table.el-html tr td:first-child p {
+   hyphens: none;
+}
+
+table.el-html tr td:last-child {
+   background-color: #bdf;
+}
+
+table.el-html tr td[colspan] {
+   background-color: #b71;
+   text-align: center;
+   color: white;
+}
+
+table.attr-html {
+    border: solid #aaa 2px;
+    margin: auto;
+    width: 800px;
+}
+
+table.attr-html caption {
+   font-weight: bold;
+}
+
+table.attr-html tr td {
+   border: solid #aaa 1px;
+}
+
+table.attr-html tr td:first-child {
+   background-color: #ed9;
+   vertical-align: middle;
+   font-family: monospace;
+}
+
+table.attr-html tr td:not(last-child) p {
+   hyphens: none;
+}
+
+table.attr-html tr td:nth-child(2) {
+   background-color: #eee;
+   vertical-align: middle;
+   font-family: monospace;
+   text-align: center;
+}
+
+table.attr-html tr td:last-child {
+   background-color: #bdf;
+}
+
+.ej-html::before {
+   font-variant: small-caps;
+   font-weight: bold;
+   content: url(https://www.w3.org/html/logo/downloads/HTML5_Badge_32.png);
+   float: left;
+   position: relative;
+   top: -.40em;
+}
+
+.ej-html {
+   border: solid #e42 2px;
+   background-color: #fdc;
+   padding: .5em 1em 0 .25em;
+}
+
+.ej-html ins {
+   color: blue;
+   font-weight: bold;
+}
+
+.ej-html del {
+   color: #777;
+}
+

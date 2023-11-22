@@ -11,25 +11,25 @@ Las unidades se han diseñado atendiendo a los siguientes criterios:
 .. table:: Relación entre |RRAA| y |UUTT|
    :class: rraa-uutt
 
-   +----------+-----------------------------+-----------+-----------+
-   |          |  1ª Ev                      |   2ª Ev   |  3ª Ev    |
-   |          +-----+-----+-----+-----+-----+-----+-----+-----+-----+
-   |          | UT1 | UT2 | UT3 | UT4 | UT5 | UT6 | UT7 | UT8 | UT9 |
-   +==========+=====+=====+=====+=====+=====+=====+=====+=====+=====+
-   | RA1      |   X |     |     |     |     |     |     |     |     |
-   +----------+-----+-----+-----+-----+-----+-----+-----+-----+-----+
-   | RA2      |     |     |     |     |     |  X  |  X  |     |     |
-   +----------+-----+-----+-----+-----+-----+-----+-----+-----+-----+
-   | RA3      |     |     |     |     |     |     |     |  X  |     |
-   +----------+-----+-----+-----+-----+-----+-----+-----+-----+-----+
-   | RA4      |     |  X  |     |     |     |     |     |     |     |
-   +----------+-----+-----+-----+-----+-----+-----+-----+-----+-----+
-   | RA5      |     |     |     |  X  |     |     |     |     |     |
-   +----------+-----+-----+-----+-----+-----+-----+-----+-----+-----+
-   | RA6      |     |     |  X  |     |  X  |     |     |     |     |
-   +----------+-----+-----+-----+-----+-----+-----+-----+-----+-----+
-   | RA7      |     |     |     |     |     |     |     |     |  X  |
-   +----------+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+   +----------+-----------------------------+-----------------+------------+
+   |          |  1ª Ev                      |   2ª Ev         |  3ª Ev     |
+   |          +-----+-----+-----+-----+-----+-----+-----+-----+-----+------+
+   |          | UT1 | UT2 | UT3 | UT4 | UT5 | UT6 | UT7 | UT8 | UT9 | UT10 |
+   +==========+=====+=====+=====+=====+=====+=====+=====+=====+=====+======+
+   | RA1      |   X |     |     |     |     |     |     |     |     |      |
+   +----------+-----+-----+-----+-----+-----+-----+-----+-----+-----+------+
+   | RA2      |     |     |     |     |     |  X  |  X  |  X  |     |      |
+   +----------+-----+-----+-----+-----+-----+-----+-----+-----+-----+------+
+   | RA3      |     |     |     |     |     |     |     |     |  X  |      |
+   +----------+-----+-----+-----+-----+-----+-----+-----+-----+-----+------+
+   | RA4      |     |  X  |     |     |     |     |     |     |     |      |
+   +----------+-----+-----+-----+-----+-----+-----+-----+-----+-----+------+
+   | RA5      |     |     |     |  X  |     |     |     |     |     |      |
+   +----------+-----+-----+-----+-----+-----+-----+-----+-----+-----+------+
+   | RA6      |     |     |  X  |     |  X  |     |     |     |     |      |
+   +----------+-----+-----+-----+-----+-----+-----+-----+-----+-----+------+
+   | RA7      |     |     |     |     |     |     |     |     |     |  X   |
+   +----------+-----+-----+-----+-----+-----+-----+-----+-----+-----+------+
 
 **RA 1**
    Reconoce las características de lenguajes de marcas analizando e
@@ -58,7 +58,7 @@ Las unidades se han diseñado atendiendo a los siguientes criterios:
    a través de la web analizando la estructura de los documentos e identificando
    sus elementos.
 
-   UT **6**: :ref:`lm-ut6` (16 horas)
+   UT **6**: :ref:`lm-ut6` (12 horas)
 
    a. Se han identificado y clasificado los lenguajes de marcas relacionados con
       la web y sus diferentes versiones y estándares.
@@ -69,19 +69,21 @@ Las unidades se han diseñado atendiendo a los siguientes criterios:
    #. Se han establecido las semejanzas y diferencias entre las diferentes versiones de HTML.
    #. Se han utilizado herramientas en la creación de documentos web.
 
-   i. Se han identificado las tecnologías en que se basa la sindicación de contenidos.
-   #. Se han reconocido los ámbitos de aplicación de la sindicación de contenidos.
-
    UT **7**: :ref:`lm-ut7` (16 horas)
 
    f. Se han identificado las ventajas que aporta la utilización de hojas de estilo.
    #. Se han aplicado hojas de estilo.
    #. Se han validado documentos HTML y CSS. 
 
+   UT **8**: :ref:`lm-ut8` (4 horas)
+
+   i. Se han identificado las tecnologías en que se basa la sindicación de contenidos.
+   #. Se han reconocido los ámbitos de aplicación de la sindicación de contenidos.
+
 **RA 3**
    Accede y manipula documentos web utilizando lenguajes de *script* de cliente.
 
-   UT **8**: :ref:`lm-ut8` (32 horas)
+   UT **9**: :ref:`lm-ut9` (32 horas)
 
    a. Se han identificado y clasificado los lenguajes de script de cliente
       relacionados con la web y sus diferentes versiones y estándares.
@@ -160,7 +162,7 @@ Las unidades se han diseñado atendiendo a los siguientes criterios:
 
 **RA 7**
 
-   UT **9**: :ref:`lm-ut9` (14 horas)
+   UT **10**: :ref:`lm-ut10` (14 horas)
 
    a. Se han identificado los principales sistemas de gestión empresarial.
    #. Se han reconocido las ventajas de los sistemas de gestión de información

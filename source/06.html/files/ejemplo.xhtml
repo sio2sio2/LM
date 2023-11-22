@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+   <head> <!-- Cabecera del documento -->
+      <title>Título que se observa en la barra de título de la ventana del navegador</title>
+      <meta charset="UTF-8"/>
+      <meta name="author" content="Perico de los Palotes"/>
+      <meta name="description" content="Un ejemplo mínimo de HTML5"/>
+      <meta name="keywords" content="HTML,HTML5,XHTML,XHTML5,Marcas"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <script>
+         window.onload = function() {
+            var p=document.querySelector("p");
+            // Centramos la imagen con javascript.
+            p.style.textAlign="center";
+         }
+      </script>
+      <style>
+         h1 { 
+            color: blue;
+            text-align: center;
+            font-variant: small-caps;
+         }
+      </style>
+   </head>
+
+   <body> <!-- Contenido de la página -->
+      <h1>Página de ejemplo</h1>
+      <p>
+      <img alt="logo de HTML5" title="logo" style="width:500px"
+           src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"/>
+      </p>
+   </body>
+</html>

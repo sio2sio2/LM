@@ -1,0 +1,606 @@
+Introducción
+************
+
+.. _html-url:
+
+Hiperenlaces
+============
+Ya se ha dejado establecido que lo que convierte al *hipertexto* en *hipertexto*
+son los *hipervínculos*. Relacionados con ellos, existen tres conceptos muy
+recurrentes:
+
+|URI|
+   En castellano :dfn:`Identificador Uniforme de Recurso`, es un identificador
+   que permite declarar inequívocamente en internet cualquier recurso. Por lo
+   tanto, cada recurso debe tener uno y que sea único. Ahora bien, hay dos modos
+   de identificar un recurso: por su nombre o por su ubicación. Estos dos son
+   los conceptos que se presentan a continuación.
+
+|URN|
+   En castellano, :dfn:`Nombre Uniforme de Recurso`, es un nombre único que
+   identifica a un recurso inequívocamente en internet.
+
+|URL|
+   En castellano, :dfn:`Localizador Uniforme de Recurso`, es la ubicación en la
+   que se encuentra el recurso. Como en el caso anterior, forzosamente es única.
+
+Por hacer un símil. Si hablásemos de personas, en vez de recursos, la |URN|
+sería su nombre y la |URL| la dirección de su domicilio. Ahora bien, si
+intentamos identificar a una persona por su nombre, no podremos si existen dos
+personas con idéntico nombre; y, si por su domicilio, tampoco si en una misma
+casa viven varias. En el caso de los recursos, esto no sucede, porque nombre y
+ubicación deben ser únicos.
+
+Un ejemplo real de |URL| y |URN| se halla en la :ref:`definición del tipo de
+documento <dtd-doctype>` cuando son dialectos |XML| estandarizados y públicos:
+
+.. code-block:: dtd
+
+   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+En esta definición para |XHTML| **1.0**, hay una |URN|:
+
+.. code-block:: none
+
+   -//W3C//DTD XHTML 1.0 Strict//EN
+
+y una |URL|:
+
+.. code-block:: none
+
+   http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd
+
+Esta última es la ubicación del |DTD| que define la gramática del dialecto.
+
+Formato
+-------
+Dado que la base del *hipertexto* es el *hipervínculo*, que debe llevarnos a la
+ubicación de otro *hipertexto*, es previsible que en la redacción de un |HTML|
+requiramos hacer escribir |URL|\ s, por lo que es muy importante saber cuál es
+su formato exacto. En principio, podemos definir este formato del siguiente modo
+esquemático:
+
+.. code-block:: none
+
+   esquema://maquina/ruta
+
+que puesta en ejemplo concreto es:
+
+.. code-block:: none
+
+   http://docs.iescdl.es/~josem/XML/07.html/01.intro.html
+
+Las partes constituyentes son:
+
+**esquema** (``http``)
+   Identifica el tipo de recurso, por lo general, el protocolo de servicio por el
+   que se accede a ellos. Por ejemplo:
+
+   * ``http`` para páginas web.
+   * ``https`` para páginas web en que la conexión es cifrada.
+   * ``ftp`` para ficheros a los que se accede por |FTP|
+
+**maquina** (``docs.iescdl.es``)
+   Es el nombre de la máquina (o la dirección |IP|) en la que se encuentra el
+   recurso. Ahora bien, su expresión puede ser un poco más complicada para
+   admitir más información:
+
+   .. code-block:: none
+
+      [usuario[@contraseña]:]maquina[:puerto]
+
+   Si el recurso está protegido, puede añadirse antes del nombre de la máquina
+   un usuario y su contraseña. Si se accede a la máquina a través de un puerto
+   no estándar, entonces es también posible añadir cuál es ese puerto.
+
+**ruta** (``/~josem/XML/07.html/01.intro.html``)
+   Es la ruta del recurso dentro de la propia máquina. Cuál sea esta ruta dentro
+   del propio sistema de ficheros de la máquina, depende de la configuración del
+   servidor web, pero se comporta de manera semejante a como lo hacen las
+   :ref:`rutas en los sistemas UNIX <linux:rutas>`. Trataremos esto bajo el
+   próximo epígrafe.
+
+   .. note:: Incluso en los ejemplos en los que. aparentemente, no hay ruta, sí
+      la hay. Por ejemplo, ante esta petición sin aparentemente ruta:
+
+      .. code-block:: none
+
+         http://www.example.com
+
+      el servidor web añada una ruta que depende de cómo se haya configurado.
+      Habitualmente, :file:`/index.html` o :file:`/index.php`.
+   
+.. _html-abs-rel:
+
+Rutas absolutas y relativas
+---------------------------
+Del mismo modo que las rutas de un sistema de ficheros, las |URL|\ s pueden ser:
+
+**absolutas**
+   Son aquellas que expresan la ubicación indicando toda la información:
+   esquema, máquina y ruta. Las rutas indicadas bajo el epígrafe anterior son
+   rutas absolutas:
+
+   .. code-block:: none
+
+      http://docs.iescdl.es/~josem/XML/07.html/01.intro.html
+
+   Un concepto importante que es necesario introducir es el de :dfn:`URL base`
+   que es la |URL| de un archivo descontado el nombre del propio archivo. En el
+   ejemplo anterior, la |URL| base es:
+
+   .. code-block:: none
+
+      http://docs.iescdl.es/~josem/XML/07.html/
+
+**relativas**
+   Son aquellas que expresan la ubicación sobrentendiedo una referencia y, en
+   consecuencia, pueden prescindir de la expresión del esquema y la máquina. La
+   referencia sobrentendida puede ser:
+
+   * La **máquina**, en cuyo caso, debe expresarse la ruta absoluta dentro de la
+     propia máquina. Podríamos llamar a estar rutas, :dfn:`rutas relativas
+     absolutas`. Por ejemplo, si en un |HTML| cuya |URL| absoluta es:
+
+     .. code-block:: none
+
+        http://docs.iescdl.es/~josem/XML/07.html/01.intro.html
+
+     referimos la siguiente |URL|
+
+     .. code-block:: none
+
+        /privado/secreto.html
+
+     la |URL| absoluta de este segundo recurso es:
+
+     .. code-block:: none
+
+        http://docs.iescdl.es/privado/secreto.html
+
+   * La **URL base** del archivo donde se inserta el enlace. En este caso,
+     podríamos hablar de :dfn:`rutas relativas relativas`. Las reglas para crear
+     este tipo de rutas sn exactamente las mismas que para expresar las
+     :ref:`rutas relativas en los sistemas UNIX <linux:rutas>`. Así, si partimos
+     de que el |HTML| en que se insertan los enlaces es:
+
+     .. code-block:: none
+
+        http://docs.iescdl.es/~josem/XML/07.html/01.intro.html
+
+     Las rutas relativas:
+
+     .. code-block:: none
+
+        02.estructura.html
+        ../index.html
+
+     se corresponden con las siguientes rutas absolutas:
+
+     .. code-block:: none
+
+        http://docs.iescdl.es/~josem/XML/07.html/02.estructura.html
+        http://docs.iescdl.es/~josem/XML/index.html
+
+     .. note:: El enlace *vacío* se considera un enlace relativo al propio
+        documento que lo contiene.
+
+Enlaces internos
+----------------
+Es muy frecuente que al incluir un hipervínculo queramo enlazar no ya con una
+página |HTML|, sino con una parte concreta de la página |HTML|. Para ello, es
+necesario que la página destino contenga elementos que se hayan marcado con
+identificadores:
+
+.. code-block:: html
+
+   <section id="mamiferos">
+      <h1>Los mamíferos</h1>
+      <p>Bla, bla, bla</p>
+
+      <section id="hominidos">
+         <h1>Los homínidos</h1>
+         <p>Bla, bla, bla</p>
+      </section>
+
+      <section id="felinos">
+         <h1>Los felinos</h1>
+         <p>Bla, bla, bla</p>
+      </section>
+   </section>
+
+Hecho así, para que el hipervínculo enlace directamente con el elemento interno
+deseado, basta con añadir :code:`#mamiferos` a la |URL| si es que se quiere
+enlazar con la sesíon dedicada a los mamíferos, ya que este es el valor que
+hemos dado al identificador correspondiente. Por tanto:
+
+.. code-block:: none
+
+   http://www.losanimales.org/descripcion.html#mamiferos
+
+podría ser una |URL| absoluta válida. Mientras que:
+
+.. code-block:: none
+
+   #mamiferos
+
+podría ser el valor de un hipervínculo valido si el enlace está en la propia
+página.
+
+Otros hipervínculos
+-------------------
+Además de las rutas anteriores en las que siempre se ha presupuesto que el
+protocolo era |HTTP| o |HTTP|\ s, para cuyo destino el agente apropiado es el
+propio navegador, existen otros tipos de recursos externos accesibles por
+distintos medios. Tradicionalmente, estos se han reducido a dos: |FTP| (para
+cuyo protocolo los navegadores también solían traer soporte) y correo
+electrónico::
+
+   <a href="ftp://ftp.rediris.es">FTP de rediris</a>
+   <a data-rel="external" href="mailto:pepe@gmail.com">Email de contacto</a>
+
+Si la configuración es adecuada, en el segundo caso el navegador se encarga de
+invocar al programa de correo electrónico. Pero con la proliferación de los
+teléfonos inteligentes, los enlaces ajenos al navegador han proliferado y pueden
+adoptar muchas formas::
+   
+   <a data-rel="external" href="tel:+34959959959">Teléfono de contacto</a>
+   <a data-rel="external" href="skype:manolo?call">Contacto a través de Skype</a>
+   <a data-rel="external" href="sms://+34959959959?body=Estoy%20interesado.%20Ll%E1meme.">Envíar SMS</a>
+
+.. seealso:: En `este tutorial
+   <https://www.w3docs.com/snippets/html/how-to-create-mailto-links.html>`_ se
+   explica cómo incluir en un enlace *mailto:* asunto, destinatario, etc.
+
+.. _html-data-uris:
+
+Data |URI|\ s
+-------------
+Un página |HTML| es un documento de texto que suele referir distintos contenidos
+de diverso tipo (*scripts*, hojas de estilos, imágenes, etc.). Todos estos
+contenidos se obtienen gracias a la indicación de su |URL| absoluta o relativa:
+
+.. code-block:: html
+
+   <img alt="Logo de HTML5" src="images/html5.png">
+
+|HTML|\ 5 incorpora un mecanismo, llamado datos |URI|\ s, para sustituir la
+|URL| por el contenido del archivo, de suerte que el archivo queda embebido
+dentro del propio documento |HTML|. Puede llegar a ser muy útil en algunos
+casos, como cuando se necesita cambiar al vuelo una imagen vectorial en función
+de las acciones del usuario. El formato de estos data |URI|\ s es el siguiente:
+
+.. code-block:: none
+
+   data:tipo-mime[;base64],<datos>
+
+Como por ejemplo:
+
+.. code-block:: html
+
+   <script src="data:application/javascript,alert('¡Hola, mundo!');"></script>
+
+donde en este caso el tipo |MIME| es "`application/javascript`" y los datos un
+minúsculo código *Javascript*, que hubiera estado incluido en un archivo, si no
+hubieramos hecho uso de un data |URI|. La `codificación en base64
+<https://es.wikipedia.org/wiki/Base64>`_\ [#]_ es útil cuando los datos son
+binarios (p.e. si representamos una imagen |PNG|). Por ejemplo, el ejemplo
+anterior para incrustar el logo de |HTML|\ 5, podría escribirse así:
+
+.. code-block:: html
+
+   <img alt="Logo de HTML5" src="data:image/jpeg;base64,
+   iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+   bWFnZVJlYWR5ccllPAAAAs1JREFUeNq8VztvE0EQnnsFxbJxlCAEIiAoiC0qOxJpkCAoHRIKLR0V
+   FRJdWugQBRX8EBASDUIkSGlC4XTEpsDiIVEAcsA6x77Hsrs5+24ft7d+6FY6rc8+z8x+M983cwbg
+   9f32yjre3kO+6+by69a2Gd3sQ/6L+jSGdxgFNImVwqKp/WwwAOh3Q/oZn576tqc9hjVnjBGAeEaT
+   hyRP+HkEOkJ01brSimGYYJ+ey/TmN/fojhASfClT4Gy9UBp2HAcK5XJmAH/vXzlOgQfKFOzwP6Kv
+   n6fGOmh9lH29IwtAWKjXnWniUSAWobIGhNPsvgH49TM2aJnQX5pX/if8/SP+HICyBgQWoIMGQCUu
+   xBAHEJLvEqt/xpqKBWZevAt9uc4lA2gLCLj/2Icrq5PnP2RuR74YGePlmOiAioqEhuUMGrrP7lEd
+   ICro/mFlONcUkD6QlQKhEJE7PQ2Db59A5YNXwg4vRGGzkW7csiFYLLInWq6CUSgJdSSTYa1u6D19
+   kP4bMcDRsPjkLRPAKFhPbsOWwLPOPHD3IRgXLmsFRBFYOpeA/0CpAbIADoWOh52blfpkBdCLaRxn
+   gPUxNguMU2fTh5Pz1XQh8pBWCrbx9UjoiAkEnK3ntDCJTAeNDzjfNti1DbBX1sCqXJXOARIf+kUI
+   HBUJAhZB4dotmHceQ0ljHkg0oUwd6MxSfEYUZNsw40OYKGXTMZFks36dFmOSETIpJpXv77+jg8gw
+   BWkyrD0VkxY8asOFIlg4GIP0ibUN3OW6EDSxs9Yedcw3MBqAryhqCQJf8HZRF+aSxjww6KLh+0Ab
+   I3Api4btmfR/XHheD8HRYQgDN0y1bc+y6Eiu/T6+Bum8z0xB4mV1M5LlmsrAiZPmseMjpBq/CPdf
+   kZdRrQC4YBbwdgdfN6J9IeMv7cghGb1fYqedsRHICKgWIbOZaFz0hGTHDsd6xfsvwAB8ABqbrMgq
+   HwAAAABJRU5ErkJggg==">
+
+.. _html-vers:
+
+Versiones
+=========
+Tim Berners-Lee creó el |HTML| en 1990 como un dialecto |SGML|, aunque sin una
+definición formal mediante |DTD|. En 1993 se publicó como borrador una
+especificación que sí incluía un |DTD|, por lo que se puede considerar que es a
+partir de esa fecha cuando |HTML| pasa a ser formalmente un dialecto |SGML|. Se
+publican posteriormente tres versiones del lenguaje, ya definido como |SGML|:
+
+* |HTML| **2.0**, en 1995, que es la primera especificación formal del lenguaje.
+* |HTML| **3.2**, en 1997, que fue publicada ya por el |W3C|.
+* |HTML| **4.01**. en 1999.
+
+En esta última versión, el |W3C| intentó desligar la definición estructural
+(reservada para |HTML|) de la visual (reservada para |CSS|), por lo que se
+propuso ir eliminado las marcas y atributos |HTML| que definían aspecto,
+marcándolas como obsoletas. Para hacer menos traumático el cambio definió tres
+versiones del estándar:
+
+* :dfn:`Frameset`, que permitía el uso de :ref:`iframes <html-iframe>` y
+  elementos y atributos obsoletos:
+
+  .. code-block:: dtd
+
+     <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+
+* :dfn:`Transitional`, que permitía el uso de elementos y atributos obsoletos:
+
+  .. code-block:: dtd
+
+     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+* :dfn:`Strict`, que no permitía el uso de elementos obsoletos:
+
+  .. code-block:: dtd
+
+     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+  En principio, la versión recomendada por el |W3C| era esta última.
+
+En este punto (1999), el |W3C|, que era el encargado de desarrollar el lenguaje,
+pretendió darle un giro y adaptarlo a las especificaciones |XML|, que habían
+sido publicadas por este mismo organismo también en 1999. Como consecuencia
+reformuló |HTML| **4.01** para adaptarlo a las reglas del |XML| y publicó en
+2000 la especificación |XHTML| **1.0**. Al ser una reformulación, también
+disponía de las tres versiones:
+
+.. code-block:: dtd
+
+   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+Las esfuerzos entonces del |W3C| se centraron en el desarrollo del lenguaje como
+dialecto |HTML|, esto es, en el |XHTML| y abandonaron por completo el sabor
+|SGML| que quedó estancada en la versión **4.01**. En consecuencia en 2001
+publicó |XHTML| **1.1** en que ya sólo había una única versión:
+
+.. code-block:: dtd
+
+   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+El |W3C| continuó en los años siguientes el desarrollo de |XHTML| **2** del que
+llegó a publicar borradores, abandonando por completo |HTML|. Como respuesta a
+esta política de abandonar |HTML|, surgió en 2004 el |WHATWG|, un grupo que
+aglutinaba a los principales creadores de navegadores web\ [#]_. Empezaron a
+trabajar en una especificación sobre |HTML| y fruto de este pulso, se produjo la
+rendición del |W3C| que abandonó sus planes para |XHTML| y aceptó crear un nuevo
+estándar basado en el trabajo del |WHATWG| en 2007. En 2014, apareció la primera
+recomendación oficial de |HTML| **5.0**.
+
+.. note:: En un primer momento, |WHATWG| optó por hacer del estándar |HTML| una 
+   `norma viva <https://html.spec.whatwg.org/multipage/>`_, esto es, una versión
+   que no se atiene a números sino que está en continuo proceso de redacción. De
+   hecho, la norma ni siquiera refiere el **5** en su título. EL |W3C|, por
+   contra y a su rebufo por haber perdido el pulso inicial, decidió tomar la
+   versión viva y publicar cada cierto tiempo una versión númerada. Fue así como
+   publicó **5.0** en 2014, **5.1** en 2016 y **5.2** en 2018. Pero la voz
+   cantante de la evolución de |HTML| la seguía llevando |WHATWG|, por cuanto
+   era la referencia para la implementación en los navegadores. Por ese motivo,
+   el |W3C| nunca llegó a publicar **5.3** y a comienzos de 2021 `dio
+   definitivamente su brazo a torcer
+   <https://www.w3.org/TR/2021/NOTE-html53-20210128/>`_ y dejó de publicar
+   versiones numeradas.
+
+Esta es la historia, pero ¿es |HTML|\ 5 entonces |SGML|? La respuesta es que
+**no**. |HTML| no es ya |SGML|, porque no hay definido ningún |DTD| para su
+validación y, además, es imposible definir uno, ya que hay ciertas reglas que
+son inexpresables con la sintaxis del |DTD|. Esa es la razón por la que `la
+declaración de tipo de documento
+<https://html.spec.whatwg.org/multipage/syntax.html#the-doctype>`_ es,
+simplemente:
+
+.. code-block:: dtd
+
+   <!DOCTYPE html>
+
+que ni siquera es una declaración |SGML| válida.
+
+.. seealso:: Consulte `esta respuesta de stackoverflow
+   <https://stackoverflow.com/a/15245834>`_ para más información.
+
+Por otro lado, el propio estándar define dos sintaxis distintas para la norma
+|HTML|:
+
+* La sintaxis |HTML|, asociada al tipo |MIME| *text/html*.
+* La sintaxis |XML|, asociada al tipo |MIME| *application/xhtml+xml*, para la
+  que no hay tampoco |DTD| y que consiste básicamente en `adaptar la sintaxis
+  HTML a otra que sea bien formada para un procesador XML
+  <https://html.spec.whatwg.org/multipage/xhtml.html#the-xhtml-syntax>`_.
+  Comúnmente se llama a esta sintaxis |XHTML|\ 5.
+
+Los apuntes se centrarán en la sintaxis |HTML|, aunque se definirán más adelante
+:ref:`las pautas para saber escribir con sintaxis XML <xhtml5>`.
+
+.. seealso:: Eche un vistazo a la representación gráfica de `la evolución de las
+   tecnologías web <http://www.evolutionoftheweb.com/?hl=es#/evolution/night>`_.
+
+Tecnologías asociadas
+=====================
+El servicio de páginas web no se restringe exclusivamente al uso del |HTML|, sino que
+hay multiples tecnologías implicadas. Las más destacadas son:
+
+* :ref:`CSS <css>` para aplicar aspecto visual al código |HTML|.
+* Javascript_ (cuyo estándar recibe el nombre de ECMAScript_), que se usa como
+  lenguaje en el lado del cliente, esto es, en el propio navegador a fin de
+  dotar de dinamismo a las páginas. Es posible crear auténticas aplicaciones web
+  que se ejecutan integramente en el ordenador del cliente con sólo unos pocos
+  datos que se reciban del servidor.
+* Lenguajes de programación en el lado del servidor que hacen de enlace entre el
+  servidor y las bases de datos. La estrategia puede variar:
+ 
+  - desde generar toda la página web en el servidor y transferirla al cliente
+    completa.
+  - a limitarse básicamente a servir datos en un formato adecuado (:ref:`XML
+    <xml>`, :ref:`JSON <json>`) y construir la página en el cliente gracias a
+    Javascript_.
+
+  Los lenguajes de servidor más utilizados son el propio Javascript_ (usando
+  NodeJS_), |PHP|, Python_ y Java_.
+
+Herramientas
+============
+Para hacer más sencilla la escritura de nuestro documentos, podemos hacer uso
+las siguientes herramientas:
+
+Edición
+-------
+Para escribir nuestros documentos |HTML| (y |CSS|) es indispensable usar
+al menos editores de texto con resaltado de sintaxis. Por ejemplo:
+
+* vim_, el editor.
+* nano_, básico pero suficiente.
+* `Visual Studio Code`_, que ya hemos utilizado al escribir |XML|, |YAML| o
+  |JSON|.
+
+.. _html-validacion:
+
+Validación
+----------
+Es muy conveniente comprobar la validez de los documentos |HTML| para lo cual
+podemos usar validadores en línea como:
+
+**HTML**
+   * `validator.nu <https://html5.validator.nu/>`_.
+   * `El validador del W3C <https://validator.w3.org/nu>`_.
+
+   Existen también extensiones para navegadores (como Validity_ para Chromium_) que
+   permiten la comprobación de la página que se está viendo en la pestaña activa.
+   Por lo general, sin embargo, no permiten la validación de documentos locales.
+
+**CSS**
+   * `El validador CSS del W3C <https://jigsaw.w3.org/css-validator/>`_.
+
+Recetarios
+----------
+Los recetarios presentan de modo resumido los elementos del lenguaje a fin de
+ofrecer una referencia rápida. Existen muchos:
+
+**HTML**
+   * `websitesetup,org (HTML) <https://websitesetup.org/html5-cheat-sheet/>`_.
+     De entre los ofrecidos, salvamos el :download:`formato PNG
+     <files/HTML-CHEAT-SHEET.png>`.
+   * `algonquindesign.ca
+     <https://learn-the-web.algonquindesign.ca/topics/html-semantics-cheat-sheet/>`_
+
+**CSS**
+   * `websitesetup,org (CSS) <https://websitesetup.org/css3-cheat-sheet/>`_.
+     De entre los ofrecidos, salvamos el :download:`formato PDF
+     <files/CSS-CHEAT-SHEET.pdf>`.
+
+Pruebas
+-------
+Para comprobar nuestras páginas |HTML| es obvio que necesitamos un navegador
+reciente que soporte convenientemente |HTML|\ 5 y |CSS|\ 3. Cualquiera de los
+más usados debería valernos:
+
+* Chromium_.
+* Firefox_.
+* Safari_.
+
+En principio, nos bastará con almacenar en el disco local los archivos y acceder
+a ellos abriéndolos con el navegador. Esto, por supuesto, no supone una
+transferencia |HTTP|, pero para los objetivos del curso no es importante. Si por
+el contrario, el curso fuera más ambicioso, necesitaríamos montar un servidor
+web en el que alojar nuestras páginas. En este otro caso, dependería de cuán
+ambicioso fuera nuestro propósito:
+
+* Si el propósito se limita a programación en el lado del cliente (esto es,
+  |HTML|, |CSS| y *Javascript* ejecutado por el navegador), podría valernos con
+  seguir abriendo los ficheros directamente con el navegador o, si esto no
+  basta porque necesitamos hacer `peticiones AJAX
+  <https://developer.mozilla.org/es/docs/Web/Guide/AJAX>`_, montar un modesto
+  servidor web que sirva contenido estático con:
+
+  .. code-block:: console
+
+     $ cd /ruta/a/los/ficheros
+     $ python3 -m http.server 8080
+
+   Y listo. Un servidor web local escuchando en el puerto **8080**.
+
+* Si requerimos programación en el lado del servidor, entonces sí tendremos que
+  montar un servidor real que sea capaz de ejecutar los *scripts*.
+
+Además, existen también algunas **herramientas en línea** muy convenientes:
+
+jsfiddle.net_
+   Es un sitio web que permite crear pruebas de concepto en |HTML|, |CSS| y
+   Javascript_, y compartirlas con otros desarrolladores, bien para resolver
+   dudas ajenas, bien para resolver las propias. Por ejemplo, esta es `una
+   prueba con jsfiddle <https://jsfiddle.net/uc709hv1/>`_ e incluso se puede
+   obtener el |HTML| que genera la prueba `añadiendo /show a la dirección
+   <https://jsfiddle.net/uc709hv1/show>`_  y guardando el *frame* apropiado.
+
+codepen.io_
+   Sitio alternativo al anterior con el mismo propósito y las mismas
+   funcionalidades. Esto, por ejemplo sería `una prueba en codepen.io
+   <https://codepen.io/sio2/pen/rbEPgv>`_
+
+jsbin.com_
+   Sitio semejante a los dos anteriores, aunque presenta algunas
+   particularidades como una consola de Javascript_.
+
+.. rubric:: Notas al pie
+
+.. [#] En un sistema *Linux* es posible generar la codificación en base64 de un
+   archivo con la orden :program:`base64`:
+
+   .. code-block:: console
+
+      $ base64 html5.png
+
+.. [#] En aquel entonces, trabajadores de Apple_ (que desarrollaba Safari_), la
+   `fundación Mozilla`_ y Opera_. Se invitó también a personal de Microsoft_
+   (porque desarrollaba `Internet Explorer`_), pero no se incorpó. Google_ por
+   aquel entonces aún no había empezado el desarrollo de Chromium_.
+
+.. |URI| replace:: :abbr:`URI (Uniform Resource Identifier)`
+.. |FTP| replace:: :abbr:`FTP (File Transfer Protocol)`
+.. |IP| replace:: :abbr:`IP (Internet Protocol)`
+.. |W3C| replace:: :abbr:`W3C (W3 Consortium)`
+.. |WHATWG| replace:: :abbr:`WHATWG (Web Hypertext Application Technology Working Group)`
+.. |MIME| replace:: :abbr:`MIME (Multipurpose Internet Mail Extensions)`
+.. |PHP| replace:: :abbr:`PHP (PHP Hypertext Preprocessor)`
+.. |PNG| replace:: :abbr:`PNG (Portable Network Graphic)`
+.. |HTTP| replace:: :abbr:`HTTP (HyperText Transfer Protocol)`
+.. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`
+.. |XHTML| replace:: :abbr:`XHTML (eXtensible HyperText Markup Language)`
+.. |SGML| replace:: :abbr:`SGML (Standard Generalized Markup Language)`
+.. |DTD| replace:: :abbr:`DTD (Document Type Definition)`
+.. |URN| replace:: :abbr:`URN (Uniform Resource Name)`
+.. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`
+
+.. _Apple: https://www.apple.com
+.. _Safari: https://es.wikipedia.org/wiki/Safari_(navegador)
+.. _Opera: https://es.wikipedia.org/wiki/Opera_Software
+.. _Microsoft: https://www.microsoft.com
+.. _Google: https://www.google.com/about/
+.. _Fundación Mozilla: https://www.mozilla.org/es-ES/about/
+.. _Internet Explorer: https://es.wikipedia.org/wiki/Internet_Explorer
+.. _ECMAScript: https://es.wikipedia.org/wiki/ECMAScript
+.. _NodeJS: https://nodejs.org/
+.. _Python: https://www.python.org
+.. _Java: https://es.wikipedia.org/wiki/Java_(lenguaje_de_programaci%C3%B3n)
+.. _vim: http://www.vim.org
+.. _nano: https://www.nano-editor.org/
+.. _notepad++: https://notepad-plus-plus.org/
+.. _Validity: https://www.validity.org.uk/
+.. _Chromium: https://www.chromium.org/
+.. _Safari: https://es.wikipedia.org/wiki/Safari_(navegador)
+.. _Firefox: https://es.wikipedia.org/wiki/Mozilla_Firefox
+.. _jsfiddle.net: https://jsfiddle.net/
+.. _codepen.io: https://codepen.io/
+.. _jsbin.com: https://jsbin.com
+.. _Visual Studio Code: https://code.visualstudio.com/
+

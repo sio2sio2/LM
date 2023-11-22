@@ -1,0 +1,709 @@
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>6.1. Introducción &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" href="../_static/general.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+
+    
+    
+     
+        <script src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="6.2. Generalidades" href="02.estructura.html" />
+    <link rel="prev" title="6. HTML" href="index.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="02.estructura.html" title="6.2. Generalidades"
+             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="index.html" title="6. HTML"
+             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">6. </span><abbr title="HyperText Markup Language">HTML</abbr></a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">6.1. </span>Introducción</a></li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="introduccion">
+<h1><span class="section-number">6.1. </span>Introducción<a class="headerlink" href="#introduccion" title="Enlace permanente a este encabezado">¶</a></h1>
+<section id="hiperenlaces">
+<span id="html-url"></span><h2><span class="section-number">6.1.1. </span>Hiperenlaces<a class="headerlink" href="#hiperenlaces" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Ya se ha dejado establecido que lo que convierte al <em>hipertexto</em> en <em>hipertexto</em>
+son los <em>hipervínculos</em>. Relacionados con ellos, existen tres conceptos muy
+recurrentes:</p>
+<dl class="simple">
+<dt><abbr title="Uniform Resource Identifier">URI</abbr></dt><dd><p>En castellano <em class="dfn">Identificador Uniforme de Recurso</em>, es un identificador
+que permite declarar inequívocamente en internet cualquier recurso. Por lo
+tanto, cada recurso debe tener uno y que sea único. Ahora bien, hay dos modos
+de identificar un recurso: por su nombre o por su ubicación. Estos dos son
+los conceptos que se presentan a continuación.</p>
+</dd>
+<dt><abbr title="Uniform Resource Name">URN</abbr></dt><dd><p>En castellano, <em class="dfn">Nombre Uniforme de Recurso</em>, es un nombre único que
+identifica a un recurso inequívocamente en internet.</p>
+</dd>
+<dt><abbr title="Uniform Resource Locator">URL</abbr></dt><dd><p>En castellano, <em class="dfn">Localizador Uniforme de Recurso</em>, es la ubicación en la
+que se encuentra el recurso. Como en el caso anterior, forzosamente es única.</p>
+</dd>
+</dl>
+<p>Por hacer un símil. Si hablásemos de personas, en vez de recursos, la <abbr title="Uniform Resource Name">URN</abbr>
+sería su nombre y la <abbr title="Uniform Resource Locator">URL</abbr> la dirección de su domicilio. Ahora bien, si
+intentamos identificar a una persona por su nombre, no podremos si existen dos
+personas con idéntico nombre; y, si por su domicilio, tampoco si en una misma
+casa viven varias. En el caso de los recursos, esto no sucede, porque nombre y
+ubicación deben ser únicos.</p>
+<p>Un ejemplo real de <abbr title="Uniform Resource Locator">URL</abbr> y <abbr title="Uniform Resource Name">URN</abbr> se halla en la <a class="reference internal" href="../02.validacion/01.dtdxml.html#dtd-doctype"><span class="std std-ref">definición del tipo de
+documento</span></a> cuando son dialectos <abbr title="eXtensible  Markup Language">XML</abbr> estandarizados y públicos:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!DOCTYPE</span> <span class="nt">html</span> <span class="kc">PUBLIC</span> <span class="s2">&quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;</span> <span class="s2">&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<p>En esta definición para <abbr title="eXtensible HyperText Markup Language">XHTML</abbr> <strong>1.0</strong>, hay una <abbr title="Uniform Resource Name">URN</abbr>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>-//W3C//DTD XHTML 1.0 Strict//EN
+</pre></div>
+</div>
+<p>y una <abbr title="Uniform Resource Locator">URL</abbr>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd
+</pre></div>
+</div>
+<p>Esta última es la ubicación del <abbr title="Document Type Definition">DTD</abbr> que define la gramática del dialecto.</p>
+<section id="formato">
+<h3><span class="section-number">6.1.1.1. </span>Formato<a class="headerlink" href="#formato" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Dado que la base del <em>hipertexto</em> es el <em>hipervínculo</em>, que debe llevarnos a la
+ubicación de otro <em>hipertexto</em>, es previsible que en la redacción de un <abbr title="HyperText Markup Language">HTML</abbr>
+requiramos hacer escribir <abbr title="Uniform Resource Locator">URL</abbr>s, por lo que es muy importante saber cuál es
+su formato exacto. En principio, podemos definir este formato del siguiente modo
+esquemático:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>esquema://maquina/ruta
+</pre></div>
+</div>
+<p>que puesta en ejemplo concreto es:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>http://docs.iescdl.es/~josem/XML/07.html/01.intro.html
+</pre></div>
+</div>
+<p>Las partes constituyentes son:</p>
+<dl>
+<dt><strong>esquema</strong> (<code class="docutils literal notranslate"><span class="pre">http</span></code>)</dt><dd><p>Identifica el tipo de recurso, por lo general, el protocolo de servicio por el
+que se accede a ellos. Por ejemplo:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">http</span></code> para páginas web.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">https</span></code> para páginas web en que la conexión es cifrada.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ftp</span></code> para ficheros a los que se accede por <abbr title="File Transfer Protocol">FTP</abbr></p></li>
+</ul>
+</dd>
+<dt><strong>maquina</strong> (<code class="docutils literal notranslate"><span class="pre">docs.iescdl.es</span></code>)</dt><dd><p>Es el nombre de la máquina (o la dirección <abbr title="Internet Protocol">IP</abbr>) en la que se encuentra el
+recurso. Ahora bien, su expresión puede ser un poco más complicada para
+admitir más información:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[usuario[@contraseña]:]maquina[:puerto]
+</pre></div>
+</div>
+<p>Si el recurso está protegido, puede añadirse antes del nombre de la máquina
+un usuario y su contraseña. Si se accede a la máquina a través de un puerto
+no estándar, entonces es también posible añadir cuál es ese puerto.</p>
+</dd>
+<dt><strong>ruta</strong> (<code class="docutils literal notranslate"><span class="pre">/~josem/XML/07.html/01.intro.html</span></code>)</dt><dd><p>Es la ruta del recurso dentro de la propia máquina. Cuál sea esta ruta dentro
+del propio sistema de ficheros de la máquina, depende de la configuración del
+servidor web, pero se comporta de manera semejante a como lo hacen las
+<a class="reference external" href="https://sio2sio2.github.io/doc-linux/02.conbas/02.informacion/01.filesystem.html#rutas" title="(en Linuxnomicón versión rolling)"><span class="xref std std-ref">rutas en los sistemas UNIX</span></a>. Trataremos esto bajo el
+próximo epígrafe.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Incluso en los ejemplos en los que. aparentemente, no hay ruta, sí
+la hay. Por ejemplo, ante esta petición sin aparentemente ruta:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>http://www.example.com
+</pre></div>
+</div>
+<p>el servidor web añada una ruta que depende de cómo se haya configurado.
+Habitualmente, <code class="file docutils literal notranslate"><span class="pre">/index.html</span></code> o <code class="file docutils literal notranslate"><span class="pre">/index.php</span></code>.</p>
+</div>
+</dd>
+</dl>
+</section>
+<section id="rutas-absolutas-y-relativas">
+<span id="html-abs-rel"></span><h3><span class="section-number">6.1.1.2. </span>Rutas absolutas y relativas<a class="headerlink" href="#rutas-absolutas-y-relativas" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Del mismo modo que las rutas de un sistema de ficheros, las <abbr title="Uniform Resource Locator">URL</abbr>s pueden ser:</p>
+<dl>
+<dt><strong>absolutas</strong></dt><dd><p>Son aquellas que expresan la ubicación indicando toda la información:
+esquema, máquina y ruta. Las rutas indicadas bajo el epígrafe anterior son
+rutas absolutas:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>http://docs.iescdl.es/~josem/XML/07.html/01.intro.html
+</pre></div>
+</div>
+<p>Un concepto importante que es necesario introducir es el de <em class="dfn">URL base</em>
+que es la <abbr title="Uniform Resource Locator">URL</abbr> de un archivo descontado el nombre del propio archivo. En el
+ejemplo anterior, la <abbr title="Uniform Resource Locator">URL</abbr> base es:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>http://docs.iescdl.es/~josem/XML/07.html/
+</pre></div>
+</div>
+</dd>
+<dt><strong>relativas</strong></dt><dd><p>Son aquellas que expresan la ubicación sobrentendiedo una referencia y, en
+consecuencia, pueden prescindir de la expresión del esquema y la máquina. La
+referencia sobrentendida puede ser:</p>
+<ul>
+<li><p>La <strong>máquina</strong>, en cuyo caso, debe expresarse la ruta absoluta dentro de la
+propia máquina. Podríamos llamar a estar rutas, <em class="dfn">rutas relativas
+absolutas</em>. Por ejemplo, si en un <abbr title="HyperText Markup Language">HTML</abbr> cuya <abbr title="Uniform Resource Locator">URL</abbr> absoluta es:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>http://docs.iescdl.es/~josem/XML/07.html/01.intro.html
+</pre></div>
+</div>
+<p>referimos la siguiente <abbr title="Uniform Resource Locator">URL</abbr></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>/privado/secreto.html
+</pre></div>
+</div>
+<p>la <abbr title="Uniform Resource Locator">URL</abbr> absoluta de este segundo recurso es:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>http://docs.iescdl.es/privado/secreto.html
+</pre></div>
+</div>
+</li>
+<li><p>La <strong>URL base</strong> del archivo donde se inserta el enlace. En este caso,
+podríamos hablar de <em class="dfn">rutas relativas relativas</em>. Las reglas para crear
+este tipo de rutas sn exactamente las mismas que para expresar las
+<a class="reference external" href="https://sio2sio2.github.io/doc-linux/02.conbas/02.informacion/01.filesystem.html#rutas" title="(en Linuxnomicón versión rolling)"><span class="xref std std-ref">rutas relativas en los sistemas UNIX</span></a>. Así, si partimos
+de que el <abbr title="HyperText Markup Language">HTML</abbr> en que se insertan los enlaces es:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>http://docs.iescdl.es/~josem/XML/07.html/01.intro.html
+</pre></div>
+</div>
+<p>Las rutas relativas:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>02.estructura.html
+../index.html
+</pre></div>
+</div>
+<p>se corresponden con las siguientes rutas absolutas:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>http://docs.iescdl.es/~josem/XML/07.html/02.estructura.html
+http://docs.iescdl.es/~josem/XML/index.html
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>El enlace <em>vacío</em> se considera un enlace relativo al propio
+documento que lo contiene.</p>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="enlaces-internos">
+<h3><span class="section-number">6.1.1.3. </span>Enlaces internos<a class="headerlink" href="#enlaces-internos" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Es muy frecuente que al incluir un hipervínculo queramo enlazar no ya con una
+página <abbr title="HyperText Markup Language">HTML</abbr>, sino con una parte concreta de la página <abbr title="HyperText Markup Language">HTML</abbr>. Para ello, es
+necesario que la página destino contenga elementos que se hayan marcado con
+identificadores:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;mamiferos&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Los mamíferos<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bla, bla, bla<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+   <span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;hominidos&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Los homínidos<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bla, bla, bla<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+
+   <span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;felinos&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Los felinos<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bla, bla, bla<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Hecho así, para que el hipervínculo enlace directamente con el elemento interno
+deseado, basta con añadir <code class="code docutils literal notranslate"><span class="pre">#mamiferos</span></code> a la <abbr title="Uniform Resource Locator">URL</abbr> si es que se quiere
+enlazar con la sesíon dedicada a los mamíferos, ya que este es el valor que
+hemos dado al identificador correspondiente. Por tanto:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>http://www.losanimales.org/descripcion.html#mamiferos
+</pre></div>
+</div>
+<p>podría ser una <abbr title="Uniform Resource Locator">URL</abbr> absoluta válida. Mientras que:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#mamiferos
+</pre></div>
+</div>
+<p>podría ser el valor de un hipervínculo valido si el enlace está en la propia
+página.</p>
+</section>
+<section id="otros-hipervinculos">
+<h3><span class="section-number">6.1.1.4. </span>Otros hipervínculos<a class="headerlink" href="#otros-hipervinculos" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Además de las rutas anteriores en las que siempre se ha presupuesto que el
+protocolo era <abbr title="HyperText Transfer Protocol">HTTP</abbr> o <abbr title="HyperText Transfer Protocol">HTTP</abbr>s, para cuyo destino el agente apropiado es el
+propio navegador, existen otros tipos de recursos externos accesibles por
+distintos medios. Tradicionalmente, estos se han reducido a dos: <abbr title="File Transfer Protocol">FTP</abbr> (para
+cuyo protocolo los navegadores también solían traer soporte) y correo
+electrónico:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;ftp://ftp.rediris.es&quot;</span><span class="o">&gt;</span><span class="n">FTP</span> <span class="n">de</span> <span class="n">rediris</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">a</span> <span class="n">data</span><span class="o">-</span><span class="n">rel</span><span class="o">=</span><span class="s2">&quot;external&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;mailto:pepe@gmail.com&quot;</span><span class="o">&gt;</span><span class="n">Email</span> <span class="n">de</span> <span class="n">contacto</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Si la configuración es adecuada, en el segundo caso el navegador se encarga de
+invocar al programa de correo electrónico. Pero con la proliferación de los
+teléfonos inteligentes, los enlaces ajenos al navegador han proliferado y pueden
+adoptar muchas formas:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">a</span> <span class="n">data</span><span class="o">-</span><span class="n">rel</span><span class="o">=</span><span class="s2">&quot;external&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;tel:+34959959959&quot;</span><span class="o">&gt;</span><span class="n">Teléfono</span> <span class="n">de</span> <span class="n">contacto</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">a</span> <span class="n">data</span><span class="o">-</span><span class="n">rel</span><span class="o">=</span><span class="s2">&quot;external&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;skype:manolo?call&quot;</span><span class="o">&gt;</span><span class="n">Contacto</span> <span class="n">a</span> <span class="n">través</span> <span class="n">de</span> <span class="n">Skype</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">a</span> <span class="n">data</span><span class="o">-</span><span class="n">rel</span><span class="o">=</span><span class="s2">&quot;external&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;sms://+34959959959?body=Estoy</span><span class="si">%20i</span><span class="s2">nteresado.%20Ll</span><span class="si">%E</span><span class="s2">1meme.&quot;</span><span class="o">&gt;</span><span class="n">Envíar</span> <span class="n">SMS</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>En <a class="reference external" href="https://www.w3docs.com/snippets/html/how-to-create-mailto-links.html">este tutorial</a> se
+explica cómo incluir en un enlace <em>mailto:</em> asunto, destinatario, etc.</p>
+</div>
+</section>
+<section id="data-uris">
+<span id="html-data-uris"></span><h3><span class="section-number">6.1.1.5. </span>Data <abbr title="Uniform Resource Identifier">URI</abbr>s<a class="headerlink" href="#data-uris" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Un página <abbr title="HyperText Markup Language">HTML</abbr> es un documento de texto que suele referir distintos contenidos
+de diverso tipo (<em>scripts</em>, hojas de estilos, imágenes, etc.). Todos estos
+contenidos se obtienen gracias a la indicación de su <abbr title="Uniform Resource Locator">URL</abbr> absoluta o relativa:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Logo de HTML5&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;images/html5.png&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><abbr title="HyperText Markup Language">HTML</abbr>5 incorpora un mecanismo, llamado datos <abbr title="Uniform Resource Identifier">URI</abbr>s, para sustituir la
+<abbr title="Uniform Resource Locator">URL</abbr> por el contenido del archivo, de suerte que el archivo queda embebido
+dentro del propio documento <abbr title="HyperText Markup Language">HTML</abbr>. Puede llegar a ser muy útil en algunos
+casos, como cuando se necesita cambiar al vuelo una imagen vectorial en función
+de las acciones del usuario. El formato de estos data <abbr title="Uniform Resource Identifier">URI</abbr>s es el siguiente:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>data:tipo-mime[;base64],&lt;datos&gt;
+</pre></div>
+</div>
+<p>Como por ejemplo:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;data:application/javascript,alert(&#39;¡Hola, mundo!&#39;);&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>donde en este caso el tipo <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> es «<cite>application/javascript</cite>» y los datos un
+minúsculo código <em>Javascript</em>, que hubiera estado incluido en un archivo, si no
+hubieramos hecho uso de un data <abbr title="Uniform Resource Identifier">URI</abbr>. La <a class="reference external" href="https://es.wikipedia.org/wiki/Base64">codificación en base64</a><a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> es útil cuando los datos son
+binarios (p.e. si representamos una imagen <abbr title="Portable Network Graphic">PNG</abbr>). Por ejemplo, el ejemplo
+anterior para incrustar el logo de <abbr title="HyperText Markup Language">HTML</abbr>5, podría escribirse así:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Logo de HTML5&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;data:image/jpeg;base64,</span>
+<span class="s">iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ</span>
+<span class="s">bWFnZVJlYWR5ccllPAAAAs1JREFUeNq8VztvE0EQnnsFxbJxlCAEIiAoiC0qOxJpkCAoHRIKLR0V</span>
+<span class="s">FRJdWugQBRX8EBASDUIkSGlC4XTEpsDiIVEAcsA6x77Hsrs5+24ft7d+6FY6rc8+z8x+M983cwbg</span>
+<span class="s">9f32yjre3kO+6+by69a2Gd3sQ/6L+jSGdxgFNImVwqKp/WwwAOh3Q/oZn576tqc9hjVnjBGAeEaT</span>
+<span class="s">hyRP+HkEOkJ01brSimGYYJ+ey/TmN/fojhASfClT4Gy9UBp2HAcK5XJmAH/vXzlOgQfKFOzwP6Kv</span>
+<span class="s">n6fGOmh9lH29IwtAWKjXnWniUSAWobIGhNPsvgH49TM2aJnQX5pX/if8/SP+HICyBgQWoIMGQCUu</span>
+<span class="s">xBAHEJLvEqt/xpqKBWZevAt9uc4lA2gLCLj/2Icrq5PnP2RuR74YGePlmOiAioqEhuUMGrrP7lEd</span>
+<span class="s">ICro/mFlONcUkD6QlQKhEJE7PQ2Db59A5YNXwg4vRGGzkW7csiFYLLInWq6CUSgJdSSTYa1u6D19</span>
+<span class="s">kP4bMcDRsPjkLRPAKFhPbsOWwLPOPHD3IRgXLmsFRBFYOpeA/0CpAbIADoWOh52blfpkBdCLaRxn</span>
+<span class="s">gPUxNguMU2fTh5Pz1XQh8pBWCrbx9UjoiAkEnK3ntDCJTAeNDzjfNti1DbBX1sCqXJXOARIf+kUI</span>
+<span class="s">HBUJAhZB4dotmHceQ0ljHkg0oUwd6MxSfEYUZNsw40OYKGXTMZFks36dFmOSETIpJpXv77+jg8gw</span>
+<span class="s">BWkyrD0VkxY8asOFIlg4GIP0ibUN3OW6EDSxs9Yedcw3MBqAryhqCQJf8HZRF+aSxjww6KLh+0Ab</span>
+<span class="s">I3Api4btmfR/XHheD8HRYQgDN0y1bc+y6Eiu/T6+Bum8z0xB4mV1M5LlmsrAiZPmseMjpBq/CPdf</span>
+<span class="s">kZdRrQC4YBbwdgdfN6J9IeMv7cghGb1fYqedsRHICKgWIbOZaFz0hGTHDsd6xfsvwAB8ABqbrMgq</span>
+<span class="s">HwAAAABJRU5ErkJggg==&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="versiones">
+<span id="html-vers"></span><h2><span class="section-number">6.1.2. </span>Versiones<a class="headerlink" href="#versiones" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Tim Berners-Lee creó el <abbr title="HyperText Markup Language">HTML</abbr> en 1990 como un dialecto <abbr title="Standard Generalized Markup Language">SGML</abbr>, aunque sin una
+definición formal mediante <abbr title="Document Type Definition">DTD</abbr>. En 1993 se publicó como borrador una
+especificación que sí incluía un <abbr title="Document Type Definition">DTD</abbr>, por lo que se puede considerar que es a
+partir de esa fecha cuando <abbr title="HyperText Markup Language">HTML</abbr> pasa a ser formalmente un dialecto <abbr title="Standard Generalized Markup Language">SGML</abbr>. Se
+publican posteriormente tres versiones del lenguaje, ya definido como <abbr title="Standard Generalized Markup Language">SGML</abbr>:</p>
+<ul class="simple">
+<li><p><abbr title="HyperText Markup Language">HTML</abbr> <strong>2.0</strong>, en 1995, que es la primera especificación formal del lenguaje.</p></li>
+<li><p><abbr title="HyperText Markup Language">HTML</abbr> <strong>3.2</strong>, en 1997, que fue publicada ya por el <abbr title="W3 Consortium">W3C</abbr>.</p></li>
+<li><p><abbr title="HyperText Markup Language">HTML</abbr> <strong>4.01</strong>. en 1999.</p></li>
+</ul>
+<p>En esta última versión, el <abbr title="W3 Consortium">W3C</abbr> intentó desligar la definición estructural
+(reservada para <abbr title="HyperText Markup Language">HTML</abbr>) de la visual (reservada para <abbr title="Cascading Style Sheets">CSS</abbr>), por lo que se
+propuso ir eliminado las marcas y atributos <abbr title="HyperText Markup Language">HTML</abbr> que definían aspecto,
+marcándolas como obsoletas. Para hacer menos traumático el cambio definió tres
+versiones del estándar:</p>
+<ul>
+<li><p><em class="dfn">Frameset</em>, que permitía el uso de <span class="xref std std-ref">iframes</span> y
+elementos y atributos obsoletos:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!DOCTYPE</span> <span class="nt">html</span> <span class="kc">PUBLIC</span> <span class="s2">&quot;-//W3C//DTD HTML 4.01 Frameset//EN&quot;</span> <span class="s2">&quot;http://www.w3.org/TR/html4/frameset.dtd&quot;</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p><em class="dfn">Transitional</em>, que permitía el uso de elementos y atributos obsoletos:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!DOCTYPE</span> <span class="nt">HTML</span> <span class="kc">PUBLIC</span> <span class="s2">&quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;</span> <span class="s2">&quot;http://www.w3.org/TR/html4/loose.dtd&quot;</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p><em class="dfn">Strict</em>, que no permitía el uso de elementos obsoletos:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!DOCTYPE</span> <span class="nt">HTML</span> <span class="kc">PUBLIC</span> <span class="s2">&quot;-//W3C//DTD HTML 4.01//EN&quot;</span> <span class="s2">&quot;http://www.w3.org/TR/html4/strict.dtd&quot;</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<p>En principio, la versión recomendada por el <abbr title="W3 Consortium">W3C</abbr> era esta última.</p>
+</li>
+</ul>
+<p>En este punto (1999), el <abbr title="W3 Consortium">W3C</abbr>, que era el encargado de desarrollar el lenguaje,
+pretendió darle un giro y adaptarlo a las especificaciones <abbr title="eXtensible  Markup Language">XML</abbr>, que habían
+sido publicadas por este mismo organismo también en 1999. Como consecuencia
+reformuló <abbr title="HyperText Markup Language">HTML</abbr> <strong>4.01</strong> para adaptarlo a las reglas del <abbr title="eXtensible  Markup Language">XML</abbr> y publicó en
+2000 la especificación <abbr title="eXtensible HyperText Markup Language">XHTML</abbr> <strong>1.0</strong>. Al ser una reformulación, también
+disponía de las tres versiones:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!DOCTYPE</span> <span class="nt">html</span> <span class="kc">PUBLIC</span> <span class="s2">&quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;</span> <span class="s2">&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!DOCTYPE</span> <span class="nt">html</span> <span class="kc">PUBLIC</span> <span class="s2">&quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;</span> <span class="s2">&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!DOCTYPE</span> <span class="nt">html</span> <span class="kc">PUBLIC</span> <span class="s2">&quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;</span> <span class="s2">&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<p>Las esfuerzos entonces del <abbr title="W3 Consortium">W3C</abbr> se centraron en el desarrollo del lenguaje como
+dialecto <abbr title="HyperText Markup Language">HTML</abbr>, esto es, en el <abbr title="eXtensible HyperText Markup Language">XHTML</abbr> y abandonaron por completo el sabor
+<abbr title="Standard Generalized Markup Language">SGML</abbr> que quedó estancada en la versión <strong>4.01</strong>. En consecuencia en 2001
+publicó <abbr title="eXtensible HyperText Markup Language">XHTML</abbr> <strong>1.1</strong> en que ya sólo había una única versión:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!DOCTYPE</span> <span class="nt">html</span> <span class="kc">PUBLIC</span> <span class="s2">&quot;-//W3C//DTD XHTML 1.1//EN&quot;</span> <span class="s2">&quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<p>El <abbr title="W3 Consortium">W3C</abbr> continuó en los años siguientes el desarrollo de <abbr title="eXtensible HyperText Markup Language">XHTML</abbr> <strong>2</strong> del que
+llegó a publicar borradores, abandonando por completo <abbr title="HyperText Markup Language">HTML</abbr>. Como respuesta a
+esta política de abandonar <abbr title="HyperText Markup Language">HTML</abbr>, surgió en 2004 el <abbr title="Web Hypertext Application Technology Working Group">WHATWG</abbr>, un grupo que
+aglutinaba a los principales creadores de navegadores web<a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. Empezaron a
+trabajar en una especificación sobre <abbr title="HyperText Markup Language">HTML</abbr> y fruto de este pulso, se produjo la
+rendición del <abbr title="W3 Consortium">W3C</abbr> que abandonó sus planes para <abbr title="eXtensible HyperText Markup Language">XHTML</abbr> y aceptó crear un nuevo
+estándar basado en el trabajo del <abbr title="Web Hypertext Application Technology Working Group">WHATWG</abbr> en 2007. En 2014, apareció la primera
+recomendación oficial de <abbr title="HyperText Markup Language">HTML</abbr> <strong>5.0</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>En un primer momento, <abbr title="Web Hypertext Application Technology Working Group">WHATWG</abbr> optó por hacer del estándar <abbr title="HyperText Markup Language">HTML</abbr> una
+<a class="reference external" href="https://html.spec.whatwg.org/multipage/">norma viva</a>, esto es, una versión
+que no se atiene a números sino que está en continuo proceso de redacción. De
+hecho, la norma ni siquiera refiere el <strong>5</strong> en su título. EL <abbr title="W3 Consortium">W3C</abbr>, por
+contra y a su rebufo por haber perdido el pulso inicial, decidió tomar la
+versión viva y publicar cada cierto tiempo una versión númerada. Fue así como
+publicó <strong>5.0</strong> en 2014, <strong>5.1</strong> en 2016 y <strong>5.2</strong> en 2018. Pero la voz
+cantante de la evolución de <abbr title="HyperText Markup Language">HTML</abbr> la seguía llevando <abbr title="Web Hypertext Application Technology Working Group">WHATWG</abbr>, por cuanto
+era la referencia para la implementación en los navegadores. Por ese motivo,
+el <abbr title="W3 Consortium">W3C</abbr> nunca llegó a publicar <strong>5.3</strong> y a comienzos de 2021 <a class="reference external" href="https://www.w3.org/TR/2021/NOTE-html53-20210128/">dio
+definitivamente su brazo a torcer</a> y dejó de publicar
+versiones numeradas.</p>
+</div>
+<p>Esta es la historia, pero ¿es <abbr title="HyperText Markup Language">HTML</abbr>5 entonces <abbr title="Standard Generalized Markup Language">SGML</abbr>? La respuesta es que
+<strong>no</strong>. <abbr title="HyperText Markup Language">HTML</abbr> no es ya <abbr title="Standard Generalized Markup Language">SGML</abbr>, porque no hay definido ningún <abbr title="Document Type Definition">DTD</abbr> para su
+validación y, además, es imposible definir uno, ya que hay ciertas reglas que
+son inexpresables con la sintaxis del <abbr title="Document Type Definition">DTD</abbr>. Esa es la razón por la que <a class="reference external" href="https://html.spec.whatwg.org/multipage/syntax.html#the-doctype">la
+declaración de tipo de documento</a> es,
+simplemente:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!DOCTYPE</span> <span class="nt">html</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<p>que ni siquera es una declaración <abbr title="Standard Generalized Markup Language">SGML</abbr> válida.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Consulte <a class="reference external" href="https://stackoverflow.com/a/15245834">esta respuesta de stackoverflow</a> para más información.</p>
+</div>
+<p>Por otro lado, el propio estándar define dos sintaxis distintas para la norma
+<abbr title="HyperText Markup Language">HTML</abbr>:</p>
+<ul class="simple">
+<li><p>La sintaxis <abbr title="HyperText Markup Language">HTML</abbr>, asociada al tipo <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> <em>text/html</em>.</p></li>
+<li><p>La sintaxis <abbr title="eXtensible  Markup Language">XML</abbr>, asociada al tipo <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> <em>application/xhtml+xml</em>, para la
+que no hay tampoco <abbr title="Document Type Definition">DTD</abbr> y que consiste básicamente en <a class="reference external" href="https://html.spec.whatwg.org/multipage/xhtml.html#the-xhtml-syntax">adaptar la sintaxis
+HTML a otra que sea bien formada para un procesador XML</a>.
+Comúnmente se llama a esta sintaxis <abbr title="eXtensible HyperText Markup Language">XHTML</abbr>5.</p></li>
+</ul>
+<p>Los apuntes se centrarán en la sintaxis <abbr title="HyperText Markup Language">HTML</abbr>, aunque se definirán más adelante
+<a class="reference internal" href="02.estructura.html#xhtml5"><span class="std std-ref">las pautas para saber escribir con sintaxis XML</span></a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Eche un vistazo a la representación gráfica de <a class="reference external" href="http://www.evolutionoftheweb.com/?hl=es#/evolution/night">la evolución de las
+tecnologías web</a>.</p>
+</div>
+</section>
+<section id="tecnologias-asociadas">
+<h2><span class="section-number">6.1.3. </span>Tecnologías asociadas<a class="headerlink" href="#tecnologias-asociadas" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>El servicio de páginas web no se restringe exclusivamente al uso del <abbr title="HyperText Markup Language">HTML</abbr>, sino que
+hay multiples tecnologías implicadas. Las más destacadas son:</p>
+<ul>
+<li><p><span class="xref std std-ref">CSS</span> para aplicar aspecto visual al código <abbr title="HyperText Markup Language">HTML</abbr>.</p></li>
+<li><p><a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a> (cuyo estándar recibe el nombre de <a class="reference external" href="https://es.wikipedia.org/wiki/ECMAScript">ECMAScript</a>), que se usa como
+lenguaje en el lado del cliente, esto es, en el propio navegador a fin de
+dotar de dinamismo a las páginas. Es posible crear auténticas aplicaciones web
+que se ejecutan integramente en el ordenador del cliente con sólo unos pocos
+datos que se reciban del servidor.</p></li>
+<li><p>Lenguajes de programación en el lado del servidor que hacen de enlace entre el
+servidor y las bases de datos. La estrategia puede variar:</p>
+<ul class="simple">
+<li><p>desde generar toda la página web en el servidor y transferirla al cliente
+completa.</p></li>
+<li><p>a limitarse básicamente a servir datos en un formato adecuado (<a class="reference internal" href="../01.intro/02b.marcas.html#xml"><span class="std std-ref">XML</span></a>, <a class="reference internal" href="../01.intro/02a.serial.html#json"><span class="std std-ref">JSON</span></a>) y construir la página en el cliente gracias a
+<a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a>.</p></li>
+</ul>
+<p>Los lenguajes de servidor más utilizados son el propio <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a> (usando
+<a class="reference external" href="https://nodejs.org/">NodeJS</a>), <abbr title="PHP Hypertext Preprocessor">PHP</abbr>, <a class="reference external" href="https://www.python.org">Python</a> y <a class="reference external" href="https://es.wikipedia.org/wiki/Java_(lenguaje_de_programaci%C3%B3n)">Java</a>.</p>
+</li>
+</ul>
+</section>
+<section id="herramientas">
+<h2><span class="section-number">6.1.4. </span>Herramientas<a class="headerlink" href="#herramientas" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Para hacer más sencilla la escritura de nuestro documentos, podemos hacer uso
+las siguientes herramientas:</p>
+<section id="edicion">
+<h3><span class="section-number">6.1.4.1. </span>Edición<a class="headerlink" href="#edicion" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Para escribir nuestros documentos <abbr title="HyperText Markup Language">HTML</abbr> (y <abbr title="Cascading Style Sheets">CSS</abbr>) es indispensable usar
+al menos editores de texto con resaltado de sintaxis. Por ejemplo:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.vim.org">vim</a>, el editor.</p></li>
+<li><p><a class="reference external" href="https://www.nano-editor.org/">nano</a>, básico pero suficiente.</p></li>
+<li><p><a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a>, que ya hemos utilizado al escribir <abbr title="eXtensible  Markup Language">XML</abbr>, <abbr title="YAML Ain't Markup Language">YAML</abbr> o
+<abbr title="JavaScript Object Notation">JSON</abbr>.</p></li>
+</ul>
+</section>
+<section id="validacion">
+<span id="html-validacion"></span><h3><span class="section-number">6.1.4.2. </span>Validación<a class="headerlink" href="#validacion" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Es muy conveniente comprobar la validez de los documentos <abbr title="HyperText Markup Language">HTML</abbr> para lo cual
+podemos usar validadores en línea como:</p>
+<dl>
+<dt><strong>HTML</strong></dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://html5.validator.nu/">validator.nu</a>.</p></li>
+<li><p><a class="reference external" href="https://validator.w3.org/nu">El validador del W3C</a>.</p></li>
+</ul>
+<p>Existen también extensiones para navegadores (como <a class="reference external" href="https://www.validity.org.uk/">Validity</a> para <a class="reference external" href="https://www.chromium.org/">Chromium</a>) que
+permiten la comprobación de la página que se está viendo en la pestaña activa.
+Por lo general, sin embargo, no permiten la validación de documentos locales.</p>
+</dd>
+<dt><strong>CSS</strong></dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://jigsaw.w3.org/css-validator/">El validador CSS del W3C</a>.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="recetarios">
+<h3><span class="section-number">6.1.4.3. </span>Recetarios<a class="headerlink" href="#recetarios" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Los recetarios presentan de modo resumido los elementos del lenguaje a fin de
+ofrecer una referencia rápida. Existen muchos:</p>
+<dl class="simple">
+<dt><strong>HTML</strong></dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://websitesetup.org/html5-cheat-sheet/">websitesetup,org (HTML)</a>.
+De entre los ofrecidos, salvamos el <a class="reference download internal" download="" href="../_downloads/cf02cbe7b0667c1b3f2e7d45cb6c3b76/HTML-CHEAT-SHEET.png"><code class="xref download docutils literal notranslate"><span class="pre">formato</span> <span class="pre">PNG</span></code></a>.</p></li>
+<li><p><a class="reference external" href="https://learn-the-web.algonquindesign.ca/topics/html-semantics-cheat-sheet/">algonquindesign.ca</a></p></li>
+</ul>
+</dd>
+<dt><strong>CSS</strong></dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://websitesetup.org/css3-cheat-sheet/">websitesetup,org (CSS)</a>.
+De entre los ofrecidos, salvamos el <a class="reference download internal" download="" href="../_downloads/df26a20edff880349d1441d55031fcd6/CSS-CHEAT-SHEET.pdf"><code class="xref download docutils literal notranslate"><span class="pre">formato</span> <span class="pre">PDF</span></code></a>.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="pruebas">
+<h3><span class="section-number">6.1.4.4. </span>Pruebas<a class="headerlink" href="#pruebas" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Para comprobar nuestras páginas <abbr title="HyperText Markup Language">HTML</abbr> es obvio que necesitamos un navegador
+reciente que soporte convenientemente <abbr title="HyperText Markup Language">HTML</abbr>5 y <abbr title="Cascading Style Sheets">CSS</abbr>3. Cualquiera de los
+más usados debería valernos:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.chromium.org/">Chromium</a>.</p></li>
+<li><p><a class="reference external" href="https://es.wikipedia.org/wiki/Mozilla_Firefox">Firefox</a>.</p></li>
+<li><p><a class="reference external" href="https://es.wikipedia.org/wiki/Safari_(navegador)">Safari</a>.</p></li>
+</ul>
+<p>En principio, nos bastará con almacenar en el disco local los archivos y acceder
+a ellos abriéndolos con el navegador. Esto, por supuesto, no supone una
+transferencia <abbr title="HyperText Transfer Protocol">HTTP</abbr>, pero para los objetivos del curso no es importante. Si por
+el contrario, el curso fuera más ambicioso, necesitaríamos montar un servidor
+web en el que alojar nuestras páginas. En este otro caso, dependería de cuán
+ambicioso fuera nuestro propósito:</p>
+<ul>
+<li><p>Si el propósito se limita a programación en el lado del cliente (esto es,
+<abbr title="HyperText Markup Language">HTML</abbr>, <abbr title="Cascading Style Sheets">CSS</abbr> y <em>Javascript</em> ejecutado por el navegador), podría valernos con
+seguir abriendo los ficheros directamente con el navegador o, si esto no
+basta porque necesitamos hacer <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/Guide/AJAX">peticiones AJAX</a>, montar un modesto
+servidor web que sirva contenido estático con:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">  $ </span><span class="nb">cd</span><span class="w"> </span>/ruta/a/los/ficheros
+<span class="gp">  $ </span>python3<span class="w"> </span>-m<span class="w"> </span>http.server<span class="w"> </span><span class="m">8080</span>
+
+<span class="go">Y listo. Un servidor web local escuchando en el puerto **8080**.</span>
+</pre></div>
+</div>
+</li>
+<li><p>Si requerimos programación en el lado del servidor, entonces sí tendremos que
+montar un servidor real que sea capaz de ejecutar los <em>scripts</em>.</p></li>
+</ul>
+<p>Además, existen también algunas <strong>herramientas en línea</strong> muy convenientes:</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://jsfiddle.net/">jsfiddle.net</a></dt><dd><p>Es un sitio web que permite crear pruebas de concepto en <abbr title="HyperText Markup Language">HTML</abbr>, <abbr title="Cascading Style Sheets">CSS</abbr> y
+<a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a>, y compartirlas con otros desarrolladores, bien para resolver
+dudas ajenas, bien para resolver las propias. Por ejemplo, esta es <a class="reference external" href="https://jsfiddle.net/uc709hv1/">una
+prueba con jsfiddle</a> e incluso se puede
+obtener el <abbr title="HyperText Markup Language">HTML</abbr> que genera la prueba <a class="reference external" href="https://jsfiddle.net/uc709hv1/show">añadiendo /show a la dirección</a>  y guardando el <em>frame</em> apropiado.</p>
+</dd>
+<dt><a class="reference external" href="https://codepen.io/">codepen.io</a></dt><dd><p>Sitio alternativo al anterior con el mismo propósito y las mismas
+funcionalidades. Esto, por ejemplo sería <a class="reference external" href="https://codepen.io/sio2/pen/rbEPgv">una prueba en codepen.io</a></p>
+</dd>
+<dt><a class="reference external" href="https://jsbin.com">jsbin.com</a></dt><dd><p>Sitio semejante a los dos anteriores, aunque presenta algunas
+particularidades como una consola de <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a>.</p>
+</dd>
+</dl>
+<p class="rubric">Notas al pie</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id3" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>En un sistema <em>Linux</em> es posible generar la codificación en base64 de un
+archivo con la orden <strong class="program">base64</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>base64<span class="w"> </span>html5.png
+</pre></div>
+</div>
+</aside>
+<aside class="footnote brackets" id="id4" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>En aquel entonces, trabajadores de <a class="reference external" href="https://www.apple.com">Apple</a> (que desarrollaba <a class="reference external" href="https://es.wikipedia.org/wiki/Safari_(navegador)">Safari</a>), la
+<a class="reference external" href="https://www.mozilla.org/es-ES/about/">fundación Mozilla</a> y <a class="reference external" href="https://es.wikipedia.org/wiki/Opera_Software">Opera</a>. Se invitó también a personal de <a class="reference external" href="https://www.microsoft.com">Microsoft</a>
+(porque desarrollaba <a class="reference external" href="https://es.wikipedia.org/wiki/Internet_Explorer">Internet Explorer</a>), pero no se incorpó. <a class="reference external" href="https://www.google.com/about/">Google</a> por
+aquel entonces aún no había empezado el desarrollo de <a class="reference external" href="https://www.chromium.org/">Chromium</a>.</p>
+</aside>
+</aside>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/logo.png" alt="Logo"/>
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">6.1. Introducción</a><ul>
+<li><a class="reference internal" href="#hiperenlaces">6.1.1. Hiperenlaces</a><ul>
+<li><a class="reference internal" href="#formato">6.1.1.1. Formato</a></li>
+<li><a class="reference internal" href="#rutas-absolutas-y-relativas">6.1.1.2. Rutas absolutas y relativas</a></li>
+<li><a class="reference internal" href="#enlaces-internos">6.1.1.3. Enlaces internos</a></li>
+<li><a class="reference internal" href="#otros-hipervinculos">6.1.1.4. Otros hipervínculos</a></li>
+<li><a class="reference internal" href="#data-uris">6.1.1.5. Data <abbr title="Uniform Resource Identifier">URI</abbr>s</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#versiones">6.1.2. Versiones</a></li>
+<li><a class="reference internal" href="#tecnologias-asociadas">6.1.3. Tecnologías asociadas</a></li>
+<li><a class="reference internal" href="#herramientas">6.1.4. Herramientas</a><ul>
+<li><a class="reference internal" href="#edicion">6.1.4.1. Edición</a></li>
+<li><a class="reference internal" href="#validacion">6.1.4.2. Validación</a></li>
+<li><a class="reference internal" href="#recetarios">6.1.4.3. Recetarios</a></li>
+<li><a class="reference internal" href="#pruebas">6.1.4.4. Pruebas</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="index.html"
+                          title="Previous page">&larr; <span class="section-number">6. </span><abbr title="HyperText Markup Language">HTML</abbr></a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="02.estructura.html"
+                          title="Next page">&rarr; <span class="section-number">6.2. </span>Generalidades</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/06.html/01.intro.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="02.estructura.html" title="6.2. Generalidades"
+             >siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="index.html" title="6. HTML"
+             >anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">6. </span><abbr title="HyperText Markup Language">HTML</abbr></a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">6.1. </span>Introducción</a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor CC BY 4.0, 2023-2023, José Miguel Sánchez Alés.
+      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

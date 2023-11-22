@@ -46,6 +46,13 @@ unidades con el de éstos.
    posterior de *Desarrollo web en entorno cliente* (supuesto que se curse
    |DAW|).
 
+.. toctree::
+   :maxdepth: 2
+   :glob:
+   :numbered:
+
+   0[6-8]*/index
+
 **Bloque 3: Sistemas de gestión empresarial**
    Pequeño bloque que sirve de introducción al módulo posterior de *Sistemas de
    gestión empresarial* (supuesto que se curse |DAM|).
