@@ -57,7 +57,7 @@ Encabezados
       <h2>Primeros pasos</h2>
       <p>Bla, bla, bla...</p>
 
-   Por su propia naturaleza, es obvio que se comportan como elementos de bloque.
+   Son elementos de bloque que pueden contener elementos en línea.
 
 Elementos de párrafo
 ====================
@@ -76,6 +76,8 @@ o estructuras análagas:
    +--------------+-----------------------------------------------------------+
    | |details|    | Genera un elemento en que la información se hace visible  |
    |              | al pinchar sobre él.                                      |
+   +--------------+-----------------------------------------------------------+
+   | |address|    | Permite especificar información de contacto               |
    +--------------+-----------------------------------------------------------+
 
 .. index:: p
@@ -175,6 +177,21 @@ o estructuras análagas:
          <summary>Datos</summary>
          Extraidos del <a href="https://www.ine.es">Instituto Nacional de Estadistica</a>.
       </details>
+
+.. index:: address
+.. _html-address:
+
+**address** (:devmoz:`address`)
+   elemento de bloque que permite definir una información de contacto relativa a
+   un particular o una organización::
+
+      <p>Información de contacto:
+
+      <address>
+         <a href="http://www.mipagina.com">Página web personal</a><br>
+         <a data-rel="external" href="mailto:elmio@pagina.com">Email: elmio@pagina.com</a><br>
+         <a data-rel="external" href="tel:+34959959959">Teléfono: +34959959959</a>
+      </address>
 
 .. _html-el-linea:
 
@@ -947,6 +964,7 @@ Ejercicios propuestos
 .. |p| replace:: :ref:`<p> <html-p>`
 .. |details| replace:: :ref:`<details> <html-details>`
 .. |blockquote| replace:: :ref:`<blockquote> <html-blockquote>`
+.. |address| replace::  :ref:`<address> <html-address>`
 .. |u| replace:: :ref:`<u> <html-u>`
 .. |s| replace:: :ref:`<s> <html-s>`
 .. |mark| replace:: :ref:`<mark> <html-mark>`

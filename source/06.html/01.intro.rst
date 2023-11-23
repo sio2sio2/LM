@@ -463,6 +463,10 @@ al menos editores de texto con resaltado de sintaxis. Por ejemplo:
 * `Visual Studio Code`_, que ya hemos utilizado al escribir |XML|, |YAML| o
   |JSON|.
 
+.. todo:: Añadir comentarios sobre extensiones apropiadas.
+
+.. todo:: Hablar del modo desarrollador de los navegadores.
+
 .. _html-validacion:
 
 Validación

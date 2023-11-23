@@ -1,0 +1,404 @@
+.. highlight:: html
+
+Tablas
+******
+Las tablas pueden ser más o menos complejas dependiendo de la cantidad de datos
+y organización que queramos darle.
+
+Tablas simples
+==============
+Son las que constan opcionalmente de un título y una sucesión de filas.
+
+.. table:: Elementos de tablas simples
+   :class: el-html
+
+   +-----------+----------------------------------------------------------+
+   | |table|   | Elemento contenedor de la tabla                          |
+   +-----------+----------------------------------------------------------+
+   | |caption| | Establece el título de la tabla                          |
+   +-----------+----------------------------------------------------------+
+   | |tr|      | Elemento para definir la fila de una tabla               |
+   +-----------+----------------------------------------------------------+
+   | |th|      | Celda de cabecera de la tabla                            |
+   +-----------+----------------------------------------------------------+
+   | |td|      | Celda de datos de una tabla                              |
+   +-----------+----------------------------------------------------------+
+
+.. index:: table
+.. _html-table:
+
+**table** (:devmoz:`table`)
+   Es el elemento en el que deben encerrarse toda la tabla. En una tabla simple,
+   está constituida por un elemento opcional :code:`<caption>` y una sucesión
+   de elementos de fila :code:`tr`.
+  
+   .. note:: No tiene atributos particulares. Hasta |HTML|\ 4, disponía de un
+      atributo :code:`summary` que permtía hacer una descripción breve del
+      contenido de la tabla. Ahora puede optarse por el título de la tabla
+      que se indica con :code:`<caption>` o, si no es suficiente, usar |details|
+      dentro del elemento :code:`caption`::
+
+         <caption>
+            <details>
+               <summary>Datos de empleo</summary>
+               Datos de empleo de España para el año 2018 extraídos del <a
+               href="https://www.ine.es"><abbr title="Instituto Nacional de
+               Estadística">INE</abbr></a>
+            </details>
+         </caption>
+
+.. index:: caption
+.. _html-caption:
+
+**caption** (:devmoz:`caption`)
+   Define el título de la tabla. Por lo general, es corto y se usan dentro de él
+   elementos en línea, pero puede hacer más complicado.
+
+.. index:: tr
+.. _html-tr:
+
+**tr** (:devmoz:`tr`)
+   Define una fila de la tabla. Está constituida por elementos :code:`<th>` y
+   :code:`<td>`.
+
+.. index:: th
+.. index:: td
+.. _html-th:
+.. _html-td:
+
+| **th** (:devmoz:`th`)
+| **td** (:devmoz:`td`)
+|   Definen las celdas de la tabla, :code:`<th>` las de cabecera y :code:`<td>`
+    las de datos. Pueden contener atributos :code:`rowspan` y :code:`colspan`
+    para fusionarse, pero se tratará :ref:`más adelante <html-agr-celdas>`.
+
+.. table:: Atributos de th
+   :class: attr-html
+
+   +--------+--------------------------------+----------------------------+
+   | scope  | col|row|colgroup|rowgroup|auto | Define las celdas de las   |
+   |        |                                | que es cabecera esta celda |
+   +--------+--------------------------------+----------------------------+
+
+Los elementos :code:`<th>` pueden tener un atributo :code:`scope` que identifica
+cuáles son las celdas de las que es cabecera. La norma tiene un `explicación muy
+esclarecedora sobre el uso de este atributo
+<https://html.spec.whatwg.org/multipage/tables.html#attr-th-scope-rowgroup>`_.
+
+Ejemplo de uso:
+
+.. code-block:: html
+
+   <table>
+      <caption>Elementos en tablas sencillas</caption>
+      <tr>
+         <th>Elemento
+         <th>Descripción
+      <tr>
+         <td>table
+         <td>Elemento contenedor de la tabla
+      <tr>
+         <td>caption
+         <td>Establece el título de la tabla
+      <tr>
+         <td>tr</td>
+         <td>Elemento para definir la fila de una tabla
+      <tr>
+         <td>th
+         <td>Celda de cabecera de la tabla
+      <tr>
+         <td>td
+         <td>Celda de datos de la tabla
+   </table>
+
+.. rst-class:: ej-html
+
+.. raw:: html
+
+   <table class="tb-ejemplo">
+      <caption>Elementos en tablas sencillas</caption>
+      <tr>
+         <th>Elemento
+         <th>Descripción
+      <tr>
+         <td>table
+         <td>Elemento contenedor de la tabla
+      <tr>
+         <td>caption
+         <td>Establece el título de la tabla
+      <tr>
+         <td>tr</td>
+         <td>Elemento para definir la fila de una tabla
+      <tr>
+         <td>th
+         <td>Celda de cabecera de la tabla
+      <tr>
+         <td>td
+         <td>Celda de datos de la tabla
+   </table>
+
+.. note:: Por defecto, las tablas no tienen ninguna decoración, ni siquiera el
+   borde de separación entre celdas. Mientras no aprendamos |CSS|, puede
+   valernos con añadir este código para leerlas algo mejor:
+
+   .. code-block:: css
+
+      td, th {
+         border: solid black 1px;
+      }
+
+Agrupación de filas
+===================
+Bajo este epígrafe pretendemos agrupar las filas, lo que puede permitirnos
+agruparlas semánticamente y, además, cuando las tablas son largas y se pretenden
+imprimir, repetir una cabecera y un pie en todas las páginas que ocupe la tabla.
+
+.. table:: Elementos de agrupación de filas
+   :class: el-html
+
+   +-----------+----------------------------------------------------------+
+   | |thead|   | Agrupa filas que constituyen una cabecera.               |
+   +-----------+----------------------------------------------------------+
+   | |tbody|   | Agrupa filas en el cuerpo de la tabla.                   |
+   +-----------+----------------------------------------------------------+
+   | |tfoot|   | Agrupa filas en el cabo de la tabla.                     |
+   +-----------+----------------------------------------------------------+
+
+.. index:: thead
+.. index:: tbody
+.. index:: tfoot
+.. _html-thead:
+.. _html-tbody:
+.. _html-tfoot:
+
+| **thead** (:devmoz:`thead`)
+| **tbody** (:devmoz:`tbody`)
+| **tfoot** (:devmoz:`tfoot`)
+|   Si optamos por usar estos elementos, una tabla puede estar constituida por
+    un elemento opcional :code:`<caption>` seguido de un elemento opcional
+    :code:`<thead>`, uno o varios elementos :code:`tbody` y un elemento
+    opcional :code:`<tfoot>`, dentro de cada uno de los cuales se pueden incluir
+    filas con el elemento :code:`<tr>`.
+
+Ejemplo de uso:
+
+.. code-block:: html
+
+   <table>
+      <caption>Asistentes</caption>
+      <thead>
+         <tr>
+            <th>Nacionalidad
+            <th>Cantidad
+      <tbody>
+         <tr>
+            <td>Españoles
+            <td>100
+         <tr>
+            <td>Portugueses
+            <td>25
+         <tr>
+            <td>Franceses
+            <td>50
+         <tr>
+            <td>Italianos
+            <td>25
+      <tfoot>
+         <tr>
+            <td>Total
+            <td>100
+   </table>
+
+.. rst-class:: ej-html
+
+.. raw:: html
+
+   <table class="tb-ejemplo">
+      <caption>Asistentes</caption>
+      <thead>
+         <tr>
+            <th>Nacionalidad
+            <th>Cantidad
+      <tbody>
+         <tr>
+            <td>Españoles
+            <td>100
+         <tr>
+            <td>Portugueses
+            <td>25
+         <tr>
+            <td>Franceses
+            <td>50
+         <tr>
+            <td>Italianos
+            <td>25
+      <tfoot>
+         <tr>
+            <td>Total
+            <td>100
+   </table>
+
+Agrupación de columnas
+======================
+
+.. table:: Elementos de definición de columnas
+   :class: el-html
+
+   +------------+------------------------------------------------------+
+   | |colgroup| | Contiene las definiciones de columnas.               |
+   +------------+------------------------------------------------------+
+   | |col|      | Agrupa columnas.                                     |
+   +------------+------------------------------------------------------+
+
+.. index:: colgroup
+.. index:: col
+.. _html-colgroup:
+.. _html-col:
+
+| **colgroup** (:devmoz:`colgroup`)
+| **col** (:devmoz:`col`)
+|  Tras |caption| (si existe) y antes de cualquier otro elemento
+   (|tr|, |thead| o |tbody| según el caso) puede incluirse un elemento
+   :code:`<colgroup>` para contener elementos :code:`<col>`.  Estos
+   elementos permiten agrupar columnas que comparten una semántica
+   común. El elemento :code:`<colgroup>` puede omitir tanto su apertura
+   como su cierre.
+
+Ejemplo de uso:
+
+.. code-block:: html
+
+   <table>
+      <caption>Ciclos formativos en el centro</caption>
+      <colgroup>
+         <col>
+         <col span="2" class="info">
+         <col class="sanitaria">
+         <col class="soldadura">
+      </colgroup>
+      <tr>
+         <td> 
+         <td><abbr title="Sistemas Microinformáticos y Redes">SMR</abbr>
+         <td><abbr title="Administración de Sistemas Informáticos y Redes">ASIR</abbr>
+         <td><abbr title="Cuidados Auxiliares de Enfermería">CAE</abbr>
+         <td><abbr title="Soldadura y Calderería">SyC</abbr>
+      </tr>
+      <tr>
+         <td>Grado
+         <td>Medio
+         <td>Superior
+         <td>Medio
+         <td>Medio
+      </tr>
+   </table>
+
+.. rst-class:: ej-html
+
+.. raw:: html
+
+   <table class="tb-ejemplo">
+      <caption>Ciclos formativos en el centro</caption>
+      <colgroup>
+         <col>
+         <col span="2" class="info">
+         <col class="sanitaria">
+         <col class="soldadura">
+      </colgroup>
+      <tr>
+         <td> 
+         <td><abbr title="Sistemas Microinformáticos y Redes">SMR</abbr>
+         <td><abbr title="Administración de Sistemas Informáticos y Redes">ASIR</abbr>
+         <td><abbr title="Cuidados Auxiliares de Enfermería">CAE</abbr>
+         <td><abbr title="Soldadura y Calderería">SyC</abbr>
+      <tr>
+         <td>Grado
+         <td>Medio
+         <td>Superior
+         <td>Medio
+         <td>Medio
+   </table>
+
+.. note:: Gracias a las clases, podremos definir distintos estilos para los
+   grupos de columnas, pero `sólo unas pocas propiedades CSS son válidas
+   <https://www.w3.org/TR/CSS21/tables.html#columns>`_. De hecho, para lograr
+   el efecto en el ejemplo anterior, se ha usado el |CSS|:
+
+   .. code-block:: css
+
+      .tb-ejemplo .info {
+         background-color: #cdf;
+      }
+
+      .tb-ejemplo .sanitaria {
+         background-color: #eeb;
+      }
+
+      .tb-ejemplo .soldadura {
+         background-color: #bda;
+      }
+
+.. _html-agr-celdas:
+
+Agrupación de celdas
+====================
+En ocasiones necesitamos fusionar varias celdas en vertical o varias en
+horizontal.
+
+.. table:: Atributos de fusión de celdas para td/th
+   :class: attr-html
+
+   +----------+--------+----------------------------------------------------+
+   | rowspan  | [num]  | Indica cuántas filas ocupa la celda                |
+   +----------+--------+----------------------------------------------------+
+   | colspan  | [num]  | Indica cuántas columnas ocupa la celda             |
+   +----------+--------+----------------------------------------------------+
+
+Al usar estos atributos las celdas a las que se les usurpa su espacio dejan de
+existir:
+
+.. code-block:: html
+
+   <table>
+      <!-- El th ocupa 2 columnas y por tanto sólo hay un elemento th -->
+      <tr>
+         <th colspan="2">Fusion horizontal
+      <!-- El td ocupa 2 filas y por tanto la siguiente fila sólo tiene un td -->
+      <tr>
+         <td>1
+         <td rowspan="2">Fusión vertical
+      <tr>
+         <td>2
+   </table>
+
+.. rst-class:: ej-html
+
+.. raw:: html
+
+   <table class="tb-ejemplo">
+      <tr>
+         <th colspan="2">Fusion horizontal
+      <tr>
+         <td>1
+         <td rowspan="2">Fusión vertical
+      <tr>
+         <td>2
+   </table>
+
+Ejercicios propuestos
+=====================
+
+.. include:: /99.ejercicios/62.html-tablas.rst
+   :start-line: 3
+
+.. |details| replace:: :ref:`<details> <html-details>`
+.. |caption| replace:: :ref:`<caption> <html-caption>`
+.. |table| replace:: :ref:`<table> <html-table>`
+.. |tr| replace:: :ref:`<tr> <html-tr>`
+.. |td| replace:: :ref:`<td> <html-td>`
+.. |th| replace:: :ref:`<th> <html-th>`
+.. |thead| replace:: :ref:`<thead> <html-thead>`
+.. |tbody| replace:: :ref:`<tbody> <html-tbody>`
+.. |tfoot| replace:: :ref:`<tfoot> <html-tfoot>`
+.. |col| replace:: :ref:`<col> <html-col>`
+.. |colgroup| replace:: :ref:`<colgroup> <html-colgroup>`
+.. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`

@@ -1,0 +1,19 @@
+|HTML|: Estructura
+==================
+
+#. Tome la página sobre :ref:`elementos básicos <html-basicos>` y
+   reproduzca hasta la exposición del elemento |a| (inclusive).
+   A partir de ahí incluya sólo la estructura con los títulos y
+   un párrafo que diga "Aquí se trata...".
+
+   Incluya:
+
+   - La barra superior de navegación.
+   - La tabla de contenidos, pero no las siguientes secciones de la
+     barra lateral. Olvídese de que está a la izquierda: sitúela bajo
+     la barra.
+   - El cuerpo del texto tal como se ha descrito.
+   - El pie de la página
+
+.. |a| replace:: :ref:`<a> <html-a>`
+

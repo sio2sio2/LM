@@ -155,8 +155,8 @@ conveniente conocer qué herramientas tenemos para procesar nuestras expresiones
 <em>XPath</em> 2.0.</p></li>
 <li><p><a class="reference external" href="https://code.visualstudio.com">Visual Studio Code</a> con la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=creinbacher.xpathtester">XPath Tester</a>
 permite evaluar expresiones <em>XPath</em> 1.0. Para evaluar expresiones, basta con
-pulsar <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd></kbd> y buscar <em>XPath</em> para que accedamos al cuadro de
-diálogo que nos permite hacer evaluaciones.</p></li>
+pulsar <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd> y buscar <em>XPath</em> para que accedamos
+al cuadro de diálogo que nos permite hacer evaluaciones.</p></li>
 <li><p><a class="reference internal" href="../05.almacenamiento/02.nativas.html#basex"><span class="std std-ref">BaseX</span></a>, que soporta <a class="reference internal" href="../04.transformacion/index.html#xquery"><span class="std std-ref">XQuery</span></a> 3.0 (y consecuentemente <em>XPath</em> 3.1).
 Podemos usarlo directamente o <a class="reference internal" href="../04.transformacion/index.html#xquery-vscode"><span class="std std-ref">a través de Visual Studio Code</span></a>.</p></li>
 <li><p>El paquete <a class="reference external" href="https://packages.debian.org/stable/xmlstarlet">xmlstarlet</a>, cuyo paquete homónimo permite utilizar
@@ -172,7 +172,7 @@ como para modificarlo.</p></li>
 empachante y nada recomendable. Nos basta con saber cómo evaluar las
 expresiones <em>XPath</em> que se van introduciendo gradualmente, con lo que nos sobra con
 saber cómo usar <a class="reference internal" href="#xpath-xidel"><span class="std std-ref">xidel</span></a>, si necesitamos probar expresiones
-validas únicas en <em>XPath</em> 3.0, o manejar la extensión de <a class="reference external" href="https://code.visualstudio.com">Visual Studio
+válidas únicas en <em>XPath</em> 3.0, o manejar la extensión de <a class="reference external" href="https://code.visualstudio.com">Visual Studio
 Code</a> que no requiere gran pericia.</p>
 </div>
 <section id="xidel">
@@ -187,11 +187,11 @@ distintos:</p>
 <span class="go">p1</span>
 </pre></div>
 </div>
-<p>donde «<kbd class="kbd docutils literal notranslate">-s</kbd>» evita mensajes de información innecesarios, y «<kbd class="kbd docutils literal notranslate">-e</kbd>» introduce
+<p>donde «<code class="docutils literal notranslate"><span class="pre">-s</span></code>» evita mensajes de información innecesarios, y «<code class="docutils literal notranslate"><span class="pre">-e</span></code>» introduce
 la expresión <em>XPath</em>.</p>
 </li>
 <li><p>Si el resultado es un nodo o un conjunto de nodos, es necesario añadir
-<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">-</kbd>-<kbd class="kbd docutils literal notranslate">printed</kbd>-<kbd class="kbd docutils literal notranslate">node</kbd>-<kbd class="kbd docutils literal notranslate">format=xml</kbd></kbd>:</p>
+<code class="docutils literal notranslate"><span class="pre">--printed-node-format=xml</span></code>:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>xidel<span class="w"> </span>--printed-node-format<span class="o">=</span>xml<span class="w"> </span>-s<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;//profesor/apelativo&#39;</span><span class="w"> </span>casilleros.xml
 </pre></div>
 </div>
@@ -201,9 +201,9 @@ la expresión <em>XPath</em>.</p>
 <p class="admonition-title">Nota</p>
 <p>El programa no permite validar el documento, por lo que cabría la
 posibilidad de preguntarse si actúa o no en modo de compatibilidad con
-<em>XPath</em> 1.0. No existe ninguna opción al respectoo, pero  por el modo en el
+<em>XPath</em> 1.0. No existe ninguna opción al respecto, pero  por el modo en el
 que actúa, si no se especifica, parece actuar en modo semejante al de
-compabilidad y, si se añade la opción <code class="docutils literal notranslate"><span class="pre">--strict-type-checking</span></code>, cambia.</p>
+compatibilidad y, si se añade la opción <code class="docutils literal notranslate"><span class="pre">--strict-type-checking</span></code>, cambia.</p>
 </div>
 </section>
 <section id="xmlstarlet">
@@ -465,7 +465,7 @@ estuviésemos procesando un determinado nodo <em>profesor</em>, la ruta:</p>
 </pre></div>
 </div>
 <p>representaría el nodo <em>nombre</em> de ese profesor; mientras que, si procesando el
-nodo <em>apelativo</em> de un procesor, hacemos referencia a:</p>
+nodo <em>apelativo</em> de un profesor, hacemos referencia a:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">../</span><span class="nt">nombre</span>
 </pre></div>
 </div>
@@ -559,7 +559,7 @@ filtrarse por tipo de valor:</p>
 <p>son equivalentes: un nodo <em>profesor</em> que contiene cuatro nodos elemento:
 <em>apelativo</em>, <em>nombre</em>, <em>apellidos</em> y <em>departamento</em>. En cambio, para <em>XPath</em>
 la primera expresión de <em>profesor</em> contiene nodos texto entre los
-nodo elementos, cada uno de los cuales contiene, siemplemente, caracteres
+nodos elemento, cada uno de los cuales contiene, simplemente, caracteres
 de espaciado.</p>
 </div>
 </dd>
@@ -628,7 +628,7 @@ Más adelante profundizaremos en ello.</p>
 </div>
 <p id="xpath1-union"><em>XPath</em> permite <strong>agregar rutas</strong> de manera que los nodos seleccionados sean la
 unión de los nodos que seleccionan las distintas rutas. Para ello, usa el
-operador «<kbd class="kbd docutils literal notranslate">|</kbd>»:</p>
+operador «<code class="docutils literal notranslate"><span class="pre">|</span></code>»:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">apelativo</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">nombre</span>
 </pre></div>
 </div>
@@ -931,7 +931,7 @@ números.</p>
 </section>
 <section id="xpath-1-0">
 <h2><span class="section-number">3.1.3. </span>XPath 1.0<a class="headerlink" href="#xpath-1-0" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>Las aspectos introducidos hasta ahora sobre <em>XPath</em> son generales e
+<p>Los aspectos introducidos hasta ahora sobre <em>XPath</em> son generales e
 independientes de qué versión utilicemos. Han sido expuestos de forma tan
 general que pecan (a sabiendas) de superficialidad y dejan aún muchos aspectos
 indefinidos. Por ejemplo, la expresión:</p>
@@ -977,7 +977,7 @@ devuelven expresiones como:</p>
 <p class="admonition-title">Nota</p>
 <p>Obsérvese que se ha usado la palabra «conjunto» y no
 «secuencia». Es importante el matiz, porque las secuencias ordenan sus
-elementos, mientra que los conjuntos, no. Esto quiere decir que los
+elementos, mientras que los conjuntos, no. Esto quiere decir que los
 conjuntos de nodos, en teoría, no aseguran cuál es el orden en que se
 obtendrán nodos. En la práctica, sin embargo, los nodos siempre se
 devuelven en el orden en que se encuentran en el documento <abbr title="eXtensible  Markup Language">XML</abbr>.</p>
@@ -1159,7 +1159,7 @@ profesor es «Pepe».</p>
 </section>
 <section id="xpath-2-0-3-0">
 <h2><span class="section-number">3.1.4. </span>XPath 2.0/3.0<a class="headerlink" href="#xpath-2-0-3-0" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>La versión 2.0 del lenguaje supuso en gran cambio hasta el punto de que, aunque
+<p>La versión 2.0 del lenguaje supuso un gran cambio hasta el punto de que, aunque
 procuró mantenerse cierta compatibilidad con la primera versión, no todas las
 expresiones se evalúan del mismo modo. Además, la especificación permite que los
 procesadores se ejecuten en dos modos de funcionamiento: uno de <a class="reference external" href="https://www.w3.org/TR/xpath-31/#dt-xpath-compat-mode">compatibilidad
@@ -1256,7 +1256,7 @@ los podemos ver en el siguiente esquema:</p>
 el tipo de dato de un nodo es sólo posible si existe definida una gramática
 con la que pudo validarlo. Esta es una diferencia capital con <em>XPath</em> 1.0. En
 la primera versión, la gramática es irrelevante para el procesador, mientras
-que es las siguientes versiones la existencia de una gramática determina su
+que en las siguientes versiones la existencia de una gramática determina su
 comportamiento a la hora de evaluar las expresiones. Sin validación el
 comportamiento podrá ser semejante a la primera versión (o no), pero con
 validación la evaluación diferirá en muchos casos. Cuando no hay validación,
@@ -1294,7 +1294,7 @@ expresión:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">xs:string</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nf">false</span><span class="p">()))</span>
 </pre></div>
 </div>
-<p>provocá un error, ya que intenta convertirse una secuencia de dos
+<p>provocará un error, ya que intenta convertirse una secuencia de dos
 elementos. Como alternativa al uso de estos constructores como funciones para realizar
 una conversión, existe <code class="docutils literal notranslate"><span class="pre">cast</span> <span class="pre">as</span></code> que tiene el mismo efecto. Por tanto,
 vale tanto hacer:</p>
@@ -1510,7 +1510,7 @@ ejemplo, ante este documento sin gramática:</p>
 </div>
 <p>provocará que el procesador convierta todos los nodos de tipo
 indefinido a booleano. Por el tratamiento de la pluralidad, ya sabemos
-que el resultadoo será cierto, ya que hay un nodo que se evalúa a
+que el resultado será cierto, ya que hay un nodo que se evalúa a
 verdadero. En cambio, si un elemento <em>x</em> hubiera contenido un valor que
 no puede convertir <code class="docutils literal notranslate"><span class="pre">xs:boolean</span></code> (cualquier cadena arbitraria), se
 genera un error.</p>
@@ -1659,7 +1659,7 @@ operadores.</p>
 <p>La nueva sintaxis alternativa es <code class="code docutils literal notranslate"><span class="pre">argumento</span> <span class="pre">=&gt;</span> <span class="pre">funcion()</span></code> y equivale a
 <code class="code docutils literal notranslate"><span class="pre">funcion(argumento)</span></code>.</p>
 <p>Este operador no es más que azúcar sintáctico para mejorar la legibilidad del
-código, sobre todo cuando se usan nciones anidadas. Por ejemplo, imaginemos
+código, sobre todo cuando se usan funciones anidadas. Por ejemplo, imaginemos
 que nuestra intención es hacer un <a class="reference external" href="https://es.wikipedia.org/wiki/Cifrado_C%C3%A9sar">cifrado César</a> de la cadena «<em>hola</em>»:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">fn:codepoints-to-string</span><span class="p">(</span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">c</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nf">fn:string-to-codepoints</span><span class="p">(</span><span class="s1">&#39;hola&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nv">$</span><span class="n">c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
@@ -1687,7 +1687,7 @@ como elemento de yuxtaposición. Es, por tanto, una generalización de
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">fn:string-join</span><span class="p">((</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>se evalua a <code class="code docutils literal notranslate"><span class="pre">a.b.c</span></code>.</p>
+<p>se evalúa a <code class="code docutils literal notranslate"><span class="pre">a.b.c</span></code>.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">fn:upper-case()</span></code> y <code class="docutils literal notranslate"><span class="pre">fn:lower-case()</span></code> permiten pasar a mayúsculas
 o minúsculas la cadena pasada como argumento.</p></li>
@@ -1706,7 +1706,7 @@ expresión se evalúa como verdadera:</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">fn:tokenize()</span></code> es la inversa a <code class="docutils literal notranslate"><span class="pre">fn:string-join()</span></code>: toma una cadena
 y la convierte en una secuencia partiéndola según la expresión regular
-proporciona  en el segundo argumento. Así, la expresión:</p>
+proporcionada en el segundo argumento. Así, la expresión:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">fn:matches</span><span class="p">(</span><span class="s2">&quot;a.b.c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;\.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1739,8 +1739,8 @@ una cadena o viceversa. Por ejemplo, la expresión</p>
 <a class="reference internal" href="../01.intro/02b.marcas.html#xml-entity"><span class="std std-ref">entidades predefinidas de XML</span></a>. Allí ya se
 explicó un modo de averiguar el código asociado a un carácter
 extraño (como la Ø danesa). Tenga presente, no obstante, que
-en <em>XPath</em> deberemos escribir el código hexadecimal como <kbd class="kbd docutils literal notranslate">0xd8</kbd>
-o directamente el código decimal equivalente (<kbd class="kbd docutils literal notranslate">216</kbd>). Por
+en <em>XPath</em> deberemos escribir el código hexadecimal como <code class="docutils literal notranslate"><span class="pre">0xd8</span></code>
+o directamente el código decimal equivalente (<code class="docutils literal notranslate"><span class="pre">216</span></code>). Por
 tanto:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>fn:string-to-codepoints(0xd8) || &quot;rsted&quot;
 </pre></div>
@@ -1752,7 +1752,7 @@ tanto:</p>
 <blockquote class="simple">
 <div><div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p><em>XPath</em> no entiende el socorrido «<kbd class="kbd docutils literal notranslate">n</kbd>» para
+<p><em>XPath</em> no entiende el socorrido «<code class="docutils literal notranslate"><span class="pre">\n</span></code>» para
 escribir un salto de línea. Pero no es un problema, ya que ahora
 sabemos qué podemos escribirlo como
 <code class="code docutils literal notranslate"><span class="pre">fn:codepoints-to-string(10)</span></code>.</p>
@@ -1770,7 +1770,7 @@ elementos que se quieran obtener:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">fn:subsequence</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">,</span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Si no se expresa la longitud, se duelve hasta el final de la secuencia
+<p>Si no se expresa la longitud, se devuelve hasta el final de la secuencia
 original.</p>
 <p>La expresión devuelve la secuencia <code class="code docutils literal notranslate"><span class="pre">(1)</span></code>.</p>
 </li>
@@ -1831,13 +1831,13 @@ habríamos conseguido lo mismo haciendo:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Lucía&quot;</span>
 </pre></div>
 </div>
-<p>La otra variante se construye con <code class="docutils literal notranslate"><span class="pre">every</span></code> y cmprueba si todos los ítem
+<p>La otra variante se construye con <code class="docutils literal notranslate"><span class="pre">every</span></code> y comprueba si todos los ítem
 de la secuencia cumplen la condición. Por ejemplo, la expresión:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">every</span><span class="w"> </span><span class="nv">$</span><span class="n">nombre</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">nombre</span><span class="w"> </span><span class="k">satisfies</span><span class="w"> </span><span class="nv">$</span><span class="n">nombre</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&quot;Lucía&quot;</span>
 </pre></div>
 </div>
 <p>será cierta si nadie se llama Lucía,, lo cual también podríamos haber
-conseguido coon esta expresión de <em>XPath</em> 1.0:</p>
+conseguido con esta expresión de <em>XPath</em> 1.0:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">not</span><span class="p">(//</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Lucía&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1864,7 +1864,7 @@ que trata sobre <em>XPath</em> y que ofrece de gratis la editorial O’Reilly.</
 <section id="ejercicio-resuelto">
 <h2><span class="section-number">3.1.5. </span>Ejercicio resuelto<a class="headerlink" href="#ejercicio-resuelto" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Dado el <abbr title="eXtensible  Markup Language">XML</abbr> <a class="reference internal" href="../01.intro/02b.marcas.html#xml-resueltos"><span class="std std-ref">propuesto para representar el negocio de una cadena de
-restaurantes</span></a>, determine las expresion <em>XPath</em> apropiadas para:</p>
+restaurantes</span></a>, determine las expresiones <em>XPath</em> apropiadas para:</p>
 <ol class="arabic">
 <li><p>Obtener todas las recetas disponibles.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">

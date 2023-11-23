@@ -128,3 +128,23 @@ table.attr-html tr td:last-child {
    color: #777;
 }
 
+.tb-ejemplo th {
+   background-color: #ede;
+}
+
+.tb-ejemplo td, .tb-ejemplo th {
+   border: solid black 1px;
+}
+
+.tb-ejemplo .info {
+   background-color: #cdf;
+}
+
+.tb-ejemplo .sanitaria {
+   background-color: #eeb;
+}
+
+.tb-ejemplo .soldadura {
+   background-color: #bda;
+}
+

@@ -1,5 +1,5 @@
-Ejercicios sobre :code:`<head>`
-===============================
+|HTML|: :code:`<head>`
+======================
 
 .. note:: Escriba el documento |HTML| completo, aunque deje sin contenido el
    cuerpo, y compruebe la validez de la solución usando a un :ref:`validador

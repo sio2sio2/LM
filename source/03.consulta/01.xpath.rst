@@ -96,8 +96,8 @@ conveniente conocer qué herramientas tenemos para procesar nuestras expresiones
 * `Visual Studio Code`_ con la extensión `XPath Tester
   <https://marketplace.visualstudio.com/items?itemName=creinbacher.xpathtester>`_
   permite evaluar expresiones *XPath* 1.0. Para evaluar expresiones, basta con
-  pulsar :kbd:`Ctrl+Shift+P` y buscar *XPath* para que accedamos al cuadro de
-  diálogo que nos permite hacer evaluaciones.
+  pulsar :kbd:`Ctrl`\ +\ :kbd:`Shift`\ +\ :kbd:`P` y buscar *XPath* para que accedamos
+  al cuadro de diálogo que nos permite hacer evaluaciones.
 * :ref:`BaseX`, que soporta :ref:`XQuery` 3.0 (y consecuentemente *XPath* 3.1).
   Podemos usarlo directamente o :ref:`a través de Visual Studio Code
   <xquery-vscode>`.
@@ -113,7 +113,7 @@ Expondremos estos dos últimos programas de línea de comandos, porque son los
    empachante y nada recomendable. Nos basta con saber cómo evaluar las
    expresiones *XPath* que se van introduciendo gradualmente, con lo que nos sobra con
    saber cómo usar :ref:`xidel <xpath-xidel>`, si necesitamos probar expresiones
-   validas únicas en *XPath* 3.0, o manejar la extensión de `Visual Studio
+   válidas únicas en *XPath* 3.0, o manejar la extensión de `Visual Studio
    Code`_ que no requiere gran pericia.
 
 .. _xpath-xidel:
@@ -133,11 +133,11 @@ distintos:
      $ xidel -s -e '//profesor[1]/@id' casilleros.xml
      p1
 
-  donde ":kbd:`-s`" evita mensajes de información innecesarios, y ":kbd:`-e`" introduce
+  donde "``-s``" evita mensajes de información innecesarios, y "``-e``" introduce
   la expresión *XPath*.
 
 * Si el resultado es un nodo o un conjunto de nodos, es necesario añadir
-  :kbd:`--printed-node-format=xml`:
+  ``--printed-node-format=xml``:
 
   .. code-block:: console
 
@@ -145,9 +145,9 @@ distintos:
 
 .. note:: El programa no permite validar el documento, por lo que cabría la
    posibilidad de preguntarse si actúa o no en modo de compatibilidad con
-   *XPath* 1.0. No existe ninguna opción al respectoo, pero  por el modo en el
+   *XPath* 1.0. No existe ninguna opción al respecto, pero  por el modo en el
    que actúa, si no se especifica, parece actuar en modo semejante al de
-   compabilidad y, si se añade la opción ``--strict-type-checking``, cambia.
+   compatibilidad y, si se añade la opción ``--strict-type-checking``, cambia.
 
 .. _xpath-xmlstarlet:
 
@@ -358,7 +358,7 @@ o, simplemente:
    nombre
 
 representaría el nodo *nombre* de ese profesor; mientras que, si procesando el
-nodo *apelativo* de un procesor, hacemos referencia a:
+nodo *apelativo* de un profesor, hacemos referencia a:
 
 .. code-block:: xquery
 
@@ -478,7 +478,7 @@ quieren referirse con tal ruta. Puede ser:
       son equivalentes: un nodo *profesor* que contiene cuatro nodos elemento:
       *apelativo*, *nombre*, *apellidos* y *departamento*. En cambio, para *XPath*
       la primera expresión de *profesor* contiene nodos texto entre los
-      nodo elementos, cada uno de los cuales contiene, siemplemente, caracteres
+      nodos elemento, cada uno de los cuales contiene, simplemente, caracteres
       de espaciado.
 
 **node()**
@@ -557,7 +557,7 @@ quieren referirse con tal ruta. Puede ser:
 
 *XPath* permite **agregar rutas** de manera que los nodos seleccionados sean la
 unión de los nodos que seleccionan las distintas rutas. Para ello, usa el
-operador ":kbd:`|`":
+operador "``|``":
 
 .. code-block:: xquery
 
@@ -790,7 +790,7 @@ aquí citaremos algunas muy socorridas:
 
 XPath 1.0
 *********
-Las aspectos introducidos hasta ahora sobre *XPath* son generales e
+Los aspectos introducidos hasta ahora sobre *XPath* son generales e
 independientes de qué versión utilicemos. Han sido expuestos de forma tan
 general que pecan (a sabiendas) de superficialidad y dejan aún muchos aspectos
 indefinidos. Por ejemplo, la expresión:
@@ -852,7 +852,7 @@ Para empezar hay que aclarar dos aspectos importantes:
 
       .. note:: Obsérvese que se ha usado la palabra "conjunto" y no
          "secuencia". Es importante el matiz, porque las secuencias ordenan sus
-         elementos, mientra que los conjuntos, no. Esto quiere decir que los
+         elementos, mientras que los conjuntos, no. Esto quiere decir que los
          conjuntos de nodos, en teoría, no aseguran cuál es el orden en que se
          obtendrán nodos. En la práctica, sin embargo, los nodos siempre se
          devuelven en el orden en que se encuentran en el documento |XML|.
@@ -1053,7 +1053,7 @@ de tipos. Este es un aspecto que debemos revisar.
 
 XPath 2.0/3.0
 *************
-La versión 2.0 del lenguaje supuso en gran cambio hasta el punto de que, aunque
+La versión 2.0 del lenguaje supuso un gran cambio hasta el punto de que, aunque
 procuró mantenerse cierta compatibilidad con la primera versión, no todas las
 expresiones se evalúan del mismo modo. Además, la especificación permite que los
 procesadores se ejecuten en dos modos de funcionamiento: uno de `compatibilidad
@@ -1176,7 +1176,7 @@ novedades se pueden resumir en estos puntos:
    el tipo de dato de un nodo es sólo posible si existe definida una gramática
    con la que pudo validarlo. Esta es una diferencia capital con *XPath* 1.0. En
    la primera versión, la gramática es irrelevante para el procesador, mientras
-   que es las siguientes versiones la existencia de una gramática determina su
+   que en las siguientes versiones la existencia de una gramática determina su
    comportamiento a la hora de evaluar las expresiones. Sin validación el
    comportamiento podrá ser semejante a la primera versión (o no), pero con
    validación la evaluación diferirá en muchos casos. Cuando no hay validación,
@@ -1219,7 +1219,7 @@ novedades se pueden resumir en estos puntos:
 
         xs:string((1, false()))
 
-     provocá un error, ya que intenta convertirse una secuencia de dos
+     provocará un error, ya que intenta convertirse una secuencia de dos
      elementos. Como alternativa al uso de estos constructores como funciones para realizar
      una conversión, existe ``cast as`` que tiene el mismo efecto. Por tanto,
      vale tanto hacer:
@@ -1484,7 +1484,7 @@ novedades se pueden resumir en estos puntos:
 
             provocará que el procesador convierta todos los nodos de tipo
             indefinido a booleano. Por el tratamiento de la pluralidad, ya sabemos
-            que el resultadoo será cierto, ya que hay un nodo que se evalúa a
+            que el resultado será cierto, ya que hay un nodo que se evalúa a
             verdadero. En cambio, si un elemento *x* hubiera contenido un valor que
             no puede convertir ``xs:boolean`` (cualquier cadena arbitraria), se
             genera un error.
@@ -1647,7 +1647,7 @@ novedades se pueden resumir en estos puntos:
    :code:`funcion(argumento)`.
 
    Este operador no es más que azúcar sintáctico para mejorar la legibilidad del
-   código, sobre todo cuando se usan nciones anidadas. Por ejemplo, imaginemos
+   código, sobre todo cuando se usan funciones anidadas. Por ejemplo, imaginemos
    que nuestra intención es hacer un `cifrado César
    <https://es.wikipedia.org/wiki/Cifrado_C%C3%A9sar>`_ de la cadena "*hola*":
 
@@ -1683,7 +1683,7 @@ novedades se pueden resumir en estos puntos:
 
              fn:string-join(("a", "b", "c"), ".")
 
-          se evalua a :code:`a.b.c`.
+          se evalúa a :code:`a.b.c`.
 
         + ``fn:upper-case()`` y ``fn:lower-case()`` permiten pasar a mayúsculas
           o minúsculas la cadena pasada como argumento.
@@ -1707,7 +1707,7 @@ novedades se pueden resumir en estos puntos:
 
         + ``fn:tokenize()`` es la inversa a ``fn:string-join()``: toma una cadena
           y la convierte en una secuencia partiéndola según la expresión regular
-          proporciona  en el segundo argumento. Así, la expresión:
+          proporcionada en el segundo argumento. Así, la expresión:
 
           .. code-block:: xquery
 
@@ -1748,8 +1748,8 @@ novedades se pueden resumir en estos puntos:
              :ref:`entidades predefinidas de XML <xml-entity>`. Allí ya se
              explicó un modo de averiguar el código asociado a un carácter
              extraño (como la |uostr| danesa). Tenga presente, no obstante, que
-             en *XPath* deberemos escribir el código hexadecimal como :kbd:`0xd8`
-             o directamente el código decimal equivalente (:kbd:`216`). Por
+             en *XPath* deberemos escribir el código hexadecimal como ``0xd8``
+             o directamente el código decimal equivalente (``216``). Por
              tanto:
 
              .. code-block:: xquery
@@ -1759,7 +1759,7 @@ novedades se pueden resumir en estos puntos:
              devolverá el apellido del padre del electromagnetismo (|uostr|\
              rsted).
 
-         .. note:: *XPath* no entiende el socorrido ":kbd:`\n`" para
+         .. note:: *XPath* no entiende el socorrido "``\n``" para
             escribir un salto de línea. Pero no es un problema, ya que ahora
             sabemos qué podemos escribirlo como
             :code:`fn:codepoints-to-string(10)`.
@@ -1777,7 +1777,7 @@ novedades se pueden resumir en estos puntos:
 
           fn:subsequence((0, 1, 2, 3 ,4), 2, 1)
 
-       Si no se expresa la longitud, se duelve hasta el final de la secuencia
+       Si no se expresa la longitud, se devuelve hasta el final de la secuencia
        original.
 
        La expresión devuelve la secuencia :code:`(1)`.
@@ -1854,7 +1854,7 @@ novedades se pueden resumir en estos puntos:
 
          //profesor/nombre = "Lucía"
 
-      La otra variante se construye con ``every`` y cmprueba si todos los ítem
+      La otra variante se construye con ``every`` y comprueba si todos los ítem
       de la secuencia cumplen la condición. Por ejemplo, la expresión:
 
       .. code-block:: xquery
@@ -1862,7 +1862,7 @@ novedades se pueden resumir en estos puntos:
          every $nombre in //profesor/nombre satisfies $nombre != "Lucía"
 
       será cierta si nadie se llama Lucía,, lo cual también podríamos haber
-      conseguido coon esta expresión de *XPath* 1.0:
+      conseguido con esta expresión de *XPath* 1.0:
 
       .. code-block:: xquery
 
@@ -1886,7 +1886,7 @@ novedades se pueden resumir en estos puntos:
 Ejercicio resuelto
 ******************
 Dado el |XML| :ref:`propuesto para representar el negocio de una cadena de
-restaurantes <xml-resueltos>`, determine las expresion *XPath* apropiadas para:
+restaurantes <xml-resueltos>`, determine las expresiones *XPath* apropiadas para:
 
 #. Obtener todas las recetas disponibles.
 

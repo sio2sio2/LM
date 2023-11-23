@@ -1,0 +1,40 @@
+|HTML|: Tablas
+==============
+
+#. Crear un |HTML| con una tabla que contenga el horario de clases del grupo y
+   que cumpla los siguientes requisitos:
+
+   + Deben aparecer como cabecera los días de lunes a viernes.
+   + En la primera columna deben indicarse las horas de comienzo
+     de cada clase.
+   + El recreo debe encontrarse fusionado en una misma fila de lunes a viernes.
+   + Si se tienen de un mismo módulo dos o más clases consecutivas, deben
+     fusionar las celdas.
+
+#. Cree una tabla con los siguientes datos sobre tasa de desempleo
+   `extraídos del INE <http://www.ine.es/jaxiT3/Tabla.htm?t=4247>`_:
+
+   ======================= ====== ====== ====== ====== ====== ======
+    Comunidad Autónoma      2013   2014   2015   2016   2017   2018
+   ======================= ====== ====== ====== ====== ====== ======
+    Andalucía              36,26  34,23  29,83  28,25  24,43  21,26
+    Aragón                 20,59  18,85  14,60  13,53  11,37  11,11
+    Asturias               22,29  20,78  20,33  14,59  14,64  12,86
+    Baleares               22,72  18,88  17,02  13,80  12,61  10,91
+    Canarias               33,09  31,08  26,75  24,90  22,04  19,99
+    Cantabria              19,81  18,42  17,71  12,89  13,49   9,68
+    Castilla y León        22,02  20,28  17,58  14,81  13,71  11,21
+    Castilla-La Mancha     28,99  28,50  24,97  22,14  19,74  16,16
+    Cataluña               21,87  19,88  17,73  14,85  12,63  11,75
+    Comunidad Valenciana   27,15  23,48  21,45  19,15  16,76  14,30
+    Extremadura            32,40  29,96  28,07  28,31  25,12  23,10
+    Galicia                21,88  20,87  17,74  16,29  14,71  12,04
+    Madrid                 20,45  18,00  16,51  14,60  13,75  11,54
+    Murcia                 28,50  27,26  23,51  18,58  17,21  15,83
+    Navarra                16,44  14,92  13,53  10,01   9,63   9,99
+    País Vasco             16,58  16,60  12,89  12,27  10,57   9,58
+    Rioja                  20,24  17,17  13,97  10,90  11,51  10,30
+   ======================= ====== ====== ====== ====== ====== ======
+
+   Incluya un título para la tabla y la referencia al origen de los
+   datos.

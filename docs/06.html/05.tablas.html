@@ -1,0 +1,705 @@
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>6.5. Tablas &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" href="../_static/general.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+
+    
+    
+     
+        <script src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="6.6. Elementos estructurales" href="07.struct.html" />
+    <link rel="prev" title="6.4. Elementos básicos" href="04.basico.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="07.struct.html" title="6.6. Elementos estructurales"
+             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="04.basico.html" title="6.4. Elementos básicos"
+             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">6. </span><abbr title="HyperText Markup Language">HTML</abbr></a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">6.5. </span>Tablas</a></li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="tablas">
+<h1><span class="section-number">6.5. </span>Tablas<a class="headerlink" href="#tablas" title="Enlace permanente a este encabezado">¶</a></h1>
+<p>Las tablas pueden ser más o menos complejas dependiendo de la cantidad de datos
+y organización que queramos darle.</p>
+<section id="tablas-simples">
+<h2><span class="section-number">6.5.1. </span>Tablas simples<a class="headerlink" href="#tablas-simples" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Son las que constan opcionalmente de un título y una sucesión de filas.</p>
+<table class="el-html docutils align-default" id="id1">
+<caption><span class="caption-text">Elementos de tablas simples</span><a class="headerlink" href="#id1" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-table"><span class="std std-ref">&lt;table&gt;</span></a></p></td>
+<td><p>Elemento contenedor de la tabla</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-caption"><span class="std std-ref">&lt;caption&gt;</span></a></p></td>
+<td><p>Establece el título de la tabla</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-tr"><span class="std std-ref">&lt;tr&gt;</span></a></p></td>
+<td><p>Elemento para definir la fila de una tabla</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-th"><span class="std std-ref">&lt;th&gt;</span></a></p></td>
+<td><p>Celda de cabecera de la tabla</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-td"><span class="std std-ref">&lt;td&gt;</span></a></p></td>
+<td><p>Celda de datos de una tabla</p></td>
+</tr>
+</tbody>
+</table>
+<span id="index-0"></span><dl id="html-table">
+<dt><strong>table</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table">developer.mozilla.org: table</a>)</dt><dd><p>Es el elemento en el que deben encerrarse toda la tabla. En una tabla simple,
+está constituida por un elemento opcional <code class="code docutils literal notranslate"><span class="pre">&lt;caption&gt;</span></code> y una sucesión
+de elementos de fila <code class="code docutils literal notranslate"><span class="pre">tr</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>No tiene atributos particulares. Hasta <abbr title="HyperText Markup Language">HTML</abbr>4, disponía de un
+atributo <code class="code docutils literal notranslate"><span class="pre">summary</span></code> que permtía hacer una descripción breve del
+contenido de la tabla. Ahora puede optarse por el título de la tabla
+que se indica con <code class="code docutils literal notranslate"><span class="pre">&lt;caption&gt;</span></code> o, si no es suficiente, usar <a class="reference internal" href="04.basico.html#html-details"><span class="std std-ref">&lt;details&gt;</span></a>
+dentro del elemento <code class="code docutils literal notranslate"><span class="pre">caption</span></code>:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">caption</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">details</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">summary</span><span class="p">&gt;</span>Datos de empleo<span class="p">&lt;/</span><span class="nt">summary</span><span class="p">&gt;</span>
+      Datos de empleo de España para el año 2018 extraídos del <span class="p">&lt;</span><span class="nt">a</span>
+      <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://www.ine.es&quot;</span><span class="p">&gt;&lt;</span><span class="nt">abbr</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;Instituto Nacional de</span>
+<span class="s">      Estadística&quot;</span><span class="p">&gt;</span>INE<span class="p">&lt;/</span><span class="nt">abbr</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">details</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">caption</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+</dd>
+</dl>
+<span id="index-1"></span><dl class="simple" id="html-caption">
+<dt><strong>caption</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/caption">developer.mozilla.org: caption</a>)</dt><dd><p>Define el título de la tabla. Por lo general, es corto y se usan dentro de él
+elementos en línea, pero puede hacer más complicado.</p>
+</dd>
+</dl>
+<span id="index-2"></span><dl class="simple" id="html-tr">
+<dt><strong>tr</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr">developer.mozilla.org: tr</a>)</dt><dd><p>Define una fila de la tabla. Está constituida por elementos <code class="code docutils literal notranslate"><span class="pre">&lt;th&gt;</span></code> y
+<code class="code docutils literal notranslate"><span class="pre">&lt;td&gt;</span></code>.</p>
+</dd>
+</dl>
+<span class="target" id="index-3"></span><div class="line-block" id="html-td">
+<span id="html-th"></span><span id="index-4"></span><div class="line"><strong>th</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th">developer.mozilla.org: th</a>)</div>
+<div class="line"><strong>td</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td">developer.mozilla.org: td</a>)</div>
+<div class="line-block">
+<div class="line">Definen las celdas de la tabla, <code class="code docutils literal notranslate"><span class="pre">&lt;th&gt;</span></code> las de cabecera y <code class="code docutils literal notranslate"><span class="pre">&lt;td&gt;</span></code>
+las de datos. Pueden contener atributos <code class="code docutils literal notranslate"><span class="pre">rowspan</span></code> y <code class="code docutils literal notranslate"><span class="pre">colspan</span></code>
+para fusionarse, pero se tratará <a class="reference internal" href="#html-agr-celdas"><span class="std std-ref">más adelante</span></a>.</div>
+</div>
+</div>
+<table class="attr-html docutils align-default" id="id2">
+<caption><span class="caption-text">Atributos de th</span><a class="headerlink" href="#id2" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>scope</p></td>
+<td><p>col|row|colgroup|rowgroup|auto</p></td>
+<td><p>Define las celdas de las
+que es cabecera esta celda</p></td>
+</tr>
+</tbody>
+</table>
+<p>Los elementos <code class="code docutils literal notranslate"><span class="pre">&lt;th&gt;</span></code> pueden tener un atributo <code class="code docutils literal notranslate"><span class="pre">scope</span></code> que identifica
+cuáles son las celdas de las que es cabecera. La norma tiene un <a class="reference external" href="https://html.spec.whatwg.org/multipage/tables.html#attr-th-scope-rowgroup">explicación muy
+esclarecedora sobre el uso de este atributo</a>.</p>
+<p>Ejemplo de uso:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">caption</span><span class="p">&gt;</span>Elementos en tablas sencillas<span class="p">&lt;/</span><span class="nt">caption</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Elemento
+      <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Descripción
+   <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>table
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Elemento contenedor de la tabla
+   <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>caption
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Establece el título de la tabla
+   <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>tr<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Elemento para definir la fila de una tabla
+   <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>th
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Celda de cabecera de la tabla
+   <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>td
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Celda de datos de la tabla
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="ej-html"><table class="tb-ejemplo">
+   <caption>Elementos en tablas sencillas</caption>
+   <tr>
+      <th>Elemento
+      <th>Descripción
+   <tr>
+      <td>table
+      <td>Elemento contenedor de la tabla
+   <tr>
+      <td>caption
+      <td>Establece el título de la tabla
+   <tr>
+      <td>tr</td>
+      <td>Elemento para definir la fila de una tabla
+   <tr>
+      <td>th
+      <td>Celda de cabecera de la tabla
+   <tr>
+      <td>td
+      <td>Celda de datos de la tabla
+</table></div><div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Por defecto, las tablas no tienen ninguna decoración, ni siquiera el
+borde de separación entre celdas. Mientras no aprendamos <abbr title="Cascading Style Sheets">CSS</abbr>, puede
+valernos con añadir este código para leerlas algo mejor:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">td</span><span class="o">,</span><span class="w"> </span><span class="nt">th</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="kc">black</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="agrupacion-de-filas">
+<h2><span class="section-number">6.5.2. </span>Agrupación de filas<a class="headerlink" href="#agrupacion-de-filas" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Bajo este epígrafe pretendemos agrupar las filas, lo que puede permitirnos
+agruparlas semánticamente y, además, cuando las tablas son largas y se pretenden
+imprimir, repetir una cabecera y un pie en todas las páginas que ocupe la tabla.</p>
+<table class="el-html docutils align-default" id="id3">
+<caption><span class="caption-text">Elementos de agrupación de filas</span><a class="headerlink" href="#id3" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-thead"><span class="std std-ref">&lt;thead&gt;</span></a></p></td>
+<td><p>Agrupa filas que constituyen una cabecera.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-tbody"><span class="std std-ref">&lt;tbody&gt;</span></a></p></td>
+<td><p>Agrupa filas en el cuerpo de la tabla.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-tfoot"><span class="std std-ref">&lt;tfoot&gt;</span></a></p></td>
+<td><p>Agrupa filas en el cabo de la tabla.</p></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="index-5"></span><span class="target" id="index-6"></span><div class="line-block" id="html-tfoot">
+<span id="html-tbody"></span><span id="html-thead"></span><span id="index-7"></span><div class="line"><strong>thead</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/thead">developer.mozilla.org: thead</a>)</div>
+<div class="line"><strong>tbody</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody">developer.mozilla.org: tbody</a>)</div>
+<div class="line"><strong>tfoot</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tfoot">developer.mozilla.org: tfoot</a>)</div>
+<div class="line-block">
+<div class="line">Si optamos por usar estos elementos, una tabla puede estar constituida por
+un elemento opcional <code class="code docutils literal notranslate"><span class="pre">&lt;caption&gt;</span></code> seguido de un elemento opcional
+<code class="code docutils literal notranslate"><span class="pre">&lt;thead&gt;</span></code>, uno o varios elementos <code class="code docutils literal notranslate"><span class="pre">tbody</span></code> y un elemento
+opcional <code class="code docutils literal notranslate"><span class="pre">&lt;tfoot&gt;</span></code>, dentro de cada uno de los cuales se pueden incluir
+filas con el elemento <code class="code docutils literal notranslate"><span class="pre">&lt;tr&gt;</span></code>.</div>
+</div>
+</div>
+<p>Ejemplo de uso:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">caption</span><span class="p">&gt;</span>Asistentes<span class="p">&lt;/</span><span class="nt">caption</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">thead</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+         <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Nacionalidad
+         <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Cantidad
+   <span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+         <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Españoles
+         <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>100
+      <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+         <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Portugueses
+         <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>25
+      <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+         <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Franceses
+         <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>50
+      <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+         <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Italianos
+         <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>25
+   <span class="p">&lt;</span><span class="nt">tfoot</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+         <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Total
+         <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>100
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="ej-html"><table class="tb-ejemplo">
+   <caption>Asistentes</caption>
+   <thead>
+      <tr>
+         <th>Nacionalidad
+         <th>Cantidad
+   <tbody>
+      <tr>
+         <td>Españoles
+         <td>100
+      <tr>
+         <td>Portugueses
+         <td>25
+      <tr>
+         <td>Franceses
+         <td>50
+      <tr>
+         <td>Italianos
+         <td>25
+   <tfoot>
+      <tr>
+         <td>Total
+         <td>100
+</table></div></section>
+<section id="agrupacion-de-columnas">
+<h2><span class="section-number">6.5.3. </span>Agrupación de columnas<a class="headerlink" href="#agrupacion-de-columnas" title="Enlace permanente a este encabezado">¶</a></h2>
+<table class="el-html docutils align-default" id="id4">
+<caption><span class="caption-text">Elementos de definición de columnas</span><a class="headerlink" href="#id4" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-colgroup"><span class="std std-ref">&lt;colgroup&gt;</span></a></p></td>
+<td><p>Contiene las definiciones de columnas.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-col"><span class="std std-ref">&lt;col&gt;</span></a></p></td>
+<td><p>Agrupa columnas.</p></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="index-8"></span><div class="line-block" id="html-col">
+<span id="html-colgroup"></span><span id="index-9"></span><div class="line"><strong>colgroup</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup">developer.mozilla.org: colgroup</a>)</div>
+<div class="line"><strong>col</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col">developer.mozilla.org: col</a>)</div>
+<div class="line-block">
+<div class="line">Tras <a class="reference internal" href="#html-caption"><span class="std std-ref">&lt;caption&gt;</span></a> (si existe) y antes de cualquier otro elemento
+(<a class="reference internal" href="#html-tr"><span class="std std-ref">&lt;tr&gt;</span></a>, <a class="reference internal" href="#html-thead"><span class="std std-ref">&lt;thead&gt;</span></a> o <a class="reference internal" href="#html-tbody"><span class="std std-ref">&lt;tbody&gt;</span></a> según el caso) puede incluirse un elemento
+<code class="code docutils literal notranslate"><span class="pre">&lt;colgroup&gt;</span></code> para contener elementos <code class="code docutils literal notranslate"><span class="pre">&lt;col&gt;</span></code>.  Estos
+elementos permiten agrupar columnas que comparten una semántica
+común. El elemento <code class="code docutils literal notranslate"><span class="pre">&lt;colgroup&gt;</span></code> puede omitir tanto su apertura
+como su cierre.</div>
+</div>
+</div>
+<p>Ejemplo de uso:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">caption</span><span class="p">&gt;</span>Ciclos formativos en el centro<span class="p">&lt;/</span><span class="nt">caption</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">colgroup</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">col</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">col</span> <span class="na">span</span><span class="o">=</span><span class="s">&quot;2&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;info&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">col</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;sanitaria&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">col</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;soldadura&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">colgroup</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">abbr</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;Sistemas Microinformáticos y Redes&quot;</span><span class="p">&gt;</span>SMR<span class="p">&lt;/</span><span class="nt">abbr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">abbr</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;Administración de Sistemas Informáticos y Redes&quot;</span><span class="p">&gt;</span>ASIR<span class="p">&lt;/</span><span class="nt">abbr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">abbr</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;Cuidados Auxiliares de Enfermería&quot;</span><span class="p">&gt;</span>CAE<span class="p">&lt;/</span><span class="nt">abbr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">abbr</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;Soldadura y Calderería&quot;</span><span class="p">&gt;</span>SyC<span class="p">&lt;/</span><span class="nt">abbr</span><span class="p">&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Grado
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Medio
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Superior
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Medio
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Medio
+   <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="ej-html"><table class="tb-ejemplo">
+   <caption>Ciclos formativos en el centro</caption>
+   <colgroup>
+      <col>
+      <col span="2" class="info">
+      <col class="sanitaria">
+      <col class="soldadura">
+   </colgroup>
+   <tr>
+      <td>
+      <td><abbr title="Sistemas Microinformáticos y Redes">SMR</abbr>
+      <td><abbr title="Administración de Sistemas Informáticos y Redes">ASIR</abbr>
+      <td><abbr title="Cuidados Auxiliares de Enfermería">CAE</abbr>
+      <td><abbr title="Soldadura y Calderería">SyC</abbr>
+   <tr>
+      <td>Grado
+      <td>Medio
+      <td>Superior
+      <td>Medio
+      <td>Medio
+</table></div><div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Gracias a las clases, podremos definir distintos estilos para los
+grupos de columnas, pero <a class="reference external" href="https://www.w3.org/TR/CSS21/tables.html#columns">sólo unas pocas propiedades CSS son válidas</a>. De hecho, para lograr
+el efecto en el ejemplo anterior, se ha usado el <abbr title="Cascading Style Sheets">CSS</abbr>:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">tb-ejemplo</span><span class="w"> </span><span class="p">.</span><span class="nc">info</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#cdf</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">tb-ejemplo</span><span class="w"> </span><span class="p">.</span><span class="nc">sanitaria</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#eeb</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">tb-ejemplo</span><span class="w"> </span><span class="p">.</span><span class="nc">soldadura</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#bda</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="agrupacion-de-celdas">
+<span id="html-agr-celdas"></span><h2><span class="section-number">6.5.4. </span>Agrupación de celdas<a class="headerlink" href="#agrupacion-de-celdas" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>En ocasiones necesitamos fusionar varias celdas en vertical o varias en
+horizontal.</p>
+<table class="attr-html docutils align-default" id="id5">
+<caption><span class="caption-text">Atributos de fusión de celdas para td/th</span><a class="headerlink" href="#id5" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>rowspan</p></td>
+<td><p>[num]</p></td>
+<td><p>Indica cuántas filas ocupa la celda</p></td>
+</tr>
+<tr class="row-even"><td><p>colspan</p></td>
+<td><p>[num]</p></td>
+<td><p>Indica cuántas columnas ocupa la celda</p></td>
+</tr>
+</tbody>
+</table>
+<p>Al usar estos atributos las celdas a las que se les usurpa su espacio dejan de
+existir:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+   <span class="cm">&lt;!-- El th ocupa 2 columnas y por tanto sólo hay un elemento th --&gt;</span>
+   <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">th</span> <span class="na">colspan</span><span class="o">=</span><span class="s">&quot;2&quot;</span><span class="p">&gt;</span>Fusion horizontal
+   <span class="cm">&lt;!-- El td ocupa 2 filas y por tanto la siguiente fila sólo tiene un td --&gt;</span>
+   <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>1
+      <span class="p">&lt;</span><span class="nt">td</span> <span class="na">rowspan</span><span class="o">=</span><span class="s">&quot;2&quot;</span><span class="p">&gt;</span>Fusión vertical
+   <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>2
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="ej-html"><table class="tb-ejemplo">
+   <tr>
+      <th colspan="2">Fusion horizontal
+   <tr>
+      <td>1
+      <td rowspan="2">Fusión vertical
+   <tr>
+      <td>2
+</table></div></section>
+<section id="ejercicios-propuestos">
+<h2><span class="section-number">6.5.5. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Enlace permanente a este encabezado">¶</a></h2>
+<ol class="arabic">
+<li><p>Crear un <abbr title="HyperText Markup Language">HTML</abbr> con una tabla que contenga el horario de clases del grupo y
+que cumpla los siguientes requisitos:</p>
+<ul class="simple">
+<li><p>Deben aparecer como cabecera los días de lunes a viernes.</p></li>
+<li><p>En la primera columna deben indicarse las horas de comienzo
+de cada clase.</p></li>
+<li><p>El recreo debe encontrarse fusionado en una misma fila de lunes a viernes.</p></li>
+<li><p>Si se tienen de un mismo módulo dos o más clases consecutivas, deben
+fusionar las celdas.</p></li>
+</ul>
+</li>
+<li><p>Cree una tabla con los siguientes datos sobre tasa de desempleo
+<a class="reference external" href="http://www.ine.es/jaxiT3/Tabla.htm?t=4247">extraídos del INE</a>:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Comunidad Autónoma</p></th>
+<th class="head"><p>2013</p></th>
+<th class="head"><p>2014</p></th>
+<th class="head"><p>2015</p></th>
+<th class="head"><p>2016</p></th>
+<th class="head"><p>2017</p></th>
+<th class="head"><p>2018</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Andalucía</p></td>
+<td><p>36,26</p></td>
+<td><p>34,23</p></td>
+<td><p>29,83</p></td>
+<td><p>28,25</p></td>
+<td><p>24,43</p></td>
+<td><p>21,26</p></td>
+</tr>
+<tr class="row-odd"><td><p>Aragón</p></td>
+<td><p>20,59</p></td>
+<td><p>18,85</p></td>
+<td><p>14,60</p></td>
+<td><p>13,53</p></td>
+<td><p>11,37</p></td>
+<td><p>11,11</p></td>
+</tr>
+<tr class="row-even"><td><p>Asturias</p></td>
+<td><p>22,29</p></td>
+<td><p>20,78</p></td>
+<td><p>20,33</p></td>
+<td><p>14,59</p></td>
+<td><p>14,64</p></td>
+<td><p>12,86</p></td>
+</tr>
+<tr class="row-odd"><td><p>Baleares</p></td>
+<td><p>22,72</p></td>
+<td><p>18,88</p></td>
+<td><p>17,02</p></td>
+<td><p>13,80</p></td>
+<td><p>12,61</p></td>
+<td><p>10,91</p></td>
+</tr>
+<tr class="row-even"><td><p>Canarias</p></td>
+<td><p>33,09</p></td>
+<td><p>31,08</p></td>
+<td><p>26,75</p></td>
+<td><p>24,90</p></td>
+<td><p>22,04</p></td>
+<td><p>19,99</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cantabria</p></td>
+<td><p>19,81</p></td>
+<td><p>18,42</p></td>
+<td><p>17,71</p></td>
+<td><p>12,89</p></td>
+<td><p>13,49</p></td>
+<td><p>9,68</p></td>
+</tr>
+<tr class="row-even"><td><p>Castilla y León</p></td>
+<td><p>22,02</p></td>
+<td><p>20,28</p></td>
+<td><p>17,58</p></td>
+<td><p>14,81</p></td>
+<td><p>13,71</p></td>
+<td><p>11,21</p></td>
+</tr>
+<tr class="row-odd"><td><p>Castilla-La Mancha</p></td>
+<td><p>28,99</p></td>
+<td><p>28,50</p></td>
+<td><p>24,97</p></td>
+<td><p>22,14</p></td>
+<td><p>19,74</p></td>
+<td><p>16,16</p></td>
+</tr>
+<tr class="row-even"><td><p>Cataluña</p></td>
+<td><p>21,87</p></td>
+<td><p>19,88</p></td>
+<td><p>17,73</p></td>
+<td><p>14,85</p></td>
+<td><p>12,63</p></td>
+<td><p>11,75</p></td>
+</tr>
+<tr class="row-odd"><td><p>Comunidad Valenciana</p></td>
+<td><p>27,15</p></td>
+<td><p>23,48</p></td>
+<td><p>21,45</p></td>
+<td><p>19,15</p></td>
+<td><p>16,76</p></td>
+<td><p>14,30</p></td>
+</tr>
+<tr class="row-even"><td><p>Extremadura</p></td>
+<td><p>32,40</p></td>
+<td><p>29,96</p></td>
+<td><p>28,07</p></td>
+<td><p>28,31</p></td>
+<td><p>25,12</p></td>
+<td><p>23,10</p></td>
+</tr>
+<tr class="row-odd"><td><p>Galicia</p></td>
+<td><p>21,88</p></td>
+<td><p>20,87</p></td>
+<td><p>17,74</p></td>
+<td><p>16,29</p></td>
+<td><p>14,71</p></td>
+<td><p>12,04</p></td>
+</tr>
+<tr class="row-even"><td><p>Madrid</p></td>
+<td><p>20,45</p></td>
+<td><p>18,00</p></td>
+<td><p>16,51</p></td>
+<td><p>14,60</p></td>
+<td><p>13,75</p></td>
+<td><p>11,54</p></td>
+</tr>
+<tr class="row-odd"><td><p>Murcia</p></td>
+<td><p>28,50</p></td>
+<td><p>27,26</p></td>
+<td><p>23,51</p></td>
+<td><p>18,58</p></td>
+<td><p>17,21</p></td>
+<td><p>15,83</p></td>
+</tr>
+<tr class="row-even"><td><p>Navarra</p></td>
+<td><p>16,44</p></td>
+<td><p>14,92</p></td>
+<td><p>13,53</p></td>
+<td><p>10,01</p></td>
+<td><p>9,63</p></td>
+<td><p>9,99</p></td>
+</tr>
+<tr class="row-odd"><td><p>País Vasco</p></td>
+<td><p>16,58</p></td>
+<td><p>16,60</p></td>
+<td><p>12,89</p></td>
+<td><p>12,27</p></td>
+<td><p>10,57</p></td>
+<td><p>9,58</p></td>
+</tr>
+<tr class="row-even"><td><p>Rioja</p></td>
+<td><p>20,24</p></td>
+<td><p>17,17</p></td>
+<td><p>13,97</p></td>
+<td><p>10,90</p></td>
+<td><p>11,51</p></td>
+<td><p>10,30</p></td>
+</tr>
+</tbody>
+</table>
+<p>Incluya un título para la tabla y la referencia al origen de los
+datos.</p>
+</li>
+</ol>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/logo.png" alt="Logo"/>
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">6.5. Tablas</a><ul>
+<li><a class="reference internal" href="#tablas-simples">6.5.1. Tablas simples</a></li>
+<li><a class="reference internal" href="#agrupacion-de-filas">6.5.2. Agrupación de filas</a></li>
+<li><a class="reference internal" href="#agrupacion-de-columnas">6.5.3. Agrupación de columnas</a></li>
+<li><a class="reference internal" href="#agrupacion-de-celdas">6.5.4. Agrupación de celdas</a></li>
+<li><a class="reference internal" href="#ejercicios-propuestos">6.5.5. Ejercicios propuestos</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="04.basico.html"
+                          title="Previous page">&larr; <span class="section-number">6.4. </span>Elementos básicos</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="07.struct.html"
+                          title="Next page">&rarr; <span class="section-number">6.6. </span>Elementos estructurales</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/06.html/05.tablas.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="07.struct.html" title="6.6. Elementos estructurales"
+             >siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="04.basico.html" title="6.4. Elementos básicos"
+             >anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">6. </span><abbr title="HyperText Markup Language">HTML</abbr></a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">6.5. </span>Tablas</a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor CC BY 4.0, 2023-2023, José Miguel Sánchez Alés.
+      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>
