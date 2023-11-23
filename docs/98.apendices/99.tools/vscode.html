@@ -1,0 +1,345 @@
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Visual Studio Code &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" href="../../_static/general.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/particular.css" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <script src="../../_static/design-tabs.js"></script>
+
+    
+    
+     
+        <script src="../../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="../../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="../../_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="Xidel" href="xidel.html" />
+    <link rel="prev" title="Herramientas" href="../99.tools.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="xidel.html" title="Xidel"
+             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="../99.tools.html" title="Herramientas"
+             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="../99.tools.html" accesskey="U">Herramientas</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Visual Studio Code</a></li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="visual-studio-code">
+<span id="vscode"></span><h1>Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="Enlace permanente a este encabezado">¶</a></h1>
+<p>Es un editor de texto, con innumerables extensiones, especialmente diseñado para
+la escritura de código, y con versiones para los principales sistemas
+operativos. Esta disponible para su descarga gratuita en <a class="reference external" href="https://code.visualstudio.com/">su página web</a>  y su código fuente  está disponible en <a class="reference external" href="https://github.com/microsoft/vscode">su
+página de github</a>.</p>
+<section id="generalidades">
+<h2>Generalidades<a class="headerlink" href="#generalidades" title="Enlace permanente a este encabezado">¶</a></h2>
+<dl>
+<dt><strong>Idioma</strong></dt><dd><p>Si la instalación trae el programa en inglés, puede instalarse el paquete de
+nuestra lengua pulsando <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd> (o
+seleccionando <code class="docutils literal notranslate"><span class="pre">File&gt;Preferences&gt;Settings</span></code>) y escribiendo la palabra
+<em>display</em> para reducir los términos de búsqueda:</p>
+<img alt="../../_images/00-vscode-lang.png" src="../../_images/00-vscode-lang.png" />
+</dd>
+<dt><strong>Áreas de trabajo</strong></dt><dd><p>La mejor forma de trabajar con el programa es abriendo una <em>carpeta</em> en vez de
+archivos individuales, ya que podemos asimilar esta carpetas con proyectos
+(áreas de trabajo) y definir la configuración para cada área de trabajo
+independientemente:</p>
+<img alt="../../_images/01-vscode-abrir.png" src="../../_images/01-vscode-abrir.png" />
+</dd>
+<dt><strong>Configuración</strong></dt><dd><p>La configuración puede definirse de forma global o por área de trabajo y
+puede accederse a ella pulsando <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">,</kbd>:</p>
+<img alt="../../_images/02-vscode-conf.png" src="../../_images/02-vscode-conf.png" />
+<p>Se almacena en formato <abbr title="JavaScript Object Notation">JSON</abbr> y, cuando se define para el área de trabajo, se
+almacena dentro de la propia carpeta en <code class="file docutils literal notranslate"><span class="pre">.vscode/settings.json</span></code> con que
+es equivalente realizar la configuración a través de la interfaz que
+proporciona <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">,</kbd>, que editando directamente el archivo.</p>
+</dd>
+<dt><strong>Extensiones</strong></dt><dd><p>Las extensiones permiten aumentar las funcionalidades del editor y pueden
+activarse tanto de forma global como por espacio de trabajo. Dependiendo de
+su naturaleza, nos convendrá para algunas lo primero y para otras lo
+segundo.</p>
+<p>Una indispensable para quien se haya criado editando archivos en <a class="reference external" href="https://www.vim.org/">vim</a> es <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscodevim.vim">VSCodeVim</a>, que
+permite editar archivos como se hace en el veterano editor.</p>
+<p>Para gestionar las extensiones, basta con pinchar sobre el icono lateral
+izquierdo  señalado:</p>
+<img alt="../../_images/03-vscode-ext.png" src="../../_images/03-vscode-ext.png" />
+</dd>
+</dl>
+</section>
+<section id="xml">
+<span id="vscode-xml"></span><h2><abbr title="eXtensible  Markup Language">XML</abbr><a class="headerlink" href="#xml" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>La comprobación de que el documento es bien formado, además de otras
+funcionalidades como cerrar automáticamente la etiqueta que se acaba de abrir,
+se puede lograr instalando la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml">XML de RedHat</a>.</p>
+<p>Esa misma extensión también permite la validación con <abbr title="Document Type Definition">DTD</abbr> si se define
+correctamente la <a class="reference internal" href="../../02.validacion/01.dtdxml.html#dtd-doctype"><span class="std std-ref">declaración de tipo de documento</span></a>. Ahora
+bien, por defecto, la extensión no atiende las definiciones hechas en un <abbr title="Document Type Definition">DTD</abbr>
+referido desde otro <abbr title="Document Type Definition">DTD</abbr> mediante una <a class="reference internal" href="../../02.validacion/01.dtdxml.html#dtd-ent-par"><span class="std std-ref">entidad parámetro</span></a>,
+lo que malogra una gramática que querramos hacer modular. Puede corregirse
+esto haciendo verdadera la opción <code class="docutils literal notranslate"><span class="pre">xml.validation.resolveExternalEntities</span></code>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;xml.validation.resolveExternalEntities&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Si nuestra intención es evaluar expresiones <em>XPath</em> tenemos varias opciones:</p>
+<ul>
+<li><p>Instalar la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=creinbacher.xpathtester">XPath Tester</a>,
+que permite evaluar expresiones <em>XPath</em> 1.0. Para evaluarlas, basta con pulsar
+<kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd> y buscar <em>XPath</em> para que accedamos
+al cuadro de diálogo que nos permite hacer evaluaciones.</p></li>
+<li><p>Utilizar, en realidad, <a class="reference internal" href="../../05.almacenamiento/02.nativas.html#basex"><span class="std std-ref">BaseX</span></a> pero con a través de <strong class="program">Visual
+Studio Code</strong> para lo cual necesitamos:</p>
+<ol class="arabic simple">
+<li><p>Instalar previamente <a class="reference internal" href="../../05.almacenamiento/02.nativas.html#basex"><span class="std std-ref">BaseX</span></a>.</p></li>
+<li><p>Configurar la extensión para que use <em>BaseX</em> como procesador. Para ello,
+necesitamos editar la configuración y añadir:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;xmlTools.xqueryExecutionEngine&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/bin/basex&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;xmlTools.xqueryExecutionArguments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;-i&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;$(input)&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;-o&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;$(input).output.xml&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;$(script)&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>En <em>Windows</em> la ruta será algo parecido a
+<code class="file docutils literal notranslate"><span class="pre">c:\\Program</span> <span class="pre">Files</span>
+<span class="pre">(x86)\\BaseX\\bin\\basex.bat</span></code>.  Obsérvese que habrá que
+escapar las contrabarras.</p>
+</div>
+</li>
+</ol>
+<p>Una vez bien configurada, el modo de ejecutar la consulta es el siguiente:</p>
+<ol class="loweralpha simple">
+<li><p>Escribimos el archivo <code class="file docutils literal notranslate"><span class="pre">.xq</span></code> con el código de <em>XQuery</em> y con el
+archivo abierto y seleccionado en el editor.</p></li>
+<li><p>Pulsamos <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd> y ejecutamos <cite>XML Tools:
+Execute Query</cite>.</p></li>
+<li><p>Si hay varios <abbr title="eXtensible  Markup Language">XML</abbr> en el directorio se nos preguntará sobre cual
+queremos hacer la consulta, y, si hemos incluido, la opción <kbd class="kbd docutils literal notranslate">-o</kbd> en
+la configuración (tal como se ha sugerido antes), se nos pedirá confirmar
+el archivo de salida. Si no la incluimos, la salida se volcará
+directamente en una subventana.</p></li>
+<li><p>Abrimos el archivo de salida para consultar el resultado.</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="json">
+<span id="vscode-json"></span><h2><abbr title="JavaScript Object Notation">JSON</abbr><a class="headerlink" href="#json" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>El editor tiene soporte nativo, por lo que nos señalará sin configuración
+adicional si el documento <abbr title="JavaScript Object Notation">JSON</abbr> que editamos no es bien formado. También es
+capaz de validarlo si le proporcionamos el esquema, pero en este caso sí debemos
+configurar para relacionar el documento con su gramática. Para ello debemos
+abrir la configuración (<kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">,</kbd>) y acceder a
+la extensión para <abbr title="JavaScript Object Notation">JSON</abbr>, una de cuyas configuraciones es <code class="docutils literal notranslate"><span class="pre">JSON:</span> <span class="pre">Schemas</span></code>:</p>
+<img alt="../../_images/20-vscode-json-schemas.png" src="../../_images/20-vscode-json-schemas.png" />
+<p>Al pinchar en la edición se nos abrirá el archivo de configuración
+<code class="file docutils literal notranslate"><span class="pre">settings.json</span></code> que nos permite relacionar archivos <abbr title="JavaScript Object Notation">JSON</abbr> con los
+esquemas que usan. Por ejemplo:</p>
+<img alt="../../_images/21-vscode-json-settings.png" src="../../_images/21-vscode-json-settings.png" />
+<p>Este es un proyecto abierto como una carpeta en que el esquema está en la
+propia carpeta raíz y se ha definido la relación entre archivos <abbr title="JavaScript Object Notation">JSON</abbr> y
+esquemas así:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;json.schemas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;fileMatch&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;casilleros*.json&quot;</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/casilleros.schema.json&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>La propiedad <code class="docutils literal notranslate"><span class="pre">json.schemas</span></code> es una secuencia, cada uno de cuyos elementos
+es un objeto que sirve para referir un esquema distinto. En él, <code class="docutils literal notranslate"><span class="pre">fileMatch</span></code>
+es la lista de archivos que siguen el esquema, mientras que <code class="docutils literal notranslate"><span class="pre">url</span></code> indica la
+<abbr title="Uniform Resource Locator">URL</abbr> (que no propiamente la ruta) del esquema. Podríamos haber escrito una
+<abbr title="Uniform Resource Locator">URL</abbr> absoluta (con file:<cite>file:///etc.</cite>), pero dado que la <abbr title="Uniform Resource Locator">URL</abbr> base es la
+propia carpeta del proyecto, hemos preferido una <abbr title="Uniform Resource Locator">URL</abbr> relativa.</p>
+</section>
+<section id="yaml">
+<span id="vscode-yaml"></span><h2><abbr title="YAML Ain't Markup Language">YAML</abbr><a class="headerlink" href="#yaml" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>A diferencia de lo que ocurre con <abbr title="JavaScript Object Notation">JSON</abbr>, el soporte para <abbr title="YAML Ain't Markup Language">YAML</abbr> no es nativo,
+así que es preciso instalar la <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml">extensión para YAML</a> para
+que el programa comprueba si el documento es bien formado. Si, además, queremos
+confrontarlo con un esquema <abbr title="JavaScript Object Notation">JSON</abbr> para validarlo, entonces requeriremos
+configuración adicional que relacione los archivos con su esquema
+correspondiente:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;yaml.schemas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;./casilleros.schema.json&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;casilleros*.yaml&quot;</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>En este caso, <code class="docutils literal notranslate"><span class="pre">yaml.schemas</span></code> es un objeto y cada objeto tiene como claves
+la ruta al esquema (no una <abbr title="Uniform Resource Locator">URL</abbr> como antes) y como valor el archivo o los
+archivos que se rigen por el esquema. Cuando son varios, es necesario usar
+una secuencia:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;yaml.schemas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;./casilleros.schema.json&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;casilleros*.yaml&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;*casilleros.yaml&quot;</span><span class="p">]</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="html">
+<span id="vscode-html"></span><h2><abbr title="HyperText Markup Language">HTML</abbr><a class="headerlink" href="#html" title="Enlace permanente a este encabezado">¶</a></h2>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../../index.html" title="index">
+          <img class="logo" src="../../_static/logo.png" alt="Logo"/>
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="../../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Visual Studio Code</a><ul>
+<li><a class="reference internal" href="#generalidades">Generalidades</a></li>
+<li><a class="reference internal" href="#xml"><abbr title="eXtensible  Markup Language">XML</abbr></a></li>
+<li><a class="reference internal" href="#json"><abbr title="JavaScript Object Notation">JSON</abbr></a></li>
+<li><a class="reference internal" href="#yaml"><abbr title="YAML Ain't Markup Language">YAML</abbr></a></li>
+<li><a class="reference internal" href="#html"><abbr title="HyperText Markup Language">HTML</abbr></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="../99.tools.html"
+                          title="Previous page">&larr; Herramientas</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="xidel.html"
+                          title="Next page">&rarr; Xidel</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/98.apendices/99.tools/vscode.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="xidel.html" title="Xidel"
+             >siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="../99.tools.html" title="Herramientas"
+             >anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="../99.tools.html" >Herramientas</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Visual Studio Code</a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor CC BY 4.0, 2023-2023, José Miguel Sánchez Alés.
+      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

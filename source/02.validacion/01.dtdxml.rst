@@ -150,54 +150,8 @@ validaciones. Se propone:
   consulta la gramática definida en el |DTD| que se refiera en la declaración\
   [#]_ e indica las violaciones a ella según se escribe.
 
-  .. warning:: Por defecto, la extensión no atiende las definiciones hechas en
-     un |DTD| referido desde otro |DTD| mediante una :ref:`entidad parámetro
-     <dtd-ent-par>`, lo que malogra una gramática que querramos hacer modular\
-     [#]_. Puede corregirse esto haciendo verdadera la opción
-     ``xml.validation.resolveExternalEntities``:
-
-     .. code-block:: json
-
-        {
-          "xml.validation.resolveExternalEntities": true
-        }
-
-- :command:`xmlstarlet`, que tiene paquete en las distribuciones basadas en
+- :ref:`xmlstarlet`, que tiene paquete en las distribuciones basadas en
   *Debian* (:deb:`xmlstarlet`).
-
-Centrándonos en este último, es especialmente útil, porque permite:
-
-- Comprobar si un |XML| está bien formado.
-- Validar |DTD|, |XSD| y |RNG| (por desgracia, no valida |RNC|).
-- Seleccionar nodos de un |XML| usando :ref:`XPath <xpath>`.
-- Hacer transformaciones con |XSLT|.
-
-por lo que puede servirnos para gran parte de las operaciones que
-desarrollaremos en el curso.
-
-En concreto, para comprobar si un |XML| está bien formado basta con hacer:
-
-.. code-block:: console
-
-   $ xmlstarlet val -e claustro.xml
-
-La opción ``-e`` provoca que se muestren los errores, en caso de que los
-hubiera. De lo contrario sólo informa de si es válido. Obsérvese que el mensaje
-no es preciso: debería indicar, simplemente, que es *bien formado*, ya sólo
-comprueba si el |XML| se ajusta a las reglas generales del |XML|.
-
-Para *validar* realmente puede hacerse:
-
-.. code-block:: console
-
-   $ xmlstarlet val -e -d claustro.dtd claustro.xml
-
-Pero si el |DTD| está declarado en el |XML| (en la declaración de tipo de
-documento), puede simplificarse a:
-
-.. code-block:: console
-
-   $ xmlstarlet val -e -E claustro.xml
 
 Sintaxis básica
 ***************
@@ -641,10 +595,6 @@ inconvenientes.
          :language: xml
 
 .. [#] También soporta :ref:`Relax-NG Compact <rnc>` y :ref:`XML Schemas <xsd>`.
-
-.. [#] Sin ir más lejos, el ejemplo propuesto para los casilleros es modular:
-   las entidades que definen los nombres de los departamentos están en un |DTD|
-   aparte, que es referido en :file:`casilleros.dtd`.
 
 .. [#] Los tipos |MIME| identifican de forma única los distintos tipos de
    archivos y se crearon en un principio para los adjuntos al correo

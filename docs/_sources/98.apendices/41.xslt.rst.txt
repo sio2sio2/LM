@@ -205,44 +205,8 @@ sucesivamente los |XSLT| que generan los siguientes resultados:
 Pueden descargarse :download:`desde aquí <files/xsl-intermedios.zip>` estas
 transformaciones intermedias.
 
-Practicando con |XSLT|
-======================
-Para transformar un |XML| mediante una hoja |XSLT| utilizaremos la misma
-herramienta que se ha venido utilizando hasta ahora: :program:`xmlstarlet`. La
-herramienta usa las librerías libxml2_ y libxslt_, de modo que sólo hay soporte
-para XSLT v.1.0 y bastantes extensiones. La manera más sencilla de usarlo es
-utilizar el argumento ``tr`` seguido de la hoja |XSLT| y el |XML| original:
-
-.. code-block:: console
-
-   $ xmlstarlet tr disco.txt.xsl disco.xml
-
-Ahora bien, si el |XML| declara algún hoja |XSLT| para su transformación con la
-instrucción de procesamiento :code:`<?xml-steelsheet ... ?>` (véanse los ejemplos
-ya expuestos), entonces puede omitirse el fichero xsl incluyendo el parámetro -E:
-
-.. code-block:: console
-
-   $ xmlstarlet tr -E disco.xml
-
-En el ejemplo, la hoja de transformación debería llamarse
-:file:`discos.txt.xsl`, de modo que esta última orden es equivalente a la
-anterior. En algunas hojas de transformación se requiere pasar parámetros. Para
-ello existen las opciones ``-p`` y ``-s``. Ambas sirven para lo mismo con la
-diferencia de que -s está pensada para pasar parámetros que sean cadenas. Por
-ejemplo:
-
-.. code-block:: console
-
-   $ xmlstarlet tr libros.xsl -p "año=1994" -s "bibliotecario=Juan Palomo" \
-                              -p "nombre='Biblioteca Municipal'" libros.xml
-
-Obsérvese la diferencia: se han escrito todas las parejas *nombre-valor* entre
-comillas dobles para que bash no haga travesuras. La primera pareja es un número
-y las dos restantes son cadenas. Como con la segunda se usó ``-s``, bastó con
-escribir tal cual la cadena. En la tercera, sin embargo, se escribió ``-p``, así
-que hubo explícitamente que informar al procesador de que era una cadena
-escribiendo el valor entre comillas.
+.. seealso:: Para saber cómo realizar transformación |XSLT| usando
+   :program:`xmlstartlet` consulte :ref:`el apéndice dedicado a ello <xmlstarlet-xslt>`.
 
 .. _xslt-expresiones:
 

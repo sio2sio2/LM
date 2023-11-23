@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE claustro SYSTEM "casilleros.dtd" [
-   <!ENTITY EFI "Educación Física">
+   <!ENTITY ING "Inglés">
 ]>
 <c:claustro centro="IES Pepe Botella" xmlns:c="urn:profesores">
    <c:profesor id="p1">
-      <c:apelativo>Luis</c:apelativo>
-      <c:nombre>Luis</c:nombre>
-      <c:apellidos>Márquez Vázquez</c:apellidos>
-      <c:departamento>&EFI;</c:departamento>
+      <c:apelativo>Pepe</c:apelativo>
+      <c:nombre>José</c:nombre>
+      <c:apellidos>Suárez Lantilla</c:apellidos>
+      <c:departamento>&ING;</c:departamento>
       <d:direccion xmlns:d="urn:direccion">
          <d:via tipo="calle">Callo, 5</d:via>
          <d:cp>12345</cp>

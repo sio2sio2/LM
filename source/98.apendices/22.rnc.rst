@@ -110,39 +110,9 @@ valernos de `jing <http://www.thaiopensource.com/relaxng/jing.html>`_
 directamente; o bien aplicar un traductor de |RNC| a |RNG| como `trang
 <http://www.thaiopensource.com/relaxng/trang.html>`_ (disponible a través del
 paquete :deb:`trang`) y posteriormente realizar la validación propiamente dicha
-con :command:`xmlstarlet` que sí soporta |RNG|.  Ya que hemos venido usando
-:command:`xmlstarlet` hasta ahora para la validación nos decantaremos por esta
-segunda opción:
+con :command:`xmlstarlet` que sí soporta |RNG|.
 
-.. code-block:: console
-
-   $ trang casilleros.rnc casilleros.rng
-   $ xmlstarlet val -e -r casilleros.rng casilleros.xml  # -e muestra errores si los hay
-
-.. note:: :command:`trang` traduce a |DTD| (o |XSD|), por lo que también podemos
-   obtener el |DTD| (o |XSD|) equivalente a nuestro |RNC|:
-
-   .. code-block:: console
-
-      $ trang casilleros.rnc casilleros.dtd
-
-   Puede ser útil esta traduccion para ver cómo se ve la gramática definida en
-   |DTD|, pero es absolutamente desconsejable hacer esta traducción con el
-   propósito de validar después, ya que |DTD| es menos expresivo y, en
-   consecuencia , es muy probable que se pierda expresividad\ [#]_.
-
-.. note:: :command:`trang` permite también otra cosa: obtener la gramática a
-   partir del documento |XML|:
-
-   .. code-block:: console
-
-      $ trang casilleros.xml casilleros.rnc  # O casilleros.dtd para obtener el DTD
-
-   Esto, sin embargo, crea siempre gramáticas deficientes, ya que rara vez la
-   herramienta es capaz de adivinar nuestra intención de hacer que un atributo
-   fuera un identificador o que un contenido responda a una enumeración. Su
-   utlidad se reduce, por lo general, a brindarnos un esqueleto sobre el que
-   perfilar la gramática.
+Consulte los detalles en el :ref:`apéndice dedicado a XMLStarlet <xmlstarlet-rnc>`.
 
 Sintaxis básica
 ===============
@@ -679,9 +649,6 @@ Ejercicios resueltos
          -- Resto de entidades --
       ]>
 
-.. [#] En el ejemplo, perderíamos la restricción en el formato del
-   identificador.
-
 .. [#] En puridad, no sólo para elementos y atributos. Podemos hacer otro tipo
    de asignaciones que quizás también resultan útiles y que se entenderán más
    adelante::
@@ -698,7 +665,7 @@ Ejercicios resueltos
 
       element precio { xsd:decimal { minInclusive="0" pattern="\.\d{1,2}|\d+(\.\d{1,2})?" } }
 
-.. [#] *Relax-NG* us alas expresiones definidas para *W3C XML Schema* que son
+.. [#] *Relax-NG* usa las expresiones definidas para *W3C XML Schema* que son
    expresiones regulares de tipo :abbr:`ERE (Extended Regular Expresion)`.
 
 .. [#] Por ejemplo, la definición de un domicilio postal puede servirnos en

@@ -3,10 +3,10 @@
    "profesores": [
       {
          "id": 1,
-         "apelativo": "Luis",
-         "nombre": "Luis",
-         "apellidos": "Márquez Vázquez",
-         "departamento": "Educación Física"
+         "apelativo": "Pepe",
+         "nombre": "José",
+         "apellidos": "Suárez Lantilla",
+         "departamento": "Inglés"
       },
       {
          "id": 13,

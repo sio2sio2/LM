@@ -45,7 +45,7 @@
 
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
-    <link rel="next" title="Lenguajes para el intercambio de datos" href="../99.ejercicios/10.lenguajes.html" />
+    <link rel="next" title="Herramientas" href="99.tools.html" />
     <link rel="prev" title="Relax-NG Compact" href="22.rnc.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head><body>
@@ -58,7 +58,7 @@
           <a href="../genindex.html" title="Índice General"
              accesskey="I">índice</a></li>
         <li class="right" >
-          <a href="../99.ejercicios/10.lenguajes.html" title="Lenguajes para el intercambio de datos"
+          <a href="99.tools.html" title="Herramientas"
              accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="22.rnc.html" title="Relax-NG Compact"
@@ -370,39 +370,11 @@ sucesivamente los <abbr title="eXtensible Stylesheet Language Transformations">X
 </div>
 <p>Pueden descargarse <a class="reference download internal" download="" href="../_downloads/d6ad922c7857921e8852fbaa45707682/xsl-intermedios.zip"><code class="xref download docutils literal notranslate"><span class="pre">desde</span> <span class="pre">aquí</span></code></a> estas
 transformaciones intermedias.</p>
-</section>
-<section id="practicando-con-xslt">
-<h3>Practicando con <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr><a class="headerlink" href="#practicando-con-xslt" title="Enlace permanente a este encabezado">¶</a></h3>
-<p>Para transformar un <abbr title="eXtensible  Markup Language">XML</abbr> mediante una hoja <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr> utilizaremos la misma
-herramienta que se ha venido utilizando hasta ahora: <strong class="program">xmlstarlet</strong>. La
-herramienta usa las librerías <a class="reference external" href="http://xmlsoft.org/libxml2/">libxml2</a> y <a class="reference external" href="http://xmlsoft.org/libxslt/">libxslt</a>, de modo que sólo hay soporte
-para XSLT v.1.0 y bastantes extensiones. La manera más sencilla de usarlo es
-utilizar el argumento <code class="docutils literal notranslate"><span class="pre">tr</span></code> seguido de la hoja <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr> y el <abbr title="eXtensible  Markup Language">XML</abbr> original:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>xmlstarlet<span class="w"> </span>tr<span class="w"> </span>disco.txt.xsl<span class="w"> </span>disco.xml
-</pre></div>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Para saber cómo realizar transformación <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr> usando
+<strong class="program">xmlstartlet</strong> consulte <a class="reference internal" href="99.tools/xmlstarlet.html#xmlstarlet-xslt"><span class="std std-ref">el apéndice dedicado a ello</span></a>.</p>
 </div>
-<p>Ahora bien, si el <abbr title="eXtensible  Markup Language">XML</abbr> declara algún hoja <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr> para su transformación con la
-instrucción de procesamiento <code class="code docutils literal notranslate"><span class="pre">&lt;?xml-steelsheet</span> <span class="pre">...</span> <span class="pre">?&gt;</span></code> (véanse los ejemplos
-ya expuestos), entonces puede omitirse el fichero xsl incluyendo el parámetro -E:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>xmlstarlet<span class="w"> </span>tr<span class="w"> </span>-E<span class="w"> </span>disco.xml
-</pre></div>
-</div>
-<p>En el ejemplo, la hoja de transformación debería llamarse
-<code class="file docutils literal notranslate"><span class="pre">discos.txt.xsl</span></code>, de modo que esta última orden es equivalente a la
-anterior. En algunas hojas de transformación se requiere pasar parámetros. Para
-ello existen las opciones <code class="docutils literal notranslate"><span class="pre">-p</span></code> y <code class="docutils literal notranslate"><span class="pre">-s</span></code>. Ambas sirven para lo mismo con la
-diferencia de que -s está pensada para pasar parámetros que sean cadenas. Por
-ejemplo:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>xmlstarlet<span class="w"> </span>tr<span class="w"> </span>libros.xsl<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;año=1994&quot;</span><span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;bibliotecario=Juan Palomo&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">                           </span>-p<span class="w"> </span><span class="s2">&quot;nombre=&#39;Biblioteca Municipal&#39;&quot;</span><span class="w"> </span>libros.xml
-</pre></div>
-</div>
-<p>Obsérvese la diferencia: se han escrito todas las parejas <em>nombre-valor</em> entre
-comillas dobles para que bash no haga travesuras. La primera pareja es un número
-y las dos restantes son cadenas. Como con la segunda se usó <code class="docutils literal notranslate"><span class="pre">-s</span></code>, bastó con
-escribir tal cual la cadena. En la tercera, sin embargo, se escribió <code class="docutils literal notranslate"><span class="pre">-p</span></code>, así
-que hubo explícitamente que informar al procesador de que era una cadena
-escribiendo el valor entre comillas.</p>
 </section>
 </section>
 <section id="expresiones">
@@ -2366,7 +2338,6 @@ dentro del espacio <code class="docutils literal notranslate"><span class="pre">
 <li><a class="reference internal" href="#introduccion">Introducción</a><ul>
 <li><a class="reference internal" href="#que-es-xslt">¿Qué es <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr>?</a></li>
 <li><a class="reference internal" href="#ejemplo-introductorio">Ejemplo introductorio</a></li>
-<li><a class="reference internal" href="#practicando-con-xslt">Practicando con <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#expresiones">Expresiones</a></li>
@@ -2407,8 +2378,8 @@ dentro del espacio <code class="docutils literal notranslate"><span class="pre">
   </div>
   <div class="sphinxnext">
     <h4>Next page</h4>
-    <p class="topless"><a href="../99.ejercicios/10.lenguajes.html"
-                          title="Next page">&rarr; Lenguajes para el intercambio de datos</a></p>
+    <p class="topless"><a href="99.tools.html"
+                          title="Next page">&rarr; Herramientas</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>Esta página</h3>
@@ -2457,7 +2428,7 @@ dentro del espacio <code class="docutils literal notranslate"><span class="pre">
           <a href="../genindex.html" title="Índice General"
              >índice</a></li>
         <li class="right" >
-          <a href="../99.ejercicios/10.lenguajes.html" title="Lenguajes para el intercambio de datos"
+          <a href="99.tools.html" title="Herramientas"
              >siguiente</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="22.rnc.html" title="Relax-NG Compact"

@@ -42,8 +42,8 @@ del borrador. Proponemos tres:
 * `Visual Studio Code`_ con la extensión `JSONPath Extraction
   <https://marketplace.visualstudio.com/items?itemName=davidmarek.jsonpath-extract>`_,
   que permite extraer información de un documento |JSON|. Para evaluar
-  expresiones, basta con pulsar :kbd:`Ctrl+Shift+P` y buscar por "*jsonpath*"
-  para acceder a las órdenes de la extensión.
+  expresiones, basta con pulsar :kbd:`Ctrl`\ +\ :kbd:`Shift`\ +\ :kbd:`P` y
+  buscar por "*jsonpath*" para acceder a las órdenes de la extensión.
 * El paquete :deb:`python3-jsonpath-ng`, que incluye la orden
   :command:`jsonpath_ng`. La orden (aunque sí la librería de Python_) no soporta
   filtros.

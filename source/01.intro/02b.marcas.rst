@@ -303,8 +303,8 @@ Tenemos varias alternativas:
   .. seealso:: Para más información sobre :program:`xmlstarlet` consulte el
      :ref:`epígrafe sobre validación con un DTD <xml-valid>`.
 
-* `Visual Studio Code`_ es capaz de comprobar la sintaxis si se instala en él una
-  extensión apropiada como `XML de RedHat
+* ref:`Visual Studio Code <vscode>` es capaz de comprobar la sintaxis si se
+  instala en él una extensión apropiada como `XML de RedHat
   <https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml>`_.
 
 Anatomía del documento
@@ -337,17 +337,17 @@ que es imprescindible conocer su nombre y qué refieren:
 
    .. code-block:: xml
 
-      <apelativo>Luis</apelativo>
+      <apelativo>Pepe</apelativo>
 
    y esto un elemento ``<profesor>``:
 
    .. code-block:: xml
 
-      <profesor id="i1">
-            <apelativo>Luis</apelativo>
-            <nombre>Luis</nombre>
-            <apellidos>Márquez Vázquez</apellidos>
-            <departamento>Educación Física</departamento>
+      <profesor id="p1">
+            <apelativo>Pepe</apelativo>
+            <nombre>José</nombre>
+            <apellidos>Suárez Lantilla</apellidos>
+            <departamento>Inglés</departamento>
       </profesor>
    
    En el primer caso, el elemento está constituido exclusivamente por texto;
@@ -514,7 +514,7 @@ las menos importantes):
    * Tienen la forma :code:`<etiqueta>` en su apertura y :code:`</etiqueta>` en
      su cierre::
 
-      <nombre>Luis</nombre>   
+      <nombre>José</nombre>   
 
    * En caso de que la marca abarque un elemento vacío, se puede usar la
      notación::
@@ -825,7 +825,6 @@ Ejercicios resueltos
 .. _Inkscape: https://inkscape.org
 .. _reStructured Text: http://docutils.sourceforge.net/rst.html
 .. _Markdown: https://daringfireball.net/projects/markdown/
-.. _Visual Studio Code: https://code.visualstudio.com
 
 .. |uostr| unicode:: U+00D8 .. LATIN CAPITAL LETTER O WITH STROKE
 

@@ -22,10 +22,10 @@
 
 <claustro centro="IES Pepe Botella">
    <profesor id="p1">
-      <apelativo>Luis</apelativo>
-      <nombre>Luis</nombre>
-      <apellidos>Márquez Vázquez</apellidos>
-      <departamento>&EFI;</departamento>
+      <apelativo>Pepe</apelativo>
+      <nombre>José</nombre>
+      <apellidos>Suárez Lantilla</apellidos>
+      <departamento>&ING;</departamento>
    </profesor>
 
    <profesor id="p13">

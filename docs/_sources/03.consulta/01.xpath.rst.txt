@@ -93,160 +93,16 @@ conveniente conocer qué herramientas tenemos para procesar nuestras expresiones
 
 * `XPather  <http://xpather.com/>`_, que permite evaluar online expresiones
   *XPath* 2.0.
-* `Visual Studio Code`_ con la extensión `XPath Tester
+* :ref:`Visual Studio Code <vscode>` con la extensión `XPath Tester
   <https://marketplace.visualstudio.com/items?itemName=creinbacher.xpathtester>`_
   permite evaluar expresiones *XPath* 1.0. Para evaluar expresiones, basta con
   pulsar :kbd:`Ctrl`\ +\ :kbd:`Shift`\ +\ :kbd:`P` y buscar *XPath* para que accedamos
   al cuadro de diálogo que nos permite hacer evaluaciones.
 * :ref:`BaseX`, que soporta :ref:`XQuery` 3.0 (y consecuentemente *XPath* 3.1).
   Podemos usarlo directamente o :ref:`a través de Visual Studio Code
-  <xquery-vscode>`.
-* El paquete :deb:`xmlstarlet`, cuyo paquete homónimo permite utilizar
-  expresiones *XPath* 1.0 tanto para seleccionar información del |XML| original
-  como para modificarlo.
-* El programa xidel_, que soporta XPath 3.0.
-
-Expondremos estos dos últimos programas de línea de comandos, porque son los
-únicos que requieren alguna explicación sobre su funcionamiento.
-
-.. caution:: A estas alturas aún, la lectura completa del siguiente epígrafe es
-   empachante y nada recomendable. Nos basta con saber cómo evaluar las
-   expresiones *XPath* que se van introduciendo gradualmente, con lo que nos sobra con
-   saber cómo usar :ref:`xidel <xpath-xidel>`, si necesitamos probar expresiones
-   válidas únicas en *XPath* 3.0, o manejar la extensión de `Visual Studio
-   Code`_ que no requiere gran pericia.
-
-.. _xpath-xidel:
-
-:program:`Xidel`
-================
-La principal ventaja de usarlo frente a :ref:`xmlstarlet <xpath-xidel>` es que
-podremos probar expresiones *XPath* 3.1.
-
-Para comprobar nuestras expresiones *XPath* podemos usarlo de dos modos
-distintos:
-
-* Si el resultado es texto:
-
-  .. code-block:: console
-
-     $ xidel -s -e '//profesor[1]/@id' casilleros.xml
-     p1
-
-  donde "``-s``" evita mensajes de información innecesarios, y "``-e``" introduce
-  la expresión *XPath*.
-
-* Si el resultado es un nodo o un conjunto de nodos, es necesario añadir
-  ``--printed-node-format=xml``:
-
-  .. code-block:: console
-
-     $ xidel --printed-node-format=xml -s -e '//profesor/apelativo' casilleros.xml
-
-.. note:: El programa no permite validar el documento, por lo que cabría la
-   posibilidad de preguntarse si actúa o no en modo de compatibilidad con
-   *XPath* 1.0. No existe ninguna opción al respecto, pero  por el modo en el
-   que actúa, si no se especifica, parece actuar en modo semejante al de
-   compatibilidad y, si se añade la opción ``--strict-type-checking``, cambia.
-
-.. _xpath-xmlstarlet:
-
-:program:`XMLStarlet`
-=====================
-Con este programa podemos usar *XPath* tanto para seleccionar datos como para
-introducir modificaciones al |XML| original. Lo segundo no nos interesa
-demasiado, pero por completar la información sobre la orden incluiremos las
-posibilidades que brinda.
-
-Selección
----------
-Para lograrlo es necesario usar el comando ``sel``, seguido de la opción ``-t``, y
-la acción que se quiere realizar a continuación, que puede ser:
-
-:code:`-v <expresión-xpath>`
-   Muestra el valor de lo seleccionado mediante la expresión. Se debe usar esta
-   opción cuando el resultado de la expresión es un valor escalar: un único
-   atributo, un nodo que contiene texto o la evaluación de una función o una
-   operación. Por ejemplo::
-
-      $ xmlstarlet sel -t -v '//profesor[1]/@id' -n casilleros.xml
-      p1
-
-   .. note:: Se ha añadido la opción ``-n`` para añadir un cambio de línea al
-      final del resultado.
-
-:code:`-c <expresion-path>`
-   Copia el nodo seleccionado, por tanto deberá usarse cuando el resultado de
-   nuestra selección es un nodo elemento o un conjunto de nodos elemento. Por
-   ejemplo, lo siguiente devuelve todos los nodos *apelativo*::
-
-      $ xmlstarlet sel -t -c '//profesor/apelativo' -n casilleros.xml
-      <apelativo>Pepe</apelativo><apelativo>Paco</apelativo><apelativo>Mari</apelativo>
-
-:code:`-m <expresión-path>`
-   Selecciona un nodo o un conjunto de nodos para seguir trabajando sobre
-   ellos. Por tanto, requerirá que luego se use ``-v`` o ``-c``. Por ejemplo::
-
-      $ xmlstarlet sel -t -m '//profesor/apelativo' -v '.' casilleros.xml
-      PepePacoMari
-
-   En este caso, habría sido fundamental usar ``-n``::
-
-      $ xmlstarlet sel -t -m '//profesor/apelativo' -v '.' -n casilleros.xml
-      Pepe
-      Paco
-      Mari
-
-.. note:: :command:`xmlstarlet` es capaz de devolvernos el código |XSLT|
-   equivalente a nuestra selección añadiendo tras ``sel`` la opción ``-C``.
-
-Edición
--------
-En este caso, debe usarse ``ed``, una acción y el uso de expresiones *XPath*:
-
-:code:`-d <expresion-xpath>`
-   Borra los nodos que selecciona la expresión::
-
-      $ xmlstarlet ed -d '//profesor[last()]' casilleros.xml
-
-   Esta expresión elimina el último de los profesores.
-   
-:code:`-u <expresion-xpath> -v valor`
-   Actualiza el valor del nodo o nodos seleccionados::
-
-      $ xmlstarlet ed -u '//profesor[1]/apelativo' -v "Manolo" casilleros.xml
-
-:code:`-i <expresión-xpath> -t (elem|text|attr) -n <nombre> -v <valor>`
-   Permite insertar antes del nodo seleccionado (o los nodos) un nodo de tipo
-   elemento, texto o atributo del nombre y valor referidos. Se deben hacer
-   varias puntualizaciones:
-
-   * Los nodos de texto no tienen nombre, así que da igual el nombre que se les
-     dé.
-
-   * El valor sólo puede ser texto, así que, directamente, sólo se pueden crear
-     nodos elemento que contienen texto.
-
-   * Si se quiere crear nodos elemento que tienen atributos o contienen otros
-     nodos elemento, entonces hay que componer varias acciones.
-
-   Por ejemplo, esto añadiría un nuevo apelativo al primer profesor::
-
-    $ xmlstarlet ed -i '//profesor[1]/nombre' -t elem -n "apelativo" -v "Pancho" casilleros.xml
-
-:code:`-a <expresión-xpath> -t (elem|text|attr) -n nombre -v valor`
-   Como  ``-i`` pero añade el nodo después, no antes. Por ejemplo::
-
-    $ xmlstarlet ed -a '//profesor[1]/apelativo[last()]' -t elem -n "apelativo" -v "Pancho" casilleros.xml
-
-:code:`-s <expresión-xpath> -t (elemen|text|attr) -n nombre -v valor`
-   Añade el nuevo elemento como último elemento del elemento seleccionado::
-
-    $ xmlstarlet ed -s '//profesor[2]/nombre' -t text -n foo -v " María" casilleros.xml
-
-.. note:: Las transformaciones que podemos hacer de este modo son bastante
-   limitadas. Un mecanismo más apropiado para realizarlas es usar :ref:`XSLT
-   <xslt>`.
+  <vscode>`.
+* :ref:`xmlstarlet <xmlstarlet-xpath>`, que soporta expresiones *XPath* 1.0.
+* El programa :ref:`xidel`, que soporta XPath 3.0.
 
 Sintaxis
 ********
@@ -392,17 +248,44 @@ Filtros
 El :dfn:`filtro` es aquella parte de la ruta *XPath* que expresa qué nodo o nodos
 quieren referirse con tal ruta. Puede ser:
 
-**QName**
-   Selecciona nodos elemento por nombre. Por ejemplo:
+.. _xpath-qname:
+
+**QName** (nombre cualificado)
+   Los nodos elemento y los nodos atributo tienen nombres cualificados, por lo
+   que, cuando se usa un nombre cualificado, queremos indicar que queremos
+   escoger un nodo con tal nombre de uno de estos dos tipos. Por ejemplo:
 
    .. code-block:: xquery
 
       /claustro
 
-   selecciona el nodo *claustro*.
+   selecciona el nodo *claustro*, hijo del nodo raíz, mientras que:
 
-**\***
-   Selecciona todos los nodos elemento, sea cual sea su nombre. Por ejemplo:
+   .. code-block:: xquery
+
+      /claustro/profesor
+
+   selecciona los nodos profesor hijos del nodo claustro.
+
+   .. caution:: Aquí es importante hacer una puntualización: *claustro* tiene un
+      atributo con nombre cualificado *nombre*; sin embargo:
+
+      .. code-block:: xquery
+
+         /claustro/centro
+
+      no devuelve el nodo atributo de nombre cualificado *centro*, porque los
+      atributos no son hijos del nodo elemento al que pertenecen. Los nodos
+      elemento (y otros tipos de nodos como los comentarios o las instrucciones de
+      procesamiento) están en un :ref:`eje <xpath-eje>`, el eje *child*,
+      distinto al eje de los atributos, los cuales se encuentran en el eje
+      *attribute*. Cuando no se hace mención al eje se sobrentiende que es
+      *child*, razón por la cual las expresiones anteriores en las que hemos
+      utilizado nombres cualificados hacen referencia exclusivamente a
+      elementos.
+
+   Además, puede usarse el carácter especial ``*``, que concuerda con cualquier
+   nombre cualificado. Por ejemplo:
 
    .. code-block:: xquery
 
@@ -411,32 +294,31 @@ quieren referirse con tal ruta. Puede ser:
    selecciona los elementos *apelativo*, *nombre*, *apellidos* y *departamento*
    hijos del primer profesor.
 
-   .. _xpath-element():
+   Ahora bien, si los atributos también tienen nombre cualificado, ¿cómo podemos
+   seleccionarlos? La respuesta es sencilla: expresando explícitamente el eje en
+   el que se encuentran. Los ejes se :ref:`tratan a continuación <xpath-eje>`,
+   pero adelantemos que para los atributos podemos hacerlo así:
 
-   .. note:: A partir de XPath 2.0, existe ``element()`` que tiene el mismo
-      efecto:
+   .. code-block:: xquery
 
-      .. code-block:: xquery
+      /claustro/attribute::nombre
 
-         /claustro/profesor[1]/element()
+   o, como alternativa más compacta, expresando el eje mediante la anteposición
+   de una arroba (``@``) al nombre cualificado:
 
-      
-      La función permite expresar el nombre del elemento:
+   .. code-block:: xquery
 
-      .. code-block:: xquery
+      /claustro/@nombre
 
-         /claustro/profesor[1]/element(apodo)
+   Por supuesto, el carácter ``*`` también es válido, por lo que:
 
-      lo que sería equivalente a haber usado directamente el nombre. Sin
-      embargo, si el procesador es capaz de validar con una gramática el
-      documento, entonces conocerá el tipo de dato que almacena y puede
-      filtrarse por tipo de valor:
+   .. code-block:: xquery
 
-      .. code-block:: xquery
+      //profesor[4]/@*
 
-         /claustro/profesor[1]/element(*, xs:integer)
+   devolverá todos los atributos asociados al cuarto profesor.
 
-      .. **
+.. _xpath-text():
 
 **text()**
    Selecciona los nodos de texto. Por ejemplo:
@@ -456,7 +338,6 @@ quieren referirse con tal ruta. Puede ser:
    .. code-block:: xml
 
       <nombre>José</nombre>
-
 
    .. note:: Nótese que a efectos de su definición gramatical este nodo:
 
@@ -481,6 +362,8 @@ quieren referirse con tal ruta. Puede ser:
       nodos elemento, cada uno de los cuales contiene, simplemente, caracteres
       de espaciado.
 
+.. _xpath-node():
+
 **node()**
    Todos los nodos, sean del tipo que sean. Por ejemplo:
 
@@ -488,8 +371,10 @@ quieren referirse con tal ruta. Puede ser:
 
       /claustro/node()
 
-   selecciona todos los nodo *profesor* y todos los nodos texto hijo,
-   consecuencia de haber sangrado tan bien el documento.
+   seleccionará todos los nodos hijo de claustro, que en el ejemplo resultan ser
+   los nodos *profesor* y los nodos texto hijo constituidos por cambios de línea
+   y espacios, que hemos incluido para lograr sangrar con tanta pulcritud el
+   documento.
 
    .. note:: En cambio:
 
@@ -497,7 +382,21 @@ quieren referirse con tal ruta. Puede ser:
 
          /claustro/*
 
-      selecciona exclusivamente los nodos *profesor*.
+      selecciona exclusivamente los nodos *profesor* y no los de texto, ya que
+      el comodín sólo refiere :ref:`nombres cualificados <xpath-qname>`.
+
+   .. note:: ``node()`` también obtiene nodos atributo, pero del mismo modo en
+      que ocurrió al usar nombres cualificados, están en un eje distinto al de
+      los hijos de claustro. Por ese motivo, la expresión no los devuelve. En
+      cambio, si hacemos:
+
+      .. code-block:: xquery
+
+         /claustro/attribute::node()
+
+      sí obtendremos nodos atributo.
+
+.. _xpath-comment():
 
 **comment()**
    Todos los nodos que sean comentarios:
@@ -506,37 +405,61 @@ quieren referirse con tal ruta. Puede ser:
 
       /claustro/comment()
 
-**@atributo**
-   Selecciona el atributo con el nombre expresado. Por ejemplo:
-
-   .. code-block:: xquery
-
-      /claustro/profesor/@sexo
-
-   refiero los sexos de todos los profesores.
-
-**@\***
-   Selecciona todos los atributos:
-
-   .. code-block:: xquery
-
-      /claustro/profesor/@*
-
-   .. note:: A partir de XPath 2, puede usarse la función ``attribute()`` con
-      idéntico fin y que admite :ref:`argumentos como element() <xpath-element()>`.
+.. _xpath-processing-instrucion():
 
 **processing-instruction()**
    Todas las instrucciones de procesamiento. Por ejemplo:
 
    .. code-block:: xquery
 
-      '//procesing-instruction()'
+      //procesing-instruction()
 
-   selecciona todas las instrucciones de procesamiento del documento.
+   selecciona todas las instrucciones de procesamiento del documento. Puede
+   incluirse como argumento el :dfn:`destino`, que es la palabra adyacente al
+   signo "?":
 
-**processing-instruction(destino)**
-   Todas las instrucciones de procesamiento cuyo destino sea el indicado. El
-   :dfn:`destino` es la palabra adyacente al signo "?".
+   .. code-block:: xquery
+
+      //procesing-instruction(xml-stylesheet)
+
+.. _xpath-element():
+
+**element()** (*XPath* 2/3)
+   A partir de XPath 2.0, existe ``element()`` que concuerda con nodos elemento:
+
+   .. code-block:: xquery
+
+      /claustro/profesor[1]/element()
+   
+   Este filtro permite expresar el nombre del elemento:
+
+   .. code-block:: xquery
+
+      /claustro/profesor[1]/element(apodo)
+
+   lo que sería equivalente a haber usado directamente el nombre cualificado.
+   Sin embargo, si el procesador es capaz de validar con una gramática el
+   documento, entonces conocerá el tipo de dato que almacena y puede filtrarse
+   por tipo de valor:
+
+   .. code-block:: xquery
+
+      /claustro/profesor[1]/element(*, xs:integer)
+
+   .. **
+
+.. _xpath-attribute():
+
+**attribute()** (XPath 2/3)
+   A partir de XPath 2, existe también el filtro ``attribute()`` que lleva
+   implícito que se refiere al eje *attribute*:
+
+   .. code-block:: xquery
+
+      /claustro/attribute()
+
+   Admite los mismos argumentos que :ref:`element() <xpath-element()>` para
+   afinar el filtro.
 
 .. note:: Obsérvese que estas expresiones responden a cuáles son los siete tipos de
    nodos que el modelo de datos de *XPath* define:
@@ -556,21 +479,25 @@ quieren referirse con tal ruta. Puede ser:
 .. _xpath1-union:
 
 *XPath* permite **agregar rutas** de manera que los nodos seleccionados sean la
-unión de los nodos que seleccionan las distintas rutas. Para ello, usa el
-operador "``|``":
+unión de los nodos que seleccionan las distintas rutas. Para ello usa el
+*operador* "``|``":
 
 .. code-block:: xquery
 
    //profesor/apelativo | //profesor/nombre
 
-selecciona todos los nodos *apelativo* y *nombre* de todos los profesores.
+La expresión selecciona todos los nodos *apelativo* y *nombre* de todos los
+profesores.
+
+.. _xpath-eje:
 
 Ejes
 ====
 El :dfn:`eje` es la parte de la ruta *XPath* que determina el sentido que se
 tomará al interpretar la siguiente parte de la ruta. Recordemos que, si nos
 encontramos procesando un nodo y queremos referirnos a otro, podemos buscar
-entre sus descendientes, entre sus ascendientes o entre sus hermanos.
+entre sus descendientes, entre sus ascendientes, entre sus hermanos o entre sus
+atributos.
 
 .. table:: **Ejes en XPath**
    :class: tb-eje
@@ -870,7 +797,9 @@ Para empezar hay que aclarar dos aspectos importantes:
 
    Es muy conveniente tener presente esto, porque los operadores pueden
    comportarse de distinto modo según sea el tipo de los operandos y también
-   habrá que saber cómo se actúa cuando los operandos son de distinto tipo.
+   habrá que saber cómo se actúa cuando los operandos son de distinto tipo. Lo
+   que podemos adelantar es que *XPath* 1.0  (a diferencia de *XPath* 2/3) tiene
+   tipado débil.
 
 Por tanto, para afinar por completo nuestro conocimiento de *XPath*, es
 necesario saber cómo realiza *XPath* la **evaluación** de las operaciones. Por
@@ -1100,10 +1029,10 @@ novedades se pueden resumir en estos puntos:
 
    .. code-block:: xquery
 
-      //profesor[nombre = ("Manuel", "Luis")]
+      //profesor[nombre = ("Manuel", "José")]
 
    que devolverá todos los nodos profesor en que el profesor se llame "Manuel" o
-   "Luis", ya que el operando de la izquierda es único, el de la derecha varios
+   "José", ya que el operando de la izquierda es único, el de la derecha varios
    y ya sabe :ref:`cómo se resuelve el problema de la pluralidad
    <xpath-pluralidad>`.
 
@@ -1291,7 +1220,7 @@ novedades se pueden resumir en estos puntos:
 
      .. code-block:: xquery
 
-        'Luis' instance of xs:string
+        'José' instance of xs:string
 
      devolverá verdadero, o:
 

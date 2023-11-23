@@ -334,10 +334,10 @@ Casilleros de profesores<div class="sd-summary-down docutils">
 
 <span class="nt">&lt;claustro</span><span class="w"> </span><span class="na">centro=</span><span class="s">&quot;IES Pepe Botella&quot;</span><span class="nt">&gt;</span>
 <span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p1&quot;</span><span class="nt">&gt;</span>
-<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Luis<span class="nt">&lt;/apelativo&gt;</span>
-<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Luis<span class="nt">&lt;/nombre&gt;</span>
-<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Márquez<span class="w"> </span>Vázquez<span class="nt">&lt;/apellidos&gt;</span>
-<span class="w">      </span><span class="nt">&lt;departamento&gt;</span>Educación<span class="w"> </span>Física<span class="nt">&lt;/departamento&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Pepe<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>José<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Suárez<span class="w"> </span>Lantilla<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span>Inglés<span class="nt">&lt;/departamento&gt;</span>
 <span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
 
 <span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p13&quot;</span><span class="nt">&gt;</span>
@@ -422,8 +422,8 @@ Tenemos varias alternativas:</p>
 <a class="reference internal" href="../02.validacion/01.dtdxml.html#xml-valid"><span class="std std-ref">epígrafe sobre validación con un DTD</span></a>.</p>
 </div>
 </li>
-<li><p><a class="reference external" href="https://code.visualstudio.com">Visual Studio Code</a> es capaz de comprobar la sintaxis si se instala en él una
-extensión apropiada como <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml">XML de RedHat</a>.</p></li>
+<li><p>ref:<cite>Visual Studio Code &lt;vscode&gt;</cite> es capaz de comprobar la sintaxis si se
+instala en él una extensión apropiada como <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml">XML de RedHat</a>.</p></li>
 </ul>
 </section>
 </section>
@@ -450,15 +450,15 @@ al procesador.</p>
 <dt><strong>Elemento</strong></dt><dd><p>Toda parte del contenido que constituye una parte diferencia del resto. Se
 delimita por una etiqueta de apertura y una de cierre. Por ejemplo, esto
 es un elemento <code class="docutils literal notranslate"><span class="pre">&lt;apelativo&gt;</span></code>:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;apelativo&gt;</span>Luis<span class="nt">&lt;/apelativo&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;apelativo&gt;</span>Pepe<span class="nt">&lt;/apelativo&gt;</span>
 </pre></div>
 </div>
 <p>y esto un elemento <code class="docutils literal notranslate"><span class="pre">&lt;profesor&gt;</span></code>:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;i1&quot;</span><span class="nt">&gt;</span>
-<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Luis<span class="nt">&lt;/apelativo&gt;</span>
-<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Luis<span class="nt">&lt;/nombre&gt;</span>
-<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Márquez<span class="w"> </span>Vázquez<span class="nt">&lt;/apellidos&gt;</span>
-<span class="w">      </span><span class="nt">&lt;departamento&gt;</span>Educación<span class="w"> </span>Física<span class="nt">&lt;/departamento&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p1&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Pepe<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>José<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Suárez<span class="w"> </span>Lantilla<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span>Inglés<span class="nt">&lt;/departamento&gt;</span>
 <span class="nt">&lt;/profesor&gt;</span>
 </pre></div>
 </div>
@@ -601,7 +601,7 @@ las menos importantes):</p>
 <dt><strong>Etiquetas</strong></dt><dd><ul>
 <li><p>Tienen la forma <code class="code docutils literal notranslate"><span class="pre">&lt;etiqueta&gt;</span></code> en su apertura y <code class="code docutils literal notranslate"><span class="pre">&lt;/etiqueta&gt;</span></code> en
 su cierre:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">nombre</span><span class="o">&gt;</span><span class="n">Luis</span><span class="o">&lt;/</span><span class="n">nombre</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">nombre</span><span class="o">&gt;</span><span class="n">José</span><span class="o">&lt;/</span><span class="n">nombre</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </li>
@@ -806,14 +806,14 @@ escribir direcciones postales. Algo así:</p>
 los profesores. Podríamos hacerlo a través de los espacios de nombres:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="cp">&lt;!DOCTYPE claustro SYSTEM &quot;casilleros.dtd&quot; [</span>
-<span class="cp">   &lt;!ENTITY EFI &quot;Educación Física&quot;&gt;</span>
+<span class="cp">   &lt;!ENTITY ING &quot;Inglés&quot;&gt;</span>
 ]&gt;
 <span class="nt">&lt;c:claustro</span><span class="w"> </span><span class="na">centro=</span><span class="s">&quot;IES Pepe Botella&quot;</span><span class="w"> </span><span class="na">xmlns:c=</span><span class="s">&quot;urn:profesores&quot;</span><span class="nt">&gt;</span>
 <span class="w">   </span><span class="nt">&lt;c:profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p1&quot;</span><span class="nt">&gt;</span>
-<span class="w">      </span><span class="nt">&lt;c:apelativo&gt;</span>Luis<span class="nt">&lt;/c:apelativo&gt;</span>
-<span class="w">      </span><span class="nt">&lt;c:nombre&gt;</span>Luis<span class="nt">&lt;/c:nombre&gt;</span>
-<span class="w">      </span><span class="nt">&lt;c:apellidos&gt;</span>Márquez<span class="w"> </span>Vázquez<span class="nt">&lt;/c:apellidos&gt;</span>
-<span class="w">      </span><span class="nt">&lt;c:departamento&gt;</span><span class="ni">&amp;EFI;</span><span class="nt">&lt;/c:departamento&gt;</span>
+<span class="w">      </span><span class="nt">&lt;c:apelativo&gt;</span>Pepe<span class="nt">&lt;/c:apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;c:nombre&gt;</span>José<span class="nt">&lt;/c:nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;c:apellidos&gt;</span>Suárez<span class="w"> </span>Lantilla<span class="nt">&lt;/c:apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;c:departamento&gt;</span><span class="ni">&amp;ING;</span><span class="nt">&lt;/c:departamento&gt;</span>
 <span class="w">      </span><span class="nt">&lt;d:direccion</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">&quot;urn:direccion&quot;</span><span class="nt">&gt;</span>
 <span class="w">         </span><span class="nt">&lt;d:via</span><span class="w"> </span><span class="na">tipo=</span><span class="s">&quot;calle&quot;</span><span class="nt">&gt;</span>Callo,<span class="w"> </span>5<span class="nt">&lt;/d:via&gt;</span>
 <span class="w">         </span><span class="nt">&lt;d:cp&gt;</span>12345<span class="nt">&lt;/cp&gt;</span>
@@ -847,14 +847,14 @@ concepto de <em class="dfn">espacio de nombres predeterminado</em>, que es aquel
 es nulo:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="cp">&lt;!DOCTYPE claustro SYSTEM &quot;casilleros.dtd&quot; [</span>
-<span class="cp">   &lt;!ENTITY EFI &quot;Educación Física&quot;&gt;</span>
+<span class="cp">   &lt;!ENTITY ING &quot;Inglés&quot;&gt;</span>
 ]&gt;
 <span class="nt">&lt;claustro</span><span class="w"> </span><span class="na">centro=</span><span class="s">&quot;IES Pepe Botella&quot;</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;urn:profesores&quot;</span><span class="nt">&gt;</span>
 <span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p1&quot;</span><span class="nt">&gt;</span>
-<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Luis<span class="nt">&lt;/apelativo&gt;</span>
-<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Luis<span class="nt">&lt;/nombre&gt;</span>
-<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Márquez<span class="w"> </span>Vázquez<span class="nt">&lt;/apellidos&gt;</span>
-<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;EFI;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Pepe<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>José<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Suárez<span class="w"> </span>Lantilla<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;ING;</span><span class="nt">&lt;/departamento&gt;</span>
 <span class="w">      </span><span class="nt">&lt;d:direccion</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">&quot;urn:direccion&quot;</span><span class="nt">&gt;</span>
 <span class="w">         </span><span class="nt">&lt;d:via</span><span class="w"> </span><span class="na">tipo=</span><span class="s">&quot;calle&quot;</span><span class="nt">&gt;</span>Callo,<span class="w"> </span>5<span class="nt">&lt;/d:via&gt;</span>
 <span class="w">         </span><span class="nt">&lt;d:cp&gt;</span>12345<span class="nt">&lt;/cp&gt;</span>
@@ -872,14 +872,14 @@ tal cambio afecta al elemento y a todos sus descendientes. Por tanto, podríamos
 haber escrito también:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="cp">&lt;!DOCTYPE claustro SYSTEM &quot;casilleros.dtd&quot; [</span>
-<span class="cp">   &lt;!ENTITY EFI &quot;Educación Física&quot;&gt;</span>
+<span class="cp">   &lt;!ENTITY ING &quot;Inglés&quot;&gt;</span>
 ]&gt;
 <span class="nt">&lt;claustro</span><span class="w"> </span><span class="na">centro=</span><span class="s">&quot;IES Pepe Botella&quot;</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;urn:profesores&quot;</span><span class="nt">&gt;</span>
 <span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p1&quot;</span><span class="nt">&gt;</span>
-<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Luis<span class="nt">&lt;/apelativo&gt;</span>
-<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Luis<span class="nt">&lt;/nombre&gt;</span>
-<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Márquez<span class="w"> </span>Vázquez<span class="nt">&lt;/apellidos&gt;</span>
-<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;EFI;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Pepe<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>José<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Suárez<span class="w"> </span>Lantilla<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;ING;</span><span class="nt">&lt;/departamento&gt;</span>
 <span class="w">      </span><span class="nt">&lt;direccion</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;urn:direccion&quot;</span><span class="nt">&gt;</span>
 <span class="w">         </span><span class="nt">&lt;via</span><span class="w"> </span><span class="na">tipo=</span><span class="s">&quot;calle&quot;</span><span class="nt">&gt;</span>Callo,<span class="w"> </span>5<span class="nt">&lt;/d:via&gt;</span>
 <span class="w">         </span><span class="nt">&lt;cp&gt;</span>12345<span class="nt">&lt;/cp&gt;</span>

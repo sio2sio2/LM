@@ -151,7 +151,7 @@ nos permite tener una enumeración de cuáles son las novedades.</p></li>
 <section id="procesadores">
 <h3><span class="section-number">4.1.1. </span>Procesadores<a class="headerlink" href="#procesadores" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Tenemos varias alternativas para ejecutar consultas <em>XQuery</em>:</p>
-<ul>
+<ul class="simple">
 <li><p>El programa <a class="reference external" href="https://www.videlibri.de/xidel.html">xidel</a>, que ya usamos para probar <em>XPath</em>. Podemos seguir
 introduciendo la expresión con <kbd class="kbd docutils literal notranslate">-e</kbd>, ya que en principio es capaz
 de distiguir una expresión <em>XQuery</em> de una de <em>XPath</em>, pero en caso de algún
@@ -161,46 +161,9 @@ sustitución.</p></li>
 gráfica como de línea de comandos. Es un programa hecho en <a class="reference external" href="https://es.wikipedia.org/wiki/Java_(lenguaje_de_programaci%C3%B3n)">Java</a>, así que
 necesitaremos tener instalada antes la máquina virtual. En las distribuciones
 basadas en <em>Debian</em> hay paquete disponible con lo que echarlo a andar es
-trivial.</p>
-</li>
-<li id="xquery-vscode"><p><a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a> con la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml">XML Tools</a>,
-que requiere alguna configuración adicional:</p>
-<ol class="arabic simple">
-<li><p>Instalar previamente <a class="reference internal" href="../05.almacenamiento/02.nativas.html#basex"><span class="std std-ref">BaseX</span></a>.</p></li>
-<li><p>Configurar la extensión para que use <em>BaseX</em> como procesador. Para ello,
-necesitamos editar la configuración y añadir:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">   </span><span class="nt">&quot;xmlTools.xqueryExecutionEngine&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/bin/basex&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;xmlTools.xqueryExecutionArguments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;-i&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;$(input)&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;-o&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;$(input).output.xml&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;$(script)&quot;</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<div class="admonition caution">
-<p class="admonition-title">Prudencia</p>
-<p>En <em>Windows</em> la ruta será algo parecido a
-<code class="file docutils literal notranslate"><span class="pre">c:\\Program</span> <span class="pre">Files</span>
-<span class="pre">(x86)\\BaseX\\bin\\basex.bat</span></code>.  Obsérvese que habrá que
-escapar las contrabarras.</p>
-</div>
-</li>
-</ol>
-<p>Una vez bien configurada, el modo de ejecutar la consulta es el siguiente:</p>
-<ol class="loweralpha simple">
-<li><p>Escribimos el archivo <code class="file docutils literal notranslate"><span class="pre">.xq</span></code> con el código de <em>XQuery</em> y con el
-archivo abierto y seleccionado en el editor.</p></li>
-<li><p>Ejecutamos <cite>XML Tools: Execute Query</cite>.</p></li>
-<li><p>Si hay varios <abbr title="eXtensible  Markup Language">XML</abbr> en el directorio se nos preguntará sobre cual
-queremos hacer la consulta, y, si hemos incluido, la opción <kbd class="kbd docutils literal notranslate">-o</kbd> en
-la configuración (tal como se ha sugerido antes), se nos pedirá confirmar
-el archivo de salida. Si no la incluimos, la salida se volcará
-directamente en una subventana.</p></li>
-<li><p>Abrimos el archivo de salida para consultar el resultado.</p></li>
-</ol>
-</li>
+trivial.</p></li>
+<li><p><a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a> con la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml">XML Tools</a>,
+que requiere alguna configuración adicional.</p></li>
 </ul>
 <p id="xquery-version-declaration">Otro aspecto a tener presente al usar los procesadores es que <em>XQuery</em>, al
 comienzo del código, permite especificar cuál es la versión mínima que permite
@@ -854,12 +817,12 @@ que lo tengan.</p>
 </dl>
 <dl id="xquery-replace">
 <dt><code class="docutils literal notranslate"><span class="pre">replace</span></code></dt><dd><p>Remplaza el nodo indicado por otro que se le facilite:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>replace node //profesor[1]/apelativo with &lt;apelativo&gt;Luisito&lt;/apelativo&gt;
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>replace node //profesor[1]/apelativo with &lt;apelativo&gt;Joselito&lt;/apelativo&gt;
 </pre></div>
 </div>
 <p>Aunque en este caso, como nuestra intención era cambiar el contenido y no el
 nombre del nodo, quizás habría sido mejor:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>replace node //profesor[1]/apelativo/text() with &quot;Luisito&quot;
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>replace node //profesor[1]/apelativo/text() with &quot;Josélito&quot;
 </pre></div>
 </div>
 <p>Por supuesto, también podemos cambiar atributos:</p>
@@ -1084,7 +1047,7 @@ se facturó. Por ejemplo:</p>
 <p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/4acf48b89b861e2c93122fb7051b2842/facturas-02.xq"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a>.</p>
 </li>
 <li><p>A partir del <abbr title="eXtensible  Markup Language">XML</abbr> sobre facturas, obtenga un listado de facturas
-como el descrito en el <a class="reference internal" href="../99.ejercicios/41.xslt.html#ej-xslt-15"><span class="std std-ref">ejercicio 15 de XSLT</span></a>.</p></li>
+como el descrito en el <a class="reference internal" href="../98.apendices/41.xslt.html#ej-xslt-15"><span class="std std-ref">ejercicio 15 de XSLT</span></a>.</p></li>
 <li><p>A partir del <abbr title="eXtensible  Markup Language">XML</abbr> sobre facturas, obtenga un listado de facturas
 en que se exprese de cada una de ellas el código y el coste total. Por
 ejemplo:</p>
@@ -1154,11 +1117,11 @@ sean elementos hijo del modelo correspondiente.</p></li>
 <li><p>A partir del <abbr title="eXtensible  Markup Language">XML</abbr> sobre figuras 2D, haga un listado de figuras como en el
 que se pide para el <a class="reference internal" href="../99.ejercicios/41.xslt.html#ej-xslt"><span class="std std-ref">ejercicio 1 de XSLT</span></a></p></li>
 <li><p>A partir del <abbr title="eXtensible  Markup Language">XML</abbr> sobre figuras 2D, haga un listado de figuras como en el
-que se pide para el <a class="reference internal" href="../99.ejercicios/41.xslt.html#ej-xslt-3"><span class="std std-ref">ejercicio 3 de XSLT</span></a></p>
+que se pide para el <a class="reference internal" href="../98.apendices/41.xslt.html#ej-xslt-3"><span class="std std-ref">ejercicio 3 de XSLT</span></a></p>
 <p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/e1213269c830a7dbed170c54307a46eb/grafico-02.xq"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a>.</p>
 </li>
 <li><p>A partir del <abbr title="eXtensible  Markup Language">XML</abbr> sobre figuras 2D, haga un listado de figuras como en el
-que se pide para el <a class="reference internal" href="../99.ejercicios/41.xslt.html#ej-xslt-5"><span class="std std-ref">ejercicio 5 de XSLT</span></a></p>
+que se pide para el <a class="reference internal" href="../98.apendices/41.xslt.html#ej-xslt-5"><span class="std std-ref">ejercicio 5 de XSLT</span></a></p>
 <p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/338e2a660f67c86f9827055cd4eea3f1/grafico-03.xq"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a>.</p>
 </li>
 </ol>

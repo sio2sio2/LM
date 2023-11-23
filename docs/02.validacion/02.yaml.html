@@ -125,10 +125,10 @@ Casilleros<div class="sd-summary-down docutils">
 <span class="w">   </span><span class="nt">&quot;profesores&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
 <span class="w">         </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;apelativo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Luis&quot;</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Luis&quot;</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;apellidos&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Márquez Vázquez&quot;</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;departamento&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Educación Física&quot;</span>
+<span class="w">         </span><span class="nt">&quot;apelativo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Pepe&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;José&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;apellidos&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Suárez Lantilla&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;departamento&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Inglés&quot;</span>
 <span class="w">      </span><span class="p">},</span>
 <span class="w">      </span><span class="p">{</span>
 <span class="w">         </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span>
@@ -290,62 +290,8 @@ respeta la gramática definida en el esquema. En principio, sólo es capaz de
 validar documentos <abbr title="JavaScript Object Notation">JSON</abbr>, pero para validar <abbr title="YAML Ain't Markup Language">YAML</abbr> puede hacerse una
 <a class="reference external" href="https://mikefarah.gitbook.io/yq/v/v3.x/usage/convert">conversión previa a JSON con yq</a>.</p>
 </li>
-<li><p>El todo terreno <a class="reference external" href="https://code.visualstudio.com">Visual Studio Code</a>, que sirve para validar tanto <abbr title="JavaScript Object Notation">JSON</abbr>
-como <abbr title="YAML Ain't Markup Language">YAML</abbr>. Sin embargo, requiere en ambos casos configuración adicional:</p>
-<dl>
-<dt><abbr title="JavaScript Object Notation">JSON</abbr></dt><dd><p>El soporte es nativo, como ya vimos, pero requiere configuración. En
-<code class="docutils literal notranslate"><span class="pre">File&gt;Preferences&gt;Settings</span></code> (o, simplemente, <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">,</kbd></kbd>) debemos
-consultar la extensión para <abbr title="JavaScript Object Notation">JSON</abbr>, una de cuyas configuraciones es <code class="docutils literal notranslate"><span class="pre">JSON:</span>
-<span class="pre">Schemas</span></code>:</p>
-<img alt="../_images/vs-json-schemas.png" src="../_images/vs-json-schemas.png" />
-<p>Al pinchar en la edición se nos abrirá el archivo de configuración
-<code class="file docutils literal notranslate"><span class="pre">settings.json</span></code> que nos permite relacionar archivos <abbr title="JavaScript Object Notation">JSON</abbr> con los
-esquemas que usan. Por ejemplo:</p>
-<img alt="../_images/vs-json-settings.png" src="../_images/vs-json-settings.png" />
-<p>Este es un proyecto abierto como una carpeta en que el esquema está en la
-propia carpeta raíz y se ha definido la relación entre archivos <abbr title="JavaScript Object Notation">JSON</abbr> y
-esquemas así:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;json.schemas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;fileMatch&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;casilleros*.json&quot;</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/casilleros.schema.json&quot;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>La propiedad <code class="docutils literal notranslate"><span class="pre">json.schemas</span></code> es una secuencia, cada uno de cuyos elementos
-es un objeto que serve para referir un esquema distinto. En él, <code class="docutils literal notranslate"><span class="pre">fileMatch</span></code>
-es la lista de archivos que siguen el esquema, mientras que <code class="docutils literal notranslate"><span class="pre">url</span></code> indica la
-<abbr title="Uniform Resource Locator">URL</abbr> (que no propiamente la ruta) del esquema. Podríamos haber escrito una
-<abbr title="Uniform Resource Locator">URL</abbr> absoluta (con file:<cite>file:///etc.</cite>), pero dado que la <abbr title="Uniform Resource Locator">URL</abbr> base es la
-propia carpeta del proyecto, hemos preferido una <abbr title="Uniform Resource Locator">URL</abbr> relativa.</p>
-</dd>
-<dt><abbr title="YAML Ain't Markup Language">YAML</abbr></dt><dd><p>Como ya se indicó al tratar su sintaxis, requiere instalar  la <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml">extensión
-para YAML</a> y,
-como en el caso anterior, relacionar el archivo con su esquema correspondiente.
-La configuración es muy semejante, salvo que se encuentra dentro de la
-extensión <abbr title="YAML Ain't Markup Language">YAML</abbr>, y que el <abbr title="JavaScript Object Notation">JSON</abbr> de configuración no es exactamente
-igual:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">   </span><span class="nt">&quot;yaml.schemas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;./casilleros.schema.json&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;casilleros*.yaml&quot;</span>
-<span class="w">   </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>En este caso, <code class="docutils literal notranslate"><span class="pre">yaml.schemas</span></code> es un objeto y cada objeto tiene como claves
-la ruta al esquema (no una <abbr title="Uniform Resource Locator">URL</abbr> como antes) y como valor el archivo o los
-archivos que se rigen por el esquema. Cuando son varios, es necesario usar
-una secuencia:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">   </span><span class="nt">&quot;yaml.schemas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;./casilleros.schema.json&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;casilleros*.yaml&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;*casilleros.yaml&quot;</span><span class="p">]</span>
-<span class="w">   </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</dd>
-</dl>
-</li>
+<li><p><a class="reference internal" href="../98.apendices/99.tools/vscode.html#vscode"><span class="std std-ref">Visual Studio Code</span></a>, que sirve para validar tanto <abbr title="JavaScript Object Notation">JSON</abbr>
+como <abbr title="YAML Ain't Markup Language">YAML</abbr>.</p></li>
 </ul>
 </section>
 </section>

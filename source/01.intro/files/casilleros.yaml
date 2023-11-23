@@ -3,10 +3,10 @@
 centro: "IES Pepe Botella"
 profesores:
   - id: 1
-    apelativo: Luis
-    nombre: Luis
-    apellidos: Márquez Vázquez
-    departamento: Educación Física
+    apelativo: Pepe
+    nombre: José
+    apellidos: Suárez Lantilla
+    departamento: Inglés
     # Este profesor es sustituido por el 86.
     # Como no se indica, su casillero es el 13.
   - id: 13

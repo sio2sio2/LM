@@ -171,7 +171,7 @@ ilustrativo que esta simple descripción.</p>
 <span class="go">1 database(s).</span>
 <span class="go">&gt; OPEN casilleros</span>
 <span class="go">&gt; XQUERY //profesor[1]/nombre</span>
-<span class="go">&lt;nombre&gt;Luis&lt;/nombre&gt;</span>
+<span class="go">&lt;nombre&gt;José&lt;/nombre&gt;</span>
 <span class="go">&gt; CLOSE</span>
 <span class="go">&gt; QUIT</span>
 </pre></div>
@@ -180,9 +180,9 @@ ilustrativo que esta simple descripción.</p>
 modo de ejecución permite la consulta directa del archivo <abbr title="eXtensible  Markup Language">XML</abbr> sin ni siquiera
 haber creado la base de datos:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>basex<span class="w"> </span>-i<span class="w"> </span>/ruta/a/casilleros.xml<span class="w"> </span><span class="s1">&#39;//profesor[1]/nombre&#39;</span>
-<span class="go">&lt;nombre&gt;Luis&lt;/nombre&gt;</span>
+<span class="go">&lt;nombre&gt;José&lt;/nombre&gt;</span>
 <span class="gp">$ </span>basex<span class="w"> </span>-i<span class="w"> </span>/ruta/a/casilleros.xml<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;XQUERY //profesor[1]/nombre&#39;</span>
-<span class="go">&lt;nombre&gt;Luis&lt;/nombre&gt;</span>
+<span class="go">&lt;nombre&gt;José&lt;/nombre&gt;</span>
 <span class="gp">$ </span>basex<span class="w"> </span>-i<span class="w"> </span>/ruta/a/casilleros.xml<span class="w"> </span>una_consulta_compleja.xq
 </pre></div>
 </div>
@@ -219,7 +219,7 @@ tendremos que indicar un usuario y una contraseña con permisos de acceso. Al
 instalar la aplicación en el sistema, se debió pedir una contraseña que es la
 contraseña que tiene el usuario administrador (<em>admin</em>):</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>basexclient<span class="w"> </span>-Uadmin<span class="w"> </span>-Pcontraseña<span class="w"> </span>-i<span class="w"> </span>casilleros<span class="w">  </span><span class="s1">&#39;//profesor[1]/nombre&#39;</span>
-<span class="go">&lt;nombre&gt;Luis&lt;/nombre&gt;</span>
+<span class="go">&lt;nombre&gt;José&lt;/nombre&gt;</span>
 </pre></div>
 </div>
 <p>Por último, para parar el servidor:</p>

@@ -78,12 +78,12 @@ comprobar si un documento cumple con tal sintaxis:
      documento.json: ok
      $ jsonlint -f documento.json  # Además de la comprobación, lo reformatea.
 
-* En los principales sistemas operativos, podemos usar `Visual Studio Code`_,
-  que tiene soporte nativo para |JSON| y será capaz de comprobar según se
-  escribe, si el documento sigue las reglas generales.
+* En los principales sistemas operativos, podemos usar :ref:`Visual Studio Code
+  <vscode>`, que tiene soporte nativo para |JSON| y será capaz de comprobar
+  según se escribe, si el documento sigue las reglas generales.
 
 .. warning:: Aunque hemos usado la palabra *validador*, por ahora no pensamos
-   validar el documento con estos programas, sino solamente comprobar si si es
+   validar el documento con estos programas, sino solamente comprobar si es
    bien formado.
 
 .. _json-ejemplo-inicial:
@@ -343,9 +343,9 @@ Como en el caso de |JSON| nos resultará enormemente útil validadores:
   red.
 * El programa de *Linux* :command:`yamllint` que en las distribuciones basadas
   en *Debian* se encuentra en el paquete homónimo (:deb:`yamllint`).
-* Como en el caso de |JSON|, `Visual Studio Code`_ es capaz de comprobar sobre
-  la marcha, si el documento es bien formado. En este caso, el soporte no es
-  nativo y hay que añadirlo a través de la `extensión YAML
+* Como en el caso de |JSON|, :ref:`Visual Studio Code <vscode>` es capaz de
+  comprobar sobre la marcha si el documento es bien fmado. En este caso, el
+  soporte no es nativo y hay que añadirlo a través de la `extensión YAML
   <https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml>`_.
 
 .. _yaml-struct:
@@ -1007,5 +1007,4 @@ Ejercicios resueltos
 .. _function: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function
 .. _undefined: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined
 .. _base64: https://es.wikipedia.org/wiki/Base64
-.. _Visual Studio Code: https://code.visualstudio.com
 

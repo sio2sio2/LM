@@ -467,6 +467,13 @@ al menos editores de texto con resaltado de sintaxis. Por ejemplo:
 
 .. todo:: Hablar del modo desarrollador de los navegadores.
 
+.. https://code.visualstudio.com/docs/languages/html
+   Live Preview
+   https://marketplace.visualstudio.com/items?itemName=CelianRiboulet.webvalidator
+   https://marketplace.visualstudio.com/items?itemName=smelukov.vscode-csstree : Probar para CSS
+   Mirar tareas y asociación de teclas (¿se puede hacer por espacios de trabajo?)
+   https://www.mclibre.org/consultar/htmlcss/otros/vsc-htmlcss-configuracion.html
+
 .. _html-validacion:
 
 Validación

@@ -93,46 +93,9 @@ Tenemos varias alternativas para ejecutar consultas *XQuery*:
   basadas en *Debian* hay paquete disponible con lo que echarlo a andar es
   trivial.
 
-  .. _xquery-vscode:
-
 * `Visual Studio Code`_ con la extensión `XML Tools
   <https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml>`_,
-  que requiere alguna configuración adicional:
-
-  .. rst-class:: simple
-
-  #. Instalar previamente :ref:`BaseX`.
-
-  #. Configurar la extensión para que use *BaseX* como procesador. Para ello,
-     necesitamos editar la configuración y añadir:
-
-     .. code-block:: json
-
-        {
-           "xmlTools.xqueryExecutionEngine": "/usr/bin/basex",
-           "xmlTools.xqueryExecutionArguments": [
-              "-i", "$(input)",
-              "-o", "$(input).output.xml",
-              "$(script)"
-            ]
-        }
-
-     .. caution:: En *Windows* la ruta será algo parecido a
-        :file:`c:\\\\\\Program Files
-        (x86)\\\\\\BaseX\\\\\\bin\\\\\\\\basex.bat`.  Obsérvese que habrá que
-        escapar las contrabarras.
-
-  Una vez bien configurada, el modo de ejecutar la consulta es el siguiente:
-
-  a. Escribimos el archivo :file:`.xq` con el código de *XQuery* y con el
-     archivo abierto y seleccionado en el editor.
-  #. Ejecutamos `XML Tools: Execute Query`.
-  #. Si hay varios |XML| en el directorio se nos preguntará sobre cual
-     queremos hacer la consulta, y, si hemos incluido, la opción :kbd:`-o` en
-     la configuración (tal como se ha sugerido antes), se nos pedirá confirmar
-     el archivo de salida. Si no la incluimos, la salida se volcará
-     directamente en una subventana.
-  #. Abrimos el archivo de salida para consultar el resultado.
+  que requiere alguna configuración adicional.
 
 .. _xquery-version-declaration:
 
@@ -910,15 +873,14 @@ Modificación
 
    .. code-block:: xquery
 
-      replace node //profesor[1]/apelativo with <apelativo>Luisito</apelativo>
+      replace node //profesor[1]/apelativo with <apelativo>Joselito</apelativo>
 
    Aunque en este caso, como nuestra intención era cambiar el contenido y no el
    nombre del nodo, quizás habría sido mejor:
 
    .. code-block:: xquery
 
-      replace node //profesor[1]/apelativo/text() with "Luisito"
-
+      replace node //profesor[1]/apelativo/text() with "Josélito"
 
    Por supuesto, también podemos cambiar atributos:
 
