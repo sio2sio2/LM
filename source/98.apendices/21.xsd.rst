@@ -1,7 +1,1284 @@
 .. _xsd:
 
+****************
 W3C |XML| Schema
 ****************
 
-.. todo:: Trasladar `la versión antigua
-   <https://alacena.iescastillodeluna.es/zipi/LM/Tema3.html>`_.
+Introducción
+************
+Las |XML| Schemas (esquemas |XML|, en castellano) son un método alternativo a
+los para la definición de la gramática de un dialecto |XML|. Su utilidad radica
+en que tienen una serie de **ventajas** sobre ellos:
+
+* Son en sí mismos, también dialectos |XML|.
+* Comparados con |DTD|, permiten una definición mucho más precisa del tipo de
+  contenido de los atributos y elementos. Por ejemplo, podremos especificar que
+  el contenido es un número entero o una cadena de caracteres.
+* Soportan espacios de nombres.
+* Son más modulares y extensibles.
+
+Ahora bien, no todo son ventajas. También presentan **desventajas** frente a los
+|DTD|:
+
+* Son más complejos de entender que los |DTD|.
+* Son dialectos |XML|. Sí esto es una ventaja, pero también una desventaja. Ya se
+  expondrá más adelante :ref:`por qué <xsd-consejos>`.
+* No permiten definir entidades. Las entidades parámetro se pueden sustituir por
+  la definición de tipos y atributos derivados, pero no hay modo de emular a las
+  entidades generales.
+
+ No son el único dialecto |XML| que existe para esta tarea: :ref:`Relax NG
+ <rnc>`, por ejemplo, también se creo para lo mismo.
+
+Vistazo rápido
+**************
+Antes de meternos en harina, miremos por encima cómo es la definición de un
+documento con |XML| Schemas. Sea el siguiente documento:
+
+.. code-block:: xml
+
+   <?xml version="1.0" encoding="utf-8" ?>
+   <persona>
+      <nombre>Perico</nombre>
+      <apellidos>de los palotes</apellidos>
+      <dni>41112233</dni>
+      <tlfo>953112233</tlfo>
+   </persona>
+
+Para el cual podríamos tener la siguiente definición |DTD|:
+
+.. code-block:: dtd
+
+   <!ELEMENT persona (nombre,apellidos,dni,tlfo)>
+   <!ELEMENT nombre (#PCDATA)>
+   <!ELEMENT apellidos (#PCDATA)>
+   <!ELEMENT dni (#PCDATA)>
+   <!ELEMENT tlfo (#PCDATA)>
+
+Y un |XML| schema apropiado podría ser:
+
+.. code-block:: xml
+
+   <?xml version="1.0" encoding="utf-8"?>
+   <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="persona">
+         <xs:complexType>
+            <xs:sequence>
+               <xs:element name="nombre" type="xs:string" />
+               <xs:element name="apellidos" type="xs:string" />
+               <xs:element name="dni" type="xs:integer" />
+               <xs:element name="tlfo" type="xs:integer" />
+            </xs:sequence>
+         </xs:complexType>
+      </xs:element>
+   </xs:schema>
+
+Tipos simples
+*************
+En las definiciones mediante |XML| schemas, elementos y atributos pueden ser de
+tipo simple o de tipo compuesto. Bajo este epígrafe se desarrollarán ambos.
+
+Elementos simples
+=================
+Los :dfn:`elementos simples` son aquellos que contienen únicamente texto y no tienen
+ningún atributo. En el ejemplo anterior *nombre*, *apellidos*, *dni* y *tlfo*. Sin
+embargo, a diferencia de un |DTD|, puede definirse con más exactitud de qué tipo
+será ese texto. Algunos de estos tipos, sin ser muy exhaustivos, son:
+
+``xs:string``
+   Cadenas de caracteres.
+
+``xs:integer``
+   Números enteros.
+
+``xs:decimal``
+   Números con decimales.
+
+``xs:boolean``
+   Valores lógicos, que pueden ser 0,1,``true`` o ``false``.
+
+``xs:date``
+   Fechas en formato AAAA-MM-DD.
+
+``xs:time``
+   Horas en formato HH:MM:SS.
+
+Una relación completa puede ser consultada en :download:`este pdf
+<files/XMLSchema_DataTypes.pdf>`.
+
+Además de definir el tipo, se puede indicar si el elemento tendrá un valor
+predeterminado para el caso de que no se incluya:
+
+.. code-block:: xml
+
+   <xs:element name="color" type="xs:string" default="rojo"/>
+
+o un valor fijo, que no puede ser modificado:
+
+.. code-block:: xml
+
+   <xs:element name="color" type="xs:string" fixed="rojo"/>
+
+Atributos simples
+=================
+Al igual que los elementos su valor es puro texto. Se definen exactamente igual
+que los elementos, excepto por el hecho que se usan la cláusula ``xs:attribute``
+en vez de ``xs:element``. Para los casos en los que el atributo era de tipo
+``CDATA`` en la definición mediante |DTD|, se pueden usar los tipos que se han
+indicado para los elementos. Ahora bien, los atributos pueden ser de otro tipo
+(identificadores, etc.) y ello también puede hacerse con |XML| schemas:
+
+``xs:ID``
+   El valor del atributo será un identificador.
+
+``xs:IDREF``
+   El valor del atributo hará referencia a un identificador.
+
+``xs:IDREFS``
+   El valor del atributo hará referencia a una lista de identificadores.
+
+``xs:NMTOKEN``
+   El valor del atributo es una palabra XML válida.
+
+``xs:NMTOKENS``
+   El valor del atributo es una lista de palabras XML válidas.
+
+Asimismo, los atributos pueden tener un valor predeterminado o tener un valor
+fijo, cosa que se hace exactamente del mismo modo que para los elementos. Los
+atributos son, en principio, opcionales, así que se puede especificar si son
+obigatorios:
+
+.. code-block:: xml
+
+   <xs:attribute name="idper" type="xs:ID" use="required" />
+
+Restricciones
+=============
+Las restricciones (tanto en elementos como en atributos) sirven para eliminar
+libertad en los valores asignados. Cuando se quieren incluir restricciones, la
+sintaxis se enrevesa un poco:
+
+.. code-block:: xml
+
+   <xs:element name="edad">
+      <xs:simpleType>
+         <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0" />
+            <xs:maxInclusive value="120" />
+         </xs:restriction>
+      </xs:simpleType>
+   </xs:element>
+
+Básicamente la definición de un elemento (o un atributo) que tenga restricciones
+consiste en definirlo como tipo simple, indicar que tipo base ya definido se
+usa, y a continuación indicar cuáles son las restricciones que han de aplicarse.
+En el |PDF| anterior están expuestan también cuáles son estar restricciones
+posibles. No obstante, se enunciarán algunas muy recurrentes:
+
+* Para restringir los valores a unos concretos, tal como se hacía en los |DTD|, debe
+  usarse la cláusla ``xs:enumeration``. Por ejemplo:
+
+  .. code-block:: xml
+
+     <xs:attribute name="rango_edad">
+        <xs:simpleType>
+           <xs:restriction base="xs:string">
+              <xs:enumeration value="niño" />
+              <xs:enumeration value="joven" />
+              <xs:enumeration value="adulto" />
+              <xs:enumeration value="anciano" />
+           </xs:restriction>
+        </xs:simpleType>
+     </xs:attribute>
+
+* Una forma poderosa de restrindir cadenas de caracteres, es mediante el uso de
+  :ref:`expresiones regulares <linux:regex>` con ``xs:pattern``. Por ejemplo, si
+  quisiésemos que sólo se pudiesen escribir identificadores con la forma
+  "id"+numero podríamos hacer:
+
+  .. _xsd-id-num:
+
+  .. code-block:: xml
+
+     <xs:attribute name="idper">
+        <xs:simpleType>
+           <xs:restriction base="xs:ID">
+              <xs:pattern value="id[0-9]+" />
+           </xs:restriction>
+        </xs:simpleType>
+     </xs:attribute>
+
+* Para determinar cómo trataremos los espacios que aparezcan, puede usarse
+  ``xs:whiteSpace`` con tres posibles valores: *preserve*, que los dejará tal cual;
+  *replace*, que hará que sean sustituidos todos las tabulaciones, cambios de
+  línea y retornos de carro por espacios; y *collapse* que hace lo mismo, pero
+  además reduce a un sólo espacio varios seguidos y elimina los espacios con los
+  que empieza y acaba una cadena. Por ejemplo:
+
+  .. code-block:: xml
+
+     <xs:element name="nombre">
+        <xs:simpleType>
+           <xs:restriction base="xs:string">
+              <xs:whiteSpace value="collapse" />
+           </xs:restriction>
+        </xs:simpleType>
+     </xs:element>
+
+* Pueden, obviamente, incluirse varias restricciones en la misma definición. De
+  hecho, en el primer ejemplo se usaron dos: ``xs:minInclusive`` y
+  ``xs:maxInclusive``. Es también necesario notar que todas las restricciones no
+  tiene significado para un tipo determinado. Por ejemplo para ``xs:string`` no
+  tiene sentido la de valor mínimo ni la de valor máximo.
+
+|XML| schemas tiene definidos muchos tipos de valores, algunos derivados de
+otros y cuyas definiciones podría haber hecho el usuario mismo definiendo
+restricciones. Por ejemplo, el tipo ``xs:normalizedString`` es un tipo
+``xs:string`` con la restricción del último ejemplo.
+
+Tipos derivados
+===============
+Un usuario también puede definir tipos derivados de tipos simples ya definidos.
+Por ejemplo, podríamos hacer la siguiente definición (basándonos en :ref:`este ejemplo
+anterior <xsd-id-num>`):
+
+.. code-block:: xml
+
+   <xs:attribute name="idper" type="ident.numerico" />
+    
+   <xs:simpleType name="ident.numerico">
+      <xs:restriction base="xs:ID">
+         <xs:pattern value="id[0-9]+" />
+      </xs:restriction>
+   </xs:simpleType>
+
+La gracia de esta definición es que este nuevo tipo se podría usar para la
+definición de todos los atributos que quisiésemos.
+
+Tipos complejos
+***************
+:dfn:`Elementos complejos` son aquellos que contienen elementos o tienen
+atributos. O ambos, claro. Sólo tiene sentido hablar de complejos en el caso de
+los elementos, porque el valor de los atributos siempre es texto, más o menos
+restringido, pero sólo texto.
+
+Un elemento *complejo*  es un ``ComplexType`` y puede contener sólo texto o contener a
+su vez otros elementos. Si contiene sólo texto su contenido será ``simpleContent``:
+
+.. code-block:: xml
+
+   <xs:element name="tlfo">
+      <xs:complexType>
+         <xs:simpleContent>
+            <!-- Ya veremos qué se pone aquí -->
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+
+Si contiene otros elementos, su contenido será ``complexContent``:
+
+.. code-block:: xml
+
+   <xs:element name="persona">
+      <xs:complexType>
+         <xs:complexContent>
+            <!-- Ya veremos qué se pone aquí -->
+         </xs:complexContent>
+      </xs:complexType>
+   </xs:element>
+
+Pero ¿qué es lo que se pone dentro de ``simpleContent`` o ``complexContent``?
+Simplemente una restricción o una extensión a un tipo que se toma como base. Al
+restringirlo, limitamos lo que en un principio se podía incluir en el elemento
+y, si lo extendemos, lo que haremos es añadir componentes a los originales del
+elemento. Analicémoslo por separado.
+
+
+.. _xsd-simplecontent:
+
+Contenido simple (texto solo)
+=============================
+Los tipos que se pueden tomar como base son los que se vieron ya cuando el
+elemento era simple: xs:string, xs:integer, etc. Y a estos tipos base se le
+pueden añadir restricciones o extensiones (pero no ambas a la vez). Por ejemplo,
+si añadimos restricciones:
+
+.. code-block:: xml
+   :emphasize-lines: 4-7
+
+   <xs:element name="edad">
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:restriction base="xs:integer">
+               <xs:minInclusive value="0" />
+               <xs:maxInclusive value="120" />
+            </xs:restriction>
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+
+De esta definición resulta un elemento llamado edad, que es de tipo complejo,
+cuyo contenido puede ser un número entero entre 0 y 120 y que tiene atributos,
+porque no aparecen por ningún sitio definidos. Ahora bien, esto no es un tipo
+simple con una restricción, tal como se hizo en este ejemplo? Sí, efectivamente,
+hemos venido a definir más rocambolescamente lo mismo. Es más, si hubiésemos
+definido así:
+
+.. code-block:: xml
+   :emphasize-lines: 4
+
+   <xs:element name="entero">
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:restriction base="xs:integer" />
+         </xs:simpleContent>
+      </xs:complexType>
+   </xs:element>
+
+habríamos definido exactamente lo mismo que si hubiésemos hecho simplemente
+esto:
+
+.. code-block:: xml
+
+   <xs:element name="entero" type="xs:integer" />
+
+Mucho código para casi nada. En realidad, si el contenido es simple, lo
+interesante es extender, no restringir; porque extender nos permite definir
+atributos para el elemento:
+
+.. code-block:: xml
+   :emphasize-lines: 4-6
+
+   <xs:element name="edad">
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension  base="xs:integer">
+               <xs:attribute name="unidad" fixed="años" />
+            </xs:extension>
+         </xs:simpleContent>
+      <xs:complexType>
+   </xs:element>
+
+Ahora sería válido que en el xml encontrásemos la siguiente línea:
+
+.. code-block:: xml
+
+   <edad unidad="años">15</edad>
+
+En el ejemplo, se ha extendido el tipo para añadir un atributo. Obviamente se
+pueden añadir todos los atributos que se quiera: basta con incluir más elementos
+``xs:attribute`` dentro de ``xs:extension``. Ahora bien, ¿qué se puede hacer si
+queremos restringir y extender a la vez: restringir para limitar el contenido
+del elemento (en el ejemplo, al rango 0-120) y extender para poder incluir
+atributos? No se pueden incluir ``xs:restriction`` y ``xs:extension`` a la vez,
+así que la solución pasa por hacer un tipo derivado de ``xs:integer`` con la
+restricción y usarlo como base luego en la extensión:
+
+.. code-block:: xml
+
+   <xs:simpleType name="tipo.edad">
+      <xs:restriction base="xs:integer">
+         <xs:minInclusive value="0" />
+         <xs:maxInclusive value="120" />
+      </xs:restriction>
+   </xs:simpleType>
+    
+   <xs:element name="edad">
+      <xs:complexType>
+         <xs:simpleContent>
+            <xs:extension  base="tipo.edad">
+               <xs:attribute name="unidad" fixed="años" />
+            </xs:extension>
+         </xs:simpleContent>
+      <xs:complexType>
+   </xs:element>
+
+.. _xsd-complexcontent:
+
+Contenido complejo
+==================
+Ya sabemos que son elementos con *contenido complejo* aquellos contienen otros
+elementos. El principio para definir el contenido complejo es el mismo que para
+el simple: se toma un tipo base y se definen restricciones o extensiones para
+él. Ahora bien, ¿qué tipo complejo tomamos como base? Evidentemente podemos
+tomar uno que ya definiésemos antes, pero ¿y si quiero hacer una definición
+partiendo de cero? Entonces podemos partir de un tipo llamado ``xs:anyType``,
+que permite absolutamente cualquier atributo y cualquier elemento dentro de él,
+y definirle restricciones. Las restricciones de un tipo complejo consisten en
+volver a especificar su contenido, pero añadiéndole restricciones. Como en
+``xs:anyType`` cabe cualquier cosa, si se incluyen como restricción los
+elementos y atributos que se desea que contenga el elemento, esos serán los
+únicos elementos y atributos que podrá contener.
+
+Así, pues, puedo hacer lo siguiente:
+
+.. code-block:: xml
+
+   <xs:element name="persona">
+      <xs:complexType>
+         <xs:complexContent>
+            <xs:restriction base="xs:anyType">
+            <!-- Primero se definen los elementos -->
+            <!-- Después se definen los atributos -->
+            </xs:restriction>
+         </xs:complexContent>
+      <xs:complexType>
+   </xs:element>
+
+La definición de atributos ya se sabe cómo es: con ``xs:attribute`` tal y como
+se ha venido haciendo hasta ahora. Lo que merece apunte aparte es cómo se
+definen los elementos. Recuérdese que en los |DTD| se habló de la secuencia y
+cardinalidad de elementos. En realidad hay otro concepto implícito, que es la
+agrupación de elementos. Fijémonos en esto:
+
+.. code-block:: none
+
+   (a|(b,c)+)
+
+En la expresión está el concepto de secuencia, representado por la tubería (``|``) y
+la coma (``,``); está el concepto de la cardinalidad, representado por el signo
+más (+), pero también está el concepto de la agrupación: la cardinalidad del
+``+`` se aplica a la secuencia ``b,c``, porque hay un paréntesis que así lo
+determina.  En los |XML| Schemas hay que habilitar un mecanismo equivalente,
+para que se puedan especificar estos tres conceptos.
+
+Cardinalidad
+------------
+Recordemos que indica el número de veces que se puede repetir un elemento. Para
+notarlo se añaden como atributos a la definición ``xs:element``, los atributos
+*minOccurs* (mínimo de ocurrencias) y *maxOccurs* (número máximo de
+ocurrencias). Por ejemplo:
+
+.. code-block:: xml
+
+   <xs:element name="hijo" type="tipo.persona" minOccurs="0" maxOccurs="unbounded">
+
+*unbounded* significa que no hay límite máximo. Esto es equivalente en |DTD| a
+``nombre_elemento*``. Cuando no se especifican *minOccurs* o *maxOccurs*, se
+sobreentiende que valen **1**.
+
+Secuencia
+---------
+Hay tres secuencias diferentes:
+
+``xs:sequence``
+   Determina que los elementos deben aparecer en el orden que se especifica
+   (equivale a lo coma en |DTD|):
+
+   .. code-block:: xml
+      :emphasize-lines: 4-10
+
+      <xs:complexType name="tipo.persona">
+         <xs:complexContent>
+            <xs:restriction base="xs:anyType">
+               <xs:sequence>
+                  <xs:element name="nombre" type="xs:string" />
+                  <xs:element name="apellidos" type="xs:string" />
+                  <xs:element name="dni" type="xs:integer" />
+                  <xs:element name="tlfo" type="xs:integer" />
+                  <xs:element name="hijo" type="tipo.persona" minOccurs="0" maxOccurs="unbounded">
+               </xs:sequence>
+            </xs:restriction>
+         </xs:complexContent>
+      </xs:complexType>
+
+``xs:choice``
+   Provoca que deba aparecer uno (y solo uno) de los elementos que se
+   especifican como alternativa (equivale a la tubería del |DTD|):
+
+   .. code-block:: xml
+      :emphasize-lines: 4-7
+
+      <xs:complexType name="tipo.educador">
+         <xs:complexContent>
+            <xs:extension base="tipo.persona">
+               <xs:choice>
+                  <xs:element name="colegio" type="tipo.centro"/>
+                  <xs:element name="instituto" type="tipo.centro"/>
+               </xs:choice>
+            </xs:extension>
+         </xs:complexContent>
+      </xs:complexType>
+
+``xs:all``
+   Fuerza a que aparezcan todos los elementos que se especifican en el
+   orden que se desee, pero como máximo una vez (no tiene equivalencia en |DTD|):
+
+   .. code-block:: xml
+      :emphasize-lines: 4-9
+
+      <xs:complexType name="tipo.persona">
+         <xs:complexContent>
+            <xs:restriction base="xs:anyType">
+               <xs:all>
+                  <xs:element name="nombre" type="xs:string" />
+                  <xs:element name="apellidos" type="xs:string" />
+                  <xs:element name="dni" type="xs:integer" />
+                  <xs:element name="tlfo" type="xs:integer" />
+               </xs:all>
+            </xs:restriction>
+         </xs:complexContent>
+      </xs:complexType>
+
+En este caso, no puede especificarse *maxOccurs* (porque siempre debe valer 1),
+y *minOccurs* sólo puede valer 1 ó 0
+
+Agrupación
+----------
+Para emular el paréntesis de los dtd, es posible incluir los atributos
+*minOccurs* y *maxOccurs* dentro de etiquetas ``xs:sequence`` o ``xs:choice``.
+De este modo, la expresión :code:`(a,(b|c)*)` podría escribirse del siguiente
+modo:
+
+.. code-block:: xml
+   :emphasize-lines: 4-10
+
+   <xs:complexType name="tipo.foo">
+      <xs:complexContent>
+         <xs:restriction base="xs:anyType">
+            <xs:sequence>
+               <xs:element name="a" type="xs:string" />
+               <xs:choice minOccurs="0" maxOccurs="unbounded">
+                  <xs:element name="b" type="xs:string" />
+                  <xs:element name="c" type="xs:string" />
+               </xs:choice>
+            </xs:sequence>
+         </xs:restriction>
+      </xs:complexContent>
+   </xs:complexType>
+
+Obsérvese cómo se ha anidado un ``xs:choice``, dentro de un ``xs:sequence``. Es
+posible también darle nombre a determinadas agrupaciones para que se puedan
+reusar varias veces. Esto se logran con el elemento ``xs:group``:
+
+.. code-block:: xml
+   :emphasize-lines: 1-6, 13
+
+   <xs:group name="parentesis">
+      <xs:choice>
+      <xs:element name="b" type="xs:string" />
+      <xs:element name="c" type="xs:string" />
+      </xs:choice>
+   </xs:group>
+    
+   <xs:complexType name="tipo.foo">
+      <xs:complexContent>
+         <xs:restriction base="xs:anyType">
+            <xs:sequence>
+               <xs:element name="a" type="xs:string" />
+               <xs:group ref="parentesis" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+         </xs:restriction>
+      </xs:complexContent>
+   </xs:complexType>
+
+Esto último permite reutilizar esta definición de grupo en otras definiciones y
+es un mecanismo que sustituye a las entidades parámetro de |DTD|.
+
+Del mismo modo que pueden definirse grupos de elementos, también pueden
+definirse grupos de atributos, que no sirven para aplicar cardinalidad (porque
+los atributos no la tienen), pero sí para reutilizar sus definiciones en
+distintos elementos:
+
+.. code-block:: xml
+   :emphasize-lines: 1-4, 10
+
+   <xs:attributeGroup name="idti">
+      <xs:attribute name="id" type="xs:ID" use="required">
+      <xs:attribute name="tipo" type="xs:NMTOKEN">
+   </xs:attributeGroup>
+    
+   <xs:element name="coche">
+      <xs:complexType>
+         <xs:complexContent>
+            <xs:restriction base="xs:anyType">
+               <xs:attributeGroup ref="idti" />
+               <xs:attribute name="matricula" type="xs:string" />
+            </xs:restriction>
+         </xs:complexContent>
+      </xs:complexType>
+   <xs:element>
+
+.. note:: Obsérvese que en este caso, no se usó ``xs:sequence`` o ``xs:choice``:
+   con atributos no tiene sentido porque los atributos sólo pueden aparecer como
+   máximo una vez y en cualquier orden.
+
+Simplificación
+--------------
+Ya se ha visto que, cuando se quiere definir un tipo complejo con contenido
+complejo, se puede recurrir a la restricción del tipo base complejo ``xs:anyType``.
+Esto habría de hacerse así, pero se admite una simplificación de la sintaxis: se
+puede incluir dentro de ``xs:complexType`` lo que se habría incluido dentro de
+``xs:restriction``. Así pues, :ref:`esta definición <xsd-complexcontent>`, podría
+haber sido simplemente:
+
+.. code-block:: xml
+
+   <xs:element name="persona">
+      <xs:complexType>
+         <!-- Primero se definen los elementos -->
+         <!-- Después se definen los atributos -->
+      </xs:complexType>
+   </xs:element>
+
+y la forma larga sólo se usará cuando estemos restringiendo o derivando un tipo
+complejo ya definido, tal como se tratará en un :ref:`epígrafe posterior
+<xsd-deriv-tipos>`.
+
+Tipos complejos mixtos
+----------------------
+Un elemento de tipo complejo mixto es aquel que a la vez contiene texto y
+elementos. Por ejemplo, supongamos este fragmento de |XML|:
+
+.. code-block:: xml
+
+   <p>Esto es un ejemplo de párrafo en HTML, en los que puede
+   haber palabras en <i>cursiva</i> o en <b>negrita</b>.</p>
+
+En el elemento *p* se observa que hay texto, pero arrebujado dentro elementos
+*i* y *b*. Para definir contenido mixto, basta con incluir el atributo
+.code:`mixed="true"` en ``xs:complexType`` (o a ``xs:complexContent``, si se usa
+la versión larga de la definición):
+
+.. code-block:: xml
+
+   <xs:element name="p">
+      <complexType mixed="true">
+         <xs:sequence>
+            <xs:group minOccurs="0" maxOccurs="unbounded">
+               <xs:choice>
+                  <xs:element name="i" type="xs:string"/>
+                  <xs:element name="b" type="xs:string"/>
+               </xs:choice>
+            </xs:group>
+         </xs:sequence>
+      </complexType>
+   </xs:element>
+
+.. _xsd-deriv-tipos:
+
+Tipos derivados
+===============
+De la misma manera que con los tipos simples es posible generar tipos derivados
+a partir de tipos complejos: basta con darle un nombre al tipo cuando se define.
+Por ejemplo, si en un |XML| voy a usar varios elementos que representan personas,
+quizás me convenga definir un tipo complejo persona para a partir de él definir
+los elementos:
+
+.. code-block:: xml
+
+   <xs:complexType name="tipo.persona">
+      <xs:sequence>
+         <xs:element name="nombre" type="xs:string" />
+         <xs:element name="apellidos" type="xs:string" />
+         <xs:element name="dni" type="xs:integer" />
+         <xs:element name="tlfo" type="xs:integer" />
+         <xs:element name="hijo" type="tipo.persona" minOccurs="0" maxOccurs="unbounded">
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:ID" use="required" />
+   </xs:complexType>
+
+A partir de este tipo complejo, puedo definir elementos que sea exactamentede
+este tipo, elementos que sean una extensión de este tipo o elementos que sean
+una restricción de este tipo. Por supuesto, también puedo definir otro tipo a
+partir de él.
+
+Imaginemos que queremos definir tres elementos: *adulto*, *niño* y *anciano*.
+Los tres elementos son personas, así que tendrán nombre, apellidos, etc. Para el
+elemento *anciano*, podemos considerar que esta definición de *tipo.persona* es
+perfecta; así que podemos hacer, simplemente:
+
+.. code-block:: xml
+
+   <xs:element name="anciano" type="tipo.persona" />
+
+Al querer definir el elemento *adulto* nos podemos topar con que nos interesaría
+almacenar infomarción también de su sueldo, si trabaja. En ese caso podemos
+ampliar *tipo.persona*:
+
+.. code-block:: xml
+
+   <xs:element name="adulto">
+      <xs:complexType>
+         <xs:complexContent>
+            <xs:extension base="tipo.persona">
+               <xs:sequence>
+                  <xs:element name="sueldo" type="xs:integer" minOccurs="0" />
+               </xs:sequence>
+            </xs:extension>
+         </xs:complexContent>
+      </xs:complexType>
+   </xs:element>
+
+Con el niño en cambio nos sucede justo lo contrario: el elemento *hijo* nos sobra,
+porque no tendrá ninguno. Incluso puede tener o no |DNI|. Así que en este caso
+tenemos que restringir la definición del tipo base. Para restringir tenemos que
+volver a definir todos los elementos y atributos que queremos que contenga el
+nuevo tipo: los que no aparezcan no serán válidos en el nuevo tipo. También
+podemos afinar las restricciones en elementos que sí citemos:
+
+.. code-block:: xml
+   :emphasize-lines: 8
+
+   <xs:element name="niño">
+      <xs:complexType>
+         <xs:complexContent>
+            <xs:restriction base="tipo.persona">
+               <xs:sequence>
+                  <xs:element name="nombre" type="xs:string" />
+                  <xs:element name="apellidos" type="xs:string" />
+                  <xs:element name="dni" type="xs:integer" minOccurs="0" />
+                  <xs:element name="tlfo" type="xs:integer" />
+               </xs:sequence>
+               <xs:attribute name="id" type="xs:ID" use="required" />
+            </xs:restriction>
+         <xs:complexContent>
+      </xs:complexType>
+   </xs:element>
+
+Obsérvese que las modificaciones sobre el tipo base han sido dos: se ha
+eliminado el elemento *hijo* y se permite que *dni* pueda no aparecer. Sin
+embargo, esto no es correcto. Cuando se restringe un elemento, no se pueden
+crear restricciones que no existiesen ya en el tipo base. Por ese motivo, es
+válido eliminar el elemento hijo, ya que en el elemento base estaba recogido el
+caso de que no hubiese elementos *hijo*. Sin embargo, en el tipo base *dni*
+debía aparecer una vez y aquí indicamos que puede no aparecer ninguna.  Esto no
+puede hacerse a menos que en tipo.persona incluyamos también
+:code:`minOccurs="0"` para *dni*
+
+Casos particulares
+==================
+
+Tipo vacío sin atributos
+------------------------
+
+.. code-block:: xml
+
+   <xs:complexType name="empty">
+      <xs:complexContent>
+         <xs:restriction base="xs:anyType" />
+      </xs:complexContent>
+   </xs:complexType>
+
+o de forma más sucinta:
+
+.. code-block:: xml
+
+   <xs:complexType name="empty" />
+
+Tipo vacío con atributos
+------------------------
+
+.. code-block:: xml
+
+   <xs:complexType name="empty.attr">
+      <xs:attribute name="atributo1" type="xs:string"/>
+      <xs:attribute name="atributo2" type="xs:integer"/>
+   </xs:complexType>
+
+Tipo texto con atributos
+------------------------
+
+.. code-block:: xml
+
+   <xs:complexType name="texto.attr">
+      <xs:simpleContent>
+         <xs:extension base="xs:string">
+            <xs:attribute name="atributo1" type="xs:string"/>
+            <xs:attribute name="atributo2" type="xs:integer"/>
+         </xs:extension>
+      </xs:simpleContent>
+   </xs:complexType>
+
+.. _xsd-consejos:
+
+Consejos de escritura
+*********************
+Los documentos |XML| permiten estructurar muy eficazmente los información y
+permiten su fácil procesado. En el caso particular de los |XSD|, permiten ser
+mucho más preciso al definir el contenido de elementos y atributos que los
+|DTD|.  Sin embargo, no todo son ventajas: los documentos |XML| son fatigosos de
+leer por un humano, fundamentalmente porque son muy prolijos y gran parte del
+documento del contenido es metainformación y no información.
+
+Imaginemos un |XML| como éste:
+
+.. code-block:: xml
+
+   <?xml version="1.0" encoding="utf-8" standalone="no"?>
+   <!DOCTYPE gente SYSTEM "gente.dtd">
+   <gente xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="gente.xsd">
+      <persona id="i1">
+         <nombre apodo="Pepe">Jose</nombre>
+         <apellidos>Moro Mayo</apellidos>
+         <dni>11223344</dni>
+         <flota>
+            <vehiculo tipo="turismo">
+               <matricula numeracion="antigua">J-5464-AP</matricula>
+               <color>azul</color>
+               <marca>Citroën</marca>
+               <modelo>Picasso</modelo>
+            </vehiculo>
+            <vehiculo tipo="furgoneta">
+               <matricula>5464-BBB</matricula>
+               <color>verde</color>
+               <marca>Ford</marca>
+               <modelo>Transit</modelo>
+            </vehiculo>
+            <!-- Resto de vehículos posea -->
+         </flota>
+      </persona>
+      <!-- Resto de personas -->
+   </gente>
+
+Si intentamos definir su gramática con un |DTD|, no podremos ser muy precisos en
+el formato de los contenidos de elementos y atributos, pero a cambio es fácil de
+leer, porque todo es muy esquemático:
+
+.. code-block:: dtd
+
+   <!ELEMENT gente (persona+)>
+   <!ATTLIST gente xmlns CDATA #IMPLIED>
+
+   <!ELEMENT persona (nombre,apellidos,dni,flota)>
+   <!ATTLIST persona id ID #REQUIRED>
+
+   <!ELEMENT nombre (#PCDATA)>
+   <!ATTLIST nombre apodo CDATA #IMPLIED>
+
+   <!ELEMENT apellidos (#PCDATA)>
+   <!ELEMENT dni (#PCDATA)>
+   <!ELEMENT flota (vehiculo*)>
+
+   <!ELEMENT vehiculo (matricula,color,marca,modelo)>
+   <!ATTLIST vehiculo tipo (turismo|furgoneta|moto|camión|autobús) "turismo">
+
+   <!ELEMENT matricula (#PCDATA)>
+   <!ATTLIST matricula numeracion (antigua|nueva) "nueva">
+
+   <!ELEMENT color (#PCDATA)>
+   <!ELEMENT marca (#PCDATA)>
+   <!ELEMENT modelo (#PCDATA)>
+
+Es fácil saber, de un único vistazo, cuáles son los elementos que puede contener
+el elemento persona o qué atributos y de qué tipo puede contener el atributo
+matricula. En cambio, una definición igual de imprecisa con un |XSD| (sin afinar
+el formato que debe tener un |DNI| o una matrícula) tiene esta pinta:
+
+.. dropdown:: Un |XSD| que parece la carretera de la sierra...
+
+   .. code-block:: xml
+
+      <?xml version="1.0" encoding="utf-8"?>
+      <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+         <xs:element name="gente">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="persona" maxOccurs="unbounded">
+                     <xs:complexType>
+                        <xs:sequence>
+                           <xs:element name="nombre">
+                              <xs:complexType>
+                                 <xs:simpleContent>
+                                    <xs:extension base="xs:string">
+                                       <xs:attribute name="apodo" type="xs:string" />
+                                    </xs:extension>
+                                 </xs:simpleContent>
+                              </xs:complexType>
+                           </xs:element>
+                           <xs:element name="apellidos" type="xs:string" />
+                           <xs:element name="dni" type="xs:string" />
+                           <xs:element name="flota">
+                              <xs:complexType>
+                                 <xs:sequence>
+                                    <xs:element name="vehiculo" minOccurs="0" maxOccurs="unbounded">
+                                       <xs:complexType>
+                                          <xs:sequence>
+                                             <xs:element name="matricula">
+                                                <xs:complexType>
+                                                   <xs:simpleContent>
+                                                      <xs:extension base="xs:string">
+                                                         <xs:attribute name="numeracion" default="nueva">
+                                                            <xs:simpleType>
+                                                               <xs:restriction base="xs:string">
+                                                                  <xs:enumeration value="antigua"/>
+                                                                  <xs:enumeration value="nueva"/>
+                                                               </xs:restriction>
+                                                            </xs:simpleType>
+                                                         </xs:attribute>
+                                                      </xs:extension>
+                                                   </xs:simpleContent>
+                                                </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="color" type="xs:string" />
+                                             <xs:element name="marca" type="xs:string" />
+                                             <xs:element name="modelo" type="xs:string" />
+                                          </xs:sequence>
+                                          <xs:attribute name="tipo" default="turismo">
+                                             <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                   <xs:enumeration value="turismo" />
+                                                   <xs:enumeration value="furgoneta" />
+                                                   <xs:enumeration value="moto" />
+                                                   <xs:enumeration value="camión" />
+                                                   <xs:enumeration value="autobús" />
+                                                </xs:restriction>
+                                             </xs:simpleType>
+                                          </xs:attribute>
+                                       </xs:complexType>
+                                    </xs:element>
+                                 </xs:sequence>
+                              </xs:complexType>
+                           </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="id" type="xs:ID" />
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:schema>
+
+Y, ahora, ¿qué elementos puede contener el elemento *flota*? Es difícil decirlo
+con un vistazo. Incluso con diez. Es tanta la cantidad de metainformación, tan
+larga y tan prolija, que es incluso difícil de escribir el documento sin que
+olvidemos por qué atributo o elemento íbamos definiendo. Esto, en realidad, es
+un problema intrínseco al |XML|: no puede solucionarse, pero sí al menos
+paliarse. En los |XSD| la mejor forma de tener unas definiciones más compactas,
+es intentar no anidar las definición de tipos dentro de elementos, sino definir
+aparte los tipos complejos e ir incorporando esa definición a la definición de
+otros tipos y elementos. No se logra con esto que el documento sea más corto, al
+contrario; pero se consigue separar unas definiciones de otras, de modo que cada
+una de ellas sea más compacta.
+
+Partiendo de esta premisa se puede obrar del siguiente modo: empezamos
+definiendo a partir del elemento raíz y, cuando nos topamos con la definición de
+un tipo complejo (o un tipo simple con restricciones), no lo definimos hay mismo
+sino que le damos un nombre a ese tipo y lo definimos aparte:
+
+.. dropdown:: Una solución más legible...
+
+   .. code-block:: xml
+
+      <?xml version="1.0" encoding="utf-8"?>
+      <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+         <xs:element name="gente">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="persona" type="tipo.persona" maxOccurs="unbounded" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+       
+         <xs:complexType name="tipo.persona">
+            <xs:sequence>
+               <xs:element name="nombre" type="tipo.nombre" />
+               <xs:element name="apellidos" type="xs:string" />
+               <xs:element name="dni" type="xs:string" />
+               <xs:element name="flota" type="tipo.flota" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:ID" />
+         </xs:complexType>
+       
+         <xs:complexType name="tipo.nombre">
+            <xs:simpleContent>
+               <xs:extension base="xs:string">
+                  <xs:attribute name="apodo" type="xs:string"/>
+               </xs:extension>
+            </xs:simpleContent>
+         </xs:complexType>
+       
+         <xs:complexType name="tipo.flota">
+            <xs:sequence>
+               <xs:element name="vehiculo" type="tipo.vehiculo" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+         </xs:complexType>
+       
+         <xs:complexType name="tipo.vehiculo">
+            <xs:sequence>
+               <xs:element name="matricula" type="tipo.matricula" />
+               <xs:element name="color" type="xs:string" />
+               <xs:element name="marca" type="xs:string" />
+               <xs:element name="modelo" type="xs:string" />
+            </xs:sequence>
+            <xs:attribute name="tipo" type="tipo.tipo" />
+         </xs:complexType>
+       
+         <xs:complexType name="tipo.matricula">
+            <xs:simpleContent>
+               <xs:extension base="xs:string">
+                  <xs:attribute name="numeracion" type="tipo.numeracion" />
+               </xs:extension>
+            </xs:simpleContent>
+         </xs:complexType>
+       
+         <xs:simpleType name="tipo.numeracion">
+            <xs:restriction base="xs:string">
+               <xs:enumeration value="antigua"/>
+               <xs:enumeration value="nueva"/>
+            </xs:restriction>
+         </xs:simpleType>
+       
+         <xs:simpleType name="tipo.tipo">
+            <xs:restriction base="xs:string">
+               <xs:enumeration value="turismo" />
+               <xs:enumeration value="furgoneta" />
+               <xs:enumeration value="moto" />
+               <xs:enumeration value="camión" />
+               <xs:enumeration value="autobús" />
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:schema>
+
+El documento resultante no sale más corto, ni siquiera hay menos etiquetas, pero
+las definiciones de cada elemento y de cada tipo están separadas, de modo que
+mediante un vistazo se pueden entender más fácilmente. Además, permite
+reaprovechar las definiciones de tipos para usarlas en otro |XSD|, tal como se
+verá a continuación.
+
+.. _xsd-modular:
+
+Reutilización de definiciones
+*****************************
+Hasta ahora hemos considerado que la definición de la gramática de un |XML| se
+encontraba toda dentro de un archivo |XSD|. Sin embargo, esto no es siempre así:
+puede ser que queramos separarla en varios ficheros, o bien que queramos tener
+ficheros en donde definimos tipos de elementos y atributos que vayan a
+encontrarse en distintos |XML| y que queramos usar recurrentemente. Por ejemplo,
+un tipo para los elementos que representan personas, puesto que este tipo podrá
+encontrarse en muchos |XML| distintos, desde uno para alquiler de coches (los
+compradores son personas) a otro para organizar los préstamos de una biblioteca
+(los lectores también lo son).
+
+Para ello existen dos mecanismos distintos: uno que consiste únicamente en
+yuxtaponer distintos ficheros |XSD| y otro que hace uso de los llamados espacios
+de nombres. La ventaja del segundo es que permite definir tipos con un mismos
+nombre dentro de espacios de nombres distintos.
+
+.. _xsd-composicion:
+
+Composición de ficheros |XSD|
+=============================
+Imaginemos que queremos escribir definir la gramática del |XML| del apartado
+anterior de manera que queremos crear dos archivos |XSD|: uno que incluya las
+definiciones relativas a los vehículos (o sea, todo lo incluido dentro del
+elemento flota) y otro que incluya el resto.
+
+Para ello podemos crear el siguente archivo :download:`flota.xsd
+<files/flota.xsd>`:
+
+.. literalinclude:: files/flota.xsd
+   :language: xml
+
+Y el siguiente :download:`gente.xsd <files/gente.xsd>` que haga referencia a
+file:`flota.xsd`:
+
+.. literalinclude:: files/gente.xsd
+   :language: xml
+   :emphasize-lines: 4
+
+Además del elemento ``xs:include`` se puede usar el elemento ``xs:redefine`` que
+permite, a la vez que se incluyen los elementos del |XSD| enlazado, redefinir
+aquellos que consideremos oportunos. La redefinición, desgraciadamente, está
+limitada a que restrinjamos o extendamos el tipo original y no a que hagamos una
+redefinición totalmente nueva. Para esto último deberíamos usar el elemento
+``xs:override``, que existe en |XML| Schemas 1.1:
+
+.. code-block:: xml
+
+   <?xml version="1.0" encoding="utf-8"?>
+   <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+      <!--
+      - gente2.xsd es igual que gente.xsd salvo
+      - por la redefinición del tipo "ident.persona".
+      -->
+    
+      <xs:redefine schemaLocation="gente.xsd">
+         <xs:simpleType name="ident.persona">
+            <xs:restriction base="ident.persona">
+               <xs:pattern value="p[0-9]+" />
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:redefine>
+    
+   </xs:schema>
+
+.. _xsd-namespaces:
+
+Espacios de nombres
+===================
+
+Concepto
+--------
+Lo visto en el epígrafe anterior soluciona nuestra necesidad de modularizar las
+definiciones. Sin embargo, nos topamos con un problema nada desdeñable: los
+nombres de los tipos no pueden repetirse, de modo que, cuando estuviéramos
+creando un nuevo |XSD| que reaprovechase definiciones de otros |XSD|, deberíamos
+comprobar que los nombres que elegimos para los nuevos tipos no fueran ya usados
+dentro de los otros ficheros. Esto puede llegar a ser engorroso y la solución es
+usar espacios de nombres.
+
+Los espacios de nombres son un mecanismo que permite convivir en un mismo |XML|
+a elementos y atributos que tienen idéntico nombre, pero distintos significado
+porque pertenecen a distinto campo semántico.
+
+Para usarlos en nuestro |XML| es necesario hacer uso del atributo *xmlns*:
+
+.. code-block:: xml
+
+   <?xml version="1.0" encoding="utf-8" ?>
+   <p:persona xmlns:p="urn:persona">
+      <p:nombre>Perico</p:nombre>
+      <p:apellidos>de los palotes</p:apellidos>
+      <p:dni>41112233</p:dni>
+      <p:tlfo>953112233</p:tlfo>
+   </p:persona>
+
+En este caso, ``xmlns:p`` indica que el prefijo para el espacio de nombres será
+*p*.  El valor es indiferente: simplemente tiene que cumplirse que sea único. Ni
+siquiera tiene que existir realmente el enlace. Esta definición del espacio de
+nombres tiene validez dentro el propio elemento en que se define (incluidos los
+subelementos que contiene). Por ese motivo, si se definen espacios de nombres se
+suele hacer en la etiqueta del elemento raíz.
+
+Es posible definir varios espacios de nombres a la vez:
+
+.. code-block:: xml
+
+   <?xml version="1.0" encoding="utf-8" ?>
+   <p:persona xmlns:p="urn:persona" xmlns:d="urn:direccion">
+      <p:nombre>Perico</p:nombre>
+      <p:apellidos>de los palotes</p:apellidos>
+      <p:dni>41112233</p:dni>
+      <p:tlfo>953112233</p:tlfo>
+      <p:direccion>
+         <d:via tipo="calle">Callo, 5</d:via>
+         <d:cp>12345</d:cp>
+         <d:localidad>Villaconejos</d:localidad>
+      </p:direccion>
+   </p:persona>
+
+Es posible definir un espacio de nombres por defecto, de manera que los
+elementos y atributos que no tengan prefijo, pertenezca a este espacio de
+nombres por defecto:
+
+.. code-block:: xml
+
+   <?xml version="1.0" encoding="utf-8" ?>
+   <persona xmlns="urn:persona" xmlns:d="urn:direccion">
+      <nombre>Perico</nombre>
+      <apellidos>de los palotes</apellidos>
+      <dni>41112233</dni>
+      <tlfo>953112233</tlfo>
+      <direccion>
+         <d:via tipo="calle">Callo, 5</d:via>
+         <d:cp>12345</d:cp>
+         <d:localidad>Villaconejos</d:localidad>
+      </direccion>
+   </persona>
+
+Desgraciadamente los |DTD| existen desde antes de la aparición de los espacios de
+nombres, así que no puede validarse con ellos un documento que use dos |DTD|
+diferentes y dos espacios de nombres, cada uno para referenciar los elementos de
+cada |DTD|. Sin embargo, esto sí es posible con |XML| Schemas.
+
+Definición del espacio de nombres
+---------------------------------
+Retomemos el ejemplo de la definición de persona (en principio sin la dirección,
+que lo dejaremos para el siguiente epígrafe):
+
+.. code-block:: xml
+
+   <?xml version="1.0" encoding="utf-8" ?>
+   <persona xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="urn:persona"
+            xsi:schemaLocation="urn:persona persona.xsd">
+      <nombre>Perico</nombre>
+      <apellidos>de los palotes</apellidos>
+      <dni>41112233</dni>
+      <tlfo>953112233</tlfo>
+   </persona>
+
+Observemos las diferencias con el código que con el que abrimos el tema y para
+el que no nos preocupamos de la definición del espacio de nombres: el atributo
+*xmlns* para definir un espacio de nombres predeterminado, y el atributo
+*xsi:schemaLocation* en el que indicamos el fichero |XSD| que sirve para la
+validación de tal espacio de nombres. El |XSD|, por su parte, quedará así:
+
+.. code-block:: xml
+
+   <?xml version="1.0" encoding="utf-8"?>
+   <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+              xmlns="urn:persona"
+              targetNamespace="urn:persona"
+              elementFormDefault="qualified">
+      <xs:element name="persona">
+         <xs:complexType>
+            <xs:sequence>
+               <xs:element name="nombre" type="xs:string" />
+               <xs:element name="apellidos" type="xs:string" />
+               <xs:element name="dni" type="xs:integer" />
+               <xs:element name="tlfo" type="xs:integer" />
+            </xs:sequence>
+         </xs:complexType>
+      </xs:element>
+   </xs:schema>
+
+Como se ve, sólo hay que indicar cuál es el espacio de nombres que se define
+(*targetNamespace*) y *elementFormDefault*, que indica si los elementos
+pertenecerán a este espacio de nombres o no. Al ponerlo como qualified, sí
+pertenecerán (el valor predeterminado es unqualified). Obsérvese que en la
+definición del |XML| todos los elementos pertenecen al espacio de nombres
+*urn:persona*, así que al hacer la definición con |XSD| los elementos deben
+pertenecer al mismo.
+
+Mezclando espacios de nombres
+-----------------------------
+Llega el momento de saber cómo se pueden definir por separado los elementos de
+distintos espacios de nombres (cada uno en un |XSD| diferente) y cómo se pueden
+usar todos esos espacios de nombres a la vez en un único |XML|.
+
+Supongamos que la definición anterior de persona la queremos enriquecer con su
+dirección postal. Ahora bien, la dirección postal (que incluye el nombre de la
+calle, el número y el código postal, por ejemplo) se puede usar también cuando
+tratamos de definir el domicilio de una empresa. Así que supongamos que
+definimos en el archivo :download:`direccion.xsd <files/direccion.xsd>` el
+siguiente tipo complejo:
+
+.. literalinclude:: files/direccion.xsd
+   :language: xml
+   :emphasize-lines: 3, 4
+
+En este fichero queda perfectamente definido el tipo dirección de manera que
+podríamos escribir nuestro |XML| como sigue:
+
+.. literalinclude:: files/persona.xml
+   :language: xml
+   :emphasize-lines: 4, 10-14
+
+de manera que el nuevo elemento dirección haga uso de la definición. Por último
+alteramos :file:`persona.xsd` para que haga uso del tipo direccion, que está
+definido en :file:`direccion.xsd`:
+
+.. literalinclude:: files/persona.xsd
+   :language: xml
+   :emphasize-lines: 4,8,9,18
+
+Cuando se usan espacios de nombres es posible usar también ``xs:include`` y
+``xs:redefine``. Sin embargo, los tipos de elementos y atributos que se definan
+en el |XSD| enlazados deberán tener el mismo espacio de nombres de destino
+(*targetNamespace*) que el fichero desde el que se enlazan.
+
+Ejercicios resueltos
+********************
+
+.. todo:: Resolver los :ref:`ejercicios de recetas y cadena <yaml-resueltos>`.
+
+
+
+.. |DTD| replace:: :abbr:`DTD (Document Type Definition)`
+.. |PDF| replace:: :abbr:`PDF (Portable Document Format)`
+.. |DNI| replace:: :abbr:`DNI (Documento Nacional de Identidad)`
+.. |XSD| replace:: :abbr:`XSD (XML Schema Definition)`

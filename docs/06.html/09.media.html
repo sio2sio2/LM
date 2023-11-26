@@ -488,14 +488,22 @@ incrustar sus contenidos a través de esta etiqueta. Ejemplos:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;audio_2543335&quot;</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">allowfullscreen</span><span class="o">=</span><span class="s">&quot;&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span>
         <span class="na">height</span><span class="o">=</span><span class="s">&quot;200&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;border:1px solid #EEE; box-sizing:border-box; width:100%;&quot;</span>
         <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://www.ivoox.com/player_ej_2543335_4_1.html?c1=ff6600&quot;</span><span class="p">&gt;</span>
-   No se puede reporducir este contenido.
+   No se puede reproducir este contenido.
 <span class="p">&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
 </pre></div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>No siempre es posible empotrar un documento <abbr title="HyperText Markup Language">HTML</abbr> dentro de
+otro, porque puede ocurrir (y es bastante frecuente) que el servidor donde se encuentre
+el documento que se desea empotrar no lo permita a través de las cabeceras
+<a class="reference external" href="https://developer.mozilla.org/es/docs/Web/HTTP/Headers/X-Frame-Options">X-Frame-Options</a> o <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Content-Security-Policy">Content-Security-Policy</a>. Esta limitación tenemos
+que tenerla en cuenta también al empotrar con <a class="reference internal" href="#html-object"><span class="std std-ref">&lt;object&gt;</span></a>.</p>
 </div>
 <div class="ej-html"><iframe id="audio_2543335" frameborder="0" allowfullscreen="" scrolling="no"
         height="200" style="border:1px solid #EEE; box-sizing:border-box; width:100%;"
         src="https://www.ivoox.com/player_ej_2543335_4_1.html?c1=ff6600">
-   No se puede reporducir este contenido.
+   No se puede reproducir este contenido.
 </iframe></div><div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;425&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;350&quot;</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span> <span class="na">marginheight</span><span class="o">=</span><span class="s">&quot;0&quot;</span>
         <span class="na">marginwidth</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;border: 1px solid black&quot;</span>
         <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://www.openstreetmap.org/export/embed.html?bbox=-7.323015332221986%2C37.19594164560528%2C-7.317221760749818%2C37.199620737391655&amp;amp;layer=mapnik&quot;</span><span class="p">&gt;</span>
@@ -510,7 +518,7 @@ incrustar sus contenidos a través de esta etiqueta. Ejemplos:</p>
 </iframe></div><div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Es muy común que los servicios que permiten incrustar sus
-contenidos en nuestras páginas, facilten el código exacto apr llegar a
+contenidos en nuestras páginas, facilten el código exacto para llevar a
 cabo la tarea.</p>
 </div>
 </dd>
@@ -599,12 +607,12 @@ que sea imposible ofrecer el recurso externo.</p>
 </div>
 <div class="ej-html"><object data="https://mozilla.github.io/fathom/_sources/ruleset.rst.txt"
         height=400 width=600 type="text/plain">Recurso no disponible</object></div><p>Esto una página web:</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">object</span> <span class="na">data</span><span class="o">=</span><span class="s">&quot;https://www.google.es&quot;</span>
-        <span class="na">height</span><span class="o">=</span><span class="s">400</span> <span class="na">width</span><span class="o">=</span><span class="s">600</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/html&quot;</span><span class="p">&gt;</span>Recurso no disponible<span class="p">&lt;/</span><span class="nt">object</span><span class="p">&gt;</span>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">object</span> <span class="na">data</span><span class="o">=</span><span class="s">&quot;https://sio2sio2.github.io/doc-linux&quot;</span>
+        <span class="na">height</span><span class="o">=</span><span class="s">400</span> <span class="na">width</span><span class="o">=</span><span class="s">100%</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/html&quot;</span><span class="p">&gt;</span>Recurso no disponible<span class="p">&lt;/</span><span class="nt">object</span><span class="p">&gt;</span>
 </pre></div>
 </div>
-<div class="ej-html"><object data="https://www.google.es"
-        height=400 width=600 type="text/html">Recurso no disponible</object></div><p>Muestra una imagen:</p>
+<div class="ej-html"><object data="https://sio2sio2.github.io/doc-linux"
+        height=400 width=100% type="text/html">Recurso no disponible</object></div><p>Muestra una imagen:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">object</span> <span class="na">data</span><span class="o">=</span><span class="s">&quot;https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg&quot;</span>
         <span class="na">width</span><span class="o">=</span><span class="s">400</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;image/svg+xml&quot;</span><span class="p">&gt;</span>Recurso no disponible<span class="p">&lt;/</span><span class="nt">object</span><span class="p">&gt;</span>
 </pre></div>

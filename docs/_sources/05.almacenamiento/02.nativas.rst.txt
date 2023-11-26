@@ -130,7 +130,7 @@ haber creado la base de datos:
    <nombre>José</nombre>
    $ basex -i /ruta/a/casilleros.xml una_consulta_compleja.xq
 
-.. note:: La opción :kbd:`-c` permite introducir las órdenes propias de *BaseX*
+.. note:: La opción ``-c`` permite introducir las órdenes propias de *BaseX*
    que también podemos usar de forma interactiva. Por ejemplo, :code:`-c
    HELP` nos devolvería un listado de todas las órdenes posibles que podemos
    introducir en el cajetín **2** de la |GUI|.

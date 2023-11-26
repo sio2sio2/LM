@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="urn:persona"
+           xmlns:d="urn:direccion"
+           targetNamespace="urn:persona"
+           elementFormDefault="qualified">
+ 
+   <xs:import schemaLocation="direccion.xsd"
+              namespace="urn:direccion" />
+ 
+   <xs:element name="persona">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="nombre" type="xs:string" />
+            <xs:element name="apellidos" type="xs:string" />
+            <xs:element name="dni" type="xs:integer" />
+            <xs:element name="tlfo" type="xs:integer" />
+            <xs:element name="direccion" type="d:tipo.direccion" />
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

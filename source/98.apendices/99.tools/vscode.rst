@@ -75,7 +75,8 @@ esto haciendo verdadera la opción ``xml.validation.resolveExternalEntities``:
     "xml.validation.resolveExternalEntities": true
   }
 
-Si nuestra intención es evaluar expresiones *XPath* tenemos varias opciones:
+Si nuestra intención es evaluar expresiones *XPath* o *XQuery*, tenemos varias
+opciones:
 
 * Instalar la extensión `XPath Tester
   <https://marketplace.visualstudio.com/items?itemName=creinbacher.xpathtester>`_,
@@ -83,15 +84,17 @@ Si nuestra intención es evaluar expresiones *XPath* tenemos varias opciones:
   :kbd:`Ctrl`\ +\ :kbd:`Shift`\ +\ :kbd:`P` y buscar *XPath* para que accedamos
   al cuadro de diálogo que nos permite hacer evaluaciones.
 
-* Utilizar, en realidad, :ref:`BaseX` pero con a través de :program:`Visual
-  Studio Code` para lo cual necesitamos:
+* Utilizar, en realidad, :ref:`BaseX` a través de :program:`Visual Studio Code`
+  para lo cual necesitamos:
 
   .. rst-class:: simple
 
   #. Instalar previamente :ref:`BaseX`.
 
-  #. Configurar la extensión para que use *BaseX* como procesador. Para ello,
-     necesitamos editar la configuración y añadir:
+  #. Configurar la extensión `XML Tools
+     <https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml>`_
+     para que use *BaseX* como procesador. Para ello, necesitamos editar la
+     configuración y añadir:
 
      .. code-block:: json
 
@@ -115,7 +118,7 @@ Si nuestra intención es evaluar expresiones *XPath* tenemos varias opciones:
      archivo abierto y seleccionado en el editor.
   #. Pulsamos :kbd:`Ctrl`\ +\ :kbd:`Shift`\ +\ :kbd:`P` y ejecutamos `XML Tools:
      Execute Query`.
-  #. Si hay varios |XML| en el directorio se nos preguntará sobre cual
+  #. Si hay varios |XML| en el directorio se nos preguntará sobre cuál
      queremos hacer la consulta, y, si hemos incluido, la opción :kbd:`-o` en
      la configuración (tal como se ha sugerido antes), se nos pedirá confirmar
      el archivo de salida. Si no la incluimos, la salida se volcará
@@ -197,6 +200,13 @@ una secuencia:
 
 |HTML|
 ======
+.. https://code.visualstudio.com/docs/languages/html
+   Live Preview
+   https://marketplace.visualstudio.com/items?itemName=CelianRiboulet.webvalidator
+   https://marketplace.visualstudio.com/items?itemName=smelukov.vscode-csstree : Probar para CSS
+   Mirar tareas y asociación de teclas (¿se puede hacer por espacios de trabajo?)
+   https://www.mclibre.org/consultar/htmlcss/otros/vsc-htmlcss-configuracion.html
+
 
 .. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`
 .. |DTD| replace:: :abbr:`DTD (Document Type Definition)`

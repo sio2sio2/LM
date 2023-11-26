@@ -109,9 +109,9 @@ cláusulas con las que se construye originariamente<a class="footnote-reference 
 <p>En cualquier caso, aunque lo que caracteriza a <em>XQuery</em> es la estructura
 <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr>, esta no es obligatoria, y una consulta <em>XQuery</em> puede crearse
 únicamente con el contenido del <a class="reference internal" href="#xquery-return"><span class="std std-ref">RETURN del FLWOR</span></a> (sin
-expresar el propio <code class="docutils literal notranslate"><span class="pre">return</span></code>. Como este contenido puede ser cualquier expresión
-<em>XPath</em> valida, resulta que <em>XQuery</em> es un supercojunto de <em>XPath</em>, o lo que es
-lo mismo, toda expresión <em>XPath</em> es una consulta <em>XQuery</em> válida.</p>
+expresar el propio <code class="docutils literal notranslate"><span class="pre">return</span></code>). Como este contenido puede ser cualquier
+expresión <em>XPath</em> valida, resulta que <em>XQuery</em> es un supercojunto de <em>XPath</em>, o
+lo que es lo mismo, toda expresión <em>XPath</em> es una consulta <em>XQuery</em> válida.</p>
 <p>Tres son las versiones que ha tenido este lenguaje:</p>
 <dl class="simple">
 <dt><a class="reference external" href="https://www.w3.org/TR/2007/REC-xquery-20070123/">Versión 1</a></dt><dd><p>Desarrollada desde los comienzos de <em>XPath</em> en 1999, se publicó
@@ -145,25 +145,22 @@ especificaciones, estas dos extensísimas fuentes:</p>
 <li><p><a class="reference external" href="https://en.wikibooks.org/wiki/XQuery">Wiki sobre XQuery</a>, con abundantes
 ejemplos sobre cómo resolver muchos problemas concretos.</p></li>
 <li><p><a class="reference external" href="http://www.datypic.com/services/xquery/whatsnew3.html">Novedades de XQuery 3</a>, que es el índice de
-un curso los añadidos de la versión 3. El curso no está, pero el solo índice
-nos permite tener una enumeración de cuáles son las novedades.</p></li>
+un curso sobre los añadidos de la versión 3. El curso no está, pero el solo
+índice nos permite tener una enumeración de cuáles son las novedades.</p></li>
 </ul>
 <section id="procesadores">
 <h3><span class="section-number">4.1.1. </span>Procesadores<a class="headerlink" href="#procesadores" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Tenemos varias alternativas para ejecutar consultas <em>XQuery</em>:</p>
 <ul class="simple">
-<li><p>El programa <a class="reference external" href="https://www.videlibri.de/xidel.html">xidel</a>, que ya usamos para probar <em>XPath</em>. Podemos seguir
-introduciendo la expresión con <kbd class="kbd docutils literal notranslate">-e</kbd>, ya que en principio es capaz
-de distiguir una expresión <em>XQuery</em> de una de <em>XPath</em>, pero en caso de algún
-problema de interpretación puede usarse la opción <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">-</kbd>-<kbd class="kbd docutils literal notranslate">xquery</kbd></kbd> en su
-sustitución.</p></li>
+<li><p>El programa <a class="reference internal" href="../98.apendices/99.tools/xidel.html#xidel"><span class="std std-ref">Xidel</span></a>, que ya usamos para probar <em>XPath</em>.</p></li>
 <li><p><a class="reference internal" href="../05.almacenamiento/02.nativas.html#basex"><span class="std std-ref">BaseX</span></a>, que introduciremos mejor más adelante y tiene tanto interfaz
 gráfica como de línea de comandos. Es un programa hecho en <a class="reference external" href="https://es.wikipedia.org/wiki/Java_(lenguaje_de_programaci%C3%B3n)">Java</a>, así que
 necesitaremos tener instalada antes la máquina virtual. En las distribuciones
 basadas en <em>Debian</em> hay paquete disponible con lo que echarlo a andar es
 trivial.</p></li>
-<li><p><a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a> con la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml">XML Tools</a>,
-que requiere alguna configuración adicional.</p></li>
+<li><p><a class="reference internal" href="../98.apendices/99.tools/vscode.html#vscode"><span class="std std-ref">Visual Studio Code</span></a> con la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml">XML Tools</a>,
+que requiere alguna configuración adicional, que se trata en el apéndice
+enlazado.</p></li>
 </ul>
 <p id="xquery-version-declaration">Otro aspecto a tener presente al usar los procesadores es que <em>XQuery</em>, al
 comienzo del código, permite especificar cuál es la versión mínima que permite
@@ -230,7 +227,7 @@ Mi mascota es un gato bonito.
 <p>lo cual ordenará los resultados según la expresión <em>XPath</em> <code class="code docutils literal notranslate"><span class="pre">$animal</span></code>, o
 sea, el valor de esa variable para cada iteración. Como los valores son cadenas
 y las cadenas tienen ordenación, es posible hacerlo. Podríamos haber utilizado
-cualquier otra expresión que devolviera valores ordenados según los criterios e
+cualquier otra expresión que devolviera valores ordenados según los criterios de
 <em>XPath</em> como, por ejemplo, <code class="code docutils literal notranslate"><span class="pre">fn:string-length($animal)</span></code>.</p>
 <p>Por último, podemos añadir también una condición que será una expresión <em>XPath</em>
 que devuelva un resultado lógico:</p>
@@ -457,7 +454,7 @@ evaluada:</p>
 <p>De esta forma, el nodo raíz de la salida tendrá el mismo nombre (<em>claustro</em>)
 que el del documento original. Obsérvese, además, que la evaluación de
 <code class="code docutils literal notranslate"><span class="pre">$p/&#64;id</span></code> resulta un nodo atributo, por lo que el elemento <em>p</em> estará
-vacío y tendrá un atributo que se llama igual que el de profesoor y con su
+vacío y tendrá un atributo que se llama igual que el de profesor y con su
 mismo valor.</p>
 <p>Si quisiéramos dotar de más contenido a <em>p</em>, podríamos expresar tal contenido
 como una secuencia:</p>

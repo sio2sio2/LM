@@ -29,3 +29,7 @@ Hay dos modos distintos de usarlo:
    *XPath* 1.0. No existe ninguna opción al respecto, pero  por el modo en el
    que actúa, si no se especifica, parece actuar en modo semejante al de
    compatibilidad y, si se añade la opción ``--strict-type-checking``, cambia.
+
+En principio, el programa es capaz de distinguir expresiones *XPath* de
+expresiones *XQuery*, pero si hay algún problema de interpretación puede usarse
+la opción ``--xquery`` en sustitución de ``-e``.

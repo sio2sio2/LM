@@ -853,7 +853,7 @@ de tipos. Este es un aspecto que debemos revisar.
          no pueden compararse fechas (que son cadenas), aunque tengan el formato
          ``AAAA-MM-DD``. Para comparar fechas, primero hay que quitar los
          guiones para que quede la cadena ``AAAAMMDD`` que sí puede convertirse
-         en un número. Por ejemplo, si queremos comprobar si una nodo fecha es
+         en un número. Por ejemplo, si queremos comprobar si un nodo *fecha* es
          anterior al 21 de diciembre de 2020:
 
          .. code-block:: xquery
@@ -882,7 +882,7 @@ de tipos. Este es un aspecto que debemos revisar.
 
    * *Conversión a número*:
 
-     - Las cadenas que representan número son convertidas al número equivalente; si
+     - Las cadenas que representan números son convertidas al número equivalente; si
        no representan ningún número, se obtiene **NaN**.
      - *true* se convierte a **1**, y *false* a **0**.
      - Para convertir en número un conjunto de nodos se convierte primero el
@@ -1109,7 +1109,7 @@ novedades se pueden resumir en estos puntos:
    comportamiento a la hora de evaluar las expresiones. Sin validación el
    comportamiento podrá ser semejante a la primera versión (o no), pero con
    validación la evaluación diferirá en muchos casos. Cuando no hay validación,
-   el tipo de dato quedará indefinido (``xs:untypedAtomic``), cuyas conversión
+   el tipo de dato quedará indefinido (``xs:untypedAtomic``), cuya conversión
    generalmente se comporta como la de las cadenas.
 
    .. caution:: Recuerde, pues, que el procesador sólo sabrá el tipo concreto
@@ -1320,7 +1320,7 @@ novedades se pueden resumir en estos puntos:
         /claustro/profesor/attribute(*, xs:integer)
 
      aunque si el procesador no hubiera validado con una gramática el documento,
-     la expresión anterior sería inútil, ya que todos los atributos será de tipo
+     la expresión anterior sería inútil, ya que todos los atributos serán de tipo
      ``xs:untypedAtomic``:
 
      .. code-block:: xquery
@@ -1375,7 +1375,7 @@ novedades se pueden resumir en estos puntos:
       <xpath-op-comp>` con su característica particular de permitir :ref:`comparar
       pluralidades <xpath-pluralidad>`:
 
-      * Incluso aunque se habilite la compatibilidad, si uno de los operando es
+      * Incluso aunque se habilite la compatibilidad, si uno de los operandos es
         lógico, *XPath* convierte el otro a lógico, en contra de lo que ocurre
         en la versión 1.0 en que ambos se convierten a número. :code:`true() >
         number("0.5")` es pues falso, mientras que en *XPath* 1.0 se evaluaría
@@ -1490,7 +1490,7 @@ novedades se pueden resumir en estos puntos:
    .. _xpath2-op-concat:
 
    De **concatenación**
-      Se ha definido un nuevo operador ``||`` que sirve para concatenar cadena
+      Se ha definido un nuevo operador ``||`` que sirve para concatenar cadenas
       de la forma en la que lo hace la función ``concat()``. Así, la expresión:
 
       .. code-block:: xquery
@@ -1790,7 +1790,7 @@ novedades se pueden resumir en estos puntos:
 
          every $nombre in //profesor/nombre satisfies $nombre != "Lucía"
 
-      será cierta si nadie se llama Lucía,, lo cual también podríamos haber
+      será cierta si nadie se llama Lucía, lo cual también podríamos haber
       conseguido con esta expresión de *XPath* 1.0:
 
       .. code-block:: xquery
@@ -1804,10 +1804,10 @@ novedades se pueden resumir en estos puntos:
 
 .. seealso:: La página `altova.com <https://www.altova.com>`_ tiene una `guía
    bastante completa de XPath 3.1 <https://www.altova.com/training/xpath3>`_ que
-   incluye bastante ejemplos de uso. También es bastante revelador `el primer
+   incluye bastantes ejemplos de uso. También es bastante revelador `el primer
    capítulo del libro "XSLT Cookbook"
    <https://www.oreilly.com/library/view/xslt-cookbook-2nd/0596009747/ch01.html>`_,
-   que trata sobre *XPath* y que ofrece de gratis la editorial O'Reilly.
+   que trata sobre *XPath* y que ofrece de balde la editorial O'Reilly.
 
 .. todo:: Añadir explicaciones sobre mapas, arrays y consulta de documentos
    |JSON| con *XPath*.

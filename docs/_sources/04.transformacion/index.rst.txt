@@ -36,9 +36,9 @@ cláusulas con las que se construye originariamente\ [#]_. Cumple en el mundo
 En cualquier caso, aunque lo que caracteriza a *XQuery* es la estructura
 |FLWOR|, esta no es obligatoria, y una consulta *XQuery* puede crearse
 únicamente con el contenido del :ref:`RETURN del FLWOR <xquery-return>` (sin
-expresar el propio ``return``. Como este contenido puede ser cualquier expresión
-*XPath* valida, resulta que *XQuery* es un supercojunto de *XPath*, o lo que es
-lo mismo, toda expresión *XPath* es una consulta *XQuery* válida.
+expresar el propio ``return``). Como este contenido puede ser cualquier
+expresión *XPath* valida, resulta que *XQuery* es un supercojunto de *XPath*, o
+lo que es lo mismo, toda expresión *XPath* es una consulta *XQuery* válida.
 
 Tres son las versiones que ha tenido este lenguaje:
 
@@ -74,18 +74,14 @@ especificaciones, estas dos extensísimas fuentes:
   ejemplos sobre cómo resolver muchos problemas concretos.
 * `Novedades de XQuery 3
   <http://www.datypic.com/services/xquery/whatsnew3.html>`_, que es el índice de
-  un curso los añadidos de la versión 3. El curso no está, pero el solo índice
-  nos permite tener una enumeración de cuáles son las novedades.
+  un curso sobre los añadidos de la versión 3. El curso no está, pero el solo
+  índice nos permite tener una enumeración de cuáles son las novedades.
 
 Procesadores
 ============
 Tenemos varias alternativas para ejecutar consultas *XQuery*:
 
-* El programa xidel_, que ya usamos para probar *XPath*. Podemos seguir
-  introduciendo la expresión con :kbd:`-e`, ya que en principio es capaz
-  de distiguir una expresión *XQuery* de una de *XPath*, pero en caso de algún
-  problema de interpretación puede usarse la opción :kbd:`--xquery` en su
-  sustitución.
+* El programa :ref:`xidel`, que ya usamos para probar *XPath*.
 
 * :ref:`BaseX`, que introduciremos mejor más adelante y tiene tanto interfaz
   gráfica como de línea de comandos. Es un programa hecho en Java_, así que
@@ -93,9 +89,10 @@ Tenemos varias alternativas para ejecutar consultas *XQuery*:
   basadas en *Debian* hay paquete disponible con lo que echarlo a andar es
   trivial.
 
-* `Visual Studio Code`_ con la extensión `XML Tools
+* :ref:`Visual Studio Code <vscode>` con la extensión `XML Tools
   <https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml>`_,
-  que requiere alguna configuración adicional.
+  que requiere alguna configuración adicional, que se trata en el apéndice
+  enlazado.
 
 .. _xquery-version-declaration:
 
@@ -180,7 +177,7 @@ También podemos probar a ordenar los resultados:
 lo cual ordenará los resultados según la expresión *XPath* :code:`$animal`, o
 sea, el valor de esa variable para cada iteración. Como los valores son cadenas
 y las cadenas tienen ordenación, es posible hacerlo. Podríamos haber utilizado
-cualquier otra expresión que devolviera valores ordenados según los criterios e
+cualquier otra expresión que devolviera valores ordenados según los criterios de
 *XPath* como, por ejemplo, :code:`fn:string-length($animal)`.
 
 Por último, podemos añadir también una condición que será una expresión *XPath*
@@ -447,7 +444,7 @@ ligeramente distinto:
    De esta forma, el nodo raíz de la salida tendrá el mismo nombre (*claustro*)
    que el del documento original. Obsérvese, además, que la evaluación de
    :code:`$p/@id` resulta un nodo atributo, por lo que el elemento *p* estará
-   vacío y tendrá un atributo que se llama igual que el de profesoor y con su
+   vacío y tendrá un atributo que se llama igual que el de profesor y con su
    mismo valor.
 
    Si quisiéramos dotar de más contenido a *p*, podríamos expresar tal contenido

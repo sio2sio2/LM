@@ -953,7 +953,7 @@ compararse alfabéticamente cadenas. Y como no existe el tipo «fecha»,
 no pueden compararse fechas (que son cadenas), aunque tengan el formato
 <code class="docutils literal notranslate"><span class="pre">AAAA-MM-DD</span></code>. Para comparar fechas, primero hay que quitar los
 guiones para que quede la cadena <code class="docutils literal notranslate"><span class="pre">AAAAMMDD</span></code> que sí puede convertirse
-en un número. Por ejemplo, si queremos comprobar si una nodo fecha es
+en un número. Por ejemplo, si queremos comprobar si un nodo <em>fecha</em> es
 anterior al 21 de diciembre de 2020:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">translate</span><span class="p">(</span><span class="nt">fecha</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">20201221</span>
 </pre></div>
@@ -979,7 +979,7 @@ el nodo es un nodo elemento.</p></li>
 </li>
 <li><p><em>Conversión a número</em>:</p>
 <ul class="simple">
-<li><p>Las cadenas que representan número son convertidas al número equivalente; si
+<li><p>Las cadenas que representan números son convertidas al número equivalente; si
 no representan ningún número, se obtiene <strong>NaN</strong>.</p></li>
 <li><p><em>true</em> se convierte a <strong>1</strong>, y <em>false</em> a <strong>0</strong>.</p></li>
 <li><p>Para convertir en número un conjunto de nodos se convierte primero el
@@ -1174,7 +1174,7 @@ que en las siguientes versiones la existencia de una gramática determina su
 comportamiento a la hora de evaluar las expresiones. Sin validación el
 comportamiento podrá ser semejante a la primera versión (o no), pero con
 validación la evaluación diferirá en muchos casos. Cuando no hay validación,
-el tipo de dato quedará indefinido (<code class="docutils literal notranslate"><span class="pre">xs:untypedAtomic</span></code>), cuyas conversión
+el tipo de dato quedará indefinido (<code class="docutils literal notranslate"><span class="pre">xs:untypedAtomic</span></code>), cuya conversión
 generalmente se comporta como la de las cadenas.</p>
 <div class="admonition caution">
 <p class="admonition-title">Prudencia</p>
@@ -1339,7 +1339,7 @@ valor fuera un entero:</p>
 </pre></div>
 </div>
 <p>aunque si el procesador no hubiera validado con una gramática el documento,
-la expresión anterior sería inútil, ya que todos los atributos será de tipo
+la expresión anterior sería inútil, ya que todos los atributos serán de tipo
 <code class="docutils literal notranslate"><span class="pre">xs:untypedAtomic</span></code>:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">/</span><span class="nf">attribute</span><span class="p">(</span><span class="nt">*</span><span class="p">,</span><span class="w"> </span><span class="nt">xs:untypedAtomic</span><span class="p">)</span>
 </pre></div>
@@ -1392,7 +1392,7 @@ que alguno de los operandos no sea numérico.</p></li>
 <dt><strong>Comparativos</strong></dt><dd><p>En principio, se mantienen los <a class="reference internal" href="#xpath-op-comp"><span class="std std-ref">operadores de comparación ya existentes</span></a> con su característica particular de permitir <a class="reference internal" href="#xpath-pluralidad"><span class="std std-ref">comparar
 pluralidades</span></a>:</p>
 <ul>
-<li><p>Incluso aunque se habilite la compatibilidad, si uno de los operando es
+<li><p>Incluso aunque se habilite la compatibilidad, si uno de los operandos es
 lógico, <em>XPath</em> convierte el otro a lógico, en contra de lo que ocurre
 en la versión 1.0 en que ambos se convierten a número. <code class="code docutils literal notranslate"><span class="pre">true()</span> <span class="pre">&gt;</span>
 <span class="pre">number(&quot;0.5&quot;)</span></code> es pues falso, mientras que en <em>XPath</em> 1.0 se evaluaría
@@ -1504,7 +1504,7 @@ Por eso, ante este documento <abbr title="eXtensible  Markup Language">XML</abbr
 </dd>
 </dl>
 <dl id="xpath2-op-concat">
-<dt>De <strong>concatenación</strong></dt><dd><p>Se ha definido un nuevo operador <code class="docutils literal notranslate"><span class="pre">||</span></code> que sirve para concatenar cadena
+<dt>De <strong>concatenación</strong></dt><dd><p>Se ha definido un nuevo operador <code class="docutils literal notranslate"><span class="pre">||</span></code> que sirve para concatenar cadenas
 de la forma en la que lo hace la función <code class="docutils literal notranslate"><span class="pre">concat()</span></code>. Así, la expresión:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">nombre</span><span class="p">/(</span><span class="s2">&quot;Hola, &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">.)</span>
 </pre></div>
@@ -1750,7 +1750,7 @@ de la secuencia cumplen la condición. Por ejemplo, la expresión:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">every</span><span class="w"> </span><span class="nv">$</span><span class="n">nombre</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">nombre</span><span class="w"> </span><span class="k">satisfies</span><span class="w"> </span><span class="nv">$</span><span class="n">nombre</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&quot;Lucía&quot;</span>
 </pre></div>
 </div>
-<p>será cierta si nadie se llama Lucía,, lo cual también podríamos haber
+<p>será cierta si nadie se llama Lucía, lo cual también podríamos haber
 conseguido con esta expresión de <em>XPath</em> 1.0:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">not</span><span class="p">(//</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Lucía&quot;</span><span class="p">)</span>
 </pre></div>
@@ -1765,9 +1765,9 @@ acabamos de entender <a class="reference internal" href="#xpath-pluralidad"><spa
 <p class="admonition-title">Ver también</p>
 <p>La página <a class="reference external" href="https://www.altova.com">altova.com</a> tiene una <a class="reference external" href="https://www.altova.com/training/xpath3">guía
 bastante completa de XPath 3.1</a> que
-incluye bastante ejemplos de uso. También es bastante revelador <a class="reference external" href="https://www.oreilly.com/library/view/xslt-cookbook-2nd/0596009747/ch01.html">el primer
+incluye bastantes ejemplos de uso. También es bastante revelador <a class="reference external" href="https://www.oreilly.com/library/view/xslt-cookbook-2nd/0596009747/ch01.html">el primer
 capítulo del libro «XSLT Cookbook»</a>,
-que trata sobre <em>XPath</em> y que ofrece de gratis la editorial O’Reilly.</p>
+que trata sobre <em>XPath</em> y que ofrece de balde la editorial O’Reilly.</p>
 </div>
 <div class="admonition-todo admonition" id="id11">
 <p class="admonition-title">Por hacer</p>
@@ -2109,7 +2109,7 @@ de que todos los productos que se venden, se venden por unidades.</p>
 </pre></div>
 </div>
 </li>
-<li><p>El número de facturas de emitidas en noviembre de 2012.</p>
+<li><p>El número de facturas emitidas en noviembre de 2012.</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">factura</span><span class="p">[</span><span class="nf">substring</span><span class="p">(</span><span class="na">@fecha</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="s2">&quot;2012-11&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -2235,7 +2235,7 @@ determinar la expresión <em>XPath</em> que devuelve:</p>
 </pre></div>
 </div>
 </li>
-<li><p>Los identificadores de los socios que tiene algún libro en préstamo.</p>
+<li><p>Los identificadores de los socios que tienen algún libro en préstamo.</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">lector</span><span class="p">[</span><span class="na">@registro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">prestamo</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@entrega</span><span class="p">)]/</span><span class="na">@lector</span><span class="p">]/</span><span class="na">@registro</span>
 </pre></div>
 </div>
@@ -2274,12 +2274,12 @@ determinar la expresión <em>XPath</em> que devuelve:</p>
 </pre></div>
 </div>
 </li>
-<li><p>Los libros que tiene todos los ejemplares prestados</p>
+<li><p>Los libros que tienen todos los ejemplares prestados</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">libro</span><span class="p">[</span><span class="nf">count</span><span class="p">(.//</span><span class="nt">ejemplar</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">count</span><span class="p">(.//</span><span class="nt">ejemplar</span><span class="p">[</span><span class="na">@codigo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">prestamo</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@entrega</span><span class="p">)]/</span><span class="na">@ejemplar</span><span class="p">])]</span>
 </pre></div>
 </div>
 </li>
-<li><p>Los libros que tiene más ejemplares prestados que en la biblioteca.</p>
+<li><p>Los libros que tienen más ejemplares prestados que en la biblioteca.</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">libro</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="nf">count</span><span class="p">(.//</span><span class="nt">ejemplar</span><span class="p">[</span><span class="na">@codigo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">prestamo</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@entrega</span><span class="p">)]/</span><span class="na">@ejemplar</span><span class="p">])</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nf">count</span><span class="p">(.//</span><span class="nt">ejemplar</span><span class="p">)]</span>
 </pre></div>
 </div>
@@ -2359,7 +2359,7 @@ que vende un concesionario, determinar la expresión <em>XPath</em> que devuelve
 </pre></div>
 </div>
 </li>
-<li><p>Los ibiza reservados</p>
+<li><p>Los ibizas reservados</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">coche</span><span class="p">[</span><span class="na">@modelo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">modelo</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;Ibiza&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">][</span><span class="na">@reservado</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -2384,7 +2384,7 @@ que vende un concesionario, determinar la expresión <em>XPath</em> que devuelve
 </pre></div>
 </div>
 </li>
-<li><p>Los coches reservados a los habitantes de Villaabajo.</p>
+<li><p>Los coches reservados a los habitantes de Villabajo.</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">coche</span><span class="p">[</span><span class="na">@reservado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">cliente</span><span class="p">[.//</span><span class="nt">poblacion</span><span class="o">=</span><span class="s2">&quot;Villaabajo&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -2469,7 +2469,7 @@ nacionales, determinar la expresión <em>XPath</em> que devuelve:</p>
 </pre></div>
 </div>
 </li>
-<li><p>Los especies animales de interés del parque de Garajonay.</p>
+<li><p>Las especies animales de interés del parque de Garajonay.</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">especie</span><span class="p">[</span><span class="na">@tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;fauna&quot;</span><span class="p">][</span><span class="na">@id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">parque</span><span class="p">[</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Garajonay&quot;</span><span class="p">]/</span><span class="nt">especimen</span><span class="p">/</span><span class="na">@ref</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -2484,7 +2484,7 @@ nacionales, determinar la expresión <em>XPath</em> que devuelve:</p>
 </pre></div>
 </div>
 </li>
-<li><p>El número de parque nacionales que sólo tiene como especies de interés animales.</p>
+<li><p>El número de parques nacionales que sólo tiene como especies de interés animales.</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">parque</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="nt">especimen</span><span class="p">[</span><span class="na">@ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">especie</span><span class="p">[</span><span class="na">@tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;flora&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">])])</span>
 </pre></div>
 </div>
@@ -2524,7 +2524,7 @@ habitantes de un municipio, determinar la expresión <em>XPath</em> que devuelve
 </pre></div>
 </div>
 </li>
-<li><p>El número de habitantes de los que no se tiene registrado padre ni madre.</p>
+<li><p>El número de habitantes de los que no se tienen registrados padre ni madre.</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">persona</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@padre</span><span class="p">)][</span><span class="nf">not</span><span class="p">(</span><span class="na">@madre</span><span class="p">)]</span>
 </pre></div>
 </div>
@@ -2729,7 +2729,7 @@ técnico en dos dimensiones, determinar la expresión <em>XPath</em> que selecci
 </pre></div>
 </div>
 </li>
-<li><p>Todas los rectángulos cuyo lado horizontal sea el doble de largo que el vertical.</p>
+<li><p>Todos los rectángulos cuyo lado horizontal sea el doble de largo que el vertical.</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>//rectangulo[(@x2-@x1)*(@x2-@x1) = 4(@y2-@y1)*(@y2-@y1)]
 </pre></div>
 </div>

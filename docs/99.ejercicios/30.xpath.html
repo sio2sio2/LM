@@ -138,7 +138,7 @@ de que todos los productos que se venden, se venden por unidades.</p>
 </pre></div>
 </div>
 </li>
-<li><p>El número de facturas de emitidas en noviembre de 2012.</p>
+<li><p>El número de facturas emitidas en noviembre de 2012.</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">factura</span><span class="p">[</span><span class="nf">substring</span><span class="p">(</span><span class="na">@fecha</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="s2">&quot;2012-11&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -263,7 +263,7 @@ determinar la expresión <em>XPath</em> que devuelve:</p>
 </pre></div>
 </div>
 </li>
-<li><p>Los identificadores de los socios que tiene algún libro en préstamo.</p>
+<li><p>Los identificadores de los socios que tienen algún libro en préstamo.</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">lector</span><span class="p">[</span><span class="na">@registro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">prestamo</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@entrega</span><span class="p">)]/</span><span class="na">@lector</span><span class="p">]/</span><span class="na">@registro</span>
 </pre></div>
 </div>
@@ -302,12 +302,12 @@ determinar la expresión <em>XPath</em> que devuelve:</p>
 </pre></div>
 </div>
 </li>
-<li><p>Los libros que tiene todos los ejemplares prestados</p>
+<li><p>Los libros que tienen todos los ejemplares prestados</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">libro</span><span class="p">[</span><span class="nf">count</span><span class="p">(.//</span><span class="nt">ejemplar</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">count</span><span class="p">(.//</span><span class="nt">ejemplar</span><span class="p">[</span><span class="na">@codigo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">prestamo</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@entrega</span><span class="p">)]/</span><span class="na">@ejemplar</span><span class="p">])]</span>
 </pre></div>
 </div>
 </li>
-<li><p>Los libros que tiene más ejemplares prestados que en la biblioteca.</p>
+<li><p>Los libros que tienen más ejemplares prestados que en la biblioteca.</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">libro</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="nf">count</span><span class="p">(.//</span><span class="nt">ejemplar</span><span class="p">[</span><span class="na">@codigo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">prestamo</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@entrega</span><span class="p">)]/</span><span class="na">@ejemplar</span><span class="p">])</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nf">count</span><span class="p">(.//</span><span class="nt">ejemplar</span><span class="p">)]</span>
 </pre></div>
 </div>
@@ -387,7 +387,7 @@ que vende un concesionario, determinar la expresión <em>XPath</em> que devuelve
 </pre></div>
 </div>
 </li>
-<li><p>Los ibiza reservados</p>
+<li><p>Los ibizas reservados</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">coche</span><span class="p">[</span><span class="na">@modelo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">modelo</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;Ibiza&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">][</span><span class="na">@reservado</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -412,7 +412,7 @@ que vende un concesionario, determinar la expresión <em>XPath</em> que devuelve
 </pre></div>
 </div>
 </li>
-<li><p>Los coches reservados a los habitantes de Villaabajo.</p>
+<li><p>Los coches reservados a los habitantes de Villabajo.</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">coche</span><span class="p">[</span><span class="na">@reservado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">cliente</span><span class="p">[.//</span><span class="nt">poblacion</span><span class="o">=</span><span class="s2">&quot;Villaabajo&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -497,7 +497,7 @@ nacionales, determinar la expresión <em>XPath</em> que devuelve:</p>
 </pre></div>
 </div>
 </li>
-<li><p>Los especies animales de interés del parque de Garajonay.</p>
+<li><p>Las especies animales de interés del parque de Garajonay.</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">especie</span><span class="p">[</span><span class="na">@tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;fauna&quot;</span><span class="p">][</span><span class="na">@id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">parque</span><span class="p">[</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Garajonay&quot;</span><span class="p">]/</span><span class="nt">especimen</span><span class="p">/</span><span class="na">@ref</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -512,7 +512,7 @@ nacionales, determinar la expresión <em>XPath</em> que devuelve:</p>
 </pre></div>
 </div>
 </li>
-<li><p>El número de parque nacionales que sólo tiene como especies de interés animales.</p>
+<li><p>El número de parques nacionales que sólo tiene como especies de interés animales.</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">parque</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="nt">especimen</span><span class="p">[</span><span class="na">@ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">especie</span><span class="p">[</span><span class="na">@tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;flora&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">])])</span>
 </pre></div>
 </div>
@@ -552,7 +552,7 @@ habitantes de un municipio, determinar la expresión <em>XPath</em> que devuelve
 </pre></div>
 </div>
 </li>
-<li><p>El número de habitantes de los que no se tiene registrado padre ni madre.</p>
+<li><p>El número de habitantes de los que no se tienen registrados padre ni madre.</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">persona</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@padre</span><span class="p">)][</span><span class="nf">not</span><span class="p">(</span><span class="na">@madre</span><span class="p">)]</span>
 </pre></div>
 </div>
@@ -757,7 +757,7 @@ técnico en dos dimensiones, determinar la expresión <em>XPath</em> que selecci
 </pre></div>
 </div>
 </li>
-<li><p>Todas los rectángulos cuyo lado horizontal sea el doble de largo que el vertical.</p>
+<li><p>Todos los rectángulos cuyo lado horizontal sea el doble de largo que el vertical.</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>//rectangulo[(@x2-@x1)*(@x2-@x1) = 4(@y2-@y1)*(@y2-@y1)]
 </pre></div>
 </div>

@@ -46,8 +46,18 @@ documento), puede simplificarse a:
 
 |XSD|
 -----
-.. todo:: Por escribir cómo validar con |XSD| y xmlstarlet.
+Para validar un |XML| haciendo uso de un |XSD|, puede usarse la opción ``-sp``:
 
+.. code-block:: console
+
+   $ xmlstarlet val -s archivo.xsd archivo.xml
+
+Como en casos anteriores, si se quiere ver cuáles son los errores, hay que
+incluir la opción ``-e``:
+
+.. code-block:: console
+
+   $ xmlstarlet val -s archivo.xsd -e archivo.xml
 
 .. _xmlstarlet-rng:
 .. _xmlstarlet-rnc:

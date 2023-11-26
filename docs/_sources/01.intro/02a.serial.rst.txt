@@ -24,7 +24,7 @@ siguientes:
    línea. Los `cambios de línea
    <https://es.wikipedia.org/wiki/Nueva_l%C3%ADnea>`_ deben estar codificados
    tal como se hace en sistemas MS-DOS, o sea, con los dos caracteres
-   :kbd:`\\r\\n` (``CRLF``)\ [#]_
+   ``\\r\\n`` (``CRLF``)\ [#]_
 #. Cada registro, a su vez, se divide en campos separados entre sí por un
    delimitador. El delimitador es habitualmente una coma, pero no
    necesariamente, por lo que definir cuál es deberá  hacerse en los procesos de
@@ -199,7 +199,7 @@ Conocida su estructura, las reglas básicas son:
   hemos prescindido de todos los espacios. Dependiendo si queremos privilegiar
   la legibilidad o el ahorro en el tamaño, podremos usar más o menos espacios.
 * Por carácter de espaciado se entiende el propio espacio, el cambio de línea
-  (:kbd:`\\n`), el retorno de carro (:kbd:`\\r`) o la tabulación. 
+  (``\\n``), el retorno de carro (``\\r``) o la tabulación. 
 
 El resto de reglas  dependen de cómo se expresan los tipos datos, de modo que
 proseguiremos con ellos.
@@ -244,7 +244,7 @@ Los tipos existentes en |JSON| son:
    Un :dfn:`array` es una colección ordenada de datos de cualquiera de los tipos
    posibles. Aunque habitualmente todos sus elemenetos son de un mismo tipo, no
    es obligado que sea así. Para notarlo, debe encerrarse la colección entre
-   corchetes (de apertura :kbd:`[`  y de cierre :kbd:`]`) y usar como separador
+   corchetes (de apertura ``[``  y de cierre ``]``) y usar como separador
    de elementos la coma. Por ejemplo:
 
    .. code-block:: json
@@ -263,9 +263,9 @@ Los tipos existentes en |JSON| son:
    las siguientes características:
 
    * Para notarlo, se debe encerrar la colección entre llaves de apertura
-     (:kbd:`{`)  y cierre (:kbd:`}`).
+     (``{``)  y cierre (``}``).
    * Como separador entre parejas clave-valor, se usa la coma.
-   * Como separador entre clave y valor se usa ":kbd:`:`".
+   * Como separador entre clave y valor se usa "``:``".
    * Las claves sólo pueden ser de tipo cadena\ [#]_.
    * Cada clave dentro de un mismo objeto debe ser única.
    * Los valores pueden ser de cualquier tipo.   
@@ -401,7 +401,7 @@ Por tanto, podríamos encontrarnos con un archivo así:
    #
 
 Obsérvese que en cualquier momento podemos incluir comentarios anteponiéndolos
-con una almohadilla (:kbd:`#`) tal como se hacen en la *shell* de Linux. Como en
+con una almohadilla (``#``) tal como se hacen en la *shell* de Linux. Como en
 ella, el comentario puede ocupar una línea completa o encontrarse al final de
 una línea de datos (como ocurre en la línea del primer ejemplo correspondiente
 al dato de la edad).
@@ -410,7 +410,7 @@ al dato de la edad).
 
 Directivas
 ----------
-Se notan anteponiéndoles el carácter :kbd:`%` y sirven para dirigir el análisis
+Se notan anteponiéndoles el carácter ``%`` y sirven para dirigir el análisis
 del procesador. Por ahora, la especificación sólo definido dos:
 
 :code:`%YAML`
@@ -778,7 +778,7 @@ existen otros que suelen implementar los procesadores:
 
    .. note:: Por otra parte hemos utilizados una :ref:`etiqueta <yaml-tags>`
       (:code:`!!binary`) que introduciremos un poco más adelante y hemos
-      necesitado incluir la tubería (carácter :kbd:`|`), porque la
+      necesitado incluir la tubería (carácter ``|``), porque la
       representación codificada el binario ocupa varias líneas (véase
       :ref:`cadenas <yaml-str>`).
 

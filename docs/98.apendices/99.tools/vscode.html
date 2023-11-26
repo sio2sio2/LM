@@ -134,18 +134,20 @@ esto haciendo verdadera la opción <code class="docutils literal notranslate"><s
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Si nuestra intención es evaluar expresiones <em>XPath</em> tenemos varias opciones:</p>
+<p>Si nuestra intención es evaluar expresiones <em>XPath</em> o <em>XQuery</em>, tenemos varias
+opciones:</p>
 <ul>
 <li><p>Instalar la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=creinbacher.xpathtester">XPath Tester</a>,
 que permite evaluar expresiones <em>XPath</em> 1.0. Para evaluarlas, basta con pulsar
 <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd> y buscar <em>XPath</em> para que accedamos
 al cuadro de diálogo que nos permite hacer evaluaciones.</p></li>
-<li><p>Utilizar, en realidad, <a class="reference internal" href="../../05.almacenamiento/02.nativas.html#basex"><span class="std std-ref">BaseX</span></a> pero con a través de <strong class="program">Visual
-Studio Code</strong> para lo cual necesitamos:</p>
+<li><p>Utilizar, en realidad, <a class="reference internal" href="../../05.almacenamiento/02.nativas.html#basex"><span class="std std-ref">BaseX</span></a> a través de <strong class="program">Visual Studio Code</strong>
+para lo cual necesitamos:</p>
 <ol class="arabic simple">
 <li><p>Instalar previamente <a class="reference internal" href="../../05.almacenamiento/02.nativas.html#basex"><span class="std std-ref">BaseX</span></a>.</p></li>
-<li><p>Configurar la extensión para que use <em>BaseX</em> como procesador. Para ello,
-necesitamos editar la configuración y añadir:</p>
+<li><p>Configurar la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml">XML Tools</a>
+para que use <em>BaseX</em> como procesador. Para ello, necesitamos editar la
+configuración y añadir:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">&quot;xmlTools.xqueryExecutionEngine&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/bin/basex&quot;</span><span class="p">,</span>
 <span class="w">   </span><span class="nt">&quot;xmlTools.xqueryExecutionArguments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -171,7 +173,7 @@ escapar las contrabarras.</p>
 archivo abierto y seleccionado en el editor.</p></li>
 <li><p>Pulsamos <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd> y ejecutamos <cite>XML Tools:
 Execute Query</cite>.</p></li>
-<li><p>Si hay varios <abbr title="eXtensible  Markup Language">XML</abbr> en el directorio se nos preguntará sobre cual
+<li><p>Si hay varios <abbr title="eXtensible  Markup Language">XML</abbr> en el directorio se nos preguntará sobre cuál
 queremos hacer la consulta, y, si hemos incluido, la opción <kbd class="kbd docutils literal notranslate">-o</kbd> en
 la configuración (tal como se ha sugerido antes), se nos pedirá confirmar
 el archivo de salida. Si no la incluimos, la salida se volcará

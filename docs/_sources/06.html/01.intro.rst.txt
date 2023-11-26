@@ -459,20 +459,12 @@ Para escribir nuestros documentos |HTML| (y |CSS|) es indispensable usar
 al menos editores de texto con resaltado de sintaxis. Por ejemplo:
 
 * vim_, el editor.
-* nano_, básico pero suficiente.
-* `Visual Studio Code`_, que ya hemos utilizado al escribir |XML|, |YAML| o
-  |JSON|.
-
-.. todo:: Añadir comentarios sobre extensiones apropiadas.
+* nano_, básico, pero suficiente.
+* :ref:`Visual Studio Code <vscode>`, que ya hemos utilizado al escribir |XML|,
+  |YAML| o |JSON| y al que podemos añadirle alguna configuración adicional para
+  facilitar la escritura de |HTML|.
 
 .. todo:: Hablar del modo desarrollador de los navegadores.
-
-.. https://code.visualstudio.com/docs/languages/html
-   Live Preview
-   https://marketplace.visualstudio.com/items?itemName=CelianRiboulet.webvalidator
-   https://marketplace.visualstudio.com/items?itemName=smelukov.vscode-csstree : Probar para CSS
-   Mirar tareas y asociación de teclas (¿se puede hacer por espacios de trabajo?)
-   https://www.mclibre.org/consultar/htmlcss/otros/vsc-htmlcss-configuracion.html
 
 .. _html-validacion:
 

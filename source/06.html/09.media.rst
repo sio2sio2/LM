@@ -410,8 +410,14 @@ analizarlos cuáles son los elementos que lo posibilitan.
       <iframe id="audio_2543335" frameborder="0" allowfullscreen="" scrolling="no"
               height="200" style="border:1px solid #EEE; box-sizing:border-box; width:100%;"
               src="https://www.ivoox.com/player_ej_2543335_4_1.html?c1=ff6600">
-         No se puede reporducir este contenido.
+         No se puede reproducir este contenido.
       </iframe>
+
+   .. caution:: No siempre es posible empotrar un documento |HTML| dentro de
+      otro, porque puede ocurrir (y es bastante frecuente) que el servidor donde se encuentre
+      el documento que se desea empotrar no lo permita a través de las cabeceras
+      `X-Frame-Options`_ o `Content-Security-Policy`_. Esta limitación tenemos
+      que tenerla en cuenta también al empotrar con |object|.
 
    .. rst-class:: ej-html
 
@@ -420,7 +426,7 @@ analizarlos cuáles son los elementos que lo posibilitan.
       <iframe id="audio_2543335" frameborder="0" allowfullscreen="" scrolling="no"
               height="200" style="border:1px solid #EEE; box-sizing:border-box; width:100%;"
               src="https://www.ivoox.com/player_ej_2543335_4_1.html?c1=ff6600">
-         No se puede reporducir este contenido.
+         No se puede reproducir este contenido.
       </iframe>
 
    ::
@@ -442,7 +448,7 @@ analizarlos cuáles son los elementos que lo posibilitan.
       </iframe>
 
    .. note:: Es muy común que los servicios que permiten incrustar sus
-      contenidos en nuestras páginas, facilten el código exacto apr llegar a
+      contenidos en nuestras páginas, facilten el código exacto para llevar a
       cabo la tarea.
 
 .. index:: embed
@@ -529,15 +535,15 @@ analizarlos cuáles son los elementos que lo posibilitan.
 
    Esto una página web::
 
-      <object data="https://www.google.es"
-              height=400 width=600 type="text/html">Recurso no disponible</object>
+      <object data="https://sio2sio2.github.io/doc-linux"
+              height=400 width=100% type="text/html">Recurso no disponible</object>
       
    .. rst-class:: ej-html
 
    .. raw:: html
 
-      <object data="https://www.google.es"
-              height=400 width=600 type="text/html">Recurso no disponible</object>
+      <object data="https://sio2sio2.github.io/doc-linux"
+              height=400 width=100% type="text/html">Recurso no disponible</object>
 
    Muestra una imagen::
 
@@ -592,3 +598,5 @@ analizarlos cuáles son los elementos que lo posibilitan.
 .. _formato vtt: https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API
 .. _youtube: https://www.youtube.com
 .. _ivoox: https://www.ivoox.com
+.. _X-Frame-Options: https://developer.mozilla.org/es/docs/Web/HTTP/Headers/X-Frame-Options
+.. _Content-Security-Policy: https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Content-Security-Policy

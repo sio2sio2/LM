@@ -110,9 +110,14 @@ documento), puede simplificarse a:</p>
 </section>
 <section id="xsd">
 <span id="xmlstarlet-xsd"></span><h3><abbr title="XML Schema Definition">XSD</abbr><a class="headerlink" href="#xsd" title="Enlace permanente a este encabezado">¶</a></h3>
-<div class="admonition-todo admonition" id="id2">
-<p class="admonition-title">Por hacer</p>
-<p>Por escribir cómo validar con <abbr title="XML Schema Definition">XSD</abbr> y xmlstarlet.</p>
+<p>Para validar un <abbr title="eXtensible  Markup Language">XML</abbr> haciendo uso de un <abbr title="XML Schema Definition">XSD</abbr>, puede usarse la opción <code class="docutils literal notranslate"><span class="pre">-sp</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>xmlstarlet<span class="w"> </span>val<span class="w"> </span>-s<span class="w"> </span>archivo.xsd<span class="w"> </span>archivo.xml
+</pre></div>
+</div>
+<p>Como en casos anteriores, si se quiere ver cuáles son los errores, hay que
+incluir la opción <code class="docutils literal notranslate"><span class="pre">-e</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>xmlstarlet<span class="w"> </span>val<span class="w"> </span>-s<span class="w"> </span>archivo.xsd<span class="w"> </span>-e<span class="w"> </span>archivo.xml
+</pre></div>
 </div>
 </section>
 <section id="rng-rnc">
