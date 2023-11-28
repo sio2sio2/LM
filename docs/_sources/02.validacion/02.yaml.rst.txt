@@ -1081,8 +1081,34 @@ modos de crearlos:
 
 Ejercicios resueltos
 ====================
+Tomando las versiones |JSON| (o |YAML|) de :ref:`los dos ejercicios ya resueltos
+<yaml-resueltos>`, podemos para el primero definir así su gramática:
 
-.. todo:: Resolver los :ref:`ejercicios de recetas y cadena <yaml-resueltos>`.
+.. dropdown:: recetas.schema.json
+
+   .. literalinclude:: files/recetas.schema.json
+      :language: json
+
+El segundo podemos definirlo con otra gramática que :ref:`referencie la primera
+<json-schema-ref>`:
+
+.. dropdown:: restaurantes.schema.json
+
+   .. literalinclude:: files/restaurantes.schema.json
+      :language: json
+
+Ejercicios propuestos
+=====================
+Tome de la relación de :ref:`ejercicios propuestos para la primera unidad
+<ej-li>` las soluciones |JSON| (o |YAML|, ambas deberían ser equivalentes)  que
+diseñó a partir del :ref:`enunciado 5 <ej10-05>`, y escriba para ellas la
+gramática con |JSON| Schemas.
+
+Asegúrese para cada enunciado de validar ambas soluciones (|JSON| y |YAML|) con
+el mismo esquema |JSON|.
+
+.. note:: Quizás el profesor prefiera proporcionar sus propias soluciones para
+   evitar que el alumno defina la gramática de una solución incompleta o deficiente.
 
 .. rubric:: Notas al pie
 

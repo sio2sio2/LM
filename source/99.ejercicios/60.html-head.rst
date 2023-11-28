@@ -1,6 +1,9 @@
 |HTML|: Cabecera
 ================
 
+.. Comprobar:
+   https://www.ticarte.com/contenido/ejercicios-practicos-de-html5
+
 .. note:: Escriba el documento |HTML| completo, aunque deje sin contenido el
    cuerpo, y compruebe la validez de la solución usando a un :ref:`validador
    adecuado <html-validacion>`.

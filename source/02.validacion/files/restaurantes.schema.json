@@ -1,0 +1,67 @@
+{
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "$id": "facturas.schema.json",
+
+   "title": "Cadena de restaurantes",
+
+   "type": "object",
+   "required": ["recetas", "cadena"],
+   "additionalProperties": false,
+   "properties": {
+        "recetas": {
+            "description": "Recetas tal como se definen en otro esquema",
+            "$ref": "recetas.schema.json/"
+        },
+        "cadena": {
+            "type": "array",
+            "items": {"$ref": "#/$defs/restaurante"}
+        }
+   },
+   "$defs": {
+        "restaurante": {
+            "description": "Restaurante de la cadena",
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["nombre", "tlfo", "direccion", "carta"],
+            "properties": {
+                "nombre": {"type": "string"},
+                "tlfo": {"type": "number"},
+                "direccion": {"$ref": "#/$defs/direccion"},
+                "carta": {
+                    "type": "array",
+                    "items": {"$ref": "#/$defs/plato"},
+                    "minItems": 1
+                }
+            }
+        },
+        "direccion": {
+            "description": "Dirección postal",
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["via", "municipio", "cp"],
+            "properties": {
+                "via": {"type": "string"},
+                "municipio": {"type": "string"},
+                "cp": {"type": "integer"}
+            }
+        },
+        "plato": {
+            "description": "Plato servido en un resturante",
+            "additionalProperties": false,
+            "required": ["plato", "formato"],
+            "properties": {
+                "plato": {
+                    "description": "Nombre de la receta",
+                    "type": "string"
+                },
+                "formato": {
+                    "description": "Formato en que se sirve el plato",
+                    "type": "array",
+                    "items": {
+                        "enum": ["tapa", "racion", "media"]
+                    }
+                }
+            }
+        }
+   }
+}

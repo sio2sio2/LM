@@ -969,11 +969,6 @@ modificación. Esto, no obstante, no es algo que no podamos resolver con
            return $p_mod
    )}
 
-.. https://docs.basex.org/wiki/XQuery_Update#Main-Memory_Updates
-
-.. XQuery:
-   https://www.ticarte.com/contenido/ejercicios-practicos-de-xquery
-
 Ejercicios resueltos
 ====================
 Para ilustrar el uso de *XQuery* tomemos el :ref:`primer ejercicio XML resuelto

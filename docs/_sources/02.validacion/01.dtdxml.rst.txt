@@ -577,6 +577,15 @@ inconvenientes.
      menos de modo simple aplicable) cardinalidades más complejas como que un
      elemento se pueda repetir entre 3 y 25 veces.
 
+Ejercicios propuestos
+*********************
+Tome de la relación de :ref:`ejercicios propuestos para la primera unidad
+<ej-li>` las soluciones |XML| que diseñó a partir del :ref:`enunciado 5 <ej10-05>`,
+y escriba para ellas la gramática |DTD|.
+
+.. note:: Quizás el profesor prefiera proporcionar sus propias soluciones para
+   evitar que el alumno defina la gramática de una solución incompleta o deficiente.
+
 .. rubric:: Notas al pie
 
 .. [#] De hecho, para la definición de :ref:`espacios de nombres <rnc-ns>`, que

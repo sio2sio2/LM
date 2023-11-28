@@ -1,0 +1,39 @@
+{
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "$id": "facturas.schema.json",
+
+    "title": "Recetas de cocina",
+
+   "type": "array",
+   "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["nombre", "tiempo", "ingredientes"],
+        "properties": {
+            "nombre": {"type": "string"},
+            "tiempo": {
+                "description": "Tiempo de elaboración de la receta",
+                "type": "number",
+                "minimumExclusive": 0
+            },
+            "ingredientes": {
+                "type": "array",
+                "minItems": 1,
+                "items": {"$ref": "#/$defs/ingrediente"}
+            }
+        }
+   },
+   "$defs": {
+        "ingrediente": {
+            "description": "Definición del ingrediente en una receta",
+            "type": "object",
+            "properties": {
+                "nombre": {"type": "string"},
+                "unidad": {"enum": ["pieza", "gramo", "ml", "cucharada"]},
+                "cantidad": {"type": "number"}
+            },
+            "additionalProperties": false,
+            "required": ["nombre", "unidad", "cantidad"]
+        }
+   }
+}

@@ -90,6 +90,3 @@ Referencias rápidas
 .. |DAM| replace:: :abbr:`DAM (Desarrollo de Aplicaciones Multiplataforma)`
 .. |DAW| replace:: :abbr:`DAW (Desarrollo de Aplicaciones Web)`
 .. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`
-
-.. Página que desarrolla los contenidos de Lenguajes de Marcas:
-   http://www.ticarte.com/contenido/lenguajes-de-marcas-y-sistemas-de-gestion-de-informacion
