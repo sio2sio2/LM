@@ -116,6 +116,33 @@ permite editar archivos como se hace en el veterano editor.</p>
 izquierdo  señalado:</p>
 <img alt="../../_images/03-vscode-ext.png" src="../../_images/03-vscode-ext.png" />
 </dd>
+<dt><strong>Áreas especiales</strong></dt><dd><p>Podemos abrir algunas áreas especiales que nos permiten consultar o realizar
+ciertas actividades interesantes:</p>
+<ul class="simple">
+<li><p><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd>, abre un pequeño cuadro que nos
+permite introducir instrucciones.</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">M</kbd>, abre en la parte inferior una
+consola que muestra los errores derivados de una determinada acción. Por
+ejemplo, los errores de validación.</p></li>
+</ul>
+</dd>
+</dl>
+<dl id="vscode-atajos">
+<dt><strong>Atajos de teclado</strong></dt><dd><p>El programa da la posibilidad de asociar combinaciones de teclas a
+determinadas acciones, lo cual puede ahorrarnos mucho tiempo. El
+acceso a estas asociaciones se logra pulsando
+<kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">k</kbd>-<kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">s</kbd>. Si deseamos añadir
+alguna asociacion extra a las ya existentes podemos editar un archivo
+<code class="file docutils literal notranslate"><span class="pre">keybindings.json</span></code> pulsando aquí:</p>
+<img alt="../../_images/addkeybinding.png" src="../../_images/addkeybinding.png" />
+<p>El archivo contiene de un array en que cada <em>ítem</em> es una de esas
+asociaciones. Más adelante se sugerirán algunos.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>La ayuda oficial del programa tiene <a class="reference external" href="https://code.visualstudio.com/docs/getstarted/keybindings">una buena explicación
+sobre estos atajos</a>.</p>
+</div>
+</dd>
 </dl>
 </section>
 <section id="xml">
@@ -180,6 +207,10 @@ el archivo de salida. Si no la incluimos, la salida se volcará
 directamente en una subventana.</p></li>
 <li><p>Abrimos el archivo de salida para consultar el resultado.</p></li>
 </ol>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Por hacer</p>
+<p>Añadir un atajo para acceder a <cite>XML Tools: Execute Query</cite>.</p>
+</div>
 </li>
 </ul>
 </section>
@@ -240,8 +271,119 @@ una secuencia:</p>
 </pre></div>
 </div>
 </section>
-<section id="html">
-<span id="vscode-html"></span><h2><abbr title="HyperText Markup Language">HTML</abbr><a class="headerlink" href="#html" title="Enlace permanente a este encabezado">¶</a></h2>
+<section id="html-css">
+<span id="vscode-html"></span><h2><abbr title="HyperText Markup Language">HTML</abbr>/<abbr title="Cascading Style Sheets">CSS</abbr><a class="headerlink" href="#html-css" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Como en el caso del formato <abbr title="JavaScript Object Notation">JSON</abbr>, <strong class="program">Visual Studio Core</strong> tiene soporte
+nativo para <abbr title="HyperText Markup Language">HTML</abbr>, de manera que es capaz de proporcionarnos sugerencias o
+autocompletado sin configuración adicional. Sin embargo, podemos afinar un poco
+para ampliar las facilidades.</p>
+<p>En principio, haremos como con el resto de formatos: crearemos una carpeta
+dedicada a nuestros archivos de <abbr title="HyperText Markup Language">HTML</abbr> y <abbr title="Cascading Style Sheets">CSS</abbr> y aplicaremos un configuración
+específica para ella.</p>
+<dl>
+<dt><strong>Cierre de etiquetas</strong></dt><dd><p>Ya existe soporte para ello, pero si somos de a los que nos gusta no cerrar
+las etiquetas que no necesitan cierre (a fin de cuentas <abbr title="HyperText Markup Language">HTML</abbr>5 ya no es
+<abbr title="eXtensible  Markup Language">XML</abbr>), puede resultarnos molesta que esta funcionalidad se aplique siempre.
+La extensión nativa, desgraciadamente, no tiene posibilidad de definir
+excepciones, pero otras externas, sí. Así que nuestra propuesta es
+instalar y habilitar la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag">Auto Close Tag</a>
+y hacer una pequeña configuración para deshabilitar el cierre nativo y
+habilitar, con las excepciones de deseemos el cierre con esta extensión:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;html.autoClosingTags&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;auto-close-tag.enableAutoCloseTag&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;auto-close-tag.activationOnLanguage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;html&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span><span class="nt">&quot;auto-close-tag.excludedTags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;li&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;tr&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;th&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;td&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;p&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;html.completion.attributeDefaultValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;empty&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>En esta configuración, la primera línea deshabilita el cierre automático
+nativa; la segunda lo habilita para la extensión; la tercera activa  el el
+cierre para <abbr title="HyperText Markup Language">HTML</abbr> (ya que por defecto está deshabilitado)<a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, y la cuarta
+define aquellas etiquetas que no queremos que se cierren automáticamente.
+Además, con la quinta hemos deshabilitado la escritura automática de las
+comillas dobles para los valores de los atributos, ya que no son
+obligatorias.</p>
+</dd>
+<dt><strong>Validación</strong></dt><dd><p>Otra funcionalidad interesante es la validación del documento <abbr title="HyperText Markup Language">HTML</abbr> o <abbr title="Cascading Style Sheets">CSS</abbr>.
+Para ello una buena extensión es <cite>W3C Web Validator</cite> que comprueba la validez
+con los validadores que ofrece el <abbr title="W3 Consortium">W3C</abbr>:</p>
+<img alt="../../_images/validacionHTML.png" src="../../_images/validacionHTML.png" />
+<p>En la parte inferior (la remarcada en rojo) aparecerá una leyenda cada vez
+que tengamos activo un archivo <abbr title="HyperText Markup Language">HTML</abbr> o <abbr title="Cascading Style Sheets">CSS</abbr> que nos permite validar el
+documento. En caso de errores, podremos consultarlos en la venta de errores
+(<kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">M</kbd>).</p>
+</dd>
+<dt><strong>Visualización</strong></dt><dd><p>Otra funcionalidad interesante es la de poder previsualizar la página. Para
+ello es muy útil la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server">Live Preview</a>,
+que mostrará el icono señalado en la captura:</p>
+<img alt="../../_images/livepreview.png" src="../../_images/livepreview.png" />
+<p>La consecuencia de pinchar sobre el icono es ésta:</p>
+<img alt="../../_images/livepreview2.png" src="../../_images/livepreview2.png" />
+<p>es decir, se crea un pequeño servidor web y mediante él se sirve la página
+en un navegador empotrado. Además, podremos seguir escribiendo y las
+modificaciones se realizarán en vivo.</p>
+<p>Una alternativa (aunque no equivalente, porque no habrá servidor web) es
+abrir el documento <abbr title="HyperText Markup Language">HTML</abbr> con un navegador que tengamos instalado en el
+sistema, lo cual requiere dos cosas:</p>
+<ul>
+<li><p>Crear una tarea:</p>
+<p>Para ello puede crearse un archivo <code class="file docutils literal notranslate"><span class="pre">.vscode/tasks.json</span></code> y añadir las
+tareas que abran los navegadores que deseemos:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="s2">&quot;2.0.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tasks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Abrir en Chromium&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;explorer&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;windows&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;C:/Program Files/Brave Software/etc...&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;linux&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;brave-browser&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;${file}&quot;</span><span class="w"> </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;presentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;reveal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;never&quot;</span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;problemMatcher&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Para más información, consulte <a class="reference external" href="https://code.visualstudio.com/docs/editor/tasks">cómo crear tareas</a>.</p>
+</div>
+</li>
+<li><p>Asociar a la tarea <a class="reference internal" href="#vscode-atajos"><span class="std std-ref">un atajo</span></a>, para lo cual tenemos
+que editar <code class="file docutils literal notranslate"><span class="pre">keybindings.json</span></code> tal como se explica allí:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ctrl+l b&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;workbench.action.tasks.runTask&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Abrir en Chromium&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>En este caso, se abrirá <a class="reference external" href="https://brave.com">Brave</a> al pulsar <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">l</kbd>-<kbd class="kbd docutils literal notranslate">b</kbd>.</p>
+</li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notas al pie</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id3" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>La extensión deshabilitó el autocierre para <abbr title="HyperText Markup Language">HTML</abbr> cuando el soporte
+nativo lo introdujo para no entrar en conflicto. Por otra parte, la extensión
+sirve para autocompletar otros lenguajes, así que tal vez nos podría
+interesar añadir más lenguajes al array.</p>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -262,7 +404,7 @@ una secuencia:</p>
 <li><a class="reference internal" href="#xml"><abbr title="eXtensible  Markup Language">XML</abbr></a></li>
 <li><a class="reference internal" href="#json"><abbr title="JavaScript Object Notation">JSON</abbr></a></li>
 <li><a class="reference internal" href="#yaml"><abbr title="YAML Ain't Markup Language">YAML</abbr></a></li>
-<li><a class="reference internal" href="#html"><abbr title="HyperText Markup Language">HTML</abbr></a></li>
+<li><a class="reference internal" href="#html-css"><abbr title="HyperText Markup Language">HTML</abbr>/<abbr title="Cascading Style Sheets">CSS</abbr></a></li>
 </ul>
 </li>
 </ul>

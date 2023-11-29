@@ -53,6 +53,34 @@ Generalidades
 
    .. image:: files/03-vscode-ext.png
 
+**Áreas especiales**
+   Podemos abrir algunas áreas especiales que nos permiten consultar o realizar
+   ciertas actividades interesantes:
+
+   * :kbd:`Ctrl`\ +\ :kbd:`Shift`\ +\ :kbd:`P`, abre un pequeño cuadro que nos
+     permite introducir instrucciones.
+   * :kbd:`Ctrl`\ +\ :kbd:`Shift`\ +\ :kbd:`M`, abre en la parte inferior una
+     consola que muestra los errores derivados de una determinada acción. Por
+     ejemplo, los errores de validación.
+
+.. _vscode-atajos:
+
+**Atajos de teclado**
+   El programa da la posibilidad de asociar combinaciones de teclas a
+   determinadas acciones, lo cual puede ahorrarnos mucho tiempo. El
+   acceso a estas asociaciones se logra pulsando 
+   :kbd:`Ctrl`\ +\ :kbd:`k`\ -\ :kbd:`Ctrl`\ +\ :kbd:`s`. Si deseamos añadir
+   alguna asociacion extra a las ya existentes podemos editar un archivo
+   :file:`keybindings.json` pulsando aquí:
+
+   .. image:: files/addkeybinding.png
+
+   El archivo contiene de un array en que cada *ítem* es una de esas
+   asociaciones. Más adelante se sugerirán algunos.
+
+   .. seealso:: La ayuda oficial del programa tiene `una buena explicación
+      sobre estos atajos <https://code.visualstudio.com/docs/getstarted/keybindings>`_.
+
 .. _vscode-xml:
 
 |XML|
@@ -124,6 +152,8 @@ opciones:
      el archivo de salida. Si no la incluimos, la salida se volcará
      directamente en una subventana.
   #. Abrimos el archivo de salida para consultar el resultado.
+
+  .. todo:: Añadir un atajo para acceder a `XML Tools: Execute Query`.
 
 .. _vscode-json:
 
@@ -198,15 +228,141 @@ una secuencia:
 
 .. _vscode-html:
 
-|HTML|
-======
+|HTML|/|CSS|
+============
+Como en el caso del formato |JSON|, :program:`Visual Studio Core` tiene soporte
+nativo para |HTML|, de manera que es capaz de proporcionarnos sugerencias o
+autocompletado sin configuración adicional. Sin embargo, podemos afinar un poco
+para ampliar las facilidades.
+
+En principio, haremos como con el resto de formatos: crearemos una carpeta
+dedicada a nuestros archivos de |HTML| y |CSS| y aplicaremos un configuración
+específica para ella.
+
+**Cierre de etiquetas**
+   Ya existe soporte para ello, pero si somos de a los que nos gusta no cerrar
+   las etiquetas que no necesitan cierre (a fin de cuentas |HTML|\ 5 ya no es
+   |XML|), puede resultarnos molesta que esta funcionalidad se aplique siempre.
+   La extensión nativa, desgraciadamente, no tiene posibilidad de definir
+   excepciones, pero otras externas, sí. Así que nuestra propuesta es
+   instalar y habilitar la extensión `Auto Close Tag
+   <https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag>`_
+   y hacer una pequeña configuración para deshabilitar el cierre nativo y
+   habilitar, con las excepciones de deseemos el cierre con esta extensión:
+
+   .. code-block:: json
+
+      {
+          "html.autoClosingTags": false,
+          "auto-close-tag.enableAutoCloseTag": true,
+          "auto-close-tag.activationOnLanguage": [ "html" ]
+          "auto-close-tag.excludedTags": [
+              "li",
+              "tr",
+              "th",
+              "td",
+              "p"
+          ],
+          "html.completion.attributeDefaultValue": "empty",
+      }
+
+   En esta configuración, la primera línea deshabilita el cierre automático
+   nativa; la segunda lo habilita para la extensión; la tercera activa  el el
+   cierre para |HTML| (ya que por defecto está deshabilitado)\ [#]_, y la cuarta
+   define aquellas etiquetas que no queremos que se cierren automáticamente.
+   Además, con la quinta hemos deshabilitado la escritura automática de las
+   comillas dobles para los valores de los atributos, ya que no son
+   obligatorias.
+
+**Validación**
+   Otra funcionalidad interesante es la validación del documento |HTML| o |CSS|.
+   Para ello una buena extensión es `W3C Web Validator` que comprueba la validez
+   con los validadores que ofrece el |W3C|:
+
+   .. image:: files/validacionHTML.png
+
+   En la parte inferior (la remarcada en rojo) aparecerá una leyenda cada vez
+   que tengamos activo un archivo |HTML| o |CSS| que nos permite validar el
+   documento. En caso de errores, podremos consultarlos en la venta de errores
+   (:kbd:`Ctrl`\ +\ :kbd:`Shift`\ +\ :kbd:`M`).
+
+**Visualización**
+   Otra funcionalidad interesante es la de poder previsualizar la página. Para
+   ello es muy útil la extensión `Live Preview
+   <https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server>`_,
+   que mostrará el icono señalado en la captura:
+
+   .. image:: files/livepreview.png
+
+   La consecuencia de pinchar sobre el icono es ésta:
+
+   .. image:: files/livepreview2.png
+
+   es decir, se crea un pequeño servidor web y mediante él se sirve la página
+   en un navegador empotrado. Además, podremos seguir escribiendo y las
+   modificaciones se realizarán en vivo.
+
+   Una alternativa (aunque no equivalente, porque no habrá servidor web) es
+   abrir el documento |HTML| con un navegador que tengamos instalado en el
+   sistema, lo cual requiere dos cosas:
+
+   + Crear una tarea:
+
+     Para ello puede crearse un archivo :file:`.vscode/tasks.json` y añadir las
+     tareas que abran los navegadores que deseemos:
+
+     .. code-block:: json
+
+        {
+            "version":"2.0.0",
+            "tasks": [
+                {
+                    "label": "Abrir en Chromium",
+                    "command": "explorer",
+                    "windows":  { "command": "C:/Program Files/Brave Software/etc..." },
+                    "linux": { "command": "brave-browser" },
+                    "args": [ "${file}" ],
+                    "presentation": {"reveal": "never"},
+                    "problemMatcher": []
+                }
+            ]
+        }
+
+     .. seealso:: Para más información, consulte `cómo crear tareas
+        <https://code.visualstudio.com/docs/editor/tasks>`_.
+
+   + Asociar a la tarea :ref:`un atajo <vscode-atajos>`, para lo cual tenemos
+     que editar :file:`keybindings.json` tal como se explica allí:
+   
+     .. code-block:: json
+
+        [
+            {
+                "key": "ctrl+l b",
+                "command": "workbench.action.tasks.runTask",
+                "args": "Abrir en Chromium"
+            }
+        ]
+
+     En este caso, se abrirá Brave_ al pulsar :kbd:`Ctrl`\ +\ :kbd:`l`\ -\
+     :kbd:`b`.
+
 .. https://code.visualstudio.com/docs/languages/html
-   Live Preview
-   https://marketplace.visualstudio.com/items?itemName=CelianRiboulet.webvalidator
    https://marketplace.visualstudio.com/items?itemName=smelukov.vscode-csstree : Probar para CSS
    Mirar tareas y asociación de teclas (¿se puede hacer por espacios de trabajo?)
    https://www.mclibre.org/consultar/htmlcss/otros/vsc-htmlcss-configuracion.html
 
+.. rubric:: Notas al pie
+
+.. [#] La extensión deshabilitó el autocierre para |HTML| cuando el soporte
+   nativo lo introdujo para no entrar en conflicto. Por otra parte, la extensión
+   sirve para autocompletar otros lenguajes, así que tal vez nos podría
+   interesar añadir más lenguajes al array.
+
 
 .. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`
 .. |DTD| replace:: :abbr:`DTD (Document Type Definition)`
+.. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`
+.. |W3C| replace:: :abbr:`W3C (W3 Consortium)`
+
+.. _Brave: https://brave.com
