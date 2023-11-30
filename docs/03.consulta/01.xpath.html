@@ -2050,8 +2050,9 @@ Solución…<div class="sd-summary-down docutils">
 </section>
 <section id="ejercicios-propuestos">
 <h2><span class="section-number">3.1.6. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Enlace permanente a este encabezado">¶</a></h2>
-<blockquote>
-<div><ol class="arabic simple">
+<ol class="arabic">
+<li><p>Dada la solución propuesta para almacenar la información sobre las facturas de una empresa, determinar la expresión <em>XPath</em> que selecciona:</p>
+<ol class="arabic simple">
 <li><p>Las facturas que tenían algún descuento</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="na">@descuento</span><span class="p">)</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="na">@descuento</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
@@ -2129,7 +2130,7 @@ de que todos los productos que se venden, se venden por unidades.</p>
 </pre></div>
 </div>
 </li>
-<li><p>Las productos de la factura con identificador «f01» cuyo iva es normal.</p>
+<li><p>Los productos de la factura con identificador «f01» cuyo iva es normal.</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">producto</span><span class="p">[</span><span class="na">@iva</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;normal&quot;</span><span class="p">][</span><span class="na">@codigo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="na">@codigo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;f01&quot;</span><span class="p">]/</span><span class="nt">item</span><span class="p">/</span><span class="na">@producto</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -2175,8 +2176,7 @@ de que todos los productos que se venden, se venden por unidades.</p>
 </div>
 </li>
 </ol>
-</div></blockquote>
-<ol class="arabic">
+</li>
 <li><p>Dada la solución propuesta para almacenar la información sobre los libros y préstamos en una biblioteca,
 determinar la expresión <em>XPath</em> que devuelve:</p>
 <ol class="arabic simple">

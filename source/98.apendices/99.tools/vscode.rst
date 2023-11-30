@@ -239,6 +239,8 @@ En principio, haremos como con el resto de formatos: crearemos una carpeta
 dedicada a nuestros archivos de |HTML| y |CSS| y aplicaremos un configuración
 específica para ella.
 
+.. _vscode-html-close:
+
 **Cierre de etiquetas**
    Ya existe soporte para ello, pero si somos de a los que nos gusta no cerrar
    las etiquetas que no necesitan cierre (a fin de cuentas |HTML|\ 5 ya no es
@@ -274,6 +276,8 @@ específica para ella.
    comillas dobles para los valores de los atributos, ya que no son
    obligatorias.
 
+.. _vscode-html-val:
+
 **Validación**
    Otra funcionalidad interesante es la validación del documento |HTML| o |CSS|.
    Para ello una buena extensión es `W3C Web Validator` que comprueba la validez
@@ -285,6 +289,8 @@ específica para ella.
    que tengamos activo un archivo |HTML| o |CSS| que nos permite validar el
    documento. En caso de errores, podremos consultarlos en la venta de errores
    (:kbd:`Ctrl`\ +\ :kbd:`Shift`\ +\ :kbd:`M`).
+
+.. _vscode-html-visu:
 
 **Visualización**
    Otra funcionalidad interesante es la de poder previsualizar la página. Para

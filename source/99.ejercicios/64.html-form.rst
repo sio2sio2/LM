@@ -1,41 +1,46 @@
 |HTML|: Formularios
 ===================
-1. Escriba una página |HTML| que contenga un formulario
-   con los siguientes campos:
+
+#. Escriba una página |HTML| que contenga un formulario
+   con los siguientes campos agrupados en dos categorías:
 
    Información personal
-      a. Nombre.
-      #. Apellidos.
-      #. Fecha de nacimiento.
-      #. Sexo (Hombre/Mujer).
-      #. Estado civil (Soltero/Casado/Viudo/Divorciado).
-      #. Teléfono.
-      #. Teléfono móvil.
-      #. Aficiones: 
-            
-         Debe ser una lista que incluya los siguientes aspectos
-         (que no son excluyentes entre sí):
-         - Literatura.
-         - Cine.
-         - Música.
-         - Informática.
-         - Actividades deportivas.
-         - Manualidades.
-         - Otras (especifíquelas).
+      .. rst-class:: simple
 
-         Debe haber, además, un cuadro de texto deshabilitado que
-         se habilitaría al marcar la opción "*Otras*". Esto último
-         debe hacerse con *Javascript*, así que la habilitación
-         automática no será necesario hacerla.
+         a. Nombre.
+         #. Apellidos.
+         #. Fecha de nacimiento.
+         #. Sexo (Hombre/Mujer).
+         #. Estado civil (Soltero/Casado/Viudo/Divorciado).
+         #. Teléfono.
+         #. Teléfono móvil.
+         #. Aficiones: Debe ser una lista que incluya los siguientes aspectos (que
+            no son excluyentes entre sí):
 
-   Información de usuario
-      a. Nombre de usuario (debe ser una sola palabra y el primer caracter
-         una letra).
-      #. Contraseña (debe repetirse dos veces).
-      #. ¿Cómo llegó a esta web?
-         - Publicidad.
-         - A través de un amigo.
-         - A través de buscadores.
-      #. Puntúe la web (entre 0 y 10).
+            - Literatura.
+            - Cine.
+            - Música.
+            - Informática.
+            - Actividades deportivas.
+            - Manualidades.
+            - Otras (especifíquelas).
+
+            Debe haber, además, un cuadro de texto deshabilitado que
+            se habilitaría si se marcase la opción "*Otras*". Como esto último
+            requiere *Javascript*, quedará pendiente de hacer.
+
+   Información de usuario:
+      .. rst-class:: simple
+
+         a. Nombre de usuario (debe ser una sola palabra y el primer carácter
+            una letra).
+         #. Contraseña (debe repetirse dos veces).
+         #. ¿Cómo llegó a esta web?
+
+            - Publicidad.
+            - A través de un amigo.
+            - A través de buscadores.
+
+         #. Puntúe la web (entre 0 y 10).
 
    El formulario debería enviarse por el método POST

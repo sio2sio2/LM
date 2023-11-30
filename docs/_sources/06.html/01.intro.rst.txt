@@ -380,7 +380,7 @@ recomendación oficial de |HTML| **5.0**.
 
 .. note:: En un primer momento, |WHATWG| optó por hacer del estándar |HTML| una 
    `norma viva <https://html.spec.whatwg.org/multipage/>`_, esto es, una versión
-   que no se atiene a números sino que está en continuo proceso de redacción. De
+   que no se atiende a números sino que está en continuo proceso de redacción. De
    hecho, la norma ni siquiera refiere el **5** en su título. EL |W3C|, por
    contra y a su rebufo por haber perdido el pulso inicial, decidió tomar la
    versión viva y publicar cada cierto tiempo una versión númerada. Fue así como
@@ -450,21 +450,20 @@ hay multiples tecnologías implicadas. Las más destacadas son:
 
 Herramientas
 ============
-Para hacer más sencilla la escritura de nuestro documentos, podemos hacer uso
-las siguientes herramientas:
+Para hacer más sencilla la escritura de nuestro documentos, podemos hacer uso de
+algunas herramientas:
 
 Edición
 -------
-Para escribir nuestros documentos |HTML| (y |CSS|) es indispensable usar
-al menos editores de texto con resaltado de sintaxis. Por ejemplo:
+Para escribir los documentos |HTML| (y |CSS|) es indispensable usar al menos
+editores de texto con resaltado de sintaxis. Son alernativas:
 
 * vim_, el editor.
 * nano_, básico, pero suficiente.
 * :ref:`Visual Studio Code <vscode>`, que ya hemos utilizado al escribir |XML|,
   |YAML| o |JSON| y al que podemos añadirle alguna configuración adicional para
-  facilitar la escritura de |HTML|.
-
-.. todo:: Hablar del modo desarrollador de los navegadores.
+  :ref:`facilitar la escritura de HTML <vscode-html>`. Lo tomaremos como editor
+  de referencia también para este bloque de tecnologías web.
 
 .. _html-validacion:
 
@@ -484,6 +483,10 @@ podemos usar validadores en línea como:
 **CSS**
    * `El validador CSS del W3C <https://jigsaw.w3.org/css-validator/>`_.
 
+.. note:: Si se usa :program:`Visual Studio Code` pueden integrarse estas
+   validaciones dentro del propio editor. Consulte ls :ref:`instrucciones para
+   escribir con él HTML <vscode-html>`.
+
 Recetarios
 ----------
 Los recetarios presentan de modo resumido los elementos del lenguaje a fin de
@@ -501,41 +504,66 @@ ofrecer una referencia rápida. Existen muchos:
      De entre los ofrecidos, salvamos el :download:`formato PDF
      <files/CSS-CHEAT-SHEET.pdf>`.
 
-Pruebas
--------
+Visualización
+-------------
 Para comprobar nuestras páginas |HTML| es obvio que necesitamos un navegador
 reciente que soporte convenientemente |HTML|\ 5 y |CSS|\ 3. Cualquiera de los
 más usados debería valernos:
 
-* Chromium_.
-* Firefox_.
+* Chromium_ (o derivados).
+* Firefox_ (o derivados).
 * Safari_.
 
 En principio, nos bastará con almacenar en el disco local los archivos y acceder
-a ellos abriéndolos con el navegador. Esto, por supuesto, no supone una
-transferencia |HTTP|, pero para los objetivos del curso no es importante. Si por
-el contrario, el curso fuera más ambicioso, necesitaríamos montar un servidor
-web en el que alojar nuestras páginas. En este otro caso, dependería de cuán
-ambicioso fuera nuestro propósito:
+a ellos abriéndolos con el navegador. Si usamos :program:`Visual Studio Code`,
+tendremos :ref:`facilidades para realizar la operación <vscode-html-visu>`.
 
-* Si el propósito se limita a programación en el lado del cliente (esto es,
-  |HTML|, |CSS| y *Javascript* ejecutado por el navegador), podría valernos con
-  seguir abriendo los ficheros directamente con el navegador o, si esto no
-  basta porque necesitamos hacer `peticiones AJAX
-  <https://developer.mozilla.org/es/docs/Web/Guide/AJAX>`_, montar un modesto
-  servidor web que sirva contenido estático con:
+Ver archivos, locales, sin embargo no supone una transferencia |HTTP|, lo cual
+tiene importancia, pero no para los objetivos del curso que son modestos. En
+cualquier caso, es posible improvisar un miniservidor web para alojar nuestras
+páginas:
+
+* :program:`Visual Studio Code` nos lo permite a través de la extensión `Live
+  Preview
+  <https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server>`_.
+* Una alternativa universal es montar un modesto servidor con Python, para lo
+  cual podemos hacer lo siguiente:
 
   .. code-block:: console
 
      $ cd /ruta/a/los/ficheros
      $ python3 -m http.server 8080
 
-   Y listo. Un servidor web local escuchando en el puerto **8080**.
+  Y listo. Un servidor web local escuchando en el puerto **8080**.
 
-* Si requerimos programación en el lado del servidor, entonces sí tendremos que
-  montar un servidor real que sea capaz de ejecutar los *scripts*.
+Sea como sea, los ordenadores modernos incluyen todos una **herramienta de
+desarrollador** a la cual (al menos en derivados de Firefox_ y Chromium_) se
+accede pulsando :kbd:`Ctrl`\ +\ :kbd:`Shift`\ +\ :kbd:`i`, o bien, colocándonos
+sobre alguna parte de la página web y abriendo el menú contextual eligiendo
+"*Inspeccionar*". En este segundo caso, la herramienta se abrirá en la pestaña
+en la que se presenta el |DOM| completo y justamente seleccionado el elemento
+|HTML| correspondiente. Es muy potente y nos permite:
 
-Además, existen también algunas **herramientas en línea** muy convenientes:
+* Consultar y alterar el |DOM|.
+* Consultar y alterar los documentos adicionales cargados (p.e. alguna propiedad
+  |CSS|).
+* Analizar la carga de archivos.
+* Abrir una consola de *Javascript* y ejecutar código.
+* etc.
+
+.. seealso:: Si quiere profundizar en esta fantástica herramienta, puede echarle
+   un vistazo a `este artículo de MDN sobre la herramienta de Firefox
+   <https://developer.mozilla.org/es/docs/Learn/Common_questions/Tools_and_setup/What_are_browser_developer_tools>`_.
+   En realidad, todas funcionan de forma semejante, así que puede valernos su
+   lectura aunque utilicemos otro navegador.
+
+Pruebas de concepto
+-------------------
+Es frecuente que, cuando creamos documentos web, necesitemos realizar una prueba
+de concepto sobre algún particular de |HTML|, |CSS| o Javascript_. Por
+supuesto, podemos hacer pruebas sobre un documento local, pero existen páginas
+en internet que nos permiten realizarlas directamente sobre ellas y compartir el
+resultado con otros desarrolladores:
 
 jsfiddle.net_
    Es un sitio web que permite crear pruebas de concepto en |HTML|, |CSS| y
@@ -583,6 +611,7 @@ jsbin.com_
 .. |DTD| replace:: :abbr:`DTD (Document Type Definition)`
 .. |URN| replace:: :abbr:`URN (Uniform Resource Name)`
 .. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`
+.. |DOM| replace:: :abbr:`DOM (Document Object Model)`
 
 .. _Apple: https://www.apple.com
 .. _Safari: https://es.wikipedia.org/wiki/Safari_(navegador)

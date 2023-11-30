@@ -103,7 +103,7 @@ un estudio más detallado y extenso.</p></li>
 (aunque no necesariamente) a partir de una fuente <abbr title="eXtensible  Markup Language">XML</abbr> (aunque, de nuevo, no
 necesariamente). Para ello, usa <a class="reference internal" href="../03.consulta/01.xpath.html#xpath"><span class="std std-ref">XPath</span></a> como herramienta de selección la
 información y una estructura prototípica llamada <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> por las cinco
-cláusulas con las que se construye originariamente<a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Cumple en el mundo
+cláusulas con las que se construye originariamente<a class="footnote-reference brackets" href="#id5" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Cumple en el mundo
 <abbr title="eXtensible  Markup Language">XML</abbr> exactamente la misma función que las cláusula <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> en el mundo
 <abbr title="Strctured Query Language">SQL</abbr>.</p>
 <p>En cualquier caso, aunque lo que caracteriza a <em>XQuery</em> es la estructura
@@ -202,7 +202,7 @@ haremos utilizando expresiones <em>XPath</em> ajenas a cualquier nodo:</p>
 Mi mascota es un gato.
 </pre></div>
 </div>
-<p>Obsérvese que para construir la secuencia hemos usado una expresión <em>XPath</em><a class="footnote-reference brackets" href="#id5" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> y para expresar cuál debe ser el resultado otra. Además, hemos aprovechado
+<p>Obsérvese que para construir la secuencia hemos usado una expresión <em>XPath</em><a class="footnote-reference brackets" href="#id6" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> y para expresar cuál debe ser el resultado otra. Además, hemos aprovechado
 para presentar <strong>cómo escribir comentarios</strong> dentro del código. Añadamos algunos
 elementos más a la construcción:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;perro&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gato&quot;</span><span class="p">)</span>
@@ -240,6 +240,41 @@ que devuelva un resultado lógico:</p>
 </pre></div>
 </div>
 <p>En esta ocasión evitaremos tener como mascota un «<em>perro bonito</em>».</p>
+<p>Otro aspecto, especialmente útil cuando generamos una salida de puro texto, es
+el hecho de que la evaluación de la expresión puede devolver una secuencia<a class="footnote-reference brackets" href="#id7" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>, en cuyo caso el procesador suele escribir cada ítem de la secuencia
+en línea aparte. Por ejemplo:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;perro&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gato&quot;</span><span class="p">)</span>
+<span class="k">return</span>
+<span class="w">   </span><span class="p">(</span><span class="s2">&quot;animal:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>devuelve:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">animal</span><span class="p">:</span>
+<span class="n">perro</span>
+<span class="n">animal</span><span class="p">:</span>
+<span class="n">gato</span>
+</pre></div>
+</div>
+<p>Pero también podríamos haber hecho que la propia estructura <code class="docutils literal notranslate"><span class="pre">FOR</span></code> fuera el
+ítem de una secuencia:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+<span class="w">   </span><span class="s2">&quot;Las mascotas de mi casa:&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;perro&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gato&quot;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">return</span>
+<span class="w">      </span><span class="s2">&quot;  - Un &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="s2">&quot;Y no tengo nada más que decir.&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Esto devolverá el siguiente resultado:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Las mascotas de mi casa:
+  - Un perro.
+  - Un gato.
+Y no tengo nada más que decir.
+</pre></div>
+</div>
+<p>Como puede apreciarse la primera y la última frase no forman parte de ninguna
+estructura iterativa por lo que sólo se escriben una vez.</p>
 <div class="admonition caution">
 <p class="admonition-title">Prudencia</p>
 <p>Es importante tener claro que esta estructura iterativa, aunque
@@ -316,23 +351,8 @@ ordenación para que se haga de mayor a menor.</p>
 </dl>
 <dl id="xquery-return">
 <dt><strong>RETURN</strong></dt><dd><p>Indica mediante una expresión <em>XPath</em> qué debe devolver cada iteración del
-bucle. Tenga presente que, si no generamos <a class="reference internal" href="#xquery-output-xml"><span class="std std-ref">una salida XML</span></a>, esta cláusula sólo podrá contener una expresión
-<em>XPath</em>. En caso de que la cláusula devuelva una secuencia, el procesador
-suele escribir cada ítem en una línea distinta. Por eso motivo:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;perro&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gato&quot;</span><span class="p">)</span>
-<span class="k">return</span>
-<span class="w">   </span><span class="p">(</span><span class="s2">&quot;animal:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>devuelve:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">animal</span><span class="p">:</span>
-<span class="n">perro</span>
-<span class="n">animal</span><span class="p">:</span>
-<span class="n">gato</span>
-</pre></div>
-</div>
-<p>Puede, además, incluirse otra estructura <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> lo que
-creará un bucle anidado:</p>
+bucle. Tenga presente que, si no generamos <a class="reference internal" href="#xquery-output-xml"><span class="std std-ref">una salida XML</span></a>, esta cláusula sólo podrá contener una única
+<em>XQuery</em>, lo que permite anidar otro estructura <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr>:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;perro&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gato&quot;</span><span class="p">)</span>
 <span class="k">return</span>
 <span class="w">   </span><span class="p">(</span>
@@ -360,13 +380,15 @@ Nombres habituales de gato son:
 <p>Hasta ahora, para ilustrar los principios de la estructura <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr>, estamos
 generando resultados que son mero texto. Sin embargo, podemos también generar
 una salida <abbr title="eXtensible  Markup Language">XML</abbr> y en este caso, el uso y comportamiento de <em>XQuery</em> será
-ligeramente distinto:</p>
+ligeramente distinto, ya que:</p>
 <ul class="simple">
-<li><p>Antes de la estructura <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> podemos añadir el contenido <abbr title="eXtensible  Markup Language">XML</abbr> que prologa
-el que generan las iteraciones.</p></li>
-<li><p>Para expresar la estructura del documento <abbr title="eXtensible  Markup Language">XML</abbr>, tenemos dos alternativas: los
-contructores directos y los constructores computados, que podemos usar a
-voluntad.</p></li>
+<li><p>Cuando la salida es de texto, se evalúa una única expresión <em>XQuery</em>, por lo
+que la estrategia para que se lograr evaluar varias, es devolver una
+secuencia, cada uno de cuyos ítem es una expresión <em>XQuery</em>.</p></li>
+<li><p>Un documento <abbr title="eXtensible  Markup Language">XML</abbr> está constituido por múltiples nodos (elementos, atributos,
+etc), el contenido de cada de los cuales podrá ser un expresión <em>XQuery</em>. Para
+generar cada nodo hay dos alternativas: los contructores directos y los
+constructores computados, que podemos usar a voluntad.</p></li>
 </ul>
 <dl id="xquery-const-directo">
 <dt><strong>Constructores directos</strong></dt><dd><p>Los <em class="dfn">constructores directos</em> son aquellos que consisten en escribir
@@ -384,7 +406,7 @@ expresión <em>XPath</em> a evaluar mediante el uso de corchetes <code class="do
 </pre></div>
 </div>
 <p>Sin embargo, cuando la entrada es un documento <abbr title="eXtensible  Markup Language">XML</abbr> tenemos que tener
-cuidado, porque las expresiones no siempre serán devolverán valores atómicos
+cuidado, porque las expresiones no siempre devolverán valores atómicos
 y eso influye enn el comportamiento. Por ejemplo, si generamos un <abbr title="eXtensible  Markup Language">XML</abbr> a
 partir del <a class="reference internal" href="../01.intro/02b.marcas.html#xml-ejemplo"><span class="std std-ref">ejemplo sobre casilleros</span></a> usando este código</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;lista&gt;</span>
@@ -1124,17 +1146,23 @@ que se pide para el <a class="reference internal" href="../98.apendices/41.xslt.
 </ol>
 <p class="rubric">Nota al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id4" role="note">
+<aside class="footnote brackets" id="id5" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
 <p>Porque estas son las cláusulas de las que podía constar la estructura. La
 versión <strong>3</strong> añadió otras cláusulas adicionales.</p>
 </aside>
-<aside class="footnote brackets" id="id5" role="note">
+<aside class="footnote brackets" id="id6" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
 <p>En realidad, se puede escribir conjunto mayor de expresiones de las
 validas para <em>XPath</em>, ya que <em>XQuery</em> soportas cláusulas inexistentes en
 <em>XPath</em> como la propia estructura <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> o los <a class="reference internal" href="#xquery-output-xml"><span class="std std-ref">constructores para
 generar una salida XML</span></a>.</p>
+</aside>
+<aside class="footnote brackets" id="id7" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
+<p>En realidad, podríamos considerar que la evaluación de una estructura
+<abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> devuelve en sí misma una secuencia con tantos ítems como iteraciones
+haya.</p>
 </aside>
 </aside>
 </section>

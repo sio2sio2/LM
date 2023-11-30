@@ -3,6 +3,8 @@
 
 .. Comprobar:
    https://www.ticarte.com/contenido/ejercicios-practicos-de-html5
+   https://francescricart.com/tutorial-html/ejercicios-html/
+   https://desarrolloweb.dlsi.ua.es/libros/html-css/ejercicios
 
 .. note:: Escriba el documento |HTML| completo, aunque deje sin contenido el
    cuerpo, y compruebe la validez de la solución usando a un :ref:`validador

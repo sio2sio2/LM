@@ -1,7 +1,25 @@
 |HTML|: Tablas
 ==============
 
-#. Crear un |HTML| con una tabla que contenga el horario de clases del grupo y
+#. Recree una siguiente tabla con las siguientes columnas:
+
+   .. image:: /99.ejercicios/files/colrow.png
+
+   Para que la tabla tenga tal aspecto, añada al documento |HTML| el siguiente
+   estilo:
+
+   .. code-block:: css
+
+      table {
+          border-collapse:collapse;
+      }
+      td {
+          border: solid black 1px;
+          padding: 2em;
+          text-align: center;
+      }
+
+#. Cree un |HTML| con una tabla que contenga el horario de clases del grupo y
    que cumpla los siguientes requisitos:
 
    + Deben aparecer como cabecera los días de lunes a viernes.

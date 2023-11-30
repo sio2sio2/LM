@@ -1,5 +1,6 @@
 *XPath*
 =======
+
 #. Dada la solución propuesta para almacenar la información sobre las facturas de una empresa, determinar la expresión *XPath* que selecciona:
 
    .. rst-class:: simple
@@ -126,7 +127,7 @@
 
             //factura[@cliente = //cliente[nombre = "Perico de los Palotes"]/@id]
 
-   #. Las productos de la factura con identificador "f01" cuyo iva es normal.
+   #. Los productos de la factura con identificador "f01" cuyo iva es normal.
 
       .. rst-class:: sol-oculta
 

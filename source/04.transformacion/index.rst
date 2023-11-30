@@ -194,6 +194,51 @@ que devuelva un resultado lógico:
 
 En esta ocasión evitaremos tener como mascota un "*perro bonito*".
 
+Otro aspecto, especialmente útil cuando generamos una salida de puro texto, es
+el hecho de que la evaluación de la expresión puede devolver una secuencia\
+[#]_, en cuyo caso el procesador suele escribir cada ítem de la secuencia
+en línea aparte. Por ejemplo:
+
+.. code-block:: xquery
+
+   for $animal in ("perro", "gato")
+   return
+      ("animal:", $animal)
+
+devuelve:
+
+.. code-block::
+
+   animal:
+   perro
+   animal:
+   gato
+
+Pero también podríamos haber hecho que la propia estructura ``FOR`` fuera el
+ítem de una secuencia:
+
+.. code-block:: xquery
+
+   (
+      "Las mascotas de mi casa:",
+      for $animal in ("perro", "gato")
+      return
+         "  - Un " || $animal || ".",
+      "Y no tengo nada más que decir."
+   )
+
+Esto devolverá el siguiente resultado:
+
+.. code-block:: none
+
+   Las mascotas de mi casa:
+     - Un perro.
+     - Un gato.
+   Y no tengo nada más que decir.
+
+Como puede apreciarse la primera y la última frase no forman parte de ninguna
+estructura iterativa por lo que sólo se escriben una vez.
+
 .. caution:: Es importante tener claro que esta estructura iterativa, aunque
    formalmente parecida a la de la programación estructurada, no actúa del mismo
    modo. Las iteraciones, aunque respeten el orden al mostrar los resultados, no
@@ -283,27 +328,8 @@ Analicemos más pormenorizadamente cada parte:
 **RETURN**
    Indica mediante una expresión *XPath* qué debe devolver cada iteración del
    bucle. Tenga presente que, si no generamos :ref:`una salida XML
-   <xquery-output-xml>`, esta cláusula sólo podrá contener una expresión
-   *XPath*. En caso de que la cláusula devuelva una secuencia, el procesador
-   suele escribir cada ítem en una línea distinta. Por eso motivo:
-
-   .. code-block:: xquery
-
-      for $animal in ("perro", "gato")
-      return
-         ("animal:", $animal)
-
-   devuelve:
-
-   .. code-block::
-
-      animal:
-      perro
-      animal:
-      gato
-
-   Puede, además, incluirse otra estructura |FLWOR| lo que
-   creará un bucle anidado:
+   <xquery-output-xml>`, esta cláusula sólo podrá contener una única
+   *XQuery*, lo que permite anidar otro estructura |FLWOR|:
 
    .. code-block:: xquery
 
@@ -334,13 +360,15 @@ Construcción de salida |XML|
 Hasta ahora, para ilustrar los principios de la estructura |FLWOR|, estamos
 generando resultados que son mero texto. Sin embargo, podemos también generar
 una salida |XML| y en este caso, el uso y comportamiento de *XQuery* será
-ligeramente distinto:
+ligeramente distinto, ya que:
 
-* Antes de la estructura |FLWOR| podemos añadir el contenido |XML| que prologa
-  el que generan las iteraciones.
-* Para expresar la estructura del documento |XML|, tenemos dos alternativas: los
-  contructores directos y los constructores computados, que podemos usar a
-  voluntad.
+* Cuando la salida es de texto, se evalúa una única expresión *XQuery*, por lo
+  que la estrategia para que se lograr evaluar varias, es devolver una
+  secuencia, cada uno de cuyos ítem es una expresión *XQuery*.
+* Un documento |XML| está constituido por múltiples nodos (elementos, atributos,
+  etc), el contenido de cada de los cuales podrá ser un expresión *XQuery*. Para
+  generar cada nodo hay dos alternativas: los contructores directos y los
+  constructores computados, que podemos usar a voluntad.
 
 .. _xquery-const-directo:
 
@@ -363,7 +391,7 @@ ligeramente distinto:
       </mascotas>
 
    Sin embargo, cuando la entrada es un documento |XML| tenemos que tener
-   cuidado, porque las expresiones no siempre serán devolverán valores atómicos
+   cuidado, porque las expresiones no siempre devolverán valores atómicos
    y eso influye enn el comportamiento. Por ejemplo, si generamos un |XML| a
    partir del :ref:`ejemplo sobre casilleros <xml-ejemplo>` usando este código
 
@@ -1031,6 +1059,10 @@ Ejercicios propuestos
        validas para *XPath*, ya que *XQuery* soportas cláusulas inexistentes en
        *XPath* como la propia estructura |FLWOR| o los :ref:`constructores para
        generar una salida XML <xquery-output-xml>`.
+
+.. [#] En realidad, podríamos considerar que la evaluación de una estructura
+   |FLWOR| devuelve en sí misma una secuencia con tantos ítems como iteraciones
+   haya.
 
 .. |XSLT| replace:: :abbr:`XSLT (eXtensible Stylesheet Language Transformations)`
 .. |FLWOR| replace:: :abbr:`FLWOR (For, Let, Where, Order by, Return)`

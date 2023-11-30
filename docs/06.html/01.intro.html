@@ -319,7 +319,7 @@ de las acciones del usuario. El formato de estos data <abbr title="Uniform Resou
 </div>
 <p>donde en este caso el tipo <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> es «<cite>application/javascript</cite>» y los datos un
 minúsculo código <em>Javascript</em>, que hubiera estado incluido en un archivo, si no
-hubieramos hecho uso de un data <abbr title="Uniform Resource Identifier">URI</abbr>. La <a class="reference external" href="https://es.wikipedia.org/wiki/Base64">codificación en base64</a><a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> es útil cuando los datos son
+hubieramos hecho uso de un data <abbr title="Uniform Resource Identifier">URI</abbr>. La <a class="reference external" href="https://es.wikipedia.org/wiki/Base64">codificación en base64</a><a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> es útil cuando los datos son
 binarios (p.e. si representamos una imagen <abbr title="Portable Network Graphic">PNG</abbr>). Por ejemplo, el ejemplo
 anterior para incrustar el logo de <abbr title="HyperText Markup Language">HTML</abbr>5, podría escribirse así:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Logo de HTML5&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;data:image/jpeg;base64,</span>
@@ -399,7 +399,7 @@ publicó <abbr title="eXtensible HyperText Markup Language">XHTML</abbr> <strong
 <p>El <abbr title="W3 Consortium">W3C</abbr> continuó en los años siguientes el desarrollo de <abbr title="eXtensible HyperText Markup Language">XHTML</abbr> <strong>2</strong> del que
 llegó a publicar borradores, abandonando por completo <abbr title="HyperText Markup Language">HTML</abbr>. Como respuesta a
 esta política de abandonar <abbr title="HyperText Markup Language">HTML</abbr>, surgió en 2004 el <abbr title="Web Hypertext Application Technology Working Group">WHATWG</abbr>, un grupo que
-aglutinaba a los principales creadores de navegadores web<a class="footnote-reference brackets" href="#id5" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. Empezaron a
+aglutinaba a los principales creadores de navegadores web<a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. Empezaron a
 trabajar en una especificación sobre <abbr title="HyperText Markup Language">HTML</abbr> y fruto de este pulso, se produjo la
 rendición del <abbr title="W3 Consortium">W3C</abbr> que abandonó sus planes para <abbr title="eXtensible HyperText Markup Language">XHTML</abbr> y aceptó crear un nuevo
 estándar basado en el trabajo del <abbr title="Web Hypertext Application Technology Working Group">WHATWG</abbr> en 2007. En 2014, apareció la primera
@@ -408,7 +408,7 @@ recomendación oficial de <abbr title="HyperText Markup Language">HTML</abbr> <s
 <p class="admonition-title">Nota</p>
 <p>En un primer momento, <abbr title="Web Hypertext Application Technology Working Group">WHATWG</abbr> optó por hacer del estándar <abbr title="HyperText Markup Language">HTML</abbr> una
 <a class="reference external" href="https://html.spec.whatwg.org/multipage/">norma viva</a>, esto es, una versión
-que no se atiene a números sino que está en continuo proceso de redacción. De
+que no se atiende a números sino que está en continuo proceso de redacción. De
 hecho, la norma ni siquiera refiere el <strong>5</strong> en su título. EL <abbr title="W3 Consortium">W3C</abbr>, por
 contra y a su rebufo por haber perdido el pulso inicial, decidió tomar la
 versión viva y publicar cada cierto tiempo una versión númerada. Fue así como
@@ -476,23 +476,20 @@ completa.</p></li>
 </section>
 <section id="herramientas">
 <h2><span class="section-number">6.1.4. </span>Herramientas<a class="headerlink" href="#herramientas" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>Para hacer más sencilla la escritura de nuestro documentos, podemos hacer uso
-las siguientes herramientas:</p>
+<p>Para hacer más sencilla la escritura de nuestro documentos, podemos hacer uso de
+algunas herramientas:</p>
 <section id="edicion">
 <h3><span class="section-number">6.1.4.1. </span>Edición<a class="headerlink" href="#edicion" title="Enlace permanente a este encabezado">¶</a></h3>
-<p>Para escribir nuestros documentos <abbr title="HyperText Markup Language">HTML</abbr> (y <abbr title="Cascading Style Sheets">CSS</abbr>) es indispensable usar
-al menos editores de texto con resaltado de sintaxis. Por ejemplo:</p>
+<p>Para escribir los documentos <abbr title="HyperText Markup Language">HTML</abbr> (y <abbr title="Cascading Style Sheets">CSS</abbr>) es indispensable usar al menos
+editores de texto con resaltado de sintaxis. Son alernativas:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="http://www.vim.org">vim</a>, el editor.</p></li>
 <li><p><a class="reference external" href="https://www.nano-editor.org/">nano</a>, básico, pero suficiente.</p></li>
 <li><p><a class="reference internal" href="../98.apendices/99.tools/vscode.html#vscode"><span class="std std-ref">Visual Studio Code</span></a>, que ya hemos utilizado al escribir <abbr title="eXtensible  Markup Language">XML</abbr>,
 <abbr title="YAML Ain't Markup Language">YAML</abbr> o <abbr title="JavaScript Object Notation">JSON</abbr> y al que podemos añadirle alguna configuración adicional para
-facilitar la escritura de <abbr title="HyperText Markup Language">HTML</abbr>.</p></li>
+<a class="reference internal" href="../98.apendices/99.tools/vscode.html#vscode-html"><span class="std std-ref">facilitar la escritura de HTML</span></a>. Lo tomaremos como editor
+de referencia también para este bloque de tecnologías web.</p></li>
 </ul>
-<div class="admonition-todo admonition" id="id3">
-<p class="admonition-title">Por hacer</p>
-<p>Hablar del modo desarrollador de los navegadores.</p>
-</div>
 </section>
 <section id="validacion">
 <span id="html-validacion"></span><h3><span class="section-number">6.1.4.2. </span>Validación<a class="headerlink" href="#validacion" title="Enlace permanente a este encabezado">¶</a></h3>
@@ -512,6 +509,12 @@ Por lo general, sin embargo, no permiten la validación de documentos locales.</
 </ul>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Si se usa <strong class="program">Visual Studio Code</strong> pueden integrarse estas
+validaciones dentro del propio editor. Consulte ls <a class="reference internal" href="../98.apendices/99.tools/vscode.html#vscode-html"><span class="std std-ref">instrucciones para
+escribir con él HTML</span></a>.</p>
+</div>
 </section>
 <section id="recetarios">
 <h3><span class="section-number">6.1.4.3. </span>Recetarios<a class="headerlink" href="#recetarios" title="Enlace permanente a este encabezado">¶</a></h3>
@@ -531,39 +534,65 @@ De entre los ofrecidos, salvamos el <a class="reference download internal" downl
 </dd>
 </dl>
 </section>
-<section id="pruebas">
-<h3><span class="section-number">6.1.4.4. </span>Pruebas<a class="headerlink" href="#pruebas" title="Enlace permanente a este encabezado">¶</a></h3>
+<section id="visualizacion">
+<h3><span class="section-number">6.1.4.4. </span>Visualización<a class="headerlink" href="#visualizacion" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Para comprobar nuestras páginas <abbr title="HyperText Markup Language">HTML</abbr> es obvio que necesitamos un navegador
 reciente que soporte convenientemente <abbr title="HyperText Markup Language">HTML</abbr>5 y <abbr title="Cascading Style Sheets">CSS</abbr>3. Cualquiera de los
 más usados debería valernos:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.chromium.org/">Chromium</a>.</p></li>
-<li><p><a class="reference external" href="https://es.wikipedia.org/wiki/Mozilla_Firefox">Firefox</a>.</p></li>
+<li><p><a class="reference external" href="https://www.chromium.org/">Chromium</a> (o derivados).</p></li>
+<li><p><a class="reference external" href="https://es.wikipedia.org/wiki/Mozilla_Firefox">Firefox</a> (o derivados).</p></li>
 <li><p><a class="reference external" href="https://es.wikipedia.org/wiki/Safari_(navegador)">Safari</a>.</p></li>
 </ul>
 <p>En principio, nos bastará con almacenar en el disco local los archivos y acceder
-a ellos abriéndolos con el navegador. Esto, por supuesto, no supone una
-transferencia <abbr title="HyperText Transfer Protocol">HTTP</abbr>, pero para los objetivos del curso no es importante. Si por
-el contrario, el curso fuera más ambicioso, necesitaríamos montar un servidor
-web en el que alojar nuestras páginas. En este otro caso, dependería de cuán
-ambicioso fuera nuestro propósito:</p>
+a ellos abriéndolos con el navegador. Si usamos <strong class="program">Visual Studio Code</strong>,
+tendremos <a class="reference internal" href="../98.apendices/99.tools/vscode.html#vscode-html-visu"><span class="std std-ref">facilidades para realizar la operación</span></a>.</p>
+<p>Ver archivos, locales, sin embargo no supone una transferencia <abbr title="HyperText Transfer Protocol">HTTP</abbr>, lo cual
+tiene importancia, pero no para los objetivos del curso que son modestos. En
+cualquier caso, es posible improvisar un miniservidor web para alojar nuestras
+páginas:</p>
 <ul>
-<li><p>Si el propósito se limita a programación en el lado del cliente (esto es,
-<abbr title="HyperText Markup Language">HTML</abbr>, <abbr title="Cascading Style Sheets">CSS</abbr> y <em>Javascript</em> ejecutado por el navegador), podría valernos con
-seguir abriendo los ficheros directamente con el navegador o, si esto no
-basta porque necesitamos hacer <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/Guide/AJAX">peticiones AJAX</a>, montar un modesto
-servidor web que sirva contenido estático con:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">  $ </span><span class="nb">cd</span><span class="w"> </span>/ruta/a/los/ficheros
-<span class="gp">  $ </span>python3<span class="w"> </span>-m<span class="w"> </span>http.server<span class="w"> </span><span class="m">8080</span>
-
-<span class="go">Y listo. Un servidor web local escuchando en el puerto **8080**.</span>
+<li><p><strong class="program">Visual Studio Code</strong> nos lo permite a través de la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server">Live
+Preview</a>.</p></li>
+<li><p>Una alternativa universal es montar un modesto servidor con Python, para lo
+cual podemos hacer lo siguiente:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/ruta/a/los/ficheros
+<span class="gp">$ </span>python3<span class="w"> </span>-m<span class="w"> </span>http.server<span class="w"> </span><span class="m">8080</span>
 </pre></div>
 </div>
+<p>Y listo. Un servidor web local escuchando en el puerto <strong>8080</strong>.</p>
 </li>
-<li><p>Si requerimos programación en el lado del servidor, entonces sí tendremos que
-montar un servidor real que sea capaz de ejecutar los <em>scripts</em>.</p></li>
 </ul>
-<p>Además, existen también algunas <strong>herramientas en línea</strong> muy convenientes:</p>
+<p>Sea como sea, los ordenadores modernos incluyen todos una <strong>herramienta de
+desarrollador</strong> a la cual (al menos en derivados de <a class="reference external" href="https://es.wikipedia.org/wiki/Mozilla_Firefox">Firefox</a> y <a class="reference external" href="https://www.chromium.org/">Chromium</a>) se
+accede pulsando <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">i</kbd>, o bien, colocándonos
+sobre alguna parte de la página web y abriendo el menú contextual eligiendo
+«<em>Inspeccionar</em>». En este segundo caso, la herramienta se abrirá en la pestaña
+en la que se presenta el <abbr title="Document Object Model">DOM</abbr> completo y justamente seleccionado el elemento
+<abbr title="HyperText Markup Language">HTML</abbr> correspondiente. Es muy potente y nos permite:</p>
+<ul class="simple">
+<li><p>Consultar y alterar el <abbr title="Document Object Model">DOM</abbr>.</p></li>
+<li><p>Consultar y alterar los documentos adicionales cargados (p.e. alguna propiedad
+<abbr title="Cascading Style Sheets">CSS</abbr>).</p></li>
+<li><p>Analizar la carga de archivos.</p></li>
+<li><p>Abrir una consola de <em>Javascript</em> y ejecutar código.</p></li>
+<li><p>etc.</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Si quiere profundizar en esta fantástica herramienta, puede echarle
+un vistazo a <a class="reference external" href="https://developer.mozilla.org/es/docs/Learn/Common_questions/Tools_and_setup/What_are_browser_developer_tools">este artículo de MDN sobre la herramienta de Firefox</a>.
+En realidad, todas funcionan de forma semejante, así que puede valernos su
+lectura aunque utilicemos otro navegador.</p>
+</div>
+</section>
+<section id="pruebas-de-concepto">
+<h3><span class="section-number">6.1.4.5. </span>Pruebas de concepto<a class="headerlink" href="#pruebas-de-concepto" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Es frecuente que, cuando creamos documentos web, necesitemos realizar una prueba
+de concepto sobre algún particular de <abbr title="HyperText Markup Language">HTML</abbr>, <abbr title="Cascading Style Sheets">CSS</abbr> o <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a>. Por
+supuesto, podemos hacer pruebas sobre un documento local, pero existen páginas
+en internet que nos permiten realizarlas directamente sobre ellas y compartir el
+resultado con otros desarrolladores:</p>
 <dl class="simple">
 <dt><a class="reference external" href="https://jsfiddle.net/">jsfiddle.net</a></dt><dd><p>Es un sitio web que permite crear pruebas de concepto en <abbr title="HyperText Markup Language">HTML</abbr>, <abbr title="Cascading Style Sheets">CSS</abbr> y
 <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a>, y compartirlas con otros desarrolladores, bien para resolver
@@ -580,7 +609,7 @@ particularidades como una consola de <a class="reference external" href="https:/
 </dl>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id4" role="note">
+<aside class="footnote brackets" id="id3" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>En un sistema <em>Linux</em> es posible generar la codificación en base64 de un
 archivo con la orden <strong class="program">base64</strong>:</p>
@@ -588,7 +617,7 @@ archivo con la orden <strong class="program">base64</strong>:</p>
 </pre></div>
 </div>
 </aside>
-<aside class="footnote brackets" id="id5" role="note">
+<aside class="footnote brackets" id="id4" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
 <p>En aquel entonces, trabajadores de <a class="reference external" href="https://www.apple.com">Apple</a> (que desarrollaba <a class="reference external" href="https://es.wikipedia.org/wiki/Safari_(navegador)">Safari</a>), la
 <a class="reference external" href="https://www.mozilla.org/es-ES/about/">fundación Mozilla</a> y <a class="reference external" href="https://es.wikipedia.org/wiki/Opera_Software">Opera</a>. Se invitó también a personal de <a class="reference external" href="https://www.microsoft.com">Microsoft</a>
@@ -627,7 +656,8 @@ aquel entonces aún no había empezado el desarrollo de <a class="reference exte
 <li><a class="reference internal" href="#edicion">6.1.4.1. Edición</a></li>
 <li><a class="reference internal" href="#validacion">6.1.4.2. Validación</a></li>
 <li><a class="reference internal" href="#recetarios">6.1.4.3. Recetarios</a></li>
-<li><a class="reference internal" href="#pruebas">6.1.4.4. Pruebas</a></li>
+<li><a class="reference internal" href="#visualizacion">6.1.4.4. Visualización</a></li>
+<li><a class="reference internal" href="#pruebas-de-concepto">6.1.4.5. Pruebas de concepto</a></li>
 </ul>
 </li>
 </ul>
