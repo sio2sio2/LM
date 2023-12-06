@@ -591,7 +591,7 @@ Cláusulas adicionales
    la simetría con la que facilitamos antes y que es la propia de *XQuery* 1.0.
    En la versión 3, las únicas limitaciones a la estructura |FLWOR| es que debe
    empezar por un ``FOR``, un ``LET`` o un ``WINDOW``, y que debe rematarse con
-   un único ``RETURN``; entre media puede haber todas las cláusulas que
+   el único ``RETURN`` posible; entre medias puede haber todas las cláusulas que
    querramos (excepto ``RETURN``) en el orden y número que queramos, o sea:
 
    .. code-block::
@@ -847,7 +847,7 @@ Modificación
       insert node <foo/> after //profesor[1]/nombre
 
    Obsérvese que estamos agregando un nodo y, en consecuencia, el destino debe
-   ser otro y no varios, ya que un nodo sólo puede añadirse en un lugar. Si
+   ser único y no varios, ya que un nodo sólo puede añadirse en un lugar. Si
    quisiéramos agregar un nodo *foo* a cada profesor, entonces tendríamos que
    echar mano de la estructura |FLWOR| explícita:
 
@@ -942,7 +942,7 @@ usando las técnicas arriba vistas y, finalmente, volcar en la salida la copia.
 
 Por ejemplo, imaginemos que quisiéramos generar una salida del documento de
 casilleros exactamente igual al original con la única diferencia de que el
-elemento *casillero* para a ser un atributo. El ejercicio podríamos realizarlo
+elemento *casillero* pasa a ser un atributo. El ejercicio podríamos realizarlo
 así:
 
 .. code-block:: xquery

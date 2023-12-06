@@ -576,7 +576,7 @@ que piensen usarse luego en la estructura. Por ejemplo:</p>
 la simetría con la que facilitamos antes y que es la propia de <em>XQuery</em> 1.0.
 En la versión 3, las únicas limitaciones a la estructura <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> es que debe
 empezar por un <code class="docutils literal notranslate"><span class="pre">FOR</span></code>, un <code class="docutils literal notranslate"><span class="pre">LET</span></code> o un <code class="docutils literal notranslate"><span class="pre">WINDOW</span></code>, y que debe rematarse con
-un único <code class="docutils literal notranslate"><span class="pre">RETURN</span></code>; entre media puede haber todas las cláusulas que
+el único <code class="docutils literal notranslate"><span class="pre">RETURN</span></code> posible; entre medias puede haber todas las cláusulas que
 querramos (excepto <code class="docutils literal notranslate"><span class="pre">RETURN</span></code>) en el orden y número que queramos, o sea:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">FOR</span> <span class="o">|</span> <span class="n">LET</span> <span class="o">|</span> <span class="n">WINDOW</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">FOR</span> <span class="o">|</span> <span class="n">LET</span> <span class="o">|</span> <span class="n">WINDOW</span> <span class="o">|</span> <span class="n">WHERE</span> <span class="o">|</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="o">|</span> <span class="n">GROUP</span> <span class="n">BY</span> <span class="o">|</span> <span class="n">COUNT</span><span class="p">)</span><span class="o">*</span> <span class="o">-</span> <span class="n">RETURN</span>
 </pre></div>
@@ -799,7 +799,7 @@ podrían haber sido:</p>
 </pre></div>
 </div>
 <p>Obsérvese que estamos agregando un nodo y, en consecuencia, el destino debe
-ser otro y no varios, ya que un nodo sólo puede añadirse en un lugar. Si
+ser único y no varios, ya que un nodo sólo puede añadirse en un lugar. Si
 quisiéramos agregar un nodo <em>foo</em> a cada profesor, entonces tendríamos que
 echar mano de la estructura <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> explícita:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $p at $n in //profesor
@@ -874,7 +874,7 @@ posibilidad de copiar parte del documento original en memoria, hacer los cambios
 usando las técnicas arriba vistas y, finalmente, volcar en la salida la copia.</p>
 <p>Por ejemplo, imaginemos que quisiéramos generar una salida del documento de
 casilleros exactamente igual al original con la única diferencia de que el
-elemento <em>casillero</em> para a ser un atributo. El ejercicio podríamos realizarlo
+elemento <em>casillero</em> pasa a ser un atributo. El ejercicio podríamos realizarlo
 así:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>element {fn:local-name(/*)} {(
     /*/@*,

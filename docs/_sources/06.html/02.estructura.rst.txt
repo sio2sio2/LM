@@ -266,7 +266,7 @@ comunes a todos los elementos. Los más significativos son:
 **lang**
    Idioma en el que está escrito el contenido del elemento, en la notación de
    dos letras propuesta en el la `norma ISO 639-1
-   <https://es.wikipedia.org/wiki/ISO_639-1>`. 
+   <https://es.wikipedia.org/wiki/ISO_639-1>`_. 
 
 **title**
    Define un mensaje que aparecera superpuesto al colocarse el ratón encima del
