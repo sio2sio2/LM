@@ -18,8 +18,8 @@ Por ejemplo, supongamos lo siguiente:
 
 Está claro que hemos introducido una serie de marcas que nos informan de cuál es
 el título del documento y de que tiene un párrafo. Cada lenguaje dispone de unas
-etiquetas propias (su *vocabulario*) que se combinan mediante unas determinadas
-reglas (la *sintaxis*).
+etiquetas propias (su :dfn:`vocabulario`) que se combinan mediante unas determinadas
+reglas (la :dfn:`sintaxis`).
 
 .. _lml:
 

@@ -30,14 +30,14 @@ XQuery
 necesariamente). Para ello, usa :ref:`xpath` como herramienta de selección la
 información y una estructura prototípica llamada |FLWOR| por las cinco
 cláusulas con las que se construye originariamente\ [#]_. Cumple en el mundo
-|XML| exactamente la misma función que las cláusula ``SELECT`` en el mundo
+|XML| exactamente la misma función que las cláusulas ``SELECT`` en el mundo
 |SQL|.
 
 En cualquier caso, aunque lo que caracteriza a *XQuery* es la estructura
 |FLWOR|, esta no es obligatoria, y una consulta *XQuery* puede crearse
 únicamente con el contenido del :ref:`RETURN del FLWOR <xquery-return>` (sin
 expresar el propio ``return``). Como este contenido puede ser cualquier
-expresión *XPath* valida, resulta que *XQuery* es un supercojunto de *XPath*, o
+expresión *XPath* válida, resulta que *XQuery* es un superconjunto de *XPath*, o
 lo que es lo mismo, toda expresión *XPath* es una consulta *XQuery* válida.
 
 Tres son las versiones que ha tenido este lenguaje:
@@ -51,7 +51,7 @@ Tres son las versiones que ha tenido este lenguaje:
    fundamental convertir a las funciones en ciudadanas de primera clase.
 
 `Versión 3.1 <https://www.w3.org/TR/xquery-31/>`_
-   Es el última estándar aparecido en 2017, con lo que incorpora *XPath* 3.1.
+   Es el último estándar aparecido en 2017, con lo que incorpora *XPath* 3.1.
 
 .. note:: No existe versión **2**. La relación entre *XQuery* y *XPath* es tan
    íntima que se prefirió alinear las versiones de *XQuery* con las de *XPath*.
@@ -123,7 +123,7 @@ sucesión de cinco cláusulas:
 donde `FOR` es una cláusula iterativa que asigna a una variable los ítems de
 una secuencia, `LET` permite definir variables asignándoles valor, `WHERE`
 define una condición para que la iteración del bucle se lleve a cabo, `ORDER BY`
-permite ordenadar los resultados, y `RETURN` incluye la expresión que resultará
+permite ordenar los resultados, y `RETURN` incluye la expresión que resultará
 de cada iteración. Hemos expresado también la cardinalidad, de la que se deduce
 que debe haber siempre al menos una cláusula `FOR` o `LET` y una `RETURN`.
 
@@ -243,9 +243,9 @@ estructura iterativa por lo que sólo se escriben una vez.
    formalmente parecida a la de la programación estructurada, no actúa del mismo
    modo. Las iteraciones, aunque respeten el orden al mostrar los resultados, no
    tienen por qué evaluarse sucesivamente y en orden, sino que lo harán de un
-   modo imprecedible e incluso en paralelo. Por ello, no pueden redefinirse
+   modo impredecible e incluso en paralelo. Por ello, no pueden redefinirse
    variables cuyo valor cambie en el cuerpo de cada iteración (p.e. definir
-   nosotros un contador al que sumenos **1** cada vez que se ejecuta el bucle).
+   nosotros un contador al que sumemos **1** cada vez que se ejecuta el bucle).
 
 Analicemos más pormenorizadamente cada parte:
 
@@ -363,11 +363,11 @@ una salida |XML| y en este caso, el uso y comportamiento de *XQuery* será
 ligeramente distinto, ya que:
 
 * Cuando la salida es de texto, se evalúa una única expresión *XQuery*, por lo
-  que la estrategia para que se lograr evaluar varias, es devolver una
-  secuencia, cada uno de cuyos ítem es una expresión *XQuery*.
+  que la estrategia para lograr evaluar varias es devolver una secuencia, cada
+  uno de cuyos ítem es una expresión *XQuery*.
 * Un documento |XML| está constituido por múltiples nodos (elementos, atributos,
-  etc), el contenido de cada de los cuales podrá ser un expresión *XQuery*. Para
-  generar cada nodo hay dos alternativas: los contructores directos y los
+  etc), el contenido de cada uno de los cuales podrá ser una expresión *XQuery*.
+  Para generar cada nodo hay dos alternativas: los constructores directos y los
   constructores computados, que podemos usar a voluntad.
 
 .. _xquery-const-directo:
@@ -392,7 +392,7 @@ ligeramente distinto, ya que:
 
    Sin embargo, cuando la entrada es un documento |XML| tenemos que tener
    cuidado, porque las expresiones no siempre devolverán valores atómicos
-   y eso influye enn el comportamiento. Por ejemplo, si generamos un |XML| a
+   y eso influye en el comportamiento. Por ejemplo, si generamos un |XML| a
    partir del :ref:`ejemplo sobre casilleros <xml-ejemplo>` usando este código
 
    .. code-block:: xquery
@@ -423,7 +423,7 @@ ligeramente distinto, ya que:
       
    porque ``$p/@id`` es un nodo atributo, no una cadena. Para que el
    identificador hubiera pasado a ser el contenido de los elementos *p*,
-   deberiamos haberlo atomizado expresamente:
+   deberíamos haberlo atomizado expresamente:
 
    .. code-block:: xquery
 
@@ -489,7 +489,7 @@ ligeramente distinto, ya que:
 
    Ahora *p*, dispondrá de un atributo y de un elemento *nombre* como contenido.
    Por supuesto, podemos cambiar los nombres de los atributos o los elementos
-   complicado un poco la expresión. Por ejemplo:
+   complicando un poco la expresión. Por ejemplo:
 
    .. code-block:: xquery
       :emphasize-lines: 6
@@ -503,7 +503,7 @@ ligeramente distinto, ya que:
             )}
       }
 
-   o lo mismo si queremos mezclar contructores directos y evaluados:
+   o lo mismo si queremos mezclar constructores directos y evaluados:
 
    .. code-block:: xquery
       :emphasize-lines: 6
@@ -556,7 +556,7 @@ que piensen usarse luego en la estructura. Por ejemplo:
 .. code-block:: xquery
    :emphasize-lines: 2-4,8
 
-   (: funcion propia :)
+   (: función propia :)
    declare function local:declara-estilo($href) {
       processing-instruction xml-stylesheet {'type="text/xsl" href="' || $href || '"'}
    };
@@ -592,7 +592,7 @@ Cláusulas adicionales
    En la versión 3, las únicas limitaciones a la estructura |FLWOR| es que debe
    empezar por un ``FOR``, un ``LET`` o un ``WINDOW``, y que debe rematarse con
    el único ``RETURN`` posible; entre medias puede haber todas las cláusulas que
-   querramos (excepto ``RETURN``) en el orden y número que queramos, o sea:
+   queramos (excepto ``RETURN``) en el orden y número que queramos, o sea:
 
    .. code-block::
 
@@ -673,7 +673,7 @@ Cláusulas adicionales
       .. image:: files/tumbling.png
 
    #. :dfn:`sliding window`, que son rangos solapables y, por tanto, dos
-      ventanas consecutivas podrań tener uno o más ítems comunes.
+      ventanas consecutivas podrán tener uno o más ítems comunes.
 
       .. image:: files/sliding.png
 
@@ -691,7 +691,7 @@ Cláusulas adicionales
       return
          "- " || string-join($w, ",")
 
-   establece una condición de comienzo que siempre que cumple y una de final en
+   establece una condición de comienzo que siempre cumple y una de final en
    los múltiplos de 3. Como las ventanas no pueden solaparse, lo que significa
    que la ventana siguiente sólo puede comenzar después de que haya acabado la
    anterior, el resultado es éste:
@@ -804,14 +804,14 @@ original, en vez de generar una salida:
 
 * :ref:`insert <xquery-insert>`, que permite añadir nodos.
 * :ref:`delete <xquery-delete>`, que permite borrar nodos.
-* :ref:`replace <xquery-replace>`, que permite reemplazar nodos
+* :ref:`replace <xquery-replace>`, que permite reemplazar nodos.
 * :ref:`rename <xquery-rename>`, que permite renombrar nodos.
 
 Modificación
 ------------
 .. caution:: Estas sentencias de actualización de la fuente tienen sentido
    cuando el origen |XML| se utiliza como una base de datos, no como un archivo
-   independiente, por lo que es más pertienente practicarlas en la próxima
+   independiente, por lo que es más pertinente practicarlas en la próxima
    :ref:`unidad dedicada al almacenamiento <lm-ut5>` y, en particular, en la
    parte dedicada a :ref:`bases nativas <nativas>`. Se incluye aquí su
    explicación para no desgajarla del resto del lenguaje *XQuery*.
@@ -894,7 +894,7 @@ Modificación
 .. _xquery-replace:
 
 ``replace``
-   Remplaza el nodo indicado por otro que se le facilite:
+   Reemplaza el nodo indicado por otro que se le facilite:
 
    .. code-block:: xquery
 
@@ -918,7 +918,7 @@ Modificación
 ``rename``
    ``replace`` sustituye por completo el nodo, lo cual incluye todos sus
    descendientes. ``rename``, en cambio, nos permite cambiar el nombre del nodo
-   sin anterar en absoluto su contenido:
+   sin alterar en absoluto su contenido:
 
    .. code-block:: xquery
 
@@ -963,7 +963,7 @@ así:
 
 Esto es:
 
-* Creamos un elemento raíz con el mismo y nombre y con los mismos atributos.
+* Creamos un elemento raíz con el mismo nombre y con los mismos atributos.
 * Recorremos cada uno de los nodos profesor (``$p``).
 * En vez de volcarlo directamente, lo cual provocaría que obtuviéramos como
   salida la misma entrada, echamos mano de la estructura ``copy``\ -\
@@ -1042,7 +1042,7 @@ a. Obtener un listado de texto ordenado alfabéticamente con las recetas de más
 ******
 Un estudio consistente de este lenguaje de transformación es demasiado amplio
 para la escasa carga lectiva del módulo, pero pertinente a la vista del
-currículo. Por ello, trasladamos su desarrollo al :ref:`apendice correspondiente <xslt>`.
+currículo. Por ello, trasladamos su desarrollo al :ref:`apéndice correspondiente <xslt>`.
 
 Ejercicios propuestos
 *********************
@@ -1056,7 +1056,7 @@ Ejercicios propuestos
    versión **3** añadió otras cláusulas adicionales.
 
 .. [#] En realidad, se puede escribir conjunto mayor de expresiones de las
-       validas para *XPath*, ya que *XQuery* soportas cláusulas inexistentes en
+       válidas para *XPath*, ya que *XQuery* soporta cláusulas inexistentes en
        *XPath* como la propia estructura |FLWOR| o los :ref:`constructores para
        generar una salida XML <xquery-output-xml>`.
 

@@ -319,7 +319,7 @@ de las acciones del usuario. El formato de estos data <abbr title="Uniform Resou
 </div>
 <p>donde en este caso el tipo <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> es «<cite>application/javascript</cite>» y los datos un
 minúsculo código <em>Javascript</em>, que hubiera estado incluido en un archivo, si no
-hubieramos hecho uso de un data <abbr title="Uniform Resource Identifier">URI</abbr>. La <a class="reference external" href="https://es.wikipedia.org/wiki/Base64">codificación en base64</a><a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> es útil cuando los datos son
+hubieramos hecho uso de un data <abbr title="Uniform Resource Identifier">URI</abbr>. La <a class="reference external" href="https://es.wikipedia.org/wiki/Base64">codificación en base64</a><a class="footnote-reference brackets" href="#id5" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> es útil cuando los datos son
 binarios (p.e. si representamos una imagen <abbr title="Portable Network Graphic">PNG</abbr>). Por ejemplo, el ejemplo
 anterior para incrustar el logo de <abbr title="HyperText Markup Language">HTML</abbr>5, podría escribirse así:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Logo de HTML5&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;data:image/jpeg;base64,</span>
@@ -354,7 +354,8 @@ publican posteriormente tres versiones del lenguaje, ya definido como <abbr titl
 <li><p><abbr title="HyperText Markup Language">HTML</abbr> <strong>3.2</strong>, en 1997, que fue publicada ya por el <abbr title="W3 Consortium">W3C</abbr>.</p></li>
 <li><p><abbr title="HyperText Markup Language">HTML</abbr> <strong>4.01</strong>. en 1999.</p></li>
 </ul>
-<p>En esta última versión, el <abbr title="W3 Consortium">W3C</abbr> intentó desligar la definición estructural
+<dl>
+<dt><abbr title="HyperText Markup Language">HTML</abbr>4</dt><dd><p>En esta última versión, el <abbr title="W3 Consortium">W3C</abbr> intentó desligar la definición estructural
 (reservada para <abbr title="HyperText Markup Language">HTML</abbr>) de la visual (reservada para <abbr title="Cascading Style Sheets">CSS</abbr>), por lo que se
 propuso ir eliminado las marcas y atributos <abbr title="HyperText Markup Language">HTML</abbr> que definían aspecto,
 marcándolas como obsoletas. Para hacer menos traumático el cambio definió tres
@@ -378,7 +379,8 @@ elementos y atributos obsoletos:</p>
 <p>En principio, la versión recomendada por el <abbr title="W3 Consortium">W3C</abbr> era esta última.</p>
 </li>
 </ul>
-<p>En este punto (1999), el <abbr title="W3 Consortium">W3C</abbr>, que era el encargado de desarrollar el lenguaje,
+</dd>
+<dt><abbr title="eXtensible HyperText Markup Language">XHTML</abbr></dt><dd><p>En este punto (1999), el <abbr title="W3 Consortium">W3C</abbr>, que era el encargado de desarrollar el lenguaje,
 pretendió darle un giro y adaptarlo a las especificaciones <abbr title="eXtensible  Markup Language">XML</abbr>, que habían
 sido publicadas por este mismo organismo también en 1999. Como consecuencia
 reformuló <abbr title="HyperText Markup Language">HTML</abbr> <strong>4.01</strong> para adaptarlo a las reglas del <abbr title="eXtensible  Markup Language">XML</abbr> y publicó en
@@ -396,29 +398,44 @@ publicó <abbr title="eXtensible HyperText Markup Language">XHTML</abbr> <strong
 <div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!DOCTYPE</span> <span class="nt">html</span> <span class="kc">PUBLIC</span> <span class="s2">&quot;-//W3C//DTD XHTML 1.1//EN&quot;</span> <span class="s2">&quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;</span><span class="k">&gt;</span>
 </pre></div>
 </div>
-<p>El <abbr title="W3 Consortium">W3C</abbr> continuó en los años siguientes el desarrollo de <abbr title="eXtensible HyperText Markup Language">XHTML</abbr> <strong>2</strong> del que
+</dd>
+<dt><abbr title="HyperText Markup Language">HTML</abbr>5</dt><dd><p>El <abbr title="W3 Consortium">W3C</abbr> continuó en los años siguientes el desarrollo de <abbr title="eXtensible HyperText Markup Language">XHTML</abbr> <strong>2</strong> del que
 llegó a publicar borradores, abandonando por completo <abbr title="HyperText Markup Language">HTML</abbr>. Como respuesta a
-esta política de abandonar <abbr title="HyperText Markup Language">HTML</abbr>, surgió en 2004 el <abbr title="Web Hypertext Application Technology Working Group">WHATWG</abbr>, un grupo que
-aglutinaba a los principales creadores de navegadores web<a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. Empezaron a
-trabajar en una especificación sobre <abbr title="HyperText Markup Language">HTML</abbr> y fruto de este pulso, se produjo la
-rendición del <abbr title="W3 Consortium">W3C</abbr> que abandonó sus planes para <abbr title="eXtensible HyperText Markup Language">XHTML</abbr> y aceptó crear un nuevo
-estándar basado en el trabajo del <abbr title="Web Hypertext Application Technology Working Group">WHATWG</abbr> en 2007. En 2014, apareció la primera
-recomendación oficial de <abbr title="HyperText Markup Language">HTML</abbr> <strong>5.0</strong>.</p>
+esta política de abandonar <abbr title="HyperText Markup Language">HTML</abbr>, surgió en 2004 el <abbr title="Web Hypertext Application Technology Working Group">WHATWG</abbr><a class="footnote-reference brackets" href="#id6" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>, un grupo que
+aglutinaba a los principales creadores de navegadores web<a class="footnote-reference brackets" href="#id7" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> y que en
+contra de los deseos del <abbr title="W3 Consortium">W3C</abbr>, que abogaba por <abbr title="eXtensible HyperText Markup Language">XHTML</abbr>, quería seguir
+desarrollando <abbr title="HyperText Markup Language">HTML</abbr>. Comenzó entonces un pulso entre ambos grupos, que
+venció el <abbr title="Web Hypertext Application Technology Working Group">WHATWG</abbr> al admitir el <abbr title="W3 Consortium">W3C</abbr> en 2007 la creación de un grupo de
+trabajo en su seno sobre <abbr title="HyperText Markup Language">HTML</abbr>. Este grupo en enero de 2008 publicó el
+primer borrador de la especificación de <abbr title="HyperText Markup Language">HTML</abbr>5, mientras que el <a class="reference external" href="https://www.w3.org/TR/2006/WD-xhtml2-20060726/">último
+borrador de XHTML</a> se había
+publicado en 2006 y nunca se llegó a publicar el siguiente que debía haber
+aparecido en julio de 2009. De hecho, en 2009 el <abbr title="W3 Consortium">W3C</abbr> decidió que a final de
+año se disolviera el grupo de trabajo sobre <abbr title="eXtensible HyperText Markup Language">XHTML</abbr> lo que suponía
+oficialmente reconocer que él único estándar reconocido sería <abbr title="HyperText Markup Language">HTML</abbr>5.
+En 2014, apareció la primera recomendación oficial del <abbr title="W3 Consortium">W3C</abbr> sobre <abbr title="HyperText Markup Language">HTML</abbr>
+<strong>5.0</strong>.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>En un primer momento, <abbr title="Web Hypertext Application Technology Working Group">WHATWG</abbr> optó por hacer del estándar <abbr title="HyperText Markup Language">HTML</abbr> una
 <a class="reference external" href="https://html.spec.whatwg.org/multipage/">norma viva</a>, esto es, una versión
 que no se atiende a números sino que está en continuo proceso de redacción. De
-hecho, la norma ni siquiera refiere el <strong>5</strong> en su título. EL <abbr title="W3 Consortium">W3C</abbr>, por
-contra y a su rebufo por haber perdido el pulso inicial, decidió tomar la
-versión viva y publicar cada cierto tiempo una versión númerada. Fue así como
-publicó <strong>5.0</strong> en 2014, <strong>5.1</strong> en 2016 y <strong>5.2</strong> en 2018. Pero la voz
-cantante de la evolución de <abbr title="HyperText Markup Language">HTML</abbr> la seguía llevando <abbr title="Web Hypertext Application Technology Working Group">WHATWG</abbr>, por cuanto
-era la referencia para la implementación en los navegadores. Por ese motivo,
-el <abbr title="W3 Consortium">W3C</abbr> nunca llegó a publicar <strong>5.3</strong> y a comienzos de 2021 <a class="reference external" href="https://www.w3.org/TR/2021/NOTE-html53-20210128/">dio
-definitivamente su brazo a torcer</a> y dejó de publicar
-versiones numeradas.</p>
+hecho, la norma ni siquiera refiere el <strong>5</strong> en su título. El <abbr title="W3 Consortium">W3C</abbr>, en
+cambio, optó por publicar cada cierto tiempo una versión númerada. Fue así como
+publicó <strong>5.0</strong> en 2014, <strong>5.1</strong> en 2016 y <strong>5.2</strong> en 2018, versiones que
+se basaban en la versión viva y lo que realmente los navegadores
+implementaban de esa versión viva. Sin embargo, a comienzos de 2021 <a class="reference external" href="https://www.w3.org/TR/2021/NOTE-html53-20210128/">se
+renunció a publicar la versión 5.3</a> y dejó de publicar
+versiones numeradas, por lo que sólo la norma viva del <abbr title="Web Hypertext Application Technology Working Group">WHATWG</abbr> es la
+referencia actual del lenguaje.</p>
 </div>
+<div class="admonition-todo admonition" id="id4">
+<p class="admonition-title">Por hacer</p>
+<p>Añadir las novedades de <abbr title="HyperText Markup Language">HTML</abbr>5 basándose en lo descrito <a class="reference external" href="https://en.wikipedia.org/wiki/HTML5">en la
+página de la Wikipedia</a>.</p>
+</div>
+</dd>
+</dl>
 <p>Esta es la historia, pero ¿es <abbr title="HyperText Markup Language">HTML</abbr>5 entonces <abbr title="Standard Generalized Markup Language">SGML</abbr>? La respuesta es que
 <strong>no</strong>. <abbr title="HyperText Markup Language">HTML</abbr> no es ya <abbr title="Standard Generalized Markup Language">SGML</abbr>, porque no hay definido ningún <abbr title="Document Type Definition">DTD</abbr> para su
 validación y, además, es imposible definir uno, ya que hay ciertas reglas que
@@ -609,7 +626,7 @@ particularidades como una consola de <a class="reference external" href="https:/
 </dl>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id3" role="note">
+<aside class="footnote brackets" id="id5" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>En un sistema <em>Linux</em> es posible generar la codificación en base64 de un
 archivo con la orden <strong class="program">base64</strong>:</p>
@@ -617,8 +634,16 @@ archivo con la orden <strong class="program">base64</strong>:</p>
 </pre></div>
 </div>
 </aside>
-<aside class="footnote brackets" id="id4" role="note">
+<aside class="footnote brackets" id="id6" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>En 2004, la <a class="reference external" href="https://www.mozilla.org/es-ES/about/">Fundación Mozilla</a> y <a class="reference external" href="https://es.wikipedia.org/wiki/Opera_Software">Opera</a> presentaron un <em>paper</em> en un
+taller organizado por el <abbr title="W3 Consortium">W3C</abbr> centrado en el desarrollo de tecnologías que
+mantuvieran la compatibilidad con el <abbr title="HyperText Markup Language">HTML</abbr> de los navegadores. Este <em>paper</em>,
+sin embargo, fue rechazado. Este rechazo fue lo que originó la creación del
+<abbr title="Web Hypertext Application Technology Working Group">WHATWG</abbr>.</p>
+</aside>
+<aside class="footnote brackets" id="id7" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
 <p>En aquel entonces, trabajadores de <a class="reference external" href="https://www.apple.com">Apple</a> (que desarrollaba <a class="reference external" href="https://es.wikipedia.org/wiki/Safari_(navegador)">Safari</a>), la
 <a class="reference external" href="https://www.mozilla.org/es-ES/about/">fundación Mozilla</a> y <a class="reference external" href="https://es.wikipedia.org/wiki/Opera_Software">Opera</a>. Se invitó también a personal de <a class="reference external" href="https://www.microsoft.com">Microsoft</a>
 (porque desarrollaba <a class="reference external" href="https://es.wikipedia.org/wiki/Internet_Explorer">Internet Explorer</a>), pero no se incorpó. <a class="reference external" href="https://www.google.com/about/">Google</a> por

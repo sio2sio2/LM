@@ -1,7 +1,7 @@
 XQuery
 ======
 
-#. A partir del |XML| sobre facturas obtenga un lista de clientes en que se
+#. A partir del |XML| sobre facturas obtenga una lista de clientes en que se
    exprese para cada uno de ellos su nombre y la cantidad de facturas emitidas
    a su nombre. Por ejemplo:
 
@@ -77,7 +77,7 @@ XQuery
          - Ana al-Fabeta: 0 préstamo(s).
 
 #. Como el ejercicio anterior, pero sin que aparezcan los socios que no han
-   pedido ningún prestamos. Por tanto, en el ejemplo anterior, no aparecería el
+   pedido ningún préstamo. Por tanto, en el ejemplo anterior, no aparecería el
    último socio.
 
 #. Tome el |XML| de préstamos en una biblioteca y componga otro en que los

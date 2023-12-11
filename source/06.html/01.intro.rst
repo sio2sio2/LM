@@ -320,77 +320,90 @@ publican posteriormente tres versiones del lenguaje, ya definido como |SGML|:
 * |HTML| **3.2**, en 1997, que fue publicada ya por el |W3C|.
 * |HTML| **4.01**. en 1999.
 
-En esta última versión, el |W3C| intentó desligar la definición estructural
-(reservada para |HTML|) de la visual (reservada para |CSS|), por lo que se
-propuso ir eliminado las marcas y atributos |HTML| que definían aspecto,
-marcándolas como obsoletas. Para hacer menos traumático el cambio definió tres
-versiones del estándar:
+|HTML|\ 4
+   En esta última versión, el |W3C| intentó desligar la definición estructural
+   (reservada para |HTML|) de la visual (reservada para |CSS|), por lo que se
+   propuso ir eliminado las marcas y atributos |HTML| que definían aspecto,
+   marcándolas como obsoletas. Para hacer menos traumático el cambio definió tres
+   versiones del estándar:
 
-* :dfn:`Frameset`, que permitía el uso de :ref:`iframes <html-iframe>` y
-  elementos y atributos obsoletos:
+   * :dfn:`Frameset`, que permitía el uso de :ref:`iframes <html-iframe>` y
+     elementos y atributos obsoletos:
 
-  .. code-block:: dtd
+     .. code-block:: dtd
 
-     <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+        <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
 
-* :dfn:`Transitional`, que permitía el uso de elementos y atributos obsoletos:
+   * :dfn:`Transitional`, que permitía el uso de elementos y atributos obsoletos:
 
-  .. code-block:: dtd
+     .. code-block:: dtd
 
-     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+        <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-* :dfn:`Strict`, que no permitía el uso de elementos obsoletos:
+   * :dfn:`Strict`, que no permitía el uso de elementos obsoletos:
 
-  .. code-block:: dtd
+     .. code-block:: dtd
 
-     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+        <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 
-  En principio, la versión recomendada por el |W3C| era esta última.
+     En principio, la versión recomendada por el |W3C| era esta última.
 
-En este punto (1999), el |W3C|, que era el encargado de desarrollar el lenguaje,
-pretendió darle un giro y adaptarlo a las especificaciones |XML|, que habían
-sido publicadas por este mismo organismo también en 1999. Como consecuencia
-reformuló |HTML| **4.01** para adaptarlo a las reglas del |XML| y publicó en
-2000 la especificación |XHTML| **1.0**. Al ser una reformulación, también
-disponía de las tres versiones:
+|XHTML|
+   En este punto (1999), el |W3C|, que era el encargado de desarrollar el lenguaje,
+   pretendió darle un giro y adaptarlo a las especificaciones |XML|, que habían
+   sido publicadas por este mismo organismo también en 1999. Como consecuencia
+   reformuló |HTML| **4.01** para adaptarlo a las reglas del |XML| y publicó en
+   2000 la especificación |XHTML| **1.0**. Al ser una reformulación, también
+   disponía de las tres versiones:
 
-.. code-block:: dtd
+   .. code-block:: dtd
 
-   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
-   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+      <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+      <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+      <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-Las esfuerzos entonces del |W3C| se centraron en el desarrollo del lenguaje como
-dialecto |HTML|, esto es, en el |XHTML| y abandonaron por completo el sabor
-|SGML| que quedó estancada en la versión **4.01**. En consecuencia en 2001
-publicó |XHTML| **1.1** en que ya sólo había una única versión:
+   Las esfuerzos entonces del |W3C| se centraron en el desarrollo del lenguaje como
+   dialecto |HTML|, esto es, en el |XHTML| y abandonaron por completo el sabor
+   |SGML| que quedó estancada en la versión **4.01**. En consecuencia en 2001
+   publicó |XHTML| **1.1** en que ya sólo había una única versión:
 
-.. code-block:: dtd
+   .. code-block:: dtd
 
-   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+      <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 
-El |W3C| continuó en los años siguientes el desarrollo de |XHTML| **2** del que
-llegó a publicar borradores, abandonando por completo |HTML|. Como respuesta a
-esta política de abandonar |HTML|, surgió en 2004 el |WHATWG|, un grupo que
-aglutinaba a los principales creadores de navegadores web\ [#]_. Empezaron a
-trabajar en una especificación sobre |HTML| y fruto de este pulso, se produjo la
-rendición del |W3C| que abandonó sus planes para |XHTML| y aceptó crear un nuevo
-estándar basado en el trabajo del |WHATWG| en 2007. En 2014, apareció la primera
-recomendación oficial de |HTML| **5.0**.
+|HTML|\ 5
+   El |W3C| continuó en los años siguientes el desarrollo de |XHTML| **2** del que
+   llegó a publicar borradores, abandonando por completo |HTML|. Como respuesta a
+   esta política de abandonar |HTML|, surgió en 2004 el |WHATWG|\ [#]_, un grupo que
+   aglutinaba a los principales creadores de navegadores web\ [#]_ y que en
+   contra de los deseos del |W3C|, que abogaba por |XHTML|, quería seguir
+   desarrollando |HTML|. Comenzó entonces un pulso entre ambos grupos, que
+   venció el |WHATWG| al admitir el |W3C| en 2007 la creación de un grupo de
+   trabajo en su seno sobre |HTML|. Este grupo en enero de 2008 publicó el
+   primer borrador de la especificación de |HTML|\ 5, mientras que el `último
+   borrador de XHTML <https://www.w3.org/TR/2006/WD-xhtml2-20060726/>`_ se había
+   publicado en 2006 y nunca se llegó a publicar el siguiente que debía haber
+   aparecido en julio de 2009. De hecho, en 2009 el |W3C| decidió que a final de
+   año se disolviera el grupo de trabajo sobre |XHTML| lo que suponía
+   oficialmente reconocer que él único estándar reconocido sería |HTML|\ 5.
+   En 2014, apareció la primera recomendación oficial del |W3C| sobre |HTML|
+   **5.0**.
 
-.. note:: En un primer momento, |WHATWG| optó por hacer del estándar |HTML| una 
-   `norma viva <https://html.spec.whatwg.org/multipage/>`_, esto es, una versión
-   que no se atiende a números sino que está en continuo proceso de redacción. De
-   hecho, la norma ni siquiera refiere el **5** en su título. EL |W3C|, por
-   contra y a su rebufo por haber perdido el pulso inicial, decidió tomar la
-   versión viva y publicar cada cierto tiempo una versión númerada. Fue así como
-   publicó **5.0** en 2014, **5.1** en 2016 y **5.2** en 2018. Pero la voz
-   cantante de la evolución de |HTML| la seguía llevando |WHATWG|, por cuanto
-   era la referencia para la implementación en los navegadores. Por ese motivo,
-   el |W3C| nunca llegó a publicar **5.3** y a comienzos de 2021 `dio
-   definitivamente su brazo a torcer
-   <https://www.w3.org/TR/2021/NOTE-html53-20210128/>`_ y dejó de publicar
-   versiones numeradas.
+   .. note:: En un primer momento, |WHATWG| optó por hacer del estándar |HTML| una 
+      `norma viva <https://html.spec.whatwg.org/multipage/>`_, esto es, una versión
+      que no se atiende a números sino que está en continuo proceso de redacción. De
+      hecho, la norma ni siquiera refiere el **5** en su título. El |W3C|, en
+      cambio, optó por publicar cada cierto tiempo una versión númerada. Fue así como
+      publicó **5.0** en 2014, **5.1** en 2016 y **5.2** en 2018, versiones que
+      se basaban en la versión viva y lo que realmente los navegadores
+      implementaban de esa versión viva. Sin embargo, a comienzos de 2021 `se
+      renunció a publicar la versión 5.3
+      <https://www.w3.org/TR/2021/NOTE-html53-20210128/>`_ y dejó de publicar
+      versiones numeradas, por lo que sólo la norma viva del |WHATWG| es la
+      referencia actual del lenguaje.
+
+   .. todo:: Añadir las novedades de |HTML|\ 5 basándose en lo descrito `en la
+      página de la Wikipedia <https://en.wikipedia.org/wiki/HTML5>`_.
 
 Esta es la historia, pero ¿es |HTML|\ 5 entonces |SGML|? La respuesta es que
 **no**. |HTML| no es ya |SGML|, porque no hay definido ningún |DTD| para su
@@ -590,6 +603,12 @@ jsbin.com_
    .. code-block:: console
 
       $ base64 html5.png
+
+.. [#] En 2004, la `Fundación Mozilla`_ y Opera_ presentaron un *paper* en un
+   taller organizado por el |W3C| centrado en el desarrollo de tecnologías que
+   mantuvieran la compatibilidad con el |HTML| de los navegadores. Este *paper*,
+   sin embargo, fue rechazado. Este rechazo fue lo que originó la creación del
+   |WHATWG|.
 
 .. [#] En aquel entonces, trabajadores de Apple_ (que desarrollaba Safari_), la
    `fundación Mozilla`_ y Opera_. Se invitó también a personal de Microsoft_
