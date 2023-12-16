@@ -384,7 +384,7 @@ ligeramente distinto, ya que:</p>
 <ul class="simple">
 <li><p>Cuando la salida es de texto, se evalúa una única expresión <em>XQuery</em>, por lo
 que la estrategia para lograr evaluar varias es devolver una secuencia, cada
-uno de cuyos ítem es una expresión <em>XQuery</em>.</p></li>
+uno de cuyos ítems es una expresión <em>XQuery</em>.</p></li>
 <li><p>Un documento <abbr title="eXtensible  Markup Language">XML</abbr> está constituido por múltiples nodos (elementos, atributos,
 etc), el contenido de cada uno de los cuales podrá ser una expresión <em>XQuery</em>.
 Para generar cada nodo hay dos alternativas: los constructores directos y los
@@ -594,7 +594,7 @@ queramos (excepto <code class="docutils literal notranslate"><span class="pre">R
 </pre></div>
 </div>
 </dd>
-<dt><strong>GROUP BY</strong></dt><dd><p>como su homónimo en <abbr title="Strctured Query Language">SQL</abbr> permite agrupar los resultados según un determinado
+<dt><strong>GROUP BY</strong></dt><dd><p>como su homónimo en <abbr title="Strctured Query Language">SQL</abbr>, permite agrupar los resultados según un determinado
 criterio. Por ejemplo, esto sacaría un nuevo <code class="file docutils literal notranslate"><span class="pre">casillero.xml</span></code> en que los
 profesores están agrupados por casilleros:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="kp">xquery</span><span class="w"> </span><span class="kp">version</span><span class="w"> </span><span class="s2">&quot;3.0&quot;</span><span class="p">;</span>
@@ -707,7 +707,7 @@ return
    &quot;- &quot; || string-join($w, &quot;,&quot;)
 </pre></div>
 </div>
-<p>…ahora las ventanas se pueden solapar y cómo cualquier ítem es susceptible
+<p>…ahora las ventanas se pueden solapar y, como cualquier ítem, es susceptible
 de ser el comienzo de una el resultado es el siguiente:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- 1,2,3
 - 2,3
@@ -812,7 +812,7 @@ return
 hecho, también podríamos haber usado un <a class="reference internal" href="#xquery-const-eval"><span class="std std-ref">constructor evaluado</span></a>:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $p at $n in //profesor
 return
-   insert node element foo {$n} after //profesor[1]/nombre
+   insert node element foo {$n} after $p/nombre
 </pre></div>
 </div>
 <p>En realidad, es posible insertar una secuencia de nodos:</p>
@@ -854,11 +854,11 @@ nombre del nodo, quizás habría sido mejor:</p>
 <dt><code class="docutils literal notranslate"><span class="pre">rename</span></code></dt><dd><p><code class="docutils literal notranslate"><span class="pre">replace</span></code> sustituye por completo el nodo, lo cual incluye todos sus
 descendientes. <code class="docutils literal notranslate"><span class="pre">rename</span></code>, en cambio, nos permite cambiar el nombre del nodo
 sin alterar en absoluto su contenido:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>rename //profesor[1]/apelativo as &quot;apodo&quot;
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>rename node //profesor[1]/apelativo as &quot;apodo&quot;
 </pre></div>
 </div>
 <p>Y, de nuevo, también permite cambiar el nombre de un atributo:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>rename //profesor[1]/@id as &quot;codigo&quot;
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>rename node //profesor[1]/@id as &quot;codigo&quot;
 </pre></div>
 </div>
 </dd>
@@ -1001,7 +1001,7 @@ XQuery propuesto<div class="sd-summary-down docutils">
 </div>
 </details></li>
 <li><p>Generar otro <abbr title="eXtensible  Markup Language">XML</abbr> idéntico en que los atributos <em>nombre</em> y <em>cantidad</em> de
-cada ingrediente, se conviertan en nodos elemento:</p>
+cada ingrediente se conviertan en nodos elemento:</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 XQuery propuesto<div class="sd-summary-down docutils">

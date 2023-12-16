@@ -364,7 +364,7 @@ ligeramente distinto, ya que:
 
 * Cuando la salida es de texto, se evalúa una única expresión *XQuery*, por lo
   que la estrategia para lograr evaluar varias es devolver una secuencia, cada
-  uno de cuyos ítem es una expresión *XQuery*.
+  uno de cuyos ítems es una expresión *XQuery*.
 * Un documento |XML| está constituido por múltiples nodos (elementos, atributos,
   etc), el contenido de cada uno de los cuales podrá ser una expresión *XQuery*.
   Para generar cada nodo hay dos alternativas: los constructores directos y los
@@ -613,7 +613,7 @@ Cláusulas adicionales
          $n || ". Mi mascota es un " || $animal || "." 
 
 **GROUP BY**
-   como su homónimo en |SQL| permite agrupar los resultados según un determinado
+   como su homónimo en |SQL|, permite agrupar los resultados según un determinado
    criterio. Por ejemplo, esto sacaría un nuevo :file:`casillero.xml` en que los
    profesores están agrupados por casilleros:
 
@@ -741,7 +741,7 @@ Cláusulas adicionales
       return
          "- " || string-join($w, ",")
 
-   ...ahora las ventanas se pueden solapar y cómo cualquier ítem es susceptible
+   ...ahora las ventanas se pueden solapar y, como cualquier ítem, es susceptible
    de ser el comienzo de una el resultado es el siguiente:
 
    .. code-block:: none
@@ -866,7 +866,7 @@ Modificación
 
       for $p at $n in //profesor
       return
-         insert node element foo {$n} after //profesor[1]/nombre
+         insert node element foo {$n} after $p/nombre
 
    En realidad, es posible insertar una secuencia de nodos:
 
@@ -922,13 +922,13 @@ Modificación
 
    .. code-block:: xquery
 
-      rename //profesor[1]/apelativo as "apodo"
+      rename node //profesor[1]/apelativo as "apodo"
 
    Y, de nuevo, también permite cambiar el nombre de un atributo:
 
    .. code-block:: xquery
 
-      rename //profesor[1]/@id as "codigo"
+      rename node //profesor[1]/@id as "codigo"
 
 Modificación en memoria
 -----------------------
@@ -1031,7 +1031,7 @@ a. Obtener un listado de texto ordenado alfabéticamente con las recetas de más
          :language: xquery
 
 #. Generar otro |XML| idéntico en que los atributos *nombre* y *cantidad* de
-   cada ingrediente, se conviertan en nodos elemento:
+   cada ingrediente se conviertan en nodos elemento:
 
    .. dropdown:: XQuery propuesto
 

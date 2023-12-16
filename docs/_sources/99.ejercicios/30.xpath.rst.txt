@@ -101,7 +101,7 @@
 
          .. code-block:: xquery
 
-            count(//factura[substring(@fecha, 1, 7) < "2012-11"])
+            count(//factura[substring(@fecha, 1, 7) = "2012-11"])
 
    #. El número de facturas que sólo contienen un producto.
 
