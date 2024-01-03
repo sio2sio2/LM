@@ -242,12 +242,11 @@ específica para ella.
 .. _vscode-html-close:
 
 **Cierre de etiquetas**
-   Ya existe soporte para ello, pero si somos de a los que nos gusta no cerrar
-   las etiquetas que no necesitan cierre (a fin de cuentas |HTML|\ 5 ya no es
-   |XML|), puede resultarnos molesta que esta funcionalidad se aplique siempre.
-   La extensión nativa, desgraciadamente, no tiene posibilidad de definir
-   excepciones, pero otras externas, sí. Así que nuestra propuesta es
-   instalar y habilitar la extensión `Auto Close Tag
+   Ya existe soporte para ello, pero si somos de aquellos a los que gusta no cerrar
+   las etiquetas que no necesitan cierre, puede resultarnos molesta que esta
+   funcionalidad se aplique siempre. La extensión nativa, desgraciadamente, no
+   tiene posibilidad de definir excepciones, pero otras externas, sí. Así que
+   nuestra propuesta es instalar y habilitar la extensión `Auto Close Tag
    <https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag>`_
    y hacer una pequeña configuración para deshabilitar el cierre nativo y
    habilitar, con las excepciones de deseemos el cierre con esta extensión:
@@ -269,7 +268,7 @@ específica para ella.
       }
 
    En esta configuración, la primera línea deshabilita el cierre automático
-   nativa; la segunda lo habilita para la extensión; la tercera activa  el el
+   nativo; la segunda lo habilita para la extensión; la tercera activa  el el
    cierre para |HTML| (ya que por defecto está deshabilitado)\ [#]_, y la cuarta
    define aquellas etiquetas que no queremos que se cierren automáticamente.
    Además, con la quinta hemos deshabilitado la escritura automática de las
@@ -294,64 +293,105 @@ específica para ella.
 
 **Visualización**
    Otra funcionalidad interesante es la de poder previsualizar la página. Para
-   ello es muy útil la extensión `Live Preview
-   <https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server>`_,
-   que mostrará el icono señalado en la captura:
+   ello tenemos varias alternativas:
 
-   .. image:: files/livepreview.png
+   `Live Preview <https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server>`_
+     Extensión que mostrará el icono señalado en la captura:
 
-   La consecuencia de pinchar sobre el icono es ésta:
+     .. image:: files/livepreview.png
 
-   .. image:: files/livepreview2.png
+     La consecuencia de pinchar sobre el icono es ésta:
 
-   es decir, se crea un pequeño servidor web y mediante él se sirve la página
-   en un navegador empotrado. Además, podremos seguir escribiendo y las
-   modificaciones se realizarán en vivo.
+     .. image:: files/livepreview2.png
 
-   Una alternativa (aunque no equivalente, porque no habrá servidor web) es
-   abrir el documento |HTML| con un navegador que tengamos instalado en el
-   sistema, lo cual requiere dos cosas:
+     es decir, se crea un pequeño servidor web y mediante él se sirve la página
+     en un navegador empotrado. Además, podremos seguir escribiendo y las
+     modificaciones se realizarán en vivo.
 
-   + Crear una tarea:
+     Una alternativa (aunque no equivalente, porque no habrá servidor web) es
+     abrir el documento |HTML| con un navegador que tengamos instalado en el
+     sistema, lo cual requiere dos cosas:
 
-     Para ello puede crearse un archivo :file:`.vscode/tasks.json` y añadir las
-     tareas que abran los navegadores que deseemos:
+   `Live Server <https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer>`_
+     Extensión parecida a la anterior, pero que muestra la página en el navegador
+     predeterminado del sistema.
 
-     .. code-block:: json
+     Tras la instalación, si estamos en el directorio donde almacenamos nuestro
+     sitio web, tenemos dos alternativas para consultar el aspecto de la página
+     web:
 
-        {
-            "version":"2.0.0",
-            "tasks": [
-                {
-                    "label": "Abrir en Chromium",
-                    "command": "explorer",
-                    "windows":  { "command": "C:/Program Files/Brave Software/etc..." },
-                    "linux": { "command": "brave-browser" },
-                    "args": [ "${file}" ],
-                    "presentation": {"reveal": "never"},
-                    "problemMatcher": []
-                }
-            ]
-        }
+     a. Pinchar sobre ``Go Live`` (abajo a la derecha) que intentará abrir
+        directamente sobre el archivo :file:`index.html` del directorio:
 
-     .. seealso:: Para más información, consulte `cómo crear tareas
-        <https://code.visualstudio.com/docs/editor/tasks>`_.
+        .. image:: files/vscode-GoLive.png
 
-   + Asociar a la tarea :ref:`un atajo <vscode-atajos>`, para lo cual tenemos
-     que editar :file:`keybindings.json` tal como se explica allí:
-   
-     .. code-block:: json
+     b. Pinchar con el botón derecho sobre el archivo que queremos abrir y
+        seleccionar la entrada adecuada del menú contextual:
 
-        [
-            {
-                "key": "ctrl+l b",
-                "command": "workbench.action.tasks.runTask",
-                "args": "Abrir en Chromium"
-            }
-        ]
+        .. image:: files/vscode-LiveServer.png
 
-     En este caso, se abrirá Brave_ al pulsar :kbd:`Ctrl`\ +\ :kbd:`l`\ -\
-     :kbd:`b`.
+
+     En ambos casos, se levantará un pequeño servidor web y se mostrará el
+     documento |HTML| en el navegador predeterminado del sistema. Además, según
+     lo vayamos modificando, se reflejarán los cambios en la visualización sin
+     que tengamos que repetir la operación.
+
+     Si queremos parar el servidor, basta con pinchar donde antes se mostraba la
+     leyenda ``Go Live`` y ahora se muestra el puerto en el que escucha el
+     servicio:
+
+     .. image:: files/vscode-LiveServerClose.png
+
+   **Configuración manual**
+     Consiste en no utilizar ninguna extensión adicional y, simplemente, mapear
+     alguna combinación de teclas para que abra el |HTML| en el navegador de
+     nuestra elección. No es una solución equivalente a las dos anteriores,
+     puesto que en este caso no se crea ningún servidor web local, sino que el
+     documento |HTML| se abre como archivo local. Para los propósitos de este
+     curso en que nos limitamos a aprender a escribir páginas estáticas, es
+     probable que no nos percatemos de la diferencia. Para poner en práctica
+     esta alternativa, basta hacer dos cosas.
+
+     + Crear una tarea:
+
+       Para ello puede crearse un archivo :file:`.vscode/tasks.json` y añadir las
+       tareas que abran los navegadores que deseemos:
+
+       .. code-block:: json
+
+          {
+              "version":"2.0.0",
+              "tasks": [
+                  {
+                      "label": "Abrir en Chromium",
+                      "command": "explorer",
+                      "windows":  { "command": "C:/Program Files/Brave Software/etc..." },
+                      "linux": { "command": "brave-browser" },
+                      "args": [ "${file}" ],
+                      "presentation": {"reveal": "never"},
+                      "problemMatcher": []
+                  }
+              ]
+          }
+
+       .. seealso:: Para más información, consulte `cómo crear tareas
+          <https://code.visualstudio.com/docs/editor/tasks>`_.
+
+     + Asociar a la tarea :ref:`un atajo <vscode-atajos>`, para lo cual tenemos
+       que editar :file:`keybindings.json` tal como se explica allí:
+     
+       .. code-block:: json
+
+          [
+              {
+                  "key": "ctrl+l b",
+                  "command": "workbench.action.tasks.runTask",
+                  "args": "Abrir en Chromium"
+              }
+          ]
+
+       En este caso, se abrirá Brave_ al pulsar :kbd:`Ctrl`\ +\ :kbd:`l`\ -\
+       :kbd:`b`.
 
 .. https://code.visualstudio.com/docs/languages/html
    https://marketplace.visualstudio.com/items?itemName=smelukov.vscode-csstree : Probar para CSS
@@ -360,10 +400,10 @@ específica para ella.
 
 .. rubric:: Notas al pie
 
-.. [#] La extensión deshabilitó el autocierre para |HTML| cuando el soporte
-   nativo lo introdujo para no entrar en conflicto. Por otra parte, la extensión
-   sirve para autocompletar otros lenguajes, así que tal vez nos podría
-   interesar añadir más lenguajes al array.
+.. [#] La extensión, para no entrar en conflicto, deshabilitó el autocierre
+   predeterminado para |HTML| cuando el soporte nativo lo introdujo. Por otra
+   parte, la extensión sirve para autocompletar otros lenguajes, así que tal vez
+   nos podría interesar añadir más lenguajes a la secuencia.
 
 
 .. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`

@@ -148,3 +148,49 @@ table.attr-html tr td:last-child {
    background-color: #bda;
 }
 
+table.reglacss {
+   border-collapse: collapse;
+}
+
+table.reglacss caption {
+   font-weight: bold;
+}
+
+table.reglacss td,
+table.reglacss th {
+   border: solid #666 1px;
+   vertical-align: middle;
+}
+
+table.reglacss th {
+   font-family: monospace;
+   font-size: x-large;
+}
+
+table.reglacss td {
+   background-color: transparent !important;
+}
+
+table.reglacss p {
+   text-align: center;
+}
+
+a[href^="https://developer.mozilla.org/"].external::before {
+   content: url("mozilla.svg") "\21D7";
+   display: inline-block;
+   width: 30px;
+}
+
+.css-espec {
+   caption {
+      font-weight: bold;
+   }
+
+   & td:first-child {
+      font-family: monospace;
+   }
+
+   & td:last-child p {
+      text-align: center;
+   }
+}

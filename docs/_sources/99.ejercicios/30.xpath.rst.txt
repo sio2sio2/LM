@@ -446,7 +446,7 @@
 
          .. code-block:: xquery
 
-            count(//modelo)
+            //cliente[@id='p01']
 
    #. El número de clientes.
 

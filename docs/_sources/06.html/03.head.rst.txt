@@ -1,5 +1,7 @@
 .. highlight:: html
 
+.. _html-head:
+
 Cabecera
 ********
 La cabecera del documento |HTML| es el contenido del elemento :code:`<head>`
@@ -57,7 +59,7 @@ contenido |HTML| de la página.
       </style>
 
    .. note:: Para referir estilo |CSS| que se encuentre en fichero aparte debe
-      usarse :code:`<link>`, que :ref:`se explica un poco más adelante <html-link>`.
+      usarse |link|, que :ref:`se explica un poco más adelante <html-link>`.
 
 .. index:: script
 

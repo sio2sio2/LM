@@ -1,0 +1,226 @@
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>7.3. Propiedades &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" href="../_static/general.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+
+    
+    
+     
+        <script src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="7.4. Bootstrap" href="04.bootstrap.html" />
+    <link rel="prev" title="7.2. Sintaxis" href="02.sintaxis.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="04.bootstrap.html" title="7.4. Bootstrap"
+             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="02.sintaxis.html" title="7.2. Sintaxis"
+             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">7. </span><abbr title="Cascading Style Sheets">CSS</abbr></a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">7.3. </span>Propiedades</a></li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="propiedades">
+<h1><span class="section-number">7.3. </span>Propiedades<a class="headerlink" href="#propiedades" title="Enlace permanente a este encabezado">¶</a></h1>
+<p><abbr title="Cascading Style Sheets">CSS</abbr>3 es una especificación inmensa con <a class="reference external" href="https://www.w3.org/Style/CSS/current-work">múltiples módulos definidos en
+distintos documentos</a> y no tenemos
+el tiempo ni la fuerzas para desarrollar en esta documentación un resumen
+apropiado. Además, como no somos diseñadores, es nuestro propósito  no
+profundizar demasiado y centrarnos en el uso de <a class="reference internal" href="04.bootstrap.html#bootstrap"><span class="std std-ref">Bootstrap</span></a>. Por eso nos
+limitaremos a proporcionar ciertas pautas y fuentes externas para su estudio.
+Para su compresión necesitamos conocer:</p>
+<ol class="arabic">
+<li><p>Los fundamentos de su <a class="reference internal" href="02.sintaxis.html#css-sintaxis"><span class="std std-ref">sintaxis</span></a>: cómo se escriben las
+reglas, cómo se construyen los <a class="reference internal" href="02.sintaxis.html#css-selectores"><span class="std std-ref">selectores</span></a> y cómo actúa
+el <a class="reference internal" href="02.sintaxis.html#css-cascada"><span class="std std-ref">algoritmo de cascada</span></a>.</p></li>
+<li><p>Cómo funciona el <a class="reference internal" href="../06.html/02.estructura.html#html-maquetacion"><span class="std std-ref">modelo de cajas</span></a> y sus dimensiones
+asociadas. Una buen punto de partida es <a class="reference external" href="https://lenguajecss.com/css/modelo-de-cajas/que-es/">esta introducción al modelo de cajas
+de lenguajecss.com</a>.</p></li>
+<li><p>Los métodos para colocar (<strong>posicionamiento</strong>) los elementos en el documento.
+El mecanismo tradicional era algo torpe hasta que apareció <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex">flex</a>
+y, más tarde, <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid">grid</a>. De nuevo, <a class="reference external" href="https://lenguajecss.com/css/maquetacion-y-colocacion/propiedad-display/">la introducción a la maquetación
+de lenguajecss.com</a> es
+un buen comienzo.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong class="program">Bootstrap</strong> es una alternativa sencilla a la maquetación
+mediante estas herramientas nativas y, además, buen ofrece un aspecto
+predeterminado de los elementos y componentes prefabricados con lo que es
+muy intersante si nos queremos centrar en el desarrollo y no tanto en el
+diseño.</p>
+</div>
+</li>
+<li><p>Las principales propiedades que nos sirven para dar aspecto básico  a la
+página relativas a:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://lenguajecss.com/css/fuentes-y-tipografias/elegir-tipografia/">Texto y fuentes</a>.</p></li>
+<li><p><a class="reference external" href="https://lenguajecss.com/css/colores/codigos-color/">Colores</a>.</p></li>
+<li><p><a class="reference external" href="https://lenguajecss.com/css/modelo-de-cajas/bordes/">Bordes</a>, <a class="reference external" href="https://lenguajecss.com/css/modelo-de-cajas/margenes-y-rellenos/">márgenes
+y rellenos</a>.</p></li>
+<li><p><a class="reference external" href="https://lenguajecss.com/css/representacion-datos/listas-css/">Listas</a>.</p></li>
+<li><p><a class="reference external" href="https://lenguajecss.com/css/representacion-datos/tablas-css/">Tablas</a>.</p></li>
+</ul>
+<p>Estas propiedades necesitaremos conocerlas, aunque nos ayudemos de
+<strong class="program">Bootstrap</strong> para personalizar el aspecto predefinidos de las
+páginas. Otras no serán tan necesarias en ese caso, pero son indispensables,
+si no se usa tal herramienta:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://lenguajecss.com/css/maquetacion-y-colocacion/propiedad-display/">Maquetación</a>
+(<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">display</a>, <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">position</a>, etc).</p></li>
+<li><p><a class="reference external" href="https://lenguajecss.com/css/responsive-web-design/que-es/">Diseño adaptativo</a>, ya que
+nuestro público objetivo en muchos casos accederá desde dispositivos
+distintos a un ordenador (móviles o <em>tablets</em>).</p></li>
+</ul>
+</li>
+</ol>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Para el que prefiera los vídeos hay en Youtube toda una <a class="reference external" href="https://kikopalomares.com/cursos/css">serie
+sobre CSS de Kiko Palomares</a>.</p>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/logo.png" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="02.sintaxis.html"
+                          title="Previous page">&larr; <span class="section-number">7.2. </span>Sintaxis</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="04.bootstrap.html"
+                          title="Next page">&rarr; <span class="section-number">7.4. </span>Bootstrap</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/07.css/03.propiedades.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="04.bootstrap.html" title="7.4. Bootstrap"
+             >siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="02.sintaxis.html" title="7.2. Sintaxis"
+             >anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">7. </span><abbr title="Cascading Style Sheets">CSS</abbr></a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">7.3. </span>Propiedades</a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor CC BY 4.0, 2023-2023, José Miguel Sánchez Alés.
+      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

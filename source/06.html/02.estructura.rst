@@ -173,16 +173,21 @@ Si se conoce la sintaxis |HTML| es bastante sencillo producir una sintaxis
    <https://web.archive.org/web/20190117034119/https://www.ibm.com/developerworks/xml/library/x-think45/>`_
    describe algunas particularidades de |XHTML|\ 5.
 
-Maquetación
------------
+.. _html-maquetacion:
+
+Modelo de cajas
+---------------
 Bajo este epígrafe no trataremos la maquetación de los documentos |HTML|, que
 requiere el uso de :ref:`CSS <css>`, sino que nos limitaremos a aclarar que ésta
 se basa en el llamado `modelo de cajas
 <https://developer.mozilla.org/es/docs/Learn/CSS/Introduction_to_CSS/Modelo_cajas>`_.
 Muy a grandes trazos, el modelo de cajas se basa en considerar que cualquier
 elemento representable de |HTML| constituye una caja rectangular, cuyas
-características :ref:`trataremos a su debido tiempo <css-modelo>`. Así, este
-párrafo:
+características podemos resumir en la siguiente ilustración:
+
+.. image:: files/caja.png
+
+Así, este párrafo:
 
 .. code-block:: html
 
@@ -215,15 +220,18 @@ segunda la caja de un *elemento en línea*.
    esto es, podrá haber elementos a su izquierda y derecha. Es el caso de
    :code:`span`.
 
+   .. caution:: Los elementos en línea no reemplazados\ [#]_ no tienen margen
+      superior ni inferior.
+
 La mayoría de los elementos son de uno de estos dos tipos, por lo que nos basta
 con esto por ahora.
 
 .. rubric:: Pero, oiga, ¿esto no es marcado descriptivo?
 
 Dejamos establecido al comienzo del curso que :ref:`HTML es un lenguaje de
-marcado descriptivo <lenguajes>`, los cuales se caracterizan por no informar de
-cómo deben ser procesados. Sin embargo, un navegador *web* es capaz de mostrar
-un documento |HTML|. Esto es debido a que las especificaciones dan unas
+marcado descriptivo <lm-habituales>`, los cuales se caracterizan por no informar
+de cómo deben ser procesados. Sin embargo, un navegador *web* es capaz de
+mostrar un documento |HTML|. Esto es debido a que las especificaciones dan unas
 directrices de cómo debe ser la visualización (por ejemplo, definen si el
 elemento es de bloque o de línea) y, en consecuencia, todos los navegadores
 incorporan un |CSS| interno que, basándose en estas directrices, dota de
@@ -385,6 +393,11 @@ cuya versión |XML| es la siguiente:
    ``<meta>`` y es lo recomendable. En el caso de que se incluyan a través de la
    cabecera y del elemento, el navegador dará preferencia a la información de la
    cabecera.
+
+.. [#] Un elemento reemplazado es aquel que se sustituye por algo externo. Por
+   ejemplo, una :ref:`imagen <html-img>` es un elemento reemplazado. Un
+   :ref:`video <html-video>` o un :ref:`audio <html-audio>` también lo son. Un
+   :ref:`enlace <html-a>`, en cambio, no lo es.
 
 .. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`
 .. |XHTML| replace:: :abbr:`XHTML (eXtensible HyperText Markup Language)`

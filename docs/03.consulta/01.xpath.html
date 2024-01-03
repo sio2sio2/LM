@@ -93,7 +93,7 @@ sentido utilizar aislada.</p>
 <p class="admonition-title">Prudencia</p>
 <p><em>XPath</em> no es el único lenguaje para esta tarea. En <abbr title="HyperText Markup Language">HTML</abbr> (que
 no es <abbr title="eXtensible  Markup Language">XML</abbr>, pero tiene bastantes semejanzas) es muy común usar para la
-selección de nodos los <span class="xref std std-ref">selectores CSS</span>, diseñados en
+selección de nodos los <a class="reference internal" href="../07.css/02.sintaxis.html#css-selectores"><span class="std std-ref">selectores CSS</span></a>, diseñados en
 principio para definir su estilo (o sea, su aspecto). A pesar de nacer para
 documentos <abbr title="HyperText Markup Language">HTML</abbr>, los <em>selectores CSS</em> son perfectamente válidos para
 identificar nodos <abbr title="eXtensible  Markup Language">XML</abbr>, por lo que son una alternativa muy utilizada. Por
@@ -1040,7 +1040,7 @@ verdadera con que al menos uno de los nodos de la pluralidad cumpla con la
 expresión. En consecuencia, en el ejemplo anterior bastaría con que uno de
 los apodos del profesor fuera «Pepe» para que ese profesor quedara
 seleccionado.</p></li>
-<li><p>Cuando ambos operandos de las expresión son una pluralidad de nodos, la
+<li><p>Cuando ambos operandos de la expresión son una pluralidad de nodos, la
 expresión es verdadera si hay un nodo del primer conjunto y un nodo del
 segundo conjunto, que al ser comparados entre sí como cadenas hacen que la
 expresión sea verdadera.</p></li>
@@ -2330,7 +2330,7 @@ que vende un concesionario, determinar la expresión <em>XPath</em> que devuelve
 </div>
 </li>
 <li><p>El cliente de identificador c01.</p>
-<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">modelo</span><span class="p">)</span>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">cliente</span><span class="p">[</span><span class="na">@id</span><span class="o">=</span><span class="s1">&#39;p01&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </li>

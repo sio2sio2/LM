@@ -134,7 +134,7 @@ entidades</a>.</p></li>
 <abbr title="eXtensible  Markup Language">XML</abbr>. Las reglas las podemos resumir en las siguientes:</p>
 <ol class="arabic">
 <li><p>Para asegurarnos de que el navegador interprete la sintaxis como <abbr title="eXtensible  Markup Language">XML</abbr> el
-servidor web debe informarle de que el documento es <em>application/xhtml+xml</em><a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>:</p>
+servidor web debe informarle de que el documento es <em>application/xhtml+xml</em><a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">Content-Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application/xhtnl+xml</span>
 </pre></div>
 </div>
@@ -233,15 +233,16 @@ escrito directamente, sino que sea el resultado de aplicar una transformación
 describe algunas particularidades de <abbr title="eXtensible HyperText Markup Language">XHTML</abbr>5.</p>
 </div>
 </section>
-<section id="maquetacion">
-<h3><span class="section-number">6.2.1.3. </span>Maquetación<a class="headerlink" href="#maquetacion" title="Enlace permanente a este encabezado">¶</a></h3>
+<section id="modelo-de-cajas">
+<span id="html-maquetacion"></span><h3><span class="section-number">6.2.1.3. </span>Modelo de cajas<a class="headerlink" href="#modelo-de-cajas" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Bajo este epígrafe no trataremos la maquetación de los documentos <abbr title="HyperText Markup Language">HTML</abbr>, que
-requiere el uso de <span class="xref std std-ref">CSS</span>, sino que nos limitaremos a aclarar que ésta
+requiere el uso de <a class="reference internal" href="../07.css/index.html#css"><span class="std std-ref">CSS</span></a>, sino que nos limitaremos a aclarar que ésta
 se basa en el llamado <a class="reference external" href="https://developer.mozilla.org/es/docs/Learn/CSS/Introduction_to_CSS/Modelo_cajas">modelo de cajas</a>.
 Muy a grandes trazos, el modelo de cajas se basa en considerar que cualquier
 elemento representable de <abbr title="HyperText Markup Language">HTML</abbr> constituye una caja rectangular, cuyas
-características <span class="xref std std-ref">trataremos a su debido tiempo</span>. Así, este
-párrafo:</p>
+características podemos resumir en la siguiente ilustración:</p>
+<img alt="../_images/caja.png" src="../_images/caja.png" />
+<p>Así, este párrafo:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Lorem ipsum dolor sit amet, <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>consectetur adipiscing elit<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>,
 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
 minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -257,7 +258,7 @@ laborum.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt
 caja interna con el elemento <code class="code docutils literal notranslate"><span class="pre">span</span></code>. Entre ambas cajas, sin embargo, hay
 una diferencia radical: la primera es la caja de un <em>elemento en bloque</em> y la
 segunda la caja de un <em>elemento en línea</em>.</p>
-<dl class="simple">
+<dl>
 <dt><strong>Elemento en bloque</strong></dt><dd><p>Un <em class="dfn">elemento en bloque</em> es aquel que ocupa todo el espacio disponible
 del elemento que lo contiene, lo que supone que ni a la izquierda ni a la
 derecha del elemento pueda haber otros bloques. En consecuencia, el siguiente
@@ -267,15 +268,20 @@ elemento de bloque deberá colocarse debajo. Es el caso de <code class="code doc
 contenido. Por tanto, podrá convivir con otros elementos en la línea que ocupa,
 esto es, podrá haber elementos a su izquierda y derecha. Es el caso de
 <code class="code docutils literal notranslate"><span class="pre">span</span></code>.</p>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>Los elementos en línea no reemplazados<a class="footnote-reference brackets" href="#id5" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> no tienen margen
+superior ni inferior.</p>
+</div>
 </dd>
 </dl>
 <p>La mayoría de los elementos son de uno de estos dos tipos, por lo que nos basta
 con esto por ahora.</p>
 <p class="rubric">Pero, oiga, ¿esto no es marcado descriptivo?</p>
-<p>Dejamos establecido al comienzo del curso que <span class="xref std std-ref">HTML es un lenguaje de
-marcado descriptivo</span>, los cuales se caracterizan por no informar de
-cómo deben ser procesados. Sin embargo, un navegador <em>web</em> es capaz de mostrar
-un documento <abbr title="HyperText Markup Language">HTML</abbr>. Esto es debido a que las especificaciones dan unas
+<p>Dejamos establecido al comienzo del curso que <a class="reference internal" href="../01.intro/01.intro.html#lm-habituales"><span class="std std-ref">HTML es un lenguaje de
+marcado descriptivo</span></a>, los cuales se caracterizan por no informar
+de cómo deben ser procesados. Sin embargo, un navegador <em>web</em> es capaz de
+mostrar un documento <abbr title="HyperText Markup Language">HTML</abbr>. Esto es debido a que las especificaciones dan unas
 directrices de cómo debe ser la visualización (por ejemplo, definen si el
 elemento es de bloque o de línea) y, en consecuencia, todos los navegadores
 incorporan un <abbr title="Cascading Style Sheets">CSS</abbr> interno que, basándose en estas directrices, dota de
@@ -479,7 +485,7 @@ incluso al usar la sintaxis <abbr title="HyperText Markup Language">HTML</abbr>.
 </div>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id2" role="note">
+<aside class="footnote brackets" id="id4" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>La cabecera <code class="docutils literal notranslate"><span class="pre">Content-Type:</span></code> también puede contener la codificación:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">Content-Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application/xhtml+xml; charset=UTF-8</span>
@@ -489,6 +495,13 @@ incluso al usar la sintaxis <abbr title="HyperText Markup Language">HTML</abbr>.
 <code class="docutils literal notranslate"><span class="pre">&lt;meta&gt;</span></code> y es lo recomendable. En el caso de que se incluyan a través de la
 cabecera y del elemento, el navegador dará preferencia a la información de la
 cabecera.</p>
+</aside>
+<aside class="footnote brackets" id="id5" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
+<p>Un elemento reemplazado es aquel que se sustituye por algo externo. Por
+ejemplo, una <a class="reference internal" href="04.basico.html#html-img"><span class="std std-ref">imagen</span></a> es un elemento reemplazado. Un
+<a class="reference internal" href="09.media.html#html-video"><span class="std std-ref">video</span></a> o un <a class="reference internal" href="09.media.html#html-audio"><span class="std std-ref">audio</span></a> también lo son. Un
+<a class="reference internal" href="04.basico.html#html-a"><span class="std std-ref">enlace</span></a>, en cambio, no lo es.</p>
 </aside>
 </aside>
 </section>
@@ -510,7 +523,7 @@ cabecera.</p>
 <li><a class="reference internal" href="#etiquetas">6.2.1. Etiquetas</a><ul>
 <li><a class="reference internal" href="#sintaxis">6.2.1.1. Sintaxis</a></li>
 <li><a class="reference internal" href="#sintaxis-xml">6.2.1.2. Sintaxis <abbr title="eXtensible  Markup Language">XML</abbr></a></li>
-<li><a class="reference internal" href="#maquetacion">6.2.1.3. Maquetación</a></li>
+<li><a class="reference internal" href="#modelo-de-cajas">6.2.1.3. Modelo de cajas</a></li>
 <li><a class="reference internal" href="#atributos-comunes">6.2.1.4. Atributos comunes</a></li>
 </ul>
 </li>

@@ -17,7 +17,7 @@ sentido utilizar aislada.
 
 .. caution:: *XPath* no es el único lenguaje para esta tarea. En |HTML| (que
    no es |XML|, pero tiene bastantes semejanzas) es muy común usar para la
-   selección de nodos los :ref:`selectores CSS <css-selectors>`, diseñados en
+   selección de nodos los :ref:`selectores CSS <css-selectores>`, diseñados en
    principio para definir su estilo (o sea, su aspecto). A pesar de nacer para
    documentos |HTML|, los *selectores CSS* son perfectamente válidos para
    identificar nodos |XML|, por lo que son una alternativa muy utilizada. Por
@@ -948,7 +948,7 @@ de tipos. Este es un aspecto que debemos revisar.
       los apodos del profesor fuera "Pepe" para que ese profesor quedara
       seleccionado.
 
-   #. Cuando ambos operandos de las expresión son una pluralidad de nodos, la
+   #. Cuando ambos operandos de la expresión son una pluralidad de nodos, la
       expresión es verdadera si hay un nodo del primer conjunto y un nodo del
       segundo conjunto, que al ser comparados entre sí como cadenas hacen que la
       expresión sea verdadera.

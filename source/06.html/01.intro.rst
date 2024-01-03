@@ -402,8 +402,23 @@ publican posteriormente tres versiones del lenguaje, ya definido como |SGML|:
       versiones numeradas, por lo que sólo la norma viva del |WHATWG| es la
       referencia actual del lenguaje.
 
-   .. todo:: Añadir las novedades de |HTML|\ 5 basándose en lo descrito `en la
-      página de la Wikipedia <https://en.wikipedia.org/wiki/HTML5>`_.
+   |HTML|\ 5 introdujo **novedades** substanciosas (por no decir disruptivas)
+   sobre las versiones anteriores de |HTML|:
+
+   * Introdujo una |API| que posibilitara el desarrollo de aplicaciones web
+     complejas. Esa es la razón por la que *Javascript* se pudo incorporar
+     plenamente como tecnología web y hemos conocido cómo se han desarrollado
+     auténticas aplicaciones que ejecutamos en el propio navegador.
+
+   * Soporte nativo para contenido gráfico y multimedia con elementos como
+     :ref:`video <html-video>`, :ref:`audio <html-audio>` o ``<canvas>``.
+
+   * Soporte para |SVG| y MathML_.
+
+   * Virar el lenguaje |HTML| hacia la creación de documento plenamente
+     semántico con etiquetas como :ref:`article <html-article>`, :ref:`section
+     <html-section>`, :ref:`nav <html-nav>`,  etc.
+
 
 Esta es la historia, pero ¿es |HTML|\ 5 entonces |SGML|? La respuesta es que
 **no**. |HTML| no es ya |SGML|, porque no hay definido ningún |DTD| para su
@@ -460,6 +475,8 @@ hay multiples tecnologías implicadas. Las más destacadas son:
 
   Los lenguajes de servidor más utilizados son el propio Javascript_ (usando
   NodeJS_), |PHP|, Python_ y Java_.
+
+.. _html-tools:
 
 Herramientas
 ============
@@ -595,6 +612,9 @@ jsbin.com_
    Sitio semejante a los dos anteriores, aunque presenta algunas
    particularidades como una consola de Javascript_.
 
+mdn_
+   Otra alternativa más incluida en el sitio de |MDN|.
+
 .. rubric:: Notas al pie
 
 .. [#] En un sistema *Linux* es posible generar la codificación en base64 de un
@@ -631,6 +651,9 @@ jsbin.com_
 .. |URN| replace:: :abbr:`URN (Uniform Resource Name)`
 .. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`
 .. |DOM| replace:: :abbr:`DOM (Document Object Model)`
+.. |MDN| replace:: :abbr:`MDN (Mozilla Developer Network)`
+.. |API| replace:: :abbr:`API (Application Programming Interface)`
+.. |SVG| replace:: :abbr:`SVG (Scalable Vector Graphics)`
 
 .. _Apple: https://www.apple.com
 .. _Safari: https://es.wikipedia.org/wiki/Safari_(navegador)
@@ -650,8 +673,10 @@ jsbin.com_
 .. _Chromium: https://www.chromium.org/
 .. _Safari: https://es.wikipedia.org/wiki/Safari_(navegador)
 .. _Firefox: https://es.wikipedia.org/wiki/Mozilla_Firefox
+.. _MathML: https://www.w3.org/TR/MathML
 .. _jsfiddle.net: https://jsfiddle.net/
 .. _codepen.io: https://codepen.io/
 .. _jsbin.com: https://jsbin.com
 .. _Visual Studio Code: https://code.visualstudio.com/
+.. _mdn: https://developer.mozilla.org/en-US/play
 

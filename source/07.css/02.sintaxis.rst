@@ -1,0 +1,947 @@
+.. _css-sintaxis:
+
+Sintaxis
+********
+El propósito de este apartado es describir cuál es la sintaxis general de |CSS|
+sin entrar a enumerar en concreto cuáles son todas las propiedades individuales
+posibles.
+
+Sentencias
+==========
+|CSS| se compone de tres tipos de sentencias:
+
+* Los *comentarios*, que se notan como en el `lenguaje C
+  <https://es.wikipedia.org/wiki/C_(lenguaje_de_programaci%C3%B3n)>`_:
+
+  .. code-block:: css
+
+     /* Esto es un comentario en CSS */
+
+.. _css-@media:
+
+* Las instrucciones :devmozcss:`at-rule`  de las que hay varias y tienen
+  distinta finalidad. Las más habituales son:
+
+  :devmozcss:`@import`
+      que permite cargar en la hoja de estilos el contenido de otra hoja de
+      estilos:
+
+      .. code-block:: css
+
+         @import url("segundahoja.css");
+
+      El argumento es una |URL| absoluta o relativa (como es el caso) a la
+      ubicación de la hoja desde la que se invoca.
+
+      .. note:: Nótese el punto y coma (";") con el que se remata la sentencia.
+         Mientras no se incluya se considerará que la sentencia no se ha
+         acabado, aunque se cambie de línea. Es otro comportamiento heredado de
+         **C**.
+
+      .. warning:: La sentencia debe colocarse al principio del archivo. De lo
+         contrario, el navegador evitará su ejecución.
+
+  :devmozcss:`@page`
+      Sirve para definir propiedades de las páginas en la impresión como los
+      márgenes o las líneas huérfanas. Se puede acompañar de las
+      pseudoclases como ``:first``, ``:left``, ``:right``, ``:blank`` para
+      afectar sólo a ciertas páginas (la primera, las que quedan a la izquierda,
+      etc.):
+
+      .. code-block:: css
+
+         /* El margen izquierdo de todas las páginas es 3 cm */
+         @page {
+            margin-left: 3cm;
+         }
+
+         /* El margen superior de la primera página es 9 cm */
+         @page :first {
+            margin-top: 9cm;
+         }
+
+  :devmozcss:`@font-face`
+      Permite definir el origen del que obtener una tipografía por si estimamos
+      que el usuario puede no tenerla instalada en su sistema. Por ejemplo:
+
+      .. code-block:: css
+
+         @font-face {
+            font-family: "Open Sans";
+            font-style: normal;
+            font-weight: 400;
+            src:
+               local("Open Sans"); /* Si está instalada en el sistema, no se descarga */
+               url("fonts/opensans.woff2") format("woff2");   /* Web Open Font Format v2 */
+               url("fonts/opensans.woff") format("woff");     /* Web Open Font Format */
+               url("fonts/opensans.ttf") format("truetype");  /* TTF para navegadores viejos */
+         }
+
+         /* ... */
+
+         body {
+            font-family: "Open Sans", sans-serif; /* En principio, la alternativa sobra */
+         }
+
+  :devmozcss:`@media`
+      Define bajo qué condiciones o medios se aplican las reglas que se incluyen
+      dentro del bloque. Los medios pueden ser ``all``, ``screen``, ``print``  o
+      ``speech`` (lectores de texto para invidentes) y las condiciones se
+      relacionan fundamentalmente con las dimensiones del dispositivo (véase
+      `Condiciones de Media Queries
+      <https://lenguajecss.com/css/responsive-web-design/media-queries/#condiciones-de-media-queries>`_).
+      Por ejemplo:
+
+      .. code-block:: css
+
+         @media only screen and (width <= 400) {
+            body {
+               width: 100%;
+            }
+         }
+
+         @media only screen and (400 < width <= 800)  {
+            body {
+               width: 90%;
+            }
+         }
+
+         @media only screen and (width > 800)  {
+            body {
+               width: 800px;
+            }
+         }
+
+      .. note:: Esta regla acompañada de condiciones es fundamental para el `diseño web
+         adaptativo <https://es.wikipedia.org/wiki/Dise%C3%B1o_web_adaptable>`_.
+
+* Las *reglas* o :dfn:`normas de estilo` son propiamente las que definen el aspecto
+  de los elementos |HTML|. Tienen la siguiente sintaxis:
+
+
+  .. table:: Norma de estilo
+     :class: reglacss
+
+     +----------+---+-----------+---+-------+---+------------+---+--------+---+
+     | p        | { | color     | : | #EEE  | ; | font-style | : | italic | } |
+     +==========+===+===========+===+=======+===+============+===+========+===+
+     | selector |   | propiedad |   | valor |   | propiedad  |   | valor  |   |
+     |          |   +-----------+---+-------+---+------------+---+--------+   |
+     |          |   |     declaración       |   |   declaración           |   |
+     |          +---+-----------------------+---+-------------------------+---+
+     |          |       bloque de la declaración                              |
+     +----------+-------------------------------------------------------------+
+
+  Constan de un **selector**, que sirve para indicar los elementos |HTML|
+  afectados por la regla y un *bloque contenedor* limitado por paréntesis ("{}")
+  con las propiedades. Dentro del bloque de contenidos se van
+  declarando las **propiedades**, de modo que cada una de ellas se compone del
+  *nombre de la propiedad*, dos puntos como separador, y el valor que se
+  asignará a tal propiedad. Para separar una declaración de otra se usa el punto
+  y coma (";"). Por ejemplo:
+
+  .. code-block:: css
+
+     /* Esta regla afecta a todos los párrafos */
+     p {
+       color: #EEE;
+       font-style: italic;
+     }
+
+  .. caution:: Tenga presente que las propiedades se aplican sobre el elemento
+     o los elementos que determine el selector, pero muchas de las
+     propiedades |CSS| son heredables, lo que quiere decir que si se define el
+     valor de la propiedad para un elemento contenedor, la propiedad del
+     elemento contenido también tendrá ese valor. Por ejemplo:
+
+     .. code-block:: css
+
+        article {
+            border: solid black 1px;
+            color: blue;
+        }
+
+     :devmozcss:`border` no es un propiedad heredada, mientras que
+     :devmozcss:`color` sí lo es. Esto supone que un párrafo incluido dentro de
+     este :ref:`elemento article <html-article>` tenga sus letras de color azul,
+     pero, sin embargo, no tenga elementos de borde (a menos que explícitamente
+     se definan para él).
+
+.. _css-selectores:
+
+Selectores
+==========
+El :dfn:`selector` es la parte de la regla que identifica el elemento o los
+elementos |HTML| sobre los que se aplica. Cumple, por tanto, la misma función
+que una :ref:`expresión XPath <xpath>` y, de hecho, pueden usarlos otras
+tecnologías como mecanismo para seleccionar elementos de documentos |XML| o |HTML|,
+como es el caso de *Javascript* con sus métodos :ref:`document.querySelector
+<document.querySelector>` o :ref:`document.querySelectorAll
+<document.querySelectorAll>`, lo cual convierte el conocimiento de cómo se
+construyen en algo útil no solamente para escribir reglas |CSS|, sino para la
+programación web en general.
+
+Hay ya en borrador una `especificación de nivel 4 para selectores
+<https://www.w3.org/TR/selectors-4/>`_ con muchísima expresividad. Nosotros
+trataremos lo fundamental de ellos.
+
+.. _css-selector-simple:
+
+Simple
+------
+Dentro de un selector simple pueden aparecer yuxtapuestos hasta seis tipos de
+**componentes**:
+
+.. _css-elemento:
+
+**Elemento**
+   que, como su nombre indica, especifica qué elemento referimos:
+
+   .. code-block:: css
+
+     /* La regla se aplica a párrafos */
+     p {
+       color: #EEE;
+       font-style: italic;
+     }
+
+     /* Comodín para indicar cualquier elemento */
+     * {
+       text-align: center;
+     }
+
+   Es el único componente que no podemos usar repetidamente en un selector
+   simple.
+
+.. _css-clase:
+
+**Clase**
+   que provoca que se seleccione aquel elemento que pertenece a la clase
+   indicada. Se nota anteponiendo un punto (".") al nombre de la clase:
+
+   .. code-block:: css
+
+      /* Cualquier elemento de la clase "foo" (no expresamos elemento) */
+      .foo {
+         font-style: italic;
+      }
+
+      /* Cualquier párrafo de la clase "foo" */
+      p.foo {
+         color: gray;
+      }
+
+      /* Repetimos este componente: cualquier elemento que pertenezca a las clases "foo" y "bar" */
+      .foo.bar {
+         background-color: yellow;
+      }
+
+.. _css-id:
+
+**Identificador**
+   que selecciona el elemento con el identificador indicado. Para ello se
+   antepone una almohadilla ("#") al nombre del identificador:
+
+   .. code-block:: css
+
+      #punto1 {
+         font-weight: bold;
+      }
+
+   Como el identificador, por definición, es único no tiene, en principio,
+   sentido usar junto a él otros en componentes, aunque podría llegar a ser útil
+   para aumentar la :ref:`especificidad de la regla <css-cascada>`.
+
+.. _css-atributo:
+
+**Atributo**
+   que permite seleccionar el elemento que disponga de un determinado atributo.
+   Para distinguirlo del resto, este componente se escribe entre corchetes:
+
+   .. code-block:: css
+
+      /* Cualquier elemento con un atributo title, sea cual sea su valor */
+      [title] {
+         color: blue;
+      }
+
+      /* Cualquier elemento con atributos title y href */
+      [href][title] {
+         cursor: crosshair;
+      }
+
+      /* Cualquier enlace con atributo title */
+      a[title] {
+         cursor: crosshair;
+      }
+
+      /* Cualquier elemento cuyo atributo "lang" valga "es" */
+      [lang=es] {
+         font-weight: bold;
+      }
+      
+      /* Cualquier elemento cuyo atributo "class" contenga la palabra "foo" */
+      [class~=foo] {  /* Habríamos acabado antes con .foo */
+         font-style: italic;
+      }
+
+      /* Cualquier elemento cuyo atributo href empiece por http: */
+      [href^=http:] {  /* La comunicación con este enlace no es segura */
+         color: red;
+      }
+
+      /* Cualquier enlace cuyo atributo href acabe con .pdf */
+      a[href$=.pdf] {
+         text-decoration: underline;
+      }
+
+      /* Cualquier enlace cuyo atributo href contiene la cadena "google" */
+      [href*=google] {
+         color: #00F;
+      }
+
+      /* Cualquier elemento cuyo atributo class vale "foo" o "foo-LOQUESEA" */
+      [class|=foo] {
+         blackground: gray;
+      }
+
+   .. caution:: Los valores no se han encerrado entre comillas, porque no hay
+      caracteres raros que puedan confundir al procesador. uUando los hay, en
+      cambio, son necesarios. Véase el próximo ejemplo:
+
+.. _css-pseudoelementos:
+
+**Pseudoelementos**
+   Los :dfn:`pseudoelementos` son entidades del documento |HTML| que no se
+   representan con nodos elemento. Desde el nivel 3\ [#]_, se notan anteponiendo
+   dos veces dos puntos ("::") al nombre del pseudoelemento. Algunos de los
+   definidos son:
+
+   * :devmozcss:`::before`, que se aplica en un elemento a un imaginario primer
+     hijo anterior al primer hijo que realmente aparece en el documento. Por
+     ejemplo:
+
+     .. code-block:: css
+
+        /* Al texto de los enlaces a la red de Edonkey se les añade antes una etiqueta identificativa */
+        a[href^="ed2k:"]::before {
+           content: "[edonkey] "
+        }
+
+     Obsérvese que en el caso de un enlace, hay un único hijo que es un nodo de
+     texto. Por tanto, la cadena *[edonkey]*, se añadiría antes del texto.
+
+   * :devmozcss:`::after`, que se aplica en un elemento a un imaginario último hijo
+     posterior al último hijo que realmente aparece en el documento:
+
+     .. code-block:: css
+
+        a[href^="ed2k:"]::after {
+           content: " [edonkey]"
+        }
+
+   * :devmozcss:`::first-letter`, que se aplica a la primera letra de la primera
+     línea de un :ref:`elemento de bloque <html-maquetacion>`:
+
+     .. code-block:: css
+
+        p::first-letter {
+           font-size: xxx-large;
+        }
+
+   * :devmozcss:`::first-line`, que se aplica a la totalidad de la primera línea
+     de un :ref:`elemento de bloque <html-maquetacion>`: 
+
+     .. code-block:: css
+
+        ::first-line {
+           font-size: x-large;
+        }
+
+   * :devmozcss:`::marker`, que selecciona la caja de marcadores de cualquier
+     elemento que se haya configurado como ``display: list-item``. Por ejemplo,
+     permitiría seleccionar la viñeta del :ref:`ítem de una lista <html-li>` o
+     de un elemento :ref:`details <html-details>`:
+
+     .. code-block:: css
+
+        /* Las viñetas (y las numeraciones) de las listas, en rojo */
+        li::marker {
+            color: red;
+        }
+
+.. _css-pseudoclases:
+
+**Pseudoclases**
+   Las :dfn:`pseudoclases` seleccionan elementos según alguna característica o
+   estado que tengan (vacío, con el cursor encima de él, último hijo de su
+   padre, etc.). Hay muchas :devmozcss:`pseudo-classes` disponibles, de modo que
+   sólo citaremos algunas muy socorridas:
+
+   * Relativas al estado de los *campos de los formularios*
+     (:devmozcss:`:checked`, :devmozcss:`:enabled`, :devmozcss:`:disabled`,
+     :devmozcss:`:blank`, etc.):
+
+     .. code-block::
+
+        /* Los campos con valores inválidos tendrán un fondo colorado */
+        input:invalid {
+            background-color: #FAA;
+        }
+
+   * Relativas a *enlaces* (:devmozcss:`:any-link`, :devmozcss:`:link`,
+     :devmozcss:`:visited`, :devmozcss:`:target`, etc):
+
+     .. code-block::
+
+        /* Los enlaces ya visitados se mostrarán en gris */
+        a:visited {
+            color: gray;
+        }
+
+   * Relativas al *estado de reproducción* del medio audiovisual
+     (:devmozcss:`:playing`, :devmozcss:`:paused`).
+
+   * Relativas a *acciones del usuario* (:devmozcss:`hover`, :devmozcss:`active`, :devmozcss:`focus`, etc.):
+
+     .. code-block:: css
+
+        /* La fila de la tabla se mostrará con fondo amarillo, si el ratón pasa por encima */
+        tr:hover {
+            background-color: yellow;
+        }
+
+        /* El campo que esté rellenando tendrá un color de fondo distinto */
+        input.focus {
+            background-color: lightblue;
+        }
+
+   * Relativas a la *ubicación del elemento* respecto a su padre y sus hermanos:
+
+     :devmozcss:`:empty`
+       concuerda con elementos vacíos sin hijos.
+
+     :devmozcss:`:only-child`
+       concuerda con el elemento que es el único hijo de su padre, esto es, no
+       tiene hermanos.
+
+     :devmozcss:`:only-of-type`
+       concuerda con el elemento que es el único hijo de su tipo para su padre,
+       esto es, no tiene hermanos de su mismo tipo:
+
+       .. code-block:: css
+
+          /* Creará un borde para los párrafos que se encuentren dentro de jun
+             elemento que no tenga más párrafos como hijo */
+          p:only-of-type {
+            border: solid black 1px;
+          }
+
+     :devmozcss:`:first-child`, :devmozcss:`:last-child`
+       concuerda si el elemento es el primer hijo (o el último) de su padre.
+
+     :devmozcss:`:first-of-type`, :devmozcss:`:last-of-type`
+       concuerda si el elemento es el primer hijo de su tipo (o el último) para
+       su padre). Por ejemplo:
+
+       .. code-block:: css
+
+          dd:first-of-type {
+            font-weight: bold;
+          }
+
+       provocará que se escriba en negrita el primer :ref:`elemento dd
+       <html-dd>` de este código:
+
+       .. code-block:: html
+
+          <dl>
+            <dt>Europa:</dt>
+            <dd>España</dd> <!-- Se verá en negrita -->
+            <dd>Francia</dd>
+            <dt>Asia</dt>
+            <dd>China</dd>
+            <dd>Japón</dd>
+          </dl>
+
+       porque aunque no es el primer hijo (lo es el :ref:`elemento dt <html-dt>`
+       que tiene justamente encima), sí es el primer hijo de su tipo (``dd``).
+
+     :devmozcss:`:nth-child`\ ``(An + B)``, :devmozcss:`:nth-last-child`\ ``(An + B)``
+       concuerda con los elementos que son hijos y cumplen la ecuación
+       :math:`An + B`, donde :math:`n` es cualquier número natural o el 0. La
+       diferencia entre uno y otro es que el primero empieza a contar por el
+       principio y el segundo por el final:
+
+       .. code-block:: css
+
+          /* Concuerda con el tercer ítem de la lista */
+          li:nth-child(3) {
+            font-weight: bold;
+          }
+
+          /* Concuerda con el penúltimo ítem de la lista */
+          li:nth-last-child(2) {
+            font-weight: bold;
+          }
+
+          /* Concuerda con todos los ítem excepto el primero */
+          li:nth-child(n + 2) { /* 0+2=2, 1+2=3, etc. */
+            font-weight: bold;
+          }
+
+          /* Concuerda con los dos primeros ítems */
+          li:nth-child(-n + 2) {
+            font-weight: bold;
+          }
+
+          /* Concuerda con los dos últimos ítems */
+          li:nth-last-child(-n + 2) {
+            font-weight: bold;
+          }
+
+          /* Concuerda con los ítem pares */
+          li:nth-child(2n) {
+            font-weight: bold;
+          }
+
+          /* Concuerda con los ítem impares */
+          li:nth-child(2n+1) {
+            font-weight: bold;
+          }
+
+       .. note:: Como alternativa a estos dos últimos se pueden usar las palabras
+         ``even`` y ``odd``.
+
+     :devmozcss:`:nth-of-type`\ ``(An + B)``, :devmozcss:`:nth-last-of-type`\ ``(An + B)``
+       como los anteriores pero sólo atiende a los elementos del tipo en
+       cuestión. Por ejemplo:
+
+       .. code-block:: css
+
+          dd:nth-of-type(2n) {
+            font-weight: bold;
+          }
+
+       provoca lo siguiente en este código:
+
+       .. code-block:: html
+
+          <dl>
+            <dt>Europa:</dt>
+            <dd>España</dd> 
+            <dd>Francia</dd> <!-- Negrita -->
+            <dt>Asia</dt>
+            <dd>China</dd>
+            <dd>Japón</dd>   <!-- Negrita -->
+          </dl>
+
+     .. _css-pseudoclases-funcionales:
+
+   * Relativas a *listas de selectores*:
+
+     .. _css-pseudoclase-is:
+
+     :devmozcss:`:is`\ ``(...)``
+      concuerda con cualquiera de los selectores incluidos en la lista:
+
+      .. code-block:: css
+
+         /* La lista tendrá un recuadro sea de viñetas (ul) o numerada (ol) */
+         :is(ol, ul) {
+            border: solid black 1px;
+         }
+
+         /* Cualquier párrafo con atributos "id" o "class" se escribirá en negrita */
+         p:is([id], [class]) {
+            font-weight: bold;
+         }
+
+      La :ref:`especificidad <css-cascada>` de esta pseudoclase es la
+      especificidad del selector de la lista con más especificidad.
+
+      .. caution:: La lista, como en el resto de pseudoclases de esta
+         subsección, no puede incluir :ref:`pseudoelementos <css-pseudoelementos>`.
+
+     .. _css-pseudoclase-where:
+
+     :devmozcss:`:where`\ ``(...)``
+      tiene exactamente el mismo significado que ``:is`` con  una única
+      diferencia: su especificidad siempre es 0.
+
+     .. _css-pseudoclase-not:
+
+     :devmozcss:`:not`\ ``(...)``
+      es la negación de ``:is``, por lo que concuerda siempre que el elemento no
+      concuerde con ninguno de los selectores de la lista:
+
+      .. code-block:: css
+
+         /* Todos los ítem de lista se ven en negrita, excepto el primero */
+         li:not(:first-child) {
+            font-weight: bold;
+         }
+
+         /* Ídem, excepto el primero y el último */
+         li:not(:first-child, :last-child) {
+            font-weight: bold;
+         }
+
+     .. _css-pseudoclase-has:
+
+     :devmozcss:`:has`\ ``(...)``
+      provoca que el selector concuerde cuando la combinación de dicho selector
+      con cualquiera de los *selectores relativos* de la lista concuerda. La
+      única forma de entender esta pseudoclase es haber estudiado antes antes la
+      :ref:`combinación de selectores <css-selector-combinado>`. Dejaremos aquí
+      algunos ejemplos para que se repasen después de haber entendido cómo se
+      combinan los selectores:
+
+      .. code-block:: css
+
+         /* La lista  "ol" concuerda si tiene anidada otra lista "ul"
+            ("ul" es descendiente de "ol") */
+         ol:has(ul) {
+            color: green;
+         }
+
+         /* Generalización del caso anterior */
+         :is(ol, ul):has(ol, ul) {
+            color: green;
+         }
+
+         /* Celdas cuyo contenido es estrictamente un único párrafo */
+         td:has(>p:only-child) {
+            color: lightblue;
+         }
+
+         /* H1 al que sigue inmediatamente después un H2 */
+         h1:has(+ h2) {
+            margin: 0  0 .25em 0;
+         }
+
+.. _css-selector-combinado:
+
+Combinado
+---------
+Los selectores simples pueden combinarse mediante operadores para aumentar la
+especificidad del último selector. Los operadores son:
+
+**Espacio**
+   Fuerza a que el nodo seleccionado por el segundo selector sea descendiente
+   del seleccionado por el primero:
+
+   .. code-block:: css
+
+      /* Solo concuerdan los párrafos que desciendan de un elemento "div" */
+      div p {
+         border: solid black 1px;
+      }
+
+      /* Los selectores simples combinados pueden ser todo lo complejo que queramos */
+      div p.importante {
+         font-weight: bold;
+      }
+
+   .. note:: Obsérvese que se seleccionan párrafos, no elementos :ref:`div
+      <html-div>`. En una combinación siempre se seleccionan los nodos definidos
+      por el último selector. Para haber seleccionado elementos ``div`` que
+      tuvieran descendientes :ref:`p <html-div>`, tendríamos que haber usado la
+      :ref:`pseudoclase :has() <css-pseudoclase-has>`:
+
+      .. code-block:: css
+
+         div:has(p) {
+            border: solid black 1px;
+         }
+
+   Por supuesto pueden combinarse más de dos selectores en una misma regla:
+
+   .. code-block:: css
+
+      /* Selecciona los párrafos que siguen inmediatamente a un título h1
+         que deben ser descendientes de un div */
+      div h1 + p {
+         font-weight: bold;
+      }
+
+
+``>``
+   Fuerza a que el nodo seleccionado por el segundo selector sea hijo del
+   seleccionado por el primero.  Es, por tanto, un operador más restrictivo que
+   el anterior:
+
+   .. code-block:: css
+
+      /* El párrafo debe ser un hijo directo de div */
+      div>p {
+         border: solid black 1px;
+      }
+
+
+``~``
+   Fuerza a que el nodo seleccionado por el segundo selector sea un hermano
+   posterior al seleccionado por el primero:
+
+   .. code-block:: css
+
+      /* p es un hermano posterior a h1 */
+      h1 ~ p {
+         font-style: italic;
+      }
+
+``+``
+   Como el anterior pero el nodo del segundo selector debe ser el hermano
+   inmediatamente posterior, no cualquiera posterior:
+
+   .. code-block:: css
+
+      /* h2 es hermano inmediatamente psoterior a h1 */
+      h1 + h2 {
+         font-style: italic;
+      }
+
+
+``&`` 
+   Permite anidar reglas para ahorrar escritura. Esto:
+
+   .. code-block:: css
+
+      div {
+         font-family: sans-serif;
+
+         & > h1 {
+            color: blue;
+         }
+
+         & p {
+            font-style: italic;
+         }
+      }
+
+   equivale a:
+
+   .. code-block:: css
+
+      div {
+         font-family: sans-serif;
+      }
+
+      div>h1 {
+         color: blue;
+      }
+
+      div p {
+         font-style: italic;
+      }
+
+
+.. https://lenguajecss.com/css/introduccion/css-moderno/
+
+Lista
+-----
+La :dfn:`lista de selectores` es, simplemente, una enumeración de selectores
+simples o combinados que comparten las mismas propiedades |CSS|. Se nota
+separando los selectores por comas. Esto:
+
+.. code-block:: css
+
+   p {
+      color: blue;
+   }
+
+   pre {
+      color: ble;
+   }
+
+equivale a esta lista:
+
+
+.. code-block:: css
+
+   p, pre {
+      color: blue;
+   }
+
+.. note:: Obsérvese que cuando los selectores son combinados y comparten gran
+   parte de la combinación:
+
+   .. code-block:: css
+
+      table.estadistica thead th p,
+      table.estadistica thead td p {
+         background-color: gray
+      }
+
+   es muy útil la pseudoclase :ref:`:is() <css-pseudoclase-is>`:
+
+   .. code-block:: css
+
+      table.estadistica thead :is(th, td) p {
+         background-color: gray
+      }
+
+.. _css-cascada:
+
+Cascada
+=======
+Llegado a este punto toco, finalmente, explicar porqué los estilos son *en
+cascada*. El problema de definir las reglas del modo en que se definen es que
+puede muy comúnmente haber dos o más declaraciones sobre una determinada
+propiedad que sean aplicables a un mismo elemento y, en ese caso, ¿cuál de ellas
+se aplica? La cascada es el algoritmo que permite escoger cuál se aplica y está
+influída por seis factores:
+
+**Importancia**
+   Aunque no sea una práctica muy recomendable, al definirse una propiedad puede
+   marcarse como que es imporante añadiendo la palabra :devmozcss:`important`
+   tras su valor:
+
+   .. code-block:: css
+
+      p {
+         color: blue !important;
+      }
+
+   1. Una declaración importante siempre tiene precedencia sobre una declaración
+      normal.
+
+.. _css-origen:
+
+**Origen**
+   Según su *origen*,
+
+   2. Antes dos reglas normales, tiene precedencia el estilo del *autor* sobre el
+      del *usuario* y el del *usuario* sobre el del *navegador*. Ante reglas
+      importantes, la precedencia es la inversa.
+
+   Pero, ¿qué son estos tres estilos de autor, *usuario* y *navegador*?
+
+   :dfn:`Hoja de estilos predeterminado` o :dfn:`del navegador` o :dfn:`del agente de usuario`
+      que es la página de estilos que el navegador aplica a todas las páginas que
+      renderiza. En ausencia de cualquier indicación de estilo adicional, una
+      página siempre se verá con el estilo que le aplica por defecto el navegador.
+      Por este motivo, un documento |HTML| que escribamos  sin haberle definido
+      ningún aspecto, tiene una representación gráfica.
+
+   :dfn:`Hoja de estilos del usuario`
+      es una hoja de estilos que el navegador permite definir al usuario que lo
+      utiliza. Por lo general, está vacía y sólo un usuario avanzado se atreverá a
+      incluir reglas en ella.
+
+   :dfn:`Hoja de estilos del autor` (que, por otro lado, pueden ser varias)
+      es la hoja con que el autor de una página define su aspecto.
+
+**Asociación**
+   Ya se trató la forma en que un autor puede :ref:`asociar las reglas CSS a los
+   elementos de un documento HTML <css-decl>`. Esa asociación puede ser en línea
+   o no serlo (ser interna o externa). Pues bien:
+
+   3. A igualdad de importancia, las declaraciones hechas *en línea* tienen
+      precedencia sobre las declaraciones internas o externas.
+
+   .. todo:: Probar si hay alguna diferencia en la preferencia entre internas y
+      internas.
+
+**Especificidad**
+   La :dfn:`especificidad` es la medida de la precisión con la que el selector
+   indica cuál es el elemento |HTML| sobre el que se aplica la regla.
+   Obviamente:
+
+   4. Cuanto más específica sea una regla, mayor precedencia tiene.
+
+   Ahora bien, ¿cómo se hace esa medida? La *especificidad* se obtiene como una
+   terna de números a partir de los componentes de los que se constituye el
+   selector:
+
+   a. El primer número es la cantidad de identificadores (``#nombre``).
+   #. El segundo número es la cantidad de selectores de clase (``.clase``),
+      selectores de atributo (``[...]``) y pseudoclases (``:hover``, ``:empty``,
+      etc.). De este cómputo se exceptúan las :ref:`pseudoclases relativas a listas
+      de selectores <css-pseudoclases-funcionales>`, que afectan de distinto modo a
+      la especificidad:
+
+      * :ref:`:where() <css-pseudoclase-where>` no suma nada en absoluto.
+      * Las restantes (:ref:`:is() <css-pseudoclase-is>`, :ref:`:not()
+        <css-pseudoclase-not>` y :ref:`css-pseudoclase-has`) aportan la misma
+        especificidad que la especificidad que aporte su argumento con más
+        especificidad.
+
+   #. El tercer número es la cantidad de selectores de elemento y pseudoelemento,
+      con la excepción del selector universal  ``*`` cuya especificidad es **0**.
+
+   En caso de selectores anidados (``&``), la especificidad de las declaraciones
+   de un nivel de anidamiento es la suma de la especificidad de ese nivel y la de
+   todos los niveles anteriores.
+
+   El selector más específico es el que tiene mayor el primer número de la terna,
+   a igual de éste, mayor el segundo, y a igual de éste, mayor el tercero.
+
+   .. seealso:: Pruebe a calcular la especificidad de cualquier selector que se le
+      ocurra en `polypane.app <https://polypane.app/css-specificity-calculator/>`_.
+
+   .. table:: Ejemplos
+      :class: css-espec
+
+      ==================================== ===============
+      Selector                              Especificidad
+      ==================================== ===============
+      \*                                    (0,0,0)
+      p                                     (0,0,1)
+      #sec1                                 (1,0,0)
+      p.warning                             (0,1,1)
+      li::marker                            (0,0,2)
+      .listado li::marker                   (0,1,2)
+      h1 + h2                               (0,0,2)
+      div p[lang]                           (0,1,2)
+      :is(ol, ul) :is(ol, lu)               (0,0,2)
+      :is(ol, ul) :where(ol, lu)            (0,0,1)
+      li:not(:first-child)                  (0,1,1)
+      ==================================== ===============
+
+**Orden** de aparición
+   Como es esperable:
+
+   5. A igual de todos los factores anteriores, se aplica la regla definida en
+      último lugar.
+
+.. _css-herencia:
+
+**Herencia**
+   La *herencia* posibilita que, cuando una propiedad es heredable (p.e. el
+   :devmozcss:`color`) y el elemento no tiene ninguna declaración propia para
+   esa propiedad, herede el valor que tenga en el ascendiente más
+   inmediato para el que se hiciera una declaración:
+
+   6. Los elementos sin declaración propia para el valor de una propiedad,
+      heredan el valor que tenga la propiedad para su padre, si dicha
+      propiedad es heredable.
+      
+   Esta última regla (el mecanismo de la herencia) puede manipularse asignando en
+   una declaracn propia del elemento unos valores determinados a la propiedad:
+
+   ``initial``
+      Devuelve siempre la propiedad a su valor inicial.
+
+   ``inherit``
+      Aplica siempre el valor que tenga la propiedad para su padre.
+
+   ``unset``
+      Si la propiedad es heredable, actúa como ``inherit`` y, si no lo es, como
+      ``initial``.
+
+   ``revert``
+      Devuelve siempre la propiedad al valor que tendría si no se hubiera aplicado
+      ningún estilo, excepto el que pudiera haber definido la :ref:`hoja de estilos
+      del navegador <css-origen>`. ``initial``, en cambio, tampoco habría
+      aplicado el estilo de esta última hoja.
+
+   .. note:: Existe, además, la propiedad :devmozcss:`all`, que puede tomar uno
+      de los valores anteriores y que lo aplica a todas las propiedades a la vez.
+
+.. rubric:: Notas al pie
+
+.. [#] En el nivel 2 se les anteponía uno solo como a las pseudoclases. Los
+   navegadores modernos aún soportan estan sintaxis antigua.
+
+.. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`

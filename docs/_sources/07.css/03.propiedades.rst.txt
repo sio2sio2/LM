@@ -1,0 +1,60 @@
+Propiedades
+***********
+|CSS|\ 3 es una especificación inmensa con `múltiples módulos definidos en
+distintos documentos <https://www.w3.org/Style/CSS/current-work>`_ y no tenemos
+el tiempo ni la fuerzas para desarrollar en esta documentación un resumen
+apropiado. Además, como no somos diseñadores, es nuestro propósito  no
+profundizar demasiado y centrarnos en el uso de :ref:`Bootstrap`. Por eso nos
+limitaremos a proporcionar ciertas pautas y fuentes externas para su estudio.
+Para su compresión necesitamos conocer:
+
+#. Los fundamentos de su :ref:`sintaxis <css-sintaxis>`: cómo se escriben las
+   reglas, cómo se construyen los :ref:`selectores <css-selectores>` y cómo actúa
+   el :ref:`algoritmo de cascada <css-cascada>`.
+
+#. Cómo funciona el :ref:`modelo de cajas <html-maquetacion>` y sus dimensiones
+   asociadas. Una buen punto de partida es `esta introducción al modelo de cajas
+   de lenguajecss.com <https://lenguajecss.com/css/modelo-de-cajas/que-es/>`_.
+
+#. Los métodos para colocar (**posicionamiento**) los elementos en el documento.
+   El mecanismo tradicional era algo torpe hasta que apareció :devmozcss:`flex`
+   y, más tarde, :devmozcss:`grid`. De nuevo, `la introducción a la maquetación
+   de lenguajecss.com
+   <https://lenguajecss.com/css/maquetacion-y-colocacion/propiedad-display/>`_ es
+   un buen comienzo.
+
+   .. note:: :program:`Bootstrap` es una alternativa sencilla a la maquetación
+      mediante estas herramientas nativas y, además, buen ofrece un aspecto
+      predeterminado de los elementos y componentes prefabricados con lo que es
+      muy intersante si nos queremos centrar en el desarrollo y no tanto en el
+      diseño.
+
+#. Las principales propiedades que nos sirven para dar aspecto básico  a la
+   página relativas a:
+
+   + `Texto y fuentes
+     <https://lenguajecss.com/css/fuentes-y-tipografias/elegir-tipografia/>`_.
+   + `Colores <https://lenguajecss.com/css/colores/codigos-color/>`_.
+   + `Bordes <https://lenguajecss.com/css/modelo-de-cajas/bordes/>`_, `márgenes
+     y rellenos
+     <https://lenguajecss.com/css/modelo-de-cajas/margenes-y-rellenos/>`_.
+   + `Listas <https://lenguajecss.com/css/representacion-datos/listas-css/>`_.
+   + `Tablas <https://lenguajecss.com/css/representacion-datos/tablas-css/>`_.
+
+   Estas propiedades necesitaremos conocerlas, aunque nos ayudemos de
+   :program:`Bootstrap` para personalizar el aspecto predefinidos de las
+   páginas. Otras no serán tan necesarias en ese caso, pero son indispensables,
+   si no se usa tal herramienta:
+
+   + `Maquetación
+     <https://lenguajecss.com/css/maquetacion-y-colocacion/propiedad-display/>`_
+     (:devmozcss:`display`, :devmozcss:`position`, etc).
+   + `Diseño adaptativo
+     <https://lenguajecss.com/css/responsive-web-design/que-es/>`_, ya que
+     nuestro público objetivo en muchos casos accederá desde dispositivos
+     distintos a un ordenador (móviles o *tablets*).
+
+.. seealso:: Para el que prefiera los vídeos hay en Youtube toda una `serie
+   sobre CSS de Kiko Palomares <https://kikopalomares.com/cursos/css>`_.
+
+.. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`

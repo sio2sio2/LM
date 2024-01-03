@@ -78,7 +78,7 @@
           <div class="body" role="main">
             
   <section id="cabecera">
-<h1><span class="section-number">6.3. </span>Cabecera<a class="headerlink" href="#cabecera" title="Enlace permanente a este encabezado">¶</a></h1>
+<span id="html-head"></span><h1><span class="section-number">6.3. </span>Cabecera<a class="headerlink" href="#cabecera" title="Enlace permanente a este encabezado">¶</a></h1>
 <p>La cabecera del documento <abbr title="HyperText Markup Language">HTML</abbr> es el contenido del elemento <code class="code docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code>
 e incluyen información ajena al contenido estricto de la página <abbr title="HyperText Markup Language">HTML</abbr>.</p>
 <div class="admonition note">
@@ -94,7 +94,7 @@ barra superior de la ventana.</p></td>
 </tbody>
 </table>
 <dl>
-<dt><strong>title</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title">developer.mozilla.org: title</a>)</dt><dd><p>Su único contenido posible es simple texto. Por ejemplo:</p>
+<dt><strong>title</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title">title</a>)</dt><dd><p>Su único contenido posible es simple texto. Por ejemplo:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Página de prueba<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
 </pre></div>
 </div>
@@ -117,8 +117,8 @@ contenido <abbr title="HyperText Markup Language">HTML</abbr> de la página.</p>
 </tbody>
 </table>
 <dl id="index-1">
-<dt><strong>style</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style">developer.mozilla.org: style</a>)</dt><dd><p>Volveremos a esta etiqueta cuando tratemos <span class="xref std std-ref">cómo declarar el CSS
-aplicable</span> a la página. Por ahora, bástenos con un ejemplo:</p>
+<dt><strong>style</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style">style</a>)</dt><dd><p>Volveremos a esta etiqueta cuando tratemos <a class="reference internal" href="../07.css/01.general.html#css-decl"><span class="std std-ref">cómo declarar el CSS
+aplicable</span></a> a la página. Por ahora, bástenos con un ejemplo:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
 <span class="w">   </span><span class="nt">table</span><span class="o">,</span><span class="w"> </span><span class="nt">table</span><span class="w"> </span><span class="nt">th</span><span class="o">,</span><span class="w"> </span><span class="nt">table</span><span class="w"> </span><span class="nt">td</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="kc">black</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="p">;</span>
@@ -129,12 +129,12 @@ aplicable</span> a la página. Por ahora, bástenos con un ejemplo:</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Para referir estilo <abbr title="Cascading Style Sheets">CSS</abbr> que se encuentre en fichero aparte debe
-usarse <code class="code docutils literal notranslate"><span class="pre">&lt;link&gt;</span></code>, que <a class="reference internal" href="#html-link"><span class="std std-ref">se explica un poco más adelante</span></a>.</p>
+usarse <a class="reference internal" href="#html-link"><span class="std std-ref">&lt;link&gt;</span></a>, que <a class="reference internal" href="#html-link"><span class="std std-ref">se explica un poco más adelante</span></a>.</p>
 </div>
 </dd>
 </dl>
 <dl id="index-2">
-<dt><strong>script</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script">developer.mozilla.org: script</a>)</dt><dd><p>Podemos usarla de dos formas. Como <code class="code docutils literal notranslate"><span class="pre">&lt;style&gt;</span></code>, escribiendo el código
+<dt><strong>script</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script">script</a>)</dt><dd><p>Podemos usarla de dos formas. Como <code class="code docutils literal notranslate"><span class="pre">&lt;style&gt;</span></code>, escribiendo el código
 <em>Javascript</em> dentro del propio documento:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="w">   </span><span class="nb">window</span><span class="p">.</span><span class="nx">onload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -223,7 +223,7 @@ ambos códigos son <a class="reference internal" href="../01.intro/02b.marcas.ht
 </tbody>
 </table>
 <span id="index-3"></span><dl id="html-base">
-<dt><strong>base</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base">developer.mozilla.org: base</a>)</dt><dd><p><a class="reference internal" href="01.intro.html#html-url"><span class="std std-ref">Al hablar sobre hiperenlaces</span></a> se definió el <a class="reference internal" href="01.intro.html#html-abs-rel"><span class="std std-ref">concepto
+<dt><strong>base</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base">base</a>)</dt><dd><p><a class="reference internal" href="01.intro.html#html-url"><span class="std std-ref">Al hablar sobre hiperenlaces</span></a> se definió el <a class="reference internal" href="01.intro.html#html-abs-rel"><span class="std std-ref">concepto
 de ruta relativa relativa</span></a> y cómo formar la ruta absoluta se
 concatenan la <abbr title="Uniform Resource Locator">URL</abbr> base y la ruta relativa relativa (a partir de ahora,
 <em>ruta relativa</em> a secas). Este elemento permite redefinir la <abbr title="Uniform Resource Locator">URL</abbr> base para
@@ -248,7 +248,7 @@ embargo, este elemento permite definir una <abbr title="Uniform Resource Locator
 </dd>
 </dl>
 <span id="index-4"></span><dl id="html-link">
-<dt><strong>link</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link">developer.mozilla.org: link</a>)</dt><dd><p>Es el elemento que propiamente relaciona con documentos externos. Su uso es
+<dt><strong>link</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link">link</a>)</dt><dd><p>Es el elemento que propiamente relaciona con documentos externos. Su uso es
 variado, pero se basa fundamentalmente en dar valor a dos de sus atributos:
 <code class="code docutils literal notranslate"><span class="pre">rel</span></code> y <code class="code docutils literal notranslate"><span class="pre">href</span></code>.</p>
 <ul>
@@ -306,7 +306,7 @@ consulte <cite>la documentación al respecto en MDN
 </tbody>
 </table>
 <span id="index-5"></span><dl id="html-meta">
-<dt><strong>meta</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta">developer.mozilla.org: meta</a>)</dt><dd><p>Los metadatos pueden definirse de muy diversos modos, aunque lo habitual
+<dt><strong>meta</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta">meta</a>)</dt><dd><p>Los metadatos pueden definirse de muy diversos modos, aunque lo habitual
 es que se distintgan unos de otros a través del atributo <code class="code docutils literal notranslate"><span class="pre">name</span></code>. Sin
 embargo, hay una excepción a ello muy importante: la definición de la
 codificación del documento:</p>
@@ -449,7 +449,7 @@ cualquier sentencia CSS válida).</p></li>
 </ul>
 </li>
 <li><p>Se utilizan la librería <em>JQuery</em> (búsque en internet un <abbr title="Uniform Resource Locator">URL</abbr> de donde
-ubtenerla).</p></li>
+obtenerla).</p></li>
 <li><p>Indique el nombre del autor del documento.</p></li>
 <li><p>Procure que se vea bien la página en dispositivos móviles.</p></li>
 <li><p>Evite que el navegador o proxies intermedios cacheen la página.</p></li>

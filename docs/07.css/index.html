@@ -1,0 +1,195 @@
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>7. CSS &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" href="../_static/general.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+
+    
+    
+     
+        <script src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="7.1. Generalidades" href="01.general.html" />
+    <link rel="prev" title="6.8. Empotrados" href="../06.html/09.media.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="01.general.html" title="7.1. Generalidades"
+             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="../06.html/09.media.html" title="6.8. Empotrados"
+             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">7. </span><abbr title="Cascading Style Sheets">CSS</abbr></a></li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="css">
+<span id="id1"></span><h1><span class="section-number">7. </span><abbr title="Cascading Style Sheets">CSS</abbr><a class="headerlink" href="#css" title="Enlace permanente a este encabezado">¶</a></h1>
+<p>Es un lenguaje que permite definir la presentación gráfica de un documento
+marcado con <abbr title="HyperText Markup Language">HTML</abbr> o cualquier dialecto derivado de <abbr title="eXtensible  Markup Language">XML</abbr>. Forma, junto a <a class="reference internal" href="../06.html/index.html#html"><span class="std std-ref">HTML</span></a> y <span class="xref std std-ref">Javascript</span>, la base de las modernas tecnologías
+web. Dentro de ellas, y fiel al principio de separar el contenido del formato,
+<abbr title="Cascading Style Sheets">CSS</abbr> es la parte encargada de describir el aspecto visual, independientemente
+de la estructura y la semántica.</p>
+<p>Este texto no entrará a describir cuáles son las reglas <abbr title="Cascading Style Sheets">CSS</abbr> particulares,
+sino simplemente en presentar la gramática con la que escriben dichas reglas y
+ofrecer enlaces que las enumeren.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="01.general.html">7.1. Generalidades</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01.general.html#versiones">7.1.1. Versiones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.general.html#hojas-aplicadas">7.1.2. Hojas aplicadas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.general.html#asociacion-al-html">7.1.3. Asociación al <abbr title="HyperText Markup Language">HTML</abbr></a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.general.html#herramientas">7.1.4. Herramientas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="02.sintaxis.html">7.2. Sintaxis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="02.sintaxis.html#sentencias">7.2.1. Sentencias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.sintaxis.html#selectores">7.2.2. Selectores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.sintaxis.html#cascada">7.2.3. Cascada</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="03.propiedades.html">7.3. Propiedades</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04.bootstrap.html">7.4. Bootstrap</a></li>
+</ul>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/logo.png" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="../06.html/09.media.html"
+                          title="Previous page">&larr; <span class="section-number">6.8. </span>Empotrados</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="01.general.html"
+                          title="Next page">&rarr; <span class="section-number">7.1. </span>Generalidades</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/07.css/index.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="01.general.html" title="7.1. Generalidades"
+             >siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="../06.html/09.media.html" title="6.8. Empotrados"
+             >anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">7. </span><abbr title="Cascading Style Sheets">CSS</abbr></a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor CC BY 4.0, 2023-2023, José Miguel Sánchez Alés.
+      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

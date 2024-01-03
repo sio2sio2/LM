@@ -26,7 +26,7 @@
        cualquier sentencia CSS válida).
 
    * Se utilizan la librería *JQuery* (búsque en internet un |URL| de donde
-     ubtenerla).
+     obtenerla).
 
    * Indique el nombre del autor del documento.
 

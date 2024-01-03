@@ -291,6 +291,8 @@ puesto que esta nueva marca es una etiqueta válida para |XML|. Sin embargo, la
 marca no está definida dentro del vocabulario de |HTML|, por lo que el documento
 no será válido.
 
+.. _lm-habituales:
+
 Lenguajes habituales
 ====================
 Bajo el próximo epígrafe analizaremos los lenguajes que más deben atraer nuestro
@@ -347,7 +349,8 @@ interés, pero existe otros muchos ampliamente utilizados:
            escribir el contenido de las páginas de la Wikipedia_.
          * Los lenguajes de macros desarrollados a partir de un lenguaje procedimental
            como LaTeX_, AMS-TeX_ o ConTeXt_, derivados los tres de TeX_
-         * |SGML|, |XML| y derivados, que se tratarán en este curso.
+         * |SGML|, |XML| y derivados, que se tratarán en este curso. También lo
+           es |HTML|, que originariamente derivó de ellos.
 
 .. seealso:: Puede echarle un ojo a esta `comparativa entre distintos lenguajes
    de marcas
