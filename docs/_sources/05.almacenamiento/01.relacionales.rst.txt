@@ -217,7 +217,7 @@ los valores individuales que contiene el |JSON| contenido en el campo ``contacto
 .. _`SQL:2003`: https://en.wikipedia.org/wiki/SQL:2003
 .. _`SQL:2023`: https://en.wikipedia.org/wiki/SQL:2023
 .. _`SQL:2016`: https://en.wikipedia.org/wiki/SQL:2016
-.. _`SQL:1999`: https://en.wikipedia.org/wiki/SQL:2016
+.. _`SQL:1999`: https://en.wikipedia.org/wiki/SQL:1999
 .. _`SQL-92`: https://en.wikipedia.org/wiki/SQL-92
 .. _PostgreSQL: https://www.postgresql.org/
 .. _SQLite: https://sqlite.org

@@ -1046,9 +1046,14 @@ currículo. Por ello, trasladamos su desarrollo al :ref:`apéndice correspondien
 
 Ejercicios propuestos
 *********************
+.. note:: Para no despojar de interés práctico la :ref:`unidad dedicada al
+   almacenamiento <lm-ut5>`, puede ahora centrarse en resolver los ejercicios
+   cuya salida en texto y no |XML|, ya que estos últimos, por centrarse en
+   obtener variaciones del documento original,  están pensados para  resolverse
+   utilizando las :ref:`técnicas de actualización <xquery-update>`.
 
 .. include:: /99.ejercicios/40.xquery.rst
-   :start-line: 3
+   :start-line: 5
 
 .. rubric:: Nota al pie
 

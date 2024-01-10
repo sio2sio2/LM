@@ -1,0 +1,112 @@
+.. _ej-basex:
+
+BaseX
+=====
+.. note:: Los ejercicios que se proponen en esta relación no dejan de ser
+   :ref:`ejercicios sobre XQuery <ej-xquery>` más o menos sencillos, pensados
+   para manipular las bases de datos cargadas en el gestor.
+
+Tomando como referencia los documentos |XML| diseñados en los :ref:`ejercicios
+sobre lenguajes de marcas <ej-li>`, resuelva lo siguiente:
+
+#. En el ejercicio sobre facturas:
+
+   .. rst-class:: simple
+
+      a. Cámbiele el nombre a "*Mariquilla de la O*" por "*María de la O*".
+
+         .. rst-class:: sol-oculta
+
+            .. code-block:: xquery
+
+               replace node //cliente[nombre="Mariquilla de la O"]/nombre/text() with "María de la O"
+
+      #. Añada al final de todos los clientes un elemento que sea ``<solvente />``.
+
+         .. rst-class:: sol-oculta
+
+            .. code-block:: xquery
+
+               for $cliente in //cliente
+               return
+                  insert node <solvente/> into $cliente
+
+      #. Elimine todos los elementos que acaba de añadir,
+
+         .. rst-class:: sol-oculta
+
+            .. code-block:: xquery
+
+               delete node //cliente/solvente
+
+      #. Cambie al cliente "c01" su identificar por "C01". Recuerde que debería
+         también hacer el cambio de identificador en las facturas a su nombre.
+
+         .. rst-class:: sol-oculta
+
+            .. code-block:: xquery
+
+               for $attr in //@*[. = "c01"]
+               return
+                  replace node $attr with attribute {fn:name($attr)} {"C01"}
+
+      #. Elimine los descuentos de todas las facturas.
+
+         .. rst-class:: sol-oculta
+
+            .. code-block:: xquery
+
+               delete node //factura/@descuento
+
+      #. Añada a la factura "f01" un descuento del 15%.
+
+         .. rst-class:: sol-oculta
+
+            .. code-block:: xquery
+
+               insert node attribute descuento {15} into //factura[@codigo="f01"]
+
+      #. Aumente en +5% el descuento a todas las facturas.
+
+         .. rst-class:: sol-oculta
+
+            .. code-block:: xquery
+
+               for $descuento in //factura/@descuento
+               return
+                  replace node $descuento with attribute {name($descuento)} {$descuento + 5}
+
+      #. Elimine de todas las facturas las líneas de facturas por encima de la
+         segunda, es decir, todas las facturas deben quedar como mucho con dos
+         líneas de factura (*ítems*).
+
+         .. rst-class:: sol-oculta
+
+            .. code-block:: xquery
+
+               delete node //factura/item[position() > 2] 
+
+      #. Añada un atributo a cada factura llamado "items" que
+         contenga la cantidad de líneas de factura que tiene.
+
+         .. rst-class:: sol-oculta
+
+            .. code-block:: xquery
+
+               for $factura in //factura
+               return
+                  insert node attribute items {count($factura/item)} into $factura
+
+      #. Añada tres atributos a inventario llamados *superreducido*,  *reducido* y
+         *normal* cuyo valor sea la cantidad de productos que tienen ese tipo de
+         |IVA|.
+
+         .. rst-class:: sol-oculta
+
+            .. code-block:: xquery
+
+               for $iva in ("normal", "reducido", "superreducido")
+               return
+                  insert node attribute {$iva} {count(//inventario/producto[@iva=$iva])} into //inventario
+
+.. |IVA| replace:: :abbr:`IVA (Impuesto sobre el Valor Añadido)`
