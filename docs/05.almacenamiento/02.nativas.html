@@ -98,7 +98,7 @@ y, una vez creadas, el propio motor se encarga de la concurrencia. Es importante
 entender que el archivo sirve para crear la base de datos y dotarla de
 información, pero una vez creada, se almacena independiente al archivo original
 (en <em>Linux</em> dentro de <code class="file docutils literal notranslate"><span class="pre">~/basex/data</span></code>) y, por tanto, está dotada de vida
-propia al margen del archivo, esto es, si se alterá, sus cambios no afectarán al
+propia al margen del archivo, esto es, si se altera, sus cambios no afectarán al
 archivo; y viceversa.</p>
 <p>Tiene varias versiones de ejecución:</p>
 <ol class="arabic simple">
@@ -135,7 +135,7 @@ si esta no existe, crearla a partir de un archivo <abbr title="eXtensible  Marku
 <li><p><strong>2</strong> permite interpretar el tipo de expresiones definidas al seleccionar un
 ítem de la lista <strong>3</strong>:</p>
 <ul>
-<li><p><cite>Command</cite> es una órden propia de <em>BaseX</em>. Por ejemplo, si escribiéramos
+<li><p><cite>Command</cite> es una orden propia de <em>BaseX</em>. Por ejemplo, si escribiéramos
 <code class="docutils literal notranslate"><span class="pre">CLOSE</span></code> se cerraría la base de datos que está abierta. Y si <code class="docutils literal notranslate"><span class="pre">HELP</span></code>,
 obtendríamos un listado de todas las órdenes posibles.</p></li>
 <li><p><cite>Find</cite> y <cite>XQuery</cite> permiten escribir expresiones <em>XPath</em> y <em>XQuery</em>, respectivamente
@@ -238,6 +238,238 @@ BaseX.</p>
 </div>
 </section>
 </section>
+<section id="ejercicios-resueltos">
+<h2><span class="section-number">5.2.3. </span>Ejercicios resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Dado el <abbr title="eXtensible  Markup Language">XML</abbr> <a class="reference internal" href="../01.intro/02b.marcas.html#xml-resueltos"><span class="std std-ref">propuesto para representar el negocio de una cadena de
+restaurantes</span></a>, indique cómo alterar el documento para realizar
+lo siguiente:</p>
+<ol class="arabic">
+<li><p>Sustituya la unidad «cc» por «ml».</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución propuesta<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>(: También podría usarse un where para la condición :)
+for $unidad in //@unidad[. = &quot;cc&quot;]
+return
+   replace node $unidad with attribute {fn:name($unidad)} {&quot;ml&quot;}
+</pre></div>
+</div>
+</div>
+</details></li>
+<li><p>Cambie el nombre de «El tragón feliz» a «La cueva de Juanchu»</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución propuesta<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>replace node //restaurante/@nombre[. = &quot;El tragón feliz&quot;] with attribute nombre {&quot;La cueva de Juanchu&quot;}
+</pre></div>
+</div>
+</div>
+</details></li>
+<li><p>Añada a cada receta un atributo <em>ingredientes</em> cuyo valor sea el número de
+ingredientes que componen la receta.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución propuesta<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $receta in //receta
+return
+   insert node attribute ingredientes {count($receta/ingrediente)} into $receta
+</pre></div>
+</div>
+</div>
+</details></li>
+<li><p>Sume <strong>5</strong> a la cantidad de vinagre de todas las recetas.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución propuesta<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>(: También podría usarse un where para la condición :)
+for $vinagre in //ingrediente[@nombre = &quot;vinagre&quot;]
+return
+   replace node $vinagre/@cantidad with attribute cantidad {$vinagre/@cantidad + 5}
+</pre></div>
+</div>
+</div>
+</details></li>
+<li><p>Pase a mayúsculas los nombres de todos los municipios. En <em>XPath</em> 3 existe
+<a class="reference external" href="https://www.altova.com/training/xpath3/built-in-functions#functions-on-string-values-">fn:upper-case()</a>:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solucion propuesta<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $texto in //municipio/text()
+return
+   replace node $texto with text {fn:upper-case($texto)}
+</pre></div>
+</div>
+</div>
+</details></li>
+<li><p>Elimine las medias raciones de la carta de todos los restaurantes (y si el plato
+sólo se servía en ese formato, elimine el plato).</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>La solución no es nada trivial, así que le proporcionaremos algunas
+pistas:</p>
+<ul>
+<li><p>Los platos sin media ración se quedan iguales, los platos con sólo media
+deben eliminarse por completo y los platos que ofrecen también otros
+formatos deben modificar el valor de su atributo <em>tipo</em> para quitar la
+media ración. Puede hacerlo por separado (recuerde que puede hacer
+distintas acciones utilizando una secuencia) o echar mano de <a class="reference internal" href="../03.consulta/01.xpath.html#xpath2-const-if"><span class="std std-ref">if</span></a>.</p></li>
+<li><p>La otra dificultad está en eliminar el formato <em>media</em> en los platos que
+se sirven en varios formatos. No tendrá más remedio que valerse de
+<a class="reference external" href="https://www.altova.com/training/xpath3/built-in-functions#xpath-built-in-functions">funciones de XPath 3</a>.
+Hay al menos dos opciones: sustituir «media» por la cadena vacía o
+crear una secuencia separando las palabras, filtrar en esta secuencia
+«media» y, finalmente, volver a reconstruir la cadena.</p></li>
+<li><p>Respecto al filtrado que se acaba de sugerir, XPath 3 permite aplicar
+predicados a cualquier secuencia y no exclusivamente a un conjunto de
+nodos. Por ejemplo, esto filtraría «c», por lo que el resultado sería un
+a secuencia con los otros tres ítems:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;d&quot;</span><span class="p">)[.</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución propuesta<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>(
+   for $plato in //plato
+   where $plato/@tipo = &quot;media&quot;
+   return
+      delete node $plato,
+   for $plato in //plato
+let $tipo := $plato/@tipo
+   where contains($tipo, &quot;media&quot;)
+   return
+      (: Separamos los componentes de la cadena, filtramos &quot;media&quot; y volvemos a unirlos :)
+      replace node $tipo with attribute tipo {fn:string-join(fn:tokenize($tipo)[. != &quot;media&quot;], &quot; &quot;)}
+)
+</pre></div>
+</div>
+<p class="sd-card-text">También podemos usar el <a class="reference internal" href="../03.consulta/01.xpath.html#xpath2-const-if"><span class="std std-ref">if de XPath</span></a> para evitar
+hacer dos estructuras <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr>:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $plato in //plato
+let $tipo := $plato/@tipo
+where contains($tipo, &quot;media&quot;)
+return
+   if ($tipo = &quot;media&quot;)
+   then
+      delete node $plato
+   else
+      replace node $tipo with attribute tipo {fn:string-join(fn:tokenize($tipo)[. != &quot;media&quot;], &quot; &quot;)}
+</pre></div>
+</div>
+</div>
+</details></li>
+</ol>
+</section>
+<section id="ejercicios-propuestos">
+<h2><span class="section-number">5.2.4. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Enlace permanente a este encabezado">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Los ejercicios que se proponen en esta relación no dejan de ser
+<a class="reference internal" href="../99.ejercicios/40.xquery.html#ej-xquery"><span class="std std-ref">ejercicios sobre XQuery</span></a> más o menos sencillos, pensados
+para manipular las bases de datos cargadas en el gestor.</p>
+</div>
+<p>Tomando como referencia los documentos <abbr title="eXtensible  Markup Language">XML</abbr> diseñados en los <a class="reference internal" href="../99.ejercicios/10.lenguajes.html#ej-li"><span class="std std-ref">ejercicios
+sobre lenguajes de marcas</span></a>, resuelva lo siguiente:</p>
+<ol class="arabic">
+<li><p>En el ejercicio sobre facturas:</p>
+<ol class="loweralpha simple">
+<li><p>Cámbiele el nombre a «<em>Mariquilla de la O</em>» por «<em>María de la O</em>».</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>replace node //cliente[nombre=&quot;Mariquilla de la O&quot;]/nombre/text() with &quot;María de la O&quot;
+</pre></div>
+</div>
+</li>
+<li><p>Añada al final de todos los clientes un elemento que sea <code class="docutils literal notranslate"><span class="pre">&lt;solvente</span> <span class="pre">/&gt;</span></code>.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $cliente in //cliente
+return
+   insert node &lt;solvente/&gt; into $cliente
+</pre></div>
+</div>
+</li>
+<li><p>Elimine todos los elementos que acaba de añadir,</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>delete node //cliente/solvente
+</pre></div>
+</div>
+</li>
+<li><p>Cambie al cliente «c01» su identificar por «C01». Recuerde que debería
+también hacer el cambio de identificador en las facturas a su nombre.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $attr in //@*[. = &quot;c01&quot;]
+return
+   replace node $attr with attribute {fn:name($attr)} {&quot;C01&quot;}
+</pre></div>
+</div>
+</li>
+<li><p>Elimine los descuentos de todas las facturas.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>delete node //factura/@descuento
+</pre></div>
+</div>
+</li>
+<li><p>Añada a la factura «f01» un descuento del 15%.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>insert node attribute descuento {15} into //factura[@codigo=&quot;f01&quot;]
+</pre></div>
+</div>
+</li>
+<li><p>Aumente en +5% el descuento a todas las facturas.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $descuento in //factura/@descuento
+return
+   replace node $descuento with attribute {name($descuento)} {$descuento + 5}
+</pre></div>
+</div>
+</li>
+<li><p>Elimine de todas las facturas las líneas de facturas por encima de la
+segunda, es decir, todas las facturas deben quedar como mucho con dos
+líneas de factura (<em>ítems</em>).</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>delete node //factura/item[position() &gt; 2]
+</pre></div>
+</div>
+</li>
+<li><p>Añada un atributo a cada factura llamado «items» que
+contenga la cantidad de líneas de factura que tiene.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $factura in //factura
+return
+   insert node attribute items {count($factura/item)} into $factura
+</pre></div>
+</div>
+</li>
+<li><p>Añada tres atributos a inventario llamados <em>superreducido</em>,  <em>reducido</em> y
+<em>normal</em> cuyo valor sea la cantidad de productos que tienen ese tipo de
+<abbr title="Impuesto sobre el Valor Añadido">IVA</abbr>.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $iva in (&quot;normal&quot;, &quot;reducido&quot;, &quot;superreducido&quot;)
+return
+   insert node attribute {$iva} {count(//inventario/producto[@iva=$iva])} into //inventario
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</section>
 </section>
 
 
@@ -261,6 +493,8 @@ BaseX.</p>
 <li><a class="reference internal" href="#servidor-http">5.2.2.4. Servidor <abbr title="HyperText Transfer Protocol">HTTP</abbr></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#ejercicios-resueltos">5.2.3. Ejercicios resueltos</a></li>
+<li><a class="reference internal" href="#ejercicios-propuestos">5.2.4. Ejercicios propuestos</a></li>
 </ul>
 </li>
 </ul>

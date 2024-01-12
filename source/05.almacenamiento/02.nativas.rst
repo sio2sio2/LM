@@ -28,7 +28,7 @@ y, una vez creadas, el propio motor se encarga de la concurrencia. Es importante
 entender que el archivo sirve para crear la base de datos y dotarla de
 información, pero una vez creada, se almacena independiente al archivo original
 (en *Linux* dentro de :file:`~/basex/data`) y, por tanto, está dotada de vida
-propia al margen del archivo, esto es, si se alterá, sus cambios no afectarán al
+propia al margen del archivo, esto es, si se altera, sus cambios no afectarán al
 archivo; y viceversa. 
 
 Tiene varias versiones de ejecución:
@@ -75,7 +75,7 @@ donde hemos marcado las zonas más interesantes.
 * **2** permite interpretar el tipo de expresiones definidas al seleccionar un
   ítem de la lista **3**:
 
-  - `Command` es una órden propia de *BaseX*. Por ejemplo, si escribiéramos
+  - `Command` es una orden propia de *BaseX*. Por ejemplo, si escribiéramos
     ``CLOSE`` se cerraría la base de datos que está abierta. Y si ``HELP``,
     obtendríamos un listado de todas las órdenes posibles.
 
@@ -181,6 +181,132 @@ Servidor |HTTP|
 
 .. https://www.youtube.com/watch?v=tgQrfKOmlRw 
 
+Ejercicios resueltos
+====================
+Dado el |XML| :ref:`propuesto para representar el negocio de una cadena de
+restaurantes <xml-resueltos>`, indique cómo alterar el documento para realizar
+lo siguiente:
+
+#. Sustituya la unidad "cc" por "ml".
+
+   .. dropdown:: Solución propuesta
+
+      .. code-block:: xquery
+
+         (: También podría usarse un where para la condición :)
+         for $unidad in //@unidad[. = "cc"]
+         return
+            replace node $unidad with attribute {fn:name($unidad)} {"ml"}
+      
+
+#. Cambie el nombre de "El tragón feliz" a "La cueva de Juanchu"
+
+   .. dropdown:: Solución propuesta
+
+      .. code-block:: xquery
+
+         replace node //restaurante/@nombre[. = "El tragón feliz"] with attribute nombre {"La cueva de Juanchu"}
+
+#. Añada a cada receta un atributo *ingredientes* cuyo valor sea el número de
+   ingredientes que componen la receta.
+
+   .. dropdown:: Solución propuesta
+
+      .. code-block:: xquery
+
+         for $receta in //receta
+         return
+            insert node attribute ingredientes {count($receta/ingrediente)} into $receta
+
+#. Sume **5** a la cantidad de vinagre de todas las recetas.
+
+   .. dropdown:: Solución propuesta
+
+      .. code-block:: xquery
+
+         (: También podría usarse un where para la condición :)
+         for $vinagre in //ingrediente[@nombre = "vinagre"]
+         return
+            replace node $vinagre/@cantidad with attribute cantidad {$vinagre/@cantidad + 5}
+
+#. Pase a mayúsculas los nombres de todos los municipios. En *XPath* 3 existe
+   `fn:upper-case()
+   <https://www.altova.com/training/xpath3/built-in-functions#functions-on-string-values->`_:
+
+   .. dropdown:: Solucion propuesta
+
+      .. code-block:: xquery
+
+         for $texto in //municipio/text()
+         return
+            replace node $texto with text {fn:upper-case($texto)}
+
+#. Elimine las medias raciones de la carta de todos los restaurantes (y si el plato
+   sólo se servía en ese formato, elimine el plato).
+
+   .. note:: La solución no es nada trivial, así que le proporcionaremos algunas
+      pistas:
+
+      * Los platos sin media ración se quedan iguales, los platos con sólo media
+        deben eliminarse por completo y los platos que ofrecen también otros
+        formatos deben modificar el valor de su atributo *tipo* para quitar la
+        media ración. Puede hacerlo por separado (recuerde que puede hacer
+        distintas acciones utilizando una secuencia) o echar mano de :ref:`if
+        <xpath2-const-if>`.
+
+      * La otra dificultad está en eliminar el formato *media* en los platos que
+        se sirven en varios formatos. No tendrá más remedio que valerse de
+        `funciones de XPath 3
+        <https://www.altova.com/training/xpath3/built-in-functions#xpath-built-in-functions>`_.
+        Hay al menos dos opciones: sustituir "media" por la cadena vacía o
+        crear una secuencia separando las palabras, filtrar en esta secuencia
+        "media" y, finalmente, volver a reconstruir la cadena.
+
+      * Respecto al filtrado que se acaba de sugerir, XPath 3 permite aplicar
+        predicados a cualquier secuencia y no exclusivamente a un conjunto de
+        nodos. Por ejemplo, esto filtraría "c", por lo que el resultado sería un
+        a secuencia con los otros tres ítems:
+
+        .. code-block:: xquery
+
+           ("a", "b", "c", "d")[. != "c"]
+
+   .. dropdown:: Solución propuesta
+
+      .. code-block:: xquery
+
+         (
+            for $plato in //plato
+            where $plato/@tipo = "media"
+            return
+               delete node $plato,
+            for $plato in //plato
+         let $tipo := $plato/@tipo
+            where contains($tipo, "media")
+            return
+               (: Separamos los componentes de la cadena, filtramos "media" y volvemos a unirlos :)
+               replace node $tipo with attribute tipo {fn:string-join(fn:tokenize($tipo)[. != "media"], " ")}
+         )
+
+      También podemos usar el :ref:`if de XPath <xpath2-const-if>` para evitar
+      hacer dos estructuras |FLWOR|:
+
+      .. code-block:: xquery
+
+         for $plato in //plato
+         let $tipo := $plato/@tipo
+         where contains($tipo, "media")
+         return
+            if ($tipo = "media")
+            then
+               delete node $plato
+            else
+               replace node $tipo with attribute tipo {fn:string-join(fn:tokenize($tipo)[. != "media"], " ")}
+
+Ejercicios propuestos
+=====================
+.. include:: /99.ejercicios/50.basex.rst
+   :start-line: 5
 
 .. |GUI| replace:: :abbr:`GUI (Graphical User Interface)`
 .. |CLI| replace:: :abbr:`CLI (Command Line Interface)`
@@ -190,6 +316,7 @@ Servidor |HTTP|
 .. |TCP| replace:: :abbr:`TCP (Transmission Control Protocol)`
 .. |BSON| replace:: :abbr:`BSON (Binary JSON)`
 .. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`
+.. |FLWOR| replace:: :abbr:`FLWOR (For, Let, Where, Order by, Return)`
 
 .. _Java: https://es.wikipedia.org/wiki/Java_(lenguaje_de_programaci%C3%B3n)
 .. _CouchDB: https://couchdb.apache.org/

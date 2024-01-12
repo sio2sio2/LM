@@ -519,9 +519,9 @@ ligeramente distinto, ya que:
 
    Sólo hemos ilustrado los constructores evaluados para elementos, pero los hay
    también para los demás componentes de un |XML| como atributos
-   (:code:`attribute nombre contenido`), comentarios (:code:`comment contenido`)
-   o instrucciones de procesamiento (:code:`processing-instruction nombre
-   contenido`):
+   (:code:`attribute nombre contenido`), comentarios (:code:`comment
+   contenido`), texto (:code:`text contenido`) o instrucciones de procesamiento
+   (:code:`processing-instruction nombre contenido`):
 
    .. code-block:: xquery
       :emphasize-lines: 4,9,11

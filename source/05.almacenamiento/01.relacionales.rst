@@ -4,7 +4,7 @@ El moderno estándar |SQL| tiene soporte para incluir dentro de las bases
 relacionales:
 
 * |XML| desde `SQL:2003`_, que se conoce como |SQL|\ /|XML| y permite tanto
-  almacener información en |XML| como generar salida |XML|.
+  almacenar información en |XML| como generar salida |XML|.
 * |JSON| desde `SQL:2016`_ y `SQL:2023`_. En este caso, el soporte es más reciente y limitado al
   almacenamiento de información en |JSON|  (véanse `las funcionalidades del
   estándar al respecto
@@ -198,7 +198,7 @@ los valores individuales que contiene el |JSON| contenido en el campo ``contacto
 
       SELECT "nombre", "contacto"->'domicilio'->>'localidad' AS 'localidad' FROM "Proveedor";
 
-   .. seealso:: Éche un vistazo a `este tutorial de JSON con SQLite
+   .. seealso:: Eche un vistazo a `este tutorial de JSON con SQLite
       <https://tirkarthi.github.io/programming/2022/02/26/sqlite-json-improvements.html>`_.
 
    Y `SQL:2023`_ ha definido el operador punto (".") con la misma intención:

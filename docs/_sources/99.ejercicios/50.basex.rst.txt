@@ -2,6 +2,7 @@
 
 BaseX
 =====
+
 .. note:: Los ejercicios que se proponen en esta relación no dejan de ser
    :ref:`ejercicios sobre XQuery <ej-xquery>` más o menos sencillos, pensados
    para manipular las bases de datos cargadas en el gestor.
