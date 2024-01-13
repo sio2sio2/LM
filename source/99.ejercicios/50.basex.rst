@@ -110,4 +110,147 @@ sobre lenguajes de marcas <ej-li>`, resuelva lo siguiente:
                return
                   insert node attribute {$iva} {count(//inventario/producto[@iva=$iva])} into //inventario
 
+#. En el ejercicio **8** sobre concesionarios y clientes:
+
+   .. rst-class:: simple
+
+      a. Cambiar la marca del concesionario por "Dacia".
+
+         .. rst-class:: sol-oculta
+
+            .. code-block:: xquery
+
+               replace node /concesionario/@marca with attribute marca {"Dacia"}
+
+      #. Limite la velocidad máxima a **180**.
+
+         .. rst-class:: sol-oculta
+
+            .. code-block:: xquery
+
+               for $vel in //velmax
+               where $vel > 180
+               return
+                  replace node $vel/text() with text {180}
+
+      #. Añadir un atributo con 10 Km a los coches de "*km0*".
+
+         .. rst-class:: sol-oculta
+
+            .. code-block:: xquery
+
+               for $coche in //coche
+               where $coche/@tipo = "km0"
+               return
+                  insert node attribute km {10} into $coche
+
+      #. Sustituir todos los identificadores de cliente, por su equivalente en
+         mayúsculas (p.e. "c01" pasa a ser "C01"). Por ahora, olvide que esos
+         identificadores también se usan como referencia en el atributo
+         *reservado* y que, en consecuencia, también deberían cambiar.
+
+         .. rst-class:: sol-oculta
+
+            .. code-block:: xquery
+
+               for $cliente in //cliente
+               let $id := $cliente/@id
+               return
+                  replace node $id with attribute cliente {fn:upper-case($id)},
+
+      #. Repite el ejercicio anterior, pero sin olvidar los atributos
+         *reservado*.
+
+         .. rst-class:: sol-oculta
+
+            .. code-block:: xquery
+
+               for $cliente in //cliente
+               let $id := $cliente/@id
+               return
+                  (
+                     replace node $id with attribute cliente {fn:upper-case($id)},
+                     for $reservado in //coche/@reservado[. = $id]
+                     return
+                        replace node $reservado with attribute reservado {fn:upper-case($reservado)}
+                  )
+
+      #. Añada un modelo "Mezcladito" que sea como el "Ibiza" pero con la
+         cilindrada y la velocidad máxima del "León".
+
+         .. rst-class:: sol-oculta
+
+            .. code-block:: xquery
+
+               copy $mezcladito := //modelo[@nombre = "Ibiza"]
+               modify (
+                  replace node $mezcladito/@nombre with attribute nombre {"Mezcladito"},
+                  replace node $mezcladito/@id with attribute id {fn:generate-id()},
+                  replace node $mezcladito/cilindrada/text() with text {//modelo[@nombre ="León"]/cilindrada},
+                  replace node $mezcladito/velmax/text() with text {//modelo[@nombre ="León"]/velmax}
+               )
+               return
+                  insert node $mezcladito after //modelo[last()]
+
+      #. Convertir el número de plazas en un atributo del elemento modelo.
+
+         .. rst-class:: sol-oculta
+
+            .. code-block:: xquery
+
+               for $modelo in //modelo
+               return
+                  (
+                     insert node attribute plazas {$modelo/plazas} into $modelo,
+                     delete node $modelo/plazas
+                  )
+
+      #. Intercambiar el orden de DNI y nombre.
+
+         .. rst-class:: sol-oculta
+
+            .. code-block:: xquery
+
+               for $cliente in //cliente
+               return
+                  (: Como es sencillo se podría recrear el elemento dni sin necesidad de copiarlo :)
+                  copy $dni_c := $cliente/dni
+                  modify ()
+                  return (
+                     delete node $cliente/dni,
+                     insert node $dni_c after $cliente/nombre
+                  )
+
+      #. Convertir el elemento ``<cp>`` de la dirección en un atributo de ``<poblacion>``.
+
+         .. rst-class:: sol-oculta
+
+            .. code-block:: xquery
+
+               for $direccion in //direccion
+               return
+                  (
+                     insert node attribute cp {$direccion/cp} into $direccion/poblacion,
+                     delete node $direccion/cp
+                  )
+
+      #. Mover los coches reservados por un cliente al final del elemento
+         cliente correspondiente y eliminar de ellos el atributo que identifica
+         al comprador ya que no deja de ser necesario.
+
+         .. rst-class:: sol-oculta
+
+            .. code-block:: xquery
+
+               for $coche in //coche[@reservado][@reservado != "false"]
+               return
+                  (
+                     copy $coche_c := $coche
+                     modify
+                        delete node $coche_c/@reservado
+                     return
+                        insert node $coche_c into //cliente[@id = $coche/@reservado],
+                     delete node $coche
+                  )
+
 .. |IVA| replace:: :abbr:`IVA (Impuesto sobre el Valor Añadido)`

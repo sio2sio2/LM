@@ -468,6 +468,119 @@ return
 </li>
 </ol>
 </li>
+<li><p>En el ejercicio <strong>8</strong> sobre concesionarios y clientes:</p>
+<ol class="loweralpha simple">
+<li><p>Cambiar la marca del concesionario por «Dacia».</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>replace node /concesionario/@marca with attribute marca {&quot;Dacia&quot;}
+</pre></div>
+</div>
+</li>
+<li><p>Limite la velocidad máxima a <strong>180</strong>.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $vel in //velmax
+where $vel &gt; 180
+return
+   replace node $vel/text() with text {180}
+</pre></div>
+</div>
+</li>
+<li><p>Añadir un atributo con 10 Km a los coches de «<em>km0</em>».</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $coche in //coche
+where $coche/@tipo = &quot;km0&quot;
+return
+   insert node attribute km {10} into $coche
+</pre></div>
+</div>
+</li>
+<li><p>Sustituir todos los identificadores de cliente, por su equivalente en
+mayúsculas (p.e. «c01» pasa a ser «C01»). Por ahora, olvide que esos
+identificadores también se usan como referencia en el atributo
+<em>reservado</em> y que, en consecuencia, también deberían cambiar.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $cliente in //cliente
+let $id := $cliente/@id
+return
+   replace node $id with attribute cliente {fn:upper-case($id)},
+</pre></div>
+</div>
+</li>
+<li><p>Repite el ejercicio anterior, pero sin olvidar los atributos
+<em>reservado</em>.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $cliente in //cliente
+let $id := $cliente/@id
+return
+   (
+      replace node $id with attribute cliente {fn:upper-case($id)},
+      for $reservado in //coche/@reservado[. = $id]
+      return
+         replace node $reservado with attribute reservado {fn:upper-case($reservado)}
+   )
+</pre></div>
+</div>
+</li>
+<li><p>Añada un modelo «Mezcladito» que sea como el «Ibiza» pero con la
+cilindrada y la velocidad máxima del «León».</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>copy $mezcladito := //modelo[@nombre = &quot;Ibiza&quot;]
+modify (
+   replace node $mezcladito/@nombre with attribute nombre {&quot;Mezcladito&quot;},
+   replace node $mezcladito/@id with attribute id {fn:generate-id()},
+   replace node $mezcladito/cilindrada/text() with text {//modelo[@nombre =&quot;León&quot;]/cilindrada},
+   replace node $mezcladito/velmax/text() with text {//modelo[@nombre =&quot;León&quot;]/velmax}
+)
+return
+   insert node $mezcladito after //modelo[last()]
+</pre></div>
+</div>
+</li>
+<li><p>Convertir el número de plazas en un atributo del elemento modelo.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $modelo in //modelo
+return
+   (
+      insert node attribute plazas {$modelo/plazas} into $modelo,
+      delete node $modelo/plazas
+   )
+</pre></div>
+</div>
+</li>
+<li><p>Intercambiar el orden de DNI y nombre.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $cliente in //cliente
+return
+   (: Como es sencillo se podría recrear el elemento dni sin necesidad de copiarlo :)
+   copy $dni_c := $cliente/dni
+   modify ()
+   return (
+      delete node $cliente/dni,
+      insert node $dni_c after $cliente/nombre
+   )
+</pre></div>
+</div>
+</li>
+<li><p>Convertir el elemento <code class="docutils literal notranslate"><span class="pre">&lt;cp&gt;</span></code> de la dirección en un atributo de <code class="docutils literal notranslate"><span class="pre">&lt;poblacion&gt;</span></code>.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $direccion in //direccion
+return
+   (
+      insert node attribute cp {$direccion/cp} into $direccion/poblacion,
+      delete node $direccion/cp
+   )
+</pre></div>
+</div>
+</li>
+<li><p>Mover los coches reservados por un cliente al final del elemento
+cliente correspondiente y eliminar de ellos el atributo que identifica
+al comprador ya que no deja de ser necesario.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $coche in //coche[@reservado][@reservado != &quot;false&quot;]
+return
+   (
+      copy $coche_c := $coche
+      modify
+         delete node $coche_c/@reservado
+      return
+         insert node $coche_c into //cliente[@id = $coche/@reservado],
+      delete node $coche
+   )
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
 </ol>
 </section>
 </section>
