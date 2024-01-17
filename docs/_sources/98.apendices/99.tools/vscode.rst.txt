@@ -256,7 +256,7 @@ específica para ella.
       {
           "html.autoClosingTags": false,
           "auto-close-tag.enableAutoCloseTag": true,
-          "auto-close-tag.activationOnLanguage": [ "html" ]
+          "auto-close-tag.activationOnLanguage": [ "html", "javascript" ]
           "auto-close-tag.excludedTags": [
               "li",
               "tr",
@@ -268,12 +268,12 @@ específica para ella.
       }
 
    En esta configuración, la primera línea deshabilita el cierre automático
-   nativo; la segunda lo habilita para la extensión; la tercera activa  el el
-   cierre para |HTML| (ya que por defecto está deshabilitado)\ [#]_, y la cuarta
-   define aquellas etiquetas que no queremos que se cierren automáticamente.
-   Además, con la quinta hemos deshabilitado la escritura automática de las
-   comillas dobles para los valores de los atributos, ya que no son
-   obligatorias.
+   nativo; la segunda lo habilita para la extensión; la tercera activa  el
+   cierre para |HTML| (ya que por defecto está deshabilitado)\ [#]_ y
+   *Javascript*, y la cuarta define aquellas etiquetas que no queremos que se
+   cierren automáticamente. Además, con la quinta hemos deshabilitado la
+   escritura automática de las comillas dobles para los valores de los
+   atributos, ya que no son obligatorias.
 
 .. _vscode-html-val:
 
