@@ -279,8 +279,9 @@ específica para ella.
 
 **Validación**
    Otra funcionalidad interesante es la validación del documento |HTML| o |CSS|.
-   Para ello una buena extensión es `W3C Web Validator` que comprueba la validez
-   con los validadores que ofrece el |W3C|:
+   Para ello una buena extensión es `W3C Web Validator
+   <https://marketplace.visualstudio.com/items?itemName=CelianRiboulet.webvalidator>`_
+   que comprueba la validez con los validadores que ofrece el |W3C|:
 
    .. image:: files/validacionHTML.png
 
