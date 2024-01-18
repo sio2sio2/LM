@@ -72,8 +72,8 @@ distintas:
       Gobierno. Llevarlo a cabo requiere el conocimiento de un lenguaje de
       programación (*Java*, *Python*, etc) con librerías para el acceso a la
       base de datos relacional y para la conversión de la salida en documentos
-      |JSON|, |XML| u otros. No trataremos este aspecto por excederse en mucho
-      de la profundidad de nuestro módulo.
+      |JSON|, |XML| u otros. No trataremos este aspecto por exceder en mucho
+      la profundidad de nuestro módulo.
 
    b. El propio |SGBD| relacional ofrece soporte para estos formatos de
       serialización, bien porque es capaz de almacenar datos directamente en el

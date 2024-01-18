@@ -77,7 +77,7 @@ sobre lenguajes de marcas <ej-li>`, resuelva lo siguiente:
                return
                   replace node $descuento with attribute {name($descuento)} {$descuento + 5}
 
-      #. Elimine de todas las facturas las líneas de facturas por encima de la
+      #. Elimine de todas las facturas las líneas de facturas por debajo de la
          segunda, es decir, todas las facturas deben quedar como mucho con dos
          líneas de factura (*ítems*).
 

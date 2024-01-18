@@ -102,13 +102,13 @@ propia al margen del archivo, esto es, si se altera, sus cambios no afectarán a
 archivo; y viceversa.</p>
 <p>Tiene varias versiones de ejecución:</p>
 <ol class="arabic simple">
-<li><p>Una cómoda versión <abbr title="Graphical User Interface">GUI</abbr> pensada para gestionar la bases de datos y hacer
+<li><p>Una cómoda versión <abbr title="Graphical User Interface">GUI</abbr> pensada para gestionar las bases de datos y hacer
 consultas desde la propia aplicación gráfica.</p></li>
 <li><p>Una versión <abbr title="Command Line Interface">CLI</abbr> que permite otro tanto, pero desde la terminal. Esta
 versión tiene la ventaja de permitir consultas (de lectura, no de
 manipulación) usando directamente el archivo <abbr title="eXtensible  Markup Language">XML</abbr> sin necesidad de crear
 ninguna base de datos. Es, por tanto, ideal para comprobar la validez de
-expresión <em>XPath</em> y <em>XQuery</em>.</p></li>
+expresiones <em>XPath</em> y <em>XQuery</em>.</p></li>
 <li><p>Una aplicación dividida en cliente y servidor, cuyo servidor queda escuchando
 en un puerto y cuyo cliente permite hacerle consultas de modo semejante a la
 versión <abbr title="Command Line Interface">CLI</abbr>.</p></li>
@@ -442,7 +442,7 @@ return
 </pre></div>
 </div>
 </li>
-<li><p>Elimine de todas las facturas las líneas de facturas por encima de la
+<li><p>Elimine de todas las facturas las líneas de facturas por debajo de la
 segunda, es decir, todas las facturas deben quedar como mucho con dos
 líneas de factura (<em>ítems</em>).</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>delete node //factura/item[position() &gt; 2]

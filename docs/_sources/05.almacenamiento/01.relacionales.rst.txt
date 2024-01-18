@@ -70,9 +70,9 @@ estándares:
 
 Los principales |SGBD| relacionales permiten la manipulación de documentos
 |JSON| en mayor o menor medida. La utilidad de ello se ve cuando se necesita
-definir una tabla con muchos campos, algunos de los cuales no tienen por qué
+definir una tabla con muchos campos, algunos de los cuales no tienen porqué
 tener relevancia o valor en todos los registros. Recordemos que el modelo
-relacional se caracteriza porque todos los registros tienen los mismo campos a
+relacional se caracteriza porque todos los registros tienen los mismos campos a
 diferencia de un documento |JSON| en donde podemos tener una secuencia de
 objetos, cada uno de los cuales no presenta exactamente las mismas claves. Como
 consecuencia una solución |SQL| provocaría que necesitáramos crear una tabla con
@@ -148,7 +148,7 @@ facilita no tener definidos siempre todos los campos:
       }
    }
 
-.. note:: Hemos expresado los campos con valor nulo para que se vean cómo se
+.. note:: Hemos expresado los campos con valor nulo para que se vea cómo se
    reproduce fielmente la estructura de la primera tabla, pero no son
    necesarios y, de hecho, no estarán cuando tengan este valor.
 
