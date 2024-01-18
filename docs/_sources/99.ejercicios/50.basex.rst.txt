@@ -20,7 +20,7 @@ sobre lenguajes de marcas <ej-li>`, resuelva lo siguiente:
 
             .. code-block:: xquery
 
-               replace node //cliente[nombre="Mariquilla de la O"]/nombre/text() with "María de la O"
+               replace value of node //cliente[nombre="Mariquilla de la O"]/nombre with "María de la O"
 
       #. Añada al final de todos los clientes un elemento que sea ``<solvente />``.
 
@@ -131,7 +131,7 @@ sobre lenguajes de marcas <ej-li>`, resuelva lo siguiente:
                for $vel in //velmax
                where $vel > 180
                return
-                  replace node $vel/text() with text {180}
+                  replace value of node $vel with text {180}
 
       #. Añadir un atributo con 10 Km a los coches de "*km0*".
 
@@ -184,10 +184,10 @@ sobre lenguajes de marcas <ej-li>`, resuelva lo siguiente:
 
                copy $mezcladito := //modelo[@nombre = "Ibiza"]
                modify (
-                  replace node $mezcladito/@nombre with attribute nombre {"Mezcladito"},
-                  replace node $mezcladito/@id with attribute id {fn:generate-id()},
-                  replace node $mezcladito/cilindrada/text() with text {//modelo[@nombre ="León"]/cilindrada},
-                  replace node $mezcladito/velmax/text() with text {//modelo[@nombre ="León"]/velmax}
+                  replace value of node $mezcladito/@nombre with "Mezcladito",
+                  replace value of node $mezcladito/@id with text {fn:generate-id()},
+                  replace value of node $mezcladito/cilindrada with text {//modelo[@nombre ="León"]/cilindrada},
+                  replace value of node $mezcladito/velmax with text {//modelo[@nombre ="León"]/velmax}
                )
                return
                   insert node $mezcladito after //modelo[last()]

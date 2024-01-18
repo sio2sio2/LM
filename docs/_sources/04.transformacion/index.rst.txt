@@ -913,6 +913,29 @@ Modificación
 
       replace node //profesor[1]/@id with attribute id {"p22"}
 
+   Cuando lo que se quiere es reemplazar no el nodo completo, sino su valor (que
+   es lo que hemos pretendido en los dos ejemplos anteriores, puede usarse la
+   expresión ``replace value of node`` en vez de ``replace node``:
+
+   .. code-block:: xquery
+
+      replace value of node //profesor[1]/apelativo with "Joselito"
+
+   y también:
+
+   .. code-block:: xquery
+
+      replace value of node //profesor[1]/@id with "p22"
+
+   .. caution::
+
+      Si la expresión no es un literal, como es el caso, sino una expresión que
+      debe evaluarse, entonces tiene que escribirse ``text {expr}``:
+
+      .. code-block:: xquery
+
+         replace value of node //profesor[1]/@id with text {fn:generate-id()}
+
 .. _xquery-rename:
 
 ``rename``

@@ -90,7 +90,7 @@ sobre lenguajes de marcas</span></a>, resuelva lo siguiente:</p>
 <li><p>En el ejercicio sobre facturas:</p>
 <ol class="loweralpha simple">
 <li><p>Cámbiele el nombre a «<em>Mariquilla de la O</em>» por «<em>María de la O</em>».</p>
-<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>replace node //cliente[nombre=&quot;Mariquilla de la O&quot;]/nombre/text() with &quot;María de la O&quot;
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>replace value of node //cliente[nombre=&quot;Mariquilla de la O&quot;]/nombre with &quot;María de la O&quot;
 </pre></div>
 </div>
 </li>
@@ -168,7 +168,7 @@ return
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $vel in //velmax
 where $vel &gt; 180
 return
-   replace node $vel/text() with text {180}
+   replace value of node $vel with text {180}
 </pre></div>
 </div>
 </li>
@@ -209,10 +209,10 @@ return
 cilindrada y la velocidad máxima del «León».</p>
 <div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>copy $mezcladito := //modelo[@nombre = &quot;Ibiza&quot;]
 modify (
-   replace node $mezcladito/@nombre with attribute nombre {&quot;Mezcladito&quot;},
-   replace node $mezcladito/@id with attribute id {fn:generate-id()},
-   replace node $mezcladito/cilindrada/text() with text {//modelo[@nombre =&quot;León&quot;]/cilindrada},
-   replace node $mezcladito/velmax/text() with text {//modelo[@nombre =&quot;León&quot;]/velmax}
+   replace value of node $mezcladito/@nombre with &quot;Mezcladito&quot;,
+   replace value of node $mezcladito/@id with text {fn:generate-id()},
+   replace value of node $mezcladito/cilindrada with text {//modelo[@nombre =&quot;León&quot;]/cilindrada},
+   replace value of node $mezcladito/velmax with text {//modelo[@nombre =&quot;León&quot;]/velmax}
 )
 return
    insert node $mezcladito after //modelo[last()]

@@ -848,6 +848,24 @@ nombre del nodo, quizás habría sido mejor:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>replace node //profesor[1]/@id with attribute id {&quot;p22&quot;}
 </pre></div>
 </div>
+<p>Cuando lo que se quiere es reemplazar no el nodo completo, sino su valor (que
+es lo que hemos pretendido en los dos ejemplos anteriores, puede usarse la
+expresión <code class="docutils literal notranslate"><span class="pre">replace</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">node</span></code> en vez de <code class="docutils literal notranslate"><span class="pre">replace</span> <span class="pre">node</span></code>:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>replace value of node //profesor[1]/apelativo with &quot;Joselito&quot;
+</pre></div>
+</div>
+<p>y también:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>replace value of node //profesor[1]/@id with &quot;p22&quot;
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>Si la expresión no es un literal, como es el caso, sino una expresión que
+debe evaluarse, entonces tiene que escribirse <code class="docutils literal notranslate"><span class="pre">text</span> <span class="pre">{expr}</span></code>:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>replace value of node //profesor[1]/@id with text {fn:generate-id()}
+</pre></div>
+</div>
+</div>
 </dd>
 </dl>
 <dl id="xquery-rename">
