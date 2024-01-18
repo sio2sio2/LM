@@ -612,6 +612,22 @@ Cláusulas adicionales
       return
          $n || ". Mi mascota es un " || $animal || "." 
 
+   .. caution:: ``count`` puede usarse antes de la sentencia ``where``, pero en
+      ese caso también contará las iteraciones filtradas:
+
+      .. code-block:: xquery
+         :emphasize-lines: 5
+            
+         xquery version "3.0";
+
+         (: gato es 2, y jilguero es 3 :)
+         for $animal in ("perro", "gato", "jilguero")
+         count $n
+         where $animal != "perro"
+         return
+            $n || ". Mi mascota es un " || $animal || "." 
+
+
 **GROUP BY**
    como su homónimo en |SQL|, permite agrupar los resultados según un determinado
    criterio. Por ejemplo, esto sacaría un nuevo :file:`casillero.xml` en que los

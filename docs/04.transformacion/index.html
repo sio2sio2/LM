@@ -593,6 +593,21 @@ queramos (excepto <code class="docutils literal notranslate"><span class="pre">R
 <span class="w">   </span><span class="nv">$</span><span class="n">n</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;. Mi mascota es un &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;.&quot;</span>
 </pre></div>
 </div>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p><code class="docutils literal notranslate"><span class="pre">count</span></code> puede usarse antes de la sentencia <code class="docutils literal notranslate"><span class="pre">where</span></code>, pero en
+ese caso también contará las iteraciones filtradas:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="kp">xquery</span><span class="w"> </span><span class="kp">version</span><span class="w"> </span><span class="s2">&quot;3.0&quot;</span><span class="p">;</span>
+
+<span class="c">(: gato es 2, y jilguero es 3 :)</span>
+<span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;perro&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gato&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;jilguero&quot;</span><span class="p">)</span>
+<span class="hll"><span class="k">count</span><span class="w"> </span><span class="nv">$</span><span class="n">n</span>
+</span><span class="k">where</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&quot;perro&quot;</span>
+<span class="k">return</span>
+<span class="w">   </span><span class="nv">$</span><span class="n">n</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;. Mi mascota es un &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;.&quot;</span>
+</pre></div>
+</div>
+</div>
 </dd>
 <dt><strong>GROUP BY</strong></dt><dd><p>como su homónimo en <abbr title="Strctured Query Language">SQL</abbr>, permite agrupar los resultados según un determinado
 criterio. Por ejemplo, esto sacaría un nuevo <code class="file docutils literal notranslate"><span class="pre">casillero.xml</span></code> en que los
