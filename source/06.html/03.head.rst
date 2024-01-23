@@ -175,7 +175,7 @@ Son aquellas que permiten establecer relaciones con otros documentos.
    y las rutas relativas deberían añadirla para obtener la ruta absoluta. Sin
    embargo, este elemento permite definir una |URL| distinta. Por ejemplo::
 
-      <base href="http://docs/.iescdl.es/~josem/XML/index.html">
+      <base href="http://docs.iescdl.es/~josem/XML/index.html">
 
    En este caso, la |URL| base para los enlaces será:
 
@@ -222,7 +222,7 @@ Son aquellas que permiten establecer relaciones con otros documentos.
 
    .. seealso:: Para conocer los valores que se pueden asignar al atributo *rel*
       consulte `la documentación al respecto en MDN
-      <https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types>`.
+      <https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types>`_.
 
 Etiquetas de metadatos
 ======================
@@ -342,6 +342,10 @@ Son aquellas que ofrecen metainformación sobre el contenido de la página.
             <meta name="twitter:title" content="Cabecera de HTML">
             <meta name="twitter:image:src" content="files/head.jpg">
             <meta name="twitter:description" content="Apuntes sobre la cabecera head de HTML">
+
+      .. seealso:: En *DigitalOcean* tienen un <a
+         href="https://www.digitalocean.com/community/tutorials/how-to-add-twitter-card-and-open-graph-social-metadata-to-your-webpage-with-html">pequeño
+         tutorial al respecto</a>.
 
 Ejercicios propuestos
 =====================
