@@ -13,6 +13,16 @@ semánticamente el documento |HTML|.
    del documento a fin de que un lector sea capaz de *contar* a una persona
    ciega cuál es el contenido de la página.
 
+.. note:: A pesar del esfuerzo de |HTML| por dotar de mayor semántica a sus
+   elementos, aún puede interesarnos reforzar la semántica para facilitar la
+   accesibilidad. Por ello existe `ARIA <https://www.w3.org/WAI/ARIA/>`_, una
+   colección de atributos que permiten afinar con más precisión la semántica.
+   El grupo proporciona unos `principios básicos
+   <https://www.w3.org/WAI/ARIA/apg/practices/read-me-first/>`_ y algunos
+   consejos, como los `patrones más habituales
+   <https://www.w3.org/WAI/ARIA/apg/patterns/>`_ que podemos aplicar para
+   mejorar la accesibilidad de nuestra web.
+
 .. table:: Elementos estructurales
    :class: el-html
 

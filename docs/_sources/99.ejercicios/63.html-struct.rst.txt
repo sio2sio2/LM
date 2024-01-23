@@ -15,5 +15,33 @@
    - El cuerpo del texto tal como se ha descrito.
    - El pie de la página
 
+#. Componga la página web de una tienda de informática que tendrá la siguiente
+   estructura:
+
+   .. image:: /99.ejercicios/files/tienda-info.png 
+
+   El aspecto o la maquetación son irrelevantes a estas alturas. Lo que debe
+   hacer es:
+
+   + Definir correctamente los elementos |HTML| que componen la página en
+     función de qué papel cumplen.
+
+   + Dotar de contenido cada uno de estos bloques:
+
+     a. **Título**: Incluya algo apropiado como un logo o similar.
+     #. Defina correctamente la **ruta de navegación** del artículo.
+     #. Defina correctamente el **menú de navegación** con algunas categorías y
+        subcategorías dentro de ellas.
+     #. Incluya la descripción de un **artículo**:
+
+        + Imagen.
+        + Lista de características.
+        + Párrafo de descripción.
+
+     #. Para la **publicidad** no ponga nada, simplemente reserve el elemento
+        apropiado.
+     #. Incluya información para el **pie** de la página.
+
+
 .. |a| replace:: :ref:`<a> <html-a>`
 
