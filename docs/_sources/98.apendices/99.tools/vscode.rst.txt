@@ -262,7 +262,10 @@ específica para ella.
               "tr",
               "th",
               "td",
-              "p"
+              "p",
+              "img",
+              "meta",
+              "br"
           ],
           "html.completion.attributeDefaultValue": "empty",
       }

@@ -378,6 +378,11 @@ que es imprescindible conocer su nombre y qué refieren:
    informa al navegador de cuál es la versión de |XML| usada y qué
    codificación de caracteres se ha usado para el texto.
 
+   .. note:: El nombre de la codificación no es sensible a mayúsculas o
+      minúsculas (véase `Character Sets
+      <https://www.iana.org/assignments/character-sets/character-sets.xhtml>`_).
+      Por tanto, también podríamos haber escrito *utf-8*.
+
 **Comentario**
    Permiten hacer alguna anotación al marcado. Se abren con la secuencia
    :code:`<!--` y se cierran con :code:`-->`. Dentro de ellos se puede escribir

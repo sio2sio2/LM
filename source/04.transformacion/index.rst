@@ -985,34 +985,26 @@ elemento *casillero* pasa a ser un atributo. El ejercicio podríamos realizarlo
 así:
 
 .. code-block:: xquery
-   :emphasize-lines: 5-10
+   :emphasize-lines: 3,4,11
 
-   element {fn:local-name(/*)} {(
-       /*/@*,
-       for $p in //profesor
-       return
-           (: Estructura copy-modify-return :)
-           copy $p_mod := $p
-           modify (
-               insert node attribute departamento {$p/departamento} into $p_mod,
-               delete node $p_mod/departamento
-           )
-           return $p_mod
-   )}
+   xquery version "3.0";
+
+   copy $claustro := //claustro
+   modify (
+      for $p in $claustro/profesor
+      return (
+         insert node attribute departamento {$p/departamento} into $p,
+         delete node $p/departamento
+      )
+   )
+   return
+      $claustro
 
 Esto es:
 
-* Creamos un elemento raíz con el mismo nombre y con los mismos atributos.
-* Recorremos cada uno de los nodos profesor (``$p``).
-* En vez de volcarlo directamente, lo cual provocaría que obtuviéramos como
-  salida la misma entrada, echamos mano de la estructura ``copy``\ -\
-  ``modify``\ - ``return``:
-
-  * Con ``copy`` copiamos el elemento en una variable (``$p_mod``).
-  * Con ``modify`` modificamos la copia. Como tenemos que hacer dos cambios,
-    utilizamos una secuencia de dos ítems, el primero el atributo *departamento*
-    a la copia y el segundo borra el ya inútil elemento *departamento*.
-  * Con ``return`` devolvemos el nodo modificado.
+* Hacemos una copia del elemento raíz (*claustro*) con ``copy``.
+* Realizamos las modificaciones precisa dentro de ``modify``
+* Devolvemos con ``return`` la copia modificada.
 
 Para no enmarañar el ejemplo, hemos evitado tener en cuenta que hay
 profesores sin departamento a los que, por tanto, no hay que hacerle ninguna
@@ -1020,21 +1012,23 @@ modificación. Esto, no obstante, no es algo que no podamos resolver con
 :ref:`if <xpath2-const-if>`:
 
 .. code-block:: xquery
-   :emphasize-lines: 5-12
+   :emphasize-lines: 3,4,14
 
-   element {fn:local-name(/*)} {(
-       /*/@*,
-       for $p in //profesor
-       return
-           copy $p_mod := $p
-           modify (
-               if ($p/departamento) then (
-                   insert node attribute departamento {$p/departamento} into $p_mod,
-                   delete node $p_mod/departamento
-               ) else ( (: No hay modificación alguna :) )
-           )
-           return $p_mod
-   )}
+   xquery version "3.0";
+
+   copy $claustro := //claustro
+   modify (
+      for $p in $claustro/profesor
+      return (
+         if ($p/departamento) then (
+            insert node attribute departamento {$p/departamento} into $p,
+            delete node $p/departamento
+         )
+         else ( (: No hay modificación alguna :) )
+      )
+   )
+   return
+      $claustro
 
 Ejercicios resueltos
 ====================

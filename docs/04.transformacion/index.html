@@ -909,52 +909,45 @@ usando las técnicas arriba vistas y, finalmente, volcar en la salida la copia.<
 casilleros exactamente igual al original con la única diferencia de que el
 elemento <em>casillero</em> pasa a ser un atributo. El ejercicio podríamos realizarlo
 así:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>element {fn:local-name(/*)} {(
-    /*/@*,
-    for $p in //profesor
-    return
-<span class="hll">        (: Estructura copy-modify-return :)
-</span><span class="hll">        copy $p_mod := $p
-</span><span class="hll">        modify (
-</span><span class="hll">            insert node attribute departamento {$p/departamento} into $p_mod,
-</span><span class="hll">            delete node $p_mod/departamento
-</span><span class="hll">        )
-</span>        return $p_mod
-)}
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>xquery version &quot;3.0&quot;;
+
+<span class="hll">copy $claustro := //claustro
+</span><span class="hll">modify (
+</span>   for $p in $claustro/profesor
+   return (
+      insert node attribute departamento {$p/departamento} into $p,
+      delete node $p/departamento
+   )
+)
+<span class="hll">return
+</span>   $claustro
 </pre></div>
 </div>
 <p>Esto es:</p>
 <ul class="simple">
-<li><p>Creamos un elemento raíz con el mismo nombre y con los mismos atributos.</p></li>
-<li><p>Recorremos cada uno de los nodos profesor (<code class="docutils literal notranslate"><span class="pre">$p</span></code>).</p></li>
-<li><p>En vez de volcarlo directamente, lo cual provocaría que obtuviéramos como
-salida la misma entrada, echamos mano de la estructura <code class="docutils literal notranslate"><span class="pre">copy</span></code>-<code class="docutils literal notranslate"><span class="pre">modify</span></code>- <code class="docutils literal notranslate"><span class="pre">return</span></code>:</p>
-<ul>
-<li><p>Con <code class="docutils literal notranslate"><span class="pre">copy</span></code> copiamos el elemento en una variable (<code class="docutils literal notranslate"><span class="pre">$p_mod</span></code>).</p></li>
-<li><p>Con <code class="docutils literal notranslate"><span class="pre">modify</span></code> modificamos la copia. Como tenemos que hacer dos cambios,
-utilizamos una secuencia de dos ítems, el primero el atributo <em>departamento</em>
-a la copia y el segundo borra el ya inútil elemento <em>departamento</em>.</p></li>
-<li><p>Con <code class="docutils literal notranslate"><span class="pre">return</span></code> devolvemos el nodo modificado.</p></li>
-</ul>
-</li>
+<li><p>Hacemos una copia del elemento raíz (<em>claustro</em>) con <code class="docutils literal notranslate"><span class="pre">copy</span></code>.</p></li>
+<li><p>Realizamos las modificaciones precisa dentro de <code class="docutils literal notranslate"><span class="pre">modify</span></code></p></li>
+<li><p>Devolvemos con <code class="docutils literal notranslate"><span class="pre">return</span></code> la copia modificada.</p></li>
 </ul>
 <p>Para no enmarañar el ejemplo, hemos evitado tener en cuenta que hay
 profesores sin departamento a los que, por tanto, no hay que hacerle ninguna
 modificación. Esto, no obstante, no es algo que no podamos resolver con
 <a class="reference internal" href="../03.consulta/01.xpath.html#xpath2-const-if"><span class="std std-ref">if</span></a>:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>element {fn:local-name(/*)} {(
-    /*/@*,
-    for $p in //profesor
-    return
-<span class="hll">        copy $p_mod := $p
-</span><span class="hll">        modify (
-</span><span class="hll">            if ($p/departamento) then (
-</span><span class="hll">                insert node attribute departamento {$p/departamento} into $p_mod,
-</span><span class="hll">                delete node $p_mod/departamento
-</span><span class="hll">            ) else ( (: No hay modificación alguna :) )
-</span><span class="hll">        )
-</span><span class="hll">        return $p_mod
-</span>)}
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>xquery version &quot;3.0&quot;;
+
+<span class="hll">copy $claustro := //claustro
+</span><span class="hll">modify (
+</span>   for $p in $claustro/profesor
+   return (
+      if ($p/departamento) then (
+         insert node attribute departamento {$p/departamento} into $p,
+         delete node $p/departamento
+      )
+      else ( (: No hay modificación alguna :) )
+   )
+)
+<span class="hll">return
+</span>   $claustro
 </pre></div>
 </div>
 </section>
