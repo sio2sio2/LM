@@ -270,6 +270,78 @@ return
 </li>
 </ol>
 </li>
+<li><p>Tomando el <abbr title="eXtensible  Markup Language">XML</abbr> del ejercicio sobre <em>facturas</em> genere otro documento <abbr title="eXtensible  Markup Language">XML</abbr>
+con las siguientes diferencias:</p>
+<ul>
+<li><p>Divida el elemento <code class="docutils literal notranslate"><span class="pre">inventario</span></code> en tres grupos (elementos <code class="docutils literal notranslate"><span class="pre">grupo</span></code>) en
+cada uno de los cuales deben encontrarse los productos con un mismo tipo
+de <abbr title="Impuesto sobre el Valor Añadido">IVA</abbr> (<em>superreducido</em>, <em>reducido</em>, <em>normal</em>). Para identificar el tipo
+de <abbr title="Impuesto sobre el Valor Añadido">IVA</abbr> incluya un atributo llamado <abbr title="Impuesto sobre el Valor Añadido">IVA</abbr>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nt">&lt;inventario&gt;</span>
+<span class="w">      </span><span class="nt">&lt;grupo</span><span class="w"> </span><span class="na">iva=</span><span class="s">&quot;superreducido&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="cm">&lt;!-- Productos con IVA superreducido --&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/grupo&gt;</span>
+
+<span class="w">      </span><span class="cm">&lt;!-- Resto de grupos --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/inventario&gt;</span>
+
+Como<span class="w"> </span>ya<span class="w"> </span>no<span class="w"> </span>es<span class="w"> </span>necesario<span class="w"> </span>el<span class="w"> </span>atributo<span class="w"> </span>*iva*<span class="w"> </span>en<span class="w"> </span>los<span class="w"> </span>elementos<span class="w"> </span>*producto*,
+elimínelo.
+</pre></div>
+</div>
+</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Añada las facturas de cada cliente, al final del elemento <em>cliente</em>
+correspondiente y elimine los elementos <em>factura</em> originales. Como no ya
+no será necesarios los atributos <em>cliente</em> de cada factura, elimínelos
+también.</p></li>
+</ul>
+</div></blockquote>
+<div class="sol-oculta highlight-default notranslate"><div class="highlight"><pre><span></span>xquery version &quot;3.0&quot;; 
+
+(: Este copy se usa para que la solución no altere el documento de origen,
+   sino una copia en memoria y se genere un documento XML nuevo. Así no es
+   necesario que haya una base de datos. Si se utiliza BaseX y se define
+   una base de datos, entonces puede utilizarse el bloque dentro de &quot;modify&quot; :)
+copy $facturacion := /facturacion
+modify (
+   (: Modificación del inventario :)
+   for $tipo in (&quot;superreducido&quot;, &quot;reducido&quot;, &quot;normal&quot;)
+   let $productos := $facturacion//producto[@iva = $tipo]
+   return (
+      (: No es posible asegurar el orden de las operaciones,
+         por lo que la eliminación de @iva en $productos, no
+         podemos asegurar que se haga antes que su adición a
+         grupo. Por eso hacemos la copia $p. :)
+      insert node element grupo {
+         attribute iva {$tipo},
+         copy $p := &lt;p&gt;{$productos}&lt;/p&gt;
+         modify (delete node $p//@iva)
+         return $p/producto
+      } into $facturacion/inventario,
+      delete node $productos
+   ),
+   (: Traslado de las facturas a cada cliente :)
+   for $cliente in $facturacion//cliente
+   let $facturas := $facturacion/factura[@cliente = $cliente/@id]
+   return (
+      (: De nuevo, no es posible asegurar el orden de las operaciones,
+         así que necesitamos copiar facturas :)
+      insert node (
+         copy $f := &lt;f&gt;{$facturas}&lt;/f&gt;
+         modify (delete node $f//@cliente)
+         return $f/factura
+      ) into $cliente,
+      delete node $facturas
+   )
+)
+return
+   $facturacion
+</pre></div>
+</div>
+</li>
 </ol>
 </section>
 

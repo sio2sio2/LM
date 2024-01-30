@@ -107,6 +107,9 @@ consiste únicamente en cambiar la referencia al archivo (o los archivos) |CSS|,
 acción que puede llevarse a cabo incluso de forma dinámica con *Javascript*,
 como ya veremos.
 
+Recuérdese, además, que pueden definirse estilos alternativos dotándolos de un
+nombre, tal como se indicó al estudiar el elemento |link|.
+
 Herramientas
 ============
 Como herramientas para la creación, prueba y validación de documentos |CSS| es
@@ -114,3 +117,4 @@ válido lo expuesto en el :ref:`apartado respectivo para HTML <html-tools>`.
 
 .. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`
 .. |W3C| replace:: :abbr:`W3C (W3 Consortium)`
+.. |link| replace::  :ref:`<link> <html-link>`

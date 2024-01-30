@@ -59,7 +59,10 @@ contenido |HTML| de la página.
       </style>
 
    .. note:: Para referir estilo |CSS| que se encuentre en fichero aparte debe
-      usarse |link|, que :ref:`se explica un poco más adelante <html-link>`.
+      usarse |link|, que se explica un poco más adelante.
+
+   .. note:: Al igual que con |link|, puede usarse un atributo :code:`title`
+      para dar nombre al estilo.
 
 .. index:: script
 
@@ -196,6 +199,34 @@ Son aquellas que permiten establecer relaciones con otros documentos.
 
       <link rel="stylesheet" href="estilos.css">
 
+     En este caso el navegador aplicará las reglas de estilo y, si añadimos otro
+     elemento más::
+
+      <link rel="stylesheet" href="estilos.css">
+      <link rel="stylesheet" href="otrosestilos.css">
+
+     aplicará ambas. Sin embargo, puede añadirse un atributo :code:`title` para
+     nombrar al estilo::
+
+      <link rel="stylesheet" href="estilos.css" title="clasico">
+      <link rel="stylesheet" href="otrosestilos.css" title="moderno">
+      <link rel="stylesheet" href="masestilos.css" title="clasico">
+      <link rel="stylesheet" href="siempre.css">
+
+     En este caso, tenemos:
+
+     * Un estilo sin nombre, que el navegador aplica siempre, se encuentra en
+       :file:`siempre.css`.
+     * Un estilo de nombre "clasico" que se encuentra en las hojas de estilos
+       :file:`estilos.css` y :file:`masestilos.css`.
+     * Otro estilo de nombre "moderno" que se encuentra en la hoja
+       :file:`otrosestilos.css`.
+
+     El navegador aplicará los estilos sin nombre y sólo uno de los nombrados
+     ("clasico" o "moderno" en el ejemplo). Cuál de los nombrados aplique el
+     navegador, no está definido por la especificación, a menos que se
+     especifique expresamente a través de un elemento |meta|.
+
    * Otro uso posible es definir versiones alternativas del documento en otros
      formatos o lenguas::
 
@@ -240,20 +271,16 @@ Son aquellas que ofrecen metainformación sobre el contenido de la página.
 
 **meta** (:devmoz:`meta`)
    Los metadatos pueden definirse de muy diversos modos, aunque lo habitual
-   es que se distintgan unos de otros a través del atributo :code:`name`. Sin
+   es que se distingan unos de otros a través del atributo `name
+   <https://html.spec.whatwg.org/#attr-meta-name>`_. Sin
    embargo, hay una excepción a ello muy importante: la definición de la
    codificación del documento::
 
       <meta charset="UTF-8">
 
-   que es recomendable incluir siempre, aunque no sea obligatorio. Otra elemento *meta*
-   que no utiliza :code:`name` es el que contiene el atributo
-   `http-equiv <https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#http-equiv>`_,
-   que permite definir para el navegador valores de campos de cabecera |HTTP|
-   ausentes.
-
-   De entre los metadatos que podemos declarar haciendo uso del atributo
-   :code:`name` distinguermos:
+   que es recomendable incluir siempre, aunque no sea obligatorio, ya que la
+   codificación predeterminado para los documentos |HTML| es, precisamente
+   *UTF-8*. Otros metadatos que sí se definen con el atributo :code:`name` son:
 
    Metadatos sobre el **documento**
       * *Descripción* del documento::
@@ -278,23 +305,6 @@ Son aquellas que ofrecen metainformación sobre el contenido de la página.
         <http://lenguajecss.com/p/css/propiedades/responsive-design#el-viewport>`_
         para más información.
 
-   Metadatos sobre **campos** de cabecera:
-      Se utiliza el atributo :code:`http-equiv`, en vez de :code:`name`. Algunas
-      posibilidades son:
-
-      * *Redirige* a otra web después de un tiempo::
-
-         <meta http-equiv="refresh" content="20; url=http://docs.iescdl.es">
-
-      * Evita el *cacheo* de la página por el navegador::
-
-         <meta http-equiv="pragma" content="no-cache">
-         <meta http-equiv="cache-control" content="no-cache">
-
-      * Define la *fecha de expiración*::
-
-         <meta http-equiv="expires" content="Mon, 11 Feb 2019 19:50:14 GMT">
-
    Metadatos para **buscadores**
       * *Palabras clave* del documento, separadas por comas::
 
@@ -312,6 +322,41 @@ Son aquellas que ofrecen metainformación sobre el contenido de la página.
         fragmentos de la página en el buscador), *(no)archive* (guardar cacheo),
         *(no)imageindex* (no indexar imágenes para los buscadores de imágenes),
         *none* (equivale a *noindex* y *nofollow*).
+
+   Fuera de este atributo :code:`name`, hay otros metadatos:
+
+   Metadatos que equivalen a **campos** de cabecera |HTTP|:
+      Para definirlos se utiliza el atributo `http-equiv
+      <https://html.spec.whatwg.org/#attr-meta-http-equiv>`_. En este caso, el
+      valor de :code:`http-equiv` define el nombre del campo, y el valor del
+      atributo :code:`content`, el valor de ese mismo campo. Sin embargo, no
+      pueden definirse metadatos para todos los campos definidos en el protocolo
+      y, de hecho, la especificación sólo reconoce unos pocos, algunos de los
+      cuáles, no obstante, desaconseja. Algunos interesantes son:
+
+      * *Redirige* a otra web después de un tiempo::
+
+         <meta http-equiv="refresh" content="20; url=http://docs.iescdl.es">
+
+      * Define el *estilo* predeterminado::
+
+         <meta http-equiv="default-style" content="clasico">
+
+        En este caso, :code:`content` introduce el nombre del estilo que el
+        navegador debe considerar predeterminado y que debe coincidir con el
+        nombre que se le haya dado a través del atributo :code:`title` en los
+        elementos |link| o |style|.
+
+      .. caution:: Otros valores para :code:`http-equiv`, que llegaron a usarse,
+         se consideraron en algún momento **obsoletos** y es probable que ya no
+         tengan soporte en los navegadores::
+
+            <!-- Cacheo -->
+            <meta http-equiv="pragma" content="no-cache">
+            <meta http-equiv="cache-control" content="no-cache">
+
+            <!-- Caducidad del documento -->
+            <meta http-equiv="expires" content="Mon, 11 Feb 2019 19:50:14 GMT">
 
    Metadatos para **redes sociales**
       Algunas redes sociales como Facebook_ o Twitter_ son capaces de leer

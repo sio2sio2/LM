@@ -804,6 +804,17 @@ Son listas de ítem antecedidos por un número (las numeradas) o por una viñeta
    No es necesario cerrar el elemento, ya que se considera cerrado cuando se
    abre otro :code:`<li>` o cuando acaba la lista.
 
+   .. table:: Atributos de li
+      :class: attr-html
+
+      +-----------+----------+--------------------------------------------------+
+      | value     | [num]    | Cambia el ordinal del ítem al que se especifique |
+      |           |          | como valor. Los ítems sucesivos continúan la     |
+      |           |          | secuencia a partir de este valor y no el que les |
+      |           |          | correspondería de no haberse usado este          |
+      |           |          | atributo.                                        |
+      +-----------+----------+--------------------------------------------------+
+
 Por ejemplo, el código::
 
    <ol start="2" type="i">

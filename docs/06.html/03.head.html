@@ -94,7 +94,7 @@ barra superior de la ventana.</p></td>
 </tbody>
 </table>
 <dl>
-<dt><strong>title</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title">title</a>)</dt><dd><p>Su único contenido posible es simple texto. Por ejemplo:</p>
+<dt><strong>title</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title#technical_summary">title</a>)</dt><dd><p>Su único contenido posible es simple texto. Por ejemplo:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Página de prueba<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
 </pre></div>
 </div>
@@ -117,7 +117,7 @@ contenido <abbr title="HyperText Markup Language">HTML</abbr> de la página.</p>
 </tbody>
 </table>
 <dl id="index-1">
-<dt><strong>style</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style">style</a>)</dt><dd><p>Volveremos a esta etiqueta cuando tratemos <a class="reference internal" href="../07.css/01.general.html#css-decl"><span class="std std-ref">cómo declarar el CSS
+<dt><strong>style</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style#technical_summary">style</a>)</dt><dd><p>Volveremos a esta etiqueta cuando tratemos <a class="reference internal" href="../07.css/01.general.html#css-decl"><span class="std std-ref">cómo declarar el CSS
 aplicable</span></a> a la página. Por ahora, bástenos con un ejemplo:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
 <span class="w">   </span><span class="nt">table</span><span class="o">,</span><span class="w"> </span><span class="nt">table</span><span class="w"> </span><span class="nt">th</span><span class="o">,</span><span class="w"> </span><span class="nt">table</span><span class="w"> </span><span class="nt">td</span><span class="w"> </span><span class="p">{</span>
@@ -129,12 +129,17 @@ aplicable</span></a> a la página. Por ahora, bástenos con un ejemplo:</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Para referir estilo <abbr title="Cascading Style Sheets">CSS</abbr> que se encuentre en fichero aparte debe
-usarse <a class="reference internal" href="#html-link"><span class="std std-ref">&lt;link&gt;</span></a>, que <a class="reference internal" href="#html-link"><span class="std std-ref">se explica un poco más adelante</span></a>.</p>
+usarse <a class="reference internal" href="#html-link"><span class="std std-ref">&lt;link&gt;</span></a>, que se explica un poco más adelante.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Al igual que con <a class="reference internal" href="#html-link"><span class="std std-ref">&lt;link&gt;</span></a>, puede usarse un atributo <code class="code docutils literal notranslate"><span class="pre">title</span></code>
+para dar nombre al estilo.</p>
 </div>
 </dd>
 </dl>
 <dl id="index-2">
-<dt><strong>script</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script">script</a>)</dt><dd><p>Podemos usarla de dos formas. Como <code class="code docutils literal notranslate"><span class="pre">&lt;style&gt;</span></code>, escribiendo el código
+<dt><strong>script</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#technical_summary">script</a>)</dt><dd><p>Podemos usarla de dos formas. Como <code class="code docutils literal notranslate"><span class="pre">&lt;style&gt;</span></code>, escribiendo el código
 <em>Javascript</em> dentro del propio documento:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="w">   </span><span class="nb">window</span><span class="p">.</span><span class="nx">onload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -223,7 +228,7 @@ ambos códigos son <a class="reference internal" href="../01.intro/02b.marcas.ht
 </tbody>
 </table>
 <span id="index-3"></span><dl id="html-base">
-<dt><strong>base</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base">base</a>)</dt><dd><p><a class="reference internal" href="01.intro.html#html-url"><span class="std std-ref">Al hablar sobre hiperenlaces</span></a> se definió el <a class="reference internal" href="01.intro.html#html-abs-rel"><span class="std std-ref">concepto
+<dt><strong>base</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base#technical_summary">base</a>)</dt><dd><p><a class="reference internal" href="01.intro.html#html-url"><span class="std std-ref">Al hablar sobre hiperenlaces</span></a> se definió el <a class="reference internal" href="01.intro.html#html-abs-rel"><span class="std std-ref">concepto
 de ruta relativa relativa</span></a> y cómo formar la ruta absoluta se
 concatenan la <abbr title="Uniform Resource Locator">URL</abbr> base y la ruta relativa relativa (a partir de ahora,
 <em>ruta relativa</em> a secas). Este elemento permite redefinir la <abbr title="Uniform Resource Locator">URL</abbr> base para
@@ -248,7 +253,7 @@ embargo, este elemento permite definir una <abbr title="Uniform Resource Locator
 </dd>
 </dl>
 <span id="index-4"></span><dl id="html-link">
-<dt><strong>link</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link">link</a>)</dt><dd><p>Es el elemento que propiamente relaciona con documentos externos. Su uso es
+<dt><strong>link</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#technical_summary">link</a>)</dt><dd><p>Es el elemento que propiamente relaciona con documentos externos. Su uso es
 variado, pero se basa fundamentalmente en dar valor a dos de sus atributos:
 <code class="code docutils literal notranslate"><span class="pre">rel</span></code> y <code class="code docutils literal notranslate"><span class="pre">href</span></code>.</p>
 <ul>
@@ -257,6 +262,33 @@ externas:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;estilos.css&quot;</span><span class="p">&gt;</span>
 </pre></div>
 </div>
+<p>En este caso el navegador aplicará las reglas de estilo y, si añadimos otro
+elemento más:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;estilos.css&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;otrosestilos.css&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>aplicará ambas. Sin embargo, puede añadirse un atributo <code class="code docutils literal notranslate"><span class="pre">title</span></code> para
+nombrar al estilo:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;estilos.css&quot;</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;clasico&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;otrosestilos.css&quot;</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;moderno&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;masestilos.css&quot;</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;clasico&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;siempre.css&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>En este caso, tenemos:</p>
+<ul class="simple">
+<li><p>Un estilo sin nombre, que el navegador aplica siempre, se encuentra en
+<code class="file docutils literal notranslate"><span class="pre">siempre.css</span></code>.</p></li>
+<li><p>Un estilo de nombre «clasico» que se encuentra en las hojas de estilos
+<code class="file docutils literal notranslate"><span class="pre">estilos.css</span></code> y <code class="file docutils literal notranslate"><span class="pre">masestilos.css</span></code>.</p></li>
+<li><p>Otro estilo de nombre «moderno» que se encuentra en la hoja
+<code class="file docutils literal notranslate"><span class="pre">otrosestilos.css</span></code>.</p></li>
+</ul>
+<p>El navegador aplicará los estilos sin nombre y sólo uno de los nombrados
+(«clasico» o «moderno» en el ejemplo). Cuál de los nombrados aplique el
+navegador, no está definido por la especificación, a menos que se
+especifique expresamente a través de un elemento <a class="reference internal" href="#html-meta"><span class="std std-ref">&lt;meta&gt;</span></a>.</p>
 </li>
 <li><p>Otro uso posible es definir versiones alternativas del documento en otros
 formatos o lenguas:</p>
@@ -305,20 +337,16 @@ consulte <a class="reference external" href="https://developer.mozilla.org/en-US
 </tbody>
 </table>
 <span id="index-5"></span><dl id="html-meta">
-<dt><strong>meta</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta">meta</a>)</dt><dd><p>Los metadatos pueden definirse de muy diversos modos, aunque lo habitual
-es que se distintgan unos de otros a través del atributo <code class="code docutils literal notranslate"><span class="pre">name</span></code>. Sin
+<dt><strong>meta</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#technical_summary">meta</a>)</dt><dd><p>Los metadatos pueden definirse de muy diversos modos, aunque lo habitual
+es que se distingan unos de otros a través del atributo <a class="reference external" href="https://html.spec.whatwg.org/#attr-meta-name">name</a>. Sin
 embargo, hay una excepción a ello muy importante: la definición de la
 codificación del documento:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
 </pre></div>
 </div>
-<p>que es recomendable incluir siempre, aunque no sea obligatorio. Otra elemento <em>meta</em>
-que no utiliza <code class="code docutils literal notranslate"><span class="pre">name</span></code> es el que contiene el atributo
-<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#http-equiv">http-equiv</a>,
-que permite definir para el navegador valores de campos de cabecera <abbr title="HyperText Transfer Protocol">HTTP</abbr>
-ausentes.</p>
-<p>De entre los metadatos que podemos declarar haciendo uso del atributo
-<code class="code docutils literal notranslate"><span class="pre">name</span></code> distinguermos:</p>
+<p>que es recomendable incluir siempre, aunque no sea obligatorio, ya que la
+codificación predeterminado para los documentos <abbr title="HyperText Markup Language">HTML</abbr> es, precisamente
+<em>UTF-8</em>. Otros metadatos que sí se definen con el atributo <code class="code docutils literal notranslate"><span class="pre">name</span></code> son:</p>
 <dl>
 <dt>Metadatos sobre el <strong>documento</strong></dt><dd><ul>
 <li><p><em>Descripción</em> del documento:</p>
@@ -346,27 +374,6 @@ para más información.</p>
 </li>
 </ul>
 </dd>
-<dt>Metadatos sobre <strong>campos</strong> de cabecera:</dt><dd><p>Se utiliza el atributo <code class="code docutils literal notranslate"><span class="pre">http-equiv</span></code>, en vez de <code class="code docutils literal notranslate"><span class="pre">name</span></code>. Algunas
-posibilidades son:</p>
-<ul>
-<li><p><em>Redirige</em> a otra web después de un tiempo:</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;refresh&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;20; url=http://docs.iescdl.es&quot;</span><span class="p">&gt;</span>
-</pre></div>
-</div>
-</li>
-<li><p>Evita el <em>cacheo</em> de la página por el navegador:</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;pragma&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;no-cache&quot;</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;cache-control&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;no-cache&quot;</span><span class="p">&gt;</span>
-</pre></div>
-</div>
-</li>
-<li><p>Define la <em>fecha de expiración</em>:</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;expires&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;Mon, 11 Feb 2019 19:50:14 GMT&quot;</span><span class="p">&gt;</span>
-</pre></div>
-</div>
-</li>
-</ul>
-</dd>
 <dt>Metadatos para <strong>buscadores</strong></dt><dd><ul>
 <li><p><em>Palabras clave</em> del documento, separadas por comas:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;keywords&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;html, head, html5, desarrollo web&quot;</span> <span class="p">&gt;</span>
@@ -389,6 +396,46 @@ fragmentos de la página en el buscador), <em>(no)archive</em> (guardar cacheo),
 <em>none</em> (equivale a <em>noindex</em> y <em>nofollow</em>).</p>
 </li>
 </ul>
+</dd>
+</dl>
+<p>Fuera de este atributo <code class="code docutils literal notranslate"><span class="pre">name</span></code>, hay otros metadatos:</p>
+<dl>
+<dt>Metadatos que equivalen a <strong>campos</strong> de cabecera <abbr title="HyperText Transfer Protocol">HTTP</abbr>:</dt><dd><p>Para definirlos se utiliza el atributo <a class="reference external" href="https://html.spec.whatwg.org/#attr-meta-http-equiv">http-equiv</a>. En este caso, el
+valor de <code class="code docutils literal notranslate"><span class="pre">http-equiv</span></code> define el nombre del campo, y el valor del
+atributo <code class="code docutils literal notranslate"><span class="pre">content</span></code>, el valor de ese mismo campo. Sin embargo, no
+pueden definirse metadatos para todos los campos definidos en el protocolo
+y, de hecho, la especificación sólo reconoce unos pocos, algunos de los
+cuáles, no obstante, desaconseja. Algunos interesantes son:</p>
+<ul>
+<li><p><em>Redirige</em> a otra web después de un tiempo:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;refresh&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;20; url=http://docs.iescdl.es&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Define el <em>estilo</em> predeterminado:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;default-style&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;clasico&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>En este caso, <code class="code docutils literal notranslate"><span class="pre">content</span></code> introduce el nombre del estilo que el
+navegador debe considerar predeterminado y que debe coincidir con el
+nombre que se le haya dado a través del atributo <code class="code docutils literal notranslate"><span class="pre">title</span></code> en los
+elementos <a class="reference internal" href="#html-link"><span class="std std-ref">&lt;link&gt;</span></a> o <a class="reference internal" href="#html-style"><span class="std std-ref">&lt;style&gt;</span></a>.</p>
+</li>
+</ul>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>Otros valores para <code class="code docutils literal notranslate"><span class="pre">http-equiv</span></code>, que llegaron a usarse,
+se consideraron en algún momento <strong>obsoletos</strong> y es probable que ya no
+tengan soporte en los navegadores:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- Cacheo --&gt;</span>
+<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;pragma&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;no-cache&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;cache-control&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;no-cache&quot;</span><span class="p">&gt;</span>
+
+<span class="cm">&lt;!-- Caducidad del documento --&gt;</span>
+<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;expires&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;Mon, 11 Feb 2019 19:50:14 GMT&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
 </dd>
 <dt>Metadatos para <strong>redes sociales</strong></dt><dd><p>Algunas redes sociales como <a class="reference external" href="https://www.facebook.com">Facebook</a> o <a class="reference external" href="https://twitter.com">Twitter</a> son capaces de leer
 ciertos elementos <code class="code docutils literal notranslate"><span class="pre">&lt;meta&gt;</span></code> con el objeto de crear automáticamente
@@ -441,12 +488,12 @@ adecuado</span></a>.</p>
 </div>
 <ol class="arabic simple">
 <li><p>Escribir la cabecera de un documento <abbr title="HyperText Markup Language">HTML</abbr> que cumpla con lo siguiente:</p>
-<ul class="simple">
+<ol class="loweralpha simple">
 <li><p>El título de la página debe ser «Ejercicio 1».</p></li>
 <li><p>La codificación de caracteres debe ser la que se esté utilizando para
 escribir el documento.</p></li>
 <li><p>Se utilizan dos hojas de estilo para la página:</p>
-<ul>
+<ul class="simple">
 <li><p>Uno que se encuentra dentro del subdirectorio «estilos» dentro
 de un fichero llamado «aspecto.css».</p></li>
 <li><p>Otra con las sentencias incluidas dentro del propio documento (escriba
@@ -460,10 +507,10 @@ obtenerla).</p></li>
 <li><p>Evite que el navegador o proxies intermedios cacheen la página.</p></li>
 <li><p>Añada información para controlar cómo se veran los enlaces a la página
 desde <a class="reference external" href="https://twitter.com">Twitter</a>.</p></li>
-</ul>
+</ol>
 </li>
 <li><p>Escribir la cabecera de un documento <abbr title="HyperText Markup Language">HTML</abbr> que cumpla con lo siguiente:</p>
-<ul class="simple">
+<ol class="arabic simple">
 <li><p>El título de la página debe ser «Ejercicio 1».</p></li>
 <li><p>La codificación de caracteres debe ser la que se esté utilizando para
 escribir el documento.</p></li>
@@ -478,7 +525,7 @@ que se encuentra en la raíz del servidor.</p></li>
 para la siguiente página (<code class="file docutils literal notranslate"><span class="pre">doc2.html</span></code>).</p></li>
 <li><p>Añada información para controlar cómo se veran los enlaces a la página
 desde <a class="reference external" href="https://www.facebook.com">Facebook</a>.</p></li>
-</ul>
+</ol>
 </li>
 </ol>
 </section>

@@ -253,4 +253,34 @@ sobre lenguajes de marcas <ej-li>`, resuelva lo siguiente:
                      delete node $coche
                   )
 
+#. Tomando el |XML| del ejercicio sobre *facturas* genere otro documento |XML|
+   con las siguientes diferencias:
+
+   + Divida el elemento ``inventario`` en tres grupos (elementos ``grupo``) en
+     cada uno de los cuales deben encontrarse los productos con un mismo tipo
+     de |IVA| (*superreducido*, *reducido*, *normal*). Para identificar el tipo
+     de |IVA| incluya un atributo llamado |IVA|:
+
+     .. code-block:: xml
+
+        <inventario>
+            <grupo iva="superreducido">
+               <!-- Productos con IVA superreducido -->
+            </grupo>
+
+            <!-- Resto de grupos -->
+        </inventario>
+
+      Como ya no es necesario el atributo *iva* en los elementos *producto*,
+      elimínelo.
+
+    + Añada las facturas de cada cliente, al final del elemento *cliente*
+      correspondiente y elimine los elementos *factura* originales. Como no ya
+      no será necesarios los atributos *cliente* de cada factura, elimínelos
+      también.
+
+   .. rst-class:: sol-oculta
+
+      .. literalinclude:: /99.ejercicios/soluciones/facturas/xquery/facturas-50-03.xq
+
 .. |IVA| replace:: :abbr:`IVA (Impuesto sobre el Valor Añadido)`

@@ -57,7 +57,7 @@ intersphinx_mapping = {
 }
 
 extlinks = {
-    'devmoz': ('https://developer.mozilla.org/en-US/docs/Web/HTML/Element/%s',
+    'devmoz': ('https://developer.mozilla.org/en-US/docs/Web/HTML/Element/%s#technical_summary',
                '%s'),
     'devmozcss': ('https://developer.mozilla.org/en-US/docs/Web/CSS/%s', '%s'),
     'deb': ('https://packages.debian.org/stable/%s','%s'),
