@@ -588,28 +588,23 @@ con las siguientes diferencias:</p>
 cada uno de los cuales deben encontrarse los productos con un mismo tipo
 de <abbr title="Impuesto sobre el Valor Añadido">IVA</abbr> (<em>superreducido</em>, <em>reducido</em>, <em>normal</em>). Para identificar el tipo
 de <abbr title="Impuesto sobre el Valor Añadido">IVA</abbr> incluya un atributo llamado <abbr title="Impuesto sobre el Valor Añadido">IVA</abbr>:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nt">&lt;inventario&gt;</span>
-<span class="w">      </span><span class="nt">&lt;grupo</span><span class="w"> </span><span class="na">iva=</span><span class="s">&quot;superreducido&quot;</span><span class="nt">&gt;</span>
-<span class="w">         </span><span class="cm">&lt;!-- Productos con IVA superreducido --&gt;</span>
-<span class="w">      </span><span class="nt">&lt;/grupo&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;inventario&gt;</span>
+<span class="w">    </span><span class="nt">&lt;grupo</span><span class="w"> </span><span class="na">iva=</span><span class="s">&quot;superreducido&quot;</span><span class="nt">&gt;</span>
+<span class="w">       </span><span class="cm">&lt;!-- Productos con IVA superreducido --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/grupo&gt;</span>
 
-<span class="w">      </span><span class="cm">&lt;!-- Resto de grupos --&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/inventario&gt;</span>
-
-Como<span class="w"> </span>ya<span class="w"> </span>no<span class="w"> </span>es<span class="w"> </span>necesario<span class="w"> </span>el<span class="w"> </span>atributo<span class="w"> </span>*iva*<span class="w"> </span>en<span class="w"> </span>los<span class="w"> </span>elementos<span class="w"> </span>*producto*,
-elimínelo.
+<span class="w">    </span><span class="cm">&lt;!-- Resto de grupos --&gt;</span>
+<span class="nt">&lt;/inventario&gt;</span>
 </pre></div>
 </div>
+<p>Como ya no es necesario el atributo <em>iva</em> en los elementos <em>producto</em>,
+elimínelo.</p>
 </li>
-</ul>
-<blockquote>
-<div><ul class="simple">
 <li><p>Añada las facturas de cada cliente, al final del elemento <em>cliente</em>
 correspondiente y elimine los elementos <em>factura</em> originales. Como no ya
 no será necesarios los atributos <em>cliente</em> de cada factura, elimínelos
 también.</p></li>
 </ul>
-</div></blockquote>
 <div class="sol-oculta highlight-default notranslate"><div class="highlight"><pre><span></span>xquery version &quot;3.0&quot;; 
 
 (: Este copy se usa para que la solución no altere el documento de origen,

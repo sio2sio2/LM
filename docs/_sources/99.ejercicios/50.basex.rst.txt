@@ -271,13 +271,13 @@ sobre lenguajes de marcas <ej-li>`, resuelva lo siguiente:
             <!-- Resto de grupos -->
         </inventario>
 
-      Como ya no es necesario el atributo *iva* en los elementos *producto*,
-      elimínelo.
+     Como ya no es necesario el atributo *iva* en los elementos *producto*,
+     elimínelo.
 
-    + Añada las facturas de cada cliente, al final del elemento *cliente*
-      correspondiente y elimine los elementos *factura* originales. Como no ya
-      no será necesarios los atributos *cliente* de cada factura, elimínelos
-      también.
+   + Añada las facturas de cada cliente, al final del elemento *cliente*
+     correspondiente y elimine los elementos *factura* originales. Como no ya
+     no será necesarios los atributos *cliente* de cada factura, elimínelos
+     también.
 
    .. rst-class:: sol-oculta
 
