@@ -341,7 +341,7 @@ consulte <a class="reference external" href="https://developer.mozilla.org/en-US
 es que se distingan unos de otros a través del atributo <a class="reference external" href="https://html.spec.whatwg.org/#attr-meta-name">name</a>. Sin
 embargo, hay una excepción a ello muy importante: la definición de la
 codificación del documento:</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+<div class="highlight-html notranslate" id="html-meta-charset"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>que es recomendable incluir siempre, aunque no sea obligatorio, ya que la
@@ -420,6 +420,20 @@ cuáles, no obstante, desaconseja. Algunos interesantes son:</p>
 navegador debe considerar predeterminado y que debe coincidir con el
 nombre que se le haya dado a través del atributo <code class="code docutils literal notranslate"><span class="pre">title</span></code> en los
 elementos <a class="reference internal" href="#html-link"><span class="std std-ref">&lt;link&gt;</span></a> o <a class="reference internal" href="#html-style"><span class="std std-ref">&lt;style&gt;</span></a>.</p>
+</li>
+<li><p>También, aunque sólo para la variante <abbr title="HyperText Markup Language">HTML</abbr> y no la <abbr title="eXtensible  Markup Language">XML</abbr>, es aún
+permitido por la especificación <a class="reference external" href="https://html.spec.whatwg.org/#attr-meta-http-equiv-content-type">content-type</a> para definir el
+tipo de documento y la codificación:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;content-type&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Este método, que se usaba en la versión 4 de <abbr title="HyperText Markup Language">HTML</abbr> y es aún adminitido,
+es mejor no usarlo, ya que es incompatible con el ya comentado
+<a class="reference internal" href="#html-meta-charset"><span class="std std-ref">charset</span></a>, que es modo moderno de indicar la
+codificación. Se cita, simplemente, por razones históricas.</p>
+</div>
 </li>
 </ul>
 <div class="admonition caution">

@@ -274,7 +274,11 @@ Son aquellas que ofrecen metainformación sobre el contenido de la página.
    es que se distingan unos de otros a través del atributo `name
    <https://html.spec.whatwg.org/#attr-meta-name>`_. Sin
    embargo, hay una excepción a ello muy importante: la definición de la
-   codificación del documento::
+   codificación del documento:
+
+   .. _html-meta-charset:
+
+   .. code-block:: html
 
       <meta charset="UTF-8">
 
@@ -346,6 +350,18 @@ Son aquellas que ofrecen metainformación sobre el contenido de la página.
         navegador debe considerar predeterminado y que debe coincidir con el
         nombre que se le haya dado a través del atributo :code:`title` en los
         elementos |link| o |style|.
+
+      * También, aunque sólo para la variante |HTML| y no la |XML|, es aún
+        permitido por la especificación `content-type
+        <https://html.spec.whatwg.org/#attr-meta-http-equiv-content-type>`_ para definir el
+        tipo de documento y la codificación::
+
+         <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+        .. warning:: Este método, que se usaba en la versión 4 de |HTML| y es aún adminitido,
+           es mejor no usarlo, ya que es incompatible con el ya comentado
+           :ref:`charset <html-meta-charset>`, que es modo moderno de indicar la
+           codificación. Se cita, simplemente, por razones históricas.
 
       .. caution:: Otros valores para :code:`http-equiv`, que llegaron a usarse,
          se consideraron en algún momento **obsoletos** y es probable que ya no
