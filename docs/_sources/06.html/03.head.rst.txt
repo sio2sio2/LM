@@ -358,10 +358,11 @@ Son aquellas que ofrecen metainformación sobre el contenido de la página.
 
          <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-        .. warning:: Este método, que se usaba en la versión 4 de |HTML| y es aún adminitido,
-           es mejor no usarlo, ya que es incompatible con el ya comentado
-           :ref:`charset <html-meta-charset>`, que es modo moderno de indicar la
-           codificación. Se cita, simplemente, por razones históricas.
+        .. warning:: Este método, que se usaba en la versión 4 de |HTML| y es
+           aún adminitido, es **mejor no usarlo**, ya que es incompatible con el
+           ya comentado :ref:`charset <html-meta-charset>`, que es modo moderno
+           de indicar la codificación. Se cita, simplemente, por razones
+           históricas.
 
       .. caution:: Otros valores para :code:`http-equiv`, que llegaron a usarse,
          se consideraron en algún momento **obsoletos** y es probable que ya no
@@ -404,15 +405,15 @@ Son aquellas que ofrecen metainformación sobre el contenido de la página.
             <meta name="twitter:image:src" content="files/head.jpg">
             <meta name="twitter:description" content="Apuntes sobre la cabecera head de HTML">
 
-      .. seealso:: En *DigitalOcean* tienen un <a
-         href="https://www.digitalocean.com/community/tutorials/how-to-add-twitter-card-and-open-graph-social-metadata-to-your-webpage-with-html">pequeño
-         tutorial al respecto</a>.
+      .. seealso:: En *DigitalOcean* tienen `pequeño tutorial al respecto
+         <https://www.digitalocean.com/community/tutorials/how-to-add-twitter-card-and-open-graph-social-metadata-to-your-webpage-with-html>`_.
 
 Ejercicios propuestos
 =====================
 
 .. include:: /99.ejercicios/60.html-head.rst
    :start-line: 3
+   :end-line: 79
 
 .. Desarrolla algunos elementos bien:
    https://html5andcss3.org/html5history.php

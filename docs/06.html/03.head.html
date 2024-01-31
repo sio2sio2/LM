@@ -429,10 +429,11 @@ tipo de documento y la codificación:</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
-<p>Este método, que se usaba en la versión 4 de <abbr title="HyperText Markup Language">HTML</abbr> y es aún adminitido,
-es mejor no usarlo, ya que es incompatible con el ya comentado
-<a class="reference internal" href="#html-meta-charset"><span class="std std-ref">charset</span></a>, que es modo moderno de indicar la
-codificación. Se cita, simplemente, por razones históricas.</p>
+<p>Este método, que se usaba en la versión 4 de <abbr title="HyperText Markup Language">HTML</abbr> y es
+aún adminitido, es <strong>mejor no usarlo</strong>, ya que es incompatible con el
+ya comentado <a class="reference internal" href="#html-meta-charset"><span class="std std-ref">charset</span></a>, que es modo moderno
+de indicar la codificación. Se cita, simplemente, por razones
+históricas.</p>
 </div>
 </li>
 </ul>
@@ -483,9 +484,7 @@ enlaces a la página:</p>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">Ver también</p>
-<p>En <em>DigitalOcean</em> tienen un &lt;a
-href=»<a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-add-twitter-card-and-open-graph-social-metadata-to-your-webpage-with-html">https://www.digitalocean.com/community/tutorials/how-to-add-twitter-card-and-open-graph-social-metadata-to-your-webpage-with-html</a>»&gt;pequeño
-tutorial al respecto&lt;/a&gt;.</p>
+<p>En <em>DigitalOcean</em> tienen <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-add-twitter-card-and-open-graph-social-metadata-to-your-webpage-with-html">pequeño tutorial al respecto</a>.</p>
 </div>
 </dd>
 </dl>
@@ -500,31 +499,32 @@ tutorial al respecto&lt;/a&gt;.</p>
 cuerpo, y compruebe la validez de la solución usando a un <a class="reference internal" href="01.intro.html#html-validacion"><span class="std std-ref">validador
 adecuado</span></a>.</p>
 </div>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Escribir la cabecera de un documento <abbr title="HyperText Markup Language">HTML</abbr> que cumpla con lo siguiente:</p>
 <ol class="loweralpha simple">
 <li><p>El título de la página debe ser «Ejercicio 1».</p></li>
 <li><p>La codificación de caracteres debe ser la que se esté utilizando para
 escribir el documento.</p></li>
+<li><p>Se utilizan la librería <em>JQuery</em> (búsque en internet un <abbr title="Uniform Resource Locator">URL</abbr> de donde
+obtenerla).</p></li>
+<li><p>Indique el nombre del autor del documento.</p></li>
+<li><p>Procure que se vea bien la página en dispositivos móviles.</p></li>
+<li><p>Defina una redirección hacia <code class="docutils literal notranslate"><span class="pre">https://www.disney.com</span></code> a los 15 segundo
+de cargarse la página.</p></li>
+<li><p>Añada información para controlar cómo se veran los enlaces a la página
+desde <a class="reference external" href="https://twitter.com">Twitter</a>.</p></li>
 <li><p>Se utilizan dos hojas de estilo para la página:</p>
 <ul class="simple">
 <li><p>Uno que se encuentra dentro del subdirectorio «estilos» dentro
 de un fichero llamado «aspecto.css».</p></li>
 <li><p>Otra con las sentencias incluidas dentro del propio documento (escriba
-cualquier sentencia CSS válida).</p></li>
+cualquier sentencia <abbr title="Cascading Style Sheets">CSS</abbr> válida).</p></li>
 </ul>
 </li>
-<li><p>Se utilizan la librería <em>JQuery</em> (búsque en internet un <abbr title="Uniform Resource Locator">URL</abbr> de donde
-obtenerla).</p></li>
-<li><p>Indique el nombre del autor del documento.</p></li>
-<li><p>Procure que se vea bien la página en dispositivos móviles.</p></li>
-<li><p>Evite que el navegador o proxies intermedios cacheen la página.</p></li>
-<li><p>Añada información para controlar cómo se veran los enlaces a la página
-desde <a class="reference external" href="https://twitter.com">Twitter</a>.</p></li>
 </ol>
 </li>
 <li><p>Escribir la cabecera de un documento <abbr title="HyperText Markup Language">HTML</abbr> que cumpla con lo siguiente:</p>
-<ol class="arabic simple">
+<ol class="loweralpha simple">
 <li><p>El título de la página debe ser «Ejercicio 1».</p></li>
 <li><p>La codificación de caracteres debe ser la que se esté utilizando para
 escribir el documento.</p></li>
@@ -539,6 +539,15 @@ que se encuentra en la raíz del servidor.</p></li>
 para la siguiente página (<code class="file docutils literal notranslate"><span class="pre">doc2.html</span></code>).</p></li>
 <li><p>Añada información para controlar cómo se veran los enlaces a la página
 desde <a class="reference external" href="https://www.facebook.com">Facebook</a>.</p></li>
+<li><p>Defina dos estilos alternativos para la página:</p>
+<ol class="arabic simple">
+<li><p>«estilo1», que se encuentra en las hojas de estilos  <code class="file docutils literal notranslate"><span class="pre">a.css</span></code> y
+<code class="file docutils literal notranslate"><span class="pre">b.css</span></code></p></li>
+<li><p>«estilo2», que se encuentra en la hoja de estilos <code class="file docutils literal notranslate"><span class="pre">c.css</span></code>.</p></li>
+</ol>
+<p>Todos los archivos <abbr title="Cascading Style Sheets">CSS</abbr> se encuentran en el mismo directorio que el
+<abbr title="HyperText Markup Language">HTML</abbr>. El estilo predeterminado es «estilo1».</p>
+</li>
 </ol>
 </li>
 </ol>

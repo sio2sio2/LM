@@ -17,14 +17,6 @@
    #. La codificación de caracteres debe ser la que se esté utilizando para
       escribir el documento.
 
-   #. Se utilizan dos hojas de estilo para la página:
-   
-      - Uno que se encuentra dentro del subdirectorio "estilos" dentro
-        de un fichero llamado "aspecto.css".
-
-      - Otra con las sentencias incluidas dentro del propio documento (escriba
-        cualquier sentencia CSS válida).
-
    #. Se utilizan la librería *JQuery* (búsque en internet un |URL| de donde
       obtenerla).
 
@@ -32,36 +24,57 @@
 
    #. Procure que se vea bien la página en dispositivos móviles.
 
-   #. Evite que el navegador o proxies intermedios cacheen la página.
+   #. Defina una redirección hacia ``https://www.disney.com`` a los 15 segundo
+      de cargarse la página.
 
    #. Añada información para controlar cómo se veran los enlaces a la página
       desde Twitter_.
 
+   #. Se utilizan dos hojas de estilo para la página:
+   
+      - Uno que se encuentra dentro del subdirectorio "estilos" dentro
+        de un fichero llamado "aspecto.css".
+      - Otra con las sentencias incluidas dentro del propio documento (escriba
+        cualquier sentencia |CSS| válida).
+
 2. Escribir la cabecera de un documento |HTML| que cumpla con lo siguiente:
 
-   #. El título de la página debe ser "Ejercicio 1".
+   .. rst-class:: simple
 
-   #. La codificación de caracteres debe ser la que se esté utilizando para
-      escribir el documento.
+      a. El título de la página debe ser "Ejercicio 1".
 
-   #. La página contendrá un mapa de OpenStreetMap_ gestionado con la librería
-      Leaflet_. Incluya la hoja de estilos y los scripts de *Javascript* que
-      exige la documentación de Leaflet_.
+      #. La codificación de caracteres debe ser la que se esté utilizando para
+         escribir el documento.
 
-   #. Indique el autor del documento.
+      #. La página contendrá un mapa de OpenStreetMap_ gestionado con la librería
+         Leaflet_. Incluya la hoja de estilos y los scripts de *Javascript* que
+         exige la documentación de Leaflet_.
 
-   #. Incluya una pequeña descripción del documento.
+      #. Indique el autor del documento.
 
-   #. Indique que el favicon es el fichero logo.ico dentro del directorio images,
-      que se encuentra en la raíz del servidor.
+      #. Incluya una pequeña descripción del documento.
 
-   #. Añada un enlace para la página de índice (:file:`index.html`) y otro enlace
-      para la siguiente página (:file:`doc2.html`).
+      #. Indique que el favicon es el fichero logo.ico dentro del directorio images,
+         que se encuentra en la raíz del servidor.
 
-   #. Añada información para controlar cómo se veran los enlaces a la página
-      desde Facebook_.
+      #. Añada un enlace para la página de índice (:file:`index.html`) y otro enlace
+         para la siguiente página (:file:`doc2.html`).
+
+      #. Añada información para controlar cómo se veran los enlaces a la página
+         desde Facebook_.
+
+      #. Defina dos estilos alternativos para la página:
+
+         1. "estilo1", que se encuentra en las hojas de estilos  :file:`a.css` y
+            :file:`b.css`
+         2. "estilo2", que se encuentra en la hoja de estilos :file:`c.css`.
+
+         Todos los archivos |CSS| se encuentran en el mismo directorio que el
+         |HTML|. El estilo predeterminado es "estilo1".
 
 .. _Twitter: https://twitter.com
 .. _Facebook: https://www.facebook.com
 .. _Leaflet: https://leafletjs.com
 .. _OpenStreetMap: https://www.openstreetmap.org
+
+.. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`
