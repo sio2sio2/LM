@@ -275,15 +275,41 @@ Y no tengo nada más que decir.
 </div>
 <p>Como puede apreciarse la primera y la última frase no forman parte de ninguna
 estructura iterativa por lo que sólo se escriben una vez.</p>
-<div class="admonition caution">
+<div class="admonition caution" id="xquery-evaluacion">
 <p class="admonition-title">Prudencia</p>
-<p>Es importante tener claro que esta estructura iterativa, aunque
-formalmente parecida a la de la programación estructurada, no actúa del mismo
-modo. Las iteraciones, aunque respeten el orden al mostrar los resultados, no
-tienen por qué evaluarse sucesivamente y en orden, sino que lo harán de un
-modo impredecible e incluso en paralelo. Por ello, no pueden redefinirse
-variables cuyo valor cambie en el cuerpo de cada iteración (p.e. definir
-nosotros un contador al que sumemos <strong>1</strong> cada vez que se ejecuta el bucle).</p>
+<p>Aunque vemos una estructura iterativa formalmente parecida a la de
+la programación estructurada, XQuery no actúa del mismo modo, ya que es un
+lenguaje funcional. Cuando <em>XQuery</em> evalua secuencias (y una estructura de
+este tipo consiste en recorrer una secuencia), debe respetar el <em>orden de
+presentación</em>, lo que quiere decir que lo primero en la entrada será lo
+primero en la salida (a menos que usemos <span class="xref std std-ref">ORDER</span> para
+alternar este orden). Por eso:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;perro&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gato&quot;</span><span class="p">)</span>
+<span class="k">return</span>
+<span class="w">   </span><span class="nv">$</span><span class="n">animal</span>
+</pre></div>
+</div>
+<p>mostrará primero el perro y luego el gato, o:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="c">(: Suponemos que la entrada es un documento XML :)</span>
+<span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">//</span><span class="nt">animal</span>
+<span class="k">return</span>
+<span class="w">   </span><span class="nv">$</span><span class="n">animal</span><span class="p">/</span><span class="na">@nombre</span>
+</pre></div>
+</div>
+<p>devuelve los nombres de los animales en el orden en que los elementos
+<em>animal</em> aparecen en el documento.</p>
+<p>Sin embargo, el <strong>orden de evaluación</strong> está totalmente indefinido y el
+procesador no tiene por qué evaluar primero la expresión que aparece antes en
+la secuencia. Dependiendo de qué sea más óptimo, podrá alterar ese orden o
+evaluarlas en paralelo. Lo expuesto es válido para la evaluación de cualquier
+secuencia, no sólo de aquellas recorridas por un <a class="reference internal" href="#xquery-for"><span class="std std-ref">FOR</span></a>.
+Esta expresión:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s2">&quot;perro&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gato&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>mostrará primero «<em>perro</em>» y luego «<em>gato</em>», pero no podremos asegurar qué se
+evaluó antes. Por ahora esto tiene poca importancia, pero la cobrará
+<a class="reference internal" href="#xquery-update"><span class="std std-ref">más adelante</span></a>.</p>
 </div>
 <p>Analicemos más pormenorizadamente cada parte:</p>
 <dl id="xquery-for">
@@ -782,6 +808,22 @@ original, en vez de generar una salida:</p>
 <li><p><a class="reference internal" href="#xquery-replace"><span class="std std-ref">replace</span></a>, que permite reemplazar nodos.</p></li>
 <li><p><a class="reference internal" href="#xquery-rename"><span class="std std-ref">rename</span></a>, que permite renombrar nodos.</p></li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Cuando se hacen modificaciones, es imprescindible tener presente
+que <a class="reference internal" href="#xquery-evaluacion"><span class="std std-ref">XQuery no asegura el orden de evaluación de las secuencias</span></a>. Por tanto, si tenemos dos expresiones que modifican los
+datos de entrada (<code class="code docutils literal notranslate"><span class="pre">expr1</span></code> y <code class="code docutils literal notranslate"><span class="pre">expr2</span></code>) y se escriben así:</p>
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+<span class="w">   </span><span class="nt">expr1</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">expr2</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>la evaluación de la segunda expresión no debería depender de que la
+evaluación de la primera se hubiera completado. Si así fuera, deberíamos
+reescribir el código para asegurarnos que la evaluación de <code class="code docutils literal notranslate"><span class="pre">expr2</span></code> se
+hará en segundo lugar.</p>
+</div>
 <section id="modificacion">
 <h4><span class="section-number">4.1.6.1. </span>Modificación<a class="headerlink" href="#modificacion" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="admonition caution">

@@ -239,13 +239,48 @@ Esto devolverá el siguiente resultado:
 Como puede apreciarse la primera y la última frase no forman parte de ninguna
 estructura iterativa por lo que sólo se escriben una vez.
 
-.. caution:: Es importante tener claro que esta estructura iterativa, aunque
-   formalmente parecida a la de la programación estructurada, no actúa del mismo
-   modo. Las iteraciones, aunque respeten el orden al mostrar los resultados, no
-   tienen por qué evaluarse sucesivamente y en orden, sino que lo harán de un
-   modo impredecible e incluso en paralelo. Por ello, no pueden redefinirse
-   variables cuyo valor cambie en el cuerpo de cada iteración (p.e. definir
-   nosotros un contador al que sumemos **1** cada vez que se ejecuta el bucle).
+.. _xquery-evaluacion:
+
+.. caution:: Aunque vemos una estructura iterativa formalmente parecida a la de
+   la programación estructurada, XQuery no actúa del mismo modo, ya que es un
+   lenguaje funcional. Cuando *XQuery* evalua secuencias (y una estructura de
+   este tipo consiste en recorrer una secuencia), debe respetar el *orden de
+   presentación*, lo que quiere decir que lo primero en la entrada será lo
+   primero en la salida (a menos que usemos :ref:`ORDER <xquery-order>` para
+   alternar este orden). Por eso:
+
+   .. code-block:: xquery
+
+      for $animal in ("perro", "gato")
+      return
+         $animal
+
+   mostrará primero el perro y luego el gato, o:
+
+   .. code-block:: xquery
+
+      (: Suponemos que la entrada es un documento XML :)
+      for $animal in //animal
+      return
+         $animal/@nombre
+
+   devuelve los nombres de los animales en el orden en que los elementos
+   *animal* aparecen en el documento.
+
+   Sin embargo, el **orden de evaluación** está totalmente indefinido y el
+   procesador no tiene por qué evaluar primero la expresión que aparece antes en
+   la secuencia. Dependiendo de qué sea más óptimo, podrá alterar ese orden o
+   evaluarlas en paralelo. Lo expuesto es válido para la evaluación de cualquier
+   secuencia, no sólo de aquellas recorridas por un :ref:`FOR <xquery-for>`.
+   Esta expresión:
+
+   .. code-block:: xquery
+
+      ("perro", "gato")
+
+   mostrará primero "*perro*" y luego "*gato*", pero no podremos asegurar qué se
+   evaluó antes. Por ahora esto tiene poca importancia, pero la cobrará
+   :ref:`más adelante <xquery-update>`.
 
 Analicemos más pormenorizadamente cada parte:
 
@@ -822,6 +857,23 @@ original, en vez de generar una salida:
 * :ref:`delete <xquery-delete>`, que permite borrar nodos.
 * :ref:`replace <xquery-replace>`, que permite reemplazar nodos.
 * :ref:`rename <xquery-rename>`, que permite renombrar nodos.
+
+.. warning:: Cuando se hacen modificaciones, es imprescindible tener presente
+   que :ref:`XQuery no asegura el orden de evaluación de las secuencias
+   <xquery-evaluacion>`. Por tanto, si tenemos dos expresiones que modifican los
+   datos de entrada (:code:`expr1` y :code:`expr2`) y se escriben así:
+
+   .. code-block:: xquery
+
+      (
+         expr1,
+         expr2
+      )
+
+   la evaluación de la segunda expresión no debería depender de que la
+   evaluación de la primera se hubiera completado. Si así fuera, deberíamos
+   reescribir el código para asegurarnos que la evaluación de :code:`expr2` se
+   hará en segundo lugar.
 
 Modificación
 ------------
