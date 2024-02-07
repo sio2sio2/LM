@@ -516,6 +516,11 @@ encuentran incluidos dentro de párrafos y estructuras similares.
    porcentaje sobre la dimensión original. Por tanto, para la imagen de *1200px*
    de ancho :code:`width="600px"` es equivalente a :code:`width="50%"`.
 
+   .. warning:: En |HTML|\ 5, a diferencia de lo que ocurría en versiones
+      anteriores, no pueden usarse porcentajes como valores de los atributos de
+      ancho o alto. Si queremos utilizar porcentajes, deberemos recurrir a
+      |CSS|.
+
    Los navegadores suelen soportan varios tipos de imágenes: los más frecuentes
    son JPEG_, PNG_, GIF_ en imágenes de píxeles, y SVG_ en imágenes vectoriales.
 

@@ -52,7 +52,7 @@ Son las que constan opcionalmente de un título y una sucesión de filas.
 
 **caption** (:devmoz:`caption`)
    Define el título de la tabla. Por lo general, es corto y se usan dentro de él
-   elementos en línea, pero puede hacer más complicado.
+   elementos en línea, pero puede ser más complicado.
 
 .. index:: tr
 .. _html-tr:
