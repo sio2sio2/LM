@@ -139,16 +139,16 @@ tener asignado un papel semántico concreto. Es el equivalente en el bloque a
 <a class="reference internal" href="04.basico.html#html-span"><span class="std std-ref">&lt;span&gt;</span></a> en la línea. En <abbr title="HyperText Markup Language">HTML</abbr>4, por falta de elementos más
 específicos se usaba para estructurar los documentos:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- Este es un típico código de HTML4: NI SE LE OCURRA REPRODUCIRLO --&gt;</span>
-<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;article&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;section&quot;</span><span class="p">&gt;</span>
    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Los mamíferos<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bla, bla, bla...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 
-   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;section&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;section&quot;</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Los homínidos<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bla, bla, bla<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;section&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;section&quot;</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Los felinos<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bla, bla, bla<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -246,8 +246,8 @@ documento, que fue para lo que se ideó. En opinión de <a class="reference exte
 article Over section</a>,
 simplemente, para señalar dónde empieza y acaba una porción del texto que
 por alguna razón queremos particularizar y siempre deberíamos acompañarla de
-un atributo <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/Accessibility/ARIA/Attributes/aria-label">aria-label</a> que indiqué qué función cumple y justifique esa
-particularización. Al final de ese artículo, hay <a class="reference external" href="https://www.smashingmagazine.com/2020/01/html5-article-section/#conclusion">unas conclusiones
+un atributo <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/Accessibility/ARIA/Attributes/aria-label">aria-label</a> para que un lector web lea su valor y se justifique
+esa particularización. Al final de ese artículo, hay <a class="reference external" href="https://www.smashingmagazine.com/2020/01/html5-article-section/#conclusion">unas conclusiones
 interesantes</a>
 sobre los elementos de estructura.</p>
 <div class="admonition note">

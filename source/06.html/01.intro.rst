@@ -121,69 +121,75 @@ Del mismo modo que las rutas de un sistema de ficheros, las |URL|\ s pueden ser:
    esquema, máquina y ruta. Las rutas indicadas bajo el epígrafe anterior son
    rutas absolutas:
 
-   .. code-block:: none
-
-      http://docs.iescdl.es/~josem/XML/07.html/01.intro.html
-
-   Un concepto importante que es necesario introducir es el de :dfn:`URL base`
-   que es la |URL| de un archivo descontado el nombre del propio archivo. En el
-   ejemplo anterior, la |URL| base es:
+   Un concepto importante que es necesario introducir es el de
 
    .. code-block:: none
 
       http://docs.iescdl.es/~josem/XML/07.html/
 
 **relativas**
-   Son aquellas que expresan la ubicación sobrentendiedo una referencia y, en
-   consecuencia, pueden prescindir de la expresión del esquema y la máquina. La
-   referencia sobrentendida puede ser:
+   Son aquellas que expresan una ubicación tomando una referencia y, en
+   consecuencia, no necesitan especificar todos sus componentes (esquema,
+   máquina, etc.), ya que algunos, gracias a la referencia, se sobreentienden.
 
-   * La **máquina**, en cuyo caso, debe expresarse la ruta absoluta dentro de la
-     propia máquina. Podríamos llamar a estar rutas, :dfn:`rutas relativas
-     absolutas`. Por ejemplo, si en un |HTML| cuya |URL| absoluta es:
+   Para proseguir es necesario explicar cuál es esta referencia: la :dfn:`URL base`
+   es la |URL| que se toma como referencia para construir una |URL| absoluta
+   a partir de una |URL| relativa. Son de dos tipos:
 
-     .. code-block:: none
+   + De *archivo* como:
 
-        http://docs.iescdl.es/~josem/XML/07.html/01.intro.html
+      .. code-block:: none
 
-     referimos la siguiente |URL|
+         http://docs.iescdl.es/~josem/XML/07.html/01.intro.html
 
-     .. code-block:: none
+   + De *directorio* como:
 
-        /privado/secreto.html
+      .. code-block:: none
 
-     la |URL| absoluta de este segundo recurso es:
+         http://docs.iescdl.es/~josem/XML/08.css/
 
-     .. code-block:: none
+   Se diferencian unas de otras en que las |URL| base de directorio siempre
+   acaban con una barra.
 
-        http://docs.iescdl.es/privado/secreto.html
+   Las |URL|\ s relativas se utilizan cuando desde un documento se refiere otro.
+   Cuando es así, la |URL| base es la |URL| absoluta del propio
+   documento\ [#]_ y la |URL| relativa podrá adoptar dos formas:
 
-   * La **URL base** del archivo donde se inserta el enlace. En este caso,
-     podríamos hablar de :dfn:`rutas relativas relativas`. Las reglas para crear
-     este tipo de rutas sn exactamente las mismas que para expresar las
-     :ref:`rutas relativas en los sistemas UNIX <linux:rutas>`. Así, si partimos
-     de que el |HTML| en que se insertan los enlaces es:
+   :dfn:`URL relativa absoluta` (terminología propia)
+      Es aquella que empieza por una '/' y equivale a la |URL| absoluta que se obtiene de
+      concatenar el esquema y la máquina de la |URL| base a la propia |URL|
+      relativa. Por ejemplo:
 
-     .. code-block:: none
+      .. table::
+         :class: html-url-base
 
-        http://docs.iescdl.es/~josem/XML/07.html/01.intro.html
+         ============================================= ============== ===================================
+         URL Base                                       URL relativa   URL absoluta
+         --------------------------------------------- -------------- -----------------------------------
+         https://docs.iescdl.es/~josem/XML/index.html   /a/b/c.html    https://docs.iescdl.es/a/b/c.html 
+         ============================================= ============== ===================================
 
-     Las rutas relativas:
+   :dfn:`URL relativa relativa` (terminología propia)
+      Es aquella que no empieza por '/' y equivale a la |URL| absoluta que se
+      obtiene de concatenar la |URL| base con la |URL| relativa, sabiendo que en
+      el caso que la |URL| base sea de archivo, hay que eliminar el propio
+      nombre del archivo. Como en el caso de las rutas *UNIX* el directorio
+      :code:`..` equivale al directorio padre.
 
-     .. code-block:: none
+      .. table::
+         :class: html-url-base
 
-        02.estructura.html
-        ../index.html
+         ============================================= ============== ========================================
+         URL Base                                       URL relativa   URL absoluta
+         ============================================= ============== ========================================
+         https://docs.iescdl.es/~josem/XML/index.html   c.html        https://docs.iescdl.es/~josem/XML/c.html
+         https://docs.iescdl.es/~josem/XML/index.html   ../c.html     https://docs.iescdl.es/~josem/c.html
+         https://docs.iescdl.es/~josem/XML/index.html                 https://docs.iescdl.es/~josem/index.html
+         https://docs.iescdl.es/~josem/                 c.html        https://docs.iescdl.es/~josem/c.html
+         ============================================= ============== ========================================
 
-     se corresponden con las siguientes rutas absolutas:
-
-     .. code-block:: none
-
-        http://docs.iescdl.es/~josem/XML/07.html/02.estructura.html
-        http://docs.iescdl.es/~josem/XML/index.html
-
-     .. note:: El enlace *vacío* se considera un enlace relativo al propio
-        documento que lo contiene.
+      .. note:: Como puede apreciarse la cadena vacía es una |URL| relativa
+         válida y equivale a una |URL| absoluta igual a la |URL| base.
 
 Enlaces internos
 ----------------
@@ -617,6 +623,8 @@ mdn_
 
 .. rubric:: Notas al pie
 
+.. [#] A menos que se haya cambiado a través del elemento |base|.
+
 .. [#] En un sistema *Linux* es posible generar la codificación en base64 de un
    archivo con la orden :program:`base64`:
 
@@ -654,6 +662,8 @@ mdn_
 .. |MDN| replace:: :abbr:`MDN (Mozilla Developer Network)`
 .. |API| replace:: :abbr:`API (Application Programming Interface)`
 .. |SVG| replace:: :abbr:`SVG (Scalable Vector Graphics)`
+
+.. |base| replace:: :ref:`<base> <html-base>`
 
 .. _Apple: https://www.apple.com
 .. _Safari: https://es.wikipedia.org/wiki/Safari_(navegador)

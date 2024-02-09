@@ -11,7 +11,7 @@ corre en él, asociada al documento, lleve a cabo alguna tarea. Por ejemplo:
 * Un documento |HTML| podría tener asociados distintos aspectos visuales (temas
   o estilos) para cada uno de los cuales hubiera un |CSS| distinto. Un botón, en
   algún lugar del documento, podría permitir el cambio de estilo (o sea, el
-  cambio del archivo |CSS| activo). Para ello, no se necesita el concurso de
+  cambio del archivo |CSS| aplicable). Para ello, no se necesita el concurso de
   ninguna aplicación de servidor, pero el lector interactúa con el documento
   para hacerle saber su preferencia.
 

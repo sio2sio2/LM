@@ -60,16 +60,16 @@ semánticamente el documento |HTML|.
    .. code-block:: html
 
       <!-- Este es un típico código de HTML4: NI SE LE OCURRA REPRODUCIRLO -->
-      <div class="article">
+      <div role="section">
          <h2>Los mamíferos</h2>
          <p>Bla, bla, bla...</p>
 
-         <div class="section">
+         <div role="section">
             <h3>Los homínidos</h3>
             <p>Bla, bla, bla</p>
          </div>
 
-         <div class="section">
+         <div role="section">
             <h3>Los felinos</h3>
             <p>Bla, bla, bla</p>
          </div>
@@ -181,8 +181,8 @@ semánticamente el documento |HTML|.
    <https://www.smashingmagazine.com/2020/01/html5-article-section/>`_,
    simplemente, para señalar dónde empieza y acaba una porción del texto que
    por alguna razón queremos particularizar y siempre deberíamos acompañarla de
-   un atributo `aria-label`_ que indiqué qué función cumple y justifique esa
-   particularización. Al final de ese artículo, hay `unas conclusiones
+   un atributo `aria-label`_ para que un lector web lea su valor y se justifique
+   esa particularización. Al final de ese artículo, hay `unas conclusiones
    interesantes
    <https://www.smashingmagazine.com/2020/01/html5-article-section/#conclusion>`_
    sobre los elementos de estructura.

@@ -186,6 +186,13 @@ Son aquellas que permiten establecer relaciones con otros documentos.
 
       http://docs.iescdl.es/~josem/XML/
 
+   El elemento permite también definir el valor predeterminado para el atributo
+   *target* de |a|:
+
+   .. code-block:: html
+
+      <base target="_blank">
+
 .. index:: link
 .. _html-link:
 
@@ -426,6 +433,8 @@ Ejercicios propuestos
 .. |script| replace::  :ref:`<script> <html-script>`
 .. |base| replace::  :ref:`<base> <html-base>`
 .. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`
+
+.. |a| replace:: :ref:`<a> <html-a>`
 
 .. _Facebook: https://www.facebook.com
 .. _Twitter: https://twitter.com

@@ -194,3 +194,7 @@ a[href^="https://developer.mozilla.org/"].external::before {
       text-align: center;
    }
 }
+
+.html-url-base td {
+   font-family: monospace;
+}

@@ -177,60 +177,93 @@ Habitualmente, <code class="file docutils literal notranslate"><span class="pre"
 <dt><strong>absolutas</strong></dt><dd><p>Son aquellas que expresan la ubicación indicando toda la información:
 esquema, máquina y ruta. Las rutas indicadas bajo el epígrafe anterior son
 rutas absolutas:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>http://docs.iescdl.es/~josem/XML/07.html/01.intro.html
-</pre></div>
-</div>
-<p>Un concepto importante que es necesario introducir es el de <em class="dfn">URL base</em>
-que es la <abbr title="Uniform Resource Locator">URL</abbr> de un archivo descontado el nombre del propio archivo. En el
-ejemplo anterior, la <abbr title="Uniform Resource Locator">URL</abbr> base es:</p>
+<p>Un concepto importante que es necesario introducir es el de</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>http://docs.iescdl.es/~josem/XML/07.html/
 </pre></div>
 </div>
 </dd>
-<dt><strong>relativas</strong></dt><dd><p>Son aquellas que expresan la ubicación sobrentendiedo una referencia y, en
-consecuencia, pueden prescindir de la expresión del esquema y la máquina. La
-referencia sobrentendida puede ser:</p>
+<dt><strong>relativas</strong></dt><dd><p>Son aquellas que expresan una ubicación tomando una referencia y, en
+consecuencia, no necesitan especificar todos sus componentes (esquema,
+máquina, etc.), ya que algunos, gracias a la referencia, se sobreentienden.</p>
+<p>Para proseguir es necesario explicar cuál es esta referencia: la <em class="dfn">URL base</em>
+es la <abbr title="Uniform Resource Locator">URL</abbr> que se toma como referencia para construir una <abbr title="Uniform Resource Locator">URL</abbr> absoluta
+a partir de una <abbr title="Uniform Resource Locator">URL</abbr> relativa. Son de dos tipos:</p>
 <ul>
-<li><p>La <strong>máquina</strong>, en cuyo caso, debe expresarse la ruta absoluta dentro de la
-propia máquina. Podríamos llamar a estar rutas, <em class="dfn">rutas relativas
-absolutas</em>. Por ejemplo, si en un <abbr title="HyperText Markup Language">HTML</abbr> cuya <abbr title="Uniform Resource Locator">URL</abbr> absoluta es:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>http://docs.iescdl.es/~josem/XML/07.html/01.intro.html
+<li><p>De <em>archivo</em> como:</p>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>http://docs.iescdl.es/~josem/XML/07.html/01.intro.html
 </pre></div>
 </div>
-<p>referimos la siguiente <abbr title="Uniform Resource Locator">URL</abbr></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>/privado/secreto.html
-</pre></div>
-</div>
-<p>la <abbr title="Uniform Resource Locator">URL</abbr> absoluta de este segundo recurso es:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>http://docs.iescdl.es/privado/secreto.html
-</pre></div>
-</div>
+</div></blockquote>
 </li>
-<li><p>La <strong>URL base</strong> del archivo donde se inserta el enlace. En este caso,
-podríamos hablar de <em class="dfn">rutas relativas relativas</em>. Las reglas para crear
-este tipo de rutas sn exactamente las mismas que para expresar las
-<a class="reference external" href="https://sio2sio2.github.io/doc-linux/02.conbas/02.informacion/01.filesystem.html#rutas" title="(en Linuxnomicón versión rolling)"><span class="xref std std-ref">rutas relativas en los sistemas UNIX</span></a>. Así, si partimos
-de que el <abbr title="HyperText Markup Language">HTML</abbr> en que se insertan los enlaces es:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>http://docs.iescdl.es/~josem/XML/07.html/01.intro.html
+<li><p>De <em>directorio</em> como:</p>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>http://docs.iescdl.es/~josem/XML/08.css/
 </pre></div>
 </div>
-<p>Las rutas relativas:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>02.estructura.html
-../index.html
-</pre></div>
-</div>
-<p>se corresponden con las siguientes rutas absolutas:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>http://docs.iescdl.es/~josem/XML/07.html/02.estructura.html
-http://docs.iescdl.es/~josem/XML/index.html
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>El enlace <em>vacío</em> se considera un enlace relativo al propio
-documento que lo contiene.</p>
-</div>
+</div></blockquote>
 </li>
 </ul>
+<p>Se diferencian unas de otras en que las <abbr title="Uniform Resource Locator">URL</abbr> base de directorio siempre
+acaban con una barra.</p>
+<p>Las <abbr title="Uniform Resource Locator">URL</abbr>s relativas se utilizan cuando desde un documento se refiere otro.
+Cuando es así, la <abbr title="Uniform Resource Locator">URL</abbr> base es la <abbr title="Uniform Resource Locator">URL</abbr> absoluta del propio
+documento<a class="footnote-reference brackets" href="#id5" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> y la <abbr title="Uniform Resource Locator">URL</abbr> relativa podrá adoptar dos formas:</p>
+<dl>
+<dt><em class="dfn">URL relativa absoluta</em> (terminología propia)</dt><dd><p>Es aquella que empieza por una “/” y equivale a la <abbr title="Uniform Resource Locator">URL</abbr> absoluta que se obtiene de
+concatenar el esquema y la máquina de la <abbr title="Uniform Resource Locator">URL</abbr> base a la propia <abbr title="Uniform Resource Locator">URL</abbr>
+relativa. Por ejemplo:</p>
+<table class="html-url-base docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>URL Base</p></td>
+<td><p>URL relativa</p></td>
+<td><p>URL absoluta</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.iescdl.es/~josem/XML/index.html">https://docs.iescdl.es/~josem/XML/index.html</a></p></td>
+<td><p>/a/b/c.html</p></td>
+<td><p><a class="reference external" href="https://docs.iescdl.es/a/b/c.html">https://docs.iescdl.es/a/b/c.html</a></p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt><em class="dfn">URL relativa relativa</em> (terminología propia)</dt><dd><p>Es aquella que no empieza por “/” y equivale a la <abbr title="Uniform Resource Locator">URL</abbr> absoluta que se
+obtiene de concatenar la <abbr title="Uniform Resource Locator">URL</abbr> base con la <abbr title="Uniform Resource Locator">URL</abbr> relativa, sabiendo que en
+el caso que la <abbr title="Uniform Resource Locator">URL</abbr> base sea de archivo, hay que eliminar el propio
+nombre del archivo. Como en el caso de las rutas <em>UNIX</em> el directorio
+<code class="code docutils literal notranslate"><span class="pre">..</span></code> equivale al directorio padre.</p>
+<table class="html-url-base docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>URL Base</p></th>
+<th class="head"><p>URL relativa</p></th>
+<th class="head"><p>URL absoluta</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.iescdl.es/~josem/XML/index.html">https://docs.iescdl.es/~josem/XML/index.html</a></p></td>
+<td><p>c.html</p></td>
+<td><p><a class="reference external" href="https://docs.iescdl.es/~josem/XML/c.html">https://docs.iescdl.es/~josem/XML/c.html</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.iescdl.es/~josem/XML/index.html">https://docs.iescdl.es/~josem/XML/index.html</a></p></td>
+<td><p>../c.html</p></td>
+<td><p><a class="reference external" href="https://docs.iescdl.es/~josem/c.html">https://docs.iescdl.es/~josem/c.html</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.iescdl.es/~josem/XML/index.html">https://docs.iescdl.es/~josem/XML/index.html</a></p></td>
+<td></td>
+<td><p><a class="reference external" href="https://docs.iescdl.es/~josem/index.html">https://docs.iescdl.es/~josem/index.html</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.iescdl.es/~josem/">https://docs.iescdl.es/~josem/</a></p></td>
+<td><p>c.html</p></td>
+<td><p><a class="reference external" href="https://docs.iescdl.es/~josem/c.html">https://docs.iescdl.es/~josem/c.html</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Como puede apreciarse la cadena vacía es una <abbr title="Uniform Resource Locator">URL</abbr> relativa
+válida y equivale a una <abbr title="Uniform Resource Locator">URL</abbr> absoluta igual a la <abbr title="Uniform Resource Locator">URL</abbr> base.</p>
+</div>
+</dd>
+</dl>
 </dd>
 </dl>
 </section>
@@ -319,7 +352,7 @@ de las acciones del usuario. El formato de estos data <abbr title="Uniform Resou
 </div>
 <p>donde en este caso el tipo <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> es «<cite>application/javascript</cite>» y los datos un
 minúsculo código <em>Javascript</em>, que hubiera estado incluido en un archivo, si no
-hubieramos hecho uso de un data <abbr title="Uniform Resource Identifier">URI</abbr>. La <a class="reference external" href="https://es.wikipedia.org/wiki/Base64">codificación en base64</a><a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> es útil cuando los datos son
+hubieramos hecho uso de un data <abbr title="Uniform Resource Identifier">URI</abbr>. La <a class="reference external" href="https://es.wikipedia.org/wiki/Base64">codificación en base64</a><a class="footnote-reference brackets" href="#id6" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> es útil cuando los datos son
 binarios (p.e. si representamos una imagen <abbr title="Portable Network Graphic">PNG</abbr>). Por ejemplo, el ejemplo
 anterior para incrustar el logo de <abbr title="HyperText Markup Language">HTML</abbr>5, podría escribirse así:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Logo de HTML5&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;data:image/jpeg;base64,</span>
@@ -401,8 +434,8 @@ publicó <abbr title="eXtensible HyperText Markup Language">XHTML</abbr> <strong
 </dd>
 <dt><abbr title="HyperText Markup Language">HTML</abbr>5</dt><dd><p>El <abbr title="W3 Consortium">W3C</abbr> continuó en los años siguientes el desarrollo de <abbr title="eXtensible HyperText Markup Language">XHTML</abbr> <strong>2</strong> del que
 llegó a publicar borradores, abandonando por completo <abbr title="HyperText Markup Language">HTML</abbr>. Como respuesta a
-esta política de abandonar <abbr title="HyperText Markup Language">HTML</abbr>, surgió en 2004 el <abbr title="Web Hypertext Application Technology Working Group">WHATWG</abbr><a class="footnote-reference brackets" href="#id5" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>, un grupo que
-aglutinaba a los principales creadores de navegadores web<a class="footnote-reference brackets" href="#id6" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> y que en
+esta política de abandonar <abbr title="HyperText Markup Language">HTML</abbr>, surgió en 2004 el <abbr title="Web Hypertext Application Technology Working Group">WHATWG</abbr><a class="footnote-reference brackets" href="#id7" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>, un grupo que
+aglutinaba a los principales creadores de navegadores web<a class="footnote-reference brackets" href="#id8" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> y que en
 contra de los deseos del <abbr title="W3 Consortium">W3C</abbr>, que abogaba por <abbr title="eXtensible HyperText Markup Language">XHTML</abbr>, quería seguir
 desarrollando <abbr title="HyperText Markup Language">HTML</abbr>. Comenzó entonces un pulso entre ambos grupos, que
 venció el <abbr title="Web Hypertext Application Technology Working Group">WHATWG</abbr> al admitir el <abbr title="W3 Consortium">W3C</abbr> en 2007 la creación de un grupo de
@@ -636,24 +669,28 @@ particularidades como una consola de <a class="reference external" href="https:/
 </dl>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id4" role="note">
+<aside class="footnote brackets" id="id5" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>A menos que se haya cambiado a través del elemento <a class="reference internal" href="03.head.html#html-base"><span class="std std-ref">&lt;base&gt;</span></a>.</p>
+</aside>
+<aside class="footnote brackets" id="id6" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
 <p>En un sistema <em>Linux</em> es posible generar la codificación en base64 de un
 archivo con la orden <strong class="program">base64</strong>:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>base64<span class="w"> </span>html5.png
 </pre></div>
 </div>
 </aside>
-<aside class="footnote brackets" id="id5" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id7" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
 <p>En 2004, la <a class="reference external" href="https://www.mozilla.org/es-ES/about/">Fundación Mozilla</a> y <a class="reference external" href="https://es.wikipedia.org/wiki/Opera_Software">Opera</a> presentaron un <em>paper</em> en un
 taller organizado por el <abbr title="W3 Consortium">W3C</abbr> centrado en el desarrollo de tecnologías que
 mantuvieran la compatibilidad con el <abbr title="HyperText Markup Language">HTML</abbr> de los navegadores. Este <em>paper</em>,
 sin embargo, fue rechazado. Este rechazo fue lo que originó la creación del
 <abbr title="Web Hypertext Application Technology Working Group">WHATWG</abbr>.</p>
 </aside>
-<aside class="footnote brackets" id="id6" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id8" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
 <p>En aquel entonces, trabajadores de <a class="reference external" href="https://www.apple.com">Apple</a> (que desarrollaba <a class="reference external" href="https://es.wikipedia.org/wiki/Safari_(navegador)">Safari</a>), la
 <a class="reference external" href="https://www.mozilla.org/es-ES/about/">fundación Mozilla</a> y <a class="reference external" href="https://es.wikipedia.org/wiki/Opera_Software">Opera</a>. Se invitó también a personal de <a class="reference external" href="https://www.microsoft.com">Microsoft</a>
 (porque desarrollaba <a class="reference external" href="https://es.wikipedia.org/wiki/Internet_Explorer">Internet Explorer</a>), pero no se incorpó. <a class="reference external" href="https://www.google.com/about/">Google</a> por

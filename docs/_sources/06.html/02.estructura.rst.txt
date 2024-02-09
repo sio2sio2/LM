@@ -299,6 +299,27 @@ comunes a todos los elementos. Los más significativos son:
    por lo que esta es una de las razones por la que es imposible utilizar |DTD|
    para definir la gramática.
 
+**role**
+   Hay toda una serie de atributos |ARIA| pensados para facilitar la
+   accesibilidad del documento |HTML| a aquellos usuarios que no pueden verlos
+   por estar ciegos. Esto es debido a que, aunque |HTML|\ 5 ha evolucionado
+   desde |HTML|\ 4 incorporando muchos elementos semánticos, no ha podido cubrir
+   todos los casos. De entre los atributos definidos por |ARIA|, citaremos
+   :code:`role` que especifica qué significado tiene el elemento dentro del
+   texto. Por ejemplo, si queremos añadir una nota de advertencia, podríamos
+   hacer:
+
+   .. code-block:: html
+
+      <p class="warning">¡Atención! No se le ocurra nunca hacer esto.</p>
+
+   y añadir un estilo chillón para atraer la atención del lector. Sin embargo,
+   alguien ciego no podrá apreciar esos colores. Para mitigarlo podemos hacer:
+
+   .. code-block:: html
+
+      <p class="warning" role="warning">¡Atención! No se le ocurra nunca hacer esto.</p>
+
 .. seealso:: Una relación completa y descriptiva de todos ellos, puede
    encontrarla en `este este artículo de lenguajehtml.com
    <https://lenguajehtml.com/p/html/introduccion/atributos-comunes-html>`_.
@@ -404,3 +425,4 @@ cuya versión |XML| es la siguiente:
 .. |SGML| replace:: :abbr:`SGML (Standard Generalized Markup Language)`
 .. |DTD| replace:: :abbr:`DTD (Document Type Definition)`
 .. |XSLT| replace:: :abbr:`XSLT (eXtensible Stylesheet Language Transformations)`
+.. |ARIA| replace:: :abbr:`ARIA (Accessible Rich Internet Applications)`

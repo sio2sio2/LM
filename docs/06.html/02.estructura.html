@@ -337,6 +337,23 @@ metainformación para usar luego de algún modo (por ejemplo, con
 por lo que esta es una de las razones por la que es imposible utilizar <abbr title="Document Type Definition">DTD</abbr>
 para definir la gramática.</p>
 </dd>
+<dt><strong>role</strong></dt><dd><p>Hay toda una serie de atributos <abbr title="Accessible Rich Internet Applications">ARIA</abbr> pensados para facilitar la
+accesibilidad del documento <abbr title="HyperText Markup Language">HTML</abbr> a aquellos usuarios que no pueden verlos
+por estar ciegos. Esto es debido a que, aunque <abbr title="HyperText Markup Language">HTML</abbr>5 ha evolucionado
+desde <abbr title="HyperText Markup Language">HTML</abbr>4 incorporando muchos elementos semánticos, no ha podido cubrir
+todos los casos. De entre los atributos definidos por <abbr title="Accessible Rich Internet Applications">ARIA</abbr>, citaremos
+<code class="code docutils literal notranslate"><span class="pre">role</span></code> que especifica qué significado tiene el elemento dentro del
+texto. Por ejemplo, si queremos añadir una nota de advertencia, podríamos
+hacer:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;warning&quot;</span><span class="p">&gt;</span>¡Atención! No se le ocurra nunca hacer esto.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>y añadir un estilo chillón para atraer la atención del lector. Sin embargo,
+alguien ciego no podrá apreciar esos colores. Para mitigarlo podemos hacer:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;warning&quot;</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;warning&quot;</span><span class="p">&gt;</span>¡Atención! No se le ocurra nunca hacer esto.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">Ver también</p>
