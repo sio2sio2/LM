@@ -5,7 +5,7 @@
 Cabecera
 ********
 La cabecera del documento |HTML| es el contenido del elemento :code:`<head>`
-e incluyen información ajena al contenido estricto de la página |HTML|.
+e incluye información ajena al contenido estricto de la página |HTML|.
 
 .. note:: El orden de los elementos de la cabecera es indiferente.
 
@@ -34,7 +34,7 @@ El resto de etiquetas las agruparemos en:
 
 Etiquetas de complemento
 ========================
-Son aquellas que permiten indicar qué codigo *Javascript* o |CSS| complementa el
+Son aquellas que permiten indicar qué código *Javascript* o |CSS| complementa el
 contenido |HTML| de la página.
 
 .. table::
@@ -151,7 +151,7 @@ Son aquellas que permiten establecer relaciones con otros documentos.
    +--------------+----------------------------------------------------------+
    | |base|       | Establece la URL base para resolver rutas relativas      |
    +--------------+----------------------------------------------------------+
-   | |link|       | Establece uan relación entre el documento y otro externo |
+   | |link|       | Establece una relación entre el documento y otro externo |
    +--------------+----------------------------------------------------------+
 
 .. index:: base

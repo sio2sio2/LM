@@ -287,22 +287,25 @@ funcionalidad se aplique siempre. La extensión nativa, desgraciadamente, no
 tiene posibilidad de definir excepciones, pero otras externas, sí. Así que
 nuestra propuesta es instalar y habilitar la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag">Auto Close Tag</a>
 y hacer una pequeña configuración para deshabilitar el cierre nativo y
-habilitar, con las excepciones de deseemos el cierre con esta extensión:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;html.autoClosingTags&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;auto-close-tag.enableAutoCloseTag&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;auto-close-tag.activationOnLanguage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;html&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;javascript&quot;</span><span class="w"> </span><span class="p">]</span>
-<span class="w">    </span><span class="nt">&quot;auto-close-tag.excludedTags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;li&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;tr&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;th&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;td&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;p&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;img&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;meta&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;br&quot;</span>
-<span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;html.completion.attributeDefaultValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;empty&quot;</span><span class="p">,</span>
+habilitar, con las excepciones de deseemos el cierre con esta extensión.
+<a class="reference download internal" download="" href="../../_downloads/21506f808209e3f45f799a178d0187b2/autoclose.json"><code class="xref download docutils literal notranslate"><span class="pre">Esta</span> <span class="pre">configuración</span></code></a> puede servirnos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;html.autoClosingTags&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;auto-close-tag.enableAutoCloseTag&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;auto-close-tag.activationOnLanguage&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;html&quot;</span><span class="p">,</span> <span class="s2">&quot;javascript&quot;</span> <span class="p">],</span>
+    <span class="s2">&quot;auto-close-tag.excludedTags&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;li&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tr&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;th&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;td&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;p&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;img&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;meta&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;br&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;input&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;option&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;html.completion.attributeDefaultValue&quot;</span><span class="p">:</span> <span class="s2">&quot;empty&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>

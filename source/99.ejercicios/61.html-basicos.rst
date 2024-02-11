@@ -3,7 +3,7 @@
 
 #. Con lo aprendido hasta ahora, escriba en |HTML| el siguiente texto usando
    los elementos semánticos adecuados. No es necesario aún que estructure
-   semánticamente el documento tal cómo se expone en :ref:`html-struct`.
+   semánticamente el documento tal como se expone en :ref:`html-struct`.
 
    Tenga presente que hemos usado algunas marcas para dar indicaciones:
 

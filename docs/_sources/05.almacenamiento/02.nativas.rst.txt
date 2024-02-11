@@ -281,7 +281,7 @@ lo siguiente:
             return
                delete node $plato,
             for $plato in //plato
-         let $tipo := $plato/@tipo
+            let $tipo := $plato/@tipo
             where contains($tipo, "media")
             return
                (: Separamos los componentes de la cadena, filtramos "media" y volvemos a unirlos :)

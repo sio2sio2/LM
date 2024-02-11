@@ -362,7 +362,7 @@ Solución propuesta<div class="sd-summary-down docutils">
    return
       delete node $plato,
    for $plato in //plato
-let $tipo := $plato/@tipo
+   let $tipo := $plato/@tipo
    where contains($tipo, &quot;media&quot;)
    return
       (: Separamos los componentes de la cadena, filtramos &quot;media&quot; y volvemos a unirlos :)

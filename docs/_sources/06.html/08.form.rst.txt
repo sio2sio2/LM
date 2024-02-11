@@ -79,7 +79,7 @@ determina qué hacer con los datos recabados.
       +--------------+------------+--------------------------------------------------+
       | autocomplete | off|on     | Permite (o no) que el navegador complete         |
       |              |            | automáticamente los campos de texto              |
-      |              |            | atendiendo a los criteros que tenga              |
+      |              |            | atendiendo a los criterios que tenga             |
       |              |            | establecidos (p.e. valores previos               |
       |              |            | instroducido en campos con el mismo nombre).     |
       +--------------+------------+--------------------------------------------------+
@@ -149,7 +149,7 @@ son:
       |              |          | se aplica sobre en general sobre todos los    |
       |              |          | campos del formulario.                        |
       +--------------+----------+-----------------------------------------------+
-      | autofocus    | \-       | Atrae hacia a sí el foco. Por tanto, debería  |
+      | autofocus    | \-       | Atrae hacia sí el foco. Por tanto, debería    |
       |              |          | este atributo aquel campo que queremos que    |
       |              |          | sea el primero en rellenar el usuario.        |
       +--------------+----------+-----------------------------------------------+
@@ -167,7 +167,8 @@ son:
       | name         | nombre   | Nombre identificativo del campo usado cuando  |
       |              |          | se envia al servidor.                         |
       +--------------+----------+-----------------------------------------------+
-      | pattern\ [#]_| regexp   | Expresión regular con la que debe concordar   |
+      | pattern\ [#]_| regexp   | :ref:`Expresión regular <linux:regex>` con    |
+      |              |          | la que debe concordar                         |
       |              |          | el valor del campo para considerarse válido.  |
       +--------------+----------+-----------------------------------------------+
       | placeholder  | valor    | Sugerencia al usuario. Aparecerá en un color  |
@@ -185,6 +186,9 @@ son:
    .. caution:: Un campo deshabilitado no solamente no puede ser rellenado, sino
       que además no se envía al remitir el formulario al servidor. Esto es lo
       que los diferencia de un campo de sólo lectura.
+
+   .. seealso:: Si quiere saber más sobre *expresiones regulares* consulte
+      :ref:`este extenso tutorial <linux:regex>`.
 
    .. _html-input-text:
    .. _html-input-search:
@@ -581,7 +585,7 @@ selección, para las cuales se usan otros elementos distintos a |input|:
    que se incluya también el atributo *label*. Por ejemplo::
 
       Nacionalidad:
-      <select name="lista">
+      <select name="nacionalidad">
          <option disabled selected label="-- Escoja una opción --">
          <option value="es">Española
          <option value="pt">Portuguesa
@@ -597,7 +601,7 @@ selección, para las cuales se usan otros elementos distintos a |input|:
    .. raw:: html
 
       Nacionalidad:
-      <select name="lista">
+      <select name="nacionalidad">
          <option disabled selected label="-- Escoja una opción --">
          <option value="es">Española
          <option value="pt">Portuguesa
@@ -640,7 +644,7 @@ selección, para las cuales se usan otros elementos distintos a |input|:
    Por ejemlo::
 
       Nacionalidad:
-      <select name="lista">
+      <select name="nacionalidad">
          <optgroup label="Europa">
             <option value="es">Española</option>
             <option value="pt">Portuguesa</option>
@@ -664,7 +668,7 @@ selección, para las cuales se usan otros elementos distintos a |input|:
    .. raw:: html
 
       Nacionalidad:
-      <select name="lista">
+      <select name="nacionalidad">
          <optgroup label="Europa">
             <option value="es">Española</option>
             <option value="pt">Portuguesa</option>
@@ -688,7 +692,7 @@ con barra de *scroll*. El uso de *multiple*, además de permitir la selección d
 varios ítem a la vez, pasa a mostrar la lista con barra de *scroll*::
 
    Nacionalidad:
-   <select name="lista" size=3>
+   <select name="nacionalidad" size=3>
       <option value="es">Española</option>
       <option value="pt" selected>Portuguesa</option>
       <option value="fr">Francesa</option>
@@ -703,7 +707,7 @@ que se ve:
 .. raw:: html
 
    Nacionalidad:
-   <select name="lista" size=3>
+   <select name="nacionalidad" size=3>
       <option value="es">Española</option>
       <option value="pt" selected>Portuguesa</option>
       <option value="fr">Francesa</option>

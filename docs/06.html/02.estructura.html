@@ -100,7 +100,7 @@ que tengan en un dialecto <abbr title="Standard Generalized Markup Language">SGM
 </div>
 </li>
 <li><p>Las etiquetas tanto de apertura como de cierre pueden sobreentenderse y, en
-consecucia, no ser necesario escribirlas explícitamente.</p></li>
+consecuencia, no ser necesario escribirlas explícitamente.</p></li>
 <li><p>En los elementos vacíos, porque no pueden tener contenido, es válido tanto no
 cerrar como usar el modo de cierre abreviado típico de <abbr title="eXtensible  Markup Language">XML</abbr>:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>  <span class="cm">&lt;!-- No cerramos --&gt;</span>
@@ -135,7 +135,7 @@ entidades</a>.</p></li>
 <ol class="arabic">
 <li><p>Para asegurarnos de que el navegador interprete la sintaxis como <abbr title="eXtensible  Markup Language">XML</abbr> el
 servidor web debe informarle de que el documento es <em>application/xhtml+xml</em><a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">Content-Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application/xhtnl+xml</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">Content-Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application/xhtml+xml</span>
 </pre></div>
 </div>
 <p>En su defecto (por ejemplo, porque leamos un archivo del disco local),
@@ -386,13 +386,13 @@ encontrarla en <a class="reference external" href="https://lenguajehtml.com/p/ht
 <ul class="simple">
 <li><p>La <strong>declaración de tipo de documento</strong>, que es siempre la misma y preceptiva.</p></li>
 <li><p>Una <strong>elemento raíz</strong> <code class="code docutils literal notranslate"><span class="pre">&lt;html&gt;</span></code>, dentro del que se incluirá todo el contenido
-del archivo. Es recomendable qe incluya un atributo <em>lang</em> que declare la
+del archivo. Es recomendable que incluya un atributo <em>lang</em> que declare la
 lengua en la que se ha escrito el documento.</p></li>
 <li><p>Un <strong>elemento de cabecera</strong> llamado <code class="code docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code> dentro del que se incluyen
 declaraciones que no forman parte del contenido de la página web, pero que
 informan acerca del mismo:</p>
 <ul>
-<li><p>Un elemento <code class="code docutils literal notranslate"><span class="pre">titulo</span></code> obligatorio.</p></li>
+<li><p>Un elemento <code class="code docutils literal notranslate"><span class="pre">title</span></code> obligatorio.</p></li>
 <li><p>Elementos <code class="code docutils literal notranslate"><span class="pre">meta</span></code> que ya trataremos más adelante. Es recomendable, al
 menos, que aparezca el indicado arriba a fin de declarar cuál es la
 codificación de caracteres del archivo.</p></li>

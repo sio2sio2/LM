@@ -2,8 +2,8 @@
 
 .. _html-struct:
 
-Elementos estructurales
-***********************
+Estructura semántica
+********************
 Bajo este epígrafe se tratarán los elementos que permiten estructurar
 semánticamente el documento |HTML|.
 

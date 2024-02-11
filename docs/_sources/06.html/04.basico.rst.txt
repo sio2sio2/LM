@@ -62,7 +62,7 @@ Encabezados
 Elementos de párrafo
 ====================
 Incluimos bajo este epígrafe los elementos de bloque que permiten crear párrafos
-o estructuras análagas:
+o estructuras análogas:
 
 .. table::
    :class: el-html
@@ -224,7 +224,7 @@ encuentran incluidos dentro de párrafos y estructuras similares.
    +--------------+-----------------------------------------------------------+
    | |s|          | Marca un trozo de texto inexacto o que dejó de ser válido.|
    +--------------+-----------------------------------------------------------+
-   | |mark|       | Marca un texto remarcado por alguna cuestión relevamtes,  |
+   | |mark|       | Marca un texto remarcado por alguna cuestión relevantes,  |
    |              | como cuando se marca un texto con rotulador *fosforito*.  |
    +--------------+-----------------------------------------------------------+
    | |span|       | Marca de forma genérica un trozo de texto, que por alguna |
@@ -468,7 +468,7 @@ encuentran incluidos dentro de párrafos y estructuras similares.
 .. _html-br:
 
 **br** (:devmoz:`br`)
-   Fuerza un cambio de linea. El comportamiento por defecto de |HTML| es
+   Fuerza un cambio de línea. El comportamiento por defecto de |HTML| es
    colapsar los caracteres seguidos de espaciado (sean espacios, tabulaciones a
    cambios de línea) a un único espacio, y sólo transformar el espacio por un
    cambio de línea cuando se alcance la anchura del bloque contenedor, salvo
@@ -700,7 +700,7 @@ temática informática.
 
    Para códigos más largos, suele combinarse con |pre|, tal como se ilustró al
    tratar ese elemento. Es común que incluya un atributo :code:`class` para
-   significar el lenguaje en el que se escribe tal codigo. Esto es debido a que
+   significar el lenguaje en el que se escribe tal código. Esto es debido a que
    existen librerías de Javascript como highlight.js_ que, leyendo ese atributo,
    son capaces de colorear el código para hacerlo más legible.
 
@@ -756,7 +756,7 @@ Listas
 
 Listas numeradas y no numeradas
 -------------------------------
-Son listas de ítem antecedidos por un número (las numeradas) o por una viñeta
+Son listas de ítems antecedidos por un número (las numeradas) o por una viñeta
 (las no numeradas).
 
 .. index:: ol, ul, li
@@ -777,7 +777,7 @@ Son listas de ítem antecedidos por un número (las numeradas) o por una viñeta
 .. _html-ul:
 
 **ol** (:devmoz:`ol`), **ul** (:devmoz:`ul`)
-   Son elementos de bloque de declaran que se introducirán una serie de ítems
+   Son elementos de bloque que declaran que se introducirán una serie de ítems
    que componen una lista numerada (:code:`<ol>`) o no numerada (:code:`<ul>`).
    Están constituidos exclusivamente por elementos :code:`<li>`.
 
@@ -945,7 +945,7 @@ principio, no es visible.
    un objeto `JSON
    <https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/JSON>`_).
    En este caso, de la tabla sólo podremos escribir el encabezado, pero ninguna
-   fila de datos. Lo que sí podemos hacer es crear la plantilla de cómo será
+   fila de datos. Lo que sí podemos hacer es crear la plantilla de cómo serán
    esas filas para que el *script* la tome como base para generarlas::
 
       <template id="fila_def">

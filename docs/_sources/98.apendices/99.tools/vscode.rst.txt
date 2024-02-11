@@ -249,26 +249,10 @@ específica para ella.
    nuestra propuesta es instalar y habilitar la extensión `Auto Close Tag
    <https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag>`_
    y hacer una pequeña configuración para deshabilitar el cierre nativo y
-   habilitar, con las excepciones de deseemos el cierre con esta extensión:
+   habilitar, con las excepciones de deseemos el cierre con esta extensión.
+   :download:`Esta configuración <files/autoclose.json>` puede servirnos:
 
-   .. code-block:: json
-
-      {
-          "html.autoClosingTags": false,
-          "auto-close-tag.enableAutoCloseTag": true,
-          "auto-close-tag.activationOnLanguage": [ "html", "javascript" ]
-          "auto-close-tag.excludedTags": [
-              "li",
-              "tr",
-              "th",
-              "td",
-              "p",
-              "img",
-              "meta",
-              "br"
-          ],
-          "html.completion.attributeDefaultValue": "empty",
-      }
+   .. literalinclude:: files/autoclose.json
 
    En esta configuración, la primera línea deshabilita el cierre automático
    nativo; la segunda lo habilita para la extensión; la tercera activa  el

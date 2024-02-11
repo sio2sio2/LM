@@ -56,7 +56,7 @@ Formato
 -------
 Dado que la base del *hipertexto* es el *hipervínculo*, que debe llevarnos a la
 ubicación de otro *hipertexto*, es previsible que en la redacción de un |HTML|
-requiramos hacer escribir |URL|\ s, por lo que es muy importante saber cuál es
+requiramos escribir |URL|\ s, por lo que es muy importante saber cuál es
 su formato exacto. En principio, podemos definir este formato del siguiente modo
 esquemático:
 
@@ -100,8 +100,8 @@ Las partes constituyentes son:
    :ref:`rutas en los sistemas UNIX <linux:rutas>`. Trataremos esto bajo el
    próximo epígrafe.
 
-   .. note:: Incluso en los ejemplos en los que. aparentemente, no hay ruta, sí
-      la hay. Por ejemplo, ante esta petición sin aparentemente ruta:
+   .. note:: Incluso en los ejemplos en los que, aparentemente, no hay ruta, sí
+      la hay. Por ejemplo, ante esta petición sin, aparentemente, ruta:
 
       .. code-block:: none
 
@@ -193,7 +193,7 @@ Del mismo modo que las rutas de un sistema de ficheros, las |URL|\ s pueden ser:
 
 Enlaces internos
 ----------------
-Es muy frecuente que al incluir un hipervínculo queramo enlazar no ya con una
+Es muy frecuente que al incluir un hipervínculo queramos enlazar no ya con una
 página |HTML|, sino con una parte concreta de la página |HTML|. Para ello, es
 necesario que la página destino contenga elementos que se hayan marcado con
 identificadores:
@@ -217,7 +217,7 @@ identificadores:
 
 Hecho así, para que el hipervínculo enlace directamente con el elemento interno
 deseado, basta con añadir :code:`#mamiferos` a la |URL| si es que se quiere
-enlazar con la sesíon dedicada a los mamíferos, ya que este es el valor que
+enlazar con la sesión dedicada a los mamíferos, ya que este es el valor que
 hemos dado al identificador correspondiente. Por tanto:
 
 .. code-block:: none
@@ -230,7 +230,7 @@ podría ser una |URL| absoluta válida. Mientras que:
 
    #mamiferos
 
-podría ser el valor de un hipervínculo valido si el enlace está en la propia
+podría ser el valor de un hipervínculo válido si el enlace está en la propia
 página.
 
 Otros hipervínculos
@@ -262,7 +262,7 @@ adoptar muchas formas::
 
 Data |URI|\ s
 -------------
-Un página |HTML| es un documento de texto que suele referir distintos contenidos
+Una página |HTML| es un documento de texto que suele referir distintos contenidos
 de diverso tipo (*scripts*, hojas de estilos, imágenes, etc.). Todos estos
 contenidos se obtienen gracias a la indicación de su |URL| absoluta o relativa:
 
@@ -329,7 +329,7 @@ publican posteriormente tres versiones del lenguaje, ya definido como |SGML|:
 |HTML|\ 4
    En esta última versión, el |W3C| intentó desligar la definición estructural
    (reservada para |HTML|) de la visual (reservada para |CSS|), por lo que se
-   propuso ir eliminado las marcas y atributos |HTML| que definían aspecto,
+   propuso ir eliminando las marcas y atributos |HTML| que definían aspecto,
    marcándolas como obsoletas. Para hacer menos traumático el cambio definió tres
    versiones del estándar:
 
@@ -368,9 +368,9 @@ publican posteriormente tres versiones del lenguaje, ya definido como |SGML|:
       <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
       <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-   Las esfuerzos entonces del |W3C| se centraron en el desarrollo del lenguaje como
+   Los esfuerzos entonces del |W3C| se centraron en el desarrollo del lenguaje como
    dialecto |HTML|, esto es, en el |XHTML| y abandonaron por completo el sabor
-   |SGML| que quedó estancada en la versión **4.01**. En consecuencia en 2001
+   |SGML| que quedó estancado en la versión **4.01**. En consecuencia en 2001
    publicó |XHTML| **1.1** en que ya sólo había una única versión:
 
    .. code-block:: dtd

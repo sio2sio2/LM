@@ -22,7 +22,7 @@ que tengan en un dialecto |SGML| y que ya se han visto:
      <p>Esto es un párrafo.</p>
 
 * Las etiquetas tanto de apertura como de cierre pueden sobreentenderse y, en
-  consecucia, no ser necesario escribirlas explícitamente.
+  consecuencia, no ser necesario escribirlas explícitamente.
 
 * En los elementos vacíos, porque no pueden tener contenido, es válido tanto no
   cerrar como usar el modo de cierre abreviado típico de |XML|:
@@ -67,7 +67,7 @@ Si se conoce la sintaxis |HTML| es bastante sencillo producir una sintaxis
 
    .. code-block:: yaml
 
-      Content-Type: application/xhtnl+xml
+      Content-Type: application/xhtml+xml
 
    En su defecto (por ejemplo, porque leamos un archivo del disco local),
    podemos usar la extensión :file:`.xhtml`.
@@ -350,13 +350,13 @@ esto es:
 
 * La **declaración de tipo de documento**, que es siempre la misma y preceptiva.
 * Una **elemento raíz** :code:`<html>`, dentro del que se incluirá todo el contenido
-  del archivo. Es recomendable qe incluya un atributo *lang* que declare la
+  del archivo. Es recomendable que incluya un atributo *lang* que declare la
   lengua en la que se ha escrito el documento.
 * Un **elemento de cabecera** llamado :code:`<head>` dentro del que se incluyen 
   declaraciones que no forman parte del contenido de la página web, pero que
   informan acerca del mismo:
 
-  - Un elemento :code:`titulo` obligatorio.
+  - Un elemento :code:`title` obligatorio.
   - Elementos :code:`meta` que ya trataremos más adelante. Es recomendable, al
     menos, que aparezca el indicado arriba a fin de declarar cuál es la
     codificación de caracteres del archivo.

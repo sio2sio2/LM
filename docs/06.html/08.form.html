@@ -46,7 +46,7 @@
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
     <link rel="next" title="6.8. Empotrados" href="09.media.html" />
-    <link rel="prev" title="6.6. Elementos estructurales" href="07.struct.html" /> 
+    <link rel="prev" title="6.6. Estructura semántica" href="07.struct.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head><body>
     <div class="relbar-top">
@@ -61,7 +61,7 @@
           <a href="09.media.html" title="6.8. Empotrados"
              accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="07.struct.html" title="6.6. Elementos estructurales"
+          <a href="07.struct.html" title="6.6. Estructura semántica"
              accesskey="P">anterior</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
 
@@ -165,7 +165,7 @@ homónimo de <a class="reference internal" href="04.basico.html#html-a"><span cl
 <td><p>off|on</p></td>
 <td><p>Permite (o no) que el navegador complete
 automáticamente los campos de texto
-atendiendo a los criteros que tenga
+atendiendo a los criterios que tenga
 establecidos (p.e. valores previos
 instroducido en campos con el mismo nombre).</p></td>
 </tr>
@@ -236,7 +236,7 @@ campos del formulario.</p></td>
 </tr>
 <tr class="row-even"><td><p>autofocus</p></td>
 <td><p>-</p></td>
-<td><p>Atrae hacia a sí el foco. Por tanto, debería
+<td><p>Atrae hacia sí el foco. Por tanto, debería
 este atributo aquel campo que queremos que
 sea el primero en rellenar el usuario.</p></td>
 </tr>
@@ -264,7 +264,8 @@ se envia al servidor.</p></td>
 </tr>
 <tr class="row-odd"><td><p>pattern<a class="footnote-reference brackets" href="#id10" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a></p></td>
 <td><p>regexp</p></td>
-<td><p>Expresión regular con la que debe concordar
+<td><p><a class="reference external" href="https://sio2sio2.github.io/doc-linux/02.conbas/10.texto/01.regex.html#regex" title="(en Linuxnomicón versión rolling)"><span class="xref std std-ref">Expresión regular</span></a> con
+la que debe concordar
 el valor del campo para considerarse válido.</p></td>
 </tr>
 <tr class="row-even"><td><p>placeholder</p></td>
@@ -295,6 +296,11 @@ gris claro.</p></td>
 <p>Un campo deshabilitado no solamente no puede ser rellenado, sino
 que además no se envía al remitir el formulario al servidor. Esto es lo
 que los diferencia de un campo de sólo lectura.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Si quiere saber más sobre <em>expresiones regulares</em> consulte
+<a class="reference external" href="https://sio2sio2.github.io/doc-linux/02.conbas/10.texto/01.regex.html#regex" title="(en Linuxnomicón versión rolling)"><span class="xref std std-ref">este extenso tutorial</span></a>.</p>
 </div>
 <p id="html-input-email"><span id="html-input-url"></span><span id="html-input-hidden"></span><span id="html-input-password"></span><span id="html-input-search"></span><span id="html-input-text"></span>En cuanto a los tipos de campos posibles, algunos de ellos son:</p>
 <table class="attr-html docutils align-default" id="id17">
@@ -675,7 +681,7 @@ los atributos aplicables a <a class="reference internal" href="#html-input"><spa
 <p>El elemento permite incluir contenido de texto que será el que se muestre a menos
 que se incluya también el atributo <em>label</em>. Por ejemplo:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>Nacionalidad:
-<span class="p">&lt;</span><span class="nt">select</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;lista&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">select</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;nacionalidad&quot;</span><span class="p">&gt;</span>
    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">disabled</span> <span class="na">selected</span> <span class="na">label</span><span class="o">=</span><span class="s">&quot;-- Escoja una opción --&quot;</span><span class="p">&gt;</span>
    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>Española
    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;pt&quot;</span><span class="p">&gt;</span>Portuguesa
@@ -687,7 +693,7 @@ que se incluya también el atributo <em>label</em>. Por ejemplo:</p>
 </div>
 <p>se verá así:</p>
 <div class="ej-html">Nacionalidad:
-<select name="lista">
+<select name="nacionalidad">
    <option disabled selected label="-- Escoja una opción --">
    <option value="es">Española
    <option value="pt">Portuguesa
@@ -732,7 +738,7 @@ incluidos dentro.</p></td>
 </table>
 <p>Por ejemlo:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>Nacionalidad:
-<span class="p">&lt;</span><span class="nt">select</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;lista&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">select</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;nacionalidad&quot;</span><span class="p">&gt;</span>
    <span class="p">&lt;</span><span class="nt">optgroup</span> <span class="na">label</span><span class="o">=</span><span class="s">&quot;Europa&quot;</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>Española<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;pt&quot;</span><span class="p">&gt;</span>Portuguesa<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
@@ -752,7 +758,7 @@ incluidos dentro.</p></td>
 </div>
 <p>que se verá:</p>
 <div class="ej-html">Nacionalidad:
-<select name="lista">
+<select name="nacionalidad">
    <optgroup label="Europa">
       <option value="es">Española</option>
       <option value="pt">Portuguesa</option>
@@ -775,7 +781,7 @@ mostrar la lista como una lista desplegable y pasan a mostrarla como una lista
 con barra de <em>scroll</em>. El uso de <em>multiple</em>, además de permitir la selección de
 varios ítem a la vez, pasa a mostrar la lista con barra de <em>scroll</em>:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>Nacionalidad:
-<span class="p">&lt;</span><span class="nt">select</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;lista&quot;</span> <span class="na">size</span><span class="o">=</span><span class="s">3</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">select</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;nacionalidad&quot;</span> <span class="na">size</span><span class="o">=</span><span class="s">3</span><span class="p">&gt;</span>
    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>Española<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;pt&quot;</span> <span class="na">selected</span><span class="p">&gt;</span>Portuguesa<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;fr&quot;</span><span class="p">&gt;</span>Francesa<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
@@ -786,7 +792,7 @@ varios ítem a la vez, pasa a mostrar la lista con barra de <em>scroll</em>:</p>
 </div>
 <p>que se ve:</p>
 <div class="ej-html">Nacionalidad:
-<select name="lista" size=3>
+<select name="nacionalidad" size=3>
    <option value="es">Española</option>
    <option value="pt" selected>Portuguesa</option>
    <option value="fr">Francesa</option>
@@ -1343,7 +1349,7 @@ marcada y una tecla pulsada cuando la casilla si lo está.</p>
   <div class="sphinxprev">
     <h4>Previous page</h4>
     <p class="topless"><a href="07.struct.html"
-                          title="Previous page">&larr; <span class="section-number">6.6. </span>Elementos estructurales</a></p>
+                          title="Previous page">&larr; <span class="section-number">6.6. </span>Estructura semántica</a></p>
   </div>
   <div class="sphinxnext">
     <h4>Next page</h4>
@@ -1400,7 +1406,7 @@ marcada y una tecla pulsada cuando la casilla si lo está.</p>
           <a href="09.media.html" title="6.8. Empotrados"
              >siguiente</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="07.struct.html" title="6.6. Elementos estructurales"
+          <a href="07.struct.html" title="6.6. Estructura semántica"
              >anterior</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
 
