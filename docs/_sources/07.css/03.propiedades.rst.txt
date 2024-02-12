@@ -6,6 +6,9 @@ el tiempo ni la fuerzas para desarrollar en esta documentación un resumen
 apropiado. Además, como no somos diseñadores, es nuestro propósito  no
 profundizar demasiado y centrarnos en el uso de :ref:`Bootstrap`. Por eso nos
 limitaremos a proporcionar ciertas pautas y fuentes externas para su estudio.
+
+Pautas
+======
 Para su compresión necesitamos conocer:
 
 #. Los fundamentos de su :ref:`sintaxis <css-sintaxis>`: cómo se escriben las
@@ -16,6 +19,8 @@ Para su compresión necesitamos conocer:
    asociadas. Una buen punto de partida es `esta introducción al modelo de cajas
    de lenguajecss.com <https://lenguajecss.com/css/modelo-de-cajas/que-es/>`_.
 
+   .. _css-posicionamiento:
+
 #. Los métodos para colocar (**posicionamiento**) los elementos en el documento.
    El mecanismo tradicional era algo torpe hasta que apareció :devmozcss:`flex`
    y, más tarde, :devmozcss:`grid`. De nuevo, `la introducción a la maquetación
@@ -23,12 +28,15 @@ Para su compresión necesitamos conocer:
    <https://lenguajecss.com/css/maquetacion-y-colocacion/propiedad-display/>`_ es
    un buen comienzo.
 
-   .. seealso:: Para aprender entretenidamente a través de juegos el
-      posicionamiento con :devmozcss:`flex` y :devmozcss:`grid` existen algunas
-      web:
-
-      * `Flexbox Froggy <https://flexboxfroggy.com/>`_.
-      * `Grid Garden <https://cssgridgarden.com/>`_.
+   Estos dos mecanismos modernos, junto a :ref:`@media <css-@media>`, son las
+   herramientas básicas para el `diseño web adaptable
+   <https://es.wikipedia.org/wiki/Dise%C3%B1o_web_adaptable>`_\ [#]_. Échele un
+   vistazo a `éste sencillo ejemplo <https://output.jsbin.com/qezalur/1>`_, que
+   implementa una típica web con un cuerpo central de tres secciones (menú de
+   navegación, texto propiamente dicho y publicidad). En principio, se
+   encuentran en tres columnas, pero si prueba a reducir lo suficiente el ancho,
+   verá cómo pasan a situarse una sección por debajo de la otra y, además, la
+   publicidad pasa a situarse en medio.
 
    .. note:: :ref:`Bootstrap` es una alternativa sencilla a la maquetación
       mediante estas herramientas nativas y, además, buen ofrece un aspecto
@@ -63,5 +71,52 @@ Para su compresión necesitamos conocer:
 
 .. seealso:: Para el que prefiera los vídeos hay en Youtube toda una `serie
    sobre CSS de Kiko Palomares <https://kikopalomares.com/cursos/css>`_.
+
+.. _css-maquetacion:
+
+Maquetación
+===========
+La maquetación tradicional con |CSS| se basaba en :ref:`elementos de bloque
+<html-maquetación>` (que de forma natural tendían a ocupar todo el ancho
+disponible y a situarse uno por debajo de otros), definición de anchos (para
+que no ocuparan todo), la propiedad :devmozcss:`float` y, en ocasiones, la
+propiedad :devmozcss:`position`. Como consecuencia, se tenían que hacer
+auténticas recetas esotéricas para lograr hacer maquetaciones relativamente
+sencillas\ [#]_, que, además, ni siquiera son adaptables a distintos
+dispositivos.
+
+La evolución de |CSS| trajo dos modernos métodos de posicionamiento que han
+facilitado enormemente esta tarea. En esta apartado explicaremos los fundamentos
+de ambos sin entrar en excesiva profundidad. La idea es conocer sus fundamentos
+y afianzarlos con un par de juegos que se enlazarán más adelante.
+
+Flex
+----
+
+.. Comentario:
+   seealso:: Para aprender entretenidamente a través de juegos el
+    posicionamiento con :devmozcss:`flex` y :devmozcss:`grid` existen algunas
+    web:
+
+    * `Flexbox Froggy <https://flexboxfroggy.com/>`_.
+    * `Grid Garden <https://cssgridgarden.com/>`_.
+
+Grid
+----
+
+.. rubric:: Notas al pie
+
+.. [#] Que el término no le lleve a confusión. En inglés, existe el concepto de
+   :dfn:`responsive web design`, que hace referencia a lo que nosotros tratamos
+   aquí: un diseño que se adapta el aspecto al tamaño del dispositivo, mediante
+   una solución en el cliente (posicionamiento y *media queries*). En cambio,
+   existe otro término denominado :dfn:`adaptative web design` más antiguo en
+   que se detectan las características del dispositivo y se envía al servidor
+   para que este adapte su respuesta y envío una página u otra. Esta última, por
+   tanto, es una solución en el servidor.
+
+.. [#] Véase `este artículo de 2005
+   <https://desarrolloweb.com/articulos/2112.php>`_ sobre cómo hacer una página
+   con dos columnas.
 
 .. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`

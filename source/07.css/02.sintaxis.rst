@@ -17,7 +17,7 @@ Sentencias
 
      /* Esto es un comentario en CSS */
 
-.. _css-@media:
+.. _css-at-rule:
 
 * Las instrucciones :devmozcss:`at-rule`  de las que hay varias y tienen
   distinta finalidad. Las más habituales son:
@@ -83,6 +83,8 @@ Sentencias
             font-family: "Open Sans", sans-serif; /* En principio, la alternativa sobra */
          }
 
+  .. _css-@media:
+
   :devmozcss:`@media`
       Define bajo qué condiciones o medios se aplican las reglas que se incluyen
       dentro del bloque. Los medios pueden ser ``all``, ``screen``, ``print``  o
@@ -111,9 +113,6 @@ Sentencias
                width: 800px;
             }
          }
-
-      .. note:: Esta regla acompañada de condiciones es fundamental para el `diseño web
-         adaptativo <https://es.wikipedia.org/wiki/Dise%C3%B1o_web_adaptable>`_.
 
 * Las *reglas* o :dfn:`normas de estilo` son propiamente las que definen el aspecto
   de los elementos |HTML|. Tienen la siguiente sintaxis:

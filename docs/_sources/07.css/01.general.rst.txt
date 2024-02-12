@@ -17,7 +17,7 @@ que versiones, niveles, porque el siguiente se va construyendo sobre el anterior
 
 |CSS|\ 2
    Se publicó en 1998 y añadió `posicionamiento
-   <https://lenguajecss.com/css/maquetacion-y-colocacion/posicionamiento-css/>`_.
+   <https://lenguajecss.com/css/maquetacion-y-colocacion/posicionamiento-css/>`_,
    estilos :ref:`según el medio <css-@media>` y algunas cosas más.
 
    La especificación contenía algunos problemas de funcionalidad por lo que en
@@ -35,10 +35,6 @@ que versiones, niveles, porque el siguiente se va construyendo sobre el anterior
    Al segregarse, cada módulo avanza a su ritmo y algunos pueden encontrarse
    en nivel **3**, otros en nivel **4** y otros próximos a alcanzar el nivel
    **5**. Por tanto, ya no existirá jamás una especificación |CSS| de nivel 4.
-
-Hojas aplicadas
-===============
-Todo documento |HTML| visualizado en un navegador aplica las siguientes hojas:
 
 .. _css-decl:
 

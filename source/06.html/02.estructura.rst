@@ -305,20 +305,27 @@ comunes a todos los elementos. Los más significativos son:
    por estar ciegos. Esto es debido a que, aunque |HTML|\ 5 ha evolucionado
    desde |HTML|\ 4 incorporando muchos elementos semánticos, no ha podido cubrir
    todos los casos. De entre los atributos definidos por |ARIA|, citaremos
-   :code:`role` que especifica qué significado tiene el elemento dentro del
-   texto. Por ejemplo, si queremos añadir una nota de advertencia, podríamos
-   hacer:
+   `role <https://www.w3.org/TR/wai-aria-1.2/#role_definitions>`_ que especifica
+   qué significado tiene el elemento dentro del texto. Por ejemplo, si ante la
+   acción de un usuario, queremos añadir una nota de advertencia, para que tome
+   una decisión con urgencia, podríamos hacer:
 
    .. code-block:: html
 
-      <p class="warning">¡Atención! No se le ocurra nunca hacer esto.</p>
+      <p class="alert">¡Atención! Perderá todo si continúa.</p>
 
    y añadir un estilo chillón para atraer la atención del lector. Sin embargo,
    alguien ciego no podrá apreciar esos colores. Para mitigarlo podemos hacer:
 
    .. code-block:: html
 
-      <p class="warning" role="warning">¡Atención! No se le ocurra nunca hacer esto.</p>
+      <p class="alert" role="alert">¡Atención! Perderá todo si continúa.</p>
+
+   .. caution:: La lista de roles válidos ya está predefinida por la
+      especificación (se puede consultar en el mensaje anterior). Volveremos
+      sobre este atributo al tratar la :ref:`estructura semántica <html-struct>`.
+
+   .. TODO:: Hablar de role-label.
 
 .. seealso:: Una relación completa y descriptiva de todos ellos, puede
    encontrarla en `este este artículo de lenguajehtml.com
