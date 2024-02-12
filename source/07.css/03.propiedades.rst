@@ -22,11 +22,10 @@ Para su compresión necesitamos conocer:
    .. _css-posicionamiento:
 
 #. Los métodos para colocar (**posicionamiento**) los elementos en el documento.
-   El mecanismo tradicional era algo torpe hasta que apareció :devmozcss:`flex`
-   y, más tarde, :devmozcss:`grid`. De nuevo, `la introducción a la maquetación
-   de lenguajecss.com
-   <https://lenguajecss.com/css/maquetacion-y-colocacion/propiedad-display/>`_ es
-   un buen comienzo.
+   El mecanismo tradicional era algo torpe hasta que apareció flexbox_ y, más
+   tarde, grid_. De nuevo, `la introducción a la maquetación de lenguajecss.com
+   <https://lenguajecss.com/css/maquetacion-y-colocacion/propiedad-display/>`_
+   es un buen comienzo.
 
    Estos dos mecanismos modernos, junto a :ref:`@media <css-@media>`, son las
    herramientas básicas para el `diseño web adaptable
@@ -77,20 +76,91 @@ Para su compresión necesitamos conocer:
 Maquetación
 ===========
 La maquetación tradicional con |CSS| se basaba en :ref:`elementos de bloque
-<html-maquetación>` (que de forma natural tendían a ocupar todo el ancho
-disponible y a situarse uno por debajo de otros), definición de anchos (para
-que no ocuparan todo), la propiedad :devmozcss:`float` y, en ocasiones, la
-propiedad :devmozcss:`position`. Como consecuencia, se tenían que hacer
-auténticas recetas esotéricas para lograr hacer maquetaciones relativamente
-sencillas\ [#]_, que, además, ni siquiera son adaptables a distintos
-dispositivos.
+<html-maquetacion>` (que de forma natural tendían a ocupar todo el ancho
+disponible y a situarse el siguiente por debajo del anterior), definición de sus
+anchos (para que no ocuparan todo), la propiedad :devmozcss:`float` y, en
+ocasiones, la propiedad :devmozcss:`position`. Como consecuencia, se tenían que
+hacer auténticas recetas esotéricas para lograr hacer maquetaciones
+relativamente sencillas\ [#]_, que, además, ni siquiera son adaptables a
+distintos dispositivos.
 
 La evolución de |CSS| trajo dos modernos métodos de posicionamiento que han
 facilitado enormemente esta tarea. En esta apartado explicaremos los fundamentos
 de ambos sin entrar en excesiva profundidad. La idea es conocer sus fundamentos
 y afianzarlos con un par de juegos que se enlazarán más adelante.
 
-Flex
+Flexbox
+-------
+* Este método de posicionamiento se aplica sobre las cajas contenidas dentro de
+  una caja contenedora cuya propiedad :devmozcss:`display` tenga el valor de
+  ``flex``:
+
+  .. code-block:: css
+     :emphasize-lines: 2
+
+     #container-flex {
+      display: flex;
+     }
+
+  .. code-block:: html
+     :emphasize-lines: 10,21
+
+     <!DOCTYPE html>
+     <html lang="es">
+        <meta charset="utf-8">
+        <title>Maquetación con flex</title>
+
+        <header role="banner">
+           <img src="banner.png" alt="Banner de la empresa">
+        </header>
+
+        <main id="container-flex">
+           <!-- A lo que haya dentro de aquí se aplicará este mecanismo de maquetación -->
+           <div id="uno">
+              <!-- etc. -->
+           </div>
+           <div id="dos">
+              <!-- etc. -->
+           </div>
+           <div id="tres">
+              <!-- etc. -->
+           </div>
+        </main>
+     </html>
+
+* Las cajas contenidas tenderán a situarse horizontalmente una a continuación de
+  la otra:
+
+  .. image:: files/flexbox01.png
+
+  y acomodarán su ancho para que así sea:
+
+  .. image:: files/flexbox02.png
+
+* Sin embargo, puede cambiarse la dirección y que se sitúen verticalmente
+  (:devmozcss:`flex-direction`):
+
+  .. image:: files/flexbox03.png
+
+* También se pueden *justificar* los bloques (:devmozcss:`justify-content`):
+
+  .. image:: files/flexbox04.png
+
+  o:
+
+  .. image:: files/flexbox05.png
+
+* Es posible también alterar el orden de los bloques (:devmozcss:`order`):
+
+  .. image:: files/flexbox06.png
+
+Hay muchas otras posibilidades que se pueden ensayar jugando los 24 niveles de
+`Flexbox Froggy <https://flexboxfroggy.com/>`_.
+
+.. note:: Para las capturas ilustrativas se ha usado este :download:`documento
+   HTML <files/flexbox.html>`.
+
+Grid
 ----
 
 .. Comentario:
@@ -98,11 +168,7 @@ Flex
     posicionamiento con :devmozcss:`flex` y :devmozcss:`grid` existen algunas
     web:
 
-    * `Flexbox Froggy <https://flexboxfroggy.com/>`_.
     * `Grid Garden <https://cssgridgarden.com/>`_.
-
-Grid
-----
 
 .. rubric:: Notas al pie
 
@@ -120,3 +186,6 @@ Grid
    con dos columnas.
 
 .. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`
+
+.. _flexbox: https://developer.mozilla.org/es/docs/Learn/CSS/CSS_layout/Flexbox
+.. _grid: https://developer.mozilla.org/es/docs/Web/CSS/CSS_grid_layout

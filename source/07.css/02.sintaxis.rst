@@ -917,7 +917,7 @@ influída por seis factores:
       propiedad es heredable.
       
    Esta última regla (el mecanismo de la herencia) puede manipularse asignando en
-   una declaracn propia del elemento unos valores determinados a la propiedad:
+   una declaración propia del elemento unos valores determinados a la propiedad:
 
    ``initial``
       Devuelve siempre la propiedad a su valor inicial.

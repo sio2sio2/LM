@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+   <meta charset="utf-8">
+   <title>Maquetación con flex</title>
+
+   <style>
+      #container-flex {
+         display: flex;
+         flex-direction: row;
+      }
+
+      #container-flex>* {
+         border: solid 2px black;
+         margin: .15em;
+         padding: 1em;
+         max-width: 10em;
+      }
+      
+      #container-flex {
+         border: solid 1px black;
+         background-color: #EEE;
+      }
+
+      #container-flex>*:nth-child(3n-2) {
+         background-color: #FEE;
+      }
+      #container-flex>*:nth-child(3n-1) {
+         background-color: #EFE;
+      }
+      #container-flex>*:nth-child(3n) {
+         background-color: #EEF;
+      }
+   </style>
+
+   <header role="banner">
+      <img src="banner.png" alt="Banner de la empresa">
+   </header>
+
+   <main id="container-flex">
+      <!-- A lo que haya dentro de aquí se aplicará este mecanismo de maquetación -->
+      <div id="uno">
+         <p>Caja uno</p>
+      </div>
+      <div id="dos">
+         <p>Caja dos</p>
+      </div>
+      <div id="tres">
+         <p>Caja tres</p>
+      </div>
+      <div id="cuatro">
+         <p>Caja cuatro</p>
+      </div>
+      <div id="cinco">
+         <p>Caja cinco</p>
+      </div>
+      <div id="seis">
+         <p>Caja seis</p>
+      </div>
+   </main>
+</html>
+

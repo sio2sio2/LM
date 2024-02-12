@@ -97,10 +97,9 @@ asociadas. Una buen punto de partida es <a class="reference external" href="http
 de lenguajecss.com</a>.</p>
 </li>
 <li id="css-posicionamiento"><p>Los métodos para colocar (<strong>posicionamiento</strong>) los elementos en el documento.
-El mecanismo tradicional era algo torpe hasta que apareció <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex">flex</a>
-y, más tarde, <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid">grid</a>. De nuevo, <a class="reference external" href="https://lenguajecss.com/css/maquetacion-y-colocacion/propiedad-display/">la introducción a la maquetación
-de lenguajecss.com</a> es
-un buen comienzo.</p>
+El mecanismo tradicional era algo torpe hasta que apareció <a class="reference external" href="https://developer.mozilla.org/es/docs/Learn/CSS/CSS_layout/Flexbox">flexbox</a> y, más
+tarde, <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/CSS/CSS_grid_layout">grid</a>. De nuevo, <a class="reference external" href="https://lenguajecss.com/css/maquetacion-y-colocacion/propiedad-display/">la introducción a la maquetación de lenguajecss.com</a>
+es un buen comienzo.</p>
 <p>Estos dos mecanismos modernos, junto a <a class="reference internal" href="02.sintaxis.html#css-media"><span class="std std-ref">&#64;media</span></a>, son las
 herramientas básicas para el <a class="reference external" href="https://es.wikipedia.org/wiki/Dise%C3%B1o_web_adaptable">diseño web adaptable</a><a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Échele un
 vistazo a <a class="reference external" href="https://output.jsbin.com/qezalur/1">éste sencillo ejemplo</a>, que
@@ -149,19 +148,79 @@ sobre CSS de Kiko Palomares</a>.</p>
 </section>
 <section id="css-maquetacion">
 <span id="id2"></span><h2><span class="section-number">7.3.2. </span>Maquetación<a class="headerlink" href="#css-maquetacion" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>La maquetación tradicional con <abbr title="Cascading Style Sheets">CSS</abbr> se basaba en <span class="xref std std-ref">elementos de bloque</span> (que de forma natural tendían a ocupar todo el ancho
-disponible y a situarse uno por debajo de otros), definición de anchos (para
-que no ocuparan todo), la propiedad <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/float">float</a> y, en ocasiones, la
-propiedad <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">position</a>. Como consecuencia, se tenían que hacer
-auténticas recetas esotéricas para lograr hacer maquetaciones relativamente
-sencillas<a class="footnote-reference brackets" href="#id5" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>, que, además, ni siquiera son adaptables a distintos
-dispositivos.</p>
+<p>La maquetación tradicional con <abbr title="Cascading Style Sheets">CSS</abbr> se basaba en <a class="reference internal" href="../06.html/02.estructura.html#html-maquetacion"><span class="std std-ref">elementos de bloque</span></a> (que de forma natural tendían a ocupar todo el ancho
+disponible y a situarse el siguiente por debajo del anterior), definición de sus
+anchos (para que no ocuparan todo), la propiedad <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/float">float</a> y, en
+ocasiones, la propiedad <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">position</a>. Como consecuencia, se tenían que
+hacer auténticas recetas esotéricas para lograr hacer maquetaciones
+relativamente sencillas<a class="footnote-reference brackets" href="#id5" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>, que, además, ni siquiera son adaptables a
+distintos dispositivos.</p>
 <p>La evolución de <abbr title="Cascading Style Sheets">CSS</abbr> trajo dos modernos métodos de posicionamiento que han
 facilitado enormemente esta tarea. En esta apartado explicaremos los fundamentos
 de ambos sin entrar en excesiva profundidad. La idea es conocer sus fundamentos
 y afianzarlos con un par de juegos que se enlazarán más adelante.</p>
-<section id="flex">
-<h3><span class="section-number">7.3.2.1. </span>Flex<a class="headerlink" href="#flex" title="Enlace permanente a este encabezado">¶</a></h3>
+<section id="flexbox">
+<h3><span class="section-number">7.3.2.1. </span>Flexbox<a class="headerlink" href="#flexbox" title="Enlace permanente a este encabezado">¶</a></h3>
+<ul>
+<li><p>Este método de posicionamiento se aplica sobre las cajas contenidas dentro de
+una caja contenedora cuya propiedad <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">display</a> tenga el valor de
+<code class="docutils literal notranslate"><span class="pre">flex</span></code>:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">container-flex</span><span class="w"> </span><span class="p">{</span>
+<span class="hll"><span class="w"> </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
+</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Maquetación con flex<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+
+   <span class="p">&lt;</span><span class="nt">header</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;banner&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;banner.png&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Banner de la empresa&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+
+<span class="hll">   <span class="p">&lt;</span><span class="nt">main</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;container-flex&quot;</span><span class="p">&gt;</span>
+</span>      <span class="cm">&lt;!-- A lo que haya dentro de aquí se aplicará este mecanismo de maquetación --&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;uno&quot;</span><span class="p">&gt;</span>
+         <span class="cm">&lt;!-- etc. --&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;dos&quot;</span><span class="p">&gt;</span>
+         <span class="cm">&lt;!-- etc. --&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;tres&quot;</span><span class="p">&gt;</span>
+         <span class="cm">&lt;!-- etc. --&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="hll">   <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+</span><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Las cajas contenidas tenderán a situarse horizontalmente una a continuación de
+la otra:</p>
+<img alt="../_images/flexbox01.png" src="../_images/flexbox01.png" />
+<p>y acomodarán su ancho para que así sea:</p>
+<img alt="../_images/flexbox02.png" src="../_images/flexbox02.png" />
+</li>
+<li><p>Sin embargo, puede cambiarse la dirección y que se sitúen verticalmente
+(<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction">flex-direction</a>):</p>
+<img alt="../_images/flexbox03.png" src="../_images/flexbox03.png" />
+</li>
+<li><p>También se pueden <em>justificar</em> los bloques (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content">justify-content</a>):</p>
+<img alt="../_images/flexbox04.png" src="../_images/flexbox04.png" />
+<p>o:</p>
+<img alt="../_images/flexbox05.png" src="../_images/flexbox05.png" />
+</li>
+<li><p>Es posible también alterar el orden de los bloques (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/order">order</a>):</p>
+<img alt="../_images/flexbox06.png" src="../_images/flexbox06.png" />
+</li>
+</ul>
+<p>Hay muchas otras posibilidades que se pueden ensayar jugando los 24 niveles de
+<a class="reference external" href="https://flexboxfroggy.com/">Flexbox Froggy</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Para las capturas ilustrativas se ha usado este <a class="reference download internal" download="" href="../_downloads/0a123717119eb4207ed01d31c5561acc/flexbox.html"><code class="xref download docutils literal notranslate"><span class="pre">documento</span>
+<span class="pre">HTML</span></code></a>.</p>
+</div>
 </section>
 <section id="grid">
 <h3><span class="section-number">7.3.2.2. </span>Grid<a class="headerlink" href="#grid" title="Enlace permanente a este encabezado">¶</a></h3>
@@ -203,7 +262,7 @@ con dos columnas.</p>
 <li><a class="reference internal" href="#">7.3. Propiedades</a><ul>
 <li><a class="reference internal" href="#pautas">7.3.1. Pautas</a></li>
 <li><a class="reference internal" href="#css-maquetacion">7.3.2. Maquetación</a><ul>
-<li><a class="reference internal" href="#flex">7.3.2.1. Flex</a></li>
+<li><a class="reference internal" href="#flexbox">7.3.2.1. Flexbox</a></li>
 <li><a class="reference internal" href="#grid">7.3.2.2. Grid</a></li>
 </ul>
 </li>
