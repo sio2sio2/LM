@@ -23,7 +23,14 @@ Para su compresión necesitamos conocer:
    <https://lenguajecss.com/css/maquetacion-y-colocacion/propiedad-display/>`_ es
    un buen comienzo.
 
-   .. note:: :program:`Bootstrap` es una alternativa sencilla a la maquetación
+   .. seealso:: Para aprender entretenidamente a través de juegos el
+      posicionamiento con :devmozcss:`flex` y :devmozcss:`grid` existen algunas
+      web:
+
+      * `Flexbox Froggy <https://flexboxfroggy.com/>`_.
+      * `Grid Garden <https://cssgridgarden.com/>`_.
+
+   .. note:: :ref:`Bootstrap` es una alternativa sencilla a la maquetación
       mediante estas herramientas nativas y, además, buen ofrece un aspecto
       predeterminado de los elementos y componentes prefabricados con lo que es
       muy intersante si nos queremos centrar en el desarrollo y no tanto en el

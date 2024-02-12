@@ -234,7 +234,7 @@ encuentran incluidos dentro de párrafos y estructuras similares.
    | |cite|       | Permite referir una obra.                                 |
    +--------------+-----------------------------------------------------------+
    | |q|          | Representa una cita corta (frente a |blockquote| que      |
-   |              | que representa una larga).                                |
+   |              | representa una larga).                                    |
    +--------------+-----------------------------------------------------------+
    | |sup|        | Marca texto en superíndice.                               |
    +--------------+-----------------------------------------------------------+
