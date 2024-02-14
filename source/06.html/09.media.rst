@@ -81,6 +81,10 @@ imágenes\ [#]_:
    En el ejemplo, para dispositivos con áreas de menos de 640px de ancho la
    imagen ocupará todo el ancho y en caso contrario, el 50%.
 
+   .. seealso:: Para aprender sobre unidades de medidas (relativas) puede
+      echarle un ojo al excelente artículo `Aprende unidades CSS
+      <https://www.freecodecamp.org/espanol/news/aprende-unidades-de-medidad-css-em-rem-vh-y-vw-con-ejemplos-de-codigos/>`_.
+
 .. index:: picture
 .. _html-picture:
 
