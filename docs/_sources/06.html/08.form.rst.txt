@@ -976,7 +976,7 @@ Definámoslo más formalmente:
       <label>Color de fondo: <input type="color" name="color" value="#ffff00"></label>
 
 Lo interesante de |label| no es solamente la relación semántica, sino también
-la relación en el compartamiento: pinchar sobre la etiqueta equivale a
+la relación en el comportamiento: pinchar sobre la etiqueta equivale a
 pinchar sobre el propio campo\ [#]_.
 
 .. index:: datalist
@@ -1044,10 +1044,11 @@ la introducción de un nuevo elemento |HTML|:
    <https://codepen.io/sio2/pen/rbEPgv>`_.
 
 .. note:: Es posible incluir dentro del elemento |datalist| un elemento
-   |select|. No tiene efecto alguno, pero si el navegador es algo antiguo y no
-   soporta listas de sugerencias, las sugerencias  se verán como una lista
+   |select| dentro del cual se colocan las opciones. Es válido para la
+   especificación y no tiene efecto alguno, pero si el navegador es algo antiguo
+   y no soporta listas de sugerencias, las sugerencias  se verán como una lista
    desplegable; y con ayuda de código *Javascript* podremos hacer algún apaño
-   para que el usuario siga teniendo acceso a las sugerencias.
+   para que el formularion funcione correctamente.
 
 .. _html-dialog:
 .. index:: dialog
