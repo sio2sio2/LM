@@ -267,8 +267,11 @@ tecnologías como mecanismo para seleccionar elementos de documentos <abbr title
 como es el caso de <em>Javascript</em> con sus métodos <span class="xref std std-ref">document.querySelector</span> o <span class="xref std std-ref">document.querySelectorAll</span>, lo cual convierte el conocimiento de cómo se
 construyen en algo útil no solamente para escribir reglas <abbr title="Cascading Style Sheets">CSS</abbr>, sino para la
 programación web en general.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
 <p>Hay ya en borrador una <a class="reference external" href="https://www.w3.org/TR/selectors-4/">especificación de nivel 4 para selectores</a> con muchísima expresividad. Nosotros
 trataremos lo fundamental de ellos.</p>
+</div>
 <section id="simple">
 <span id="css-selector-simple"></span><h3><span class="section-number">7.2.2.1. </span>Simple<a class="headerlink" href="#simple" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Dentro de un selector simple pueden aparecer yuxtapuestos hasta seis tipos de
@@ -377,7 +380,7 @@ Para distinguirlo del resto, este componente se escribe entre corchetes:</p>
 <div class="admonition caution">
 <p class="admonition-title">Prudencia</p>
 <p>Los valores no se han encerrado entre comillas, porque no hay
-caracteres raros que puedan confundir al procesador. uUando los hay, en
+caracteres raros que puedan confundir al procesador. Cuando los hay, en
 cambio, son necesarios. Véase el próximo ejemplo:</p>
 </div>
 </dd>
@@ -391,19 +394,17 @@ definidos son:</p>
 <li><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::before">::before</a>, que se aplica en un elemento a un imaginario primer
 hijo anterior al primer hijo que realmente aparece en el documento. Por
 ejemplo:</p>
-<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="c">/* Al texto de los enlaces a la red de Edonkey se les añade antes una etiqueta identificativa */</span>
-<span class="nt">a</span><span class="o">[</span><span class="nt">href</span><span class="o">^=</span><span class="s2">&quot;ed2k:&quot;</span><span class="o">]</span><span class="p">::</span><span class="nd">before</span><span class="w"> </span><span class="p">{</span>
-<span class="w">   </span><span class="k">content</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[edonkey] &quot;</span>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="c">/* Añade un calderón antes de todos los elementos con identificador */</span>
+<span class="o">[</span><span class="nt">id</span><span class="o">]</span><span class="p">::</span><span class="nd">before</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">content</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\00B6&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Obsérvese que en el caso de un enlace, hay un único hijo que es un nodo de
-texto. Por tanto, la cadena <em>[edonkey]</em>, se añadiría antes del texto.</p>
 </li>
 <li><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::after">::after</a>, que se aplica en un elemento a un imaginario último hijo
 posterior al último hijo que realmente aparece en el documento:</p>
-<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">a</span><span class="o">[</span><span class="nt">href</span><span class="o">^=</span><span class="s2">&quot;ed2k:&quot;</span><span class="o">]</span><span class="p">::</span><span class="nd">after</span><span class="w"> </span><span class="p">{</span>
-<span class="w">   </span><span class="k">content</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; [edonkey]&quot;</span>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="o">[</span><span class="nt">id</span><span class="o">]</span><span class="p">::</span><span class="nd">after</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">content</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\00B6&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -725,7 +726,7 @@ posterior al seleccionado por el primero:</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">+</span></code></dt><dd><p>Como el anterior pero el nodo del segundo selector debe ser el hermano
 inmediatamente posterior, no cualquiera posterior:</p>
-<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="c">/* h2 es hermano inmediatamente psoterior a h1 */</span>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="c">/* h2 es hermano inmediatamente posterior a h1 */</span>
 <span class="nt">h1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nt">h2</span><span class="w"> </span><span class="p">{</span>
 <span class="w">   </span><span class="k">font-style</span><span class="p">:</span><span class="w"> </span><span class="kc">italic</span><span class="p">;</span>
 <span class="p">}</span>
@@ -800,6 +801,16 @@ parte de la combinación:</p>
 </pre></div>
 </div>
 </div>
+<p>Otro ejemplo que combina lista de selectores y selectores anidados es:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span>h1, h2, h3, h4, h5, h6 {
+   &amp;[id]::before {
+      content: &quot;\00B6&quot;;
+   }
+}
+</pre></div>
+</div>
+<p>el cual sólo pone el calderón a cualquier encabezado con identificador, pero no
+al resto de elementos.</p>
 </section>
 </section>
 <section id="cascada">

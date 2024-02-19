@@ -180,9 +180,9 @@ como es el caso de *Javascript* con sus métodos :ref:`document.querySelector
 construyen en algo útil no solamente para escribir reglas |CSS|, sino para la
 programación web en general.
 
-Hay ya en borrador una `especificación de nivel 4 para selectores
-<https://www.w3.org/TR/selectors-4/>`_ con muchísima expresividad. Nosotros
-trataremos lo fundamental de ellos.
+.. note:: Hay ya en borrador una `especificación de nivel 4 para selectores
+   <https://www.w3.org/TR/selectors-4/>`_ con muchísima expresividad. Nosotros
+   trataremos lo fundamental de ellos.
 
 .. _css-selector-simple:
 
@@ -305,7 +305,7 @@ Dentro de un selector simple pueden aparecer yuxtapuestos hasta seis tipos de
       }
 
    .. caution:: Los valores no se han encerrado entre comillas, porque no hay
-      caracteres raros que puedan confundir al procesador. uUando los hay, en
+      caracteres raros que puedan confundir al procesador. Cuando los hay, en
       cambio, son necesarios. Véase el próximo ejemplo:
 
 .. _css-pseudoelementos:
@@ -322,21 +322,18 @@ Dentro de un selector simple pueden aparecer yuxtapuestos hasta seis tipos de
 
      .. code-block:: css
 
-        /* Al texto de los enlaces a la red de Edonkey se les añade antes una etiqueta identificativa */
-        a[href^="ed2k:"]::before {
-           content: "[edonkey] "
+        /* Añade un calderón antes de todos los elementos con identificador */
+        [id]::before {
+           content: "\00B6";
         }
-
-     Obsérvese que en el caso de un enlace, hay un único hijo que es un nodo de
-     texto. Por tanto, la cadena *[edonkey]*, se añadiría antes del texto.
 
    * :devmozcss:`::after`, que se aplica en un elemento a un imaginario último hijo
      posterior al último hijo que realmente aparece en el documento:
 
      .. code-block:: css
 
-        a[href^="ed2k:"]::after {
-           content: " [edonkey]"
+        [id]::after {
+           content: "\00B6";
         }
 
    * :devmozcss:`::first-letter`, que se aplica a la primera letra de la primera
@@ -695,7 +692,7 @@ especificidad del último selector. Los operadores son:
 
    .. code-block:: css
 
-      /* h2 es hermano inmediatamente psoterior a h1 */
+      /* h2 es hermano inmediatamente posterior a h1 */
       h1 + h2 {
          font-style: italic;
       }
@@ -733,7 +730,6 @@ especificidad del último selector. Los operadores son:
       div p {
          font-style: italic;
       }
-
 
 .. https://lenguajecss.com/css/introduccion/css-moderno/
 
@@ -779,6 +775,19 @@ equivale a esta lista:
       table.estadistica thead :is(th, td) p {
          background-color: gray
       }
+
+Otro ejemplo que combina lista de selectores y selectores anidados es:   
+
+.. code-block:: css
+
+   h1, h2, h3, h4, h5, h6 {
+      &[id]::before {
+         content: "\00B6";
+      }
+   }
+
+el cual sólo pone el calderón a cualquier encabezado con identificador, pero no
+al resto de elementos.
 
 .. _css-cascada:
 
