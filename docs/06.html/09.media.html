@@ -225,17 +225,25 @@ lo es):</p>
    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
 
    <span class="cm">&lt;!-- Bandera del Japón --&gt;</span>
-   <span class="p">&lt;</span><span class="nt">svg</span> <span class="na">xmlns</span><span class="o">=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;200&quot;</span> <span class="na">viewBox</span><span class="o">=</span><span class="s">&quot;0 0 900 600&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">svg</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;img&quot;</span> <span class="na">aria-labelledby</span><span class="o">=</span><span class="s">&quot;japan&quot;</span> <span class="na">xmlns</span><span class="o">=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;200&quot;</span> <span class="na">viewBox</span><span class="o">=</span><span class="s">&quot;0 0 900 600&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">title</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;japan&quot;</span><span class="p">&gt;</span>Bandera de Japón<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">rect</span> <span class="na">fill</span><span class="o">=</span><span class="s">&quot;#fff&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;600&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;900&quot;</span><span class="p">/&gt;</span>
       <span class="p">&lt;</span><span class="nt">circle</span> <span class="na">fill</span><span class="o">=</span><span class="s">&quot;#bc002d&quot;</span> <span class="na">cx</span><span class="o">=</span><span class="s">&quot;450&quot;</span> <span class="na">cy</span><span class="o">=</span><span class="s">&quot;300&quot;</span> <span class="na">r</span><span class="o">=</span><span class="s">&quot;180&quot;</span><span class="p">/&gt;</span>
    <span class="p">&lt;/</span><span class="nt">svg</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
-<div class="ej-html"><svg xmlns="http://www.w3.org/2000/svg" width="200" viewBox="0 0 900 600">
+<div class="ej-html"><svg role="img" aria-labelledby="japan" xmlns="http://www.w3.org/2000/svg" width="200" viewBox="0 0 900 600">
+   <title id="japan">Bandera de Japón</title>
    <rect fill="#fff" height="600" width="900"/>
    <circle fill="#bc002d" cx="450" cy="300" r="180"/>
-</svg></div><div class="admonition seealso">
+</svg></div><div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Nótese que <a class="reference internal" href="#svg"><span class="std std-ref">&lt;svg&gt;</span></a> no tiene atributo <em>alt</em> como <a class="reference internal" href="#html-img2"><span class="std std-ref">&lt;img&gt;</span></a> por lo que
+tendremos que recurrir a los atributos <abbr title="Accessible Rich Internet Applications">ARIA</abbr> para paliarlo y asegurar la
+accesibilidad.</p>
+</div>
+<div class="admonition seealso">
 <p class="admonition-title">Ver también</p>
 <p>Si tiene curiosidad, puede <a class="reference external" href="https://www.sitepoint.com/add-svg-to-web-page/">este artículo sobre los
 distintos modos de incrustar SVG dentro de un HTML</a>.</p>

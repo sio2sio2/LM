@@ -96,19 +96,19 @@ Sentencias
 
       .. code-block:: css
 
-         @media only screen and (width <= 400) {
+         @media screen and (width <= 400px) { /* También: (max-width: 400px) */
             body {
                width: 100%;
             }
          }
 
-         @media only screen and (400 < width <= 800)  {
+         @media screen and (400px < width <= 800px)  { /* También (min-width: 400px) and (max-width: 800px) */
             body {
                width: 90%;
             }
          }
 
-         @media only screen and (width > 800)  {
+         @media screen and (width > 800)  { /* También: (min-width: 800px) */
             body {
                width: 800px;
             }
@@ -946,6 +946,12 @@ influída por seis factores:
 
    .. note:: Existe, además, la propiedad :devmozcss:`all`, que puede tomar uno
       de los valores anteriores y que lo aplica a todas las propiedades a la vez.
+
+Ejercicios propuestos
+=====================
+
+.. include:: /99.ejercicios/70.selectores.rst
+   :start-line: 4
 
 .. rubric:: Notas al pie
 

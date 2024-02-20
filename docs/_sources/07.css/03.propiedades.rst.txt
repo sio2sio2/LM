@@ -30,7 +30,7 @@ Para su compresión necesitamos conocer:
    Estos dos mecanismos modernos, junto a :ref:`@media <css-@media>`, son las
    herramientas básicas para el `diseño web adaptable
    <https://es.wikipedia.org/wiki/Dise%C3%B1o_web_adaptable>`_\ [#]_. Échele un
-   vistazo a `éste sencillo ejemplo <https://output.jsbin.com/qezalur/1>`_, que
+   vistazo a `éste sencillo ejemplo <https://output.jsbin.com/qezalur>`_, que
    implementa una típica web con un cuerpo central de tres secciones (menú de
    navegación, texto propiamente dicho y publicidad). En principio, se
    encuentran en tres columnas, pero si prueba a reducir lo suficiente el ancho,

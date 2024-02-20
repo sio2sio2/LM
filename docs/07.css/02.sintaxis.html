@@ -163,19 +163,19 @@ dentro del bloque. Los medios pueden ser <code class="docutils literal notransla
 relacionan fundamentalmente con las dimensiones del dispositivo (véase
 <a class="reference external" href="https://lenguajecss.com/css/responsive-web-design/media-queries/#condiciones-de-media-queries">Condiciones de Media Queries</a>).
 Por ejemplo:</p>
-<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="nt">only</span><span class="w"> </span><span class="nt">screen</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="o">(</span><span class="nt">width</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nt">400</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="nt">screen</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="o">(</span><span class="nt">width</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nt">400px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* También: (max-width: 400px) */</span>
 <span class="w">   </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
 <span class="w">   </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="nt">only</span><span class="w"> </span><span class="nt">screen</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="o">(</span><span class="nt">400</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nt">width</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nt">800</span><span class="o">)</span><span class="w">  </span><span class="p">{</span>
+<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="nt">screen</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="o">(</span><span class="nt">400px</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nt">width</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nt">800px</span><span class="o">)</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="c">/* También (min-width: 400px) and (max-width: 800px) */</span>
 <span class="w">   </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span><span class="kt">%</span><span class="p">;</span>
 <span class="w">   </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="nt">only</span><span class="w"> </span><span class="nt">screen</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="o">(</span><span class="nt">width</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nt">800</span><span class="o">)</span><span class="w">  </span><span class="p">{</span>
+<span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="nt">screen</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="o">(</span><span class="nt">width</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nt">800</span><span class="o">)</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="c">/* También: (min-width: 800px) */</span>
 <span class="w">   </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">800</span><span class="kt">px</span><span class="p">;</span>
 <span class="w">   </span><span class="p">}</span>
@@ -992,6 +992,36 @@ de los valores anteriores y que lo aplica a todas las propiedades a la vez.</p>
 </div>
 </dd>
 </dl>
+</section>
+<section id="ejercicios-propuestos">
+<h2><span class="section-number">7.2.4. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Enlace permanente a este encabezado">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Escriba el selector apropiado para las descripciones que se hacen a continuación:</p>
+<ol class="loweralpha simple">
+<li><p>Los párrafos de la clase <em>alerta</em>.</p></li>
+<li><p>Cualquier elemento de la clase <em>alerta</em> e <em>importante</em></p></li>
+<li><p>Las celdas normales y de cabecera de la tabla de clase <em>elementos</em>.</p></li>
+<li><p>Las celdas normales y de cabecera de la tabla con identificador <em>principal</em>.</p></li>
+<li><p>Los enlaces a recursos accesibles mediante el protocolo <em>ed2k</em>.</p></li>
+<li><p>El seudoelemento que antecede a los enlaces referidos en el punto anterior.</p></li>
+<li><p>Los elementos <code class="docutils literal notranslate"><span class="pre">input</span></code> de sólo lectura.</p></li>
+<li><p>Elementos <em>article</em> que contienen encabezados de nivel 2.</p></li>
+<li><p>Los enlaces sobre los que se pasa el ratón.</p></li>
+<li><p>El seudoelemento que sucede a los enlaces referidos en el punto anterior.</p></li>
+<li><p>El primer hijo de un elemento <code class="docutils literal notranslate"><span class="pre">section</span></code>.</p></li>
+<li><p>Las celdas de las filas impares de la tabla de la clase <em>elementos</em>.</p></li>
+<li><p>La primera, cuarta, séptima, etc. celdas de la tabla de la clase <em>elementos</em>.</p></li>
+<li><p>Empezando por atrás, lo mismo del apartado anterior.</p></li>
+<li><p>El párrafo que sigue inmediatamente a un encabezado de nivel 3.</p></li>
+<li><p>El pseudoelemento <code class="docutils literal notranslate"><span class="pre">marker</span></code> de ítems de listas numeradas o no numeradas,
+las cuales son hijas de un elemento <code class="docutils literal notranslate"><span class="pre">article</span></code>.</p></li>
+<li><p>Abreviaturas sin atributo <em>title</em>.</p></li>
+<li><p>Todas las celdas de filas pares excepto la última (celda, no fila).</p></li>
+<li><p>El primer carácter del término de una lista de definiciones.</p></li>
+<li><p>Las celdas no vacías de la tabla con identificador <em>principal</em>.</p></li>
+</ol>
+</li>
+</ol>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="id3" role="note">
@@ -1024,6 +1054,7 @@ navegadores modernos aún soportan estan sintaxis antigua.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#cascada">7.2.3. Cascada</a></li>
+<li><a class="reference internal" href="#ejercicios-propuestos">7.2.4. Ejercicios propuestos</a></li>
 </ul>
 </li>
 </ul>

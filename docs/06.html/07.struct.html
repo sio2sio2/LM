@@ -99,6 +99,11 @@ El grupo proporciona unos <a class="reference external" href="https://www.w3.org
 consejos, como los <a class="reference external" href="https://www.w3.org/WAI/ARIA/apg/patterns/">patrones más habituales</a> que podemos aplicar para
 mejorar la accesibilidad de nuestra web.</p>
 </div>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Puede sernos de mucha utilidad el <a class="reference external" href="https://www.w3.org/WAI/tutorials/page-structure/">tutorial del W3C sobre estructura
+del documento</a>.</p>
+</div>
 <table class="el-html docutils align-default" id="id1">
 <caption><span class="caption-text">Elementos estructurales</span><a class="headerlink" href="#id1" title="Enlace permanente a esta tabla">¶</a></caption>
 <tbody>
@@ -109,26 +114,31 @@ mejorar la accesibilidad de nuestra web.</p>
 <td><p>Agrupa un contenido como sección en un documento.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#html-hgroup"><span class="std std-ref">&lt;hgroup&gt;</span></a></p></td>
-<td><p>Agrupa varios encabezados dentro de una misma sección</p></td>
+<td><p>Agrupa varios elementos que constituyen un encabezado, como
+el elemento de encabezado en sí y un subtítulo.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#html-article"><span class="std std-ref">&lt;article&gt;</span></a></p></td>
 <td><p>Agrupa un contenido que tiene significado por sí mismo.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#html-aside"><span class="std std-ref">&lt;aside&gt;</span></a></p></td>
-<td><p>Acotación tangencialmente relacionada con el texto principal</p></td>
+<td><p>Acotación tangencialmente relacionada con el texto principal.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#html-nav"><span class="std std-ref">&lt;nav&gt;</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-figure"><span class="std std-ref">&lt;figure&gt;</span></a></p></td>
+<td><p>Elemento autocontenido como una imagen con su leyenda o una
+cita junto a la obra de la que se extrae.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-nav"><span class="std std-ref">&lt;nav&gt;</span></a></p></td>
 <td><p>Identifica una sección del documento dedicada a
 proporcionar enlaces de navegación a partes del propio
 documento (un índice, por ejemplo) u otros documentos.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#html-header"><span class="std std-ref">&lt;header&gt;</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-header"><span class="std std-ref">&lt;header&gt;</span></a></p></td>
 <td><p>Contenido introductorio.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#html-main"><span class="std std-ref">&lt;main&gt;</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-main"><span class="std std-ref">&lt;main&gt;</span></a></p></td>
 <td><p>Contenido principal de la página (no de una sección)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#html-footer"><span class="std std-ref">&lt;footer&gt;</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-footer"><span class="std std-ref">&lt;footer&gt;</span></a></p></td>
 <td><p>Contenido que remata una parte del documento.</p></td>
 </tr>
 </tbody>
@@ -309,7 +319,39 @@ se incluyen en los textos de revistas, etc:</p>
 </div>
 </dd>
 </dl>
-<span id="index-5"></span><dl id="html-nav">
+<span id="index-5"></span><dl id="html-figure">
+<dt><strong>figure</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure#technical_summary">figure</a>)</dt><dd><p>Representa un bloque de contenido con información adicional que por lo
+general contiene una leyenda. El caso más tipico es el de incluir una imagen
+con un pie de foto que la describe o una cita larga con la referencia a la
+obra de la que sale:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">figure</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">svg</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;img&quot;</span> <span class="na">aria-labelledby</span><span class="o">=</span><span class="s">&quot;japan&quot;</span> <span class="na">xmlns</span><span class="o">=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;200&quot;</span> <span class="na">viewBox</span><span class="o">=</span><span class="s">&quot;0 0 900 600&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">title</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;japan&quot;</span><span class="p">&gt;</span>Bandera de Japón<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">rect</span> <span class="na">fill</span><span class="o">=</span><span class="s">&quot;#fff&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;600&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;900&quot;</span><span class="p">/&gt;</span>
+      <span class="p">&lt;</span><span class="nt">circle</span> <span class="na">fill</span><span class="o">=</span><span class="s">&quot;#bc002d&quot;</span> <span class="na">cx</span><span class="o">=</span><span class="s">&quot;450&quot;</span> <span class="na">cy</span><span class="o">=</span><span class="s">&quot;300&quot;</span> <span class="na">r</span><span class="o">=</span><span class="s">&quot;180&quot;</span><span class="p">/&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">svg</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>Bandera de Japón<span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">figure</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="ej-html"><figure>
+   <svg role="img" xmlns="http://www.w3.org/2000/svg" width="200" viewBox="0 0 900 600">
+      <rect fill="#fff" height="600" width="900"/>
+      <circle fill="#bc002d" cx="450" cy="300" r="180"/>
+   </svg>
+   <figcaption>Bandera de Japón</figcaption>
+</figure></div><p id="html-figcaption"><span id="index-6"></span>Para expresar su leyenda <a class="reference internal" href="#html-figure"><span class="std std-ref">&lt;figure&gt;</span></a> permite añadir un elemento <a class="reference internal" href="#html-figcaption"><span class="std std-ref">&lt;figcaption&gt;</span></a>
+antes o después del contenido principal, que en este caso es una imagen en
+que se ha usado un elemento <a class="reference internal" href="09.media.html#svg"><span class="std std-ref">&lt;svg&gt;</span></a> que se verá más adelante.</p>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>Si se usa <a class="reference internal" href="04.basico.html#html-img"><span class="std std-ref">&lt;img&gt;</span></a> dentro de <a class="reference internal" href="#html-figure"><span class="std std-ref">&lt;figure&gt;</span></a>, puede dejarse vacío el
+atributo <em>alt</em>, puesto que <a class="reference internal" href="#html-figcaption"><span class="std std-ref">&lt;figcaption&gt;</span></a> hará su función. Deberá, sin
+embargo, aparecer puesto que es un atributo obligatorio.</p>
+</div>
+</dd>
+</dl>
+<span id="index-7"></span><dl id="html-nav">
 <dt><strong>nav</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav#technical_summary">nav</a>)</dt><dd><p>Elemento de bloque ideado para albergar enlaces de navegación en el propio
 sitio, como las barras que aparecen en muchos sitios web del estilo:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Inicio &gt; Perfil &gt; Editar perfil
@@ -331,20 +373,20 @@ secciones. Por ejemplo:</p>
 </div>
 </dd>
 </dl>
-<span id="index-6"></span><dl class="simple" id="html-header">
+<span id="index-8"></span><dl class="simple" id="html-header">
 <dt><strong>header</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header#technical_summary">header</a>)</dt><dd><p>Incluye contenido introductorio como encabezados o ayudas a la navegación.
 Como ejemplo, consulte el incluido para <a class="reference internal" href="#html-article"><span class="std std-ref">&lt;article&gt;</span></a>. En esta página que lee, la
 parte superior que no forma parte de esta sección <a class="reference internal" href="#html-struct">html-struct</a> también
 podríamos incluirla dentro de un elemento <a class="reference internal" href="#html-header"><span class="std std-ref">&lt;header&gt;</span></a>.</p>
 </dd>
 </dl>
-<span id="index-7"></span><dl class="simple" id="html-main">
+<span id="index-9"></span><dl class="simple" id="html-main">
 <dt><strong>main</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main#technical_summary">main</a>)</dt><dd><p>Elemento destinado a incluir el contenido principal del documento. Debe, por
 tanto, sólo existir uno en la página. En esta página que lee, todo el cuerpo
 dedicada a <a class="reference internal" href="#html-struct">html-struct</a> podría ir incluido en este elemento.</p>
 </dd>
 </dl>
-<span id="index-8"></span><dl class="simple" id="html-footer">
+<span id="index-10"></span><dl class="simple" id="html-footer">
 <dt><strong>footer</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer#technical_summary">footer</a>)</dt><dd><p>Incluye los elementos que remantan algunos elementos de bloque como <a class="reference internal" href="#html-section"><span class="std std-ref">&lt;section&gt;</span></a>
 o <a class="reference internal" href="#html-article"><span class="std std-ref">&lt;article&gt;</span></a>.  Como ejemplo, consulte el incluido para <a class="reference internal" href="#html-article"><span class="std std-ref">&lt;article&gt;</span></a>. En esta
 página que lee, el pie final, ajeno al apartado <a class="reference internal" href="#html-struct">html-struct</a>, podría

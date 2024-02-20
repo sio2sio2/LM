@@ -23,6 +23,9 @@ semánticamente el documento |HTML|.
    <https://www.w3.org/WAI/ARIA/apg/patterns/>`_ que podemos aplicar para
    mejorar la accesibilidad de nuestra web.
 
+.. seealso:: Puede sernos de mucha utilidad el `tutorial del W3C sobre estructura
+   del documento <https://www.w3.org/WAI/tutorials/page-structure/>`_.
+
 .. table:: Elementos estructurales
    :class: el-html
 
@@ -31,11 +34,15 @@ semánticamente el documento |HTML|.
    +-----------+----------------------------------------------------------------+
    | |section| | Agrupa un contenido como sección en un documento.              |
    +-----------+----------------------------------------------------------------+
-   | |hgroup|  | Agrupa varios encabezados dentro de una misma sección          |
+   | |hgroup|  | Agrupa varios elementos que constituyen un encabezado, como    |
+   |           | el elemento de encabezado en sí y un subtítulo.                |
    +-----------+----------------------------------------------------------------+
    | |article| | Agrupa un contenido que tiene significado por sí mismo.        |
    +-----------+----------------------------------------------------------------+
-   | |aside|   | Acotación tangencialmente relacionada con el texto principal   |
+   | |aside|   | Acotación tangencialmente relacionada con el texto principal.  |
+   +-----------+----------------------------------------------------------------+
+   | |figure|  | Elemento autocontenido como una imagen con su leyenda o una    |
+   |           | cita junto a la obra de la que se extrae.                      |
    +-----------+----------------------------------------------------------------+
    | |nav|     | Identifica una sección del documento dedicada a                |
    |           | proporcionar enlaces de navegación a partes del propio         |
@@ -247,6 +254,49 @@ semánticamente el documento |HTML|.
          <p>Más bla, bla, bla.
       </section>
 
+.. index:: figure
+.. _html-figure:
+
+**figure** (:devmoz:`figure`)
+   Representa un bloque de contenido con información adicional que por lo
+   general contiene una leyenda. El caso más tipico es el de incluir una imagen
+   con un pie de foto que la describe o una cita larga con la referencia a la
+   obra de la que sale:
+
+   .. code-block:: html
+
+      <figure>
+         <svg role="img" aria-labelledby="japan" xmlns="http://www.w3.org/2000/svg" width="200" viewBox="0 0 900 600">
+            <title id="japan">Bandera de Japón</title>
+            <rect fill="#fff" height="600" width="900"/>
+            <circle fill="#bc002d" cx="450" cy="300" r="180"/>
+         </svg>
+         <figcaption>Bandera de Japón</figcaption>
+      </figure>
+
+   .. rst-class:: ej-html
+
+   .. raw:: html
+
+      <figure>
+         <svg role="img" xmlns="http://www.w3.org/2000/svg" width="200" viewBox="0 0 900 600">
+            <rect fill="#fff" height="600" width="900"/>
+            <circle fill="#bc002d" cx="450" cy="300" r="180"/>
+         </svg>
+         <figcaption>Bandera de Japón</figcaption>
+      </figure>
+
+   .. index:: figcaption
+   .. _html-figcaption:
+
+   Para expresar su leyenda |figure| permite añadir un elemento |figcaption|
+   antes o después del contenido principal, que en este caso es una imagen en
+   que se ha usado un elemento |svg| que se verá más adelante.
+
+   .. caution:: Si se usa |img| dentro de |figure|, puede dejarse vacío el
+      atributo *alt*, puesto que |figcaption| hará su función. Deberá, sin
+      embargo, aparecer puesto que es un atributo obligatorio.
+
 .. index:: nav
 .. _html-nav:
 
@@ -318,5 +368,9 @@ Ejercicios propuestos
 .. |main| replace::  :ref:`<main> <html-main>`
 .. |header| replace::  :ref:`<header> <html-header>`
 .. |footer| replace::  :ref:`<footer> <html-footer>`
+.. |figure| replace::  :ref:`<figure> <html-figure>`
+.. |figcaption| replace::  :ref:`<figcaption> <html-figcaption>`
+.. |img| replace::  :ref:`<img> <html-img>`
+.. |svg| replace::  :ref:`<svg> <svg>`
 
 .. |W3C| replace:: :abbr:`W3C (W3 Consortium)`

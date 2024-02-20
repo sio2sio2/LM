@@ -158,7 +158,8 @@ usará el |PNG|.
          <meta charset="UTF-8">
 
          <!-- Bandera del Japón -->
-         <svg xmlns="http://www.w3.org/2000/svg" width="200" viewBox="0 0 900 600">
+         <svg role="img" aria-labelledby="japan" xmlns="http://www.w3.org/2000/svg" width="200" viewBox="0 0 900 600">
+            <title id="japan">Bandera de Japón</title>
             <rect fill="#fff" height="600" width="900"/>
             <circle fill="#bc002d" cx="450" cy="300" r="180"/>
          </svg>
@@ -168,11 +169,16 @@ usará el |PNG|.
 
    .. raw:: html
 
-      <svg xmlns="http://www.w3.org/2000/svg" width="200" viewBox="0 0 900 600">
+      <svg role="img" aria-labelledby="japan" xmlns="http://www.w3.org/2000/svg" width="200" viewBox="0 0 900 600">
+         <title id="japan">Bandera de Japón</title>
          <rect fill="#fff" height="600" width="900"/>
          <circle fill="#bc002d" cx="450" cy="300" r="180"/>
       </svg>
    
+   .. note:: Nótese que |svg| no tiene atributo *alt* como |img| por lo que
+      tendremos que recurrir a los atributos |ARIA| para paliarlo y asegurar la
+      accesibilidad.
+
    .. seealso:: Si tiene curiosidad, puede `este artículo sobre los
       distintos modos de incrustar SVG dentro de un HTML
       <https://www.sitepoint.com/add-svg-to-web-page/>`_.
@@ -589,6 +595,7 @@ analizarlos cuáles son los elementos que lo posibilitan.
 .. |MIME| replace:: :abbr:`MIME (Multipurpose Internet Mail Extensions)`
 .. |PNG| replace:: :abbr:`PNG (Portable Network Graphics)`
 .. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`
+.. |ARIA| replace:: :abbr:`ARIA (Accessible Rich Internet Applications)`
 
 .. _mp3: https://caniuse.com/#feat=mp3
 .. _aac: https://caniuse.com/#feat=aac
