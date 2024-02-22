@@ -25,3 +25,46 @@
    #. Todas las celdas de filas pares excepto la última (celda, no fila).
    #. El primer carácter del término de una lista de definiciones.
    #. Las celdas no vacías de la tabla con identificador *principal*.
+
+#. Calcule justificadamente cuál de los selectores tiene más especifidad:
+
+   a. Regla |CSS| que se aplica con:
+
+      .. code:: css
+
+         [id] a.externo { /* ... */ }
+         a[href] { /* ... */ }
+         p a { /* ... */ }
+
+   #. Regla |CSS| que se aplica con:
+
+      .. code:: css
+
+         .tabla :is(td, th) { /* ... */ }
+         table :where(td, th):hover { /* ... */ }
+         .tabla :where(td, th):hover { /* ... */ }
+
+   #. Regla |CSS| que se aplica con:
+
+      .. code:: css
+
+         h1 + p>ol[class] { /* ... */ }
+         [id] ol.listita li { /* ... */ }
+         .seccion ol li { /* ... */ }
+
+
+   #. Regla |CSS| que se aplica con:
+
+      .. code:: css
+
+         #a1 :is(ol, ul) :where(ol, ul).interna li { /* ... */ }
+         #a1 :is(ol, ul) :is(ol, ul) li { /* ... */ }
+         section :is(ol, ul).externa :is(ol, ul).interna li { /* ... */ }
+
+   #. Regla |CSS| que se aplica con:
+
+      .. code:: css
+
+         form fieldset :invalid { /* ... */ }
+         .formulario :where(fieldset, div) input:invalid { /* ... */ }
+         .formulario input:invalid { /* ... */ }

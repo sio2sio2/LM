@@ -995,7 +995,7 @@ de los valores anteriores y que lo aplica a todas las propiedades a la vez.</p>
 </section>
 <section id="ejercicios-propuestos">
 <h2><span class="section-number">7.2.4. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Enlace permanente a este encabezado">¶</a></h2>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Escriba el selector apropiado para las descripciones que se hacen a continuación:</p>
 <ol class="loweralpha simple">
 <li><p>Los párrafos de la clase <em>alerta</em>.</p></li>
@@ -1019,6 +1019,45 @@ las cuales son hijas de un elemento <code class="docutils literal notranslate"><
 <li><p>Todas las celdas de filas pares excepto la última (celda, no fila).</p></li>
 <li><p>El primer carácter del término de una lista de definiciones.</p></li>
 <li><p>Las celdas no vacías de la tabla con identificador <em>principal</em>.</p></li>
+</ol>
+</li>
+<li><p>Calcule justificadamente cuál de los selectores tiene más especifidad:</p>
+<ol class="loweralpha">
+<li><p>Regla <abbr title="Cascading Style Sheets">CSS</abbr> que se aplica con:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="o">[</span><span class="nt">id</span><span class="o">]</span><span class="w"> </span><span class="nt">a</span><span class="p">.</span><span class="nc">externo</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="nt">a</span><span class="o">[</span><span class="nt">href</span><span class="o">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="nt">p</span><span class="w"> </span><span class="nt">a</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Regla <abbr title="Cascading Style Sheets">CSS</abbr> que se aplica con:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">tabla</span><span class="w"> </span><span class="p">:</span><span class="nd">is</span><span class="o">(</span><span class="nt">td</span><span class="o">,</span><span class="w"> </span><span class="nt">th</span><span class="o">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="nt">table</span><span class="w"> </span><span class="p">:</span><span class="nd">where</span><span class="o">(</span><span class="nt">td</span><span class="o">,</span><span class="w"> </span><span class="nt">th</span><span class="o">)</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">tabla</span><span class="w"> </span><span class="p">:</span><span class="nd">where</span><span class="o">(</span><span class="nt">td</span><span class="o">,</span><span class="w"> </span><span class="nt">th</span><span class="o">)</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Regla <abbr title="Cascading Style Sheets">CSS</abbr> que se aplica con:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">h1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nt">p</span><span class="o">&gt;</span><span class="nt">ol</span><span class="o">[</span><span class="nt">class</span><span class="o">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="o">[</span><span class="nt">id</span><span class="o">]</span><span class="w"> </span><span class="nt">ol</span><span class="p">.</span><span class="nc">listita</span><span class="w"> </span><span class="nt">li</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">seccion</span><span class="w"> </span><span class="nt">ol</span><span class="w"> </span><span class="nt">li</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Regla <abbr title="Cascading Style Sheets">CSS</abbr> que se aplica con:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">a1</span><span class="w"> </span><span class="p">:</span><span class="nd">is</span><span class="o">(</span><span class="nt">ol</span><span class="o">,</span><span class="w"> </span><span class="nt">ul</span><span class="o">)</span><span class="w"> </span><span class="p">:</span><span class="nd">where</span><span class="o">(</span><span class="nt">ol</span><span class="o">,</span><span class="w"> </span><span class="nt">ul</span><span class="o">)</span><span class="p">.</span><span class="nc">interna</span><span class="w"> </span><span class="nt">li</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="p">#</span><span class="nn">a1</span><span class="w"> </span><span class="p">:</span><span class="nd">is</span><span class="o">(</span><span class="nt">ol</span><span class="o">,</span><span class="w"> </span><span class="nt">ul</span><span class="o">)</span><span class="w"> </span><span class="p">:</span><span class="nd">is</span><span class="o">(</span><span class="nt">ol</span><span class="o">,</span><span class="w"> </span><span class="nt">ul</span><span class="o">)</span><span class="w"> </span><span class="nt">li</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="nt">section</span><span class="w"> </span><span class="p">:</span><span class="nd">is</span><span class="o">(</span><span class="nt">ol</span><span class="o">,</span><span class="w"> </span><span class="nt">ul</span><span class="o">)</span><span class="p">.</span><span class="nc">externa</span><span class="w"> </span><span class="p">:</span><span class="nd">is</span><span class="o">(</span><span class="nt">ol</span><span class="o">,</span><span class="w"> </span><span class="nt">ul</span><span class="o">)</span><span class="p">.</span><span class="nc">interna</span><span class="w"> </span><span class="nt">li</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Regla <abbr title="Cascading Style Sheets">CSS</abbr> que se aplica con:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">form</span><span class="w"> </span><span class="nt">fieldset</span><span class="w"> </span><span class="p">:</span><span class="nd">invalid</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">formulario</span><span class="w"> </span><span class="p">:</span><span class="nd">where</span><span class="o">(</span><span class="nt">fieldset</span><span class="o">,</span><span class="w"> </span><span class="nt">div</span><span class="o">)</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span><span class="nd">invalid</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">formulario</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span><span class="nd">invalid</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</li>
 </ol>
 </li>
 </ol>
