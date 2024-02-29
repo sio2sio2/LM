@@ -1,61 +1,141 @@
 <!DOCTYPE html>
 <html lang="es">
-   <meta charset="utf-8">
-   <title>Maquetación con flex</title>
+   <meta charset="UTF-8">
+   <title>Maquetación con flex/grid</title>
+   <meta http-equiv="default-style" content="grid">
 
    <style>
-      #container-flex {
-         display: flex;
-         flex-direction: row;
-      }
-
-      #container-flex>* {
-         border: solid 2px black;
-         margin: .15em;
-         padding: 1em;
-         max-width: 10em;
-      }
-      
-      #container-flex {
+      #container {
          border: solid 1px black;
          background-color: #EEE;
       }
 
-      #container-flex>*:nth-child(3n-2) {
+      .item {
+         border: solid 2px black;
+         padding: 1em;
+      }
+      
+      .item:nth-child(3n-2) {
          background-color: #FEE;
       }
-      #container-flex>*:nth-child(3n-1) {
+      .item:nth-child(3n-1) {
          background-color: #EFE;
       }
-      #container-flex>*:nth-child(3n) {
+      .item:nth-child(3n) {
          background-color: #EEF;
       }
    </style>
 
-   <header role="banner">
+   <style title="flexbox">
+      #container .item {
+         margin: .15em;
+         max-width: 10em;
+      }
+   </style>
+
+   <style title="flexbox"> /* Maquetación */
+      #container {
+         display: flex;
+      }
+
+      @media screen and (width <= 600px) {
+         #container {
+         flex-direction: column;
+         }
+      }
+   </style>
+
+   <style title="grid">
+      #container {
+         display: grid;
+         grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+         gap: .15em;
+      }
+   </style>
+
+   <header>
       <img src="banner.png" alt="Banner de la empresa">
    </header>
 
-   <main id="container-flex">
+   <main id="container">
       <!-- A lo que haya dentro de aquí se aplicará este mecanismo de maquetación -->
-      <div id="uno">
-         <p>Caja uno</p>
+      <div class="item" id="item-1">
+         <p>Caja uno uno</p>
       </div>
-      <div id="dos">
+      <div class="item" id="item-2">
          <p>Caja dos</p>
       </div>
-      <div id="tres">
+      <div class="item" id="item-3">
          <p>Caja tres</p>
       </div>
-      <div id="cuatro">
+      <div class="item" id="item-4">
          <p>Caja cuatro</p>
       </div>
-      <div id="cinco">
+      <div class="item" id="item-5">
          <p>Caja cinco</p>
       </div>
-      <div id="seis">
+      <div class="item" id="item-6">
          <p>Caja seis</p>
       </div>
-   </main>
-</html>
 
+      <!-- Para ilustrar flexbox, estos ítem deben desaparecer -->
+      <div class="item" id="item-7">
+         <p>Caja siete</p>
+      </div>
+      <div class="item" id="item-8">
+         <p>Caja ocho</p>
+      </div>
+      <div class="item" id="item-9">
+         <p>Caja nueve</p>
+      </div>
+      <div class="item" id="item-10">
+         <p>Caja diez</p>
+      </div>
+      <div class="item" id="item-11">
+         <p>Caja once</p>
+      </div>
+      <div class="item" id="item-12">
+         <p>Caja doce</p>
+      </div>
+      <div class="item" id="item-13">
+         <p>Caja trece</p>
+      </div>
+      <div class="item" id="item-14">
+         <p>Caja catorce</p>
+      </div>
+      <div class="item" id="item-15">
+         <p>Caja quince</p>
+      </div>
+      <div class="item" id="item-16">
+         <p>Caja dieciseis</p>
+      </div>
+   </main>
+
+   <script>
+      const estilo = document.querySelector("meta[http-equiv=default-style]")?.getAttribute("content"),
+            container = document.getElementById("container"),
+            numFlex = 6; // Número de cajas en el ejemplo para Flexbox.
+
+      const mensaje = document.createElement("p");
+
+      switch(estilo) {
+         case "flexbox":
+            while (container.children.length > numFlex) {
+               container.lastElementChild.remove();
+            }
+            break;
+         case "grid":
+            break;
+         case null:
+         case undefined:
+            container.remove();
+            mensaje.innerText = "Error. No se encuentra el elemento meta con la definición del estilo.";
+            document.body.appendChild(mensaje);
+            break;
+         default:
+            container.remove();
+            mensaje.innerText = `Error. Estilo "${estilo}" incorrecto. Debe ser "flexbox" o "grid".`;
+            document.body.appendChild(mensaje);
+      }
+   </script>
+</html>

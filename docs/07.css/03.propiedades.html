@@ -82,9 +82,20 @@
 <p><abbr title="Cascading Style Sheets">CSS</abbr>3 es una especificación inmensa con <a class="reference external" href="https://www.w3.org/Style/CSS/current-work">múltiples módulos definidos en
 distintos documentos</a> y no tenemos
 el tiempo ni la fuerzas para desarrollar en esta documentación un resumen
-apropiado. Además, como no somos diseñadores, es nuestro propósito  no
-profundizar demasiado y centrarnos en el uso de <a class="reference internal" href="04.bootstrap.html#bootstrap"><span class="std std-ref">Bootstrap</span></a>. Por eso nos
-limitaremos a proporcionar ciertas pautas y fuentes externas para su estudio.</p>
+apropiado. Lo cierto es que para un desarrollador que no sea diseñador es más
+práctico utilizar un <em>framework</em> como <a class="reference internal" href="04.bootstrap.html#bootstrap"><span class="std std-ref">Bootstrap</span></a>, ya que:</p>
+<ol class="arabic simple">
+<li><p>Dota de un aspecto atractivo predeterminado a los distintos elementos de la
+página.</p></li>
+<li><p>Tiene ya definidos componentes habituales lo que nos ahorra tener que
+crearlos.</p></li>
+<li><p>Como consecuencia de los dos puntos anteriores, la labor del desarrollador se
+limita a personalizar mínimamente el aspecto con <abbr title="Cascading Style Sheets">CSS</abbr>.</p></li>
+</ol>
+<p>El epígrafe, por tanto, se limitará a dar un conjunto de pautas para entender y
+aprender las propiedades <abbr title="Cascading Style Sheets">CSS</abbr> y expondrá brevemente los principios de
+maquetación con las dos estrategias más modernas y potentes: <a class="reference internal" href="#css-flexbox"><span class="std std-ref">Flexbox</span></a>
+y <a class="reference internal" href="#css-grid"><span class="std std-ref">Grid</span></a>.</p>
 <section id="pautas">
 <h2><span class="section-number">7.3.1. </span>Pautas<a class="headerlink" href="#pautas" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Para su compresión necesitamos conocer:</p>
@@ -97,11 +108,12 @@ asociadas. Una buen punto de partida es <a class="reference external" href="http
 de lenguajecss.com</a>.</p>
 </li>
 <li id="css-posicionamiento"><p>Los métodos para colocar (<strong>posicionamiento</strong>) los elementos en el documento.
-El mecanismo tradicional era algo torpe hasta que apareció <a class="reference external" href="https://developer.mozilla.org/es/docs/Learn/CSS/CSS_layout/Flexbox">flexbox</a> y, más
-tarde, <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/CSS/CSS_grid_layout">grid</a>. De nuevo, <a class="reference external" href="https://lenguajecss.com/css/maquetacion-y-colocacion/propiedad-display/">la introducción a la maquetación de lenguajecss.com</a>
+Los mecanismos tradicionales eran torpes hasta que apareció
+<a class="reference internal" href="#css-flexbox"><span class="std std-ref">Flexbox</span></a> y, más tarde, <a class="reference internal" href="#css-grid"><span class="std std-ref">Grid</span></a>. De nuevo, <a class="reference external" href="https://lenguajecss.com/css/maquetacion-y-colocacion/propiedad-display/">la introducción
+a la maquetación de lenguajecss.com</a>
 es un buen comienzo.</p>
 <p>Estos dos mecanismos modernos, junto a <a class="reference internal" href="02.sintaxis.html#css-media"><span class="std std-ref">&#64;media</span></a>, son las
-herramientas básicas para el <a class="reference external" href="https://es.wikipedia.org/wiki/Dise%C3%B1o_web_adaptable">diseño web adaptable</a><a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Échele un
+herramientas básicas para el <a class="reference external" href="https://es.wikipedia.org/wiki/Dise%C3%B1o_web_adaptable">diseño web adaptable</a><a class="footnote-reference brackets" href="#id7" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Échele un
 vistazo a <a class="reference external" href="https://output.jsbin.com/qezalur">éste sencillo ejemplo</a>, que
 implementa una típica web con un cuerpo central de tres secciones (menú de
 navegación, texto propiamente dicho y publicidad). En principio, se
@@ -133,7 +145,7 @@ páginas. Otras no serán tan necesarias en ese caso, pero son indispensables,
 si no se usa tal herramienta:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://lenguajecss.com/css/maquetacion-y-colocacion/propiedad-display/">Maquetación</a>
-(<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">display</a>, <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">position</a>, etc).</p></li>
+(<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">display</a>, etc).</p></li>
 <li><p><a class="reference external" href="https://lenguajecss.com/css/responsive-web-design/que-es/">Diseño adaptativo</a>, ya que
 nuestro público objetivo en muchos casos accederá desde dispositivos
 distintos a un ordenador (móviles o <em>tablets</em>).</p></li>
@@ -153,21 +165,66 @@ disponible y a situarse el siguiente por debajo del anterior), definición de su
 anchos (para que no ocuparan todo), la propiedad <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/float">float</a> y, en
 ocasiones, la propiedad <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">position</a>. Como consecuencia, se tenían que
 hacer auténticas recetas esotéricas para lograr hacer maquetaciones
-relativamente sencillas<a class="footnote-reference brackets" href="#id5" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>, que, además, ni siquiera son adaptables a
+relativamente sencillas<a class="footnote-reference brackets" href="#id8" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>, que, además, ni siquiera resultaban adaptables a
 distintos dispositivos.</p>
 <p>La evolución de <abbr title="Cascading Style Sheets">CSS</abbr> trajo dos modernos métodos de posicionamiento que han
 facilitado enormemente esta tarea. En esta apartado explicaremos los fundamentos
 de ambos sin entrar en excesiva profundidad. La idea es conocer sus fundamentos
 y afianzarlos con un par de juegos que se enlazarán más adelante.</p>
+<p>Antes, sin embargo, dejaremos algo de código <abbr title="Cascading Style Sheets">CSS</abbr> que nos puede servir, en
+ambos casos, para ver mejor la maquetación de los bloques:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">container</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">black</span><span class="p">;</span>
+<span class="w">   </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#EEE</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">item</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="kc">black</span><span class="p">;</span>
+<span class="w">   </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">em</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">item</span><span class="p">:</span><span class="nd">nth-child</span><span class="o">(</span><span class="nt">3n-2</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#FEE</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">item</span><span class="p">:</span><span class="nd">nth-child</span><span class="o">(</span><span class="nt">3n-1</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#EFE</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">item</span><span class="p">:</span><span class="nd">nth-child</span><span class="o">(</span><span class="nt">3n</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#EEF</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Para las capturas ilustrativas se ha usado este <a class="reference download internal" download="" href="../_downloads/0a123717119eb4207ed01d31c5561acc/flexbox.html"><code class="xref download docutils literal notranslate"><span class="pre">documento</span>
+<span class="pre">HTML</span></code></a>.</p>
+</div>
 <section id="flexbox">
-<h3><span class="section-number">7.3.2.1. </span>Flexbox<a class="headerlink" href="#flexbox" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="css-flexbox"></span><h3><span class="section-number">7.3.2.1. </span>Flexbox<a class="headerlink" href="#flexbox" title="Enlace permanente a este encabezado">¶</a></h3>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>Las explicaciones son totalmente insuficientes, por lo que lo
+conveniene es profundizar con una <a class="reference external" href="https://lenguajecss.com/css/maquetacion-y-colocacion/flex/">guía sobre flexbox</a> más completa.</p>
+</div>
 <ul>
-<li><p>Este método de posicionamiento se aplica sobre las cajas contenidas dentro de
+<li><p>Este método de maquetación se aplica sobre las cajas contenidas dentro de
 una caja contenedora cuya propiedad <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">display</a> tenga el valor de
 <code class="docutils literal notranslate"><span class="pre">flex</span></code>:</p>
-<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">container-flex</span><span class="w"> </span><span class="p">{</span>
-<span class="hll"><span class="w"> </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
-</span><span class="p">}</span>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="p">#</span><span class="nn">container</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="w"> </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
+</span><span class="hll"><span class="p">}</span>
+</span>
+<span class="c">/* Aspecto adicional de cada ítem */</span>
+<span class="p">.</span><span class="nc">item</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mf">.15</span><span class="kt">em</span><span class="p">;</span>
+<span class="w">    </span><span class="c">/* Añadimos una anchura máxima. Si no la añadiéramos:</span>
+<span class="c">       - Cuando los ítem se disponen en filas, el ancho de cada uno</span>
+<span class="c">         se ajustará para albergar mejor el contenido.</span>
+<span class="c">       - Cuando los ítem se disponen en columnas, cada uno ocupa todo</span>
+<span class="c">         el ancho del contenedor.</span>
+<span class="c">    */</span>
+<span class="w">    </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">em</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
@@ -179,16 +236,25 @@ una caja contenedora cuya propiedad <a class="reference external" href="https://
       <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;banner.png&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Banner de la empresa&quot;</span><span class="p">&gt;</span>
    <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
 
-<span class="hll">   <span class="p">&lt;</span><span class="nt">main</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;container-flex&quot;</span><span class="p">&gt;</span>
+<span class="hll">   <span class="p">&lt;</span><span class="nt">main</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span>
 </span>      <span class="cm">&lt;!-- A lo que haya dentro de aquí se aplicará este mecanismo de maquetación --&gt;</span>
-      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;uno&quot;</span><span class="p">&gt;</span>
-         <span class="cm">&lt;!-- etc. --&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;item-1&quot;</span><span class="p">&gt;</span>
+         <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Caja uno uno<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
       <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;dos&quot;</span><span class="p">&gt;</span>
-         <span class="cm">&lt;!-- etc. --&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;item-2&quot;</span><span class="p">&gt;</span>
+         <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Caja dos<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
       <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;tres&quot;</span><span class="p">&gt;</span>
-         <span class="cm">&lt;!-- etc. --&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;item-3&quot;</span><span class="p">&gt;</span>
+         <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Caja tres<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;item-4&quot;</span><span class="p">&gt;</span>
+         <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Caja cuatro<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;item-5&quot;</span><span class="p">&gt;</span>
+         <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Caja cinco<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;item-6&quot;</span><span class="p">&gt;</span>
+         <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Caja seis<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
       <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="hll">   <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
 </span><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
@@ -203,30 +269,191 @@ la otra:</p>
 </li>
 <li><p>Sin embargo, puede cambiarse la dirección y que se sitúen verticalmente
 (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction">flex-direction</a>):</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">container</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
+<span class="hll"><span class="w">   </span><span class="k">flex-direction</span><span class="p">:</span><span class="w"> </span><span class="kc">column</span><span class="p">;</span>
+</span><span class="p">}</span>
+</pre></div>
+</div>
 <img alt="../_images/flexbox03.png" src="../_images/flexbox03.png" />
+<p>De hecho, en un dispositivo con la pantalla pequeña convendría utilizar esta
+disposición en vez de la horizontal, así que podríamos usar las <a class="reference internal" href="02.sintaxis.html#css-media"><span class="std std-ref">media
+queries</span></a> a tal fin:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#container {</span>
+   <span class="n">display</span><span class="p">:</span><span class="n">flex</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nd">@media</span> <span class="n">screen</span> <span class="ow">and</span> <span class="p">(</span><span class="n">width</span> <span class="o">&lt;=</span> <span class="mi">400</span> <span class="n">px</span><span class="p">)</span> <span class="p">{</span>
+   <span class="c1">#container {</span>
+      <span class="n">flex</span><span class="o">-</span><span class="n">direction</span><span class="p">:</span> <span class="n">column</span><span class="p">;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </li>
 <li><p>También se pueden <em>justificar</em> los bloques (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content">justify-content</a>):</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">container</span><span class="w"> </span><span class="p">{</span>
+<span class="w"> </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
+<span class="hll"><span class="w"> </span><span class="k">justify-content</span><span class="p">:</span><span class="w"> </span><span class="kc">right</span><span class="p">;</span>
+</span><span class="p">}</span>
+</pre></div>
+</div>
 <img alt="../_images/flexbox04.png" src="../_images/flexbox04.png" />
 <p>o:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">container</span><span class="w"> </span><span class="p">{</span>
+<span class="w"> </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
+<span class="hll"><span class="w"> </span><span class="k">justify-content</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+</span><span class="p">}</span>
+</pre></div>
+</div>
 <img alt="../_images/flexbox05.png" src="../_images/flexbox05.png" />
 </li>
 <li><p>Es posible también alterar el orden de los bloques (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/order">order</a>):</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">item-1</span><span class="w"> </span><span class="p">{</span>
+<span class="w"> </span><span class="c">/* Por defecto, todos los ítem tienen para su orden valor 0 */</span>
+<span class="hll"><span class="w"> </span><span class="k">order</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span class="p">}</span>
+</pre></div>
+</div>
 <img alt="../_images/flexbox06.png" src="../_images/flexbox06.png" />
 </li>
 </ul>
 <p>Hay muchas otras posibilidades que se pueden ensayar jugando los 24 niveles de
 <a class="reference external" href="https://flexboxfroggy.com/">Flexbox Froggy</a>.</p>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>Para las capturas ilustrativas se ha usado este <a class="reference download internal" download="" href="../_downloads/0a123717119eb4207ed01d31c5561acc/flexbox.html"><code class="xref download docutils literal notranslate"><span class="pre">documento</span>
-<span class="pre">HTML</span></code></a>.</p>
-</div>
 </section>
 <section id="grid">
-<h3><span class="section-number">7.3.2.2. </span>Grid<a class="headerlink" href="#grid" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="css-grid"></span><h3><span class="section-number">7.3.2.2. </span>Grid<a class="headerlink" href="#grid" title="Enlace permanente a este encabezado">¶</a></h3>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>Como en el caso de <a class="reference internal" href="#css-flexbox"><span class="std std-ref">Flexbox</span></a>, las explicaciones son
+insuficientes y convendría  recurrir a una <a class="reference external" href="https://css-tricks.com/snippets/css/complete-guide-grid/#aa-animation">guía de grid</a> completa.</p>
+</div>
+<p>Es el mecanismo más moderno de maquetación y, en principio, el más sencillo para
+realizar maquetaciones complejas. Empezemos por definir algunos términos:</p>
+<img alt="../_images/grid.png" src="../_images/grid.png" />
+<p><em class="dfn">Contenedor</em></p>
+<p><em class="dfn">Column</em></p>
+<p><em class="dfn">Row</em></p>
+<p><em class="dfn">Cell</em></p>
+<p><em class="dfn">Area</em></p>
+<p><em class="dfn">Line</em></p>
+<p><em class="dfn">Track</em></p>
+<ul>
+<li><p>Se aplica sobre las cajas que se encuentran contenidas en un elemento cuya
+propiedad <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">display</a> tenga el valor <code class="docutils literal notranslate"><span class="pre">grid</span></code>, de modo que las dichas
+cajas se disponen en una rejilla o cuadrícula (de ahí su nombre) para la cual
+debemos indicar cuántas filas y columnas tiene:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">container</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
+<span class="w">   </span><span class="k">grid-template</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="kt">%</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="kt">%</span><span class="p">);</span>
+<span class="w">   </span><span class="c">/* Equivale a estas dos propiedades por separado</span>
+<span class="c">   grid-template-rows: repeat(4, 25%);</span>
+<span class="c">   grid-template-columns: repeat(4, 25%);</span>
+<span class="c">   */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>El ejemplo genera una rejilla de 4x4, en la que todas las cajas (ítems)
+ocupan lo mismo<a class="footnote-reference brackets" href="#id9" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>. Además, se ha utilizado <code class="docutils literal notranslate"><span class="pre">repeat()</span></code> en vez de
+enumerar uno a uno todos los anchos y altos puesto que son iguales.</p>
+<p>Estas medidas se pueden poner en valores absolutos (p.e. 400px) y, si
+los mezcláramos con valores relativos, sería complicado ocupar todo el
+ancho o el alto disponibles. Por ese emotivo, existe para este diseño la
+unidad <code class="docutils literal notranslate"><span class="pre">fr</span></code> que significa <em>fracción del restante</em>. Por eso, lo anterior
+habría estado mejor haberlo escrito como:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">container</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
+<span class="w">   </span><span class="k">grid-template</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">);</span>
+<span class="w">   </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mf">.15</span><span class="kt">em</span><span class="p">;</span><span class="w"> </span><span class="c">/* Espacio entre cajas */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>En que cada ítem ocupa una fracción del restante. Como el restante es todo,
+cada caja ocupará el 25%. Aunque esto no es totalmente cierto, porque hemos
+añadido que queremos que quede un espacio de margen entre las cajas. Ese
+margen es tenido en cuenta en los cálculos del navegador, así que cada caja
+ocupará un pelín menos.</p>
+<img alt="../_images/grid01.png" src="../_images/grid01.png" />
+</li>
+<li><p>Podemos cambiar de orden alguna de las cajas:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">item-1</span><span class="w"> </span><span class="p">{</span>
+<span class="hll"><span class="w">   </span><span class="k">order</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span class="w">   </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#FA9</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img alt="../_images/grid02.png" src="../_images/grid02.png" />
+</li>
+<li><p>También podemos jugar con las propiedades <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-start">grid-row-start</a>,
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-start">grid-column-start</a>, <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-start">grid-row-start</a>,
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-end">grid-column-end</a>, y las propiedades que las resumen
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row">grid-row</a>, <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column">grid-column</a> y <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-area">grid-area</a> para
+colocar alguna de las cajas en cualquier posición o para hacer que ocupe
+varias posiciones en vertical u horizontal:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">item-1</span><span class="w"> </span><span class="p">{</span>
+<span class="hll"><span class="w">   </span><span class="k">grid-row-start</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+</span><span class="hll"><span class="w">   </span><span class="k">grid-column-start</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+</span><span class="w">   </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#FA9</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img alt="../_images/grid03.png" src="../_images/grid03.png" />
+<p>O bien, podemos ampliar a seis filas, añadir dos cajas más y hacer que la
+primera y la última ocupen todo el ancho:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="p">#</span><span class="nn">container</span><span class="w"> </span><span class="p">{</span>
+<span class="hll"><span class="w">    </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
+</span><span class="hll"><span class="w">    </span><span class="k">grid-template</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">);</span>
+</span><span class="w">    </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mf">.15</span><span class="kt">em</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span>
+
+<span class="w"> </span><span class="p">#</span><span class="nn">item-1</span><span class="o">,</span><span class="w"> </span><span class="p">#</span><span class="nn">item-18</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">grid-column</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#FA9</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<img alt="../_images/grid04.png" src="../_images/grid04.png" />
+</li>
+<li><p>Cuando la maquetación es complicada, pueden mapearse las distintas áreas que
+ocupan las cajas con la propiedad <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas">grid-template-areas</a> y asociar
+luego cada caja a una de estas áreas. Por ejemplo, para estas áreas:</p>
+<img alt="../_images/grid-template-areas.png" src="../_images/grid-template-areas.png" />
+<p>Deberíamos crear un <abbr title="Cascading Style Sheets">CSS</abbr> así:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">container</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
+<span class="w">   </span><span class="k">grid-template-areas</span><span class="p">:</span>
+<span class="w">      </span><span class="s2">&quot;a a a b&quot;</span>
+<span class="w">      </span><span class="s2">&quot;a a a c&quot;</span>
+<span class="w">      </span><span class="s2">&quot;d d e e&quot;</span>
+<span class="w">      </span><span class="s2">&quot;d d e e&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="nn">item-1</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="k">grid-area</span><span class="p">:</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="p">#</span><span class="nn">item-2</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="k">grid-area</span><span class="p">:</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="p">#</span><span class="nn">item-3</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="k">grid-area</span><span class="p">:</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="p">#</span><span class="nn">item-4</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="k">grid-area</span><span class="p">:</span><span class="w"> </span><span class="n">d</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="p">#</span><span class="nn">item-5</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="k">grid-area</span><span class="p">:</span><span class="w"> </span><span class="n">e</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition-todo admonition" id="id5">
+<p class="admonition-title">Por hacer</p>
+<p>Explicar <a class="reference external" href="https://lenguajecss.com/css/maquetacion-y-colocacion/grid-css/#funci%C3%B3n-minmax">auto-fill y auto-fit</a>.</p>
+</div>
+<div class="admonition-todo admonition" id="id6">
+<p class="admonition-title">Por hacer</p>
+<p>Explicar <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Subgrid">subgrid</a>.</p>
+</div>
+<p>Para aprender más posibilidades intente completar los 28 niveles de
+<a class="reference external" href="https://cssgridgarden.com/">CSS Garden</a>.</p>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id4" role="note">
+<aside class="footnote brackets" id="id7" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>Que el término no le lleve a confusión. En inglés, existe el concepto de
 <em class="dfn">responsive web design</em>, que hace referencia a lo que nosotros tratamos
@@ -237,10 +464,16 @@ que se detectan las características del dispositivo y se envía al servidor
 para que este adapte su respuesta y envío una página u otra. Esta última, por
 tanto, es una solución en el servidor.</p>
 </aside>
-<aside class="footnote brackets" id="id5" role="note">
+<aside class="footnote brackets" id="id8" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
 <p>Véase <a class="reference external" href="https://desarrolloweb.com/articulos/2112.php">este artículo de 2005</a> sobre cómo hacer una página
 con dos columnas.</p>
+</aside>
+<aside class="footnote brackets" id="id9" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
+<p>En realidad, el elemento contenedor ocupa todo el ancho del dispositivo.
+En cambio, el alto está indefinido a menos que le demos explícitamente una
+altura (cosa que no hemos hecho).</p>
 </aside>
 </aside>
 </section>

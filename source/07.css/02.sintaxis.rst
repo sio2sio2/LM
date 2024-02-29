@@ -408,7 +408,7 @@ Dentro de un selector simple pueden aparecer yuxtapuestos hasta seis tipos de
         }
 
         /* El campo que esté rellenando tendrá un color de fondo distinto */
-        input.focus {
+        input:focus {
             background-color: lightblue;
         }
 
