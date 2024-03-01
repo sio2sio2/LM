@@ -427,7 +427,7 @@ Dentro de un selector simple pueden aparecer yuxtapuestos hasta seis tipos de
 
        .. code-block:: css
 
-          /* Creará un borde para los párrafos que se encuentren dentro de jun
+          /* Creará un borde para los párrafos que se encuentren dentro de un
              elemento que no tenga más párrafos como hijo */
           p:only-of-type {
             border: solid black 1px;
@@ -438,7 +438,7 @@ Dentro de un selector simple pueden aparecer yuxtapuestos hasta seis tipos de
 
      :devmozcss:`:first-of-type`, :devmozcss:`:last-of-type`
        concuerda si el elemento es el primer hijo de su tipo (o el último) para
-       su padre). Por ejemplo:
+       su padre. Por ejemplo:
 
        .. code-block:: css
 
@@ -481,7 +481,7 @@ Dentro de un selector simple pueden aparecer yuxtapuestos hasta seis tipos de
             font-weight: bold;
           }
 
-          /* Concuerda con todos los ítem excepto el primero */
+          /* Concuerda con todos los ítems excepto el primero */
           li:nth-child(n + 2) { /* 0+2=2, 1+2=3, etc. */
             font-weight: bold;
           }
@@ -496,12 +496,12 @@ Dentro de un selector simple pueden aparecer yuxtapuestos hasta seis tipos de
             font-weight: bold;
           }
 
-          /* Concuerda con los ítem pares */
+          /* Concuerda con los ítems pares */
           li:nth-child(2n) {
             font-weight: bold;
           }
 
-          /* Concuerda con los ítem impares */
+          /* Concuerda con los ítems impares */
           li:nth-child(2n+1) {
             font-weight: bold;
           }
@@ -588,7 +588,7 @@ Dentro de un selector simple pueden aparecer yuxtapuestos hasta seis tipos de
      :devmozcss:`:has`\ ``(...)``
       provoca que el selector concuerde cuando la combinación de dicho selector
       con cualquiera de los *selectores relativos* de la lista concuerda. La
-      única forma de entender esta pseudoclase es haber estudiado antes antes la
+      única forma de entender esta pseudoclase es haber estudiado antes la
       :ref:`combinación de selectores <css-selector-combinado>`. Dejaremos aquí
       algunos ejemplos para que se repasen después de haber entendido cómo se
       combinan los selectores:
@@ -793,7 +793,7 @@ al resto de elementos.
 
 Cascada
 =======
-Llegado a este punto toco, finalmente, explicar porqué los estilos son *en
+Llegado a este punto toca, finalmente, explicar porqué los estilos son *en
 cascada*. El problema de definir las reglas del modo en que se definen es que
 puede muy comúnmente haber dos o más declaraciones sobre una determinada
 propiedad que sean aplicables a un mismo elemento y, en ese caso, ¿cuál de ellas
@@ -802,7 +802,7 @@ influída por seis factores:
 
 **Importancia**
    Aunque no sea una práctica muy recomendable, al definirse una propiedad puede
-   marcarse como que es imporante añadiendo la palabra :devmozcss:`important`
+   marcarse como que es importante añadiendo la palabra :devmozcss:`important`
    tras su valor:
 
    .. code-block:: css
@@ -819,7 +819,7 @@ influída por seis factores:
 **Origen**
    Según su *origen*,
 
-   2. Antes dos reglas normales, tiene precedencia el estilo del *autor* sobre el
+   2. Ante dos reglas normales, tiene precedencia el estilo del *autor* sobre el
       del *usuario* y el del *usuario* sobre el del *navegador*. Ante reglas
       importantes, la precedencia es la inversa.
 
@@ -849,7 +849,7 @@ influída por seis factores:
       precedencia sobre las declaraciones internas o externas.
 
    .. todo:: Probar si hay alguna diferencia en la preferencia entre internas y
-      internas.
+      externas.
 
 **Especificidad**
    La :dfn:`especificidad` es la medida de la precisión con la que el selector
@@ -956,6 +956,6 @@ Ejercicios propuestos
 .. rubric:: Notas al pie
 
 .. [#] En el nivel 2 se les anteponía uno solo como a las pseudoclases. Los
-   navegadores modernos aún soportan estan sintaxis antigua.
+   navegadores modernos aún soportan esta sintaxis antigua.
 
 .. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`

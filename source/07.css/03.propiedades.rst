@@ -2,7 +2,7 @@ Propiedades
 ***********
 |CSS|\ 3 es una especificación inmensa con `múltiples módulos definidos en
 distintos documentos <https://www.w3.org/Style/CSS/current-work>`_ y no tenemos
-el tiempo ni la fuerzas para desarrollar en esta documentación un resumen
+el tiempo ni las fuerzas para desarrollar en esta documentación un resumen
 apropiado. Lo cierto es que para un desarrollador que no sea diseñador es más
 práctico utilizar un *framework* como :ref:`Bootstrap`, ya que:
 
@@ -27,7 +27,7 @@ Para su compresión necesitamos conocer:
    el :ref:`algoritmo de cascada <css-cascada>`.
 
 #. Cómo funciona el :ref:`modelo de cajas <html-maquetacion>` y sus dimensiones
-   asociadas. Una buen punto de partida es `esta introducción al modelo de cajas
+   asociadas. Un buen punto de partida es `esta introducción al modelo de cajas
    de lenguajecss.com <https://lenguajecss.com/css/modelo-de-cajas/que-es/>`_.
 
    .. _css-posicionamiento:
@@ -50,7 +50,7 @@ Para su compresión necesitamos conocer:
    publicidad pasa a situarse en medio.
 
    .. note:: :ref:`Bootstrap` es una alternativa sencilla a la maquetación
-      mediante estas herramientas nativas y, además, buen ofrece un aspecto
+      mediante estas herramientas nativas y, además, ofrece un aspecto
       predeterminado de los elementos y componentes prefabricados con lo que es
       muy intersante si nos queremos centrar en el desarrollo y no tanto en el
       diseño.
@@ -68,7 +68,7 @@ Para su compresión necesitamos conocer:
    + `Tablas <https://lenguajecss.com/css/representacion-datos/tablas-css/>`_.
 
    Estas propiedades necesitaremos conocerlas, aunque nos ayudemos de
-   :program:`Bootstrap` para personalizar el aspecto predefinidos de las
+   :program:`Bootstrap` para personalizar el aspecto predefinido de las
    páginas. Otras no serán tan necesarias en ese caso, pero son indispensables,
    si no se usa tal herramienta:
 
@@ -80,7 +80,7 @@ Para su compresión necesitamos conocer:
      nuestro público objetivo en muchos casos accederá desde dispositivos
      distintos a un ordenador (móviles o *tablets*).
 
-.. seealso:: Para el que prefiera los vídeos hay en Youtube toda una `serie
+.. seealso:: Para el que prefiera los vídeos hay en YouTube toda una `serie
    sobre CSS de Kiko Palomares <https://kikopalomares.com/cursos/css>`_.
 
 .. _css-maquetacion:
@@ -97,7 +97,7 @@ relativamente sencillas\ [#]_, que, además, ni siquiera resultaban adaptables a
 distintos dispositivos.
 
 La evolución de |CSS| trajo dos modernos métodos de posicionamiento que han
-facilitado enormemente esta tarea. En esta apartado explicaremos los fundamentos
+facilitado enormemente esta tarea. En este apartado explicaremos los fundamentos
 de ambos sin entrar en excesiva profundidad. La idea es conocer sus fundamentos
 y afianzarlos con un par de juegos que se enlazarán más adelante.
 
@@ -433,7 +433,7 @@ Para aprender más posibilidades intente completar los 28 niveles de
 
 .. [#] Que el término no le lleve a confusión. En inglés, existe el concepto de
    :dfn:`responsive web design`, que hace referencia a lo que nosotros tratamos
-   aquí: un diseño que se adapta el aspecto al tamaño del dispositivo, mediante
+   aquí: un diseño que adapta el aspecto al tamaño del dispositivo, mediante
    una solución en el cliente (posicionamiento y *media queries*). En cambio,
    existe otro término denominado :dfn:`adaptative web design` más antiguo en
    que se detectan las características del dispositivo y se envía al servidor

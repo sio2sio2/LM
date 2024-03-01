@@ -11,7 +11,7 @@ Versiones
 que versiones, niveles, porque el siguiente se va construyendo sobre el anterior.
 
 |CSS|\ 1
-   Se publicó en a finales de 1995 e incluía aspectos básicos: propiedades de la
+   Se publicó a finales de 1995 e incluía aspectos básicos: propiedades de la
    tipografía, colores, alineaciones, :ref:`propiedades de las cajas
    <html-maquetacion>` como bordes o márgenes, presentación de listas, etc.
 
@@ -41,7 +41,7 @@ que versiones, niveles, porque el siguiente se va construyendo sobre el anterior
 Asociación al |HTML|
 ====================
 Dado que las reglas |CSS| se aplican a un documento |HTML|, es necesario
-establecer la asociación entre de las unas con el otro. Hay tres estrategias
+establecer la asociación entre las unas y el otro. Hay tres estrategias
 que, de menor a mayor conveniencia, son:
 
 #. Reglas **en línea**, esto es, aplicar directamente el estilo mediante el atributo ``style``:

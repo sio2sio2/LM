@@ -46,7 +46,7 @@ imágenes\ [#]_:
    Los nuevos atributos facilitan el `diseño adaptable
    <https://es.wikipedia.org/wiki/Dise%C3%B1o_web_adaptable>`_. *scrset*
    enumera, separadas por comas, las |URL|\s donde se encuentran las imágenes
-   junto al criterio por el que se seleccionan. Por ejemplo:
+   junto al ancho que tiene cada una. Por ejemplo:
 
    .. code-block:: none
 
