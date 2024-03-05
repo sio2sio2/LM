@@ -15,6 +15,8 @@
    - El cuerpo del texto tal como se ha descrito.
    - El pie de la página
 
+   .. _ej-html-struct:
+
 #. Componga la página web de una tienda de informática que tendrá la siguiente
    estructura:
 

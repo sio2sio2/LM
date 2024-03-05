@@ -187,8 +187,8 @@ Por ejemplo:</p>
 </li>
 <li><p>Las <em>reglas</em> o <em class="dfn">normas de estilo</em> son propiamente las que definen el aspecto
 de los elementos <abbr title="HyperText Markup Language">HTML</abbr>. Tienen la siguiente sintaxis:</p>
-<table class="reglacss docutils align-default" id="id4">
-<caption><span class="caption-text">Norma de estilo</span><a class="headerlink" href="#id4" title="Enlace permanente a esta tabla">¶</a></caption>
+<table class="reglacss docutils align-default" id="id6">
+<caption><span class="caption-text">Norma de estilo</span><a class="headerlink" href="#id6" title="Enlace permanente a esta tabla">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>p</p></th>
 <th class="head"><p>{</p></th>
@@ -387,7 +387,7 @@ cambio, son necesarios. Véase el próximo ejemplo:</p>
 </dl>
 <dl id="css-pseudoelementos">
 <dt><strong>Pseudoelementos</strong></dt><dd><p>Los <em class="dfn">pseudoelementos</em> son entidades del documento <abbr title="HyperText Markup Language">HTML</abbr> que no se
-representan con nodos elemento. Desde el nivel 3<a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, se notan anteponiendo
+representan con nodos elemento. Desde el nivel 3<a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, se notan anteponiendo
 dos veces dos puntos («::») al nombre del pseudoelemento. Algunos de los
 definidos son:</p>
 <ul>
@@ -908,8 +908,8 @@ a igual de éste, mayor el segundo, y a igual de éste, mayor el tercero.</p>
 <p>Pruebe a calcular la especificidad de cualquier selector que se le
 ocurra en <a class="reference external" href="https://polypane.app/css-specificity-calculator/">polypane.app</a>.</p>
 </div>
-<table class="css-espec docutils align-default" id="id5">
-<caption><span class="caption-text">Ejemplos</span><a class="headerlink" href="#id5" title="Enlace permanente a esta tabla">¶</a></caption>
+<table class="css-espec docutils align-default" id="id7">
+<caption><span class="caption-text">Ejemplos</span><a class="headerlink" href="#id7" title="Enlace permanente a esta tabla">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Selector</p></th>
 <th class="head"><p>Especificidad</p></th>
@@ -993,8 +993,158 @@ de los valores anteriores y que lo aplica a todas las propiedades a la vez.</p>
 </dd>
 </dl>
 </section>
+<section id="unidades">
+<span id="css-unidades"></span><h2><span class="section-number">7.2.4. </span>Unidades<a class="headerlink" href="#unidades" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Muchas propiedades <abbr title="Cascading Style Sheets">CSS</abbr> (anchos, altos, márgenes, etc) requieren la expresión
+de una longitud en una unidad de medida, por lo que es muy recomendable saber
+qué unidades nos permite usar <abbr title="Cascading Style Sheets">CSS</abbr>. Podemos distinguir:</p>
+<ul class="simple">
+<li><p>Longitudes absolutas.</p></li>
+<li><p>Longitudes relativas.</p></li>
+<li><p>Porcentajes.</p></li>
+</ul>
+<section id="longitudes-absolutas">
+<h3><span class="section-number">7.2.4.1. </span>Longitudes absolutas<a class="headerlink" href="#longitudes-absolutas" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Son aquellas que utilizan ninguna referencia y, por tanto, siempre representan
+la misma longitud.</p>
+<table class="unidades-css docutils align-default" id="id8">
+<caption><span class="caption-text">Unidades absolutas</span><a class="headerlink" href="#id8" title="Enlace permanente a esta tabla">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Unidad</p></th>
+<th class="head"><p>Nombre</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>px</p></td>
+<td><p>píxel</p></td>
+<td><p>Es la unidad mínima en que se descompone una imagen.</p></td>
+</tr>
+<tr class="row-odd"><td><p>pt</p></td>
+<td><p>punto</p></td>
+<td><p>Equivale a <span class="math notranslate nohighlight">\(96/72\)</span> píxeles<a class="footnote-reference brackets" href="#id5" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>pc</p></td>
+<td><p>pica</p></td>
+<td><p>Equivale a 16 píxeles.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Q</p></td>
+<td><p>cuarto de mm</p></td>
+<td><p>Es la cuarta parte de un mm.</p></td>
+</tr>
+<tr class="row-even"><td><p>mm</p></td>
+<td><p>milímetro</p></td>
+<td><p>Es la décima parte de un cm.</p></td>
+</tr>
+<tr class="row-odd"><td><p>cm</p></td>
+<td><p>centímetro</p></td>
+<td><p>Es la centésima parte del metro.</p></td>
+</tr>
+<tr class="row-even"><td><p>in</p></td>
+<td><p>pulgada</p></td>
+<td><p>Equivale a 96px o 2,54 cm.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Por lo general, de estas medidas absolutas se usa <code class="docutils literal notranslate"><span class="pre">px</span></code> cuando definimos
+unidades para la pantalla, y <code class="docutils literal notranslate"><span class="pre">in</span></code>, <code class="docutils literal notranslate"><span class="pre">cm</span></code> o <code class="docutils literal notranslate"><span class="pre">mm</span></code> cuando definidos
+unidades para la versión impresa (p.e. unos márgenes de impresión).</p>
+</section>
+<section id="longitudes-relativas">
+<h3><span class="section-number">7.2.4.2. </span>Longitudes relativas<a class="headerlink" href="#longitudes-relativas" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Son aquellas relativas a una referencia como el tamaño del dispositivo o el
+tamaño de la fuente. Por tanto, si modificamos el tamaño de la referencia,
+escalarán proporcionalmente.</p>
+<table class="unidades-css docutils align-default" id="id9">
+<caption><span class="caption-text">Unidades relativas</span><a class="headerlink" href="#id9" title="Enlace permanente a esta tabla">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Unidad</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>em</p></td>
+<td><p>Equivale al ancho ocupado por la letra <em>M</em> mayúscula (la más ancha y de
+ahí su nombre) definida para el elemento. Por tanto, depende del valor de
+la propiedad <code class="docutils literal notranslate"><span class="pre">font-size</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>rem</p></td>
+<td><p>Como la anterior, pero el valor de <code class="docutils literal notranslate"><span class="pre">font-size</span></code> que se usa es el del
+elemento raíz (o sea, <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html#technical_summary">html</a>), cuyo valor predeterminado es 16px.</p></td>
+</tr>
+<tr class="row-even"><td><p>ex</p></td>
+<td><p>Es la altura ocupada por la letra <em>x</em> minúscula definida para el elemento.
+En este caso, su valor depende tanto de <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-size">font-size</a> como de
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-family">font-family</a>. Su valor aproximado, aunque variable, es 0.5em.</p></td>
+</tr>
+<tr class="row-odd"><td><p>rex</p></td>
+<td><p>Como el anterior, pero los valores que se toman como referencia son los
+del elemento <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html#technical_summary">html</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>ch</p></td>
+<td><p>Es el ancho del carácter <cite>0</cite> definido para el elemento.</p></td>
+</tr>
+<tr class="row-odd"><td><p>rch</p></td>
+<td><p>Como el anterior, pero se toma como referencia el elemento <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html#technical_summary">html</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>lh</p></td>
+<td><p>Equivale al valor de la propiedad <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/line-height">line-height</a> del elemento.</p></td>
+</tr>
+<tr class="row-odd"><td><p>rlh</p></td>
+<td><p>Como el anterior, pero se toma como referencia el elemento <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html#technical_summary">html</a>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="porcentajes">
+<h3><span class="section-number">7.2.4.3. </span>Porcentajes<a class="headerlink" href="#porcentajes" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Expresan un porcentaje sobre una determinada longitud.</p>
+<table class="unidades-css docutils align-default" id="id10">
+<caption><span class="caption-text">Porcentajes</span><a class="headerlink" href="#id10" title="Enlace permanente a esta tabla">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Unidad</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>%</p></td>
+<td><p>Por lo general, expresa un porcentaje sobre una propiedad del elemento
+padre o del propio elemento.</p></td>
+</tr>
+<tr class="row-odd"><td><p>vw</p></td>
+<td><p>Expresa un porcentaje sobre el ancho del área de visualización que
+proporciona el navegador.</p></td>
+</tr>
+<tr class="row-even"><td><p>vh</p></td>
+<td><p>Expresa un porcentaje sobre la altura del área de visualización que
+proporciona el navegador.</p></td>
+</tr>
+<tr class="row-odd"><td><p>vmin</p></td>
+<td><p>Expresa un porcentaje sobre el mínimo entre la anchura y la altura del
+área de visualización que proporciona el navegador.</p></td>
+</tr>
+<tr class="row-even"><td><p>vmax</p></td>
+<td><p>Expresa un porcentaje sobre el máximo entre la anchura y la altura del
+área de visualización que proporciona el navegador.</p></td>
+</tr>
+</tbody>
+</table>
+<p>De todas estas unidades, la más anárquica es la de <em>porcentaje</em>, puesto que no
+está definido de forma general sobre qué longitud se calcula el porcentaje, sino
+que dependiendo de la propiedad <abbr title="Cascading Style Sheets">CSS</abbr> la longitud de referencia será una u otra.
+Por ejemplo, para <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/width">width</a> o <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin">margin</a> se toma como
+referencia la anchura del elemento contenedor (padre). En cambio, para
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/line-height">line-height</a> se usa el tamaño de letra (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-size">font-size</a>) del
+elemento mismo.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p><a class="reference external" href="https://jameshfisher.com/">Jim Fisher</a> facilita una <a class="reference external" href="https://jameshfisher.com/2019/12/29/what-are-css-percentages/#square-wrapper">tabla de
+propiedades CSS y referentes cuando se usan porcentajes como valor</a></p>
+</div>
+</section>
+</section>
 <section id="ejercicios-propuestos">
-<h2><span class="section-number">7.2.4. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">7.2.5. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Enlace permanente a este encabezado">¶</a></h2>
 <ol class="arabic">
 <li><p>Escriba el selector apropiado para las descripciones que se hacen a continuación:</p>
 <ol class="loweralpha simple">
@@ -1063,10 +1213,16 @@ las cuales son hijas de un elemento <code class="docutils literal notranslate"><
 </ol>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id3" role="note">
+<aside class="footnote brackets" id="id4" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>En el nivel 2 se les anteponía uno solo como a las pseudoclases. Los
 navegadores modernos aún soportan esta sintaxis antigua.</p>
+</aside>
+<aside class="footnote brackets" id="id5" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
+<p>La medida no es caprichosa. Actualmente los monitores tienen 96 <abbr title="Pixels per inch">ppi</abbr>
+(píxeles por pulgada). Sin embargo, los monitores antiguos tenían una
+resolución de 72 <abbr title="Pixels per inch">ppi</abbr>, de ahí la relación de <span class="math notranslate nohighlight">\(96/72\)</span>.</p>
 </aside>
 </aside>
 </section>
@@ -1093,7 +1249,13 @@ navegadores modernos aún soportan esta sintaxis antigua.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#cascada">7.2.3. Cascada</a></li>
-<li><a class="reference internal" href="#ejercicios-propuestos">7.2.4. Ejercicios propuestos</a></li>
+<li><a class="reference internal" href="#unidades">7.2.4. Unidades</a><ul>
+<li><a class="reference internal" href="#longitudes-absolutas">7.2.4.1. Longitudes absolutas</a></li>
+<li><a class="reference internal" href="#longitudes-relativas">7.2.4.2. Longitudes relativas</a></li>
+<li><a class="reference internal" href="#porcentajes">7.2.4.3. Porcentajes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ejercicios-propuestos">7.2.5. Ejercicios propuestos</a></li>
 </ul>
 </li>
 </ul>

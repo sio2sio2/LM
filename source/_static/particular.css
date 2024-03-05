@@ -198,3 +198,12 @@ a[href^="https://developer.mozilla.org/"].external::before {
 .html-url-base td {
    font-family: monospace;
 }
+.unidades-css {
+   td:first-child {
+      font-family: monospace;
+   }
+
+   :is(th, td):first-child p {
+      hyphens: none;
+   }
+}

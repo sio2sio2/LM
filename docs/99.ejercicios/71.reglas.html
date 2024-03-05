@@ -10,7 +10,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>7.3. Definición de reglas &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <title>CSS: Reglas y maquetación &#8212; documentación de Lenguajes de Marcas - rolling</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
@@ -45,8 +45,7 @@
 
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
-    <link rel="next" title="7.4. Bootstrap" href="04.bootstrap.html" />
-    <link rel="prev" title="7.2. Sintaxis" href="02.sintaxis.html" /> 
+    <link rel="prev" title="CSS: Selectores" href="70.selectores.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head><body>
     <div class="relbar-top">
@@ -58,15 +57,11 @@
           <a href="../genindex.html" title="Índice General"
              accesskey="I">índice</a></li>
         <li class="right" >
-          <a href="04.bootstrap.html" title="7.4. Bootstrap"
-             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
-        <li class="right" >
-          <a href="02.sintaxis.html" title="7.2. Sintaxis"
+          <a href="70.selectores.html" title="CSS: Selectores"
              accesskey="P">anterior</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
 
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">7. </span><abbr title="Cascading Style Sheets">CSS</abbr></a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">7.3. </span>Definición de reglas</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><abbr title="Cascading Style Sheets">CSS</abbr>: Reglas y maquetación</a></li> 
       </ul>
     </div>
     </div>
@@ -77,8 +72,44 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="definicion-de-reglas">
-<h1><span class="section-number">7.3. </span>Definición de reglas<a class="headerlink" href="#definicion-de-reglas" title="Enlace permanente a este encabezado">¶</a></h1>
+  <section id="css-reglas-y-maquetacion">
+<h1><abbr title="Cascading Style Sheets">CSS</abbr>: Reglas y maquetación<a class="headerlink" href="#css-reglas-y-maquetacion" title="Enlace permanente a este encabezado">¶</a></h1>
+<ol class="arabic">
+<li><p>Tome el <a class="reference internal" href="63.html-struct.html#ej-html-struct"><span class="std std-ref">ejercicio de estructuración de HTML</span></a> y
+escribas reglas <abbr title="Cascading Style Sheets">CSS</abbr> para lograr el siguiente aspecto:</p>
+<ol class="loweralpha simple">
+<li><p>Maquete la página como se ve en la imagen de aquel ejercicio usando
+flexbox y sabiendo que:</p>
+<ul class="simple">
+<li><p>El ancho máximo ocupado son 1140px y la página debe estar centrada.</p></li>
+<li><p>Cuando el ancho de la pantalla es menor a 576px, el menú de navegación,
+el cuerpo de la página y la banda derecha de anuncios, deben situarse
+uno debajo del otro, en vez de en tres columnas.</p></li>
+<li><p>Cuando las tres zonas está dispuestas en columnas, el menú de navegación,
+no debe ser más estrecho de 75px. ni más ancho de 200px; y la banda de
+anuncios no puede ser más ancha de 200px.</p></li>
+<li><p>Debe haber un espacio entre las tres zonas de .25rem.</p></li>
+</ul>
+</li>
+<li><p>Ponga colores de fondo diferentes para:</p>
+<ul class="simple">
+<li><p>La cabecera.</p></li>
+<li><p>Las tres zonas.</p></li>
+<li><p>El pie y el espacio que queda entre las zonas.</p></li>
+<li><p>El margen exterior.</p></li>
+</ul>
+</li>
+<li><p>Reproduzca los detalles que se pueden apreciar en la captura que acompaña a
+este texto (aspecto de la ruta de navegación, alineación del texto, etc.)</p></li>
+</ol>
+<img alt="../_images/71-captura.png" src="../_images/71-captura.png" />
+<ol class="loweralpha simple" start="4">
+<li><p>Repita el ejercicio, pero maquetando con grid.</p></li>
+</ol>
+<p>Se facilita una <a class="reference download internal" download="" href="../_downloads/0dd3c8888c7bb3ba66712758b59a341c/71-plantilla.html"><code class="xref download docutils literal notranslate"><span class="pre">plantilla</span> <span class="pre">HTML</span></code></a> a cuyos
+elementos puede añadir atributos <code class="docutils literal notranslate"><span class="pre">id</span></code> y <code class="docutils literal notranslate"><span class="pre">class</span></code>, si lo estima necesario.</p>
+</li>
+</ol>
 </section>
 
 
@@ -93,18 +124,13 @@
         </a></p>
   <div class="sphinxprev">
     <h4>Previous page</h4>
-    <p class="topless"><a href="02.sintaxis.html"
-                          title="Previous page">&larr; <span class="section-number">7.2. </span>Sintaxis</a></p>
-  </div>
-  <div class="sphinxnext">
-    <h4>Next page</h4>
-    <p class="topless"><a href="04.bootstrap.html"
-                          title="Next page">&rarr; <span class="section-number">7.4. </span>Bootstrap</a></p>
+    <p class="topless"><a href="70.selectores.html"
+                          title="Previous page">&larr; <abbr title="Cascading Style Sheets">CSS</abbr>: Selectores</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>Esta página</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/07.css/03.definicion.rst.txt"
+      <li><a href="../_sources/99.ejercicios/71.reglas.rst.txt"
             rel="nofollow">Mostrar el código</a></li>
     </ul>
    </div>
@@ -148,21 +174,17 @@
           <a href="../genindex.html" title="Índice General"
              >índice</a></li>
         <li class="right" >
-          <a href="04.bootstrap.html" title="7.4. Bootstrap"
-             >siguiente</a> &nbsp; &nbsp;</li>
-        <li class="right" >
-          <a href="02.sintaxis.html" title="7.2. Sintaxis"
+          <a href="70.selectores.html" title="CSS: Selectores"
              >anterior</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
 
-          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">7. </span><abbr title="Cascading Style Sheets">CSS</abbr></a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">7.3. </span>Definición de reglas</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><abbr title="Cascading Style Sheets">CSS</abbr>: Reglas y maquetación</a></li> 
       </ul>
     </div>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Derechos de autor CC BY 4.0, 2023-2023, José Miguel Sánchez Alés.
+        &#169; Derechos de autor CC BY 4.0, 2023-2024, José Miguel Sánchez Alés.
       Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
     <!-- cloud_sptheme 1.4 -->

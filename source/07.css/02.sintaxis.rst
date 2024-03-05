@@ -947,6 +947,115 @@ influída por seis factores:
    .. note:: Existe, además, la propiedad :devmozcss:`all`, que puede tomar uno
       de los valores anteriores y que lo aplica a todas las propiedades a la vez.
 
+.. _css-unidades:
+
+Unidades
+========
+Muchas propiedades |CSS| (anchos, altos, márgenes, etc) requieren la expresión
+de una longitud en una unidad de medida, por lo que es muy recomendable saber
+qué unidades nos permite usar |CSS|. Podemos distinguir:
+
+* Longitudes absolutas.
+* Longitudes relativas.
+* Porcentajes.
+
+Longitudes absolutas
+--------------------
+Son aquellas que utilizan ninguna referencia y, por tanto, siempre representan
+la misma longitud.
+
+.. table:: Unidades absolutas
+   :class: unidades-css
+
+   ======= ============= ==============================================================
+   Unidad   Nombre        Descripción
+   ======= ============= ==============================================================
+   px       píxel         Es la unidad mínima en que se descompone una imagen.
+   pt       punto         Equivale a :math:`96/72` píxeles\ [#]_.
+   pc       pica          Equivale a 16 píxeles.
+   Q        cuarto de mm  Es la cuarta parte de un mm.
+   mm       milímetro     Es la décima parte de un cm.
+   cm       centímetro    Es la centésima parte del metro.
+   in       pulgada       Equivale a 96px o 2,54 cm.
+   ======= ============= ==============================================================
+
+Por lo general, de estas medidas absolutas se usa ``px`` cuando definimos
+unidades para la pantalla, y ``in``, ``cm`` o ``mm`` cuando definidos
+unidades para la versión impresa (p.e. unos márgenes de impresión).
+
+Longitudes relativas
+--------------------
+Son aquellas relativas a una referencia como el tamaño del dispositivo o el
+tamaño de la fuente. Por tanto, si modificamos el tamaño de la referencia,
+escalarán proporcionalmente.
+
+.. table:: Unidades relativas
+   :class: unidades-css
+
+   +--------+----------------------------------------------------------------------------+
+   | Unidad | Descripción                                                                |
+   +========+============================================================================+
+   | em     | Equivale al ancho ocupado por la letra *M* mayúscula (la más ancha y de    |
+   |        | ahí su nombre) definida para el elemento. Por tanto, depende del valor de  |
+   |        | la propiedad ``font-size``.                                                |
+   +--------+----------------------------------------------------------------------------+
+   | rem    | Como la anterior, pero el valor de ``font-size`` que se usa es el del      |
+   |        | elemento raíz (o sea, :devmoz:`html`), cuyo valor predeterminado es 16px.  |
+   +--------+----------------------------------------------------------------------------+
+   | ex     | Es la altura ocupada por la letra *x* minúscula definida para el elemento. |
+   |        | En este caso, su valor depende tanto de :devmozcss:`font-size` como de     |
+   |        | :devmozcss:`font-family`. Su valor aproximado, aunque variable, es 0.5em.  |
+   +--------+----------------------------------------------------------------------------+
+   | rex    | Como el anterior, pero los valores que se toman como referencia son los    |
+   |        | del elemento :devmoz:`html`.                                               |
+   +--------+----------------------------------------------------------------------------+
+   | ch     | Es el ancho del carácter `0` definido para el elemento.                    |
+   +--------+----------------------------------------------------------------------------+
+   | rch    | Como el anterior, pero se toma como referencia el elemento :devmoz:`html`. |
+   +--------+----------------------------------------------------------------------------+
+   | lh     | Equivale al valor de la propiedad :devmozcss:`line-height` del elemento.   |
+   +--------+----------------------------------------------------------------------------+
+   | rlh    | Como el anterior, pero se toma como referencia el elemento :devmoz:`html`. |
+   +--------+----------------------------------------------------------------------------+
+
+Porcentajes
+-----------
+Expresan un porcentaje sobre una determinada longitud.
+
+.. table:: Porcentajes
+   :class: unidades-css
+
+   +--------+----------------------------------------------------------------------------+
+   | Unidad | Descripción                                                                |
+   +========+============================================================================+
+   | %      | Por lo general, expresa un porcentaje sobre una propiedad del elemento     |
+   |        | padre o del propio elemento.                                               |
+   +--------+----------------------------------------------------------------------------+
+   | vw     | Expresa un porcentaje sobre el ancho del área de visualización que         |
+   |        | proporciona el navegador.                                                  |
+   +--------+----------------------------------------------------------------------------+
+   | vh     | Expresa un porcentaje sobre la altura del área de visualización que        |
+   |        | proporciona el navegador.                                                  |
+   +--------+----------------------------------------------------------------------------+
+   | vmin   | Expresa un porcentaje sobre el mínimo entre la anchura y la altura del     |
+   |        | área de visualización que proporciona el navegador.                        |
+   +--------+----------------------------------------------------------------------------+
+   | vmax   | Expresa un porcentaje sobre el máximo entre la anchura y la altura del     |
+   |        | área de visualización que proporciona el navegador.                        |
+   +--------+----------------------------------------------------------------------------+
+
+De todas estas unidades, la más anárquica es la de *porcentaje*, puesto que no
+está definido de forma general sobre qué longitud se calcula el porcentaje, sino
+que dependiendo de la propiedad |CSS| la longitud de referencia será una u otra.
+Por ejemplo, para :devmozcss:`width` o :devmozcss:`margin` se toma como
+referencia la anchura del elemento contenedor (padre). En cambio, para
+:devmozcss:`line-height` se usa el tamaño de letra (:devmozcss:`font-size`) del
+elemento mismo.
+
+.. seealso:: `Jim Fisher <https://jameshfisher.com/>`_ facilita una `tabla de
+   propiedades CSS y referentes cuando se usan porcentajes como valor
+   <https://jameshfisher.com/2019/12/29/what-are-css-percentages/#square-wrapper>`_
+
 Ejercicios propuestos
 =====================
 
@@ -958,4 +1067,10 @@ Ejercicios propuestos
 .. [#] En el nivel 2 se les anteponía uno solo como a las pseudoclases. Los
    navegadores modernos aún soportan esta sintaxis antigua.
 
+.. [#] La medida no es caprichosa. Actualmente los monitores tienen 96 |ppi|
+   (píxeles por pulgada). Sin embargo, los monitores antiguos tenían una
+   resolución de 72 |ppi|, de ahí la relación de :math:`96/72`.
+
 .. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`
+.. |ppi| replace:: :abbr:`ppi (Pixels per inch)`
+

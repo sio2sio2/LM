@@ -287,18 +287,39 @@ realizar maquetaciones complejas. Empezemos por definir algunos términos:
 .. image:: files/grid.png
 
 :dfn:`Contenedor`
-
-:dfn:`Column`
-
-:dfn:`Row`
+   Es el elemento que contiene toda la rejilla o cuadrícula.
 
 :dfn:`Cell`
-
-:dfn:`Area`
+   Es cada una de las posiciones en que se descompone la cuadrícula. En
+   principio, los elementos hijos (*ítems*) del contenedor ocupan una celda, a
+   menos que se especifique que ocupa varias filas o varias columnas mediante
+   las propiedades :devmozcss:`grid-row-start`, etc. que se tratarán más
+   adelante.
 
 :dfn:`Line`
+   Son las líneas horizontales o verticales imaginarias que separan unas celdas
+   de otras.
+
+:dfn:`Gap`
+   Es el espacio (o margen) que queda entre celdas. Por defecto, no existe. En
+   principio, también puede lograrse este espacio de separación definiendo
+   márgenes para los ítems, pero es mejor definirlo mediante la propiedad
+   :devmozcss:`gap`, ya que si se define con ella este espacio formará parte de
+   los cálculos que hace el navegador para definir las dimesiones de los ítems
+   (p.e. cuando se definen con ``fr`` como se verá más adelante).
 
 :dfn:`Track`
+   Es el conjunto de celdas entre dos *líneas* contiguas.
+   
+:dfn:`Column`
+   Es cada una de la bandas (*tracks*) verticales.
+
+:dfn:`Row`
+   Es cada una de las bandas (*tracks*) horizontales.
+
+:dfn:`Area`
+   Es un conjunto de celdas contiguas que constituyen un rectángulo. Cualquier
+   rectángulo constituído por celdas contíguas es un *área* válida.
 
 * Se aplica sobre las cajas que se encuentran contenidas en un elemento cuya
   propiedad :devmozcss:`display` tenga el valor ``grid``, de modo que las dichas
@@ -316,9 +337,10 @@ realizar maquetaciones complejas. Empezemos por definir algunos términos:
         */
      }
 
-  El ejemplo genera una rejilla de 4x4, en la que todas las cajas (ítems)
-  ocupan lo mismo\ [#]_. Además, se ha utilizado ``repeat()`` en vez de
-  enumerar uno a uno todos los anchos y altos puesto que son iguales.
+  El ejemplo genera una rejilla de 4x4, en la que todas las cajas o *ítems*
+  (en principio serían 16, aunque pueden ser menos) ocupan lo mismo\ [#]_.
+  Además, se ha utilizado ``repeat()`` en vez de enumerar uno a uno todos los
+  anchos y altos puesto que son iguales.
 
   Estas medidas se pueden poner en valores absolutos (p.e. 400px) y, si
   los mezcláramos con valores relativos, sería complicado ocupar todo el
@@ -331,7 +353,7 @@ realizar maquetaciones complejas. Empezemos por definir algunos términos:
      #container {
         display: grid;
         grid-template: repeat(4, 1fr) / repeat(4, 1fr);
-        gap: .15em; /* Espacio entre cajas */
+        gap: .15rem; /* Espacio entre cajas */
      }
 
   En que cada ítem ocupa una fracción del restante. Como el restante es todo,
@@ -376,20 +398,38 @@ realizar maquetaciones complejas. Empezemos por definir algunos términos:
   primera y la última ocupen todo el ancho:
 
   .. code-block:: css
-     :emphasize-lines: 2,3
+     :emphasize-lines: 3, 7
 
       #container {
          display: grid;
          grid-template: repeat(6, 1fr) / repeat(4, 1fr);
-         gap: .15em;
+         gap: .15rem;
       }
 
       #item-1, #item-18 {
-         grid-column: 1 / -1;
+         grid-column: 1 / -1; /* o grid-column: span 4 */
          background-color: #FA9;
       }
 
+  .. /*
+
   .. image:: files/grid04.png
+
+* Un ítem que ocupe varias celdas (un área), podemos hacer que herede las filas,
+  columnas y huecos definidos para el contenedor. Por ejemplo, si al |CSS|
+  anterior añadimos:
+
+  .. code-block:: css
+     :emphasize-lines: 3,4
+
+     #item-1 {
+         /* Ya está definido arriba que ocupa dos columnas: grid-column: 1 / -1 */
+         display: grid;
+         grid-template-columns: subgrid;
+     }
+
+  Este ítem podría contener dentro cuatro elementos y éstos se distribuirían en
+  cuatro columnas separadas por una distancia de *.15rem*.
 
 * Cuando la maquetación es complicada, pueden mapearse las distintas áreas que
   ocupan las cajas con la propiedad :devmozcss:`grid-template-areas` y asociar
@@ -423,11 +463,15 @@ realizar maquetaciones complejas. Empezemos por definir algunos términos:
 .. todo:: Explicar `auto-fill y auto-fit
    <https://lenguajecss.com/css/maquetacion-y-colocacion/grid-css/#funci%C3%B3n-minmax>`_.
 
-.. todo:: Explicar `subgrid
-   <https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Subgrid>`_.
-
 Para aprender más posibilidades intente completar los 28 niveles de  
 `CSS Garden <https://cssgridgarden.com/>`_.
+
+Ejercicios propuestos
+=====================
+
+.. include:: /99.ejercicios/71.reglas.rst
+   :start-line: 4
+   :end-line: 35
 
 .. rubric:: Notas al pie
 
