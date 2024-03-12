@@ -573,7 +573,7 @@ Dentro de un selector simple pueden aparecer yuxtapuestos hasta seis tipos de
 
       .. code-block:: css
 
-         /* Todos los ítem de lista se ven en negrita, excepto el primero */
+         /* Todos los ítems de lista se ven en negrita, excepto el primero */
          li:not(:first-child) {
             font-weight: bold;
          }

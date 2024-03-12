@@ -28,7 +28,15 @@
 
    .. image:: /99.ejercicios/files/71-captura.png
 
-   d. Repita el ejercicio, pero maquetando con grid.
+   d. Repita el ejercicio, pero maquetando con grid:
+
+      + Mantenga el ancho de la página.
+      + Mantenga que para anchos menores a 576px se vean las tres cajas una
+        debajo de otra.
+      + Para anchos menores a 800px, el menú de navegación debe ocupar 125px y
+        la banda de publicidad 150px.
+      + Para anchos mayores, tanto el menú de navegación como el de publicidad
+        deben ocupar 200px.
 
    Se facilita una :download:`plantilla HTML </99.ejercicios/files/71-plantilla.html>` a cuyos
    elementos puede añadir atributos ``id`` y ``class``, si lo estima necesario.

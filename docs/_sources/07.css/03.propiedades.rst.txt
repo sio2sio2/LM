@@ -153,9 +153,9 @@ Flexbox
      .item {
          margin: .15em;
          /* Añadimos una anchura máxima. Si no la añadiéramos:
-            - Cuando los ítem se disponen en filas, el ancho de cada uno
+            - Cuando los ítems se disponen en filas, el ancho de cada uno
               se ajustará para albergar mejor el contenido.
-            - Cuando los ítem se disponen en columnas, cada uno ocupa todo
+            - Cuando los ítems se disponen en columnas, cada uno ocupa todo
               el ancho del contenedor.
          */
          max-width: 10em;
