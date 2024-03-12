@@ -321,6 +321,8 @@ realizar maquetaciones complejas. Empezemos por definir algunos términos:
    Es un conjunto de celdas contiguas que constituyen un rectángulo. Cualquier
    rectángulo constituído por celdas contíguas es un *área* válida.
 
+Dicho lo cual, podemos enunciar algunas de sus pautas más importantes:
+
 * Se aplica sobre las cajas que se encuentran contenidas en un elemento cuya
   propiedad :devmozcss:`display` tenga el valor ``grid``, de modo que las dichas
   cajas se disponen en una rejilla o cuadrícula (de ahí su nombre) para la cual
