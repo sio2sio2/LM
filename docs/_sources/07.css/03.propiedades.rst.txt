@@ -473,7 +473,7 @@ Ejercicios propuestos
 
 .. include:: /99.ejercicios/71.reglas.rst
    :start-line: 4
-   :end-line: 35
+   :end-line: 44
 
 .. rubric:: Notas al pie
 
