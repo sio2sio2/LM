@@ -419,6 +419,50 @@ que editar <code class="file docutils literal notranslate"><span class="pre">key
 </dl>
 </dd>
 </dl>
+</section>
+<section id="javascript">
+<span id="vscode-javascript"></span><h2>Javascript<a class="headerlink" href="#javascript" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Al igual que <a class="reference internal" href="#vscode-javascript"><span class="std std-ref">ocurre con JSON</span></a>, el programa tiene
+soporte nativo para la escritura de <span class="xref std std-ref">Javascript</span>
+(autocompletado, <a class="reference external" href="https://es.wikipedia.org/wiki/Snippet">snippets</a>), pese a lo cual podemos hacer algunos añadidos
+para mejorarla:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets">Javascript (ES6) code snippets</a>,
+que añade <em>snippets</em> adicionales.</p></li>
+<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=cmstead.js-codeformer">JS CodeFormer</a>,
+que mejora la capacidad nativa para la refactorización.</p></li>
+<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint">ESLint</a>,
+que permite integrar el <a class="reference external" href="https://eslint.org/">analizador estático de código ESLint</a>. Lo trataremos más adelante.</p></li>
+</ul>
+<dl>
+<dt><strong>Ejecución</strong></dt><dd><p><em>Javascript</em> es un lenguaje de programación que requiere de un intérprete.
+Cuando el código forma parte de un documento <abbr title="HyperText Markup Language">HTML</abbr> (que és el propósito de
+este módulo) el intérprete encargado es el incluido en el navegador y, por
+tanto, nos bastará con abrir en un navegador la página para comprobar su
+ejecución.</p>
+<p>Sin embargo, en otros casos en los que <em>Javascript</em> no se ejecuta en un
+navegador (por tanto, ajenos a nuestro módulo) o si, simplemente, estamos
+dando los primeros pasos en su aprendizaje y nos resulta más fácil prescindir
+del documento <abbr title="HyperText Markup Language">HTML</abbr>, necesitamos un intérprete independiente. El más
+conocido es <a class="reference external" href="https://nodejs.org/">NodeJS</a>, cuya instalación tanto en
+<em>Linux</em> como en <em>Windows</em> es trivial,</p>
+<p>Como para dar los primeros pasos es conveniente aislarse de las dificultades
+añadidas de ejecutar código <em>Javascript</em> sobre un documento <abbr title="HyperText Markup Language">HTML</abbr>, nos
+conviene conocer cómo probar código directamente en el editor. Para ello:</p>
+<ol class="arabic simple">
+<li><p>Instalamos <a class="reference external" href="https://nodejs.org/">NodeJS</a> en nuestro sistema, bien a través del paquete
+facilitado por su página web (<em>Windows</em>), bien a través de un paquete de
+distribución (como en el caso de las principales distribuciones de
+<em>Linux</em>).</p></li>
+<li><p>Instalar la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner">Code Runner</a>,
+que posibilita ejecutar el archivo activo pulsando <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Alt</kbd>+<kbd class="kbd docutils literal notranslate">n</kbd> y ver la salida a través la propia ventana de
+salida de <em>Visual Studio Code</em>. La ejecución no permite la depuración
+(puntos de ruptura, ejecución paso a paso, etc.), pero para ello ya existe
+<kbd class="kbd docutils literal notranslate">F5</kbd>.</p></li>
+</ol>
+</dd>
+</dl>
+<p><strong>Análisis estático</strong></p>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="id3" role="note">
@@ -450,6 +494,7 @@ nos podría interesar añadir más lenguajes a la secuencia.</p>
 <li><a class="reference internal" href="#json"><abbr title="JavaScript Object Notation">JSON</abbr></a></li>
 <li><a class="reference internal" href="#yaml"><abbr title="YAML Ain't Markup Language">YAML</abbr></a></li>
 <li><a class="reference internal" href="#html-css"><abbr title="HyperText Markup Language">HTML</abbr>/<abbr title="Cascading Style Sheets">CSS</abbr></a></li>
+<li><a class="reference internal" href="#javascript">Javascript</a></li>
 </ul>
 </li>
 </ul>

@@ -74,10 +74,12 @@ El tema básicamente tratará:
 * `Guía bastante completa en castellano de los elementos HTML`_.
 * `Referencia a algunos elementos de HTML5`_
 * `Norma viva de HTML5`_
+* `HTMHell`_, página que recoge recetas de malas y de buenas prácticas.
 
 .. _Guía bastante completa en castellano de los elementos HTML: http://lenguajehtml.com/p/html/
 .. _Referencia a algunos elementos de HTML5: https://html5andcss3.org/html5history.php
 .. _Norma viva de HTML5: https://html.spec.whatwg.org/multipage/
+.. _HTMHell: https://www.htmhell.dev/
 
 .. rubric:: Notas al pie
 

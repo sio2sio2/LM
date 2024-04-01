@@ -746,7 +746,7 @@ separando los selectores por comas. Esto:
    }
 
    pre {
-      color: ble;
+      color: blue;
    }
 
 equivale a esta lista:

@@ -381,6 +381,58 @@ específica para ella.
        En este caso, se abrirá Brave_ al pulsar :kbd:`Ctrl`\ +\ :kbd:`l`\ -\
        :kbd:`b`.
 
+.. _vscode-javascript:
+
+Javascript
+==========
+Al igual que :ref:`ocurre con JSON <vscode-javascript>`, el programa tiene
+soporte nativo para la escritura de :ref:`Javascript <javascript>`
+(autocompletado, `snippets <https://es.wikipedia.org/wiki/Snippet>`_), pese a lo cual podemos hacer algunos añadidos
+para mejorarla:
+
+* `Javascript (ES6) code snippets
+  <https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets>`_,
+  que añade *snippets* adicionales.
+* `JS CodeFormer
+  <https://marketplace.visualstudio.com/items?itemName=cmstead.js-codeformer>`_,
+  que mejora la capacidad nativa para la refactorización.
+* `ESLint <https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint>`_,
+  que permite integrar el `analizador estático de código ESLint
+  <https://eslint.org/>`_. Lo trataremos más adelante.
+
+**Ejecución**
+   *Javascript* es un lenguaje de programación que requiere de un intérprete.
+   Cuando el código forma parte de un documento |HTML| (que és el propósito de
+   este módulo) el intérprete encargado es el incluido en el navegador y, por
+   tanto, nos bastará con abrir en un navegador la página para comprobar su
+   ejecución.
+
+   Sin embargo, en otros casos en los que *Javascript* no se ejecuta en un
+   navegador (por tanto, ajenos a nuestro módulo) o si, simplemente, estamos
+   dando los primeros pasos en su aprendizaje y nos resulta más fácil prescindir
+   del documento |HTML|, necesitamos un intérprete independiente. El más
+   conocido es `NodeJS <https://nodejs.org/>`_, cuya instalación tanto en
+   *Linux* como en *Windows* es trivial,
+
+   Como para dar los primeros pasos es conveniente aislarse de las dificultades
+   añadidas de ejecutar código *Javascript* sobre un documento |HTML|, nos
+   conviene conocer cómo probar código directamente en el editor. Para ello:
+
+   #. Instalamos NodeJS_ en nuestro sistema, bien a través del paquete
+      facilitado por su página web (*Windows*), bien a través de un paquete de
+      distribución (como en el caso de las principales distribuciones de
+      *Linux*).
+
+   #. Instalar la extensión `Code Runner
+      <https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner>`_,
+      que posibilita ejecutar el archivo activo pulsando :kbd:`Ctrl`\ +\
+      :kbd:`Alt`\ +\ :kbd:`n` y ver la salida a través la propia ventana de
+      salida de *Visual Studio Code*. La ejecución no permite la depuración
+      (puntos de ruptura, ejecución paso a paso, etc.), pero para ello ya existe
+      :kbd:`F5`.
+
+**Análisis estático**
+
 .. https://code.visualstudio.com/docs/languages/html
    https://marketplace.visualstudio.com/items?itemName=smelukov.vscode-csstree : Probar para CSS
    Mirar tareas y asociación de teclas (¿se puede hacer por espacios de trabajo?)

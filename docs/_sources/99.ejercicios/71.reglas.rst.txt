@@ -42,4 +42,9 @@
    Se facilita una :download:`plantilla HTML </99.ejercicios/files/71-plantilla.html>` a cuyos
    elementos puede añadir atributos ``id`` y ``class``, si lo estima necesario.
 
+   .. rst-class:: sol-oculta
+
+      :download:`Solución propuesta </99.ejercicios/soluciones/css-pagina.html>`.
+
+
 .. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`

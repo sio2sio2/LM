@@ -1,0 +1,296 @@
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Javascript: Sintaxis &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" href="../_static/general.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+
+    
+    
+     
+        <script src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="prev" title="CSS: Reglas y maquetación" href="71.reglas.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="71.reglas.html" title="CSS: Reglas y maquetación"
+             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Javascript: Sintaxis</a></li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="javascript-sintaxis">
+<h1>Javascript: Sintaxis<a class="headerlink" href="#javascript-sintaxis" title="Enlace permanente a este encabezado">¶</a></h1>
+<section id="minimos">
+<h2>Mínimos<a class="headerlink" href="#minimos" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Realice los siguientes ejercicios en Javascript, atendiendo a los siguientes
+principios:</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>Son <em>scripts</em> que no están asociados a ningún documento HTML.</p></li>
+<li><p>Los datos iniciales se almacenan en variables sin pedirlos al usuario,
+ya que es un poco engorroso implementar la entrada de datos por teclado en
+este lenguaje.</p></li>
+<li><p>Aunque el enunciado no lo explicite, haga que el programa informe de
+la entrada y la salida.</p></li>
+<li><p>Resueltos los ejercicios, vuelva a resolverlos permitiendo que los datos
+de entrada, en vez de estar fijados en el código, se generen
+automáticamente entre dos valores que resulten lógicos. No haga un código
+aparte: mejore el código ya escrito para que se utilizen números
+prefijados o números aleatorios dependiendo del valor de una variable
+inicial.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Si es capaz de resolver de primeras los ejercicios de esta
+forma, no es necesario que escriba la versión simple.</p>
+</div>
+</li>
+<li><p>Los ejercicios pueden resolverse solamente con datos simples y sentencias
+condicionales. Una vez completada la relación, dele una vuelta a los
+ejercicios introduciendo conceptos más avanzados (arrays, objetos,
+funciones), en aquellos en que sea pertinente para mejorar su
+estructuración y simplificar su resolución.</p></li>
+</ol>
+</div></blockquote>
+<ol class="arabic">
+<li><p>A partir de dos números que simbolizan los lados de un rectángulo, calcule
+su área y su perímetro.</p></li>
+<li><p>A partir de dos números que simbolizan los catetos de un triángulo rectángulo,
+calcule la hipotenusa (<a class="reference external" href="https://es.wikipedia.org/wiki/Teorema_de_Pit%C3%A1go">teorema de Pitágoras</a>).</p></li>
+<li><p>Pase un cantidad expresada en segundos a horas, minutos y segundos.</p></li>
+<li><p>Dada la edad en años de una persona, haga un programa que determine si es o
+no mayor de edad.</p></li>
+<li><p>A partir de un monedero en el que se tienen monedas de 1 euro y billetes de
+5, 10, 20 y 50 euros, calcule el dinero total a partir de la cantidad de
+monedas de cada tipo que almacena.</p></li>
+<li><p>Dada una cantidad en euros, fracciónela en billetes de 5, 10, 20 y
+50, y monedas de 1, sabiendo que se pretende minimizar su número. En
+conclusión, que este ejercicio es el inverso al anterior.</p></li>
+<li><p>A partir de dos números calcule o la suma o la resta o la
+multiplicación o la división. La operación se debe escoger al azar.</p></li>
+<li><p>Determinar si un año es bisiesto. Son bisiestos los años múltiples de 4,
+excepto los de comienzo de siglo que no son múltiplos de 400: 1994 es
+bisiesto, 1900 no lo es, pero 2000, sí.</p></li>
+<li><p>Dada una nota númerica entre 0 y 10, devuelva la nota descriptiva, sabiendo
+las equivalencias:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Inferior</p></th>
+<th class="head"><p>Superior</p></th>
+<th class="head"><p>Nota descriptiva</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>&lt;3</p></td>
+<td><p>Muy deficiente</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>&lt;5</p></td>
+<td><p>Insuficiente</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>&lt;6</p></td>
+<td><p>Suficiente</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>&lt;7</p></td>
+<td><p>Bien</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>&lt;9</p></td>
+<td><p>Notable</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>10</p></td>
+<td><p>Sobresaliente</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>Dados dos puntos del plano a modo de centros y sendos radios, que definen dos
+circunferencias, determinar si ambas circunferencias son:</p>
+<ul class="simple">
+<li><p>Exteriores</p></li>
+<li><p>Tangentes exteriores.</p></li>
+<li><p>Secantes.</p></li>
+<li><p>Tangentes interiores.</p></li>
+<li><p>Una interior a la otra.</p></li>
+<li><p>Concéntricas.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="medios">
+<h2>Medios<a class="headerlink" href="#medios" title="Enlace permanente a este encabezado">¶</a></h2>
+<ol class="arabic">
+<li><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random">Math.random()</a>
+es un método que devuelve un número aleatorio entre 0 y 10. Escriba una
+función que devuelva un número entero aleatorio entre un mínimo y un máximo.</p></li>
+<li><p>Simular tandas de dos tiradas de dados y parar en la tanda en que el resultado
+de ambas tiradas coincida. En ese momento, indicar cuántas tandas han sido
+necesarias y cuál fue el resultado (1-1, 2-2, etc.).</p></li>
+<li><p>A partir de un número, obtenga otro número que sea la inversión de sus
+cifras. Por ejemplo, si el número inicial es 321, deberá resultar 123.</p></li>
+<li><p>Una cooperativa de viticultores paga el precio de la uva dependiendo del tipo de uva
+(tempranillo, palomino, etc) y de su calibre (1, 2 ó 3). Escriba un
+algoritmo para determinar el pago que debe recibir un agricultor dependiendo
+de cuáles sean las uvas que entregue. Discuta:</p>
+<ul class="simple">
+<li><p>El formato o método para pasar al algoritmo los precios unitarios de la
+uva según tipo y tamaño.</p></li>
+<li><p>El formato o método para pasar al programa las cantidades recolectadas
+por un agricultor.</p></li>
+</ul>
+<p>En base a lo anterior, escriba el código para hacer el cálculo.</p>
+</li>
+<li><p>Estudie las fechas en Javascript (<a class="reference external" href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Date">Date</a>)
+y, dada la fecha de nacimiento de una persona, haga un programa que determine
+si es o no mayor de edad.</p></li>
+<li><p>Tome diez números naturales entre 1 y 40 al azar y calcule la suma y el
+producto de todos ellos.</p></li>
+</ol>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/logo.png" alt="Logo"/>
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Javascript: Sintaxis</a><ul>
+<li><a class="reference internal" href="#minimos">Mínimos</a></li>
+<li><a class="reference internal" href="#medios">Medios</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="71.reglas.html"
+                          title="Previous page">&larr; <abbr title="Cascading Style Sheets">CSS</abbr>: Reglas y maquetación</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/99.ejercicios/80-js-basico.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="71.reglas.html" title="CSS: Reglas y maquetación"
+             >anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Javascript: Sintaxis</a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor CC BY 4.0, 2023-2024, José Miguel Sánchez Alés.
+      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

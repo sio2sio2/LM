@@ -184,6 +184,18 @@ o estructuras análogas:
          Extraidos del <a href="https://www.ine.es">Instituto Nacional de Estadistica</a>.
       </details>
 
+   .. table:: Atributos de details
+      :class: attr-html
+
+      +--------------+----------+---------------------------------------------+
+      | open         | \-       | Muestra abierto los detalles.               |
+      +--------------+----------+---------------------------------------------+
+      | name         | token    | Permite relacionar todos los elementos      |
+      |              |          | |details| cuyo valor de este atributo sea   |
+      |              |          | el mismo. Esto provoca que solamente uno    |
+      |              |          | del grupo pueda estar abierto.              |
+      +--------------+----------+---------------------------------------------+
+
 .. index:: address
 .. _html-address:
 

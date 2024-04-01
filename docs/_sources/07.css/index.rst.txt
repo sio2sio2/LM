@@ -4,7 +4,7 @@
 *****
 Es un lenguaje que permite definir la presentación gráfica de un documento
 marcado con |HTML| o cualquier dialecto derivado de |XML|. Forma, junto a :ref:`HTML
-<html>` y :ref:`Javascript <javascript>`, la base de las modernas tecnologías
+<html>` y :ref:`Javascript <js>`, la base de las modernas tecnologías
 web. Dentro de ellas, y fiel al principio de separar el contenido del formato,
 |CSS| es la parte encargada de describir el aspecto visual, independientemente
 de la estructura y la semántica.

@@ -396,6 +396,8 @@ Dicho lo cual, podemos enunciar algunas de sus pautas más importantes:
 
   .. image:: files/grid03.png
 
+  .. _grid-span:
+
   O bien, podemos ampliar a seis filas, añadir dos cajas más y hacer que la
   primera y la última ocupen todo el ancho:
 
@@ -432,6 +434,102 @@ Dicho lo cual, podemos enunciar algunas de sus pautas más importantes:
 
   Este ítem podría contener dentro cuatro elementos y éstos se distribuirían en
   cuatro columnas separadas por una distancia de *.15rem*.
+
+* Hasta ahora, por claridad, hemos definido las filas y las columnas de la
+  rejilla explícitamente:
+
+  .. code-block:: css
+
+     #container {
+        display: grid;
+        grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+     }
+
+  O sea, la rejilla es 4x4 y hemos definido 16 celdas. Incluso cuando :ref:`añadimos
+  dos celdas más e hicimos que la primera y la última ocuparan todo el ancho
+  <grid-span>` definimos una rejilla 6x4 para que todas las celdas siguieran
+  ocupando filas y columnas explícitas. Sin embargo, esto no tiene por qué ser así.
+  Para ilustrarlo añadamos a nuestro ejemplo inicial de 16 celdas:
+
+  .. code-block:: css
+     :emphasize-lines: 3
+
+     #item-4 {
+        grid-row-start: 1;
+        grid-column-start: 6;
+     }
+
+  En principio, habíamos definido una rejilla explícita de 4x4, pero hemos
+  colocado la cuarta celda en la sexta columna de la primera fila. El efecto es
+  este:
+
+  .. image:: files/grid-implicitas.png
+  
+  La rejilla pasa a ser 4x6, con cuatro columnas explícitas y dos columnas
+  implícitas. Las explícitas las controlamos, ya que las definimos y sabemos
+  que se reparten equitativamente el espacio disponible (``1fr``). En cambio,
+  ¿qué ocurre con las implícitas?
+
+  Las implícitas ocupan el espacio (ancho, porque son columnas) definido por la
+  propiedad :devmozcss:`grid-auto-columns`, que en ausencia de definición tiene
+  el valor ``auto``, o sea, el ancho necesario para albergar el contenido. Por
+  ese motivo, en la captura ajustan su ancho a la longitud del texto\ [#]_. En
+  cambio, si hiciéramos:
+
+  .. code-block:: css
+     :emphasize-lines: 4
+
+     #container {
+        display: grid;
+        grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+        grid-auto-columns: 300px;
+     }
+
+  las dos últimas columnas, por ser implícitas, ocuparían 300px cada una.
+
+  Hemos ilustrado este concepto para columnas, pero es análogo en filas (en
+  este caso con la propiedad :devmozcss:`grid-auto-rows`). Abundando en este
+  concepto, tanto :devmozcss:`grid-template-rows` como
+  :devmozcss:`grid-template-columns` tiene por defecto el valor ``none`` que
+  significa que todas las filas (o columnas) necesarias son implícitas. Por ese
+  motivo el código:
+
+  .. code-block:: css
+     :emphasize-lines: 3
+
+     #container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+     }
+
+     #item-4 {
+        grid-row-start: 1;
+        grid-column-start: 6;
+     }
+
+  provoca una representación prácticamente idéntica, con la salvedad de que la
+  rejilla sólo tendrá 3 filas.
+
+  .. image:: files/grid3x4.png
+
+  .. caution:: En realidad, que la representación sea la misma se debe a la
+     unión de varios factores:
+
+     + No hay definida una altura, por lo que la altura final depende de la
+       altura de los propios elementos.
+     + En este caso concreto, todos los ítems necesitan la misma altura para
+       contener su contenido, por lo que ``1fr`` para todas las filas equivale a
+       ``auto`` para todas ellas\ [#]_.
+     + El valor de ``none`` equivale al de ``auto`` para todas las filas porque
+       :devmozcss:`grid-auto-rows` no se ha definido y, en consecuencia, su
+       valor es ``auto``.
+
+  .. seealso:: Échele un ojo a las explicaciones de `css-tricks.com
+     <https://css-tricks.com/>`_ para `grid-template-rows
+     <https://css-tricks.com/almanac/properties/g/grid-template-rows/>`_ y
+     `grid-auto-rows
+     <https://css-tricks.com/almanac/properties/g/grid-auto-rows/>`_ (entendidas
+     estas se entienden las equivalentes para columnas).
 
 * Cuando la maquetación es complicada, pueden mapearse las distintas áreas que
   ocupan las cajas con la propiedad :devmozcss:`grid-template-areas` y asociar
@@ -493,6 +591,13 @@ Ejercicios propuestos
 .. [#] En realidad, el elemento contenedor ocupa todo el ancho del dispositivo.
    En cambio, el alto está indefinido a menos que le demos explícitamente una
    altura (cosa que no hemos hecho).
+
+.. [#] Lo cual no significa necesariamente que el texto ocupe siempre una
+   línea. Todo dependerá del ancho total de la cuadrícula y la cantidad de
+   texto.
+
+.. [#] En cambio, si no necesitaran la misma altura, ``1fr`` provocaría que
+   todas las filas tuvieran la altura de la fila más alta.
 
 .. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`
 
