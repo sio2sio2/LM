@@ -112,5 +112,31 @@ Medios
    y, dada la fecha de nacimiento de una persona, haga un programa que determine
    si es o no mayor de edad.
 
+#. Dada una lista de números, devuelva otra que excluya los números mayores al último.
+
 #. Tome diez números naturales entre 1 y 40 al azar y calcule la suma y el
    producto de todos ellos.
+
+#. Dado un número natural N, construya una pirámide de N niveles. Por ejemplo, para 4:
+
+   .. code-block:: none
+
+         x
+        xxx
+       xxxxx
+      xxxxxxx
+
+
+   .. rst-class:: sol-oculta
+
+   .. code-block:: javascript
+
+      "use strict";
+
+      const n = 6; // Altura de la pirámide
+
+      console.log(`Pirámide de altura ${n}:`)
+      for(let i = 0; i < 6; i++) {
+         let linea = " ".repeat(n-i-1) + "x".repeat(2*i + 1);
+         console.log(linea);
+      }
