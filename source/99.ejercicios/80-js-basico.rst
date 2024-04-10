@@ -95,6 +95,14 @@ Medios
 #. A partir de un número, obtenga otro número que sea la inversión de sus
    cifras. Por ejemplo, si el número inicial es 321, deberá resultar 123.
 
+#. Cree una función llamada ``indexOf_N`` que busque en un array la aparición
+   n-ésima de un determinado valor. Por ejemplo, para el array :code:`[ "a",
+   "b", "a", "c", "d", "a", "e"]`, si se busca la tercera aparición de "a" debe
+   devolver 5. El primer argumento de la función  debe ser el array, el segundo
+   el valor a buscar y el tercero el número de aparición.
+
+#. Escriba un función que determine si un número es capicúa.
+
 #. Una cooperativa de viticultores paga el precio de la uva dependiendo del tipo de uva
    (tempranillo, palomino, etc) y de su calibre (1, 2 ó 3). Escriba un
    algoritmo para determinar el pago que debe recibir un agricultor dependiendo

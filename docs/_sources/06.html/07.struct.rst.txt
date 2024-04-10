@@ -97,7 +97,7 @@ semánticamente el documento |HTML|.
 
    .. code-block:: html
 
-      <!-- No utilice esta estructura: es un ejemplo de lo se pensó que fuera y no fue -->
+      <!-- No utilice esta estructura: es un ejemplo de lo que se pensó que fuera y no fue -->
       <section>
          <h1 id="mamiferos">Los mamíferos</h1>
          <p>Bla, bla, bla</p>
@@ -126,7 +126,7 @@ semánticamente el documento |HTML|.
    y tampoco llegó a plasmarse nunca en las especificaciones oficiales del |W3C|
    para |HTML|\ 5.
 
-   .. seealso:: Andrian Roselli tiene `un interesantísimo artículo
+   .. seealso:: Adrian Roselli tiene `un interesantísimo artículo
       <https://adrianroselli.com/2016/08/there-is-no-document-outline-algorithm.html>`_
       sobre cómo, en realidad, a pesar de los múltiples intentos, nunca ha habido
       en |HTML| un algoritmo para la estructuración del documento basado en
@@ -178,7 +178,7 @@ semánticamente el documento |HTML|.
             1.1.2 Los felinos
          1.2 Los reptiles
 
-   Además, se recomienda que sólo existan un |h1| en el documento que actúe como
+   Además, se recomienda que sólo exista un |h1| en el documento que actúe como
    su título.
 
    Así, pues, ¿para qué sirve |section|? Desde luego, no para estructurar el
