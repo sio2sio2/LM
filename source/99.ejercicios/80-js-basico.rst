@@ -17,7 +17,7 @@ principios:
    #. Resueltos los ejercicios, vuelva a resolverlos permitiendo que los datos
       de entrada, en vez de estar fijados en el código, se generen
       automáticamente entre dos valores que resulten lógicos. No haga un código
-      aparte: mejore el código ya escrito para que se utilizen números
+      aparte: mejore el código ya escrito para que se utilicen números
       prefijados o números aleatorios dependiendo del valor de una variable
       inicial.
 
@@ -37,7 +37,7 @@ principios:
    calcule la hipotenusa (`teorema de Pitágoras
    <https://es.wikipedia.org/wiki/Teorema_de_Pit%C3%A1go>`_).
 
-#. Pase un cantidad expresada en segundos a horas, minutos y segundos.
+#. Pase una cantidad expresada en segundos a horas, minutos y segundos.
 
 #. Dada la edad en años de una persona, haga un programa que determine si es o
    no mayor de edad.
@@ -57,7 +57,7 @@ principios:
    excepto los de comienzo de siglo que no son múltiplos de 400: 1994 es
    bisiesto, 1900 no lo es, pero 2000, sí.
 
-#. Dada una nota númerica entre 0 y 10, devuelva la nota descriptiva, sabiendo
+#. Dada una nota numérica entre 0 y 10, devuelva la nota descriptiva, sabiendo
    las equivalencias:
 
    ========== ========== ==================
