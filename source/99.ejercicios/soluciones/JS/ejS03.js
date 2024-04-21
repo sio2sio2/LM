@@ -55,13 +55,16 @@ function generarAleatorio(min, max) {
  * @returns {Array} - Un array con [h, m, s]
  */
 function conversorTiempo(t) {
-    const res = [t, 0, 0];
+    const res = [t, 0, 0],
+          factor = 60; // 1min tiene 60s; 1 hora, 60min
 
+    // La fracción inferior es el resto de la división;
+    // y la fracción siguiente, la división entera.
     for(let i=0; i < res.length - 1; i++) {
-        res[i+1] = Math.floor(res[i]/60);
-        res[i] = res[i]%60;
+        [res[i], res[i+1]] = [res[i]%factor, Math.floor(res[i]/factor)];
     }
 
+    // Preferimos [h, m, s] que [s, m, h]
     return res.reverse();
 
 }
@@ -69,5 +72,4 @@ function conversorTiempo(t) {
 const tiempo = aleatorio?generarAleatorio(MIN, MAX):TIEMPO;
 
 let hms = conversorTiempo(tiempo);
-
 console.log(`${tiempo} segundos son ${hms[0]} horas, ${hms[1]} minutos y ${hms[2]} segundos.`);

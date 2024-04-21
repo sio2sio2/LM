@@ -6,16 +6,24 @@
  */
 
 /**
- * Controla si se genera una entrada alteatoria o no.
+ * Controla si se genera una entrada aleatoria o no.
  * @type {boolean}
  */
-const aleatorio = false;
+const aleatorio = true;
 
 /**
  * Operaciones disponibles
- * @type {Array}
+ * @type {object}
  */
-const OPERACIONES = ['+', '-', '*', '/', '%']
+const OPERACIONES = {
+    "suma":  (a, b) => a + b,
+    "resta": (a, b) => a - b,
+    "producto": (a, b) => a * b,
+    "división": (a, b) => a / b,
+    // Esta no la recoge el enunciado, pero es una prueba de que es muy
+    // extender la solución a otras operaciones no exigidas por el enunciado.
+    "módulo": (a, b) => a % b
+}
 
 /**
  * Límite inferior predefinido para generar aleatorios.
@@ -57,29 +65,14 @@ function generarAleatorio(min, max) {
     return Math.round(Math.random()*(max - min)) + min;
 }
 
+// Operandos
 const a = aleatorio?generarAleatorio(MIN, MAX):A,
       b =  aleatorio?generarAleatorio(MIN, MAX):B;
 
-const operacion = OPERACIONES[generarAleatorio(0, OPERACIONES.length - 1)];
+// Escogemos una operación al azar entre las posibles.
+const opArray = Object.entries(OPERACIONES);
+let [nombre, operacion] = opArray[generarAleatorio(0, opArray.length - 1)];
 
-let resultado;
+let resultado = operacion(a, b);
 
-switch(operacion) {
-    case '+':
-        resultado = a + b;
-        break;
-    case '-':
-        resultado = a - b;
-        break;
-    case '*':
-        resultado = a * b;
-        break;
-    case '/':
-        resultado = a / b;
-        break;
-    case '%':
-        resultado  = a % b;
-        break;
-}
-
-console.log(`El resultado de ${a} ${operacion} ${b} es ${resultado}`);
+console.log(`La operación ${nombre} de ${a} y ${b} es ${resultado}.`);

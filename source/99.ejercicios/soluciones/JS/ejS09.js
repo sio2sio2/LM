@@ -60,12 +60,12 @@ const DESCRIPTIVAS = {
 }
 
 const nota = aleatorio?generarAleatorio(MIN, MAX):NOTA,
-      // Convertimos a [descr, lím. inf] y nos quedamos sólo con las tuplas
-      // cuyo límite es más pequeño que la nota. Si las ordenamos, la tupla
+      // Convertimos a [descr, lím. inf] y eliminamos las tuplas
+      // cuyo límite es mayor que la nota. Si las ordenamos, la tupla
       // que contiene la nota descriptiva es la última, ya que es la que
       // contiene el mayor de los límites.
       notaDescriptiva = Object.entries(DESCRIPTIVAS)
-                              .filter(e => e[1] < nota)
+                              .filter(e => e[1] <= nota)
                               .sort(e => e[1]).at(-1)[0];
 
 console.log(`Un ${nota} equivale a ${notaDescriptiva}.`);
