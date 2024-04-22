@@ -24,7 +24,7 @@ const MIN = 0,
 
 /**
  * Fracciones existentes de dinero.
- * @type {object}
+ * @type {Number[]}
  */
 const FRACCIONES =  [50, 20, 10, 5, 1];
 

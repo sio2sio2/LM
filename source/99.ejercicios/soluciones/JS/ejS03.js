@@ -52,7 +52,7 @@ function generarAleatorio(min, max) {
  * @example
  * conversorTiempo(36000);  // Devuelve [1, 0, 0].
  * 
- * @returns {Array} - Un array con [h, m, s]
+ * @returns {Number[]} - Un array con [h, m, s]
  */
 function conversorTiempo(t) {
     const res = [t, 0, 0],

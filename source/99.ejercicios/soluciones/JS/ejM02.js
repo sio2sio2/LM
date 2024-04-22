@@ -37,9 +37,9 @@ function generarAleatorio(min, max) {
  * 
  * @param {number} n - Número de dados en la tirada
  * 
- * @yields {Array} - La puntuación de cada dado.
+ * @yields {number} - La puntuación de cada dado.
  */
-function* generarTirada(n) {
+function* generarPartida(n) {
     let tirada;
 
     if(!Number.isInteger(n) || n < 1) {
@@ -57,12 +57,12 @@ function* generarTirada(n) {
 
 // Programa principal
 
-const partida = generarTirada(numDados);
-let dados, intentos = 0;
+const partida = generarPartida(numDados);
+let tirada, intentos = 0;
 
-for(dados of partida) {
+for(tirada of partida) {
     intentos++;
-    console.log(`Resultado de la ${intentos}ª tirada: ${dados}.`);
+    console.log(`Resultado de la ${intentos}ª tirada: ${tirada.join("-")}.`);
 }
 
-console.log(`Se han tardado ${intentos} tandas en sacar todo ${dados[0]} simultáneamente.`);
+console.log(`Se han tardado ${intentos} tiradas en sacar ${tirada.join("-")}.`);
