@@ -118,7 +118,7 @@ const Partida = ({dado, dados, caras, fin = () => false}) => {
       _state: state,
       get fin() { return state.registro.cerrado; },
       get comienzo() { return state.registro.nuevo; },
-      get ronda() { return state.registro.tamanho; }
+      get ronda() { return state.registro.tamanho + (state.registro.cerrado?0:1); }
    }
 
    return Object.freeze(Object.assign(
@@ -127,15 +127,16 @@ const Partida = ({dado, dados, caras, fin = () => false}) => {
    ));
 };
 
+// Programa principal
+
 const reglas = {
    dados: 2,
    caras: 6,
    fin: (tiradas) => tiradas?.at(-1)?.every((e, _, arr) => e === arr[0])
 }
 
-
 const partida = Partida(reglas);
 while(!partida.fin) {
-   console.log(`${partida.ronda + 1}ª tirada: ${partida.lanzar().join("-")}.`);
+   console.log(`${partida.ronda}ª tirada: ${partida.lanzar().join("-")}.`);
 }
 console.log(`Se han tardado ${partida.ronda} tiradas en acabar el juego.`);

@@ -35,7 +35,7 @@ principios:
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución </99.ejercicios/soluciones/JS/ejS01.js>`
+      :download:`Solución propuesta </99.ejercicios/soluciones/JS/ejS01.js>`
 
 #. A partir de dos números que simbolizan los catetos de un triángulo rectángulo,
    calcule la hipotenusa (`teorema de Pitágoras
@@ -43,20 +43,20 @@ principios:
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución </99.ejercicios/soluciones/JS/ejS01.js>`
+      :download:`Solución propuesta </99.ejercicios/soluciones/JS/ejS01.js>`
 
 #. Pase una cantidad expresada en segundos a horas, minutos y segundos.
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución </99.ejercicios/soluciones/JS/ejS01.js>`
+      :download:`Solución propuesta </99.ejercicios/soluciones/JS/ejS01.js>`
 
 #. Dada la edad en años de una persona, haga un programa que determine si es o
    no mayor de edad.
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución </99.ejercicios/soluciones/JS/ejS01.js>`
+      :download:`Solución propuesta </99.ejercicios/soluciones/JS/ejS01.js>`
 
 #. A partir de un monedero en el que se tienen monedas de 1 euro y billetes de
    5, 10, 20 y 50 euros, calcule el dinero total a partir de la cantidad de
@@ -64,7 +64,7 @@ principios:
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución </99.ejercicios/soluciones/JS/ejS01.js>`
+      :download:`Solución propuesta </99.ejercicios/soluciones/JS/ejS01.js>`
 
 #. Dada una cantidad en euros, fracciónela en billetes de 5, 10, 20 y
    50, y monedas de 1, sabiendo que se pretende minimizar su número. En
@@ -72,14 +72,14 @@ principios:
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución </99.ejercicios/soluciones/JS/ejS01.js>`
+      :download:`Solución propuesta </99.ejercicios/soluciones/JS/ejS01.js>`
 
 #. A partir de dos números calcule o la suma o la resta o la
    multiplicación o la división. La operación se debe escoger al azar.
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución </99.ejercicios/soluciones/JS/ejS01.js>`
+      :download:`Solución propuesta </99.ejercicios/soluciones/JS/ejS01.js>`
 
 #. Determinar si un año es bisiesto. Son bisiestos los años múltiples de 4,
    excepto los de comienzo de siglo que no son múltiplos de 400: 1994 es
@@ -87,7 +87,7 @@ principios:
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución </99.ejercicios/soluciones/JS/ejS01.js>`
+      :download:`Solución propuesta </99.ejercicios/soluciones/JS/ejS01.js>`
 
 #. Dada una nota numérica entre 0 y 10, devuelva la nota descriptiva, sabiendo
    las equivalencias:
@@ -115,7 +115,7 @@ principios:
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución </99.ejercicios/soluciones/JS/ejS01.js>`
+      :download:`Solución propuesta </99.ejercicios/soluciones/JS/ejS01.js>`
 
 Medios
 ------
@@ -136,14 +136,17 @@ Medios
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución </99.ejercicios/soluciones/JS/ejM02.js>`
+      | :download:`Solución propuesta </99.ejercicios/soluciones/JS/ejM02.js>`.
+      | :download:`Solución propuesta (POO con Class) </99.ejercicios/soluciones/JS/ejM02-clase.js>`.
+      | :download:`Solución propuesta (POO con herencia prototípica) </99.ejercicios/soluciones/JS/ejM02-proto+.js>`.
+      | :download:`Solución propuesta (POO con funciones de fábrica) </99.ejercicios/soluciones/JS/ejM02-ff+.js>`.
 
 #. A partir de un número, obtenga otro número que sea la inversión de sus
    cifras. Por ejemplo, si el número inicial es 321, deberá resultar 123.
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución </99.ejercicios/soluciones/JS/ejM03.js>`
+      :download:`Solución propuesta </99.ejercicios/soluciones/JS/ejM03.js>`
 
 #. Cree una función llamada ``indexOf_N`` que busque en un array la aparición
    n-ésima de un determinado valor. Por ejemplo, para el array :code:`[ "a",
@@ -153,13 +156,13 @@ Medios
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución </99.ejercicios/soluciones/JS/ejM04.js>`
+      :download:`Solución propuesta </99.ejercicios/soluciones/JS/ejM04.js>`
 
 #. Escriba un función que determine si un número es capicúa.
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución </99.ejercicios/soluciones/JS/ejM05.js>`
+      :download:`Solución propuesta </99.ejercicios/soluciones/JS/ejM05.js>`
 
 #. Una cooperativa de viticultores paga el precio de la uva dependiendo del tipo de uva
    (tempranillo, palomino, etc) y de su calibre (1, 2 ó 3). Escriba un
@@ -175,7 +178,7 @@ Medios
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución </99.ejercicios/soluciones/JS/ejM06.js>`
+      :download:`Solución propuesta </99.ejercicios/soluciones/JS/ejM06.js>`
 
 #. Estudie las fechas en Javascript (`Date
    <https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Date>`_)
@@ -184,20 +187,20 @@ Medios
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución </99.ejercicios/soluciones/JS/ejM07.js>`
+      :download:`Solución propuesta </99.ejercicios/soluciones/JS/ejM07.js>`
 
 #. Dada una lista de números, devuelva otra que excluya los números mayores al último.
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución </99.ejercicios/soluciones/JS/ejM08.js>`
+      :download:`Solución propuesta </99.ejercicios/soluciones/JS/ejM08.js>`
 
 #. Tome diez números naturales entre 1 y 40 al azar y calcule la suma y el
    producto de todos ellos.
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución </99.ejercicios/soluciones/JS/ejM09.js>`
+      :download:`Solución propuesta </99.ejercicios/soluciones/JS/ejM09.js>`
 
 #. Dado un número natural N, construya una pirámide de N niveles. Por ejemplo, para 4:
 
@@ -210,4 +213,4 @@ Medios
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución </99.ejercicios/soluciones/JS/ejM10.js>`
+      :download:`Solución propuesta </99.ejercicios/soluciones/JS/ejM10.js>`

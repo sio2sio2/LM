@@ -259,7 +259,7 @@ const Partida = (() => {
        * @type {number}
        */
       get ronda() {
-         return this[registro].tamanho;
+         return this[registro].tamanho + (this.fin?0:1);
       }
    }));
 
@@ -274,6 +274,6 @@ const reglas = {
 
 const partida = new Partida(reglas);
 while(!partida.fin) {
-   console.log(`${partida.ronda + 1}ª tirada: ${partida.lanzar().join("-")}.`);
+   console.log(`${partida.ronda}ª tirada: ${partida.lanzar().join("-")}.`);
 }
 console.log(`Se han tardado ${partida.ronda} tiradas en acabar el juego.`);

@@ -33,31 +33,55 @@ function generarAleatorio(min, max) {
 
 
 /**
- * Lanza n dados hasta que todas las puntuaciones de un misma tirada sean iguales.
+ * Lanza los dados hasta llegar a la tirada ganadora.
  * 
- * @param {number} n - Número de dados en la tirada
+ * @param {reglas} reglas - Reglas de la partida.
  * 
- * @yields {number} - La puntuación de cada dado.
+ * @yields {number[]} - La puntuación de cada dado.
  */
-function* generarPartida(n) {
-    let tirada;
+function* generarPartida({dados, caras, fin = _ => false}) {
+    let tirada, log = [];
 
-    if(!Number.isInteger(n) || n < 1) {
+    if(!Number.isInteger(dados) || dados < 1) {
         throw "Debe tirarse al menos un dado";
     }
 
-    // Las tiradas continúan mientras todas
-    // las puntuaciones de una misma tirada no sean iguales.
+    // Las tiradas continúan mientras no se cumpla
+    // la condición definida por "fin".
     do {
         // Una tirada son "n" puntuaciones de dados
-        tirada = Array(n).fill(null).map(e => generarAleatorio(1, numCaras));
+        tirada = Array(dados).fill(null).map(e => generarAleatorio(1, caras));
+        log.push(tirada);
         yield tirada;
-    } while(tirada.some((e, _, arr) => e !== arr[0]));
+    } while(!fin(log));
 }
+
+/**
+ * @typedef {Object} reglas
+ * 
+ * @property {number} dados - Cantidad de dados lanzados por tirada.
+ * @property {number} caras - Número de caras de cada dado.
+ * @property {finCallback} fin - Función que comprueba si la tirada es ganadora.
+ */
+
+/**
+ * @callback finCallback
+ * 
+ * @param {number[][]} tiradas - Resultados de todas las tiradas.
+ * 
+ * @returns {boolean} - true, si la tirada es ganadora.
+ */
 
 // Programa principal
 
-const partida = generarPartida(numDados);
+const reglas = {
+    dados: numDados,
+    caras: numCaras,
+    // La partida acaba cuando todos los dados de la última tirada son iguales.
+    fin: (tiradas) => tiradas?.at(-1)?.every((e, _, arr) => e === arr[0])
+}
+
+const partida = generarPartida(reglas);
 let tirada, intentos = 0;
 
 for(tirada of partida) {

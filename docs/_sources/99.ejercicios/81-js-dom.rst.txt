@@ -30,10 +30,18 @@ Javascript y |DOM|
 
    Podemos hacer una petición |AJAX| para obtener datos |JSON| facilitados en
    una dirección web. Sabiendo esto, cree una página web que muestre en una
-   tabla los ditintos tipos de carburante para automoción vendidos en España.
+   tabla los distintos tipos de carburante para automoción vendidos en España.
 
    .. note:: Échele un ojo a los ejemplos que introducen la unidad sobre :ref:`lm-ut5`
       para saber la |URL|.
+
+#. En el :download:`siguiente documento HTML <files/mostrar.html>` manipule el
+   comportamiento del botón para que muestre u oculte el resto del texto (el
+   incluido dentro de ``span``).
+
+   .. rst-class:: sol-oculta
+
+      :download:`Solución propuesta <soluciones/JS/DOM03-conmutar.js>`.
 
 .. |AJAX| replace:: :abbr:`AJAX (Asynchronous JavaScript and XML)`
 .. |DOM| replace:: :abbr:`DOM (Document Object Model)`
