@@ -43,5 +43,24 @@ Javascript y |DOM|
 
       :download:`Solución propuesta <soluciones/JS/DOM03-conmutar.js>`.
 
+#. Vuelva a resolver los ejercicios 3 y 6 de la :ref:`relación básica
+   <ej-js-basicos>`, pero mediante una interfaz |HTML| para tomar datos y
+   mostrar resultados.
+
+#. Tome el formulario creado para el :ref:`ejercicio de HTML sobre formularios
+   <ej-html-form>` y añada Javascript para:
+
+   a. Habilitar el cuadro de texto al marcar la opción de "otras aficiones".
+   #. Impedir que se envíe el formulario con contraseñas contradictorias. Para
+      este apartado han de resolverse tres alternativas diferentes.
+
+      i. Al intentar enviarse el formulario, se formula la queja y no se envía.
+      #. La comprobación se hace mientras se teclea la segunda contraseña.
+         Puede, por ejemplo, mostrar el fondo del input de la segunda contraseña
+         en rojo y sólo pasar a verde cuando ambas contraseñas coincidan.
+         Además, el formulario no podrá enviarse si no hay coincidencia.
+      #. Ponga sólo un campo para la contraseña y un icono que permita ver y
+         ocultar a voluntad el texto.
+   
 .. |AJAX| replace:: :abbr:`AJAX (Asynchronous JavaScript and XML)`
 .. |DOM| replace:: :abbr:`DOM (Document Object Model)`

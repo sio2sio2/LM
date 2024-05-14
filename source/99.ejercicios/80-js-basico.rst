@@ -1,6 +1,8 @@
 Javascript: Sintaxis
 ====================
 
+.. _ej-js-basicos:
+
 Mínimos
 -------
 Realice los siguientes ejercicios en Javascript, atendiendo a los siguientes
@@ -116,6 +118,8 @@ principios:
    .. rst-class:: sol-oculta
 
       :download:`Solución propuesta </99.ejercicios/soluciones/JS/ejS01.js>`
+
+.. _ej-js-medios:
 
 Medios
 ------
