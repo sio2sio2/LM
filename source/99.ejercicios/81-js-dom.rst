@@ -47,10 +47,22 @@ Javascript y |DOM|
    <ej-js-basicos>`, pero mediante una interfaz |HTML| para tomar datos y
    mostrar resultados.
 
+#. Vuelva a resolver el ejercicio 9 de la :ref:`relación básica
+   <ej-js-basicos>`, pero mediante una interfaz |HTML| para tomar datos y
+   mostrar resultados. Incluya en la web una tabla con las equivalencias.
+
+#. Vuelva a resolver el ejercicio 6 de la :ref:`relación media
+   <ej-js-medios>`, pero mediante una interfaz |HTML| para tomar datos y
+   mostrar resultados.
+
 #. Tome el formulario creado para el :ref:`ejercicio de HTML sobre formularios
    <ej-html-form>` y añada Javascript para:
 
    a. Habilitar el cuadro de texto al marcar la opción de "otras aficiones".
+   #. Evitar que el formulario sea enviado. En vez de eso, una aviso emergente
+      dirá "Este formulario debería enviarse a algún servidor".
+   #. Capturar el botón "Limpiar" para que pedir confirmación de que realmente
+      se quiere limpiar.
    #. Impedir que se envíe el formulario con contraseñas contradictorias. Para
       este apartado han de resolverse tres alternativas diferentes.
 
@@ -62,5 +74,9 @@ Javascript y |DOM|
       #. Ponga sólo un campo para la contraseña y un icono que permita ver y
          ocultar a voluntad el texto.
    
+   .. rst-class:: sol-oculta
+
+      :download:`Solución propuesta <soluciones/JS/DOM07-formulario.js>`.
+
 .. |AJAX| replace:: :abbr:`AJAX (Asynchronous JavaScript and XML)`
 .. |DOM| replace:: :abbr:`DOM (Document Object Model)`

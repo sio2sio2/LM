@@ -46,3 +46,7 @@
          #. Puntúe la web (entre 0 y 10).
 
    El formulario debería enviarse por el método POST
+
+.. rst-class:: oculta
+
+   :download:`Solución propuesta </99.ejercicios/soluciones/formulario.html>`.
