@@ -91,30 +91,78 @@ nuestra lengua pulsando <kbd class="kbd docutils literal notranslate">Ctrl</kbd>
 seleccionando <code class="docutils literal notranslate"><span class="pre">File&gt;Preferences&gt;Settings</span></code>) y escribiendo la palabra
 <em>display</em> para reducir los términos de búsqueda:</p>
 <img alt="../../_images/00-vscode-lang.png" src="../../_images/00-vscode-lang.png" />
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>El idioma es, en realidad, una <a class="reference internal" href="#vs-extension"><span class="std std-ref">extensión</span></a> que
+se habilita al realizar esta operación.</p>
+</div>
 </dd>
-<dt><strong>Áreas de trabajo</strong></dt><dd><p>La mejor forma de trabajar con el programa es abriendo una <em>carpeta</em> en vez de
-archivos individuales, ya que podemos asimilar esta carpetas con proyectos
-(áreas de trabajo) y definir la configuración para cada área de trabajo
-independientemente:</p>
+</dl>
+<dl id="vs-workspace">
+<dt><strong>Áreas de trabajo</strong></dt><dd><p>El programa permite abrir archivos individuales, pero por lo general es mejor
+abrir una <em>carpeta</em>, ya que podemos asimilar ésta a un proyecto (área de
+trabajo) y definir una configuración particular independiente para ella:</p>
 <img alt="../../_images/01-vscode-abrir.png" src="../../_images/01-vscode-abrir.png" />
 </dd>
-<dt><strong>Configuración</strong></dt><dd><p>La configuración puede definirse de forma global o por área de trabajo y
-puede accederse a ella pulsando <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">,</kbd>:</p>
+<dt><strong>Configuración</strong></dt><dd><p>La configuración puede definirse de forma <em>global</em> (y ya matizaremos esto de
+global) o por área de trabajo y puede accederse a ella pulsando <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">,</kbd>:</p>
 <img alt="../../_images/02-vscode-conf.png" src="../../_images/02-vscode-conf.png" />
 <p>Se almacena en formato <abbr title="JavaScript Object Notation">JSON</abbr> y, cuando se define para el área de trabajo, se
 almacena dentro de la propia carpeta en <code class="file docutils literal notranslate"><span class="pre">.vscode/settings.json</span></code> con que
 es equivalente realizar la configuración a través de la interfaz que
 proporciona <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">,</kbd>, que editando directamente el archivo.</p>
 </dd>
+</dl>
+<dl id="vs-extension">
 <dt><strong>Extensiones</strong></dt><dd><p>Las extensiones permiten aumentar las funcionalidades del editor y pueden
-activarse tanto de forma global como por espacio de trabajo. Dependiendo de
-su naturaleza, nos convendrá para algunas lo primero y para otras lo
-segundo.</p>
+activarse tanto de forma <em>global</em> como por espacio de trabajo.</p>
 <p>Una indispensable para quien se haya criado editando archivos en <a class="reference external" href="https://www.vim.org/">vim</a> es <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscodevim.vim">VSCodeVim</a>, que
 permite editar archivos como se hace en el veterano editor.</p>
 <p>Para gestionar las extensiones, basta con pinchar sobre el icono lateral
 izquierdo  señalado:</p>
 <img alt="../../_images/03-vscode-ext.png" src="../../_images/03-vscode-ext.png" />
+</dd>
+<dt><strong>Perfiles</strong></dt><dd><p>Tanto al hablar de configuración como de extensiones hemos distinguido entre
+<em>global</em> y particular al área de trabajo. Sin embargo, el concepto de global
+no es absoluto, sino que en el programa podemos definir distintos perfiles
+a cada uno de los cuales podemos asociar una configuración y unas extensiones
+distintas, que hasta ahora hemos definido como globales. ¿Cuál es la utilidad
+de esto? Analicémoslo.</p>
+<p>Manejando únicamente el concepto de área de trabajo, podemos habilitar unas
+extensiones y realizar una configuración determinada para dentro de un
+directorio, por ejemplo, trabajar en <em>Python</em>. Estas extensiones y
+configuración sólo estarán disponibles si usamos ese directorio como área de
+trabajo, por lo que una de dos:</p>
+<ul class="simple">
+<li><p>Metemos todos nuestros archivos de <em>Python</em> dentro de esa área de trabajo,
+lo cual sólo es viable si nuestros desarrollos son de archivo único.</p></li>
+<li><p>Asignamos áreas de trabajo distintas a área de trabajo distintas, pero en
+ese caso tendremos que copiar la configuración  y habilitar manualmente las
+mismas extensiones una y otra ves.</p></li>
+</ul>
+<p>Lo habitual, sin embargo, es que los desarrollos necesiten un subárbol
+independiente de directorios; y, desde luego, no queremos ver más que ese
+subárbol. Esto hace inviable la primera alternativa y muy molesta la segunda.</p>
+<p>Para soslayar este problema existen los <em>perfiles</em>. Por defecto, existe un
+perfil llamado <em>Predeterminado</em>/<em>Default</em> al que se asocia la configuración
+que hasta ahora hemos llamado <em>global</em> y en el que se habilitan las
+extensiones instaladas que no hemos circunscrito a un área de trabajo
+particular. Se lo identifica porque debe aparecer en la esquina inferior
+izquierda una ruedecilla, que es el icono asociado a este perfil:</p>
+<img alt="../../_images/predeterminado.png" src="../../_images/predeterminado.png" />
+<p>Pulsando sobre el icono podemos cambiar de perfil o crear uno nuevo:</p>
+<img alt="../../_images/predeterminado2.png" src="../../_images/predeterminado2.png" />
+<p>Para crear uno podemos partir de cero, pero es mejor generarlo a partir del
+«Predeterminado» si en el predeterminado hemos hecho configuraciones que nos
+gustaría que aplicaran (p.e. el tamaño de letra en el editor) y hemos
+instalado extensiones que también son aplicables a cualquier lenguaje (p.e.
+el idioma). Para ello, podemos simplemente exportar el perfil a un archivo o
+«Mostrar los contenidos del perfil» para señalar aquello que realmente
+queremos guardar an el archivo. De una u otra manera, podremos usar el
+archivo resultante para crear un nuevo perfil (importar) al que le
+asociaremos un nombre (<em>Python</em>, <em>Java</em>, etc) y un icono característico que
+nos permita distinguirlo de los demás.</p>
+<img alt="../../_images/perfiles_areas.png" src="../../_images/perfiles_areas.png" />
 </dd>
 <dt><strong>Áreas especiales</strong></dt><dd><p>Podemos abrir algunas áreas especiales que nos permiten consultar o realizar
 ciertas actividades interesantes:</p>
@@ -423,7 +471,7 @@ que editar <code class="file docutils literal notranslate"><span class="pre">key
 <section id="javascript">
 <span id="vscode-javascript"></span><h2>Javascript<a class="headerlink" href="#javascript" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Al igual que <a class="reference internal" href="#vscode-javascript"><span class="std std-ref">ocurre con JSON</span></a>, el programa tiene
-soporte nativo para la escritura de <span class="xref std std-ref">Javascript</span>
+soporte nativo para la escritura de <a class="reference internal" href="../../08.js/index.html#js"><span class="std std-ref">Javascript</span></a>
 (autocompletado, <a class="reference external" href="https://es.wikipedia.org/wiki/Snippet">snippets</a>), pese a lo cual podemos hacer algunos añadidos
 para mejorarla:</p>
 <ul class="simple">

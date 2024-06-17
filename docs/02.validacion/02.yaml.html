@@ -427,12 +427,13 @@ cuya lista sólo contenga un valor.</p>
 sea cual sea el tipo del nodo. Ahora bien, ¿cuáles son específicas?</p>
 <span id="json-schema-integer"></span><dl id="json-schema-number">
 <dt><a class="reference external" href="https://json-schema.org/understanding-json-schema/reference/numeric.html">numeric</a> (que comprende <a class="reference internal" href="../01.intro/02a.serial.html#json-numero"><span class="std std-ref">integer</span></a> y <a class="reference internal" href="../01.intro/02a.serial.html#json-numero"><span class="std std-ref">number</span></a>)</dt><dd><p>Tiene asociadas propiedades que no requieren demasiada explicación:</p>
-<span id="json-schema-minimum"></span><dl class="simple" id="json-schema-exclusiveminimum">
-<dt><code class="docutils literal notranslate"><span class="pre">minimum</span></code>/<code class="docutils literal notranslate"><span class="pre">exclusiveMinimum</span></code></dt><dd><p>define el valor mínimo (incluido y sin incluir respectivamente).</p>
+<span id="json-schema-minimum"></span><dl class="simple" id="json-schema-maximum">
+<dt><code class="docutils literal notranslate"><span class="pre">minimum</span></code>/<code class="docutils literal notranslate"><span class="pre">maximum</span></code></dt><dd><p>define el valor mínimo y el máximo respectivamente.</p>
 </dd>
 </dl>
-<span id="json-schema-maximum"></span><dl class="simple" id="json-schema-exclusivemaximum">
-<dt><code class="docutils literal notranslate"><span class="pre">maximum</span></code>/<code class="docutils literal notranslate"><span class="pre">exclusiveMaximum</span></code></dt><dd><p>define el valor máximo (incluido y sin incluir respectivamente).</p>
+<span id="json-schema-exclusiveminimum"></span><dl class="simple" id="json-schema-exclusivemaximum">
+<dt><code class="docutils literal notranslate"><span class="pre">exclusiveMinimum</span></code>/<code class="docutils literal notranslate"><span class="pre">exclusiveMaximum</span></code></dt><dd><p>Si es <code class="docutils literal notranslate"><span class="pre">true</span></code>, excluye el valor mínimo y máximo respectivamente como
+valores validos. En su ausencia, lo son.</p>
 </dd>
 </dl>
 <dl class="simple" id="json-schema-multipleof">

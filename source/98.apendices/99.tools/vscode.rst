@@ -18,17 +18,22 @@ Generalidades
 
    .. image:: files/00-vscode-lang.png
 
+   .. note:: El idioma es, en realidad, una :ref:`extensión <vs-extension>` que
+      se habilita al realizar esta operación.
+
+.. _vs-workspace:
+
 **Áreas de trabajo**
-   La mejor forma de trabajar con el programa es abriendo una *carpeta* en vez de
-   archivos individuales, ya que podemos asimilar esta carpetas con proyectos
-   (áreas de trabajo) y definir la configuración para cada área de trabajo
-   independientemente:
+   El programa permite abrir archivos individuales, pero por lo general es mejor
+   abrir una *carpeta*, ya que podemos asimilar ésta a un proyecto (área de
+   trabajo) y definir una configuración particular independiente para ella:
 
    .. image:: files/01-vscode-abrir.png
 
 **Configuración**
-   La configuración puede definirse de forma global o por área de trabajo y
-   puede accederse a ella pulsando :kbd:`Ctrl`\ +\ :kbd:`,`:
+   La configuración puede definirse de forma *global* (y ya matizaremos esto de
+   global) o por área de trabajo y puede accederse a ella pulsando :kbd:`Ctrl`\
+   +\ :kbd:`,`:
 
    .. image:: files/02-vscode-conf.png
 
@@ -37,11 +42,11 @@ Generalidades
    es equivalente realizar la configuración a través de la interfaz que
    proporciona :kbd:`Ctrl`\ +\ :kbd:`,`, que editando directamente el archivo.
 
+.. _vs-extension:
+
 **Extensiones**
    Las extensiones permiten aumentar las funcionalidades del editor y pueden
-   activarse tanto de forma global como por espacio de trabajo. Dependiendo de
-   su naturaleza, nos convendrá para algunas lo primero y para otras lo
-   segundo.
+   activarse tanto de forma *global* como por espacio de trabajo.
 
    Una indispensable para quien se haya criado editando archivos en `vim
    <https://www.vim.org/>`_ es `VSCodeVim
@@ -52,6 +57,56 @@ Generalidades
    izquierdo  señalado:
 
    .. image:: files/03-vscode-ext.png
+
+**Perfiles**
+   Tanto al hablar de configuración como de extensiones hemos distinguido entre
+   *global* y particular al área de trabajo. Sin embargo, el concepto de global
+   no es absoluto, sino que en el programa podemos definir distintos perfiles
+   a cada uno de los cuales podemos asociar una configuración y unas extensiones
+   distintas, que hasta ahora hemos definido como globales. ¿Cuál es la utilidad
+   de esto? Analicémoslo.
+
+   Manejando únicamente el concepto de área de trabajo, podemos habilitar unas
+   extensiones y realizar una configuración determinada para dentro de un
+   directorio, por ejemplo, trabajar en *Python*. Estas extensiones y
+   configuración sólo estarán disponibles si usamos ese directorio como área de
+   trabajo, por lo que una de dos:
+
+   * Metemos todos nuestros archivos de *Python* dentro de esa área de trabajo,
+     lo cual sólo es viable si nuestros desarrollos son de archivo único.
+   * Asignamos áreas de trabajo distintas a área de trabajo distintas, pero en
+     ese caso tendremos que copiar la configuración  y habilitar manualmente las
+     mismas extensiones una y otra ves.
+
+   Lo habitual, sin embargo, es que los desarrollos necesiten un subárbol
+   independiente de directorios; y, desde luego, no queremos ver más que ese
+   subárbol. Esto hace inviable la primera alternativa y muy molesta la segunda.
+
+   Para soslayar este problema existen los *perfiles*. Por defecto, existe un
+   perfil llamado *Predeterminado*/*Default* al que se asocia la configuración
+   que hasta ahora hemos llamado *global* y en el que se habilitan las
+   extensiones instaladas que no hemos circunscrito a un área de trabajo
+   particular. Se lo identifica porque debe aparecer en la esquina inferior
+   izquierda una ruedecilla, que es el icono asociado a este perfil:
+
+   .. image:: files/predeterminado.png
+
+   Pulsando sobre el icono podemos cambiar de perfil o crear uno nuevo:
+
+   .. image:: files/predeterminado2.png
+
+   Para crear uno podemos partir de cero, pero es mejor generarlo a partir del
+   "Predeterminado" si en el predeterminado hemos hecho configuraciones que nos
+   gustaría que aplicaran (p.e. el tamaño de letra en el editor) y hemos
+   instalado extensiones que también son aplicables a cualquier lenguaje (p.e.
+   el idioma). Para ello, podemos simplemente exportar el perfil a un archivo o
+   "Mostrar los contenidos del perfil" para señalar aquello que realmente
+   queremos guardar an el archivo. De una u otra manera, podremos usar el
+   archivo resultante para crear un nuevo perfil (importar) al que le
+   asociaremos un nombre (*Python*, *Java*, etc) y un icono característico que
+   nos permita distinguirlo de los demás.
+
+   .. image:: files/perfiles_areas.png
 
 **Áreas especiales**
    Podemos abrir algunas áreas especiales que nos permiten consultar o realizar
@@ -386,7 +441,7 @@ específica para ella.
 Javascript
 ==========
 Al igual que :ref:`ocurre con JSON <vscode-javascript>`, el programa tiene
-soporte nativo para la escritura de :ref:`Javascript <javascript>`
+soporte nativo para la escritura de :ref:`Javascript <js>`
 (autocompletado, `snippets <https://es.wikipedia.org/wiki/Snippet>`_), pese a lo cual podemos hacer algunos añadidos
 para mejorarla:
 

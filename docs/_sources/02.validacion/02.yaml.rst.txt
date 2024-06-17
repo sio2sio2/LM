@@ -239,16 +239,17 @@ sea cual sea el tipo del nodo. Ahora bien, ¿cuáles son específicas?
    Tiene asociadas propiedades que no requieren demasiada explicación:
 
    .. _json-schema-minimum:
-   .. _json-schema-exclusiveminimum:
-
-   ``minimum``/``exclusiveMinimum``
-      define el valor mínimo (incluido y sin incluir respectivamente).
-
    .. _json-schema-maximum:
+
+   ``minimum``/``maximum``
+      define el valor mínimo y el máximo respectivamente.
+
+   .. _json-schema-exclusiveminimum:
    .. _json-schema-exclusivemaximum:
 
-   ``maximum``/``exclusiveMaximum``
-      define el valor máximo (incluido y sin incluir respectivamente).
+   ``exclusiveMinimum``/``exclusiveMaximum``
+      Si es ``true``, excluye el valor mínimo y máximo respectivamente como
+      valores validos. En su ausencia, lo son.
 
    .. _json-schema-multipleof:
 

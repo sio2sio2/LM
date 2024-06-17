@@ -47,6 +47,6 @@
 
    El formulario debería enviarse por el método POST
 
-.. rst-class:: oculta
+.. rst-class:: sol-oculta
 
    :download:`Solución propuesta </99.ejercicios/soluciones/formulario.html>`.
