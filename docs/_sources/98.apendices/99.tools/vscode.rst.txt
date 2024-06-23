@@ -10,6 +10,8 @@ página de github <https://github.com/microsoft/vscode>`_.
 
 Generalidades
 =============
+.. _vscode-language:
+
 **Idioma**
    Si la instalación trae el programa en inglés, puede instalarse el paquete de
    nuestra lengua pulsando :kbd:`Ctrl`\ +\ :kbd:`Shift`\ +\ :kbd:`P` (o
@@ -18,95 +20,8 @@ Generalidades
 
    .. image:: files/00-vscode-lang.png
 
-   .. note:: El idioma es, en realidad, una :ref:`extensión <vs-extension>` que
+   .. note:: El idioma es, en realidad, una :ref:`extensión <vscode-extensions>` que
       se habilita al realizar esta operación.
-
-.. _vs-workspace:
-
-**Áreas de trabajo**
-   El programa permite abrir archivos individuales, pero por lo general es mejor
-   abrir una *carpeta*, ya que podemos asimilar ésta a un proyecto (área de
-   trabajo) y definir una configuración particular independiente para ella:
-
-   .. image:: files/01-vscode-abrir.png
-
-**Configuración**
-   La configuración puede definirse de forma *global* (y ya matizaremos esto de
-   global) o por área de trabajo y puede accederse a ella pulsando :kbd:`Ctrl`\
-   +\ :kbd:`,`:
-
-   .. image:: files/02-vscode-conf.png
-
-   Se almacena en formato |JSON| y, cuando se define para el área de trabajo, se
-   almacena dentro de la propia carpeta en :file:`.vscode/settings.json` con que
-   es equivalente realizar la configuración a través de la interfaz que
-   proporciona :kbd:`Ctrl`\ +\ :kbd:`,`, que editando directamente el archivo.
-
-.. _vs-extension:
-
-**Extensiones**
-   Las extensiones permiten aumentar las funcionalidades del editor y pueden
-   activarse tanto de forma *global* como por espacio de trabajo.
-
-   Una indispensable para quien se haya criado editando archivos en `vim
-   <https://www.vim.org/>`_ es `VSCodeVim
-   <https://marketplace.visualstudio.com/items?itemName=vscodevim.vim>`_, que
-   permite editar archivos como se hace en el veterano editor.
-
-   Para gestionar las extensiones, basta con pinchar sobre el icono lateral
-   izquierdo  señalado:
-
-   .. image:: files/03-vscode-ext.png
-
-**Perfiles**
-   Tanto al hablar de configuración como de extensiones hemos distinguido entre
-   *global* y particular al área de trabajo. Sin embargo, el concepto de global
-   no es absoluto, sino que en el programa podemos definir distintos perfiles
-   a cada uno de los cuales podemos asociar una configuración y unas extensiones
-   distintas, que hasta ahora hemos definido como globales. ¿Cuál es la utilidad
-   de esto? Analicémoslo.
-
-   Manejando únicamente el concepto de área de trabajo, podemos habilitar unas
-   extensiones y realizar una configuración determinada para dentro de un
-   directorio, por ejemplo, trabajar en *Python*. Estas extensiones y
-   configuración sólo estarán disponibles si usamos ese directorio como área de
-   trabajo, por lo que una de dos:
-
-   * Metemos todos nuestros archivos de *Python* dentro de esa área de trabajo,
-     lo cual sólo es viable si nuestros desarrollos son de archivo único.
-   * Asignamos áreas de trabajo distintas a área de trabajo distintas, pero en
-     ese caso tendremos que copiar la configuración  y habilitar manualmente las
-     mismas extensiones una y otra ves.
-
-   Lo habitual, sin embargo, es que los desarrollos necesiten un subárbol
-   independiente de directorios; y, desde luego, no queremos ver más que ese
-   subárbol. Esto hace inviable la primera alternativa y muy molesta la segunda.
-
-   Para soslayar este problema existen los *perfiles*. Por defecto, existe un
-   perfil llamado *Predeterminado*/*Default* al que se asocia la configuración
-   que hasta ahora hemos llamado *global* y en el que se habilitan las
-   extensiones instaladas que no hemos circunscrito a un área de trabajo
-   particular. Se lo identifica porque debe aparecer en la esquina inferior
-   izquierda una ruedecilla, que es el icono asociado a este perfil:
-
-   .. image:: files/predeterminado.png
-
-   Pulsando sobre el icono podemos cambiar de perfil o crear uno nuevo:
-
-   .. image:: files/predeterminado2.png
-
-   Para crear uno podemos partir de cero, pero es mejor generarlo a partir del
-   "Predeterminado" si en el predeterminado hemos hecho configuraciones que nos
-   gustaría que aplicaran (p.e. el tamaño de letra en el editor) y hemos
-   instalado extensiones que también son aplicables a cualquier lenguaje (p.e.
-   el idioma). Para ello, podemos simplemente exportar el perfil a un archivo o
-   "Mostrar los contenidos del perfil" para señalar aquello que realmente
-   queremos guardar an el archivo. De una u otra manera, podremos usar el
-   archivo resultante para crear un nuevo perfil (importar) al que le
-   asociaremos un nombre (*Python*, *Java*, etc) y un icono característico que
-   nos permita distinguirlo de los demás.
-
-   .. image:: files/perfiles_areas.png
 
 **Áreas especiales**
    Podemos abrir algunas áreas especiales que nos permiten consultar o realizar
@@ -118,6 +33,127 @@ Generalidades
      consola que muestra los errores derivados de una determinada acción. Por
      ejemplo, los errores de validación.
 
+**Personalización**
+   El entorno es muy, muy configurable y permite alterar su comportamiento
+   mediante la manipulación de varios aspectos cuya descripción se almacena en
+   archivos de configuración |JSON|:
+
+   + Los :ref:`parámetros de configuración <vscode-config>` propiamente dichos
+     (:file:`settings.json`).
+   + Las :ref:`extensiones <vscode-extensions>` (:file:`extensions.json`).
+   + Las :ref:`tareas <vscode-tasks>` (:file:`tasks.json`).
+   + Los lanzadores (:file:`launch.json`).
+   + Las asociaciones a teclas o atajos de teclado (:file:`keybindings.json`).
+
+   Además, estas personalizaciones podemos hacerlas a dos niveles:
+
+   .. _vscode-profile:
+
+   **Perfiles**
+      El nivel superior de configuración es el "perfil", cada uno de los cuales
+      se corresponde con un distinto *perfil de desarrollador*. Esto es debido a
+      que, cuando programamos por ejemplo en *Python*, no necesitamos
+      exactamente el mismo entorno de desarrollo que cuando programamos en
+      *Javascript*. En consecuencia necesitaremos unas extensiones distintas,
+      unas preferencias distintas, etc. :program:`Visual Studio Code` nos
+      permite lidiar con estas diferencias, permitiendo crear distintos
+      perfiles, que escogeremos a voluntad dependiendo qué pretendamos
+      desarrollar.
+
+      En principio, existe unicamente un perfil "Predeterminado" ("Default", si
+      usamos el original inglés), que se identifica porque aparece en la esquina
+      inferir izquierda una ruedecita dentada como icono asociado a este
+      perfil:
+
+      .. image:: files/predeterminado.png
+
+      Pulsando sobre el icono podemos cambiar de perfil o crear uno nuevo:
+
+      .. image:: files/predeterminado2.png
+
+      Para crear tenemos dos estrategias:
+
+      + Crear uno o bien de cero o bien copiando otro ya existente.
+        En este segundo caso, se nos permitirá elegir de forma grosera qué
+        aspectos queremos excluir de la copia.
+
+        .. image:: files/crear_perfiles.png
+
+      + En caso de que queramos ser más específicos al escoger los aspectos que
+        queremos transladar de un perfil ya existente, podemos escoger
+        "Mostrar los contenidos del perfil"  y señalar aquello que queremos
+        transferir al nuevo perfil. El resultado será un archivo
+        :file:`.profile`, que puede importarse luego a fin de crear el nuevo
+        perfil.
+
+      Al crear un nuevo perfil puede asociarse un icono identificativo, lo que
+      nos ayuda a saber siempre de un vistazo qué perfil estamos utilizando.
+ 
+      Los archivos |JSON| que caracterizan el perfil se almacenan bajo la ruta
+      :file:`$CONFIG/Code/User/profiles`, donde ``$CONFIG`` es la localización
+      donde el sistema operativo almacena las configuraciones de programas:
+
+      + En Linux, :file:`~/.config`.
+      + En Windows, :file:`%APPDATA%`.
+
+   .. _vscode-workspace:
+
+   **Áreas de trabajo**
+      El segundo nivel de personalización son las áreas de trabajo que podemos
+      asimilarlas a los *proyectos*: para desarrollar un proyecto de *Python*
+      crearé un área de trabajo sobre un directorio.
+
+      .. image:: files/01-vscode-abrir.png
+
+      Las áreas de trabajo también se pueden personalizar, de modo que la
+      personalización que disfrutemos al trabajar será la suma de la que hayamos
+      hecho para el perfil que estamos usando más la que apliquemos al área de
+      trabajo.
+
+      Los archivos |JSON| de personalización del área de trabajo se almacenan
+      dentro del subdirectorio :file:`.vscode/` incluido en la carpeta raíz del
+      área de trabajo.
+
+      .. todo:: Tratar las área de trabajo de múltiples directorios.
+
+   La estrategia, pues, para la personalización es tener distintos perfiles, uno
+   para cada uno de los distintos tipos de desarrollo que pretendamos hacer.
+   Para cada proyecto concreto, definiremos un área de trabajo distinta la cual
+   podremos o no personalizar en un segundo nivel de concreción:
+
+      .. image:: files/perfiles_areas.png
+
+   .. seealso:: Véanse más adelante los :ref:`vscode-start`.
+
+.. _vscode-config:
+
+**Configuración**
+   Para modificar parámetros de configuración podemos pulsar :kbd:`Ctrl`\ +\
+   :kbd:`,`:
+
+   .. image:: files/02-vscode-conf.png
+
+   Este tipo de personalización puede hacerse tanto a nivel de perfil como de
+   área de trabajo. Como alternativa, podemos directamente editar los
+   :file:`settings.json` correspondientes.
+
+.. _vscode-extensions:
+
+**Extensiones**
+   Las extensiones permiten aumentar las funcionalidades del programa  y se
+   instalan sólo a nivel de *perfil*. Ahora bien, su activación (o
+   desactivación) sí puede hacerse a nivel de *área de trabajo*.
+
+   Una indispensable para quien se haya criado editando archivos en `vim
+   <https://www.vim.org/>`_ es `VSCodeVim
+   <https://marketplace.visualstudio.com/items?itemName=vscodevim.vim>`_, que
+   permite editar archivos como se hace en el veterano editor.
+
+   Para gestionar las extensiones, basta con pinchar sobre el icono lateral
+   izquierdo  señalado:
+
+   .. image:: files/03-vscode-ext.png
+
 .. _vscode-atajos:
 
 **Atajos de teclado**
@@ -125,16 +161,52 @@ Generalidades
    determinadas acciones, lo cual puede ahorrarnos mucho tiempo. El
    acceso a estas asociaciones se logra pulsando 
    :kbd:`Ctrl`\ +\ :kbd:`k`\ -\ :kbd:`Ctrl`\ +\ :kbd:`s`. Si deseamos añadir
-   alguna asociacion extra a las ya existentes podemos editar un archivo
-   :file:`keybindings.json` pulsando aquí:
+   alguna asociacion extra a las ya existentes podemos editar el archivo
+   :file:`keybindings.json` asociado al perfil pulsando aquí:
 
    .. image:: files/addkeybinding.png
 
    El archivo contiene de un array en que cada *ítem* es una de esas
    asociaciones. Más adelante se sugerirán algunos.
 
+   .. note:: Los atajos de teclado sólo se pueden definir para perfiles, no para
+      áreas de trabajo.
+
    .. seealso:: La ayuda oficial del programa tiene `una buena explicación
       sobre estos atajos <https://code.visualstudio.com/docs/getstarted/keybindings>`_.
+
+.. _vscode-tasks:
+
+**Tareas**
+
+.. _vscode-start:
+
+Preliminares
+============
+Antes de empezar cualquier configuración específica a un lenguaje determinado es
+conveniente preparar en el :ref:`perfil Predeterminado <vscode-profile>` todo
+aquellas configuraciones que deseemos que sean universales independientemente de
+la herramienta que utilicemos. En particular, nos puede interesar:
+
++ La :ref:`configuración del idioma <vscode-language>`.
++ Los aspectos relacionados con el editor (tamaño de la fuente, `emulación
+  de vim <https://marketplace.visualstudio.com/items?itemName=vscodevim.vim>`_).
++ Los atajos de teclado.
++ La instalación de extensiones que consideremos útiles para todos o gran parte
+  de los perfiles (:ref:`Code Runner <code-runner>`). En caso de que no sea útil
+  para todos, podemos tenerla deshabilitada en este perfil.
+
+Definido a nuestro gusto este perfil, podemos exportarlo a un archivo; e
+importarlo como base de cada nuevo perfil que creemos para hacer desarrollos
+con una herramienta determinada. En particular, para este curso nos interesará
+crear perfiles independientes para:
+
+#. |XML|.
+#. |JSON|.
+#. |YAML|.
+#. |HTML|\ /\ |CSS|.
+#. Desarrollo *web*, que consistirá en añadir al perfil anterior, configuración
+   apropiada para desarrollar en *Javascript*.
 
 .. _vscode-xml:
 
@@ -197,8 +269,8 @@ opciones:
 
   Una vez bien configurada, el modo de ejecutar la consulta es el siguiente:
 
-  a. Escribimos el archivo :file:`.xq` con el código de *XQuery* y con el
-     archivo abierto y seleccionado en el editor.
+  a. Creamos un archivo :file:`.xq` con el código de *XQuery* y con él
+     abierto y seleccionado en el editor...
   #. Pulsamos :kbd:`Ctrl`\ +\ :kbd:`Shift`\ +\ :kbd:`P` y ejecutamos `XML Tools:
      Execute Query`.
   #. Si hay varios |XML| en el directorio se nos preguntará sobre cuál
@@ -223,6 +295,9 @@ la extensión para |JSON|, una de cuyas configuraciones es ``JSON: Schemas``:
 
 .. image:: files/20-vscode-json-schemas.png
 
+.. caution:: Las configuraciones que se indican a continuación se definen para
+   un área de trabajo, no para el perfil completo.
+
 Al pinchar en la edición se nos abrirá el archivo de configuración
 :file:`settings.json` que nos permite relacionar archivos |JSON| con los
 esquemas que usan. Por ejemplo:
@@ -245,7 +320,7 @@ La propiedad ``json.schemas`` es una secuencia, cada uno de cuyos elementos
 es un objeto que sirve para referir un esquema distinto. En él, ``fileMatch``
 es la lista de archivos que siguen el esquema, mientras que ``url`` indica la
 |URL| (que no propiamente la ruta) del esquema. Podríamos haber escrito una
-|URL| absoluta (con file:`file:///etc.`), pero dado que la |URL| base es la
+|URL| absoluta (con :file:`file:///etc.`), pero dado que la |URL| base es la
 propia carpeta del proyecto, hemos preferido una |URL| relativa. 
 
 .. _vscode-yaml:
@@ -255,7 +330,7 @@ propia carpeta del proyecto, hemos preferido una |URL| relativa.
 A diferencia de lo que ocurre con |JSON|, el soporte para |YAML| no es nativo,
 así que es preciso instalar la `extensión para YAML
 <https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml>`_ para
-que el programa comprueba si el documento es bien formado. Si, además, queremos
+que el programa compruebe si el documento es bien formado. Si, además, queremos
 confrontarlo con un esquema |JSON| para validarlo, entonces requeriremos
 configuración adicional que relacione los archivos con su esquema
 correspondiente:
@@ -281,6 +356,9 @@ una secuencia:
       }
    } 
 
+.. caution:: Como en el caso anterior, estas asociaciones son configuración
+   propia del área de trabajo.
+
 .. _vscode-html:
 
 |HTML|/|CSS|
@@ -289,10 +367,6 @@ Como en el caso del formato |JSON|, :program:`Visual Studio Core` tiene soporte
 nativo para |HTML|, de manera que es capaz de proporcionarnos sugerencias o
 autocompletado sin configuración adicional. Sin embargo, podemos afinar un poco
 para ampliar las facilidades.
-
-En principio, haremos como con el resto de formatos: crearemos una carpeta
-dedicada a nuestros archivos de |HTML| y |CSS| y aplicaremos un configuración
-específica para ella.
 
 .. _vscode-html-close:
 
@@ -336,7 +410,7 @@ específica para ella.
 
 **Visualización**
    Otra funcionalidad interesante es la de poder previsualizar la página. Para
-   ello tenemos varias alternativas:
+   ello tenemos varias **alternativas**:
 
    `Live Preview <https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server>`_
      Extensión que mostrará el icono señalado en la captura:
@@ -351,13 +425,13 @@ específica para ella.
      en un navegador empotrado. Además, podremos seguir escribiendo y las
      modificaciones se realizarán en vivo.
 
-     Una alternativa (aunque no equivalente, porque no habrá servidor web) es
-     abrir el documento |HTML| con un navegador que tengamos instalado en el
-     sistema, lo cual requiere dos cosas:
+     .. note:: Si deseamos ver la página en un navegador externo, podemos
+        copiar en él la |URL| que vemos en el empotrado. Los cambios también se
+        reflejarán en vivo.
 
    `Live Server <https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer>`_
-     Extensión parecida a la anterior, pero que muestra la página en el navegador
-     predeterminado del sistema.
+     Extensión parecida a la anterior, pero que muestra la página directamente
+     en el navegador predeterminado del sistema.
 
      Tras la instalación, si estamos en el directorio donde almacenamos nuestro
      sitio web, tenemos dos alternativas para consultar el aspecto de la página
@@ -373,7 +447,6 @@ específica para ella.
 
         .. image:: files/vscode-LiveServer.png
 
-
      En ambos casos, se levantará un pequeño servidor web y se mostrará el
      documento |HTML| en el navegador predeterminado del sistema. Además, según
      lo vayamos modificando, se reflejarán los cambios en la visualización sin
@@ -384,6 +457,10 @@ específica para ella.
      servicio:
 
      .. image:: files/vscode-LiveServerClose.png
+
+     .. note:: En nuestra humilde opinión, es más cómoda la extensión anterior
+        y, si hay necesidad de utilizar un navegador externo, tampoco nos supone
+        excesivo trabajo copiar la |URL|.
 
    **Configuración manual**
      Consiste en no utilizar ninguna extensión adicional y, simplemente, mapear
@@ -467,7 +544,7 @@ para mejorarla:
    dando los primeros pasos en su aprendizaje y nos resulta más fácil prescindir
    del documento |HTML|, necesitamos un intérprete independiente. El más
    conocido es `NodeJS <https://nodejs.org/>`_, cuya instalación tanto en
-   *Linux* como en *Windows* es trivial,
+   *Linux* como en *Windows* es trivial.
 
    Como para dar los primeros pasos es conveniente aislarse de las dificultades
    añadidas de ejecutar código *Javascript* sobre un documento |HTML|, nos
@@ -478,13 +555,15 @@ para mejorarla:
       distribución (como en el caso de las principales distribuciones de
       *Linux*).
 
-   #. Instalar la extensión `Code Runner
+      .. _code-runner:
+
+   #. Usar la `extensión Code Runner
       <https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner>`_,
       que posibilita ejecutar el archivo activo pulsando :kbd:`Ctrl`\ +\
       :kbd:`Alt`\ +\ :kbd:`n` y ver la salida a través la propia ventana de
       salida de *Visual Studio Code*. La ejecución no permite la depuración
-      (puntos de ruptura, ejecución paso a paso, etc.), pero para ello ya existe
-      :kbd:`F5`.
+      (puntos de ruptura, ejecución paso a paso, etc.), pero para ello ya
+      existe :kbd:`F5`.
 
 **Análisis estático**
 
@@ -492,6 +571,37 @@ para mejorarla:
    https://marketplace.visualstudio.com/items?itemName=smelukov.vscode-csstree : Probar para CSS
    Mirar tareas y asociación de teclas (¿se puede hacer por espacios de trabajo?)
    https://www.mclibre.org/consultar/htmlcss/otros/vsc-htmlcss-configuracion.html
+
+Java
+====
+.. caution:: El desarrollo con *Java* nada tiene que ver con los propósitos del
+   módulo de *Lenguaje de marcas*, pero incluiremos aquí algunas sugerencias
+   aprovechando este pequeño mini manual.
+
+Tienen interés instalar las siguientes extensiones:
+
++ :ref:`Code Runner <code-runner>`, de la que ya hemos hablado.
++ `Language Support for Java(TM) by Red Hat
+  <https://marketplace.visualstudio.com/items?itemName=redhat.java>`_.
++ `Proyect Manager for Java
+  <https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-dependency>`_ que nos facilitara la gestión de los proyectos de Java. De hecho, nos permite, en vez de crear un área de trabajo vacía, crear un proyecto de Java, que es un área de trabajo, con una estructura básica ya definida y una configuración básica.
++ `Debugger for Java
+  <https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug>`_, que permite depurar los programas de Java (puntos de ruptura, ejecución condicional, ejecución paso a paso, etc.)
++ `Test Runner for Java
+  <https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-test>`_, para ejecutar casos de prueba.
+
+Además de estas extensiones puede interesarnos añadir configuración adicional:
+
+.. code-block:: json
+
+   {
+      // Elimina de la vista los archivos compilados.
+      "files.exclude": {
+         "**/*.class": true
+      },
+      // Evita los inlay hints para los parámetros de las funciones.
+      "editor.inlayHints.enable": "off"
+   }
 
 .. rubric:: Notas al pie
 

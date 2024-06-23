@@ -85,7 +85,7 @@ operativos. Esta disponible para su descarga gratuita en <a class="reference ext
 página de github</a>.</p>
 <section id="generalidades">
 <h2>Generalidades<a class="headerlink" href="#generalidades" title="Enlace permanente a este encabezado">¶</a></h2>
-<dl>
+<dl id="vscode-language">
 <dt><strong>Idioma</strong></dt><dd><p>Si la instalación trae el programa en inglés, puede instalarse el paquete de
 nuestra lengua pulsando <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd> (o
 seleccionando <code class="docutils literal notranslate"><span class="pre">File&gt;Preferences&gt;Settings</span></code>) y escribiendo la palabra
@@ -93,76 +93,9 @@ seleccionando <code class="docutils literal notranslate"><span class="pre">File&
 <img alt="../../_images/00-vscode-lang.png" src="../../_images/00-vscode-lang.png" />
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>El idioma es, en realidad, una <a class="reference internal" href="#vs-extension"><span class="std std-ref">extensión</span></a> que
+<p>El idioma es, en realidad, una <a class="reference internal" href="#vscode-extensions"><span class="std std-ref">extensión</span></a> que
 se habilita al realizar esta operación.</p>
 </div>
-</dd>
-</dl>
-<dl id="vs-workspace">
-<dt><strong>Áreas de trabajo</strong></dt><dd><p>El programa permite abrir archivos individuales, pero por lo general es mejor
-abrir una <em>carpeta</em>, ya que podemos asimilar ésta a un proyecto (área de
-trabajo) y definir una configuración particular independiente para ella:</p>
-<img alt="../../_images/01-vscode-abrir.png" src="../../_images/01-vscode-abrir.png" />
-</dd>
-<dt><strong>Configuración</strong></dt><dd><p>La configuración puede definirse de forma <em>global</em> (y ya matizaremos esto de
-global) o por área de trabajo y puede accederse a ella pulsando <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">,</kbd>:</p>
-<img alt="../../_images/02-vscode-conf.png" src="../../_images/02-vscode-conf.png" />
-<p>Se almacena en formato <abbr title="JavaScript Object Notation">JSON</abbr> y, cuando se define para el área de trabajo, se
-almacena dentro de la propia carpeta en <code class="file docutils literal notranslate"><span class="pre">.vscode/settings.json</span></code> con que
-es equivalente realizar la configuración a través de la interfaz que
-proporciona <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">,</kbd>, que editando directamente el archivo.</p>
-</dd>
-</dl>
-<dl id="vs-extension">
-<dt><strong>Extensiones</strong></dt><dd><p>Las extensiones permiten aumentar las funcionalidades del editor y pueden
-activarse tanto de forma <em>global</em> como por espacio de trabajo.</p>
-<p>Una indispensable para quien se haya criado editando archivos en <a class="reference external" href="https://www.vim.org/">vim</a> es <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscodevim.vim">VSCodeVim</a>, que
-permite editar archivos como se hace en el veterano editor.</p>
-<p>Para gestionar las extensiones, basta con pinchar sobre el icono lateral
-izquierdo  señalado:</p>
-<img alt="../../_images/03-vscode-ext.png" src="../../_images/03-vscode-ext.png" />
-</dd>
-<dt><strong>Perfiles</strong></dt><dd><p>Tanto al hablar de configuración como de extensiones hemos distinguido entre
-<em>global</em> y particular al área de trabajo. Sin embargo, el concepto de global
-no es absoluto, sino que en el programa podemos definir distintos perfiles
-a cada uno de los cuales podemos asociar una configuración y unas extensiones
-distintas, que hasta ahora hemos definido como globales. ¿Cuál es la utilidad
-de esto? Analicémoslo.</p>
-<p>Manejando únicamente el concepto de área de trabajo, podemos habilitar unas
-extensiones y realizar una configuración determinada para dentro de un
-directorio, por ejemplo, trabajar en <em>Python</em>. Estas extensiones y
-configuración sólo estarán disponibles si usamos ese directorio como área de
-trabajo, por lo que una de dos:</p>
-<ul class="simple">
-<li><p>Metemos todos nuestros archivos de <em>Python</em> dentro de esa área de trabajo,
-lo cual sólo es viable si nuestros desarrollos son de archivo único.</p></li>
-<li><p>Asignamos áreas de trabajo distintas a área de trabajo distintas, pero en
-ese caso tendremos que copiar la configuración  y habilitar manualmente las
-mismas extensiones una y otra ves.</p></li>
-</ul>
-<p>Lo habitual, sin embargo, es que los desarrollos necesiten un subárbol
-independiente de directorios; y, desde luego, no queremos ver más que ese
-subárbol. Esto hace inviable la primera alternativa y muy molesta la segunda.</p>
-<p>Para soslayar este problema existen los <em>perfiles</em>. Por defecto, existe un
-perfil llamado <em>Predeterminado</em>/<em>Default</em> al que se asocia la configuración
-que hasta ahora hemos llamado <em>global</em> y en el que se habilitan las
-extensiones instaladas que no hemos circunscrito a un área de trabajo
-particular. Se lo identifica porque debe aparecer en la esquina inferior
-izquierda una ruedecilla, que es el icono asociado a este perfil:</p>
-<img alt="../../_images/predeterminado.png" src="../../_images/predeterminado.png" />
-<p>Pulsando sobre el icono podemos cambiar de perfil o crear uno nuevo:</p>
-<img alt="../../_images/predeterminado2.png" src="../../_images/predeterminado2.png" />
-<p>Para crear uno podemos partir de cero, pero es mejor generarlo a partir del
-«Predeterminado» si en el predeterminado hemos hecho configuraciones que nos
-gustaría que aplicaran (p.e. el tamaño de letra en el editor) y hemos
-instalado extensiones que también son aplicables a cualquier lenguaje (p.e.
-el idioma). Para ello, podemos simplemente exportar el perfil a un archivo o
-«Mostrar los contenidos del perfil» para señalar aquello que realmente
-queremos guardar an el archivo. De una u otra manera, podremos usar el
-archivo resultante para crear un nuevo perfil (importar) al que le
-asociaremos un nombre (<em>Python</em>, <em>Java</em>, etc) y un icono característico que
-nos permita distinguirlo de los demás.</p>
-<img alt="../../_images/perfiles_areas.png" src="../../_images/perfiles_areas.png" />
 </dd>
 <dt><strong>Áreas especiales</strong></dt><dd><p>Podemos abrir algunas áreas especiales que nos permiten consultar o realizar
 ciertas actividades interesantes:</p>
@@ -174,17 +107,125 @@ consola que muestra los errores derivados de una determinada acción. Por
 ejemplo, los errores de validación.</p></li>
 </ul>
 </dd>
+<dt><strong>Personalización</strong></dt><dd><p>El entorno es muy, muy configurable y permite alterar su comportamiento
+mediante la manipulación de varios aspectos cuya descripción se almacena en
+archivos de configuración <abbr title="JavaScript Object Notation">JSON</abbr>:</p>
+<ul class="simple">
+<li><p>Los <a class="reference internal" href="#vscode-config"><span class="std std-ref">parámetros de configuración</span></a> propiamente dichos
+(<code class="file docutils literal notranslate"><span class="pre">settings.json</span></code>).</p></li>
+<li><p>Las <a class="reference internal" href="#vscode-extensions"><span class="std std-ref">extensiones</span></a> (<code class="file docutils literal notranslate"><span class="pre">extensions.json</span></code>).</p></li>
+<li><p>Las <a class="reference internal" href="#vscode-tasks"><span class="std std-ref">tareas</span></a> (<code class="file docutils literal notranslate"><span class="pre">tasks.json</span></code>).</p></li>
+<li><p>Los lanzadores (<code class="file docutils literal notranslate"><span class="pre">launch.json</span></code>).</p></li>
+<li><p>Las asociaciones a teclas o atajos de teclado (<code class="file docutils literal notranslate"><span class="pre">keybindings.json</span></code>).</p></li>
+</ul>
+<p>Además, estas personalizaciones podemos hacerlas a dos niveles:</p>
+<dl id="vscode-profile">
+<dt><strong>Perfiles</strong></dt><dd><p>El nivel superior de configuración es el «perfil», cada uno de los cuales
+se corresponde con un distinto <em>perfil de desarrollador</em>. Esto es debido a
+que, cuando programamos por ejemplo en <em>Python</em>, no necesitamos
+exactamente el mismo entorno de desarrollo que cuando programamos en
+<em>Javascript</em>. En consecuencia necesitaremos unas extensiones distintas,
+unas preferencias distintas, etc. <strong class="program">Visual Studio Code</strong> nos
+permite lidiar con estas diferencias, permitiendo crear distintos
+perfiles, que escogeremos a voluntad dependiendo qué pretendamos
+desarrollar.</p>
+<p>En principio, existe unicamente un perfil «Predeterminado» («Default», si
+usamos el original inglés), que se identifica porque aparece en la esquina
+inferir izquierda una ruedecita dentada como icono asociado a este
+perfil:</p>
+<img alt="../../_images/predeterminado.png" src="../../_images/predeterminado.png" />
+<p>Pulsando sobre el icono podemos cambiar de perfil o crear uno nuevo:</p>
+<img alt="../../_images/predeterminado2.png" src="../../_images/predeterminado2.png" />
+<p>Para crear tenemos dos estrategias:</p>
+<ul>
+<li><p>Crear uno o bien de cero o bien copiando otro ya existente.
+En este segundo caso, se nos permitirá elegir de forma grosera qué
+aspectos queremos excluir de la copia.</p>
+<img alt="../../_images/crear_perfiles.png" src="../../_images/crear_perfiles.png" />
+</li>
+<li><p>En caso de que queramos ser más específicos al escoger los aspectos que
+queremos transladar de un perfil ya existente, podemos escoger
+«Mostrar los contenidos del perfil»  y señalar aquello que queremos
+transferir al nuevo perfil. El resultado será un archivo
+<code class="file docutils literal notranslate"><span class="pre">.profile</span></code>, que puede importarse luego a fin de crear el nuevo
+perfil.</p></li>
+</ul>
+<p>Al crear un nuevo perfil puede asociarse un icono identificativo, lo que
+nos ayuda a saber siempre de un vistazo qué perfil estamos utilizando.</p>
+<p>Los archivos <abbr title="JavaScript Object Notation">JSON</abbr> que caracterizan el perfil se almacenan bajo la ruta
+<code class="file docutils literal notranslate"><span class="pre">$CONFIG/Code/User/profiles</span></code>, donde <code class="docutils literal notranslate"><span class="pre">$CONFIG</span></code> es la localización
+donde el sistema operativo almacena las configuraciones de programas:</p>
+<ul class="simple">
+<li><p>En Linux, <code class="file docutils literal notranslate"><span class="pre">~/.config</span></code>.</p></li>
+<li><p>En Windows, <code class="file docutils literal notranslate"><span class="pre">%APPDATA%</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl id="vscode-workspace">
+<dt><strong>Áreas de trabajo</strong></dt><dd><p>El segundo nivel de personalización son las áreas de trabajo que podemos
+asimilarlas a los <em>proyectos</em>: para desarrollar un proyecto de <em>Python</em>
+crearé un área de trabajo sobre un directorio.</p>
+<img alt="../../_images/01-vscode-abrir.png" src="../../_images/01-vscode-abrir.png" />
+<p>Las áreas de trabajo también se pueden personalizar, de modo que la
+personalización que disfrutemos al trabajar será la suma de la que hayamos
+hecho para el perfil que estamos usando más la que apliquemos al área de
+trabajo.</p>
+<p>Los archivos <abbr title="JavaScript Object Notation">JSON</abbr> de personalización del área de trabajo se almacenan
+dentro del subdirectorio <code class="file docutils literal notranslate"><span class="pre">.vscode/</span></code> incluido en la carpeta raíz del
+área de trabajo.</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Por hacer</p>
+<p>Tratar las área de trabajo de múltiples directorios.</p>
+</div>
+</dd>
+</dl>
+<p>La estrategia, pues, para la personalización es tener distintos perfiles, uno
+para cada uno de los distintos tipos de desarrollo que pretendamos hacer.
+Para cada proyecto concreto, definiremos un área de trabajo distinta la cual
+podremos o no personalizar en un segundo nivel de concreción:</p>
+<blockquote>
+<div><img alt="../../_images/perfiles_areas.png" src="../../_images/perfiles_areas.png" />
+</div></blockquote>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Véanse más adelante los <a class="reference internal" href="#vscode-start"><span class="std std-ref">Preliminares</span></a>.</p>
+</div>
+</dd>
+</dl>
+<dl id="vscode-config">
+<dt><strong>Configuración</strong></dt><dd><p>Para modificar parámetros de configuración podemos pulsar <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">,</kbd>:</p>
+<img alt="../../_images/02-vscode-conf.png" src="../../_images/02-vscode-conf.png" />
+<p>Este tipo de personalización puede hacerse tanto a nivel de perfil como de
+área de trabajo. Como alternativa, podemos directamente editar los
+<code class="file docutils literal notranslate"><span class="pre">settings.json</span></code> correspondientes.</p>
+</dd>
+</dl>
+<dl id="vscode-extensions">
+<dt><strong>Extensiones</strong></dt><dd><p>Las extensiones permiten aumentar las funcionalidades del programa  y se
+instalan sólo a nivel de <em>perfil</em>. Ahora bien, su activación (o
+desactivación) sí puede hacerse a nivel de <em>área de trabajo</em>.</p>
+<p>Una indispensable para quien se haya criado editando archivos en <a class="reference external" href="https://www.vim.org/">vim</a> es <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscodevim.vim">VSCodeVim</a>, que
+permite editar archivos como se hace en el veterano editor.</p>
+<p>Para gestionar las extensiones, basta con pinchar sobre el icono lateral
+izquierdo  señalado:</p>
+<img alt="../../_images/03-vscode-ext.png" src="../../_images/03-vscode-ext.png" />
+</dd>
 </dl>
 <dl id="vscode-atajos">
 <dt><strong>Atajos de teclado</strong></dt><dd><p>El programa da la posibilidad de asociar combinaciones de teclas a
 determinadas acciones, lo cual puede ahorrarnos mucho tiempo. El
 acceso a estas asociaciones se logra pulsando
 <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">k</kbd>-<kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">s</kbd>. Si deseamos añadir
-alguna asociacion extra a las ya existentes podemos editar un archivo
-<code class="file docutils literal notranslate"><span class="pre">keybindings.json</span></code> pulsando aquí:</p>
+alguna asociacion extra a las ya existentes podemos editar el archivo
+<code class="file docutils literal notranslate"><span class="pre">keybindings.json</span></code> asociado al perfil pulsando aquí:</p>
 <img alt="../../_images/addkeybinding.png" src="../../_images/addkeybinding.png" />
 <p>El archivo contiene de un array en que cada <em>ítem</em> es una de esas
 asociaciones. Más adelante se sugerirán algunos.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Los atajos de teclado sólo se pueden definir para perfiles, no para
+áreas de trabajo.</p>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">Ver también</p>
 <p>La ayuda oficial del programa tiene <a class="reference external" href="https://code.visualstudio.com/docs/getstarted/keybindings">una buena explicación
@@ -192,6 +233,35 @@ sobre estos atajos</a>.</p>
 </div>
 </dd>
 </dl>
+<p id="vscode-tasks"><strong>Tareas</strong></p>
+</section>
+<section id="preliminares">
+<span id="vscode-start"></span><h2>Preliminares<a class="headerlink" href="#preliminares" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Antes de empezar cualquier configuración específica a un lenguaje determinado es
+conveniente preparar en el <a class="reference internal" href="#vscode-profile"><span class="std std-ref">perfil Predeterminado</span></a> todo
+aquellas configuraciones que deseemos que sean universales independientemente de
+la herramienta que utilicemos. En particular, nos puede interesar:</p>
+<ul class="simple">
+<li><p>La <a class="reference internal" href="#vscode-language"><span class="std std-ref">configuración del idioma</span></a>.</p></li>
+<li><p>Los aspectos relacionados con el editor (tamaño de la fuente, <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscodevim.vim">emulación
+de vim</a>).</p></li>
+<li><p>Los atajos de teclado.</p></li>
+<li><p>La instalación de extensiones que consideremos útiles para todos o gran parte
+de los perfiles (<a class="reference internal" href="#code-runner"><span class="std std-ref">Code Runner</span></a>). En caso de que no sea útil
+para todos, podemos tenerla deshabilitada en este perfil.</p></li>
+</ul>
+<p>Definido a nuestro gusto este perfil, podemos exportarlo a un archivo; e
+importarlo como base de cada nuevo perfil que creemos para hacer desarrollos
+con una herramienta determinada. En particular, para este curso nos interesará
+crear perfiles independientes para:</p>
+<ol class="arabic simple">
+<li><p><abbr title="eXtensible  Markup Language">XML</abbr>.</p></li>
+<li><p><abbr title="JavaScript Object Notation">JSON</abbr>.</p></li>
+<li><p><abbr title="YAML Ain't Markup Language">YAML</abbr>.</p></li>
+<li><p><abbr title="HyperText Markup Language">HTML</abbr>/<abbr title="Cascading Style Sheets">CSS</abbr>.</p></li>
+<li><p>Desarrollo <em>web</em>, que consistirá en añadir al perfil anterior, configuración
+apropiada para desarrollar en <em>Javascript</em>.</p></li>
+</ol>
 </section>
 <section id="xml">
 <span id="vscode-xml"></span><h2><abbr title="eXtensible  Markup Language">XML</abbr><a class="headerlink" href="#xml" title="Enlace permanente a este encabezado">¶</a></h2>
@@ -244,8 +314,8 @@ escapar las contrabarras.</p>
 </ol>
 <p>Una vez bien configurada, el modo de ejecutar la consulta es el siguiente:</p>
 <ol class="loweralpha simple">
-<li><p>Escribimos el archivo <code class="file docutils literal notranslate"><span class="pre">.xq</span></code> con el código de <em>XQuery</em> y con el
-archivo abierto y seleccionado en el editor.</p></li>
+<li><p>Creamos un archivo <code class="file docutils literal notranslate"><span class="pre">.xq</span></code> con el código de <em>XQuery</em> y con él
+abierto y seleccionado en el editor…</p></li>
 <li><p>Pulsamos <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd> y ejecutamos <cite>XML Tools:
 Execute Query</cite>.</p></li>
 <li><p>Si hay varios <abbr title="eXtensible  Markup Language">XML</abbr> en el directorio se nos preguntará sobre cuál
@@ -255,7 +325,7 @@ el archivo de salida. Si no la incluimos, la salida se volcará
 directamente en una subventana.</p></li>
 <li><p>Abrimos el archivo de salida para consultar el resultado.</p></li>
 </ol>
-<div class="admonition-todo admonition" id="id1">
+<div class="admonition-todo admonition" id="id2">
 <p class="admonition-title">Por hacer</p>
 <p>Añadir un atajo para acceder a <cite>XML Tools: Execute Query</cite>.</p>
 </div>
@@ -271,6 +341,11 @@ configurar para relacionar el documento con su gramática. Para ello debemos
 abrir la configuración (<kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">,</kbd>) y acceder a
 la extensión para <abbr title="JavaScript Object Notation">JSON</abbr>, una de cuyas configuraciones es <code class="docutils literal notranslate"><span class="pre">JSON:</span> <span class="pre">Schemas</span></code>:</p>
 <img alt="../../_images/20-vscode-json-schemas.png" src="../../_images/20-vscode-json-schemas.png" />
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>Las configuraciones que se indican a continuación se definen para
+un área de trabajo, no para el perfil completo.</p>
+</div>
 <p>Al pinchar en la edición se nos abrirá el archivo de configuración
 <code class="file docutils literal notranslate"><span class="pre">settings.json</span></code> que nos permite relacionar archivos <abbr title="JavaScript Object Notation">JSON</abbr> con los
 esquemas que usan. Por ejemplo:</p>
@@ -289,14 +364,14 @@ esquemas así:</p>
 es un objeto que sirve para referir un esquema distinto. En él, <code class="docutils literal notranslate"><span class="pre">fileMatch</span></code>
 es la lista de archivos que siguen el esquema, mientras que <code class="docutils literal notranslate"><span class="pre">url</span></code> indica la
 <abbr title="Uniform Resource Locator">URL</abbr> (que no propiamente la ruta) del esquema. Podríamos haber escrito una
-<abbr title="Uniform Resource Locator">URL</abbr> absoluta (con file:<cite>file:///etc.</cite>), pero dado que la <abbr title="Uniform Resource Locator">URL</abbr> base es la
+<abbr title="Uniform Resource Locator">URL</abbr> absoluta (con <code class="file docutils literal notranslate"><span class="pre">file:///etc.</span></code>), pero dado que la <abbr title="Uniform Resource Locator">URL</abbr> base es la
 propia carpeta del proyecto, hemos preferido una <abbr title="Uniform Resource Locator">URL</abbr> relativa.</p>
 </section>
 <section id="yaml">
 <span id="vscode-yaml"></span><h2><abbr title="YAML Ain't Markup Language">YAML</abbr><a class="headerlink" href="#yaml" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>A diferencia de lo que ocurre con <abbr title="JavaScript Object Notation">JSON</abbr>, el soporte para <abbr title="YAML Ain't Markup Language">YAML</abbr> no es nativo,
 así que es preciso instalar la <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml">extensión para YAML</a> para
-que el programa comprueba si el documento es bien formado. Si, además, queremos
+que el programa compruebe si el documento es bien formado. Si, además, queremos
 confrontarlo con un esquema <abbr title="JavaScript Object Notation">JSON</abbr> para validarlo, entonces requeriremos
 configuración adicional que relacione los archivos con su esquema
 correspondiente:</p>
@@ -318,6 +393,11 @@ una secuencia:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>Como en el caso anterior, estas asociaciones son configuración
+propia del área de trabajo.</p>
+</div>
 </section>
 <section id="html-css">
 <span id="vscode-html"></span><h2><abbr title="HyperText Markup Language">HTML</abbr>/<abbr title="Cascading Style Sheets">CSS</abbr><a class="headerlink" href="#html-css" title="Enlace permanente a este encabezado">¶</a></h2>
@@ -325,9 +405,6 @@ una secuencia:</p>
 nativo para <abbr title="HyperText Markup Language">HTML</abbr>, de manera que es capaz de proporcionarnos sugerencias o
 autocompletado sin configuración adicional. Sin embargo, podemos afinar un poco
 para ampliar las facilidades.</p>
-<p>En principio, haremos como con el resto de formatos: crearemos una carpeta
-dedicada a nuestros archivos de <abbr title="HyperText Markup Language">HTML</abbr> y <abbr title="Cascading Style Sheets">CSS</abbr> y aplicaremos un configuración
-específica para ella.</p>
 <dl id="vscode-html-close">
 <dt><strong>Cierre de etiquetas</strong></dt><dd><p>Ya existe soporte para ello, pero si somos de aquellos a los que gusta no cerrar
 las etiquetas que no necesitan cierre, puede resultarnos molesta que esta
@@ -359,7 +436,7 @@ habilitar, con las excepciones de deseemos el cierre con esta extensión.
 </div>
 <p>En esta configuración, la primera línea deshabilita el cierre automático
 nativo; la segunda lo habilita para la extensión; la tercera activa  el
-cierre para <abbr title="HyperText Markup Language">HTML</abbr> (ya que por defecto está deshabilitado)<a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> y
+cierre para <abbr title="HyperText Markup Language">HTML</abbr> (ya que por defecto está deshabilitado)<a class="footnote-reference brackets" href="#id4" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> y
 <em>Javascript</em>, y la cuarta define aquellas etiquetas que no queremos que se
 cierren automáticamente. Además, con la quinta hemos deshabilitado la
 escritura automática de las comillas dobles para los valores de los
@@ -379,7 +456,7 @@ documento. En caso de errores, podremos consultarlos en la venta de errores
 </dl>
 <dl id="vscode-html-visu">
 <dt><strong>Visualización</strong></dt><dd><p>Otra funcionalidad interesante es la de poder previsualizar la página. Para
-ello tenemos varias alternativas:</p>
+ello tenemos varias <strong>alternativas</strong>:</p>
 <dl>
 <dt><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server">Live Preview</a></dt><dd><p>Extensión que mostrará el icono señalado en la captura:</p>
 <img alt="../../_images/livepreview.png" src="../../_images/livepreview.png" />
@@ -388,12 +465,15 @@ ello tenemos varias alternativas:</p>
 <p>es decir, se crea un pequeño servidor web y mediante él se sirve la página
 en un navegador empotrado. Además, podremos seguir escribiendo y las
 modificaciones se realizarán en vivo.</p>
-<p>Una alternativa (aunque no equivalente, porque no habrá servidor web) es
-abrir el documento <abbr title="HyperText Markup Language">HTML</abbr> con un navegador que tengamos instalado en el
-sistema, lo cual requiere dos cosas:</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Si deseamos ver la página en un navegador externo, podemos
+copiar en él la <abbr title="Uniform Resource Locator">URL</abbr> que vemos en el empotrado. Los cambios también se
+reflejarán en vivo.</p>
+</div>
 </dd>
-<dt><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a></dt><dd><p>Extensión parecida a la anterior, pero que muestra la página en el navegador
-predeterminado del sistema.</p>
+<dt><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a></dt><dd><p>Extensión parecida a la anterior, pero que muestra la página directamente
+en el navegador predeterminado del sistema.</p>
 <p>Tras la instalación, si estamos en el directorio donde almacenamos nuestro
 sitio web, tenemos dos alternativas para consultar el aspecto de la página
 web:</p>
@@ -415,6 +495,12 @@ que tengamos que repetir la operación.</p>
 leyenda <code class="docutils literal notranslate"><span class="pre">Go</span> <span class="pre">Live</span></code> y ahora se muestra el puerto en el que escucha el
 servicio:</p>
 <img alt="../../_images/vscode-LiveServerClose.png" src="../../_images/vscode-LiveServerClose.png" />
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>En nuestra humilde opinión, es más cómoda la extensión anterior
+y, si hay necesidad de utilizar un navegador externo, tampoco nos supone
+excesivo trabajo copiar la <abbr title="Uniform Resource Locator">URL</abbr>.</p>
+</div>
 </dd>
 <dt><strong>Configuración manual</strong></dt><dd><p>Consiste en no utilizar ninguna extensión adicional y, simplemente, mapear
 alguna combinación de teclas para que abra el <abbr title="HyperText Markup Language">HTML</abbr> en el navegador de
@@ -493,7 +579,7 @@ navegador (por tanto, ajenos a nuestro módulo) o si, simplemente, estamos
 dando los primeros pasos en su aprendizaje y nos resulta más fácil prescindir
 del documento <abbr title="HyperText Markup Language">HTML</abbr>, necesitamos un intérprete independiente. El más
 conocido es <a class="reference external" href="https://nodejs.org/">NodeJS</a>, cuya instalación tanto en
-<em>Linux</em> como en <em>Windows</em> es trivial,</p>
+<em>Linux</em> como en <em>Windows</em> es trivial.</p>
 <p>Como para dar los primeros pasos es conveniente aislarse de las dificultades
 añadidas de ejecutar código <em>Javascript</em> sobre un documento <abbr title="HyperText Markup Language">HTML</abbr>, nos
 conviene conocer cómo probar código directamente en el editor. Para ello:</p>
@@ -501,20 +587,49 @@ conviene conocer cómo probar código directamente en el editor. Para ello:</p>
 <li><p>Instalamos <a class="reference external" href="https://nodejs.org/">NodeJS</a> en nuestro sistema, bien a través del paquete
 facilitado por su página web (<em>Windows</em>), bien a través de un paquete de
 distribución (como en el caso de las principales distribuciones de
-<em>Linux</em>).</p></li>
-<li><p>Instalar la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner">Code Runner</a>,
+<em>Linux</em>).</p>
+</li>
+<li id="code-runner"><p>Usar la <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner">extensión Code Runner</a>,
 que posibilita ejecutar el archivo activo pulsando <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Alt</kbd>+<kbd class="kbd docutils literal notranslate">n</kbd> y ver la salida a través la propia ventana de
 salida de <em>Visual Studio Code</em>. La ejecución no permite la depuración
-(puntos de ruptura, ejecución paso a paso, etc.), pero para ello ya existe
-<kbd class="kbd docutils literal notranslate">F5</kbd>.</p></li>
+(puntos de ruptura, ejecución paso a paso, etc.), pero para ello ya
+existe <kbd class="kbd docutils literal notranslate">F5</kbd>.</p></li>
 </ol>
 </dd>
 </dl>
 <p><strong>Análisis estático</strong></p>
+</section>
+<section id="java">
+<h2>Java<a class="headerlink" href="#java" title="Enlace permanente a este encabezado">¶</a></h2>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>El desarrollo con <em>Java</em> nada tiene que ver con los propósitos del
+módulo de <em>Lenguaje de marcas</em>, pero incluiremos aquí algunas sugerencias
+aprovechando este pequeño mini manual.</p>
+</div>
+<p>Tienen interés instalar las siguientes extensiones:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#code-runner"><span class="std std-ref">Code Runner</span></a>, de la que ya hemos hablado.</p></li>
+<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.java">Language Support for Java(TM) by Red Hat</a>.</p></li>
+<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-dependency">Proyect Manager for Java</a> que nos facilitara la gestión de los proyectos de Java. De hecho, nos permite, en vez de crear un área de trabajo vacía, crear un proyecto de Java, que es un área de trabajo, con una estructura básica ya definida y una configuración básica.</p></li>
+<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug">Debugger for Java</a>, que permite depurar los programas de Java (puntos de ruptura, ejecución condicional, ejecución paso a paso, etc.)</p></li>
+<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-test">Test Runner for Java</a>, para ejecutar casos de prueba.</p></li>
+</ul>
+<p>Además de estas extensiones puede interesarnos añadir configuración adicional:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="c1">// Elimina de la vista los archivos compilados.</span>
+<span class="w">   </span><span class="nt">&quot;files.exclude&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;**/*.class&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">   </span><span class="p">},</span>
+<span class="w">   </span><span class="c1">// Evita los inlay hints para los parámetros de las funciones.</span>
+<span class="w">   </span><span class="nt">&quot;editor.inlayHints.enable&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;off&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id3" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id4" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
 <p>La extensión, para no entrar en conflicto, deshabilitó el autocierre
 predeterminado para <abbr title="HyperText Markup Language">HTML</abbr> cuando el soporte nativo lo introdujo. Por otra
 parte, la extensión sirve para autocompletar otros lenguajes, así que tal vez
@@ -538,11 +653,13 @@ nos podría interesar añadir más lenguajes a la secuencia.</p>
     <ul>
 <li><a class="reference internal" href="#">Visual Studio Code</a><ul>
 <li><a class="reference internal" href="#generalidades">Generalidades</a></li>
+<li><a class="reference internal" href="#preliminares">Preliminares</a></li>
 <li><a class="reference internal" href="#xml"><abbr title="eXtensible  Markup Language">XML</abbr></a></li>
 <li><a class="reference internal" href="#json"><abbr title="JavaScript Object Notation">JSON</abbr></a></li>
 <li><a class="reference internal" href="#yaml"><abbr title="YAML Ain't Markup Language">YAML</abbr></a></li>
 <li><a class="reference internal" href="#html-css"><abbr title="HyperText Markup Language">HTML</abbr>/<abbr title="Cascading Style Sheets">CSS</abbr></a></li>
 <li><a class="reference internal" href="#javascript">Javascript</a></li>
+<li><a class="reference internal" href="#java">Java</a></li>
 </ul>
 </li>
 </ul>
