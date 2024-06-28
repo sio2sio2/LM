@@ -33,18 +33,20 @@ Generalidades
      consola que muestra los errores derivados de una determinada acción. Por
      ejemplo, los errores de validación.
 
-**Personalización**
-   El entorno es muy, muy configurable y permite alterar su comportamiento
-   mediante la manipulación de varios aspectos cuya descripción se almacena en
-   archivos de configuración |JSON|:
+Personalización
+===============
+El entorno es muy, muy configurable y permite alterar su comportamiento
+mediante la manipulación de varios aspectos cuya descripción se almacena en
+archivos de configuración |JSON|:
 
-   + Los :ref:`parámetros de configuración <vscode-config>` propiamente dichos
-     (:file:`settings.json`).
-   + Las :ref:`extensiones <vscode-extensions>` (:file:`extensions.json`).
-   + Las :ref:`tareas <vscode-tasks>` (:file:`tasks.json`).
-   + Los lanzadores (:file:`launch.json`).
-   + Las asociaciones a teclas o atajos de teclado (:file:`keybindings.json`).
++ Los :ref:`parámetros de configuración <vscode-config>` propiamente dichos
+  (:file:`settings.json`).
++ Las :ref:`extensiones <vscode-extensions>` (:file:`extensions.json`).
++ Las :ref:`tareas <vscode-tasks>` (:file:`tasks.json`).
++ La depuración (:file:`launch.json`).
++ Las asociaciones a teclas o atajos de teclado (:file:`keybindings.json`).
 
+**Niveles de personalización**
    Además, estas personalizaciones podemos hacerlas a dos niveles:
 
    .. _vscode-profile:
@@ -108,7 +110,12 @@ Generalidades
       Las áreas de trabajo también se pueden personalizar, de modo que la
       personalización que disfrutemos al trabajar será la suma de la que hayamos
       hecho para el perfil que estamos usando más la que apliquemos al área de
-      trabajo.
+      trabajo. De hecho, *Visual Studio Code* recuerda el perfil que se usó la
+      última vez que se estuvo trabajando sobre un área de trabajo a fin de que
+      cuando abramos un área, se cambie automáticamente de perfil. Por ejemplo,
+      si trabajando sobre un proyecto de Java (área de trabajo), para el que
+      lógicamente tendremos activo el perfil de Java, decidimos
+      cambiar de proyecto y acceder
 
       Los archivos |JSON| de personalización del área de trabajo se almacenan
       dentro del subdirectorio :file:`.vscode/` incluido en la carpeta raíz del
@@ -158,16 +165,28 @@ Generalidades
 
 **Atajos de teclado**
    El programa da la posibilidad de asociar combinaciones de teclas a
-   determinadas acciones, lo cual puede ahorrarnos mucho tiempo. El
-   acceso a estas asociaciones se logra pulsando 
-   :kbd:`Ctrl`\ +\ :kbd:`k`\ -\ :kbd:`Ctrl`\ +\ :kbd:`s`. Si deseamos añadir
-   alguna asociacion extra a las ya existentes podemos editar el archivo
-   :file:`keybindings.json` asociado al perfil pulsando aquí:
+   las distintas tareas definidas. Las asociaciones se puede hacer de
+   distintos modos:
 
-   .. image:: files/addkeybinding.png
+   .. rst-class:: simple
 
-   El archivo contiene de un array en que cada *ítem* es una de esas
-   asociaciones. Más adelante se sugerirán algunos.
+   + Pulsando :kbd:`Ctrl`\ +\ :kbd:`Shift`\ +\ :kbd:`P` para abrir el diálogo
+     que permite ejecutar tareas y, en vez de ejecutarla, pulsar sobre la
+     ruedecilla dentada asociada:
+
+     .. image:: files/task-addkeybinding.png
+
+   + Pulsando :kbd:`Ctrl`\ +\ :kbd:`k`\ -\ :kbd:`Ctrl`\ +\ :kbd:`s` para ver la
+     lista de asociaciones a tareas y buscar en ella la tarea que nos interese.
+
+   + Editar directamente el archivo :file:`keybindings.json` del perfil. Lo más
+     cómodo, en vez de buscarlo en el sistema de archivos, es acceder a la lista
+     de asociaciones que se acaba de citar, y pulsar aquí:
+
+     .. image:: files/addkeybinding.png
+
+     El archivo contiene de un array en que cada *ítem* es una de esas
+     asociaciones. Más adelante se sugerirán algunos.
 
    .. note:: Los atajos de teclado sólo se pueden definir para perfiles, no para
       áreas de trabajo.
@@ -178,6 +197,16 @@ Generalidades
 .. _vscode-tasks:
 
 **Tareas**
+   .. todo:: Tratar cómo crear tareas.
+
+   .. seealso:: Para más información, consulte `cómo crear tareas
+      <https://code.visualstudio.com/docs/editor/tasks>`_.
+
+.. _vscode-launch:
+
+**Depuración**
+
+.. https://gigi.nullneuron.net/gigilabs/working-with-vs-code-launch-configurations/
 
 .. _vscode-start:
 
@@ -201,17 +230,22 @@ importarlo como base de cada nuevo perfil que creemos para hacer desarrollos
 con una herramienta determinada. En particular, para este curso nos interesará
 crear perfiles independientes para:
 
-#. |XML|.
-#. |JSON|.
-#. |YAML|.
-#. |HTML|\ /\ |CSS|.
+#. :ref:`XML <vscode-xml>`.
+#. :ref:`JSON <vscode-json>`.
+#. :ref:`YAML <vscode-yaml>`.
+#. :ref:`HTML/CSS <vscode-html>`.
 #. Desarrollo *web*, que consistirá en añadir al perfil anterior, configuración
-   apropiada para desarrollar en *Javascript*.
+   apropiada para desarrollar en :ref:`Javascript <vscode-javascript>`.
 
 .. _vscode-xml:
 
 |XML|
 =====
+Para manipular documentos |XML| son recomendables las siguientes extensiones:
+
+* `XML de RedHat`_.
+* `XML Tools`_.
+
 La comprobación de que el documento es bien formado, además de otras
 funcionalidades como cerrar automáticamente la etiqueta que se acaba de abrir,
 se puede lograr instalando la extensión `XML de RedHat
@@ -221,8 +255,8 @@ Esa misma extensión también permite la validación con |DTD| si se define
 correctamente la :ref:`declaración de tipo de documento <dtd-doctype>`. Ahora
 bien, por defecto, la extensión no atiende las definiciones hechas en un |DTD|
 referido desde otro |DTD| mediante una :ref:`entidad parámetro <dtd-ent-par>`,
-lo que malogra una gramática que querramos hacer modular. Puede corregirse
-esto haciendo verdadera la opción ``xml.validation.resolveExternalEntities``:
+lo que malogra una gramática que queramos hacer modular. Puede corregirse
+esto ajustando a verdadera la opción ``xml.validation.resolveExternalEntities``:
 
 .. code-block:: json
 
@@ -230,57 +264,68 @@ esto haciendo verdadera la opción ``xml.validation.resolveExternalEntities``:
     "xml.validation.resolveExternalEntities": true
   }
 
-Si nuestra intención es evaluar expresiones *XPath* o *XQuery*, tenemos varias
-opciones:
+Para evaluar expresiones *XPath* o *XQuery* podemos valernos de la extensión
+`XML Tools`_ que a su vez para lo segundo requiere que se haya instalado
+:ref:`BaseX`:
 
-* Instalar la extensión `XPath Tester
-  <https://marketplace.visualstudio.com/items?itemName=creinbacher.xpathtester>`_,
-  que permite evaluar expresiones *XPath* 1.0. Para evaluarlas, basta con pulsar
-  :kbd:`Ctrl`\ +\ :kbd:`Shift`\ +\ :kbd:`P` y buscar *XPath* para que accedamos
-  al cuadro de diálogo que nos permite hacer evaluaciones.
+.. rst-class:: simple
 
-* Utilizar, en realidad, :ref:`BaseX` a través de :program:`Visual Studio Code`
-  para lo cual necesitamos:
+#. Instalar previamente :ref:`BaseX`.
+#. Configurar la extensión `XML Tools`_ para que use *BaseX* como procesador.
+   Para ello, necesitamos editar la configuración y añadir:
 
-  .. rst-class:: simple
+   .. code-block:: json
 
-  #. Instalar previamente :ref:`BaseX`.
+      {
+         "xmlTools.xqueryExecutionEngine": "/usr/bin/basex",
+         "xmlTools.xqueryExecutionArguments": [
+            "-i", "$(input)",
+            "-o", "$(input).output.xml",
+            "$(script)"
+         ]
+      }
 
-  #. Configurar la extensión `XML Tools
-     <https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml>`_
-     para que use *BaseX* como procesador. Para ello, necesitamos editar la
-     configuración y añadir:
+   .. caution:: En *Windows* la ruta será algo parecido a
+      :file:`c:\\\\\\Program Files
+      (x86)\\\\\\BaseX\\\\\\bin\\\\\\\\basex.bat`.  Obsérvese que habrá que
+      escapar las contrabarras.
 
-     .. code-block:: json
+Una vez bien configurada, el modo de ejecutar consultas es el siguiente:
 
-        {
-           "xmlTools.xqueryExecutionEngine": "/usr/bin/basex",
-           "xmlTools.xqueryExecutionArguments": [
-              "-i", "$(input)",
-              "-o", "$(input).output.xml",
-              "$(script)"
-            ]
-        }
+*XPath*
+   a. Estando activo el |XML| para el que queremos hacer consulta o pulsamos
+      :kbd:`Ctrl`\ +\ :kbd:`Shift`\ +\ :kbd:`P` y ejecutamos `XML Tools:
+      Evaluate XPath`, o bien, pulsamos directamente :kbd:`Ctrl`\ +\ :kbd:`Alt`\
+      +\ :kbd:`Shift`\ +\ :kbd:`X` (atajo de teclado que predefine la propia
+      extensión). 
+   #. Escribimos en el cuadro de diálogo la expresión y se verá el resultado de
+      la consulta en el área adicional de salida (`output`).
 
-     .. caution:: En *Windows* la ruta será algo parecido a
-        :file:`c:\\\\\\Program Files
-        (x86)\\\\\\BaseX\\\\\\bin\\\\\\\\basex.bat`.  Obsérvese que habrá que
-        escapar las contrabarras.
+   .. caution:: El evaluador devuelve siempre cadenas, no nodos; por lo que si
+      la expresión debe devolver nodos, eliminará todas las etiquetas.
 
-  Una vez bien configurada, el modo de ejecutar la consulta es el siguiente:
+*XQuery*
+   a. Creamos un archivo :file:`.xq` con el código de *XQuery*.
+   #. Estando activo este archivo, pulsamos :kbd:`Ctrl`\ +\ :kbd:`Shift`\ +\
+      :kbd:`P` y ejecutamos `XML Tools: Execute Query`.
+   #. Si hay varios |XML| en el directorio se nos preguntará sobre cuál
+      queremos hacer la consulta, y, si hemos incluido, la opción :kbd:`-o` en
+      la configuración (tal como se ha sugerido antes), se nos pedirá confirmar
+      el archivo de salida. Si no la incluimos, la salida se volcará
+      directamente en una subventana.
+   #. Abrimos el archivo de salida para consultar el resultado.
 
-  a. Creamos un archivo :file:`.xq` con el código de *XQuery* y con él
-     abierto y seleccionado en el editor...
-  #. Pulsamos :kbd:`Ctrl`\ +\ :kbd:`Shift`\ +\ :kbd:`P` y ejecutamos `XML Tools:
-     Execute Query`.
-  #. Si hay varios |XML| en el directorio se nos preguntará sobre cuál
-     queremos hacer la consulta, y, si hemos incluido, la opción :kbd:`-o` en
-     la configuración (tal como se ha sugerido antes), se nos pedirá confirmar
-     el archivo de salida. Si no la incluimos, la salida se volcará
-     directamente en una subventana.
-  #. Abrimos el archivo de salida para consultar el resultado.
+   Para simplificar su ejecución, podemos :ref:`asignar una atajo de teclado
+   <vscode-atajos>` a esta tarea:
 
-  .. todo:: Añadir un atajo para acceder a `XML Tools: Execute Query`.
+   .. code-block:: json
+
+      [
+         {
+            "key": "ctrl+shift+alt+z",
+            "command": "xmlTools.executeXQuery"
+         }
+      }
 
 .. _vscode-json:
 
@@ -494,9 +539,6 @@ para ampliar las facilidades.
               ]
           }
 
-       .. seealso:: Para más información, consulte `cómo crear tareas
-          <https://code.visualstudio.com/docs/editor/tasks>`_.
-
      + Asociar a la tarea :ref:`un atajo <vscode-atajos>`, para lo cual tenemos
        que editar :file:`keybindings.json` tal como se explica allí:
      
@@ -572,6 +614,8 @@ para mejorarla:
    Mirar tareas y asociación de teclas (¿se puede hacer por espacios de trabajo?)
    https://www.mclibre.org/consultar/htmlcss/otros/vsc-htmlcss-configuracion.html
 
+.. _vscode-java:
+
 Java
 ====
 .. caution:: El desarrollo con *Java* nada tiene que ver con los propósitos del
@@ -617,3 +661,4 @@ Además de estas extensiones puede interesarnos añadir configuración adicional
 .. |W3C| replace:: :abbr:`W3C (W3 Consortium)`
 
 .. _Brave: https://brave.com
+.. _XML Tools: https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml

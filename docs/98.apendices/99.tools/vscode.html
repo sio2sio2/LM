@@ -107,7 +107,11 @@ consola que muestra los errores derivados de una determinada acción. Por
 ejemplo, los errores de validación.</p></li>
 </ul>
 </dd>
-<dt><strong>Personalización</strong></dt><dd><p>El entorno es muy, muy configurable y permite alterar su comportamiento
+</dl>
+</section>
+<section id="personalizacion">
+<h2>Personalización<a class="headerlink" href="#personalizacion" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>El entorno es muy, muy configurable y permite alterar su comportamiento
 mediante la manipulación de varios aspectos cuya descripción se almacena en
 archivos de configuración <abbr title="JavaScript Object Notation">JSON</abbr>:</p>
 <ul class="simple">
@@ -115,10 +119,11 @@ archivos de configuración <abbr title="JavaScript Object Notation">JSON</abbr>:
 (<code class="file docutils literal notranslate"><span class="pre">settings.json</span></code>).</p></li>
 <li><p>Las <a class="reference internal" href="#vscode-extensions"><span class="std std-ref">extensiones</span></a> (<code class="file docutils literal notranslate"><span class="pre">extensions.json</span></code>).</p></li>
 <li><p>Las <a class="reference internal" href="#vscode-tasks"><span class="std std-ref">tareas</span></a> (<code class="file docutils literal notranslate"><span class="pre">tasks.json</span></code>).</p></li>
-<li><p>Los lanzadores (<code class="file docutils literal notranslate"><span class="pre">launch.json</span></code>).</p></li>
+<li><p>La depuración (<code class="file docutils literal notranslate"><span class="pre">launch.json</span></code>).</p></li>
 <li><p>Las asociaciones a teclas o atajos de teclado (<code class="file docutils literal notranslate"><span class="pre">keybindings.json</span></code>).</p></li>
 </ul>
-<p>Además, estas personalizaciones podemos hacerlas a dos niveles:</p>
+<dl>
+<dt><strong>Niveles de personalización</strong></dt><dd><p>Además, estas personalizaciones podemos hacerlas a dos niveles:</p>
 <dl id="vscode-profile">
 <dt><strong>Perfiles</strong></dt><dd><p>El nivel superior de configuración es el «perfil», cada uno de los cuales
 se corresponde con un distinto <em>perfil de desarrollador</em>. Esto es debido a
@@ -169,7 +174,12 @@ crearé un área de trabajo sobre un directorio.</p>
 <p>Las áreas de trabajo también se pueden personalizar, de modo que la
 personalización que disfrutemos al trabajar será la suma de la que hayamos
 hecho para el perfil que estamos usando más la que apliquemos al área de
-trabajo.</p>
+trabajo. De hecho, <em>Visual Studio Code</em> recuerda el perfil que se usó la
+última vez que se estuvo trabajando sobre un área de trabajo a fin de que
+cuando abramos un área, se cambie automáticamente de perfil. Por ejemplo,
+si trabajando sobre un proyecto de Java (área de trabajo), para el que
+lógicamente tendremos activo el perfil de Java, decidimos
+cambiar de proyecto y acceder</p>
 <p>Los archivos <abbr title="JavaScript Object Notation">JSON</abbr> de personalización del área de trabajo se almacenan
 dentro del subdirectorio <code class="file docutils literal notranslate"><span class="pre">.vscode/</span></code> incluido en la carpeta raíz del
 área de trabajo.</p>
@@ -213,14 +223,24 @@ izquierdo  señalado:</p>
 </dl>
 <dl id="vscode-atajos">
 <dt><strong>Atajos de teclado</strong></dt><dd><p>El programa da la posibilidad de asociar combinaciones de teclas a
-determinadas acciones, lo cual puede ahorrarnos mucho tiempo. El
-acceso a estas asociaciones se logra pulsando
-<kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">k</kbd>-<kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">s</kbd>. Si deseamos añadir
-alguna asociacion extra a las ya existentes podemos editar el archivo
-<code class="file docutils literal notranslate"><span class="pre">keybindings.json</span></code> asociado al perfil pulsando aquí:</p>
+las distintas tareas definidas. Las asociaciones se puede hacer de
+distintos modos:</p>
+<ul class="simple">
+<li><p>Pulsando <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd> para abrir el diálogo
+que permite ejecutar tareas y, en vez de ejecutarla, pulsar sobre la
+ruedecilla dentada asociada:</p>
+<img alt="../../_images/task-addkeybinding.png" src="../../_images/task-addkeybinding.png" />
+</li>
+<li><p>Pulsando <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">k</kbd>-<kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">s</kbd> para ver la
+lista de asociaciones a tareas y buscar en ella la tarea que nos interese.</p></li>
+<li><p>Editar directamente el archivo <code class="file docutils literal notranslate"><span class="pre">keybindings.json</span></code> del perfil. Lo más
+cómodo, en vez de buscarlo en el sistema de archivos, es acceder a la lista
+de asociaciones que se acaba de citar, y pulsar aquí:</p>
 <img alt="../../_images/addkeybinding.png" src="../../_images/addkeybinding.png" />
 <p>El archivo contiene de un array en que cada <em>ítem</em> es una de esas
 asociaciones. Más adelante se sugerirán algunos.</p>
+</li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Los atajos de teclado sólo se pueden definir para perfiles, no para
@@ -233,7 +253,18 @@ sobre estos atajos</a>.</p>
 </div>
 </dd>
 </dl>
-<p id="vscode-tasks"><strong>Tareas</strong></p>
+<dl id="vscode-tasks">
+<dt><strong>Tareas</strong></dt><dd><div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Por hacer</p>
+<p>Tratar cómo crear tareas.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Para más información, consulte <a class="reference external" href="https://code.visualstudio.com/docs/editor/tasks">cómo crear tareas</a>.</p>
+</div>
+</dd>
+</dl>
+<p id="vscode-launch"><strong>Depuración</strong></p>
 </section>
 <section id="preliminares">
 <span id="vscode-start"></span><h2>Preliminares<a class="headerlink" href="#preliminares" title="Enlace permanente a este encabezado">¶</a></h2>
@@ -255,16 +286,21 @@ importarlo como base de cada nuevo perfil que creemos para hacer desarrollos
 con una herramienta determinada. En particular, para este curso nos interesará
 crear perfiles independientes para:</p>
 <ol class="arabic simple">
-<li><p><abbr title="eXtensible  Markup Language">XML</abbr>.</p></li>
-<li><p><abbr title="JavaScript Object Notation">JSON</abbr>.</p></li>
-<li><p><abbr title="YAML Ain't Markup Language">YAML</abbr>.</p></li>
-<li><p><abbr title="HyperText Markup Language">HTML</abbr>/<abbr title="Cascading Style Sheets">CSS</abbr>.</p></li>
+<li><p><a class="reference internal" href="#vscode-xml"><span class="std std-ref">XML</span></a>.</p></li>
+<li><p><a class="reference internal" href="#vscode-json"><span class="std std-ref">JSON</span></a>.</p></li>
+<li><p><a class="reference internal" href="#vscode-yaml"><span class="std std-ref">YAML</span></a>.</p></li>
+<li><p><a class="reference internal" href="#vscode-html"><span class="std std-ref">HTML/CSS</span></a>.</p></li>
 <li><p>Desarrollo <em>web</em>, que consistirá en añadir al perfil anterior, configuración
-apropiada para desarrollar en <em>Javascript</em>.</p></li>
+apropiada para desarrollar en <a class="reference internal" href="#vscode-javascript"><span class="std std-ref">Javascript</span></a>.</p></li>
 </ol>
 </section>
 <section id="xml">
 <span id="vscode-xml"></span><h2><abbr title="eXtensible  Markup Language">XML</abbr><a class="headerlink" href="#xml" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Para manipular documentos <abbr title="eXtensible  Markup Language">XML</abbr> son recomendables las siguientes extensiones:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml">XML de RedHat</a>.</p></li>
+<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml">XML Tools</a>.</p></li>
+</ul>
 <p>La comprobación de que el documento es bien formado, además de otras
 funcionalidades como cerrar automáticamente la etiqueta que se acaba de abrir,
 se puede lograr instalando la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml">XML de RedHat</a>.</p>
@@ -272,34 +308,27 @@ se puede lograr instalando la extensión <a class="reference external" href="htt
 correctamente la <a class="reference internal" href="../../02.validacion/01.dtdxml.html#dtd-doctype"><span class="std std-ref">declaración de tipo de documento</span></a>. Ahora
 bien, por defecto, la extensión no atiende las definiciones hechas en un <abbr title="Document Type Definition">DTD</abbr>
 referido desde otro <abbr title="Document Type Definition">DTD</abbr> mediante una <a class="reference internal" href="../../02.validacion/01.dtdxml.html#dtd-ent-par"><span class="std std-ref">entidad parámetro</span></a>,
-lo que malogra una gramática que querramos hacer modular. Puede corregirse
-esto haciendo verdadera la opción <code class="docutils literal notranslate"><span class="pre">xml.validation.resolveExternalEntities</span></code>:</p>
+lo que malogra una gramática que queramos hacer modular. Puede corregirse
+esto ajustando a verdadera la opción <code class="docutils literal notranslate"><span class="pre">xml.validation.resolveExternalEntities</span></code>:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;xml.validation.resolveExternalEntities&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Si nuestra intención es evaluar expresiones <em>XPath</em> o <em>XQuery</em>, tenemos varias
-opciones:</p>
-<ul>
-<li><p>Instalar la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=creinbacher.xpathtester">XPath Tester</a>,
-que permite evaluar expresiones <em>XPath</em> 1.0. Para evaluarlas, basta con pulsar
-<kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd> y buscar <em>XPath</em> para que accedamos
-al cuadro de diálogo que nos permite hacer evaluaciones.</p></li>
-<li><p>Utilizar, en realidad, <a class="reference internal" href="../../05.almacenamiento/02.nativas.html#basex"><span class="std std-ref">BaseX</span></a> a través de <strong class="program">Visual Studio Code</strong>
-para lo cual necesitamos:</p>
+<p>Para evaluar expresiones <em>XPath</em> o <em>XQuery</em> podemos valernos de la extensión
+<a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml">XML Tools</a> que a su vez para lo segundo requiere que se haya instalado
+<a class="reference internal" href="../../05.almacenamiento/02.nativas.html#basex"><span class="std std-ref">BaseX</span></a>:</p>
 <ol class="arabic simple">
 <li><p>Instalar previamente <a class="reference internal" href="../../05.almacenamiento/02.nativas.html#basex"><span class="std std-ref">BaseX</span></a>.</p></li>
-<li><p>Configurar la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml">XML Tools</a>
-para que use <em>BaseX</em> como procesador. Para ello, necesitamos editar la
-configuración y añadir:</p>
+<li><p>Configurar la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml">XML Tools</a> para que use <em>BaseX</em> como procesador.
+Para ello, necesitamos editar la configuración y añadir:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">&quot;xmlTools.xqueryExecutionEngine&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/bin/basex&quot;</span><span class="p">,</span>
 <span class="w">   </span><span class="nt">&quot;xmlTools.xqueryExecutionArguments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="s2">&quot;-i&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;$(input)&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="s2">&quot;-o&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;$(input).output.xml&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="s2">&quot;$(script)&quot;</span>
-<span class="w">    </span><span class="p">]</span>
+<span class="w">   </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -312,12 +341,25 @@ escapar las contrabarras.</p>
 </div>
 </li>
 </ol>
-<p>Una vez bien configurada, el modo de ejecutar la consulta es el siguiente:</p>
-<ol class="loweralpha simple">
-<li><p>Creamos un archivo <code class="file docutils literal notranslate"><span class="pre">.xq</span></code> con el código de <em>XQuery</em> y con él
-abierto y seleccionado en el editor…</p></li>
-<li><p>Pulsamos <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd> y ejecutamos <cite>XML Tools:
-Execute Query</cite>.</p></li>
+<p>Una vez bien configurada, el modo de ejecutar consultas es el siguiente:</p>
+<dl>
+<dt><em>XPath</em></dt><dd><ol class="loweralpha simple">
+<li><p>Estando activo el <abbr title="eXtensible  Markup Language">XML</abbr> para el que queremos hacer consulta o pulsamos
+<kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd> y ejecutamos <cite>XML Tools:
+Evaluate XPath</cite>, o bien, pulsamos directamente <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Alt</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">X</kbd> (atajo de teclado que predefine la propia
+extensión).</p></li>
+<li><p>Escribimos en el cuadro de diálogo la expresión y se verá el resultado de
+la consulta en el área adicional de salida (<cite>output</cite>).</p></li>
+</ol>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>El evaluador devuelve siempre cadenas, no nodos; por lo que si
+la expresión debe devolver nodos, eliminará todas las etiquetas.</p>
+</div>
+</dd>
+<dt><em>XQuery</em></dt><dd><ol class="loweralpha simple">
+<li><p>Creamos un archivo <code class="file docutils literal notranslate"><span class="pre">.xq</span></code> con el código de <em>XQuery</em>.</p></li>
+<li><p>Estando activo este archivo, pulsamos <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd> y ejecutamos <cite>XML Tools: Execute Query</cite>.</p></li>
 <li><p>Si hay varios <abbr title="eXtensible  Markup Language">XML</abbr> en el directorio se nos preguntará sobre cuál
 queremos hacer la consulta, y, si hemos incluido, la opción <kbd class="kbd docutils literal notranslate">-o</kbd> en
 la configuración (tal como se ha sugerido antes), se nos pedirá confirmar
@@ -325,12 +367,17 @@ el archivo de salida. Si no la incluimos, la salida se volcará
 directamente en una subventana.</p></li>
 <li><p>Abrimos el archivo de salida para consultar el resultado.</p></li>
 </ol>
-<div class="admonition-todo admonition" id="id2">
-<p class="admonition-title">Por hacer</p>
-<p>Añadir un atajo para acceder a <cite>XML Tools: Execute Query</cite>.</p>
+<p>Para simplificar su ejecución, podemos <a class="reference internal" href="#vscode-atajos"><span class="std std-ref">asignar una atajo de teclado</span></a> a esta tarea:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ctrl+shift+alt+z&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xmlTools.executeXQuery&quot;</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
 </div>
-</li>
-</ul>
+</dd>
+</dl>
 </section>
 <section id="json">
 <span id="vscode-json"></span><h2><abbr title="JavaScript Object Notation">JSON</abbr><a class="headerlink" href="#json" title="Enlace permanente a este encabezado">¶</a></h2>
@@ -530,10 +577,6 @@ tareas que abran los navegadores que deseemos:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="admonition seealso">
-<p class="admonition-title">Ver también</p>
-<p>Para más información, consulte <a class="reference external" href="https://code.visualstudio.com/docs/editor/tasks">cómo crear tareas</a>.</p>
-</div>
 </li>
 <li><p>Asociar a la tarea <a class="reference internal" href="#vscode-atajos"><span class="std std-ref">un atajo</span></a>, para lo cual tenemos
 que editar <code class="file docutils literal notranslate"><span class="pre">keybindings.json</span></code> tal como se explica allí:</p>
@@ -600,7 +643,7 @@ existe <kbd class="kbd docutils literal notranslate">F5</kbd>.</p></li>
 <p><strong>Análisis estático</strong></p>
 </section>
 <section id="java">
-<h2>Java<a class="headerlink" href="#java" title="Enlace permanente a este encabezado">¶</a></h2>
+<span id="vscode-java"></span><h2>Java<a class="headerlink" href="#java" title="Enlace permanente a este encabezado">¶</a></h2>
 <div class="admonition caution">
 <p class="admonition-title">Prudencia</p>
 <p>El desarrollo con <em>Java</em> nada tiene que ver con los propósitos del
@@ -653,6 +696,7 @@ nos podría interesar añadir más lenguajes a la secuencia.</p>
     <ul>
 <li><a class="reference internal" href="#">Visual Studio Code</a><ul>
 <li><a class="reference internal" href="#generalidades">Generalidades</a></li>
+<li><a class="reference internal" href="#personalizacion">Personalización</a></li>
 <li><a class="reference internal" href="#preliminares">Preliminares</a></li>
 <li><a class="reference internal" href="#xml"><abbr title="eXtensible  Markup Language">XML</abbr></a></li>
 <li><a class="reference internal" href="#json"><abbr title="JavaScript Object Notation">JSON</abbr></a></li>
