@@ -95,7 +95,7 @@ archivos de configuración |JSON|:
       :file:`$CONFIG/Code/User/profiles`, donde ``$CONFIG`` es la localización
       donde el sistema operativo almacena las configuraciones de programas:
 
-      + En Linux, :file:`~/.config`.
+      + En Linux, :file:`$XDG_CONFIG` (habitualmente, :file:`~/.config`).
       + En Windows, :file:`%APPDATA%`.
 
    .. _vscode-workspace:
@@ -161,6 +161,13 @@ archivos de configuración |JSON|:
 
    .. image:: files/03-vscode-ext.png
 
+   Dentro de las extensiones existe un tipo especial de ellas denominado
+   :dfn:`paquete de extensiones` (*Extension Pack*), que no es más que una
+   extensión cuya instalación (o desinstalación) supone la instalación de varias
+   extensiones conjuntas. Por ejemplo, `Extension Pack for Java
+   <https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack>`_
+   instala hasta seis extensiones que facilitan el trabajo con *Java*\ [#]_.
+
 .. _vscode-atajos:
 
 **Atajos de teclado**
@@ -197,7 +204,69 @@ archivos de configuración |JSON|:
 .. _vscode-tasks:
 
 **Tareas**
-   .. todo:: Tratar cómo crear tareas.
+   El programa permite definir *tareas de usuario* tanto a nivel de perfil como
+   a nivel de área de trabajo editando los respectivos :file:`tasks.json`. El
+   segundo es fácil de editar (se debe crear bajo el subdirectorio
+   :file:`.vscode`), mientras que para lo primero lo más conveniente es pulsar
+   :kbd:`Ctrl`\ +\ :kbd:`Shift`\ +\ :kbd:`P` y buscar la orden `Abrir tareas de
+   usuario`:
+
+   .. image:: files/usertasks.png
+
+   Una vez abierto el archivo, deben definirse la tareas en formato |JSON|. Por
+   ejemplo, para abrir el archivo activo en el navegador :program:`Brave`
+   deberíamos definir una tarea así:
+
+   .. code-block:: json
+
+      {
+          "version":"2.0.0",
+          "tasks": [
+              {
+                  "label": "Abrir en Brave",
+                  "type": "shell",
+                  "command": "brave-browser",
+                  "windows":  { "command": "C:\\Program Files\\Brave Software\\etc..." },
+                  "args": [ "${file}" ],
+                  "presentation": {"reveal": "never"},
+                  "problemMatcher": []
+              }
+          ]
+      }
+
+   La etiqueta (``label``) nos sirve para identificar la tarea y ``command`` y
+   ``args`` para definir cuál es la aplicación externa  que abriremos y con qué
+   parámetros se ejecutará. Pueden también definirse campos específicos para
+   sistemas específicos concretos como en el ejemplo se hace para dar soporte
+   también a *Windows*.
+
+   .. seealso:: Para ver cuáles son las variables que pueden usarse (como ``${file}`` en el
+      ejemplo), consúltese `Variables Reference
+      <https://code.visualstudio.com/docs/editor/variables-reference>`_ de la
+      documentación oficial.
+
+   Para ejecutar la tarea habrá que volver a abrir el cajetín para ejecutar
+   ordenes y buscar `Ejecutar tarea`:
+
+   .. image:: files/runtask.png
+
+   Aparecerá a continuación la lista de tareas definidas y podemos ejecutar
+   la que deseemos. Una alternativa más cómoda es asociarle un :ref:`atajo de
+   teclado <vscode-atajos>`:
+
+   .. code-block:: json
+
+      [
+          {
+              "key": "ctrl+l b",
+              "command": "workbench.action.tasks.runTask",
+              "args": "Abrir en Brave"
+          }
+      ]
+
+   En este caso, se abrirá Brave_ al pulsar :kbd:`Ctrl`\ +\ :kbd:`l`\ -\
+   :kbd:`b`.
+
 
    .. seealso:: Para más información, consulte `cómo crear tareas
       <https://code.visualstudio.com/docs/editor/tasks>`_.
@@ -205,8 +274,22 @@ archivos de configuración |JSON|:
 .. _vscode-launch:
 
 **Depuración**
+   *Visual Studio Code* también está preparado para permitir la ejecución y
+   depuración de código con las técnicas habituales de ejecución paso a paso,
+   puntos de ruptura, puntos de ruptura condicionales, etc. Para ello es
+   necesario dotarlo de soporte para la depuración del lenguaje de programación
+   concreto en el que queramos hacer nuestros desarrollos. Esto se logra
+   instalando las extensiones de depuración propias de cada lenguaje (`Debugger
+   for Java`_, `Javascript Debugger
+   <https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly>`_,
+   `Python Debugger
+   <https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy>`_,
+   etc).
 
-.. https://gigi.nullneuron.net/gigilabs/working-with-vs-code-launch-configurations/
+   .. seealso:: A la configuración básica que proporcionan esas estadísticas, se le puede
+      añadir otra adicional dentro de :file:`.vscode/launch.json`, cuyos
+      princiipios pueden leerse en el artículo `Working with VSCode launch
+      configurations <https://gigi.nullneuron.net/gigilabs/working-with-vs-code-launch-configurations/>`_.
 
 .. _vscode-start:
 
@@ -241,10 +324,17 @@ crear perfiles independientes para:
 
 |XML|
 =====
-Para manipular documentos |XML| son recomendables las siguientes extensiones:
+Para manipular documentos |XML| es recomendable instalar algunas extensiones:
 
-* `XML de RedHat`_.
-* `XML Tools`_.
+.. list-table:: Extensiones recomendadas
+   :class: vscode-extensions
+   :header-rows: 0
+
+   * - `XML de RedHat`_
+     - Facilita la edición de documentos |XML| (cierre de etiquetas, etc.) y
+       la validación con |DTD| y |XSD|.
+   * - `XML Tools`_
+     - Proporciona soporte para *XPath* y *XQuery*.
 
 La comprobación de que el documento es bien formado, además de otras
 funcionalidades como cerrar automáticamente la etiqueta que se acaba de abrir,
@@ -331,17 +421,22 @@ Una vez bien configurada, el modo de ejecutar consultas es el siguiente:
 
 |JSON|
 ======
-El editor tiene soporte nativo, por lo que nos señalará sin configuración
-adicional si el documento |JSON| que editamos no es bien formado. También es
-capaz de validarlo si le proporcionamos el esquema, pero en este caso sí debemos
-configurar para relacionar el documento con su gramática. Para ello debemos
-abrir la configuración (:kbd:`Ctrl`\ +\ :kbd:`,`) y acceder a
-la extensión para |JSON|, una de cuyas configuraciones es ``JSON: Schemas``:
+El editor tiene soporte nativo, por lo que, en principio, no necesita extensiones
+para que podamos trabajar cómodamente con este formato. De hecho, nos señalará
+sin configuración adicional si el documento |JSON| que editamos no es bien
+formado.  También es capaz de validarlo, pero habremos de proporcionarle el
+esquema mediante configuración. Incluso podemos **formatear** correctamente el
+archivo (sangrados, etc.) pulsando :kbd:`Ctrl`\  +\ :kbd:`Shift`\ +\ :kbd:`I`.
+
+.. caution:: Por la naturaleza de esta configuración, es probable que nos
+   interese hacerla para un área de trabajo, no un perfil complento.
+
+Para ello debemos abrir la configuración
+(:kbd:`Ctrl`\ +\ :kbd:`,`) y acceder a la extensión para |JSON|, una de cuyas
+configuraciones es ``JSON: Schemas``:
 
 .. image:: files/20-vscode-json-schemas.png
 
-.. caution:: Las configuraciones que se indican a continuación se definen para
-   un área de trabajo, no para el perfil completo.
 
 Al pinchar en la edición se nos abrirá el archivo de configuración
 :file:`settings.json` que nos permite relacionar archivos |JSON| con los
@@ -373,11 +468,17 @@ propia carpeta del proyecto, hemos preferido una |URL| relativa.
 |YAML|
 ======
 A diferencia de lo que ocurre con |JSON|, el soporte para |YAML| no es nativo,
-así que es preciso instalar la `extensión para YAML
-<https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml>`_ para
-que el programa compruebe si el documento es bien formado. Si, además, queremos
-confrontarlo con un esquema |JSON| para validarlo, entonces requeriremos
-configuración adicional que relacione los archivos con su esquema
+así que es preciso instalar extensiones.
+
+.. list-table:: Extensiones recomendadas
+   :class: vscode-extensions
+   :header-rows: 0
+
+   * - `YAML de RedHat <https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml>`_
+     - Da soporte para |YAML| (*buenformidad*, validación, etc.).
+
+Si, además, queremos confrontarlo con un esquema |JSON| para validarlo, entonces
+requeriremos configuración adicional que relacione los archivos con su esquema
 correspondiente:
 
 .. code:: json
@@ -411,7 +512,18 @@ una secuencia:
 Como en el caso del formato |JSON|, :program:`Visual Studio Core` tiene soporte
 nativo para |HTML|, de manera que es capaz de proporcionarnos sugerencias o
 autocompletado sin configuración adicional. Sin embargo, podemos afinar un poco
-para ampliar las facilidades.
+para ampliar las facilidades con algunas extensiones:
+
+.. list-table:: Extensiones recomendadas
+   :class: vscode-extensions
+   :header-rows: 0
+
+   * - `Auto Close Tag`_ 
+     - Afina el cierre de etiquetas.
+   * - `W3C Web Validator`_
+     - Comprueba cómodamente la validez de los documentos |HTML| y |CSS|.
+   * - `Live Preview`_
+     - Previsualiza el documento.
 
 .. _vscode-html-close:
 
@@ -420,9 +532,8 @@ para ampliar las facilidades.
    las etiquetas que no necesitan cierre, puede resultarnos molesta que esta
    funcionalidad se aplique siempre. La extensión nativa, desgraciadamente, no
    tiene posibilidad de definir excepciones, pero otras externas, sí. Así que
-   nuestra propuesta es instalar y habilitar la extensión `Auto Close Tag
-   <https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag>`_
-   y hacer una pequeña configuración para deshabilitar el cierre nativo y
+   nuestra propuesta es instalar y habilitar la extensión `Auto Close Tag`_ y
+   hacer una pequeña configuración para deshabilitar el cierre nativo y
    habilitar, con las excepciones de deseemos el cierre con esta extensión.
    :download:`Esta configuración <files/autoclose.json>` puede servirnos:
 
@@ -440,8 +551,7 @@ para ampliar las facilidades.
 
 **Validación**
    Otra funcionalidad interesante es la validación del documento |HTML| o |CSS|.
-   Para ello una buena extensión es `W3C Web Validator
-   <https://marketplace.visualstudio.com/items?itemName=CelianRiboulet.webvalidator>`_
+   Para ello una buena extensión es `W3C Web Validator`_
    que comprueba la validez con los validadores que ofrece el |W3C|:
 
    .. image:: files/validacionHTML.png
@@ -457,7 +567,7 @@ para ampliar las facilidades.
    Otra funcionalidad interesante es la de poder previsualizar la página. Para
    ello tenemos varias **alternativas**:
 
-   `Live Preview <https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server>`_
+   `Live Preview`_ (recomendada)
      Extensión que mostrará el icono señalado en la captura:
 
      .. image:: files/livepreview.png
@@ -504,7 +614,7 @@ para ampliar las facilidades.
      .. image:: files/vscode-LiveServerClose.png
 
      .. note:: En nuestra humilde opinión, es más cómoda la extensión anterior
-        y, si hay necesidad de utilizar un navegador externo, tampoco nos supone
+        y, si hay necesidad de utilizar un navegador externo, tampoco supone
         excesivo trabajo copiar la |URL|.
 
    **Configuración manual**
@@ -515,45 +625,8 @@ para ampliar las facilidades.
      documento |HTML| se abre como archivo local. Para los propósitos de este
      curso en que nos limitamos a aprender a escribir páginas estáticas, es
      probable que no nos percatemos de la diferencia. Para poner en práctica
-     esta alternativa, basta hacer dos cosas.
-
-     + Crear una tarea:
-
-       Para ello puede crearse un archivo :file:`.vscode/tasks.json` y añadir las
-       tareas que abran los navegadores que deseemos:
-
-       .. code-block:: json
-
-          {
-              "version":"2.0.0",
-              "tasks": [
-                  {
-                      "label": "Abrir en Chromium",
-                      "command": "explorer",
-                      "windows":  { "command": "C:/Program Files/Brave Software/etc..." },
-                      "linux": { "command": "brave-browser" },
-                      "args": [ "${file}" ],
-                      "presentation": {"reveal": "never"},
-                      "problemMatcher": []
-                  }
-              ]
-          }
-
-     + Asociar a la tarea :ref:`un atajo <vscode-atajos>`, para lo cual tenemos
-       que editar :file:`keybindings.json` tal como se explica allí:
-     
-       .. code-block:: json
-
-          [
-              {
-                  "key": "ctrl+l b",
-                  "command": "workbench.action.tasks.runTask",
-                  "args": "Abrir en Chromium"
-              }
-          ]
-
-       En este caso, se abrirá Brave_ al pulsar :kbd:`Ctrl`\ +\ :kbd:`l`\ -\
-       :kbd:`b`.
+     esta alternativa debemos repetir exactamente el :ref:`ejemplo con el que
+     ilustramos cómo crear tareas <vscode-tasks>`.
 
 .. _vscode-javascript:
 
@@ -564,15 +637,17 @@ soporte nativo para la escritura de :ref:`Javascript <js>`
 (autocompletado, `snippets <https://es.wikipedia.org/wiki/Snippet>`_), pese a lo cual podemos hacer algunos añadidos
 para mejorarla:
 
-* `Javascript (ES6) code snippets
-  <https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets>`_,
-  que añade *snippets* adicionales.
-* `JS CodeFormer
-  <https://marketplace.visualstudio.com/items?itemName=cmstead.js-codeformer>`_,
-  que mejora la capacidad nativa para la refactorización.
-* `ESLint <https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint>`_,
-  que permite integrar el `analizador estático de código ESLint
-  <https://eslint.org/>`_. Lo trataremos más adelante.
+.. list-table:: Extensiones recomendadas
+   :class: vscode-extensions
+   :header-rows: 0
+
+   * - `Javascript (ES6) code snippets <https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets>`_
+     -  Añade *snippets* adicionales.
+   * - `JS CodeFormer <https://marketplace.visualstudio.com/items?itemName=cmstead.js-codeformer>`_
+     - Mejora la capacidad nativa para la refactorización.
+   * - `ESLint <https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint>`_
+     - Permite integrar el `analizador estático de código ESLint
+       <https://eslint.org/>`_.
 
 **Ejecución**
    *Javascript* es un lenguaje de programación que requiere de un intérprete.
@@ -622,32 +697,43 @@ Java
    módulo de *Lenguaje de marcas*, pero incluiremos aquí algunas sugerencias
    aprovechando este pequeño mini manual.
 
-Tienen interés instalar las siguientes extensiones:
+.. table:: Extensiones recomendadas
+   :class: vscode-extensions
 
-+ :ref:`Code Runner <code-runner>`, de la que ya hemos hablado.
-+ `Language Support for Java(TM) by Red Hat
-  <https://marketplace.visualstudio.com/items?itemName=redhat.java>`_.
-+ `Proyect Manager for Java
-  <https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-dependency>`_ que nos facilitara la gestión de los proyectos de Java. De hecho, nos permite, en vez de crear un área de trabajo vacía, crear un proyecto de Java, que es un área de trabajo, con una estructura básica ya definida y una configuración básica.
-+ `Debugger for Java
-  <https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug>`_, que permite depurar los programas de Java (puntos de ruptura, ejecución condicional, ejecución paso a paso, etc.)
-+ `Test Runner for Java
-  <https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-test>`_, para ejecutar casos de prueba.
+   +-----------------------------------------+---------------------------------------------------------------------------------------+
+   | `Language Support for Java by Red Hat`_ |                                                                                       |
+   +-----------------------------------------+---------------------------------------------------------------------------------------+
+   | `Project Manager for Java`_             | Facilita la gestión de proyectos de Java, permitiendo directamente la creación de un  |
+   |                                         | proyecto, que es un área de  trabajo con una estructura básica ya definida y una      |
+   |                                         | configuración básica.                                                                 |
+   +-----------------------------------------+---------------------------------------------------------------------------------------+
+   | `Debugger for Java`_                    | Permite depurar los programas de Java (puntos de ruptura, ejecución condicional,      |
+   |                                         | ejecución paso a paso, etc.                                                           |
+   +-----------------------------------------+---------------------------------------------------------------------------------------+
+   | `Test Runner for Java`_                 | Permite ejecutar casos de prueba.                                                     |
+   +-----------------------------------------+---------------------------------------------------------------------------------------+
+
+.. note:: :ref:`Code Runner <code-runner>` es absolutamente prescindible, ya que al tener
+   instalada `Debugger for Java`_ podemos ejecutar los desarrollos pulsando F5.
+   Además, :ref:`Code Runner <code-runner>` no atenderá a la jerarquía de  directorios creados por
+   `Project Manager for Java`_.
 
 Además de estas extensiones puede interesarnos añadir configuración adicional:
 
 .. code-block:: json
 
    {
-      // Elimina de la vista los archivos compilados.
       "files.exclude": {
-         "**/*.class": true
+         "bin/": true,           // No vemos el directorio de compilaciones (Project Manager)
+         // "**/*.class": true   // Interesante si usáramos Code Runner
       },
       // Evita los inlay hints para los parámetros de las funciones.
       "editor.inlayHints.enable": "off"
    }
 
 .. rubric:: Notas al pie
+
+.. [#] Cuatro de las cuales sí instalaremos de forma individual nosotros.
 
 .. [#] La extensión, para no entrar en conflicto, deshabilitó el autocierre
    predeterminado para |HTML| cuando el soporte nativo lo introdujo. Por otra
@@ -657,8 +743,16 @@ Además de estas extensiones puede interesarnos añadir configuración adicional
 
 .. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`
 .. |DTD| replace:: :abbr:`DTD (Document Type Definition)`
+.. |XSD| replace:: :abbr:`XSD (XML Schema Definition)`
 .. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`
 .. |W3C| replace:: :abbr:`W3C (W3 Consortium)`
 
 .. _Brave: https://brave.com
 .. _XML Tools: https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml
+.. _Auto Close Tag: https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag
+.. _W3C Web Validator: https://marketplace.visualstudio.com/items?itemName=CelianRiboulet.webvalidator
+.. _Live Preview: https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server
+.. _Project Manager for Java: https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-dependency
+.. _Debugger for Java: https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug
+.. _Test Runner for Java: https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-test
+.. _Language Support for Java by Red Hat: https://marketplace.visualstudio.com/items?itemName=redhat.java

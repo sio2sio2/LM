@@ -198,6 +198,7 @@ a[href^="https://developer.mozilla.org/"].external::before {
 .html-url-base td {
    font-family: monospace;
 }
+
 .unidades-css {
    td:first-child {
       font-family: monospace;
@@ -205,5 +206,28 @@ a[href^="https://developer.mozilla.org/"].external::before {
 
    :is(th, td):first-child p {
       hyphens: none;
+   }
+}
+
+.vscode-extensions.docutils {
+   border: solid black 2px;
+
+
+   & caption {
+      font-weight: bold;
+   }
+
+   & tr td:first-child {
+      min-width: 20rem;
+      background-color: #eee;
+      border-right: solid black 1px;
+   }
+
+   & tr td:last-child {
+      background-color: transparent;
+   }
+
+   & tr {
+      border-bottom: solid #aaa 1px;
    }
 }

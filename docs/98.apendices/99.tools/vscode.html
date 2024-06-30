@@ -161,7 +161,7 @@ nos ayuda a saber siempre de un vistazo qué perfil estamos utilizando.</p>
 <code class="file docutils literal notranslate"><span class="pre">$CONFIG/Code/User/profiles</span></code>, donde <code class="docutils literal notranslate"><span class="pre">$CONFIG</span></code> es la localización
 donde el sistema operativo almacena las configuraciones de programas:</p>
 <ul class="simple">
-<li><p>En Linux, <code class="file docutils literal notranslate"><span class="pre">~/.config</span></code>.</p></li>
+<li><p>En Linux, <code class="file docutils literal notranslate"><span class="pre">$XDG_CONFIG</span></code> (habitualmente, <code class="file docutils literal notranslate"><span class="pre">~/.config</span></code>).</p></li>
 <li><p>En Windows, <code class="file docutils literal notranslate"><span class="pre">%APPDATA%</span></code>.</p></li>
 </ul>
 </dd>
@@ -219,6 +219,11 @@ permite editar archivos como se hace en el veterano editor.</p>
 <p>Para gestionar las extensiones, basta con pinchar sobre el icono lateral
 izquierdo  señalado:</p>
 <img alt="../../_images/03-vscode-ext.png" src="../../_images/03-vscode-ext.png" />
+<p>Dentro de las extensiones existe un tipo especial de ellas denominado
+<em class="dfn">paquete de extensiones</em> (<em>Extension Pack</em>), que no es más que una
+extensión cuya instalación (o desinstalación) supone la instalación de varias
+extensiones conjuntas. Por ejemplo, <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack">Extension Pack for Java</a>
+instala hasta seis extensiones que facilitan el trabajo con <em>Java</em><a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 </dd>
 </dl>
 <dl id="vscode-atajos">
@@ -254,17 +259,84 @@ sobre estos atajos</a>.</p>
 </dd>
 </dl>
 <dl id="vscode-tasks">
-<dt><strong>Tareas</strong></dt><dd><div class="admonition-todo admonition" id="id2">
-<p class="admonition-title">Por hacer</p>
-<p>Tratar cómo crear tareas.</p>
+<dt><strong>Tareas</strong></dt><dd><p>El programa permite definir <em>tareas de usuario</em> tanto a nivel de perfil como
+a nivel de área de trabajo editando los respectivos <code class="file docutils literal notranslate"><span class="pre">tasks.json</span></code>. El
+segundo es fácil de editar (se debe crear bajo el subdirectorio
+<code class="file docutils literal notranslate"><span class="pre">.vscode</span></code>), mientras que para lo primero lo más conveniente es pulsar
+<kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd> y buscar la orden <cite>Abrir tareas de
+usuario</cite>:</p>
+<img alt="../../_images/usertasks.png" src="../../_images/usertasks.png" />
+<p>Una vez abierto el archivo, deben definirse la tareas en formato <abbr title="JavaScript Object Notation">JSON</abbr>. Por
+ejemplo, para abrir el archivo activo en el navegador <strong class="program">Brave</strong>
+deberíamos definir una tarea así:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="s2">&quot;2.0.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tasks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Abrir en Brave&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;brave-browser&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;windows&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;C:\\Program Files\\Brave Software\\etc...&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;${file}&quot;</span><span class="w"> </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;presentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;reveal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;never&quot;</span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;problemMatcher&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
 </div>
+<p>La etiqueta (<code class="docutils literal notranslate"><span class="pre">label</span></code>) nos sirve para identificar la tarea y <code class="docutils literal notranslate"><span class="pre">command</span></code> y
+<code class="docutils literal notranslate"><span class="pre">args</span></code> para definir cuál es la aplicación externa  que abriremos y con qué
+parámetros se ejecutará. Pueden también definirse campos específicos para
+sistemas específicos concretos como en el ejemplo se hace para dar soporte
+también a <em>Windows</em>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Para ver cuáles son las variables que pueden usarse (como <code class="docutils literal notranslate"><span class="pre">${file}</span></code> en el
+ejemplo), consúltese <a class="reference external" href="https://code.visualstudio.com/docs/editor/variables-reference">Variables Reference</a> de la
+documentación oficial.</p>
+</div>
+<p>Para ejecutar la tarea habrá que volver a abrir el cajetín para ejecutar
+ordenes y buscar <cite>Ejecutar tarea</cite>:</p>
+<img alt="../../_images/runtask.png" src="../../_images/runtask.png" />
+<p>Aparecerá a continuación la lista de tareas definidas y podemos ejecutar
+la que deseemos. Una alternativa más cómoda es asociarle un <a class="reference internal" href="#vscode-atajos"><span class="std std-ref">atajo de
+teclado</span></a>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ctrl+l b&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;workbench.action.tasks.runTask&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Abrir en Brave&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>En este caso, se abrirá <a class="reference external" href="https://brave.com">Brave</a> al pulsar <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">l</kbd>-<kbd class="kbd docutils literal notranslate">b</kbd>.</p>
 <div class="admonition seealso">
 <p class="admonition-title">Ver también</p>
 <p>Para más información, consulte <a class="reference external" href="https://code.visualstudio.com/docs/editor/tasks">cómo crear tareas</a>.</p>
 </div>
 </dd>
 </dl>
-<p id="vscode-launch"><strong>Depuración</strong></p>
+<dl id="vscode-launch">
+<dt><strong>Depuración</strong></dt><dd><p><em>Visual Studio Code</em> también está preparado para permitir la ejecución y
+depuración de código con las técnicas habituales de ejecución paso a paso,
+puntos de ruptura, puntos de ruptura condicionales, etc. Para ello es
+necesario dotarlo de soporte para la depuración del lenguaje de programación
+concreto en el que queramos hacer nuestros desarrollos. Esto se logra
+instalando las extensiones de depuración propias de cada lenguaje (<a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug">Debugger
+for Java</a>, <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly">Javascript Debugger</a>,
+<a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy">Python Debugger</a>,
+etc).</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>A la configuración básica que proporcionan esas estadísticas, se le puede
+añadir otra adicional dentro de <code class="file docutils literal notranslate"><span class="pre">.vscode/launch.json</span></code>, cuyos
+princiipios pueden leerse en el artículo <a class="reference external" href="https://gigi.nullneuron.net/gigilabs/working-with-vs-code-launch-configurations/">Working with VSCode launch
+configurations</a>.</p>
+</div>
+</dd>
+</dl>
 </section>
 <section id="preliminares">
 <span id="vscode-start"></span><h2>Preliminares<a class="headerlink" href="#preliminares" title="Enlace permanente a este encabezado">¶</a></h2>
@@ -296,11 +368,19 @@ apropiada para desarrollar en <a class="reference internal" href="#vscode-javasc
 </section>
 <section id="xml">
 <span id="vscode-xml"></span><h2><abbr title="eXtensible  Markup Language">XML</abbr><a class="headerlink" href="#xml" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>Para manipular documentos <abbr title="eXtensible  Markup Language">XML</abbr> son recomendables las siguientes extensiones:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml">XML de RedHat</a>.</p></li>
-<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml">XML Tools</a>.</p></li>
-</ul>
+<p>Para manipular documentos <abbr title="eXtensible  Markup Language">XML</abbr> es recomendable instalar algunas extensiones:</p>
+<table class="vscode-extensions docutils align-default" id="id7">
+<caption><span class="caption-text">Extensiones recomendadas</span><a class="headerlink" href="#id7" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml">XML de RedHat</a></p></td>
+<td><p>Facilita la edición de documentos <abbr title="eXtensible  Markup Language">XML</abbr> (cierre de etiquetas, etc.) y
+la validación con <abbr title="Document Type Definition">DTD</abbr> y <abbr title="XML Schema Definition">XSD</abbr>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml">XML Tools</a></p></td>
+<td><p>Proporciona soporte para <em>XPath</em> y <em>XQuery</em>.</p></td>
+</tr>
+</tbody>
+</table>
 <p>La comprobación de que el documento es bien formado, además de otras
 funcionalidades como cerrar automáticamente la etiqueta que se acaba de abrir,
 se puede lograr instalando la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml">XML de RedHat</a>.</p>
@@ -381,18 +461,21 @@ directamente en una subventana.</p></li>
 </section>
 <section id="json">
 <span id="vscode-json"></span><h2><abbr title="JavaScript Object Notation">JSON</abbr><a class="headerlink" href="#json" title="Enlace permanente a este encabezado">¶</a></h2>
-<p>El editor tiene soporte nativo, por lo que nos señalará sin configuración
-adicional si el documento <abbr title="JavaScript Object Notation">JSON</abbr> que editamos no es bien formado. También es
-capaz de validarlo si le proporcionamos el esquema, pero en este caso sí debemos
-configurar para relacionar el documento con su gramática. Para ello debemos
-abrir la configuración (<kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">,</kbd>) y acceder a
-la extensión para <abbr title="JavaScript Object Notation">JSON</abbr>, una de cuyas configuraciones es <code class="docutils literal notranslate"><span class="pre">JSON:</span> <span class="pre">Schemas</span></code>:</p>
-<img alt="../../_images/20-vscode-json-schemas.png" src="../../_images/20-vscode-json-schemas.png" />
+<p>El editor tiene soporte nativo, por lo que, en principio, no necesita extensiones
+para que podamos trabajar cómodamente con este formato. De hecho, nos señalará
+sin configuración adicional si el documento <abbr title="JavaScript Object Notation">JSON</abbr> que editamos no es bien
+formado.  También es capaz de validarlo, pero habremos de proporcionarle el
+esquema mediante configuración. Incluso podemos <strong>formatear</strong> correctamente el
+archivo (sangrados, etc.) pulsando <kbd class="kbd docutils literal notranslate">Ctrl</kbd> +<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">I</kbd>.</p>
 <div class="admonition caution">
 <p class="admonition-title">Prudencia</p>
-<p>Las configuraciones que se indican a continuación se definen para
-un área de trabajo, no para el perfil completo.</p>
+<p>Por la naturaleza de esta configuración, es probable que nos
+interese hacerla para un área de trabajo, no un perfil complento.</p>
 </div>
+<p>Para ello debemos abrir la configuración
+(<kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">,</kbd>) y acceder a la extensión para <abbr title="JavaScript Object Notation">JSON</abbr>, una de cuyas
+configuraciones es <code class="docutils literal notranslate"><span class="pre">JSON:</span> <span class="pre">Schemas</span></code>:</p>
+<img alt="../../_images/20-vscode-json-schemas.png" src="../../_images/20-vscode-json-schemas.png" />
 <p>Al pinchar en la edición se nos abrirá el archivo de configuración
 <code class="file docutils literal notranslate"><span class="pre">settings.json</span></code> que nos permite relacionar archivos <abbr title="JavaScript Object Notation">JSON</abbr> con los
 esquemas que usan. Por ejemplo:</p>
@@ -417,10 +500,17 @@ propia carpeta del proyecto, hemos preferido una <abbr title="Uniform Resource L
 <section id="yaml">
 <span id="vscode-yaml"></span><h2><abbr title="YAML Ain't Markup Language">YAML</abbr><a class="headerlink" href="#yaml" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>A diferencia de lo que ocurre con <abbr title="JavaScript Object Notation">JSON</abbr>, el soporte para <abbr title="YAML Ain't Markup Language">YAML</abbr> no es nativo,
-así que es preciso instalar la <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml">extensión para YAML</a> para
-que el programa compruebe si el documento es bien formado. Si, además, queremos
-confrontarlo con un esquema <abbr title="JavaScript Object Notation">JSON</abbr> para validarlo, entonces requeriremos
-configuración adicional que relacione los archivos con su esquema
+así que es preciso instalar extensiones.</p>
+<table class="vscode-extensions docutils align-default" id="id8">
+<caption><span class="caption-text">Extensiones recomendadas</span><a class="headerlink" href="#id8" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml">YAML de RedHat</a></p></td>
+<td><p>Da soporte para <abbr title="YAML Ain't Markup Language">YAML</abbr> (<em>buenformidad</em>, validación, etc.).</p></td>
+</tr>
+</tbody>
+</table>
+<p>Si, además, queremos confrontarlo con un esquema <abbr title="JavaScript Object Notation">JSON</abbr> para validarlo, entonces
+requeriremos configuración adicional que relacione los archivos con su esquema
 correspondiente:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">&quot;yaml.schemas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -451,14 +541,28 @@ propia del área de trabajo.</p>
 <p>Como en el caso del formato <abbr title="JavaScript Object Notation">JSON</abbr>, <strong class="program">Visual Studio Core</strong> tiene soporte
 nativo para <abbr title="HyperText Markup Language">HTML</abbr>, de manera que es capaz de proporcionarnos sugerencias o
 autocompletado sin configuración adicional. Sin embargo, podemos afinar un poco
-para ampliar las facilidades.</p>
+para ampliar las facilidades con algunas extensiones:</p>
+<table class="vscode-extensions docutils align-default" id="id9">
+<caption><span class="caption-text">Extensiones recomendadas</span><a class="headerlink" href="#id9" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag">Auto Close Tag</a></p></td>
+<td><p>Afina el cierre de etiquetas.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=CelianRiboulet.webvalidator">W3C Web Validator</a></p></td>
+<td><p>Comprueba cómodamente la validez de los documentos <abbr title="HyperText Markup Language">HTML</abbr> y <abbr title="Cascading Style Sheets">CSS</abbr>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server">Live Preview</a></p></td>
+<td><p>Previsualiza el documento.</p></td>
+</tr>
+</tbody>
+</table>
 <dl id="vscode-html-close">
 <dt><strong>Cierre de etiquetas</strong></dt><dd><p>Ya existe soporte para ello, pero si somos de aquellos a los que gusta no cerrar
 las etiquetas que no necesitan cierre, puede resultarnos molesta que esta
 funcionalidad se aplique siempre. La extensión nativa, desgraciadamente, no
 tiene posibilidad de definir excepciones, pero otras externas, sí. Así que
-nuestra propuesta es instalar y habilitar la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag">Auto Close Tag</a>
-y hacer una pequeña configuración para deshabilitar el cierre nativo y
+nuestra propuesta es instalar y habilitar la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag">Auto Close Tag</a> y
+hacer una pequeña configuración para deshabilitar el cierre nativo y
 habilitar, con las excepciones de deseemos el cierre con esta extensión.
 <a class="reference download internal" download="" href="../../_downloads/21506f808209e3f45f799a178d0187b2/autoclose.json"><code class="xref download docutils literal notranslate"><span class="pre">Esta</span> <span class="pre">configuración</span></code></a> puede servirnos:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -483,7 +587,7 @@ habilitar, con las excepciones de deseemos el cierre con esta extensión.
 </div>
 <p>En esta configuración, la primera línea deshabilita el cierre automático
 nativo; la segunda lo habilita para la extensión; la tercera activa  el
-cierre para <abbr title="HyperText Markup Language">HTML</abbr> (ya que por defecto está deshabilitado)<a class="footnote-reference brackets" href="#id4" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> y
+cierre para <abbr title="HyperText Markup Language">HTML</abbr> (ya que por defecto está deshabilitado)<a class="footnote-reference brackets" href="#id5" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> y
 <em>Javascript</em>, y la cuarta define aquellas etiquetas que no queremos que se
 cierren automáticamente. Además, con la quinta hemos deshabilitado la
 escritura automática de las comillas dobles para los valores de los
@@ -505,7 +609,7 @@ documento. En caso de errores, podremos consultarlos en la venta de errores
 <dt><strong>Visualización</strong></dt><dd><p>Otra funcionalidad interesante es la de poder previsualizar la página. Para
 ello tenemos varias <strong>alternativas</strong>:</p>
 <dl>
-<dt><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server">Live Preview</a></dt><dd><p>Extensión que mostrará el icono señalado en la captura:</p>
+<dt><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server">Live Preview</a> (recomendada)</dt><dd><p>Extensión que mostrará el icono señalado en la captura:</p>
 <img alt="../../_images/livepreview.png" src="../../_images/livepreview.png" />
 <p>La consecuencia de pinchar sobre el icono es ésta:</p>
 <img alt="../../_images/livepreview2.png" src="../../_images/livepreview2.png" />
@@ -545,7 +649,7 @@ servicio:</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>En nuestra humilde opinión, es más cómoda la extensión anterior
-y, si hay necesidad de utilizar un navegador externo, tampoco nos supone
+y, si hay necesidad de utilizar un navegador externo, tampoco supone
 excesivo trabajo copiar la <abbr title="Uniform Resource Locator">URL</abbr>.</p>
 </div>
 </dd>
@@ -556,42 +660,8 @@ puesto que en este caso no se crea ningún servidor web local, sino que el
 documento <abbr title="HyperText Markup Language">HTML</abbr> se abre como archivo local. Para los propósitos de este
 curso en que nos limitamos a aprender a escribir páginas estáticas, es
 probable que no nos percatemos de la diferencia. Para poner en práctica
-esta alternativa, basta hacer dos cosas.</p>
-<ul>
-<li><p>Crear una tarea:</p>
-<p>Para ello puede crearse un archivo <code class="file docutils literal notranslate"><span class="pre">.vscode/tasks.json</span></code> y añadir las
-tareas que abran los navegadores que deseemos:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="s2">&quot;2.0.0&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;tasks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Abrir en Chromium&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;explorer&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;windows&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;C:/Program Files/Brave Software/etc...&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;linux&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;brave-browser&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;${file}&quot;</span><span class="w"> </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;presentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;reveal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;never&quot;</span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;problemMatcher&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</li>
-<li><p>Asociar a la tarea <a class="reference internal" href="#vscode-atajos"><span class="std std-ref">un atajo</span></a>, para lo cual tenemos
-que editar <code class="file docutils literal notranslate"><span class="pre">keybindings.json</span></code> tal como se explica allí:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ctrl+l b&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;workbench.action.tasks.runTask&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Abrir en Chromium&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">]</span>
-</pre></div>
-</div>
-<p>En este caso, se abrirá <a class="reference external" href="https://brave.com">Brave</a> al pulsar <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">l</kbd>-<kbd class="kbd docutils literal notranslate">b</kbd>.</p>
-</li>
-</ul>
+esta alternativa debemos repetir exactamente el <a class="reference internal" href="#vscode-tasks"><span class="std std-ref">ejemplo con el que
+ilustramos cómo crear tareas</span></a>.</p>
 </dd>
 </dl>
 </dd>
@@ -603,14 +673,20 @@ que editar <code class="file docutils literal notranslate"><span class="pre">key
 soporte nativo para la escritura de <a class="reference internal" href="../../08.js/index.html#js"><span class="std std-ref">Javascript</span></a>
 (autocompletado, <a class="reference external" href="https://es.wikipedia.org/wiki/Snippet">snippets</a>), pese a lo cual podemos hacer algunos añadidos
 para mejorarla:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets">Javascript (ES6) code snippets</a>,
-que añade <em>snippets</em> adicionales.</p></li>
-<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=cmstead.js-codeformer">JS CodeFormer</a>,
-que mejora la capacidad nativa para la refactorización.</p></li>
-<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint">ESLint</a>,
-que permite integrar el <a class="reference external" href="https://eslint.org/">analizador estático de código ESLint</a>. Lo trataremos más adelante.</p></li>
-</ul>
+<table class="vscode-extensions docutils align-default" id="id10">
+<caption><span class="caption-text">Extensiones recomendadas</span><a class="headerlink" href="#id10" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets">Javascript (ES6) code snippets</a></p></td>
+<td><p>Añade <em>snippets</em> adicionales.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=cmstead.js-codeformer">JS CodeFormer</a></p></td>
+<td><p>Mejora la capacidad nativa para la refactorización.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint">ESLint</a></p></td>
+<td><p>Permite integrar el <a class="reference external" href="https://eslint.org/">analizador estático de código ESLint</a>.</p></td>
+</tr>
+</tbody>
+</table>
 <dl>
 <dt><strong>Ejecución</strong></dt><dd><p><em>Javascript</em> es un lenguaje de programación que requiere de un intérprete.
 Cuando el código forma parte de un documento <abbr title="HyperText Markup Language">HTML</abbr> (que és el propósito de
@@ -650,19 +726,38 @@ existe <kbd class="kbd docutils literal notranslate">F5</kbd>.</p></li>
 módulo de <em>Lenguaje de marcas</em>, pero incluiremos aquí algunas sugerencias
 aprovechando este pequeño mini manual.</p>
 </div>
-<p>Tienen interés instalar las siguientes extensiones:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#code-runner"><span class="std std-ref">Code Runner</span></a>, de la que ya hemos hablado.</p></li>
-<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.java">Language Support for Java(TM) by Red Hat</a>.</p></li>
-<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-dependency">Proyect Manager for Java</a> que nos facilitara la gestión de los proyectos de Java. De hecho, nos permite, en vez de crear un área de trabajo vacía, crear un proyecto de Java, que es un área de trabajo, con una estructura básica ya definida y una configuración básica.</p></li>
-<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug">Debugger for Java</a>, que permite depurar los programas de Java (puntos de ruptura, ejecución condicional, ejecución paso a paso, etc.)</p></li>
-<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-test">Test Runner for Java</a>, para ejecutar casos de prueba.</p></li>
-</ul>
+<table class="vscode-extensions docutils align-default" id="id11">
+<caption><span class="caption-text">Extensiones recomendadas</span><a class="headerlink" href="#id11" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.java">Language Support for Java by Red Hat</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-dependency">Project Manager for Java</a></p></td>
+<td><p>Facilita la gestión de proyectos de Java, permitiendo directamente la creación de un
+proyecto, que es un área de  trabajo con una estructura básica ya definida y una
+configuración básica.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug">Debugger for Java</a></p></td>
+<td><p>Permite depurar los programas de Java (puntos de ruptura, ejecución condicional,
+ejecución paso a paso, etc.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-test">Test Runner for Java</a></p></td>
+<td><p>Permite ejecutar casos de prueba.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><a class="reference internal" href="#code-runner"><span class="std std-ref">Code Runner</span></a> es absolutamente prescindible, ya que al tener
+instalada <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug">Debugger for Java</a> podemos ejecutar los desarrollos pulsando F5.
+Además, <a class="reference internal" href="#code-runner"><span class="std std-ref">Code Runner</span></a> no atenderá a la jerarquía de  directorios creados por
+<a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-dependency">Project Manager for Java</a>.</p>
+</div>
 <p>Además de estas extensiones puede interesarnos añadir configuración adicional:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">   </span><span class="c1">// Elimina de la vista los archivos compilados.</span>
 <span class="w">   </span><span class="nt">&quot;files.exclude&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;**/*.class&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">      </span><span class="nt">&quot;bin/&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">           </span><span class="c1">// No vemos el directorio de compilaciones (Project Manager)</span>
+<span class="w">      </span><span class="c1">// &quot;**/*.class&quot;: true   // Interesante si usáramos Code Runner</span>
 <span class="w">   </span><span class="p">},</span>
 <span class="w">   </span><span class="c1">// Evita los inlay hints para los parámetros de las funciones.</span>
 <span class="w">   </span><span class="nt">&quot;editor.inlayHints.enable&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;off&quot;</span>
@@ -672,7 +767,11 @@ aprovechando este pequeño mini manual.</p>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="id4" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>Cuatro de las cuales sí instalaremos de forma individual nosotros.</p>
+</aside>
+<aside class="footnote brackets" id="id5" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
 <p>La extensión, para no entrar en conflicto, deshabilitó el autocierre
 predeterminado para <abbr title="HyperText Markup Language">HTML</abbr> cuando el soporte nativo lo introdujo. Por otra
 parte, la extensión sirve para autocompletar otros lenguajes, así que tal vez
