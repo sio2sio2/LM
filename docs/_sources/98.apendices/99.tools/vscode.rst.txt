@@ -5,8 +5,8 @@ Visual Studio Code
 Es un editor de texto, con innumerables extensiones, especialmente diseñado para
 la escritura de código, y con versiones para los principales sistemas
 operativos. Esta disponible para su descarga gratuita en `su página web
-<https://code.visualstudio.com/>`_  y su código fuente  está disponible en `su
-página de github <https://github.com/microsoft/vscode>`_.
+<https://code.visualstudio.com/>`_ y su código fuente en `su página de github
+<https://github.com/microsoft/vscode>`_.
 
 Generalidades
 =============
@@ -110,12 +110,12 @@ archivos de configuración |JSON|:
       Las áreas de trabajo también se pueden personalizar, de modo que la
       personalización que disfrutemos al trabajar será la suma de la que hayamos
       hecho para el perfil que estamos usando más la que apliquemos al área de
-      trabajo. De hecho, *Visual Studio Code* recuerda el perfil que se usó la
-      última vez que se estuvo trabajando sobre un área de trabajo a fin de que
-      cuando abramos un área, se cambie automáticamente de perfil. Por ejemplo,
-      si trabajando sobre un proyecto de Java (área de trabajo), para el que
-      lógicamente tendremos activo el perfil de Java, decidimos
-      cambiar de proyecto y acceder
+      trabajo. De hecho, :program:`Visual Studio Code` recuerda el perfil que se
+      usó la última vez que se estuvo trabajando sobre un área de trabajo a fin
+      de que cuando abramos un área, se cambie automáticamente de perfil. Por
+      ejemplo, si trabajando sobre un proyecto de Java (área de trabajo), para
+      el que lógicamente tendremos activo el perfil de Java, decidimos cambiar
+      de proyecto y acceder
 
       Los archivos |JSON| de personalización del área de trabajo se almacenan
       dentro del subdirectorio :file:`.vscode/` incluido en la carpeta raíz del
@@ -274,22 +274,30 @@ archivos de configuración |JSON|:
 .. _vscode-launch:
 
 **Depuración**
-   *Visual Studio Code* también está preparado para permitir la ejecución y
-   depuración de código con las técnicas habituales de ejecución paso a paso,
-   puntos de ruptura, puntos de ruptura condicionales, etc. Para ello es
-   necesario dotarlo de soporte para la depuración del lenguaje de programación
-   concreto en el que queramos hacer nuestros desarrollos. Esto se logra
-   instalando las extensiones de depuración propias de cada lenguaje (`Debugger
-   for Java`_, `Javascript Debugger
+   :program:`Visual Studio Code` también está preparado para permitir la
+   ejecución y depuración de código con las técnicas habituales de ejecución
+   paso a paso, puntos de ruptura, puntos de ruptura condicionales, etc. Para
+   ello es necesario dotarlo de soporte para la depuración del lenguaje de
+   programación concreto en el que queramos hacer nuestros desarrollos. Esto se
+   logra instalando las extensiones de depuración propias de cada lenguaje
+   (`Debugger for Java`_, `Javascript Debugger
    <https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly>`_,
    `Python Debugger
    <https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy>`_,
    etc).
 
+   De inicio, sin configuración adicional, podremos establecer puntos de
+   ruptura, etc. usando el editor y podremos ejecutar sin más pulsando
+   :kbd:`Ctrl`\ +\ :kbd:`F5` y ejecutar depurando pulsando :kbd:`F5`.
+
    .. seealso:: A la configuración básica que proporcionan esas estadísticas, se le puede
       añadir otra adicional dentro de :file:`.vscode/launch.json`, cuyos
       princiipios pueden leerse en el artículo `Working with VSCode launch
       configurations <https://gigi.nullneuron.net/gigilabs/working-with-vs-code-launch-configurations/>`_.
+
+   .. seealso:: Para aprender a depurar lea el artículo `Debugging
+      <https://code.visualstudio.com/docs/editor/debugging>`_ de la
+      página oficial.
 
 .. _vscode-start:
 
@@ -415,7 +423,7 @@ Una vez bien configurada, el modo de ejecutar consultas es el siguiente:
             "key": "ctrl+shift+alt+z",
             "command": "xmlTools.executeXQuery"
          }
-      }
+      ]
 
 .. _vscode-json:
 
@@ -678,9 +686,9 @@ para mejorarla:
       <https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner>`_,
       que posibilita ejecutar el archivo activo pulsando :kbd:`Ctrl`\ +\
       :kbd:`Alt`\ +\ :kbd:`n` y ver la salida a través la propia ventana de
-      salida de *Visual Studio Code*. La ejecución no permite la depuración
-      (puntos de ruptura, ejecución paso a paso, etc.), pero para ello ya
-      existe :kbd:`F5`.
+      salida de :program:`Visual Studio Code`. La ejecución no permite la
+      depuración (puntos de ruptura, ejecución paso a paso, etc.), pero para
+      ello ya existe :kbd:`F5`.
 
 **Análisis estático**
 
@@ -697,6 +705,15 @@ Java
    módulo de *Lenguaje de marcas*, pero incluiremos aquí algunas sugerencias
    aprovechando este pequeño mini manual.
 
+Obviamente, para programar en *Java*, sea con :program:`Visual Studio Code` o
+con cualquier otro |IDE|, debemos tener instalado |JDK| (o sea, el *paquete de
+desarrollo para Java*). Lo más juicioso en este caso es usar la versión
+desarrollada por OpenJDK_, que publica para distintas plataformas y sistemas
+operativos. En los sistemas *Linux* sus versiones son las versiones de
+referencia\ [#]_, así que podremos instalarla mediante el sistema de paquetería;
+mientras que en *Windows* podemos utilizar los instalables que nos ofrece
+`Adoptium <https://adoptium.net/>`_.
+
 .. table:: Extensiones recomendadas
    :class: vscode-extensions
 
@@ -712,9 +729,12 @@ Java
    +-----------------------------------------+---------------------------------------------------------------------------------------+
    | `Test Runner for Java`_                 | Permite ejecutar casos de prueba.                                                     |
    +-----------------------------------------+---------------------------------------------------------------------------------------+
+   | `IntelliCode`_                          | Proporciona sugerencias basadas en |IA|                                               |
+   +-----------------------------------------+---------------------------------------------------------------------------------------+
 
 .. note:: :ref:`Code Runner <code-runner>` es absolutamente prescindible, ya que al tener
-   instalada `Debugger for Java`_ podemos ejecutar los desarrollos pulsando F5.
+   instalada `Debugger for Java`_ podemos ejecutar los desarrollos pulsando
+   :kbd:`Ctrl`\ +\ :kbd:`F5`.
    Además, :ref:`Code Runner <code-runner>` no atenderá a la jerarquía de  directorios creados por
    `Project Manager for Java`_.
 
@@ -731,21 +751,77 @@ Además de estas extensiones puede interesarnos añadir configuración adicional
       "editor.inlayHints.enable": "off"
    }
 
+**Creación del proyecto**
+   Para comenzar un proyecto, en vez de abrir directamente un área de trabajo,
+   lo mejor es *crear un nuevo proyecto* a través de la extensión `Project Manager
+   for Java`_, lo que definirá directamente en la nueva área de trabajo esta estructura:
+
+   .. code-block:: none
+
+      +- .vscode
+      |     +-- settings.json
+      |
+      +- bin
+      +- lib
+      +- src
+      |    +-- App.class
+      |
+      + README.md
+
+   En :file:`settings.json` se creará la configuración necesaria para que la
+   ejecución y depuración a través del :ref:`depurador <vscode-launch>` espere
+   que nuestro código se encuentre bajo :file:`src/` y el *bytecode* se genere
+   bajo :file:`bin/`. Este último directorio, sin embargo, ni siquiera lo
+   veremos si añadimos al perfil la configuración sugerida anteriormente. Por
+   supuesto podemos cambiar el nombre `App` si no nos convence.
+
+   Si, además, queremos utilizar :kbd:`F5` y :kbd:`Ctrl`\ +\ :kbd:`F5` sin
+   necesidad de que el archivo activo sea :file:`App.class` podemos crear un
+   :file:`launch.json`\ [#]_:
+
+   .. code-block:: json
+
+      {
+          "version": "0.2.0",
+          "configurations": [
+              {
+                  "type": "java",
+                  "name": "Ejecutar App",
+                  "request": "launch",
+                  "mainClass": "App"
+              }
+          ]
+      }
+
+
 .. rubric:: Notas al pie
 
 .. [#] Cuatro de las cuales sí instalaremos de forma individual nosotros.
-
 .. [#] La extensión, para no entrar en conflicto, deshabilitó el autocierre
    predeterminado para |HTML| cuando el soporte nativo lo introdujo. Por otra
    parte, la extensión sirve para autocompletar otros lenguajes, así que tal vez
    nos podría interesar añadir más lenguajes a la secuencia.
+.. [#] En *Debian*, por ejemplo, los paquetes :deb:`default-jre` y
+   :deb:`default-jdk` apuntan a los paquetes creados con el *software* de
+   OpenJDK_.
+.. [#] El :file:`launch.json` predeterminado de `Debugger for Java`_ es como el
+   que hemos propuesto pero con:
 
+   .. code-block:: json
+
+      "mainClass": "${file}"
+
+   de ahí que se espere encontrar activo el archivo que contiene la clase
+   principal.
 
 .. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`
 .. |DTD| replace:: :abbr:`DTD (Document Type Definition)`
 .. |XSD| replace:: :abbr:`XSD (XML Schema Definition)`
 .. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`
 .. |W3C| replace:: :abbr:`W3C (W3 Consortium)`
+.. |IDE| replace:: :abbr:`IDE (Integrated Development Environment)`
+.. |JDK| replace:: :abbr:`JDK (Java Development Kit)`
+.. |IA| replace:: :abbr:`IA (Inteligencia Artificial)`
 
 .. _Brave: https://brave.com
 .. _XML Tools: https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml
@@ -756,3 +832,5 @@ Además de estas extensiones puede interesarnos añadir configuración adicional
 .. _Debugger for Java: https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug
 .. _Test Runner for Java: https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-test
 .. _Language Support for Java by Red Hat: https://marketplace.visualstudio.com/items?itemName=redhat.java
+.. _OpenJDK: https://openjdk.org/
+.. _IntelliCode: https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode
