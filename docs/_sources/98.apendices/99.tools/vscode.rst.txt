@@ -290,6 +290,14 @@ archivos de configuración |JSON|:
    ruptura, etc. usando el editor y podremos ejecutar sin más pulsando
    :kbd:`Ctrl`\ +\ :kbd:`F5` y ejecutar depurando pulsando :kbd:`F5`.
 
+   También es posible la depuración abriendo la barra lateral para ello:
+
+   .. image:: files/debug.png
+
+   En esa barra podrá escogerse, en caso de existir varios, el mecanismo de
+   ejecución; y podrán vigilarse y manipularse los valores de las variables
+   durante la depuración.
+
    .. seealso:: A la configuración básica que proporcionan esas estadísticas, se le puede
       añadir otra adicional dentro de :file:`.vscode/launch.json`, cuyos
       princiipios pueden leerse en el artículo `Working with VSCode launch
@@ -786,13 +794,23 @@ Además de estas extensiones puede interesarnos añadir configuración adicional
           "configurations": [
               {
                   "type": "java",
-                  "name": "Ejecutar App",
+                  "name": "App",
                   "request": "launch",
                   "mainClass": "App"
+              },
+              {
+                  "type": "java",
+                  "name": "App (assert)",
+                  "request": "launch",
+                  "mainClass": "App",
+                  "vmArgs": "-ea"
               }
           ]
       }
 
+   En este caso, hemos definido dos mecanismos de ejecución. La diferencia entre
+   ambos es que el segundo comprobará las `aserciones
+   <https://es.wikipedia.org/wiki/Aserci%C3%B3n_(inform%C3%A1tica)>`_.
 
 .. rubric:: Notas al pie
 

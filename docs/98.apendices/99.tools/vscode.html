@@ -330,6 +330,11 @@ etc).</p>
 <p>De inicio, sin configuración adicional, podremos establecer puntos de
 ruptura, etc. usando el editor y podremos ejecutar sin más pulsando
 <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">F5</kbd> y ejecutar depurando pulsando <kbd class="kbd docutils literal notranslate">F5</kbd>.</p>
+<p>También es posible la depuración abriendo la barra lateral para ello:</p>
+<img alt="../../_images/debug.png" src="../../_images/debug.png" />
+<p>En esa barra podrá escogerse, en caso de existir varios, el mecanismo de
+ejecución; y podrán vigilarse y manipularse los valores de las variables
+durante la depuración.</p>
 <div class="admonition seealso">
 <p class="admonition-title">Ver también</p>
 <p>A la configuración básica que proporcionan esas estadísticas, se le puede
@@ -812,14 +817,23 @@ necesidad de que el archivo activo sea <code class="file docutils literal notran
 <span class="w">    </span><span class="nt">&quot;configurations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;java&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ejecutar App&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;App&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;launch&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;mainClass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;App&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;java&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;App (assert)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;launch&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;mainClass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;App&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;vmArgs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-ea&quot;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>En este caso, hemos definido dos mecanismos de ejecución. La diferencia entre
+ambos es que el segundo comprobará las <a class="reference external" href="https://es.wikipedia.org/wiki/Aserci%C3%B3n_(inform%C3%A1tica)">aserciones</a>.</p>
 </dd>
 </dl>
 <p class="rubric">Notas al pie</p>
