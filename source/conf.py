@@ -40,6 +40,7 @@ html_theme = 'cloud'
 
 html_theme_options = { "defaultcollapsed": True,
                        "borderless_decor": False }
+#html_theme = 'piccolo_theme'
 
 html_static_path = ['_static']
 html_logo = "_static/logo.png"

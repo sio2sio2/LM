@@ -43,7 +43,7 @@ archivos de configuración |JSON|:
   (:file:`settings.json`).
 + Las :ref:`extensiones <vscode-extensions>` (:file:`extensions.json`).
 + Las :ref:`tareas <vscode-tasks>` (:file:`tasks.json`).
-+ La depuración (:file:`launch.json`).
++ La :ref:`depuración <vscode-launch>` (:file:`launch.json`).
 + Las asociaciones a teclas o atajos de teclado (:file:`keybindings.json`).
 
 **Niveles de personalización**
@@ -319,10 +319,10 @@ la herramienta que utilicemos. En particular, nos puede interesar:
 + La :ref:`configuración del idioma <vscode-language>`.
 + Los aspectos relacionados con el editor (tamaño de la fuente, `emulación
   de vim <https://marketplace.visualstudio.com/items?itemName=vscodevim.vim>`_).
-+ Los atajos de teclado.
++ Los atajos generales de teclado.
 + La instalación de extensiones que consideremos útiles para todos o gran parte
-  de los perfiles (:ref:`Code Runner <code-runner>`). En caso de que no sea útil
-  para todos, podemos tenerla deshabilitada en este perfil.
+  de los perfiles (p.e. alguna relativa a `Github`_). En caso de que alguna no
+  sea útil para todos, podemos tenerla deshabilitada para perfiles específicos.
 
 Definido a nuestro gusto este perfil, podemos exportarlo a un archivo; e
 importarlo como base de cada nuevo perfil que creemos para hacer desarrollos
@@ -336,10 +336,62 @@ crear perfiles independientes para:
 #. Desarrollo *web*, que consistirá en añadir al perfil anterior, configuración
    apropiada para desarrollar en :ref:`Javascript <vscode-javascript>`.
 
+Integración con Git
+===================
+Un aspecto fundamental del desarrollo de aplicaciones es tener un adecuado
+control de versiones. Si decidimos usar Git_, :program:`Visual Studio Code` nos
+proporcionará una excelente integración.
+
+Previamente, sin embargo, necesitaremos:
+
+* Tener instalado :deb:`git` en el sistema.
+* Tener creada una cuenta en Github_.
+
+Cumplido eso podemos partir de dos comienzos distintos:
+
+#. Definir el control de versiones en un espacio de trabajo que antes careciera
+   de él.
+#. Clonar un repositorio ya existente para constituir con su contenido un espacio de
+   trabajo.
+
+Para lo primero basta abrir un espacio de trabajo y pinchar sobre el icono de
+"bifuración de ruta" que se puede ver a la izquierda:
+
+.. image:: files/git-init.png
+
+Hecho esto, si el espacio de trabajo carecía de control de versiones, nos dará
+la posibilidad de iniciarlo\ [#]_ y crear un *commit* inicial (el campo nos
+permite indicar con qué mensaje queremos identificarlo):
+
+.. image:: files/git-vi.png
+
+Si, además, queremos sincronizar con un repositorio de *Github*, deberemos volver
+a pinchar sobre el icono de "bifurcación de ruta" y escoger *Publicar la rama*:
+
+.. image:: files/git-push.png
+
+En este caso, deberemos validarnos con nuestra cuenta (en caso de que no lo
+hubiéramos hecho antes) y escoger el nombre para el nuevo repositorio.
+
+.. caution:: El programa atiende a lo que se haya indicado en la configuración
+   global (almacena :file:`~/.gitconfig` en *Linux*), si es que el usuario ya ha
+   usado anteriormente :program:`git` fuera de :program:`Visual Studio Code` y
+   lo tiene configurado. Si este es el caso:
+
+   * En caso de estar definido en ese archivo cómo acreditarsei
+     (``credentials``), se ajustará a lo indicado, en vez de buscarse las
+     vueltas él. Esto puede ser un problema si pretendíamos usar un usuario
+     distinto.
+
+   * También se atenderá al usuario que haya definido en él.
+
+Perfiles de desarrollo
+======================
+
 .. _vscode-xml:
 
 |XML|
-=====
+-----
 Para manipular documentos |XML| es recomendable instalar algunas extensiones:
 
 .. list-table:: Extensiones recomendadas
@@ -436,7 +488,7 @@ Una vez bien configurada, el modo de ejecutar consultas es el siguiente:
 .. _vscode-json:
 
 |JSON|
-======
+------
 El editor tiene soporte nativo, por lo que, en principio, no necesita extensiones
 para que podamos trabajar cómodamente con este formato. De hecho, nos señalará
 sin configuración adicional si el documento |JSON| que editamos no es bien
@@ -482,7 +534,7 @@ propia carpeta del proyecto, hemos preferido una |URL| relativa.
 .. _vscode-yaml:
 
 |YAML|
-======
+------
 A diferencia de lo que ocurre con |JSON|, el soporte para |YAML| no es nativo,
 así que es preciso instalar extensiones.
 
@@ -524,7 +576,7 @@ una secuencia:
 .. _vscode-html:
 
 |HTML|/|CSS|
-============
+------------
 Como en el caso del formato |JSON|, :program:`Visual Studio Core` tiene soporte
 nativo para |HTML|, de manera que es capaz de proporcionarnos sugerencias o
 autocompletado sin configuración adicional. Sin embargo, podemos afinar un poco
@@ -647,7 +699,7 @@ para ampliar las facilidades con algunas extensiones:
 .. _vscode-javascript:
 
 Javascript
-==========
+----------
 Al igual que :ref:`ocurre con JSON <vscode-javascript>`, el programa tiene
 soporte nativo para la escritura de :ref:`Javascript <js>`
 (autocompletado, `snippets <https://es.wikipedia.org/wiki/Snippet>`_), pese a lo cual podemos hacer algunos añadidos
@@ -708,7 +760,7 @@ para mejorarla:
 .. _vscode-java:
 
 Java
-====
+----
 .. caution:: El desarrollo con *Java* nada tiene que ver con los propósitos del
    módulo de *Lenguaje de marcas*, pero incluiremos aquí algunas sugerencias
    aprovechando este pequeño mini manual.
@@ -756,7 +808,7 @@ Además de estas extensiones puede interesarnos añadir configuración adicional
          // "**/*.class": true   // Interesante si usáramos Code Runner
       },
       // Evita los inlay hints para los parámetros de las funciones.
-      "editor.inlayHints.enable": "off"
+      "editor.inlayHints.enabled": "off"
    }
 
 **Creación del proyecto**
@@ -815,6 +867,8 @@ Además de estas extensiones puede interesarnos añadir configuración adicional
 .. rubric:: Notas al pie
 
 .. [#] Cuatro de las cuales sí instalaremos de forma individual nosotros.
+.. [#] O sea, de que internamente se haga el equivalente a un :code:`git init`
+   que deberíamos ejecutar nosotros si realizáramos a mano esta acción.
 .. [#] La extensión, para no entrar en conflicto, deshabilitó el autocierre
    predeterminado para |HTML| cuando el soporte nativo lo introdujo. Por otra
    parte, la extensión sirve para autocompletar otros lenguajes, así que tal vez
@@ -852,3 +906,5 @@ Además de estas extensiones puede interesarnos añadir configuración adicional
 .. _Language Support for Java by Red Hat: https://marketplace.visualstudio.com/items?itemName=redhat.java
 .. _OpenJDK: https://openjdk.org/
 .. _IntelliCode: https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode
+.. _Github: https://github.com
+.. _Git: https://git-scm.com
