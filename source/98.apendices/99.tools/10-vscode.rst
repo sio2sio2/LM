@@ -354,7 +354,7 @@ Cumplido eso podemos partir de dos comienzos distintos:
 #. Clonar un repositorio ya existente para constituir con su contenido un espacio de
    trabajo.
 
-Para lo primero basta abrir un espacio de trabajo y pinchar sobre el icono de
+Para **lo primero** basta abrir un espacio de trabajo y pinchar sobre el icono de
 "bifuración de ruta" que se puede ver a la izquierda:
 
 .. image:: files/git-init.png
@@ -371,19 +371,60 @@ a pinchar sobre el icono de "bifurcación de ruta" y escoger *Publicar la rama*:
 .. image:: files/git-push.png
 
 En este caso, deberemos validarnos con nuestra cuenta (en caso de que no lo
-hubiéramos hecho antes) y escoger el nombre para el nuevo repositorio.
+hubiéramos hecho antes) y escoger el nombre para el nuevo repositorio:
+
+.. image:: files/git-name.png
+
+A partir de ahora, cualquier cambio que hagamos en un archivo respecto a la
+última versión confirmada (el último *commit*) se notará en el propio editor e,
+incluso podremos consultar en qué consiste:
+
+.. image:: files/git-mod.png
 
 .. caution:: El programa atiende a lo que se haya indicado en la configuración
-   global (almacena :file:`~/.gitconfig` en *Linux*), si es que el usuario ya ha
-   usado anteriormente :program:`git` fuera de :program:`Visual Studio Code` y
-   lo tiene configurado. Si este es el caso:
+   de git (*Linux* la almacena en :file:`~/.gitconfig`), si es que el usuario ya
+   ha usado y configurado anteriormente :program:`git` fuera de :program:`Visual
+   Studio Code`. Si este es el caso y, además, queremos utilizar un **usuario
+   distinto** podemos hacer lo siguiente:
 
-   * En caso de estar definido en ese archivo cómo acreditarsei
-     (``credentials``), se ajustará a lo indicado, en vez de buscarse las
-     vueltas él. Esto puede ser un problema si pretendíamos usar un usuario
-     distinto.
+   #. Llevar a cabo todos los desarrollos con este programa bajo un mismo
+      directorio (pongamos que :file:`~/Programacion/VSCode`).
 
-   * También se atenderá al usuario que haya definido en él.
+   #. Utilizar la `configuración condicional
+      <https://github.blog/2017-05-10-git-2-13-has-been-released/#conditional-configuration>`_
+      para modificar qué usuario realiza cambios y de qué forma se gestionan las
+      credenciales. Así en :file:`~/.gitconfig` podemos escribir:
+
+      .. code-block:: ini
+
+         [user]
+            name = Yo cuando uso Git
+            email = cuenta1@example.com
+         [credential]
+            # Supongamos que usamos OAuth
+            helper = "cache --timeout=7200"
+            helper = oauth
+         [includeIf "gitdir:~/Documentos/VSCode/"]
+            path = ~/Documentos/VSCode/.gitconfig
+
+      Y en :file:`~/Documentos/VSCode/.gitconfig`:
+
+      .. code-block:: ini
+
+         [credential]
+            # helper es acomulativo y dejarlo en blanco,
+            # borra las configuraciones anteriores.
+            # Por tanto, Visual Studio Code se encarga de la autenticación.
+            helper =
+         [user]
+            name = Yo cuando uso vscode
+            email = cuenta2@example.com
+
+La otra opción para comenzar era **clonar un repositorio** para lo cual no
+tenemos más que declarar nuestro propósito y especificar cuál es la dirección
+del repositorio:
+
+.. image:: files/git-clone.png
 
 Perfiles de desarrollo
 ======================

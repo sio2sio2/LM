@@ -395,7 +395,7 @@ de él.</p></li>
 <li><p>Clonar un repositorio ya existente para constituir con su contenido un espacio de
 trabajo.</p></li>
 </ol>
-<p>Para lo primero basta abrir un espacio de trabajo y pinchar sobre el icono de
+<p>Para <strong>lo primero</strong> basta abrir un espacio de trabajo y pinchar sobre el icono de
 «bifuración de ruta» que se puede ver a la izquierda:</p>
 <img alt="../../_images/git-init.png" src="../../_images/git-init.png" />
 <p>Hecho esto, si el espacio de trabajo carecía de control de versiones, nos dará
@@ -405,6 +405,55 @@ permite indicar con qué mensaje queremos identificarlo):</p>
 <p>Si, además, queremos sincronizar con un repositorio de <em>Github</em>, deberemos volver
 a pinchar sobre el icono de «bifurcación de ruta» y escoger <em>Publicar la rama</em>:</p>
 <img alt="../../_images/git-push.png" src="../../_images/git-push.png" />
+<p>En este caso, deberemos validarnos con nuestra cuenta (en caso de que no lo
+hubiéramos hecho antes) y escoger el nombre para el nuevo repositorio:</p>
+<img alt="../../_images/git-name.png" src="../../_images/git-name.png" />
+<p>A partir de ahora, cualquier cambio que hagamos en un archivo respecto a la
+última versión confirmada (el último <em>commit</em>) se notará en el propio editor e,
+incluso podremos consultar en qué consiste:</p>
+<img alt="../../_images/git-mod.png" src="../../_images/git-mod.png" />
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>El programa atiende a lo que se haya indicado en la configuración
+de git (<em>Linux</em> la almacena en <code class="file docutils literal notranslate"><span class="pre">~/.gitconfig</span></code>), si es que el usuario ya
+ha usado y configurado anteriormente <strong class="program">git</strong> fuera de <strong class="program">Visual
+Studio Code</strong>. Si este es el caso y, además, queremos utilizar un <strong>usuario
+distinto</strong> podemos hacer lo siguiente:</p>
+<ol class="arabic">
+<li><p>Llevar a cabo todos los desarrollos con este programa bajo un mismo
+directorio (pongamos que <code class="file docutils literal notranslate"><span class="pre">~/Programacion/VSCode</span></code>).</p></li>
+<li><p>Utilizar la <a class="reference external" href="https://github.blog/2017-05-10-git-2-13-has-been-released/#conditional-configuration">configuración condicional</a>
+para modificar qué usuario realiza cambios y de qué forma se gestionan las
+credenciales. Así en <code class="file docutils literal notranslate"><span class="pre">~/.gitconfig</span></code> podemos escribir:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[user]</span>
+<span class="w">   </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Yo cuando uso Git</span>
+<span class="w">   </span><span class="na">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">cuenta1@example.com</span>
+<span class="k">[credential]</span>
+<span class="w">   </span><span class="c1"># Supongamos que usamos OAuth</span>
+<span class="w">   </span><span class="na">helper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;cache --timeout=7200&quot;</span>
+<span class="w">   </span><span class="na">helper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">oauth</span>
+<span class="k">[includeIf &quot;gitdir:~/Documentos/VSCode/&quot;]</span>
+<span class="w">   </span><span class="na">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">~/Documentos/VSCode/.gitconfig</span>
+</pre></div>
+</div>
+<p>Y en <code class="file docutils literal notranslate"><span class="pre">~/Documentos/VSCode/.gitconfig</span></code>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[credential]</span>
+<span class="w">   </span><span class="c1"># helper es acomulativo y dejarlo en blanco,</span>
+<span class="w">   </span><span class="c1"># borra las configuraciones anteriores.</span>
+<span class="w">   </span><span class="c1"># Por tanto, Visual Studio Code se encarga de la autenticación.</span>
+<span class="w">   </span><span class="na">helper</span><span class="w"> </span><span class="o">=</span>
+<span class="k">[user]</span>
+<span class="w">   </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Yo cuando uso vscode</span>
+<span class="w">   </span><span class="na">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">cuenta2@example.com</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<p>La otra opción para comenzar era <strong>clonar un repositorio</strong> para lo cual no
+tenemos más que declarar nuestro propósito y especificar cuál es la dirección
+del repositorio:</p>
+<img alt="../../_images/git-clone.png" src="../../_images/git-clone.png" />
 </section>
 <section id="perfiles-de-desarrollo">
 <h2>Perfiles de desarrollo<a class="headerlink" href="#perfiles-de-desarrollo" title="Enlace permanente a este encabezado">¶</a></h2>
