@@ -342,20 +342,24 @@ Un aspecto fundamental del desarrollo de aplicaciones es tener un adecuado
 control de versiones. Si decidimos usar Git_, :program:`Visual Studio Code` nos
 proporcionará una excelente integración.
 
+Requisitos
+----------
 Previamente, sin embargo, necesitaremos:
 
 * Tener instalado :deb:`git` en el sistema.
 * Tener creada una cuenta en Github_.
 
-Cumplido eso podemos partir de dos comienzos distintos:
+Inicialización
+--------------
+Cumplido eso podemos partir de dos comienzos distintos para convertir el espacio de trabajo en un repositorio de Git también:
 
 #. Definir el control de versiones en un espacio de trabajo que antes careciera
    de él.
 #. Clonar un repositorio ya existente para constituir con su contenido un espacio de
    trabajo.
 
-Para **lo primero** basta abrir un espacio de trabajo y pinchar sobre el icono de
-"bifuración de ruta" que se puede ver a la izquierda:
+Para **lo primero** basta abrir un área de trabajo y, ya con el área abierta,
+pinchar sobre el icono de "bifurcación de ruta" que se puede ver a la izquierda:
 
 .. image:: files/git-init.png
 
@@ -364,6 +368,18 @@ la posibilidad de iniciarlo\ [#]_ y crear un *commit* inicial (el campo nos
 permite indicar con qué mensaje queremos identificarlo):
 
 .. image:: files/git-vi.png
+
+.. caution:: El *commit* necesita realizarse bajo una identidad. Si no hay
+   definida ninguna en el archivo de configuración de *Git*
+   (:file:`~/gitconfig` en *Linux* o :file:`%USERPROFILE%\.gitconfig` en
+   *Windows*) la acción no se llevará a cabo, así que tendremos que realizarla
+   antes:
+
+   .. code-block:: ini
+
+      [user]
+         name = "Perico de los Palotes"
+         email = "perico@example.com"
 
 Si, además, queremos sincronizar con un repositorio de *Github*, deberemos volver
 a pinchar sobre el icono de "bifurcación de ruta" y escoger *Publicar la rama*:
@@ -374,12 +390,6 @@ En este caso, deberemos validarnos con nuestra cuenta (en caso de que no lo
 hubiéramos hecho antes) y escoger el nombre para el nuevo repositorio:
 
 .. image:: files/git-name.png
-
-A partir de ahora, cualquier cambio que hagamos en un archivo respecto a la
-última versión confirmada (el último *commit*) se notará en el propio editor e,
-incluso podremos consultar en qué consiste:
-
-.. image:: files/git-mod.png
 
 .. caution:: El programa atiende a lo que se haya indicado en la configuración
    de git (*Linux* la almacena en :file:`~/.gitconfig`), si es que el usuario ya
@@ -420,11 +430,81 @@ incluso podremos consultar en qué consiste:
             name = Yo cuando uso vscode
             email = cuenta2@example.com
 
-La otra opción para comenzar era **clonar un repositorio** para lo cual no
+La otra opción para comenzar es **clonar un repositorio** para lo cual no
 tenemos más que declarar nuestro propósito y especificar cuál es la dirección
 del repositorio:
 
 .. image:: files/git-clone.png
+
+En este caso, podemos escribir directamente la dirección del repositorio (como
+se observa en la captura) o pinchar sobre "Clonar desde GitHub" para identificarnos
+con un usuario. En este segundo caso (o si ya hubiéramos estado identificados
+previamente), se sustituirá esa leyenda por la lista de repositorios del usuario
+y podremos elegirlos directamente.
+
+Sincronización
+--------------
+Una vez que tengamos asociado el directorio local con un repositorio remoto, el
+programa será capaz de marcarnos qué archivos hemos cambiado respecto a la
+versión del último *commit*, nos lo mostrará en el propio editor e incluso
+podremos consultar en qué consiste ese cambio y revocarlo:
+
+.. image:: files/git-mod.png
+
+Con el soporte nativo para *Git* de :program:`Visual Studio Code` sólo podremos
+hacer comparaciones entre la última versión moficiada y la última confirmada
+(*commit*). Sin embargo, si instalamos la extensión `Gitlens
+<https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens>`_ podremos
+hacer estas comparaciones con todas las versiones anteriores:
+
+.. image:: files/git-gitlens.png
+
+Otra circunstancia con la que nos podemos encontrar es que un área de trabajo
+que ya tenemos asociada a un repositorio remoto, quede desfasada y queramos,
+antes de comenzar a programar, sincronizarla para que quede en el estado más
+avanzado del repositorio. Para ello, simplemente, podemos hacer un "*pull*" tal
+como haríamos manualmente con :program:`git`:
+
+.. image:: files/git-pull.png
+
+Existe, no obstante, la posibilidad de ejecutar periódicamente un :code:`git
+fetch` si configuramos:
+
+.. code-block:: json
+
+   {
+        "git.autofetch": true,
+        "git.autofetchPeriod": 1800000
+   }
+
+en que la segunda opción indica la frecuencia con la que se hace la comprobación
+(500 horas, o sea, nunca). Esto provoca que al abrir el programa se compruebe si
+ha habido algún cambio en el respositorio desde la última vez que accedimos al
+área de trabajo y ya no se vuelva a realizarcomprobación más mientras estamos
+trabajando\ [#]_:
+
+.. image:: files/git-fetch.png
+
+.. note:: La captura muestra directamente lo que se ve en la barra lateral
+   izquierda cuando pulsamos el icono de *Git* (*bifurcación de ruta*). Sin
+   embargo, antes de pulsar, podemos conocer que existen cambios en el
+   repositorio remoto, porque en la barra de estado de la parte inferior se verá
+   que hay cambios pendientes (en este caso, 1 de bajada y ninguno de subida).
+
+Ramas
+-----
+El soporte nativo también nos permite tratar con ramas, cambiar entre ellas y
+mezclarlas de forma bastante intuitiva. En la parte izquierda de la barra
+inferior de estado podemos ver en qué rama estamos trabajando y, si pulsamos
+sobre ella, se nos abrirá un cuadro para escoger otra rama entre las existentes
+o crear una nueva:
+
+.. image:: files/git-branch.png
+
+Para otras operaciones, como mezclar ramas, habría que acudir al menú de la
+sección de control de versiones:
+
+.. image:: files/git-branch-menu.png
 
 Perfiles de desarrollo
 ======================
@@ -865,7 +945,7 @@ Además de estas extensiones puede interesarnos añadir configuración adicional
       +- bin
       +- lib
       +- src
-      |    +-- App.class
+      |    +-- App.java
       |
       + README.md
 
@@ -877,7 +957,7 @@ Además de estas extensiones puede interesarnos añadir configuración adicional
    supuesto podemos cambiar el nombre `App` si no nos convence.
 
    Si, además, queremos utilizar :kbd:`F5` y :kbd:`Ctrl`\ +\ :kbd:`F5` sin
-   necesidad de que el archivo activo sea :file:`App.class` podemos crear un
+   necesidad de que el archivo activo sea :file:`App.java` podemos crear un
    :file:`launch.json`\ [#]_:
 
    .. code-block:: json
@@ -910,6 +990,12 @@ Además de estas extensiones puede interesarnos añadir configuración adicional
 .. [#] Cuatro de las cuales sí instalaremos de forma individual nosotros.
 .. [#] O sea, de que internamente se haga el equivalente a un :code:`git init`
    que deberíamos ejecutar nosotros si realizáramos a mano esta acción.
+.. [#] Lo cual es útil si es un proyecto personal que sólo desarrollamos
+   nosotros. Si hay otros desarrolladores trabajando, quizás sea más conveniente
+   que no deshabilitemos la comprobación periódica (por defecto, el valor es 180
+   segundos). Por tanto, quizás la primera línea de configuración es útil a
+   nivel de perfil, pero la segunda debería ser más propia del nivel de área de
+   trabajo.
 .. [#] La extensión, para no entrar en conflicto, deshabilitó el autocierre
    predeterminado para |HTML| cuando el soporte nativo lo introdujo. Por otra
    parte, la extensión sirve para autocompletar otros lenguajes, así que tal vez
