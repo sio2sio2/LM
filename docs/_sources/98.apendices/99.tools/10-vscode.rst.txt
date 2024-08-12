@@ -171,9 +171,9 @@ archivos de configuración |JSON|:
 .. _vscode-atajos:
 
 **Atajos de teclado**
-   El programa da la posibilidad de asociar combinaciones de teclas a
-   las distintas tareas definidas. Las asociaciones se puede hacer de
-   distintos modos:
+   A nivel de perfil (y no de área de trabajo), el programa ofrece la
+   posibilidad de asociar combinaciones de teclas a las distintas tareas
+   definidas. Las asociaciones se puede hacer de distintos modos:
 
    .. rst-class:: simple
 
@@ -192,11 +192,8 @@ archivos de configuración |JSON|:
 
      .. image:: files/addkeybinding.png
 
-     El archivo contiene de un array en que cada *ítem* es una de esas
+     El archivo contiene un array en que cada *ítem* es una de esas
      asociaciones. Más adelante se sugerirán algunos.
-
-   .. note:: Los atajos de teclado sólo se pueden definir para perfiles, no para
-      áreas de trabajo.
 
    .. seealso:: La ayuda oficial del programa tiene `una buena explicación
       sobre estos atajos <https://code.visualstudio.com/docs/getstarted/keybindings>`_.
@@ -298,10 +295,10 @@ archivos de configuración |JSON|:
    ejecución; y podrán vigilarse y manipularse los valores de las variables
    durante la depuración.
 
-   .. seealso:: A la configuración básica que proporcionan esas estadísticas, se le puede
-      añadir otra adicional dentro de :file:`.vscode/launch.json`, cuyos
-      princiipios pueden leerse en el artículo `Working with VSCode launch
-      configurations <https://gigi.nullneuron.net/gigilabs/working-with-vs-code-launch-configurations/>`_.
+   .. seealso:: A la configuración básica citada, se le puede añadir otra
+      adicional dentro de :file:`.vscode/launch.json`, cuyos principios pueden
+      leerse en el artículo `Working with VSCode launch configurations
+      <https://gigi.nullneuron.net/gigilabs/working-with-vs-code-launch-configurations/>`_.
 
    .. seealso:: Para aprender a depurar lea el artículo `Debugging
       <https://code.visualstudio.com/docs/editor/debugging>`_ de la
@@ -913,7 +910,7 @@ mientras que en *Windows* podemos utilizar los instalables que nos ofrece
    | `IntelliCode`_                          | Proporciona sugerencias basadas en |IA|                                               |
    +-----------------------------------------+---------------------------------------------------------------------------------------+
 
-.. note:: :ref:`Code Runner <code-runner>` es absolutamente prescindible, ya que al tener
+.. caution:: :ref:`Code Runner <code-runner>` es absolutamente prescindible, ya que al tener
    instalada `Debugger for Java`_ podemos ejecutar los desarrollos pulsando
    :kbd:`Ctrl`\ +\ :kbd:`F5`.
    Además, :ref:`Code Runner <code-runner>` no atenderá a la jerarquía de  directorios creados por
@@ -931,6 +928,42 @@ Además de estas extensiones puede interesarnos añadir configuración adicional
       // Evita los inlay hints para los parámetros de las funciones.
       "editor.inlayHints.enabled": "off"
    }
+
+Además, durante la codificación puede interesarnos hacer alguna prueba
+individual de cómo funciona método a través de la consola interactiva `JShell
+<https://docs.oracle.com/en/java/javase/22/jshell/introduction-jshell.html>`_.
+Podemos, por supuesto, abrir una terminal (:kbd:`Ctrl`\ +\ :kbd:`\``) y escribir
+directamente la orden en ella, pero sin duda es más cómodo :ref:`crear una tarea
+<vscode-tasks>` y asociarla a una :ref:`combinación de teclas <vscode-atajos>`.
+La tarea podemos definirla con este código |JSON|:
+
+.. code:: json
+
+   {
+      "label": "Shell para Java",
+      "type": "shell",
+      "command": "jshell",
+      "windows": {
+         "command": "${env:JAVA_HOME}\\bin\\jshell.exe"
+      },
+      "presentation": {
+         "reveal": "always",
+         "panel": "new"
+      },
+      "problemMatcher": []
+   }
+
+y la asociación a la combinación :kbd:`Ctrl`\ +\ :kbd:`Shift`\ +\ :kbd:`J` de
+este modo:
+
+.. code-block:: json
+
+   {
+      "key": "ctrl+shift+j",
+      "command": "workbench.action.tasks.runTask",
+      "args": "Shell para Java"
+   }
+
 
 **Creación del proyecto**
    Para comenzar un proyecto, en vez de abrir directamente un área de trabajo,

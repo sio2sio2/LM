@@ -226,9 +226,9 @@ instala hasta seis extensiones que facilitan el trabajo con <em>Java</em><a clas
 </dd>
 </dl>
 <dl id="vscode-atajos">
-<dt><strong>Atajos de teclado</strong></dt><dd><p>El programa da la posibilidad de asociar combinaciones de teclas a
-las distintas tareas definidas. Las asociaciones se puede hacer de
-distintos modos:</p>
+<dt><strong>Atajos de teclado</strong></dt><dd><p>A nivel de perfil (y no de área de trabajo), el programa ofrece la
+posibilidad de asociar combinaciones de teclas a las distintas tareas
+definidas. Las asociaciones se puede hacer de distintos modos:</p>
 <ul class="simple">
 <li><p>Pulsando <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd> para abrir el diálogo
 que permite ejecutar tareas y, en vez de ejecutarla, pulsar sobre la
@@ -241,15 +241,10 @@ lista de asociaciones a tareas y buscar en ella la tarea que nos interese.</p></
 cómodo, en vez de buscarlo en el sistema de archivos, es acceder a la lista
 de asociaciones que se acaba de citar, y pulsar aquí:</p>
 <img alt="../../_images/addkeybinding.png" src="../../_images/addkeybinding.png" />
-<p>El archivo contiene de un array en que cada <em>ítem</em> es una de esas
+<p>El archivo contiene un array en que cada <em>ítem</em> es una de esas
 asociaciones. Más adelante se sugerirán algunos.</p>
 </li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>Los atajos de teclado sólo se pueden definir para perfiles, no para
-áreas de trabajo.</p>
-</div>
 <div class="admonition seealso">
 <p class="admonition-title">Ver también</p>
 <p>La ayuda oficial del programa tiene <a class="reference external" href="https://code.visualstudio.com/docs/getstarted/keybindings">una buena explicación
@@ -337,10 +332,9 @@ ejecución; y podrán vigilarse y manipularse los valores de las variables
 durante la depuración.</p>
 <div class="admonition seealso">
 <p class="admonition-title">Ver también</p>
-<p>A la configuración básica que proporcionan esas estadísticas, se le puede
-añadir otra adicional dentro de <code class="file docutils literal notranslate"><span class="pre">.vscode/launch.json</span></code>, cuyos
-princiipios pueden leerse en el artículo <a class="reference external" href="https://gigi.nullneuron.net/gigilabs/working-with-vs-code-launch-configurations/">Working with VSCode launch
-configurations</a>.</p>
+<p>A la configuración básica citada, se le puede añadir otra
+adicional dentro de <code class="file docutils literal notranslate"><span class="pre">.vscode/launch.json</span></code>, cuyos principios pueden
+leerse en el artículo <a class="reference external" href="https://gigi.nullneuron.net/gigilabs/working-with-vs-code-launch-configurations/">Working with VSCode launch configurations</a>.</p>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">Ver también</p>
@@ -921,8 +915,8 @@ ejecución paso a paso, etc.</p></td>
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
 <p><a class="reference internal" href="#code-runner"><span class="std std-ref">Code Runner</span></a> es absolutamente prescindible, ya que al tener
 instalada <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug">Debugger for Java</a> podemos ejecutar los desarrollos pulsando
 <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">F5</kbd>.
@@ -937,6 +931,35 @@ Además, <a class="reference internal" href="#code-runner"><span class="std std-
 <span class="w">   </span><span class="p">},</span>
 <span class="w">   </span><span class="c1">// Evita los inlay hints para los parámetros de las funciones.</span>
 <span class="w">   </span><span class="nt">&quot;editor.inlayHints.enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;off&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Además, durante la codificación puede interesarnos hacer alguna prueba
+individual de cómo funciona método a través de la consola interactiva <a class="reference external" href="https://docs.oracle.com/en/java/javase/22/jshell/introduction-jshell.html">JShell</a>.
+Podemos, por supuesto, abrir una terminal (<kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">`</kbd>) y escribir
+directamente la orden en ella, pero sin duda es más cómodo <a class="reference internal" href="#vscode-tasks"><span class="std std-ref">crear una tarea</span></a> y asociarla a una <a class="reference internal" href="#vscode-atajos"><span class="std std-ref">combinación de teclas</span></a>.
+La tarea podemos definirla con este código <abbr title="JavaScript Object Notation">JSON</abbr>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Shell para Java&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jshell&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;windows&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${env:JAVA_HOME}\\bin\\jshell.exe&quot;</span>
+<span class="w">   </span><span class="p">},</span>
+<span class="w">   </span><span class="nt">&quot;presentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;reveal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;always&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;panel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;new&quot;</span>
+<span class="w">   </span><span class="p">},</span>
+<span class="w">   </span><span class="nt">&quot;problemMatcher&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>y la asociación a la combinación <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">J</kbd> de
+este modo:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ctrl+shift+j&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;workbench.action.tasks.runTask&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Shell para Java&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
