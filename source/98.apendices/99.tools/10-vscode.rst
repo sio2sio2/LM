@@ -1018,6 +1018,23 @@ este modo:
    ambos es que el segundo comprobará las `aserciones
    <https://es.wikipedia.org/wiki/Aserci%C3%B3n_(inform%C3%A1tica)>`_.
 
+**Exportar JAR**
+   Una acción muy recorrente, una vez que tengamos acabado un proyecto, es crear
+   un |JAR| a fin de distribuir el ejecutable de la aplicación (esto es, sólo
+   los  archivos `.class` y no el código fuente). Con :program:`Visual Studio
+   Code` existe el atajo de pinchar el icono remarcado:
+
+   .. image:: files/exportJavaSC.png
+
+   o, simplemente, escribir la orden (:kbd:`Ctrl`\ +\ :kbd:`Shift`\ +\
+   :kbd:`P`) "Export Jar". En ambos casos, se pedirá el archivo que contiene  la
+   clase principal. El `.jar` quedará guardado en el directorio de proyecto y ya
+   podremos ejecutar la aplicación con:
+
+   .. code-block:: console
+
+      $ java -jar nombreProyecto.jar
+
 .. rubric:: Notas al pie
 
 .. [#] Cuatro de las cuales sí instalaremos de forma individual nosotros.
@@ -1054,6 +1071,7 @@ este modo:
 .. |IDE| replace:: :abbr:`IDE (Integrated Development Environment)`
 .. |JDK| replace:: :abbr:`JDK (Java Development Kit)`
 .. |IA| replace:: :abbr:`IA (Inteligencia Artificial)`
+.. |JAR| replace:: :abbr:`JAR (Java ARchive)`
 
 .. _Brave: https://brave.com
 .. _XML Tools: https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml

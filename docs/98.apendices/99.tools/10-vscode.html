@@ -1010,6 +1010,18 @@ necesidad de que el archivo activo sea <code class="file docutils literal notran
 <p>En este caso, hemos definido dos mecanismos de ejecución. La diferencia entre
 ambos es que el segundo comprobará las <a class="reference external" href="https://es.wikipedia.org/wiki/Aserci%C3%B3n_(inform%C3%A1tica)">aserciones</a>.</p>
 </dd>
+<dt><strong>Exportar JAR</strong></dt><dd><p>Una acción muy recorrente, una vez que tengamos acabado un proyecto, es crear
+un <abbr title="Java ARchive">JAR</abbr> a fin de distribuir el ejecutable de la aplicación (esto es, sólo
+los  archivos <cite>.class</cite> y no el código fuente). Con <strong class="program">Visual Studio
+Code</strong> existe el atajo de pinchar el icono remarcado:</p>
+<img alt="../../_images/exportJavaSC.png" src="../../_images/exportJavaSC.png" />
+<p>o, simplemente, escribir la orden (<kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd>) «Export Jar». En ambos casos, se pedirá el archivo que contiene  la
+clase principal. El <cite>.jar</cite> quedará guardado en el directorio de proyecto y ya
+podremos ejecutar la aplicación con:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>java<span class="w"> </span>-jar<span class="w"> </span>nombreProyecto.jar
+</pre></div>
+</div>
+</dd>
 </dl>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
