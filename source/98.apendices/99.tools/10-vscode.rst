@@ -477,7 +477,7 @@ fetch` si configuramos:
 en que la segunda opción indica la frecuencia con la que se hace la comprobación
 (500 horas, o sea, nunca). Esto provoca que al abrir el programa se compruebe si
 ha habido algún cambio en el respositorio desde la última vez que accedimos al
-área de trabajo y ya no se vuelva a realizarcomprobación más mientras estamos
+área de trabajo y ya no se vuelva a realizar otra comprobación mientras estamos
 trabajando\ [#]_:
 
 .. image:: files/git-fetch.png
