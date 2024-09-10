@@ -944,7 +944,9 @@ La tarea podemos definirla con este código |JSON|:
       "type": "shell",
       "command": "jshell",
       "windows": {
-         "command": "${env:JAVA_HOME}\\bin\\jshell.exe"
+         // Adoption al instalar Java no define la variable JAVA_HOME,
+         // sino quue añade la localización del programa al PATH.
+         // "command": "${env:JAVA_HOME}\\bin\\jshell.exe"
       },
       "presentation": {
          "reveal": "always",

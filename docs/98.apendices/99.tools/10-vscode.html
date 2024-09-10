@@ -944,7 +944,9 @@ La tarea podemos definirla con este código <abbr title="JavaScript Object Notat
 <span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span>
 <span class="w">   </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jshell&quot;</span><span class="p">,</span>
 <span class="w">   </span><span class="nt">&quot;windows&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${env:JAVA_HOME}\\bin\\jshell.exe&quot;</span>
+<span class="w">      </span><span class="c1">// Adoption al instalar Java no define la variable JAVA_HOME,</span>
+<span class="w">      </span><span class="c1">// sino quue añade la localización del programa al PATH.</span>
+<span class="w">      </span><span class="c1">// &quot;command&quot;: &quot;${env:JAVA_HOME}\\bin\\jshell.exe&quot;</span>
 <span class="w">   </span><span class="p">},</span>
 <span class="w">   </span><span class="nt">&quot;presentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;reveal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;always&quot;</span><span class="p">,</span>
