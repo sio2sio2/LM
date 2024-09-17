@@ -28,7 +28,7 @@ Generalidades
    ciertas actividades interesantes:
 
    * :kbd:`Ctrl`\ +\ :kbd:`Shift`\ +\ :kbd:`P`, abre un pequeño cuadro que nos
-     permite introducir instrucciones.
+     permite introducir instrucciones\ [#]_.
    * :kbd:`Ctrl`\ +\ :kbd:`Shift`\ +\ :kbd:`M`, abre en la parte inferior una
      consola que muestra los errores derivados de una determinada acción. Por
      ejemplo, los errores de validación.
@@ -64,7 +64,7 @@ archivos de configuración |JSON|:
 
       En principio, existe unicamente un perfil "Predeterminado" ("Default", si
       usamos el original inglés), que se identifica porque aparece en la esquina
-      inferir izquierda una ruedecita dentada como icono asociado a este
+      inferior izquierda una ruedecita dentada como icono asociado a este
       perfil:
 
       .. image:: files/predeterminado.png
@@ -1039,6 +1039,9 @@ este modo:
 
 .. rubric:: Notas al pie
 
+.. [#] En realidad, las instrucciones se caracterizan por empezar a escribirse
+   con ``>``, por lo que, si pulsamos :kbd:`Ctrl`\ +\ :kbd:`P` y luego
+   escribimos :kbd:`>`, obtendremos el mismo efecto.
 .. [#] Cuatro de las cuales sí instalaremos de forma individual nosotros.
 .. [#] O sea, de que internamente se haga el equivalente a un :code:`git init`
    que deberíamos ejecutar nosotros si realizáramos a mano esta acción.
