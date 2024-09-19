@@ -405,7 +405,7 @@ permite indicar con qué mensaje queremos identificarlo):</p>
 <p class="admonition-title">Prudencia</p>
 <p>El <em>commit</em> necesita realizarse bajo una identidad. Si no hay
 definida ninguna en el archivo de configuración de <em>Git</em>
-(<code class="file docutils literal notranslate"><span class="pre">~/gitconfig</span></code> en <em>Linux</em> o <code class="file docutils literal notranslate"><span class="pre">%USERPROFILE%.gitconfig</span></code> en
+(<code class="file docutils literal notranslate"><span class="pre">~/.gitconfig</span></code> en <em>Linux</em> o <code class="file docutils literal notranslate"><span class="pre">%USERPROFILE%\.gitconfig</span></code> en
 <em>Windows</em>) la acción no se llevará a cabo, así que tendremos que realizarla
 antes:</p>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[user]</span>
@@ -990,7 +990,7 @@ supuesto podemos cambiar el nombre <cite>App</cite> si no nos convence.</p>
 necesidad de que el archivo activo sea <code class="file docutils literal notranslate"><span class="pre">App.java</span></code> podemos crear un
 <code class="file docutils literal notranslate"><span class="pre">launch.json</span></code><a class="footnote-reference brackets" href="#id15" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0.0&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;configurations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;java&quot;</span><span class="p">,</span>
@@ -1011,6 +1011,52 @@ necesidad de que el archivo activo sea <code class="file docutils literal notran
 </div>
 <p>En este caso, hemos definido dos mecanismos de ejecución. La diferencia entre
 ambos es que el segundo comprobará las <a class="reference external" href="https://es.wikipedia.org/wiki/Aserci%C3%B3n_(inform%C3%A1tica)">aserciones</a>.</p>
+</dd>
+<dt><strong>Proyecto con Maven</strong></dt><dd><p>Una alternativa a lo anterior es usar <a class="reference external" href="https://maven.apache.org/">Maven</a>, que tiene la ventaja de
+simplificar el uso de librerías de terceros.  Para ello, necesitaremos haber
+instalado la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-maven">Maven for Java</a></p>
+<p>Al escoger la creación de un proyecto con <a class="reference external" href="https://maven.apache.org/">Maven</a> se nos pedirá escoger un
+<em>groupID</em> y un <em>artifactID</em> (véanse <a class="reference external" href="https://maven.apache.org/guides/mini/guide-naming-conventions.html">las explicaciones al respecto en la página del propio software</a>). El proyecto tendrá esta estructura:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>+- src
+|   +-- main
+|   |     +-- java
+|   |           +-- es
+|   |               +-- iescastillodeluna
+|   |                            +-- Main.java
+|   |                            +-- ... archivos del proyecto
+|   +-- test (pruebas de software)
+|
++- target (aquí dentro se guardan los .class)
++- pom.xml (configuración de Maven)
+</pre></div>
+</div>
+<p>La gestión del proyecto no es muy distinta de la ya descrita, aunque
+deberemos cambiar el valor de la <em>mainClass</em> del <code class="file docutils literal notranslate"><span class="pre">launch.json</span></code>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;configurations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;java&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Main&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;launch&quot;</span><span class="p">,</span>
+<span class="hll"><span class="w">            </span><span class="nt">&quot;mainClass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;es.iescastillodeluna.Main&quot;</span>
+</span><span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;java&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Main (assert)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;launch&quot;</span><span class="p">,</span>
+<span class="hll"><span class="w">            </span><span class="nt">&quot;mainClass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;es.iescastillodeluna.Main&quot;</span><span class="p">,</span>
+</span><span class="w">            </span><span class="nt">&quot;vmArgs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-ea&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Y, posiblemente, también nos interese modificar el valor de
+<cite>files.exclude</cite> para incluir <code class="file docutils literal notranslate"><span class="pre">target/</span></code></p>
+</div>
 </dd>
 <dt><strong>Exportar JAR</strong></dt><dd><p>Una acción muy recorrente, una vez que tengamos acabado un proyecto, es crear
 un <abbr title="Java ARchive">JAR</abbr> a fin de distribuir el ejecutable de la aplicación (esto es, sólo

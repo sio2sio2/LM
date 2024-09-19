@@ -368,7 +368,7 @@ permite indicar con qué mensaje queremos identificarlo):
 
 .. caution:: El *commit* necesita realizarse bajo una identidad. Si no hay
    definida ninguna en el archivo de configuración de *Git*
-   (:file:`~/gitconfig` en *Linux* o :file:`%USERPROFILE%\.gitconfig` en
+   (:file:`~/.gitconfig` en *Linux* o :file:`%USERPROFILE%\\.gitconfig` en
    *Windows*) la acción no se llevará a cabo, así que tendremos que realizarla
    antes:
 
@@ -998,7 +998,7 @@ este modo:
    .. code-block:: json
 
       {
-          "version": "0.2.0",
+          "version": "2.0.0",
           "configurations": [
               {
                   "type": "java",
@@ -1019,6 +1019,57 @@ este modo:
    En este caso, hemos definido dos mecanismos de ejecución. La diferencia entre
    ambos es que el segundo comprobará las `aserciones
    <https://es.wikipedia.org/wiki/Aserci%C3%B3n_(inform%C3%A1tica)>`_.
+
+**Proyecto con Maven**
+   Una alternativa a lo anterior es usar Maven_, que tiene la ventaja de
+   simplificar el uso de librerías de terceros.  Para ello, necesitaremos haber
+   instalado la extensión `Maven for Java
+   <https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-maven>`_
+
+   Al escoger la creación de un proyecto con Maven_ se nos pedirá escoger un
+   *groupID* y un *artifactID* (véanse `las explicaciones al respecto en la página del propio software <https://maven.apache.org/guides/mini/guide-naming-conventions.html>`_). El proyecto tendrá esta estructura:
+
+   .. code-block:: none
+
+      +- src 
+      |   +-- main
+      |   |     +-- java
+      |   |           +-- es
+      |   |               +-- iescastillodeluna
+      |   |                            +-- Main.java
+      |   |                            +-- ... archivos del proyecto
+      |   +-- test (pruebas de software)
+      |
+      +- target (aquí dentro se guardan los .class)
+      +- pom.xml (configuración de Maven)
+
+   La gestión del proyecto no es muy distinta de la ya descrita, aunque
+   deberemos cambiar el valor de la *mainClass* del :file:`launch.json`:
+
+   .. code-block:: json
+      :emphasize-lines: 8, 14
+
+      {
+          "version": "2.0.0",
+          "configurations": [
+              {
+                  "type": "java",
+                  "name": "Main",
+                  "request": "launch",
+                  "mainClass": "es.iescastillodeluna.Main"
+              },
+              {
+                  "type": "java",
+                  "name": "Main (assert)",
+                  "request": "launch",
+                  "mainClass": "es.iescastillodeluna.Main",
+                  "vmArgs": "-ea"
+              }
+          ]
+      }
+
+   .. note:: Y, posiblemente, también nos interese modificar el valor de
+      `files.exclude` para incluir :file:`target/`
 
 **Exportar JAR**
    Una acción muy recorrente, una vez que tengamos acabado un proyecto, es crear
@@ -1091,3 +1142,4 @@ este modo:
 .. _IntelliCode: https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode
 .. _Github: https://github.com
 .. _Git: https://git-scm.com
+.. _Maven: https://maven.apache.org/
