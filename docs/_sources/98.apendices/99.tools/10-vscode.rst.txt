@@ -1024,7 +1024,7 @@ este modo:
    Una alternativa a lo anterior es usar Maven_, que tiene la ventaja de
    simplificar el uso de librerías de terceros.  Para ello, necesitaremos haber
    instalado la extensión `Maven for Java
-   <https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-maven>`_
+   <https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-maven>`_.
 
    Al escoger la creación de un proyecto con Maven_ se nos pedirá escoger un
    *groupID* y un *artifactID* (véanse `las explicaciones al respecto en la página del propio software <https://maven.apache.org/guides/mini/guide-naming-conventions.html>`_). El proyecto tendrá esta estructura:
@@ -1070,6 +1070,34 @@ este modo:
 
    .. note:: Y, posiblemente, también nos interese modificar el valor de
       `files.exclude` para incluir :file:`target/`
+
+   Además, es probable que queramos en algún momento generar documentación del
+   proyecto con Javadoc_ para ello debemos añadir al archivo :file:`pom.xml` el
+   siguiente bloque:
+
+   .. code-block:: xml
+
+      <build>
+          <plugins>
+              <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-javadoc-plugin</artifactId>
+                  <!-- La última versión puede consultarse en el repositorio de Maven -->
+                  <version>3.10.0</version>
+              </plugin>
+          </plugins>
+      </build>
+      
+   Hecho lo cual, podremos generar la documentación con la orden\ [#]_:
+
+   .. code-block:: console
+
+      $ mvn javadoc:javadoc
+
+   Se almacenará dentro de :file:`target/`.
+
+   .. seealso:: Para más información, consulte `las explicaciones de Maven al
+      respecto <https://maven.apache.org/plugins/maven-javadoc-plugin/usage.html>`_.
 
 **Exportar JAR**
    Una acción muy recorrente, una vez que tengamos acabado un proyecto, es crear
@@ -1119,6 +1147,8 @@ este modo:
    de ahí que se espere encontrar activo el archivo que contiene la clase
    principal.
 
+.. [#] La cual se presta a :ref:`crear una tarea <vscode-tasks>` y :ref:`asociarle un atajo <vscode-atajos>`.
+
 .. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`
 .. |DTD| replace:: :abbr:`DTD (Document Type Definition)`
 .. |XSD| replace:: :abbr:`XSD (XML Schema Definition)`
@@ -1143,3 +1173,4 @@ este modo:
 .. _Github: https://github.com
 .. _Git: https://git-scm.com
 .. _Maven: https://maven.apache.org/
+.. _Javadoc: https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javadoc.html
