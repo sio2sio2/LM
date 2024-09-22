@@ -916,6 +916,8 @@ mientras que en *Windows* podemos utilizar los instalables que nos ofrece
    Además, :ref:`Code Runner <code-runner>` no atenderá a la jerarquía de  directorios creados por
    `Project Manager for Java`_.
 
+.. _vscode-java-settings:
+
 Además de estas extensiones puede interesarnos añadir configuración adicional:
 
 .. code-block:: json
@@ -1069,7 +1071,8 @@ este modo:
       }
 
    .. note:: Y, posiblemente, también nos interese modificar el valor de
-      `files.exclude` para incluir :file:`target/`
+      `files.exclude` en :ref:`settings.json <vscode-java-settings>` para
+      incluir :file:`target/`
 
    Además, es probable que queramos en algún momento generar documentación del
    proyecto con Javadoc_ para ello debemos añadir al archivo :file:`pom.xml` el
@@ -1084,6 +1087,10 @@ este modo:
                   <artifactId>maven-javadoc-plugin</artifactId>
                   <!-- La última versión puede consultarse en el repositorio de Maven -->
                   <version>3.10.0</version>
+                  <configuration>
+                     <source>23</source> <!-- Versión de Java. En mi caso, OpenJDK 23 -->
+                     <show>private</show> <!-- Muestra los atributos privados -->
+                  </configuracion>
               </plugin>
           </plugins>
       </build>
@@ -1095,6 +1102,13 @@ este modo:
       $ mvn javadoc:javadoc
 
    Se almacenará dentro de :file:`target/`.
+
+   .. caution:: Si comprueba que la documentación no refleja algún cambio que se
+      haya hecho en los comentarios, puede ejecutar a mano:
+
+      .. code-block:: console
+
+         $ mvn clean
 
    .. seealso:: Para más información, consulte `las explicaciones de Maven al
       respecto <https://maven.apache.org/plugins/maven-javadoc-plugin/usage.html>`_.
