@@ -1020,32 +1020,38 @@ instalado la extensión <a class="reference external" href="https://marketplace.
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>+- src
 |   +-- main
 |   |     +-- java
-|   |           +-- es
-|   |               +-- iescastillodeluna
-|   |                            +-- Main.java
-|   |                            +-- ... archivos del proyecto
+|   |           +-- edu
+|   |               +-- accesodatos +-- myapp
+|   |                                     +-- Main.java
+|   |                                     +-- ... archivos del proyecto
 |   +-- test (pruebas de software)
 |
 +- target (aquí dentro se guardan los .class)
 +- pom.xml (configuración de Maven)
 </pre></div>
 </div>
+<p>Se nos generará un archivo <code class="file docutils literal notranslate"><span class="pre">pom.xml</span></code> que podemos revisar para definir
+la versión y el nombre del programa adecuados:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;name&gt;</span>MiPrimeraAplicacion<span class="nt">&lt;/name&gt;</span>
+</pre></div>
+</div>
 <p>La gestión del proyecto no es muy distinta de la ya descrita, aunque
 deberemos cambiar el valor de la <em>mainClass</em> del <code class="file docutils literal notranslate"><span class="pre">launch.json</span></code>:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;configurations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;java&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Main&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;launch&quot;</span><span class="p">,</span>
-<span class="hll"><span class="w">            </span><span class="nt">&quot;mainClass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;es.iescastillodeluna.Main&quot;</span>
+<span class="hll"><span class="w">            </span><span class="nt">&quot;mainClass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;edu.accesodatos.myapp.Main&quot;</span>
 </span><span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;java&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Main (assert)&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;launch&quot;</span><span class="p">,</span>
-<span class="hll"><span class="w">            </span><span class="nt">&quot;mainClass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;es.iescastillodeluna.Main&quot;</span><span class="p">,</span>
+<span class="hll"><span class="w">            </span><span class="nt">&quot;mainClass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;edu.accesodatos.myapp.Main&quot;</span><span class="p">,</span>
 </span><span class="w">            </span><span class="nt">&quot;vmArgs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-ea&quot;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
@@ -1071,25 +1077,17 @@ siguiente bloque:</p>
 <span class="w">            </span><span class="nt">&lt;configuration&gt;</span>
 <span class="w">               </span><span class="nt">&lt;source&gt;</span>23<span class="nt">&lt;/source&gt;</span><span class="w"> </span><span class="cm">&lt;!-- Versión de Java. En mi caso, OpenJDK 23 --&gt;</span>
 <span class="w">               </span><span class="nt">&lt;show&gt;</span>private<span class="nt">&lt;/show&gt;</span><span class="w"> </span><span class="cm">&lt;!-- Muestra los atributos privados --&gt;</span>
-<span class="w">            </span><span class="nt">&lt;/configuracion&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/configuration&gt;</span>
 <span class="w">        </span><span class="nt">&lt;/plugin&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/plugins&gt;</span>
 <span class="nt">&lt;/build&gt;</span>
 </pre></div>
 </div>
 <p>Hecho lo cual, podremos generar la documentación con la orden<a class="footnote-reference brackets" href="#id17" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mvn<span class="w"> </span>javadoc:javadoc
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mvn<span class="w"> </span>clean<span class="w"> </span>javadoc:javadoc
 </pre></div>
 </div>
 <p>Se almacenará dentro de <code class="file docutils literal notranslate"><span class="pre">target/</span></code>.</p>
-<div class="admonition caution">
-<p class="admonition-title">Prudencia</p>
-<p>Si comprueba que la documentación no refleja algún cambio que se
-haya hecho en los comentarios, puede ejecutar a mano:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mvn<span class="w"> </span>clean
-</pre></div>
-</div>
-</div>
 <div class="admonition seealso">
 <p class="admonition-title">Ver también</p>
 <p>Para más información, consulte <a class="reference external" href="https://maven.apache.org/plugins/maven-javadoc-plugin/usage.html">las explicaciones de Maven al

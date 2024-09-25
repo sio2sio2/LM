@@ -1036,14 +1036,22 @@ este modo:
       +- src 
       |   +-- main
       |   |     +-- java
-      |   |           +-- es
-      |   |               +-- iescastillodeluna
-      |   |                            +-- Main.java
-      |   |                            +-- ... archivos del proyecto
+      |   |           +-- edu
+      |   |               +-- accesodatos +-- myapp
+      |   |                                     +-- Main.java
+      |   |                                     +-- ... archivos del proyecto
       |   +-- test (pruebas de software)
       |
       +- target (aquí dentro se guardan los .class)
       +- pom.xml (configuración de Maven)
+
+   Se nos generará un archivo :file:`pom.xml` que podemos revisar para definir
+   la versión y el nombre del programa adecuados:
+
+   .. code-block:: xml
+
+      <version>1.0</version>
+      <name>MiPrimeraAplicacion</name>
 
    La gestión del proyecto no es muy distinta de la ya descrita, aunque
    deberemos cambiar el valor de la *mainClass* del :file:`launch.json`:
@@ -1052,19 +1060,19 @@ este modo:
       :emphasize-lines: 8, 14
 
       {
-          "version": "2.0.0",
+          "version": "0.2.0",
           "configurations": [
               {
                   "type": "java",
                   "name": "Main",
                   "request": "launch",
-                  "mainClass": "es.iescastillodeluna.Main"
+                  "mainClass": "edu.accesodatos.myapp.Main"
               },
               {
                   "type": "java",
                   "name": "Main (assert)",
                   "request": "launch",
-                  "mainClass": "es.iescastillodeluna.Main",
+                  "mainClass": "edu.accesodatos.myapp.Main",
                   "vmArgs": "-ea"
               }
           ]
@@ -1090,7 +1098,7 @@ este modo:
                   <configuration>
                      <source>23</source> <!-- Versión de Java. En mi caso, OpenJDK 23 -->
                      <show>private</show> <!-- Muestra los atributos privados -->
-                  </configuracion>
+                  </configuration>
               </plugin>
           </plugins>
       </build>
@@ -1099,16 +1107,9 @@ este modo:
 
    .. code-block:: console
 
-      $ mvn javadoc:javadoc
+      $ mvn clean javadoc:javadoc
 
    Se almacenará dentro de :file:`target/`.
-
-   .. caution:: Si comprueba que la documentación no refleja algún cambio que se
-      haya hecho en los comentarios, puede ejecutar a mano:
-
-      .. code-block:: console
-
-         $ mvn clean
 
    .. seealso:: Para más información, consulte `las explicaciones de Maven al
       respecto <https://maven.apache.org/plugins/maven-javadoc-plugin/usage.html>`_.
