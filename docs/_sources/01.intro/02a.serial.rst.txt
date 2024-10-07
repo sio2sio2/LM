@@ -40,8 +40,8 @@ siguientes:
    pero es obligatorio que lo estén si contienen uno de los tres caracteres que
    distorsiona la lectura: el delimitador, el cambio de línea o la propia
    comilla doble\ [#]_.
-#. En un campo entrecomillado, si el texto contiene un carácter de comilla doble
-   este debe representarse con dos caracteres seguidos de comilla doble.
+#. En un campo entrecomillado, si el texto contiene un carácter de comilla
+   doble, éste debe representarse con dos caracteres seguidos de comilla doble.
 
 Ejemplo:
 

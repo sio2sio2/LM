@@ -939,15 +939,17 @@ individual de cómo funciona método a través de la consola interactiva <a clas
 Podemos, por supuesto, abrir una terminal (<kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">`</kbd>) y escribir
 directamente la orden en ella, pero sin duda es más cómodo <a class="reference internal" href="#vscode-tasks"><span class="std std-ref">crear una tarea</span></a> y asociarla a una <a class="reference internal" href="#vscode-atajos"><span class="std std-ref">combinación de teclas</span></a>.
 La tarea podemos definirla con este código <abbr title="JavaScript Object Notation">JSON</abbr>:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate" id="vscode-definir-jshell"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Shell para Java&quot;</span><span class="p">,</span>
 <span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span>
 <span class="w">   </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jshell&quot;</span><span class="p">,</span>
 <span class="w">   </span><span class="nt">&quot;windows&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="c1">// Adoption al instalar Java no define la variable JAVA_HOME,</span>
-<span class="w">      </span><span class="c1">// sino quue añade la localización del programa al PATH.</span>
+<span class="w">      </span><span class="c1">// sino quue añade la localización del programa al PATH. De lo</span>
+<span class="w">      </span><span class="c1">// contrario habría que hacer algo así:</span>
 <span class="w">      </span><span class="c1">// &quot;command&quot;: &quot;${env:JAVA_HOME}\\bin\\jshell.exe&quot;</span>
 <span class="w">   </span><span class="p">},</span>
+<span class="w">   </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="c1">// Sin argumentos.</span>
 <span class="w">   </span><span class="nt">&quot;presentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;reveal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;always&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;panel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;new&quot;</span>
@@ -1064,6 +1066,11 @@ deberemos cambiar el valor de la <em>mainClass</em> del <code class="file docuti
 <cite>files.exclude</cite> en <a class="reference internal" href="#vscode-java-settings"><span class="std std-ref">settings.json</span></a> para
 incluir <code class="file docutils literal notranslate"><span class="pre">target/</span></code></p>
 </div>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Para más información, consulte <a class="reference external" href="https://maven.apache.org/plugins/maven-javadoc-plugin/usage.html">las explicaciones de Maven al
+respecto</a>.</p>
+</div>
 <p>Además, es probable que queramos en algún momento generar documentación del
 proyecto con <a class="reference external" href="https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javadoc.html">Javadoc</a> para ello debemos añadir al archivo <code class="file docutils literal notranslate"><span class="pre">pom.xml</span></code> el
 siguiente bloque:</p>
@@ -1084,14 +1091,47 @@ siguiente bloque:</p>
 </pre></div>
 </div>
 <p>Hecho lo cual, podremos generar la documentación con la orden<a class="footnote-reference brackets" href="#id17" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mvn<span class="w"> </span>clean<span class="w"> </span>javadoc:javadoc
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mvn<span class="w"> </span>javadoc:javadoc
 </pre></div>
 </div>
-<p>Se almacenará dentro de <code class="file docutils literal notranslate"><span class="pre">target/</span></code>.</p>
-<div class="admonition seealso">
-<p class="admonition-title">Ver también</p>
-<p>Para más información, consulte <a class="reference external" href="https://maven.apache.org/plugins/maven-javadoc-plugin/usage.html">las explicaciones de Maven al
-respecto</a>.</p>
+<p>Se almacenará dentro de <code class="file docutils literal notranslate"><span class="pre">target/reports/apidocs</span></code>. Ahora bien, en
+ocasiones, al regenerar la documentación, puede ocurrir que no se refleje un
+cambio por culpa de los archivos ya generados. En estos casos, lo mejor es
+eliminarlos antes de volver a generar la documentación. Para ello lo más cómo
+es añadir algo más al archivo <code class="file docutils literal notranslate"><span class="pre">pom.xml</span></code>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;profiles&gt;</span>
+<span class="w">    </span><span class="nt">&lt;profile&gt;</span>
+<span class="w">        </span><span class="nt">&lt;id&gt;</span>clean-javadoc-only<span class="nt">&lt;/id&gt;</span>
+<span class="w">        </span><span class="nt">&lt;build&gt;</span>
+<span class="w">            </span><span class="nt">&lt;plugins&gt;</span>
+<span class="w">                </span><span class="nt">&lt;plugin&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;artifactId&gt;</span>maven-clean-plugin<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;configuration&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;excludeDefaultDirectories&gt;</span>true<span class="nt">&lt;/excludeDefaultDirectories&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;filesets&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;fileset&gt;</span>
+<span class="w">                                </span><span class="nt">&lt;directory&gt;</span>${project.build.directory}/reports/apidocs<span class="nt">&lt;/directory&gt;</span>
+<span class="w">                            </span><span class="nt">&lt;/fileset&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/filesets&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/configuration&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/plugin&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/plugins&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/build&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/profile&gt;</span>
+<span class="nt">&lt;/profiles&gt;</span>
+</pre></div>
+</div>
+<p>que crea un perfil (<em>clean-javadoc-only</em>) que ejecuta el plugin de limpiado
+de <em>Maven</em>, no limpiando todos los archivos, sino sólo los relativos a
+<em>Javadoc</em>. Con ello podremos generar la documentación así:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mvn<span class="w"> </span>clean:clean<span class="w"> </span>javadoc:javadoc<span class="w"> </span>-Pclean-javadoc-only
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Truco</p>
+<p>Si <a class="reference internal" href="#vscode-tasks"><span class="std std-ref">creamos una tarea</span></a> y le asociamos una
+<a class="reference internal" href="#vscode-atajos"><span class="std std-ref">combinación de teclas</span></a>, tal <a class="reference internal" href="#vscode-definir-jshell"><span class="std std-ref">como hicimos con
+jshell</span></a>. todo será muy cómodo.</p>
 </div>
 </dd>
 <dt><strong>Exportar JAR</strong></dt><dd><p>Una acción muy recorrente, una vez que tengamos acabado un proyecto, es crear

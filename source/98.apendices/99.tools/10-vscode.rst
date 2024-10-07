@@ -939,6 +939,8 @@ directamente la orden en ella, pero sin duda es más cómodo :ref:`crear una tar
 <vscode-tasks>` y asociarla a una :ref:`combinación de teclas <vscode-atajos>`.
 La tarea podemos definirla con este código |JSON|:
 
+.. _vscode-definir-jshell:
+
 .. code:: json
 
    {
@@ -947,9 +949,11 @@ La tarea podemos definirla con este código |JSON|:
       "command": "jshell",
       "windows": {
          // Adoption al instalar Java no define la variable JAVA_HOME,
-         // sino quue añade la localización del programa al PATH.
+         // sino quue añade la localización del programa al PATH. De lo
+         // contrario habría que hacer algo así:
          // "command": "${env:JAVA_HOME}\\bin\\jshell.exe"
       },
+      "args": [], // Sin argumentos.
       "presentation": {
          "reveal": "always",
          "panel": "new"
@@ -1082,6 +1086,9 @@ este modo:
       `files.exclude` en :ref:`settings.json <vscode-java-settings>` para
       incluir :file:`target/`
 
+   .. seealso:: Para más información, consulte `las explicaciones de Maven al
+      respecto <https://maven.apache.org/plugins/maven-javadoc-plugin/usage.html>`_.
+
    Además, es probable que queramos en algún momento generar documentación del
    proyecto con Javadoc_ para ello debemos añadir al archivo :file:`pom.xml` el
    siguiente bloque:
@@ -1107,12 +1114,48 @@ este modo:
 
    .. code-block:: console
 
-      $ mvn clean javadoc:javadoc
+      $ mvn javadoc:javadoc
 
-   Se almacenará dentro de :file:`target/`.
+   Se almacenará dentro de :file:`target/reports/apidocs`. Ahora bien, en
+   ocasiones, al regenerar la documentación, puede ocurrir que no se refleje un
+   cambio por culpa de los archivos ya generados. En estos casos, lo mejor es
+   eliminarlos antes de volver a generar la documentación. Para ello lo más cómo
+   es añadir algo más al archivo :file:`pom.xml`:
 
-   .. seealso:: Para más información, consulte `las explicaciones de Maven al
-      respecto <https://maven.apache.org/plugins/maven-javadoc-plugin/usage.html>`_.
+   .. code-block:: xml
+
+      <profiles>
+          <profile>
+              <id>clean-javadoc-only</id>
+              <build>
+                  <plugins>
+                      <plugin>
+                          <artifactId>maven-clean-plugin</artifactId>
+                          <configuration>
+                              <excludeDefaultDirectories>true</excludeDefaultDirectories>
+                              <filesets>
+                                  <fileset>
+                                      <directory>${project.build.directory}/reports/apidocs</directory>
+                                  </fileset>
+                              </filesets>
+                          </configuration>
+                      </plugin>
+                  </plugins>
+              </build>
+          </profile>
+      </profiles>
+      
+   que crea un perfil (*clean-javadoc-only*) que ejecuta el plugin de limpiado
+   de *Maven*, no limpiando todos los archivos, sino sólo los relativos a
+   *Javadoc*. Con ello podremos generar la documentación así:
+
+   .. code-block:: console
+
+      $ mvn clean:clean javadoc:javadoc -Pclean-javadoc-only
+
+   .. tip:: Si :ref:`creamos una tarea <vscode-tasks>` y le asociamos una
+      :ref:`combinación de teclas <vscode-atajos>`, tal :ref:`como hicimos con
+      jshell <vscode-definir-jshell>`. todo será muy cómodo.
 
 **Exportar JAR**
    Una acción muy recorrente, una vez que tengamos acabado un proyecto, es crear
