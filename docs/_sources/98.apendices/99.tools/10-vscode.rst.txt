@@ -1110,6 +1110,20 @@ este modo:
           </plugins>
       </build>
       
+   .. tip:: Podemos modificar la ruta en la que se almacena la documentación:
+
+      .. code-block:: xml
+
+         <configuration>
+            <source>23</source> <!-- Versión de Java. En mi caso, OpenJDK 23 -->
+            <show>private</show> <!-- Muestra los atributos privados -->
+            <outputDirectory>${project.basedir}/docs</outputDirectory>
+         </configuration>
+
+      Esto provoca que se guarden los archivos en :file:`docs/apidocs`, lo cual
+      puede ser muy conveniente si usamos un repositorio como GitHub y queremos
+      publicar el |API|.
+
    Hecho lo cual, podremos generar la documentación con la orden\ [#]_:
 
    .. code-block:: console
@@ -1153,7 +1167,7 @@ este modo:
 
       $ mvn clean:clean javadoc:javadoc -Pclean-javadoc-only
 
-   .. tip:: Si :ref:`creamos una tarea <vscode-tasks>` y le asociamos una
+   .. hint:: Si :ref:`creamos una tarea <vscode-tasks>` y le asociamos una
       :ref:`combinación de teclas <vscode-atajos>`, tal :ref:`como hicimos con
       jshell <vscode-definir-jshell>`. todo será muy cómodo.
 
@@ -1216,6 +1230,7 @@ este modo:
 .. |JDK| replace:: :abbr:`JDK (Java Development Kit)`
 .. |IA| replace:: :abbr:`IA (Inteligencia Artificial)`
 .. |JAR| replace:: :abbr:`JAR (Java ARchive)`
+.. |API| replace:: :abbr:`API (Application Programming Interface)`
 
 .. _Brave: https://brave.com
 .. _XML Tools: https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml
