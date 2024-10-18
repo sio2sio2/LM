@@ -905,9 +905,11 @@ mientras que en *Windows* podemos utilizar los instalables que nos ofrece
    | `Debugger for Java`_                    | Permite depurar los programas de Java (puntos de ruptura, ejecución condicional,      |
    |                                         | ejecución paso a paso, etc.                                                           |
    +-----------------------------------------+---------------------------------------------------------------------------------------+
-   | `Test Runner for Java`_                 | Permite ejecutar casos de prueba.                                                     |
-   +-----------------------------------------+---------------------------------------------------------------------------------------+
    | `IntelliCode`_                          | Proporciona sugerencias basadas en |IA|                                               |
+   +-----------------------------------------+---------------------------------------------------------------------------------------+
+   | `Maven for Java`_                       | Si usamos Maven como gestor de proyecto incorpora utilizades interesantes.            |
+   +-----------------------------------------+---------------------------------------------------------------------------------------+
+   | `Test Runner for Java`_                 | Permite ejecutar casos de prueba.                                                     |
    +-----------------------------------------+---------------------------------------------------------------------------------------+
 
 .. caution:: :ref:`Code Runner <code-runner>` es absolutamente prescindible, ya que al tener
@@ -1088,6 +1090,16 @@ este modo:
 
    .. seealso:: Para más información, consulte `las explicaciones de Maven al
       respecto <https://maven.apache.org/plugins/maven-javadoc-plugin/usage.html>`_.
+
+   Ya hemos indicado que la ventaja de usar *Maven* es no tener que rompernos la
+   cabeza con las dependencias del proyecto; y añadir al :file:`pom.xml` al
+   `reposito de Maven <https://mvnrepository.com/>`_ apropiado. La terea,
+   además, se puede simplificar mucho si la búsqueda del paquete necesario la
+   realizamos dentro del propio `Visual Studio Code` con la extensión `Maven for
+   Java
+   <https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-maven>`_:
+
+   .. image:: files/mavenEnVSCode.png
 
    Además, es probable que queramos en algún momento generar documentación del
    proyecto con Javadoc_ para ello debemos añadir al archivo :file:`pom.xml` el
