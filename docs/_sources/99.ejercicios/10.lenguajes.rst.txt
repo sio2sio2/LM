@@ -73,6 +73,8 @@ uno de ellos cree versiones |JSON|, |YAML| y |XML|.
       | :download:`RNC </99.ejercicios/soluciones/facturas/rnc/facturas.rnc>`
       | :download:`JSON Schema </99.ejercicios/soluciones/facturas/facturas.schema.json>`
 
+   .. _ej-li-6:
+
 #. Diseñe un documento para almacenar la información sobre los préstamos de
    libros que se realizan en una biblioteca:
 
