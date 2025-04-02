@@ -1,0 +1,498 @@
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>2.3. Ejercicios propuestos &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+    <link rel="stylesheet" href="../_static/general.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+
+    
+    
+     
+        <script src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="3. Consulta de datos" href="../03.consulta/index.html" />
+    <link rel="prev" title="2.2. JSON Schema" href="02.yaml.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../03.consulta/index.html" title="3. Consulta de datos"
+             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="02.yaml.html" title="2.2. JSON Schema"
+             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">2. </span>Validación</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2.3. </span>Ejercicios propuestos</a></li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="ejercicios-propuestos">
+<h1><span class="section-number">2.3. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Enlace permanente a este encabezado">¶</a></h1>
+<ol class="arabic">
+<li><p>Indique si un nodo «x» puede tener un determinado contenido (y explique
+el por qué en caso de que no), sabiendo que su definición <abbr title="Document Type Definition">DTD</abbr> es:</p>
+<ol class="loweralpha simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">((a|b)?,c,d)</span></code></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">c</span> <span class="pre">d</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">d</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">b</span> <span class="pre">c</span> <span class="pre">d</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">c</span> <span class="pre">d</span></code></p></li>
+</ol>
+</li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">((a|b),c*,d?)</span></code></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">d</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">d</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">c</span> <span class="pre">c</span> <span class="pre">c</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">b</span> <span class="pre">d</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">c</span> <span class="pre">d</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">d</span> <span class="pre">d</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">c</span> <span class="pre">d</span></code></p></li>
+</ol>
+</li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">(((a,b,c)|c),a+,(b|d)?)</span></code></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">a</span> <span class="pre">d</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">a</span> <span class="pre">b</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">b</span> <span class="pre">c</span> <span class="pre">b</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">b</span> <span class="pre">a</span> <span class="pre">a</span> <span class="pre">b</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">a</span></code></p></li>
+</ol>
+</li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">(((a|b)|(c|d)),(a,c)+,b?)</span></code></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">b</span> <span class="pre">a</span> <span class="pre">c</span> <span class="pre">b</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">a</span> <span class="pre">c</span> <span class="pre">a</span> <span class="pre">c</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">d</span> <span class="pre">c</span> <span class="pre">a</span> <span class="pre">c</span> <span class="pre">b</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">a</span> <span class="pre">c</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">a</span> <span class="pre">c</span> <span class="pre">b</span></code></p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>Dado el siguiente esquema <abbr title="JavaScript Object Notation">JSON</abbr></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://json-schema.org/draft/2020-12/schema&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;prefixItems&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span><span class="nt">&quot;const&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">}</span>
+<span class="w">   </span><span class="p">],</span>
+<span class="w">   </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;exclusiveMinimum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>determine si los documentos sucesivos son válidos y, en caso de que no sea
+así, indique por qué:</p>
+<ol class="loweralpha simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">[4,</span> <span class="pre">5,</span> <span class="pre">8]</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">[]</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">[true,</span> <span class="pre">2,</span> <span class="pre">0]</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">[true,</span> <span class="pre">0]</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">[true,</span> <span class="pre">1,</span> <span class="pre">1]</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">[true]</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">[1]</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">[false,</span> <span class="pre">1,</span> <span class="pre">1]</span></code></p></li>
+</ol>
+</li>
+<li><p>Dado el siguiente esquema <abbr title="JavaScript Object Notation">JSON</abbr></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://json-schema.org/draft/2020-12/schema&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;minLength&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;enum&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;javascript&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;java&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;go&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;tamaño&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;exclusiveMinimum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">}</span>
+<span class="w">   </span><span class="p">},</span>
+<span class="w">   </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tipo&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>indique <strong>sin usar un validador</strong> si los siguientes documentos son válidos:</p>
+<ol class="loweralpha">
+<li><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;script.js&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;javascript&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;consola.java&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;tamaño&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;consola.java&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;tamaño&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;consola.java&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;java&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;ruta&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/bin&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;servidor.c&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+<li><p>Dado el siguiente esquema <abbr title="JavaScript Object Notation">JSON</abbr></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://json-schema.org/draft/2020-12/schema&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;minLength&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;interprete&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;minLength&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;enum&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;javascript&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;java&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;go&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;tamaño&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;exclusiveMinimum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">}</span>
+<span class="w">   </span><span class="p">},</span>
+<span class="w">   </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">],</span>
+<span class="w">   </span><span class="nt">&quot;oneOf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;interprete&quot;</span><span class="p">],</span>
+<span class="w">         </span><span class="nt">&quot;not&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;tipo&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;tipo&quot;</span><span class="p">],</span>
+<span class="w">         </span><span class="nt">&quot;not&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;interprete&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">   </span><span class="p">],</span>
+<span class="w">   </span><span class="nt">&quot;additionalProperties&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>indique <strong>sin usar un validador</strong> si los siguientes documentos son válidos:</p>
+<ol class="arabic">
+<li><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;servidor.c&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;servidor.c&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;interprete&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/bin/c&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;servidor.c&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;interprete&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/bin/c&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;tamaño&quot;</span><span class="p">:</span><span class="w">  </span><span class="mi">1234</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;servidor.c&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;servidor.c&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;ruta&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/local/bin&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+<p>Y, ahora, escriba las gramáticas que permitan validar las soluciones diseñadas
+para los <a class="reference internal" href="../99.ejercicios/20.val.html#ej-li-doc"><span class="std std-ref">ejercicios sobre lenguajes de marcas</span></a>:</p>
+<p>uno de ellos cree versiones <abbr title="JavaScript Object Notation">JSON</abbr>, <abbr title="YAML Ain't Markup Language">YAML</abbr> y <abbr title="eXtensible  Markup Language">XML</abbr>.</p>
+<span id="ej10-05"></span><ol class="arabic" id="ej-li-doc" start="5">
+<li><p>Diseñe un documento para almacenar las facturas generadas por una empresa.
+Téngase en cuenta que:</p>
+<ul class="simple">
+<li><p>Cada factura tiene un código.</p></li>
+<li><p>La factura también necesita la fecha de emisión.</p></li>
+<li><p>En la factura aparecen los datos del cliente (dni, nombre, dirección,
+código postal, población).</p></li>
+<li><p>De cada producto que se ha comprado debe aparecer la cantidad de productos
+comprados, la denominación y el precio unitario.</p></li>
+<li><p>Se debe guardar el <abbr title="Impuesto sobre el Valor Añadido">IVA</abbr> de cada producto.</p></li>
+<li><p>Si es necesario se indicará un descuento al importe total de la factura.</p></li>
+</ul>
+<div class="sol-oculta line-block">
+<div class="line"><a class="reference download internal" download="" href="../_downloads/00e763038b8dd22ab3683d96148d2365/facturas.xml"><code class="xref download docutils literal notranslate"><span class="pre">XML</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/b8165f175a2c72034556fac0067cdc62/facturas.json"><code class="xref download docutils literal notranslate"><span class="pre">JSON</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/24be47d554781f24b34ca1865963fef5/facturas.yaml"><code class="xref download docutils literal notranslate"><span class="pre">YAML</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/cd0a8f46ac758c39ca47d3536e85497b/facturas.dtd"><code class="xref download docutils literal notranslate"><span class="pre">DTD</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/915b74429657003c715f0c1e4e2c073d/facturas.rnc"><code class="xref download docutils literal notranslate"><span class="pre">RNC</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/2c3c68d8a9ac3faf3c7b638ec21c774f/facturas.schema.json"><code class="xref download docutils literal notranslate"><span class="pre">JSON</span> <span class="pre">Schema</span></code></a></div>
+</div>
+</li>
+<li id="ej-li-6"><p>Diseñe un documento para almacenar la información sobre los préstamos de
+libros que se realizan en una biblioteca:</p>
+<ul class="simple">
+<li><p>De cada libro guardamos varios datos: código <abbr title="International Standard Book Number">ISBN</abbr>, nombre, editorial, año de publicación, autor.</p></li>
+<li><p>De cada libro podemos tener uno o varios ejemplares. Cada ejemplar se
+diferencia de otro por un código numérico.</p></li>
+<li><p>Se prestan los ejemplares, y de cada préstamo hay que indicar el ejemplar
+del libro, el socio al que se ha prestado y la fecha de préstamo.</p></li>
+<li><p>Del socio hay que guadar DNI, nombre y dirección.</p></li>
+</ul>
+<div class="sol-oculta line-block">
+<div class="line"><a class="reference download internal" download="" href="../_downloads/6dbfdb7c2f8cd36ed1637fd9f5ba0322/biblioteca.xml"><code class="xref download docutils literal notranslate"><span class="pre">XML</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/d242b6d8c1e44da3fbd0653cda58862c/biblioteca.json"><code class="xref download docutils literal notranslate"><span class="pre">JSON</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/8c48ec7ab3031612c8f559ec95887f58/biblioteca.yaml"><code class="xref download docutils literal notranslate"><span class="pre">YAML</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/81e002e459fe1fb3ffd5654db46bb1de/biblioteca.dtd"><code class="xref download docutils literal notranslate"><span class="pre">DTD</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/cbc561116222a24d1bd225dc2759f849/biblioteca.rnc"><code class="xref download docutils literal notranslate"><span class="pre">RNC</span></code></a></div>
+</div>
+</li>
+<li><p>Escriba un documento para almacenar los coches que tiene puestos a la venta
+un concesionario:</p>
+<ul class="simple">
+<li><p>El concesionario se dedica a vender coches de distintos modelos de una
+misma marca de coches (es conveniente que en el documento quede constancia
+de cuál es esa marca).</p></li>
+<li><p>De cada modelo es necesario recoger la cilindrada, los caballos de vapor, la
+velocidad máxima y el número de plazas.</p></li>
+<li><p>También se quiere almacenar cuántos coches de cada modelo hay en el
+concesionario, identificar cada uno de ellos  y saber los kilómetros que
+tiene (el concesionario también vende coches de segunda mano).</p></li>
+<li><p>Un coche puede estar reservado o no.</p></li>
+</ul>
+<div class="sol-oculta line-block">
+<div class="line"><a class="reference download internal" download="" href="../_downloads/4788abbb3a95b8c9adc3d7afc2edcc7c/concesionario.xml"><code class="xref download docutils literal notranslate"><span class="pre">XML</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/e208fe166c7a8b4a4634efacc4be0620/concesionario.json"><code class="xref download docutils literal notranslate"><span class="pre">JSON</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/c8442da24efeb16fd5d0572386c6ec90/concesionario.yaml"><code class="xref download docutils literal notranslate"><span class="pre">YAML</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/281592be3348e2bf78cf8f60060e0c51/concesionario.dtd"><code class="xref download docutils literal notranslate"><span class="pre">DTD</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/05d8c1babfe3a69eb9b1f3a1d70fac74/concesionario.rnc"><code class="xref download docutils literal notranslate"><span class="pre">RNC</span></code></a></div>
+</div>
+</li>
+<li><p>Retome el ejemplo del ejercicio anterior, pero enriquezca el documento para
+que se conozca los del cliente que ha realizado una determinada reserva
+(nombre, dirección, tlfo).</p>
+<div class="sol-oculta line-block">
+<div class="line"><a class="reference download internal" download="" href="../_downloads/379432f4b215995bbc2c8945afb43c09/concesionario.xml"><code class="xref download docutils literal notranslate"><span class="pre">XML</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/ecf703e56b0d428a8a76c5fb1a2cd12a/concesionario.json"><code class="xref download docutils literal notranslate"><span class="pre">JSON</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/4ec499ad611919a649709bae3e262971/concesionario.yaml"><code class="xref download docutils literal notranslate"><span class="pre">YAML</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/c56c494896ac3bd7b2024103247e2657/concesionario.dtd"><code class="xref download docutils literal notranslate"><span class="pre">DTD</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/5a686ccc0a17d0c75305ea81e6e5fcea/concesionario.rnc"><code class="xref download docutils literal notranslate"><span class="pre">RNC</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/22cd219b94b0b29c24b13111d303486a/concesionario.schema.json"><code class="xref download docutils literal notranslate"><span class="pre">JSON</span> <span class="pre">Schema</span></code></a></div>
+</div>
+</li>
+<li><p>Diseñe un documento que recoja la información referente a los Parques
+Nacionales de España, en especial:</p>
+<ul class="simple">
+<li><p>Provincia y Comunidad Autónoma en la que se encuentra.</p></li>
+<li><p>Extensión de terreno.</p></li>
+<li><p>Presupuesto anual para su protección.</p></li>
+<li><p>Fauna y flora a preservar:</p>
+<ul>
+<li><p>Nombre común.</p></li>
+<li><p>Nombre científico.</p></li>
+<li><p>Número de ejemplares en cada parque (para fauna).</p></li>
+<li><p>Peligro de extinción: alto, medio, bajo.</p></li>
+</ul>
+</li>
+</ul>
+<div class="sol-oculta line-block">
+<div class="line"><a class="reference download internal" download="" href="../_downloads/d159aeeadf309783b526372c41c97fc1/parques.xml"><code class="xref download docutils literal notranslate"><span class="pre">XML</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/ef766f5108f3dbbceae75132d96e6487/parques.json"><code class="xref download docutils literal notranslate"><span class="pre">JSON</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/5e892c4d510c97fd8492e7ff0d763255/parques.yaml"><code class="xref download docutils literal notranslate"><span class="pre">YAML</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/a662441d35c807578f8de8e9e75e0cea/parques.dtd"><code class="xref download docutils literal notranslate"><span class="pre">DTD</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/a0dcfae236a37b8cf696cc60be1f1494/parques.rnc"><code class="xref download docutils literal notranslate"><span class="pre">RNC</span></code></a></div>
+</div>
+</li>
+<li><p>Un ayuntamiento desea recoger la información de los habitantes que hay en su
+municipio, de manera que de cada ciudadano se sepa:</p>
+<ul class="simple">
+<li><p>Nombre y apellidos</p></li>
+<li><p>Dirección</p></li>
+<li><p>Teléfono</p></li>
+<li><p>Lugar de nacimiento</p></li>
+<li><p>Quién es el padre y quién la madre.</p></li>
+</ul>
+<div class="sol-oculta line-block">
+<div class="line"><a class="reference download internal" download="" href="../_downloads/f1167d2b5559eec5f82f9933f9d3bd55/ayuntamiento.xml"><code class="xref download docutils literal notranslate"><span class="pre">XML</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/59c6d936742c9ad7da6c47580ce01678/ayuntamiento.json"><code class="xref download docutils literal notranslate"><span class="pre">JSON</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/d2413adffad2021ae3138592a8c16eb4/ayuntamiento.yaml"><code class="xref download docutils literal notranslate"><span class="pre">YAML</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/749133cba47681b83d5401bcaa288f97/ayuntamiento.dtd"><code class="xref download docutils literal notranslate"><span class="pre">DTD</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/578db4776eedbf7d9074430a69a7e92b/ayuntamiento.rnc"><code class="xref download docutils literal notranslate"><span class="pre">RNC</span></code></a></div>
+</div>
+</li>
+<li><p>Diseñe un documento para almacenar la información de un gráfico vectorial
+en 2 dimensiones. Los elementos que pueden definirse en ese documento son:</p>
+<ul class="simple">
+<li><p><em>Punto</em>: Se definirá con dos coordenadas: x,y.</p></li>
+<li><p><em>Circunferencia</em>: se define por un centro (coordenadas x,y) y un radio.</p></li>
+<li><p><em>Recta</em>: se define por dos puntos: el inicial y el final.</p></li>
+<li><p><em>Rectángulo</em>: se define por dos puntos: la esquina superior derecha y la
+esquina superior izquierda.</p></li>
+</ul>
+<p>Todo elemento debe estar inequívocamente identificado, y debe conocerse de
+alguna forma cuál es la unidad de medida (m, cm, etc.) en que están expresados
+todos los números que aparecen.</p>
+<div class="sol-oculta line-block">
+<div class="line"><a class="reference download internal" download="" href="../_downloads/4232e1b220861668fa19f3293f4b1982/grafico.xml"><code class="xref download docutils literal notranslate"><span class="pre">XML</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/7a004db51a0ac2f0933b8ed4c7914fe3/grafico.json"><code class="xref download docutils literal notranslate"><span class="pre">JSON</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/ef00de3195405ab65c798ab575b13251/grafico.yaml"><code class="xref download docutils literal notranslate"><span class="pre">YAML</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/a67af59518cbb17c434e508fd5e76a36/grafico.dtd"><code class="xref download docutils literal notranslate"><span class="pre">DTD</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/7466ad1ebab8957389cf4453fa1bb944/grafico.rnc"><code class="xref download docutils literal notranslate"><span class="pre">RNC</span></code></a></div>
+<div class="line"><a class="reference download internal" download="" href="../_downloads/26afca7a05ebb622f0a67e1e1b1f70bc/grafico.schema.json"><code class="xref download docutils literal notranslate"><span class="pre">JSON</span> <span class="pre">Schema</span></code></a></div>
+</div>
+</li>
+</ol>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/logo.png" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="02.yaml.html"
+                          title="Previous page">&larr; <span class="section-number">2.2. </span><abbr title="JavaScript Object Notation">JSON</abbr> Schema</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="../03.consulta/index.html"
+                          title="Next page">&rarr; <span class="section-number">3. </span>Consulta de datos</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/02.validacion/03.ej.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../03.consulta/index.html" title="3. Consulta de datos"
+             >siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="02.yaml.html" title="2.2. JSON Schema"
+             >anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">2. </span>Validación</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2.3. </span>Ejercicios propuestos</a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
+      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

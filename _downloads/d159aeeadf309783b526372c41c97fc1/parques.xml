@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE parques SYSTEM "parques.dtd">
+<parques pais="España">
+   <especie id="e01" tipo="fauna" peligro="medio">
+      <comun>Lince</comun>
+      <cientifico>Lynx pardinus</cientifico>
+   </especie>
+
+   <especie id="e02" tipo="flora" peligro="medio">
+      <comun>Drago</comun>
+      <cientifico>Dracaena draco</cientifico>
+   </especie>
+
+   <!-- Mas especies -->
+
+   <parque id="p01" nombre="Doñana" provincia="Huelva" ca="Andalucía" extension="10000" presupuesto="100">
+      <especimen ref="e01" ejemplares="150" />
+      <especimen ref="e02" />
+      <!-- Más especímenes -->
+   </parque>
+
+   <!-- Más parques -->
+</parques>

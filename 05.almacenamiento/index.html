@@ -1,0 +1,265 @@
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>5. Almacenamiento &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+    <link rel="stylesheet" href="../_static/general.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+
+    
+    
+     
+        <script src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="5.1. Bases relacionales" href="01.relacionales.html" />
+    <link rel="prev" title="4. Transformación de datos" href="../04.transformacion/index.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="01.relacionales.html" title="5.1. Bases relacionales"
+             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="../04.transformacion/index.html" title="4. Transformación de datos"
+             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">5. </span>Almacenamiento</a></li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="almacenamiento">
+<span id="lm-ut5"></span><h1><span class="section-number">5. </span>Almacenamiento<a class="headerlink" href="#almacenamiento" title="Enlace permanente a este encabezado">¶</a></h1>
+<p>Hasta ahora hemos tratado exclusivamente el intercambio de documentos, esto es,
+el documento con los datos ya constituía un archivo o un flujo de datos, sin entrar
+a discutir cómo había sido posible que hubiera llegado a ese estado de archivo o
+flujo. Incluso, en el caso de un archivo, hemos considerado en muchas ocasiones
+hasta ahora que se había escrito a mano <em>ex novo</em>, lo cual es posible en algunos
+casos (p.e. un archivo de configuración escrito en <abbr title="JavaScript Object Notation">JSON</abbr>, <abbr title="YAML Ain't Markup Language">YAML</abbr> o <abbr title="eXtensible  Markup Language">XML</abbr>).</p>
+<p>Sin embargo, lo habitual cuando los datos son ingentes es que estos constituyan
+bases de datos y que a partir de éstas se obtenga la información requerida. Por
+ejemplo, el Gobierno español proporciona los <a class="reference external" href="https://datos.gob.es/es/catalogo/e05068001-precio-de-carburantes-en-las-gasolineras-espanolas">precios de los carburantes en
+todas las gasolineras de España</a>
+y lo hace a través de <a class="reference external" href="https://sedeaplicaciones.minetur.gob.es/ServiciosRestCarburantes/PreciosCarburantes/help">una API REST</a>,
+que devuelve datos en formato <abbr title="JavaScript Object Notation">JSON</abbr> o <abbr title="eXtensible  Markup Language">XML</abbr>. Así:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">URL</span><span class="o">=</span><span class="s1">&#39;https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/Listados/ProductosPetroliferos/&#39;</span>
+<span class="gp">$ </span>wget<span class="w"> </span>-qO<span class="w"> </span>-<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$URL</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jsonlint<span class="w"> </span>-f
+</pre></div>
+</div>
+<p>nos devolverá un <abbr title="JavaScript Object Notation">JSON</abbr> con el listado de todos los productos petrolíferos que
+podemos adquirir en una estación de servicio. Con este documento podemos saber
+que el identificador para la gasolina de 95 octanos es el <strong>1</strong>. Si hacemos otra
+consulta para averiguar qué código representa a la provincia de Cádiz:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">URL</span><span class="o">=</span><span class="s1">&#39;https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/Listados/Provincias/&#39;</span>
+<span class="gp">$ </span>wget<span class="w"> </span>-qO<span class="w"> </span>-<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$URL</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jsonlint<span class="w"> </span>-f
+</pre></div>
+</div>
+<p>descubriremos que es <strong>11</strong> (su código postal, lo cual era lo previsible). Y con
+estos datos, podríamos obtener el listado de precios de la gasolina de 95
+octanos en la provincia de Cádiz:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">URL</span><span class="o">=</span><span class="s1">&#39;https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/FiltroProvinciaProducto/11/1&#39;</span>
+<span class="gp">$ </span>wget<span class="w"> </span>-qO<span class="w"> </span>-<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$URL</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jsonlint<span class="w"> </span>-f
+</pre></div>
+</div>
+<p>Como vemos, estamos obteniendo documentos <abbr title="JavaScript Object Notation">JSON</abbr> cuya validez (más exactamente
+<em>bienformidad</em>) podemos comprobar o sobre el cual podemos realizar consultas a través de
+<a class="reference internal" href="../03.consulta/02.jsonpath.html#jsonpath"><span class="std std-ref">JSONPath</span></a>. Sin embargo, es obvio que estos datos se están
+obteniendo en el servidor originariamente de una base de datos en la que se
+encuentra almacenada la información, los resultados de cuyas consultas es lo que
+nos proporcionan las solicitudes. Es probable que internamente en el servidor
+esté ocurriendo esto:</p>
+<img alt="Consulta a una base de datos transformaba en un documento JSON" src="../_images/sql2json.png" />
+<p>En principio, para el almacenamiento de la información tenemos tres estrategias
+distintas:</p>
+<ol class="arabic simple">
+<li><p>Crear y almacenar la información como archivos independientes que contienen
+directamente los documentos, que es precisamente lo que hemos estado haciendo
+al realizar las tareas propuestas. Esta estrategia, sin embargo, es probable
+que no acabe bien a poco que crezca el volumen de datos o se produzca
+concurrencia en las consultas.</p></li>
+<li><p>Almacenar en un base de datos relacional, pero obteniendo la información en
+un formato para serialización de datos como <abbr title="JavaScript Object Notation">JSON</abbr> o <abbr title="eXtensible  Markup Language">XML</abbr><a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. En este
+caso hay dos vías:</p>
+<ol class="loweralpha simple">
+<li><p>La solicitud de información provoca que una aplicación convierta
+el típico resultado de la consulta relacional en un documento <abbr title="JavaScript Object Notation">JSON</abbr> (o
+<abbr title="eXtensible  Markup Language">XML</abbr>), esto es, lo que hemos supuesto que ocurre en el servidor del
+Gobierno. Llevarlo a cabo requiere el conocimiento de un lenguaje de
+programación (<em>Java</em>, <em>Python</em>, etc) con librerías para el acceso a la
+base de datos relacional y para la conversión de la salida en documentos
+<abbr title="JavaScript Object Notation">JSON</abbr>, <abbr title="eXtensible  Markup Language">XML</abbr> u otros. No trataremos este aspecto por exceder en mucho
+la profundidad de nuestro módulo.</p></li>
+<li><p>El propio <abbr title="Sistema Gestor de Bases de Datos">SGBD</abbr> relacional ofrece soporte para estos formatos de
+serialización, bien porque es capaz de almacenar datos directamente en el
+formato, bien porque es capaz de generar una salida en el formato de
+serialización que requerimos.</p></li>
+</ol>
+</li>
+<li><p>Almacenar en una base de datos no relacional, que nativamente almacena datos
+en formato <abbr title="eXtensible  Markup Language">XML</abbr> o <abbr title="JavaScript Object Notation">JSON</abbr>.</p></li>
+</ol>
+<p>Dedicaremos algo de tiempo, escaso en cualquier caso y sin profundizar, a estos
+dos últimos mecanismos.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contenidos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="01.relacionales.html">5.1. Bases relacionales</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01.relacionales.html#xml">5.1.1. <abbr title="eXtensible  Markup Language">XML</abbr></a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.relacionales.html#json">5.1.2. <abbr title="JavaScript Object Notation">JSON</abbr></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="02.nativas.html">5.2. Bases nativas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="02.nativas.html#bases-documentales">5.2.1. Bases documentales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.nativas.html#basex">5.2.2. BaseX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.nativas.html#ejercicios-resueltos">5.2.3. Ejercicios resueltos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.nativas.html#ejercicios-propuestos">5.2.4. Ejercicios propuestos</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p class="rubric">Notas al pie</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><abbr title="eXtensible  Markup Language">XML</abbr> no es un lenguaje de serialización de datos, sino de marcas como
+ya se ha repetido en varias ocasiones, pero en este caso nuestra intención es
+usarlo para estructurar información orientada al dato, esto es, para
+serializar datos.</p>
+</aside>
+</aside>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/logo.png" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="../04.transformacion/index.html"
+                          title="Previous page">&larr; <span class="section-number">4. </span>Transformación de datos</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="01.relacionales.html"
+                          title="Next page">&rarr; <span class="section-number">5.1. </span>Bases relacionales</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/05.almacenamiento/index.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="01.relacionales.html" title="5.1. Bases relacionales"
+             >siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="../04.transformacion/index.html" title="4. Transformación de datos"
+             >anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">5. </span>Almacenamiento</a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
+      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

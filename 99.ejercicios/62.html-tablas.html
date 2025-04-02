@@ -1,0 +1,351 @@
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>HTML: Tablas &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+    <link rel="stylesheet" href="../_static/general.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+
+    
+    
+     
+        <script src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="HTML: Estructura" href="63.html-struct.html" />
+    <link rel="prev" title="HTML: básicos" href="61.html-basicos.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="63.html-struct.html" title="HTML: Estructura"
+             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="61.html-basicos.html" title="HTML: básicos"
+             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href=""><abbr title="HyperText Markup Language">HTML</abbr>: Tablas</a></li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="html-tablas">
+<h1><abbr title="HyperText Markup Language">HTML</abbr>: Tablas<a class="headerlink" href="#html-tablas" title="Enlace permanente a este encabezado">¶</a></h1>
+<ol class="arabic">
+<li><p>Recree una siguiente tabla con las siguientes columnas:</p>
+<img alt="../_images/colrow.png" src="../_images/colrow.png" />
+<p>Para que la tabla tenga tal aspecto, añada al documento <abbr title="HyperText Markup Language">HTML</abbr> el siguiente
+estilo:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">table</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">border-collapse</span><span class="p">:</span><span class="kc">collapse</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">td</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="kc">black</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">em</span><span class="p">;</span>
+<span class="w">    </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Cree un <abbr title="HyperText Markup Language">HTML</abbr> con una tabla que contenga el horario de clases del grupo y
+que cumpla los siguientes requisitos:</p>
+<ul class="simple">
+<li><p>Deben aparecer como cabecera los días de lunes a viernes.</p></li>
+<li><p>En la primera columna deben indicarse las horas de comienzo
+de cada clase.</p></li>
+<li><p>El recreo debe encontrarse fusionado en una misma fila de lunes a viernes.</p></li>
+<li><p>Si se tienen de un mismo módulo dos o más clases consecutivas, deben
+fusionar las celdas.</p></li>
+</ul>
+</li>
+<li><p>Cree una tabla con los siguientes datos sobre tasa de desempleo
+<a class="reference external" href="http://www.ine.es/jaxiT3/Tabla.htm?t=4247">extraídos del INE</a>:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Comunidad Autónoma</p></th>
+<th class="head"><p>2013</p></th>
+<th class="head"><p>2014</p></th>
+<th class="head"><p>2015</p></th>
+<th class="head"><p>2016</p></th>
+<th class="head"><p>2017</p></th>
+<th class="head"><p>2018</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Andalucía</p></td>
+<td><p>36,26</p></td>
+<td><p>34,23</p></td>
+<td><p>29,83</p></td>
+<td><p>28,25</p></td>
+<td><p>24,43</p></td>
+<td><p>21,26</p></td>
+</tr>
+<tr class="row-odd"><td><p>Aragón</p></td>
+<td><p>20,59</p></td>
+<td><p>18,85</p></td>
+<td><p>14,60</p></td>
+<td><p>13,53</p></td>
+<td><p>11,37</p></td>
+<td><p>11,11</p></td>
+</tr>
+<tr class="row-even"><td><p>Asturias</p></td>
+<td><p>22,29</p></td>
+<td><p>20,78</p></td>
+<td><p>20,33</p></td>
+<td><p>14,59</p></td>
+<td><p>14,64</p></td>
+<td><p>12,86</p></td>
+</tr>
+<tr class="row-odd"><td><p>Baleares</p></td>
+<td><p>22,72</p></td>
+<td><p>18,88</p></td>
+<td><p>17,02</p></td>
+<td><p>13,80</p></td>
+<td><p>12,61</p></td>
+<td><p>10,91</p></td>
+</tr>
+<tr class="row-even"><td><p>Canarias</p></td>
+<td><p>33,09</p></td>
+<td><p>31,08</p></td>
+<td><p>26,75</p></td>
+<td><p>24,90</p></td>
+<td><p>22,04</p></td>
+<td><p>19,99</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cantabria</p></td>
+<td><p>19,81</p></td>
+<td><p>18,42</p></td>
+<td><p>17,71</p></td>
+<td><p>12,89</p></td>
+<td><p>13,49</p></td>
+<td><p>9,68</p></td>
+</tr>
+<tr class="row-even"><td><p>Castilla y León</p></td>
+<td><p>22,02</p></td>
+<td><p>20,28</p></td>
+<td><p>17,58</p></td>
+<td><p>14,81</p></td>
+<td><p>13,71</p></td>
+<td><p>11,21</p></td>
+</tr>
+<tr class="row-odd"><td><p>Castilla-La Mancha</p></td>
+<td><p>28,99</p></td>
+<td><p>28,50</p></td>
+<td><p>24,97</p></td>
+<td><p>22,14</p></td>
+<td><p>19,74</p></td>
+<td><p>16,16</p></td>
+</tr>
+<tr class="row-even"><td><p>Cataluña</p></td>
+<td><p>21,87</p></td>
+<td><p>19,88</p></td>
+<td><p>17,73</p></td>
+<td><p>14,85</p></td>
+<td><p>12,63</p></td>
+<td><p>11,75</p></td>
+</tr>
+<tr class="row-odd"><td><p>Comunidad Valenciana</p></td>
+<td><p>27,15</p></td>
+<td><p>23,48</p></td>
+<td><p>21,45</p></td>
+<td><p>19,15</p></td>
+<td><p>16,76</p></td>
+<td><p>14,30</p></td>
+</tr>
+<tr class="row-even"><td><p>Extremadura</p></td>
+<td><p>32,40</p></td>
+<td><p>29,96</p></td>
+<td><p>28,07</p></td>
+<td><p>28,31</p></td>
+<td><p>25,12</p></td>
+<td><p>23,10</p></td>
+</tr>
+<tr class="row-odd"><td><p>Galicia</p></td>
+<td><p>21,88</p></td>
+<td><p>20,87</p></td>
+<td><p>17,74</p></td>
+<td><p>16,29</p></td>
+<td><p>14,71</p></td>
+<td><p>12,04</p></td>
+</tr>
+<tr class="row-even"><td><p>Madrid</p></td>
+<td><p>20,45</p></td>
+<td><p>18,00</p></td>
+<td><p>16,51</p></td>
+<td><p>14,60</p></td>
+<td><p>13,75</p></td>
+<td><p>11,54</p></td>
+</tr>
+<tr class="row-odd"><td><p>Murcia</p></td>
+<td><p>28,50</p></td>
+<td><p>27,26</p></td>
+<td><p>23,51</p></td>
+<td><p>18,58</p></td>
+<td><p>17,21</p></td>
+<td><p>15,83</p></td>
+</tr>
+<tr class="row-even"><td><p>Navarra</p></td>
+<td><p>16,44</p></td>
+<td><p>14,92</p></td>
+<td><p>13,53</p></td>
+<td><p>10,01</p></td>
+<td><p>9,63</p></td>
+<td><p>9,99</p></td>
+</tr>
+<tr class="row-odd"><td><p>País Vasco</p></td>
+<td><p>16,58</p></td>
+<td><p>16,60</p></td>
+<td><p>12,89</p></td>
+<td><p>12,27</p></td>
+<td><p>10,57</p></td>
+<td><p>9,58</p></td>
+</tr>
+<tr class="row-even"><td><p>Rioja</p></td>
+<td><p>20,24</p></td>
+<td><p>17,17</p></td>
+<td><p>13,97</p></td>
+<td><p>10,90</p></td>
+<td><p>11,51</p></td>
+<td><p>10,30</p></td>
+</tr>
+</tbody>
+</table>
+<p>Incluya un título para la tabla y la referencia al origen de los
+datos.</p>
+</li>
+</ol>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/logo.png" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="61.html-basicos.html"
+                          title="Previous page">&larr; <abbr title="HyperText Markup Language">HTML</abbr>: básicos</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="63.html-struct.html"
+                          title="Next page">&rarr; <abbr title="HyperText Markup Language">HTML</abbr>: Estructura</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/99.ejercicios/62.html-tablas.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="63.html-struct.html" title="HTML: Estructura"
+             >siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="61.html-basicos.html" title="HTML: básicos"
+             >anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href=""><abbr title="HyperText Markup Language">HTML</abbr>: Tablas</a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
+      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

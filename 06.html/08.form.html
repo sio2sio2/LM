@@ -1,0 +1,1427 @@
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>6.7. Formularios &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+    <link rel="stylesheet" href="../_static/general.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+
+    
+    
+     
+        <script src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="6.8. Empotrados" href="09.media.html" />
+    <link rel="prev" title="6.6. Estructura semántica" href="07.struct.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="09.media.html" title="6.8. Empotrados"
+             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="07.struct.html" title="6.6. Estructura semántica"
+             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">6. </span><abbr title="HyperText Markup Language">HTML</abbr></a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">6.7. </span>Formularios</a></li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="formularios">
+<h1><span class="section-number">6.7. </span>Formularios<a class="headerlink" href="#formularios" title="Enlace permanente a este encabezado">¶</a></h1>
+<p>Los documentos <abbr title="HyperText Markup Language">HTML</abbr> no sólo están pensados para ofrecer información al lector
+y que éste la reciba pasivamente, sino que permiten asimismo que éste interactúe
+con el documento, bien para influir directamente sobre él bien para que el navegador
+retransmita el fruto de esta interacción al servidor web y una aplicación que
+corre en él, asociada al documento, lleve a cabo alguna tarea. Por ejemplo:</p>
+<ul class="simple">
+<li><p>Un documento <abbr title="HyperText Markup Language">HTML</abbr> podría tener asociados distintos aspectos visuales (temas
+o estilos) para cada uno de los cuales hubiera un <abbr title="Cascading Style Sheets">CSS</abbr> distinto. Un botón, en
+algún lugar del documento, podría permitir el cambio de estilo (o sea, el
+cambio del archivo <abbr title="Cascading Style Sheets">CSS</abbr> aplicable). Para ello, no se necesita el concurso de
+ninguna aplicación de servidor, pero el lector interactúa con el documento
+para hacerle saber su preferencia.</p></li>
+<li><p>Un documento <abbr title="HyperText Markup Language">HTML</abbr> como <a class="reference external" href="https://www.juntadeandalucia.es/educacion/secretariavirtual/consulta/oferta-educativa-formacion-profesional/">éste de la Consejería de Educación</a>
+permite rellenar una serie de campos de formulario para determinar cuáles
+son nuestras preferencias de estudio. Al completarlas y envíar la consulta, se
+envían los datos al servidor que realiza una consulta en una base de datos y
+devuelve el resultado de dicha consulta.</p></li>
+</ul>
+<p>Nuestra intención es conocer cómo se construyen estos formularios sin
+preocuparnos de la acción que desencadenan, puesto que el primer ejemplo
+requiere de programación con <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a> en el lado del cliente, y el segundo,
+programación con algún lenguaje de programación apropiado<a class="footnote-reference brackets" href="#id7" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p>Como curiosidad, más histórica que otra cosa, los campos de formulario siempre
+fueron unos de los elemenos <abbr title="HyperText Markup Language">HTML</abbr> para los que más código <em>Javascript</em> se
+escribía, ya que lo lógico era comprobar la validez de los datos introducidos
+por el usuario antes de enviarlos al servidor. Sin embargo, <abbr title="HyperText Markup Language">HTML</abbr>5 introdujo
+muchos atributos para llevar a cabo estas comprobaciones, de manera que la
+inmensa mayor parte del código <em>Javascript</em> requerido antes para esta tarea,
+ahora es absolutamente innecesario.</p>
+<section id="declaracion-del-formulario">
+<h2><span class="section-number">6.7.1. </span>Declaración del formulario<a class="headerlink" href="#declaracion-del-formulario" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Lo habitual es que todos los campos de formulario estén asociados a un
+formulario, aunque no es obligatorio<a class="footnote-reference brackets" href="#id8" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>, ya que el formulario es el que
+determina qué hacer con los datos recabados.</p>
+<table class="el-html docutils align-default" id="id13">
+<caption><span class="caption-text">Campo de formulario</span><a class="headerlink" href="#id13" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-form"><span class="std std-ref">&lt;form&gt;</span></a></p></td>
+<td><p>Declara la existencia de un formulario</p></td>
+</tr>
+</tbody>
+</table>
+<span id="index-0"></span><dl id="html-form">
+<dt><strong>form</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#technical_summary">form</a>)</dt><dd><p>Es el elemento encargado de definir un formulario, esto es de albergar los
+campos del formulario y determinador qué se hace con los datos recabados en
+él. Es un elemento de bloque que puede contener casi cualquier otro elemento<a class="footnote-reference brackets" href="#id9" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>, con especial excepción de otro elemento <a class="reference internal" href="#html-form"><span class="std std-ref">&lt;form&gt;</span></a>. Dicho en otras
+palabras, no pueden anidarse formularios.</p>
+<table class="attr-html docutils align-default" id="id14">
+<caption><span class="caption-text">Atributos de form</span><a class="headerlink" href="#id14" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>action</p></td>
+<td><p>url</p></td>
+<td><p><abbr title="Uniform Resource Locator">URL</abbr> a la que se envían los datos para que
+una aplicación en el servidor la procese.</p></td>
+</tr>
+<tr class="row-even"><td><p>method</p></td>
+<td><div class="line-block">
+<div class="line">get|post</div>
+<div class="line">dialog</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Método de envío de los datos al servidor.</div>
+<div class="line">El formulario se asocia a un elemento <a class="reference internal" href="#html-dialog"><span class="std std-ref">&lt;dialog&gt;</span></a>.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>nombre</p></td>
+<td><p>Nombre del formulario. Útil en algunas
+ocasiones. En <abbr title="HyperText Markup Language">HTML</abbr>5 se prefiere el uso
+del atributo <em>id</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p>target</p></td>
+<td><p>valor</p></td>
+<td><p>Con igual significado que el atributo
+homónimo de <a class="reference internal" href="04.basico.html#html-a"><span class="std std-ref">&lt;a&gt;</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>novalidate</p></td>
+<td><p>-</p></td>
+<td><p>No realiza comprobaciones a los campos.</p></td>
+</tr>
+<tr class="row-even"><td><p>autocomplete</p></td>
+<td><p>off|on</p></td>
+<td><p>Permite (o no) que el navegador complete
+automáticamente los campos de texto
+atendiendo a los criterios que tenga
+establecidos (p.e. valores previos
+introducidos en campos con el mismo nombre).</p></td>
+</tr>
+</tbody>
+</table>
+<p>Los principales atributos del elemento son <em>action</em> y <em>method</em>, aunque el
+segundo tiene como valor predeterminado «<em>get</em>».  Un ejemplo, de uso de este
+elemento podría ser:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;peticion&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;consulta.php&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>
+   Nombre: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;nombre&quot;</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+   Apellidos: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;apellidos&quot;</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Este código implicaría que los nombres y valores de campos de formulario
+incluidos dentro del elemento <a class="reference internal" href="#html-form"><span class="std std-ref">&lt;form&gt;</span></a>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>nombre=Pepe&amp;apellidos=Ruiz%20Valera
+</pre></div>
+</div>
+<p>se enviarían por el método <code class="docutils literal notranslate"><span class="pre">POST</span></code> de <abbr title="HyperText Transfer Protocol">HTTP</abbr> a la dirección
+<code class="file docutils literal notranslate"><span class="pre">consulta.php</span></code> donde debería haber un <em>script</em> <abbr title="PHP Hypertext Preprocessor">PHP</abbr> que procesara los
+datos y devolviera una página de respuesta.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Cuando el método de envío (<em>method</em>) es <em>dialog</em>, los datos del
+formulario no se envían a ningún servidor, sino que el formulario se
+asociará a un elemento <a class="reference internal" href="#html-dialog"><span class="std std-ref">&lt;dialog&gt;</span></a> que lo contenga. El envío del formulario
+supondrá el cierre del <a class="reference internal" href="#html-dialog"><span class="std std-ref">&lt;dialog&gt;</span></a> y, además, el <em>returnValue</em> del <a class="reference internal" href="#html-dialog"><span class="std std-ref">&lt;dialog&gt;</span></a>
+adoptará el valor del botón con el que se envió. Más adelante, al tratar
+este elemento, se proporciona un ejemplo de este comportamiento.</p>
+</div>
+</dd>
+</dl>
+</section>
+<section id="introduccion-manual-de-datos">
+<h2><span class="section-number">6.7.2. </span>Introducción manual de datos<a class="headerlink" href="#introduccion-manual-de-datos" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Trataremos bajo este epígrafe los mecanimos de <abbr title="HyperText Markup Language">HTML</abbr>5 que permiten al usuario
+la introducción de datos no preestablecidos. Los dos elementos <abbr title="HyperText Markup Language">HTML</abbr> destinados a ello
+son:</p>
+<table class="el-html docutils align-default" id="id15">
+<caption><span class="caption-text">Campo de introducción de datos</span><a class="headerlink" href="#id15" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-input"><span class="std std-ref">&lt;input&gt;</span></a></p></td>
+<td><p>Permite la introducción de datos de extensión reducida</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-textarea"><span class="std std-ref">&lt;textarea&gt;</span></a></p></td>
+<td><p>Permite la introducción de datos de gran extensión</p></td>
+</tr>
+</tbody>
+</table>
+<span id="index-1"></span><dl id="html-input">
+<dt><strong>input</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#technical_summary">input</a>)</dt><dd><p>Es el elemento destinado a la introducción de datos de pequeña extensión. Es
+un elemento muy versátil, ya que gracias a su atributo <em>type</em>, permite
+preparar al navegador para recibir datos de muy distinta naturaleza. Por este
+motivo no declararemos de una sola vez cuáles son todas sus posibilidades,
+sino que iremos desglosando estas a lo largo de toda la lección. Por ahora,
+nos limitaremos a declarar cuáles son sus atributos comunes y cómo usarlos
+para escribir texto en general.</p>
+<table class="attr-html docutils align-default" id="id16">
+<caption><span class="caption-text">Atributos comunes de input</span><a class="headerlink" href="#id16" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>autocomplete</p></td>
+<td><p>off|on</p></td>
+<td><p>Permite al navegador autocompletar este campo
+de manera análoga al atributo de <a class="reference internal" href="#html-form"><span class="std std-ref">&lt;form&gt;</span></a> que
+se aplica en general sobre todos los campos
+del formulario.</p></td>
+</tr>
+<tr class="row-even"><td><p>autofocus</p></td>
+<td><p>-</p></td>
+<td><p>Atrae hacia sí el foco. Por tanto, debería
+tener este atributo aquel campo que queremos
+que sea el primero en rellenar el usuario.</p></td>
+</tr>
+<tr class="row-odd"><td><p>disabled</p></td>
+<td><p>-</p></td>
+<td><p>Deshabilita el campo. Comúnmente se añade
+con intención de que alguna acción de usuario
+(como rellenar otro campo), borre el atributo.</p></td>
+</tr>
+<tr class="row-even"><td><p>form</p></td>
+<td><p>id</p></td>
+<td><p>Identificador del formulario al que pertenece
+el campo. Si no se incluye, pertenecerá al
+formulario que contiene al campo.</p></td>
+</tr>
+<tr class="row-odd"><td><p>list</p></td>
+<td><p>id</p></td>
+<td><p>Identificador de la <a class="reference internal" href="#html-datalist"><span class="std std-ref">&lt;datalist&gt;</span></a> con valores
+predefinidos para sugerir al usuario.</p></td>
+</tr>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>nombre</p></td>
+<td><p>Nombre identificativo del campo usado cuando
+se envía al servidor.</p></td>
+</tr>
+<tr class="row-odd"><td><p>pattern<a class="footnote-reference brackets" href="#id10" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a></p></td>
+<td><p>regexp</p></td>
+<td><p><a class="reference external" href="https://sio2sio2.github.io/doc-linux/02.conbas/10.texto/01.regex.html#regex" title="(en Linuxnomicón versión rolling)"><span class="xref std std-ref">Expresión regular</span></a> con
+la que debe concordar
+el valor del campo para considerarse válido.</p></td>
+</tr>
+<tr class="row-even"><td><p>placeholder</p></td>
+<td><p>valor</p></td>
+<td><p>Sugerencia al usuario. Aparecerá en un color
+gris claro.</p></td>
+</tr>
+<tr class="row-odd"><td><p>readonly</p></td>
+<td><p>-</p></td>
+<td><p>Campo de sólo lectura.</p></td>
+</tr>
+<tr class="row-even"><td><p>required</p></td>
+<td><p>-</p></td>
+<td><p>El campo es obligatorio.</p></td>
+</tr>
+<tr class="row-odd"><td><p>value</p></td>
+<td><p>valor</p></td>
+<td><p>Valor inicial del campo.</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>tipo</p></td>
+<td><p>Tipo de campo. Esta es la madre del cordero.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>Un campo deshabilitado no solamente no puede ser rellenado, sino
+que además no se envía al remitir el formulario al servidor. Esto es lo
+que los diferencia de un campo de sólo lectura.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Si quiere saber más sobre <em>expresiones regulares</em> consulte
+<a class="reference external" href="https://sio2sio2.github.io/doc-linux/02.conbas/10.texto/01.regex.html#regex" title="(en Linuxnomicón versión rolling)"><span class="xref std std-ref">este extenso tutorial</span></a>.</p>
+</div>
+<p id="html-input-email"><span id="html-input-url"></span><span id="html-input-hidden"></span><span id="html-input-password"></span><span id="html-input-search"></span><span id="html-input-text"></span>En cuanto a los tipos de campos posibles, algunos de ellos son:</p>
+<table class="attr-html docutils align-default" id="id17">
+<caption><span class="caption-text">Valores de type para texto general.</span><a class="headerlink" href="#id17" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text">text</a></p></td>
+<td><p>Texto libre. Es el valor predeterminado.</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/search">search</a></p></td>
+<td><p>Términos de búsqueda.</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password">password</a></p></td>
+<td><p>Contraseñas (no se ven los caracteres).</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/hidden">hidden</a></p></td>
+<td><p>Campo oculto. No aparece, pero es enviado.</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/url">url</a></p></td>
+<td><p>Exige una <abbr title="Uniform Resource Locator">URL</abbr>.</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email">email</a></p></td>
+<td><p>Exige una dirección de correo electrónico.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Los tipos <em>url</em> e <em>email</em> no permiten cualquier valor, sino uno que el
+navegador considera válido para el tipo correspondiente.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Con el atributo <em>pattern</em> podemos restringir los valores posibles,
+de modo que en muchos casos para la validez podríamos prescindir del tipo.
+Sin embargo, no debe ser así, puesto que la semántica es importante y,
+además, el tipo puede provocar cambios en el comportamiento del navegador.
+Por ejemplo, cuando el tipo es numérico, no es posible escribir letras
+aunque se pulsen y, en el caso de ser el dispositivo un teléfono móvil,
+aparecerá un teclado numérico exclusivamente.</p>
+</div>
+<p>Ejemplo:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;ej1&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">&gt;</span>
+   Nombre: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;nombre&quot;</span> <span class="na">required</span> <span class="na">pattern</span><span class="o">=</span><span class="s">&quot;[A-Z][A-Za-z ]*&quot;</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+   Apellidos: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;apellidos&quot;</span> <span class="na">pattern</span><span class="o">=</span><span class="s">&quot;[A-Z}[A-Za-z ]*&quot;</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+   Escríbame aquí su vida: <span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">cols</span><span class="o">=</span><span class="s">50</span> <span class="na">rows</span><span class="o">=</span><span class="s">15</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;rollo&quot;</span>
+   <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Cuénteme aquí todo&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">button</span><span class="p">&gt;</span>Envíar<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="ej-html"><form id="ej1" action="">
+   Nombre: <input name="nombre" required pattern="[A-Z][A-Za-z ]*"><br>
+   Apellidos: <input name="apellidos" pattern="[A-Z}[A-Za-z ]*"><br>
+   Escríbame aquí su vida: <textarea cols=50 rows=15 name="rollo"
+   placeholder="Cuénteme aquí todo..."></textarea>
+   <button>Envíar</button>
+</form></div><div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Puede usarse <em>title</em> para informar al usuario de cuáles son las
+restricciones sobre los campos.</p>
+</div>
+</dd>
+</dl>
+<span id="index-2"></span><dl id="html-textarea">
+<dt><strong>textarea</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#technical_summary">textarea</a>)</dt><dd><p>Permite rellenar un campo de texto de gran extensión.</p>
+<table class="attr-html docutils align-default" id="id18">
+<caption><span class="caption-text">Atributos de textarea</span><a class="headerlink" href="#id18" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>rows</p></td>
+<td><p>num</p></td>
+<td><p>Número de filas del recuadro de texto.</p></td>
+</tr>
+<tr class="row-even"><td><p>cols</p></td>
+<td><p>num</p></td>
+<td><p>Número de columnas del recuadro de texto.</p></td>
+</tr>
+<tr class="row-odd"><td><p>maxlength</p></td>
+<td><p>num</p></td>
+<td><p>Longitud máxima en caracteres del contenido</p></td>
+</tr>
+<tr class="row-even"><td><p>minlength</p></td>
+<td><p>num</p></td>
+<td><p>Longitud mínima en caracteres del contenido</p></td>
+</tr>
+<tr class="row-odd"><td><p>spellcheck</p></td>
+<td><p>true|false|default</p></td>
+<td><p>Define si se comprueban errores ortográficos</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><em>spellcheck</em> es un atributo global que puede usarse en cualquier
+otro elemento. Cuando en un elemento su valor es «<em>default</em>», el elemento heredará el
+valor que tuviera este atributo en otro elemento <abbr title="HyperText Markup Language">HTML</abbr> antecesor suyo.</p>
+</div>
+</dd>
+</dl>
+<section id="datos-numericos">
+<h3><span class="section-number">6.7.2.1. </span>Datos numéricos<a class="headerlink" href="#datos-numericos" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Hay tres tipos de campos <a class="reference internal" href="#html-input"><span class="std std-ref">&lt;input&gt;</span></a> relacionados con valores numéricos:</p>
+<table class="attr-html docutils align-default" id="id19">
+<caption><span class="caption-text">Valores de type para campos numéricos</span><a class="headerlink" href="#id19" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number">number</a></p></td>
+<td><p>Valor numérico</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range">range</a></p></td>
+<td><p>Valor numérico de dentro de un rango</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/tel">tel</a></p></td>
+<td><p>Número de teléfono.</p></td>
+</tr>
+</tbody>
+</table>
+<p id="html-input-number">El tipo <strong>number</strong> permite escribir números (enteros o decimales) y admite tres
+atributos propios:</p>
+<table class="attr-html docutils align-default" id="id20">
+<caption><span class="caption-text">Atributos para los tipos number y range</span><a class="headerlink" href="#id20" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>max</p></td>
+<td><p>num</p></td>
+<td><p>Número máximo admisible</p></td>
+</tr>
+<tr class="row-even"><td><p>min</p></td>
+<td><p>num</p></td>
+<td><p>Número mínimo admisibles</p></td>
+</tr>
+<tr class="row-odd"><td><p>step</p></td>
+<td><p>num</p></td>
+<td><p>Paso entre valores adminisbles</p></td>
+</tr>
+</tbody>
+</table>
+<p>Por ejemplo, esto permitirá indicar la edad en años de una persona:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>Edad: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;number&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;edad&quot;</span> <span class="na">max</span><span class="o">=</span><span class="s">120</span> <span class="na">min</span><span class="o">=</span><span class="s">0</span> <span class="na">step</span><span class="o">=</span><span class="s">1</span><span class="p">&gt;</span> años
+</pre></div>
+</div>
+<p>Por su parte, <strong>range</strong> habilita la introducción de un valor numérico que se
+mueve dentro de un pequeño rango<a class="footnote-reference brackets" href="#id11" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>. Tiene los mismos atributos que el tipo
+anterior, pero el navegador lo suele presentar de un modo muy distinto:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;range&quot;</span> <span class="na">min</span><span class="o">=</span><span class="s">0</span> <span class="na">max</span><span class="o">=</span><span class="s">10</span> <span class="na">value</span><span class="o">=</span><span class="s">8</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;satisfaccion&quot;</span> <span class="na">step</span><span class="o">=</span><span class="s">&quot;2&quot;</span><span class="p">&gt;</span> Grado de satisfacción
+</pre></div>
+</div>
+<div class="ej-html"><input type="range" min=0 max=10 value=8 name="satisfaccion" step="2"> Grado de satisfacción</div><p><strong>tel</strong> permite indicar valores que son números de teléfono. Este ejemplo
+permite escribir números válidos en España:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>Teléfono: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;tel&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;tlfo&quot;</span> <span class="na">pattern</span><span class="o">=</span><span class="s">&quot;[6-9][0-9]{2}-[0-9]{6}&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="fechas">
+<h3><span class="section-number">6.7.2.2. </span>Fechas<a class="headerlink" href="#fechas" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Existen también tipos de <a class="reference internal" href="#html-input"><span class="std std-ref">&lt;input&gt;</span></a> especiales para escribir horas y fechas:</p>
+<span id="html-input-datetime-local"></span><span id="html-input-time"></span><span id="html-input-week"></span><span id="html-input-month"></span><span id="html-input-date"></span><table class="attr-html docutils align-default" id="id21">
+<caption><span class="caption-text">Valores de type para fechas</span><a class="headerlink" href="#id21" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date">date</a></p></td>
+<td><p>Fecha.</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/month">month</a></p></td>
+<td><p>Fecha (sólo mes y año)</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/week">week</a></p></td>
+<td><p>Semana del año</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time">time</a></p></td>
+<td><p>Hora.</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/datetime-local">datetime-local</a></p></td>
+<td><p>Fecha y hora</p></td>
+</tr>
+</tbody>
+</table>
+<p>Para todos estos tipos, el navegador facilitará la introducción de los datos:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>Fecha: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;date&quot;</span> <span class="na">max</span><span class="o">=</span><span class="s">&quot;2019-12-12&quot;</span> <span class="na">min</span><span class="o">=</span><span class="s">&quot;2018-01-01&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;fecha&quot;</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+Hora: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;time&quot;</span> <span class="na">max</span><span class="o">=</span><span class="s">&quot;14:45&quot;</span> <span class="na">min</span><span class="o">=</span><span class="s">&quot;8:00&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;hora&quot;</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="ej-html">Fecha: <input type="date" max="2019-12-12" min="2018-01-01" name="fecha"><br>
+Hora: <input type="time" max="14:45" min="8:00" name="hora"><br></div></section>
+<section id="colores">
+<span id="html-input-color"></span><h3><span class="section-number">6.7.2.3. </span>Colores<a class="headerlink" href="#colores" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Para seleccionar colores existe un tipo particular:</p>
+<table class="attr-html docutils align-default" id="id22">
+<caption><span class="caption-text">Valores de type para selección de color</span><a class="headerlink" href="#id22" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color">color</a></p></td>
+<td><p>Color</p></td>
+</tr>
+</tbody>
+</table>
+<p>Ejemplo:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>Fondo: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;color&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;bgcolor&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;#ff00ff&quot;</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+Texto: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;color&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;fgcolor&quot;</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="ej-html">Fondo: <input type="color" name="bgcolor" value="#ff00ff"><br>
+Texto: <input type="color" name="fgcolor"><br></div></section>
+</section>
+<section id="seleccion-de-datos">
+<span id="html-form-sel"></span><h2><span class="section-number">6.7.3. </span>Selección de datos<a class="headerlink" href="#seleccion-de-datos" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Bajo este epígrafe trataremos los campos de formulario que habilita <abbr title="HyperText Markup Language">HTML</abbr>5
+para seleccionar entre un conjunto predefinido y finito de valores. La
+diferencia con las listas de sugerencias que podían ofrecernos los campos
+anteriores es que, en este caso, estamos obligados a escoger entre las
+alternativas propuestas.</p>
+<section id="campos-de-seleccion">
+<span id="html-input-radio"></span><span id="html-input-checkbox"></span><h3><span class="section-number">6.7.3.1. </span>Campos de selección<a class="headerlink" href="#campos-de-seleccion" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Trataremos dos tipos distintos de <a class="reference internal" href="#html-input"><span class="std std-ref">&lt;input&gt;</span></a>:</p>
+<table class="attr-html docutils align-default" id="id23">
+<caption><span class="caption-text">Valores de type para campos de selección</span><a class="headerlink" href="#id23" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox">checkbox</a></p></td>
+<td><p>Genera casillas de verificación</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio">radio</a></p></td>
+<td><p>Genera botones de opción</p></td>
+</tr>
+</tbody>
+</table>
+<p>Ambos campos se comportan de forma semejante: son necesarios varios elementos
+<a class="reference internal" href="#html-input"><span class="std std-ref">&lt;input&gt;</span></a>, todos con el mismo valor del atributo <em>name</em> y permiten marcar el
+campo mediante el uso del ratón. Además permiten el siguiente atributo:</p>
+<table class="attr-html docutils align-default" id="id24">
+<caption><span class="caption-text">Atributos para los tipos checkbox y radio</span><a class="headerlink" href="#id24" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>checked</p></td>
+<td><p>-</p></td>
+<td><p>Marca preventivamente la opción</p></td>
+</tr>
+</tbody>
+</table>
+<p>La diferencia fundamental es que <strong>radio</strong> define opciones excluyentes, mientras
+que las alternativas de <em>checkbox</em> no lo son. Por ejemplo:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>Escoja su sexo: <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;sexo&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;radio&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;V&quot;</span><span class="p">&gt;</span> Varón <span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;sexo&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;radio&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;H&quot;</span><span class="p">&gt;</span> Hembra
+</pre></div>
+</div>
+<div class="ej-html">Escoja su sexo: <br>
+<input name="sexo" type="radio" value="V"> Varón <input name="sexo" type="radio" value="H"> Hembra</div><p>Frente a esto otro:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>¿Cuál son sus medios de locomoción favoritos?<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;transporte&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;coche&quot;</span> <span class="na">checked</span><span class="p">&gt;</span> El coche<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;transporte&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;barco&quot;</span><span class="p">&gt;</span> El barco<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;transporte&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;moto&quot;</span><span class="p">&gt;</span> La motocicleta<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;transporte&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;bici&quot;</span><span class="p">&gt;</span> La bicicleta<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;transporte&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;tren&quot;</span> <span class="na">checked</span><span class="p">&gt;</span> El tren<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;transporte&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;avion&quot;</span><span class="p">&gt;</span> El avión<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;transporte&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;otros&quot;</span><span class="p">&gt;</span> Otros<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="ej-html"><p>¿Cuál son sus medios de locomoción favoritos?</p>
+<p><input name="transporte" type="checkbox" value="coche" checked> El coche<br>
+<input name="transporte" type="checkbox" value="barco"> El barco<br>
+<input name="transporte" type="checkbox" value="moto"> La motocicleta<br>
+<input name="transporte" type="checkbox" value="bici"> La bicicleta<br>
+<input name="transporte" type="checkbox" value="tren" checked> El tren<br>
+<input name="transporte" type="checkbox" value="avion"> El avión<br>
+<input name="transporte" type="checkbox" value="otros"> Otros<br>
+</p></div></section>
+<section id="ficheros">
+<span id="html-input-file"></span><h3><span class="section-number">6.7.3.2. </span>Ficheros<a class="headerlink" href="#ficheros" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Existe un tipo particular para seleccionar uno o más ficheros locales:</p>
+<table class="attr-html docutils align-default" id="id25">
+<caption><span class="caption-text">Valores de type para selección de color</span><a class="headerlink" href="#id25" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file">file</a></p></td>
+<td><p>Selecciona ficheros locales</p></td>
+</tr>
+</tbody>
+</table>
+<p>El tipo tiene algunos atributos propios:</p>
+<table class="attr-html docutils align-default" id="id26">
+<caption><span class="caption-text">Atributos de input para tipos <em>file</em></span><a class="headerlink" href="#id26" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>accept</p></td>
+<td><p>valores</p></td>
+<td><p>Tipos de ficheros admisibles. Pueden usarse
+tipos <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr>, o extensiones de ficheros
+separados por comas</p></td>
+</tr>
+<tr class="row-even"><td><p>multiple</p></td>
+<td><p>-</p></td>
+<td><p>Permite seleccionar más de un fichero</p></td>
+</tr>
+</tbody>
+</table>
+<p>Ejemplo:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>Seleccione avatar: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;file&quot;</span> <span class="na">accept</span><span class="o">=</span><span class="s">&quot;.png,image/jpeg&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="ej-html">Seleccione avatar: <input type="file" accept=".png,image/jpeg"></div><div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><abbr title="HyperText Markup Language">HTML</abbr>5 tiene una <abbr title="Application Programming Interface">API</abbr> <em>Drag &amp; drop</em> (arrastrar y soltar) para
+<a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a> que entre otras muchas finalidades, puede servir para obtener
+archivos arrastrándolos a un área definida en la página, en vez de
+eligiéndolos como se ha expuesto aquí. Como esto requiere programar, que no
+es el objetivo de esta unidad, lo dejaremos estar. Para más información,
+puede consultarse <a class="reference external" href="https://web.dev/articles/drag-and-drop?hl=es">este artículo de web.dev sobre el asunto</a>.</p>
+</div>
+</section>
+<section id="listas-de-seleccion">
+<span id="index-3"></span><h3><span class="section-number">6.7.3.3. </span>Listas de selección<a class="headerlink" href="#listas-de-seleccion" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Otra posibilidad que ofrecen los formularios <abbr title="HyperText Markup Language">HTML</abbr> es la creación de listas de
+selección, para las cuales se usan otros elementos distintos a <a class="reference internal" href="#html-input"><span class="std std-ref">&lt;input&gt;</span></a>:</p>
+<table class="el-html docutils align-default" id="id27">
+<caption><span class="caption-text">Campos para listas de selección.</span><a class="headerlink" href="#id27" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-select"><span class="std std-ref">&lt;select&gt;</span></a></p></td>
+<td><p>Declara una lista desplegable</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-option"><span class="std std-ref">&lt;option&gt;</span></a></p></td>
+<td><p>Define un ítem de la lista</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-optgroup"><span class="std std-ref">&lt;optgroup&gt;</span></a></p></td>
+<td><p>Agrupa ítems de la lista</p></td>
+</tr>
+</tbody>
+</table>
+<dl id="html-select">
+<dt><strong>select</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#technical_summary">select</a>)</dt><dd><p>Elemento dentro del cual se define una lista de selección. Dispone de muchos de
+los atributos aplicables a <a class="reference internal" href="#html-input"><span class="std std-ref">&lt;input&gt;</span></a> con idéntico significado como <em>autofocus</em>,
+<em>disabled</em>, <em>form</em>, <em>name</em> o <em>required</em>. Añade además:</p>
+<table class="attr-html docutils align-default" id="id28">
+<caption><span class="caption-text">Atributos adicionales de <em>select</em></span><a class="headerlink" href="#id28" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>multiple</p></td>
+<td><p>-</p></td>
+<td><p>Permite seleccionar más de un ítem</p></td>
+</tr>
+<tr class="row-even"><td><p>size</p></td>
+<td><p>num</p></td>
+<td><p>Cantidad de ítem que se visualizan a la vez</p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<dl id="html-option">
+<dt><strong>option</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#technical_summary">option</a>)</dt><dd><p>Define cada uno de los ítem de la lista desplegable. Sus posibles atributos son:</p>
+<table class="attr-html docutils align-default" id="id29">
+<caption><span class="caption-text">Atributos de <em>option</em></span><a class="headerlink" href="#id29" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>disabled</p></td>
+<td><p>-</p></td>
+<td><p>Deshabilita la selección de ese ítem</p></td>
+</tr>
+<tr class="row-even"><td><p>selected</p></td>
+<td><p>-</p></td>
+<td><p>Marca esta opción como seleccionada</p></td>
+</tr>
+<tr class="row-odd"><td><p>value</p></td>
+<td><p>valor</p></td>
+<td><p>El valor que se enviará si se selecciona este
+ítem.</p></td>
+</tr>
+<tr class="row-even"><td><p>label</p></td>
+<td><p>texto</p></td>
+<td><p>Texto del ítem</p></td>
+</tr>
+</tbody>
+</table>
+<p>El elemento permite incluir contenido de texto que será el que se muestre a menos
+que se incluya también el atributo <em>label</em>. Por ejemplo:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>Nacionalidad:
+<span class="p">&lt;</span><span class="nt">select</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;nacionalidad&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">option</span> <span class="na">disabled</span> <span class="na">selected</span> <span class="na">label</span><span class="o">=</span><span class="s">&quot;-- Escoja una opción --&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>Española
+   <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;pt&quot;</span><span class="p">&gt;</span>Portuguesa
+   <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;fr&quot;</span><span class="p">&gt;</span>Francesa
+   <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;uk&quot;</span><span class="p">&gt;</span>Británica
+   <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;it&quot;</span><span class="p">&gt;</span>Italiana
+<span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>se verá así:</p>
+<div class="ej-html">Nacionalidad:
+<select name="nacionalidad">
+   <option disabled selected label="-- Escoja una opción --">
+   <option value="es">Española
+   <option value="pt">Portuguesa
+   <option value="fr">Francesa
+   <option value="uk">Británica
+   <option value="it">Italiana
+</select></div><p>Obsérvese que cada opción posible tiene un valor y que todos comparten el
+nombre (<em>name</em>) definido a través del elemento <a class="reference internal" href="#html-select"><span class="std std-ref">&lt;select&gt;</span></a>. De este modo, si se
+eligiera la nacionalidad portuguesa, por mor de este campo se enviaría
+<code class="code docutils literal notranslate"><span class="pre">name=pt</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Obsérvese que hay tres aspectos relacionados con el valor y cómo
+se muestra en pantalla:</p>
+<ul class="simple">
+<li><p>El atributo <em>value</em> es el valor enviado, pero no es obligatoria su
+presencia y, si no se encuentra, se envía el contenido del elemento.</p></li>
+<li><p>El contenido se muestra siempre que no exista la etiqueta <em>label</em> y
+se usa como valor, siempre que no exista el atributo <em>value</em>.</p></li>
+<li><p>El atributo <em>label</em> es la leyenda que representa la opción, pero no
+se usa como valor de envío.</p></li>
+</ul>
+</div>
+</dd>
+</dl>
+<dl id="html-optgroup">
+<dt><strong>optgroup</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup#technical_summary">optgroup</a>)</dt><dd><p>Permite agrupar varios ítem bajo una misma categoría. Para ello, lo que se hace
+es incluir los elementos <a class="reference internal" href="#html-option"><span class="std std-ref">&lt;option&gt;</span></a> dependientes dentro de un mismo <a class="reference internal" href="#html-optgroup"><span class="std std-ref">&lt;optgroup&gt;</span></a>.</p>
+<table class="attr-html docutils align-default" id="id30">
+<caption><span class="caption-text">Atributos de <em>optgroup</em></span><a class="headerlink" href="#id30" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>disabled</p></td>
+<td><p>-</p></td>
+<td><p>Deshabilita la selección de todos los ítem
+incluidos dentro.</p></td>
+</tr>
+<tr class="row-even"><td><p>label</p></td>
+<td><p>texto</p></td>
+<td><p>Texto que se usará para representar al grupo</p></td>
+</tr>
+</tbody>
+</table>
+<p>Por ejemlo:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>Nacionalidad:
+<span class="p">&lt;</span><span class="nt">select</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;nacionalidad&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">optgroup</span> <span class="na">label</span><span class="o">=</span><span class="s">&quot;Europa&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>Española<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;pt&quot;</span><span class="p">&gt;</span>Portuguesa<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;fr&quot;</span><span class="p">&gt;</span>Francesa<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;uk&quot;</span><span class="p">&gt;</span>Británica<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;it&quot;</span><span class="p">&gt;</span>Italiana<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">optgroup</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">optgroup</span> <span class="na">label</span><span class="o">=</span><span class="s">&quot;América&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;mx&quot;</span><span class="p">&gt;</span>Mejicana<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;us&quot;</span><span class="p">&gt;</span>Estadounidense<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;cu&quot;</span><span class="p">&gt;</span>Cubana<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;ar&quot;</span><span class="p">&gt;</span>Argentina<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;ve&quot;</span><span class="p">&gt;</span>Venezolana<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">optgroup</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>que se verá:</p>
+<div class="ej-html">Nacionalidad:
+<select name="nacionalidad">
+   <optgroup label="Europa">
+      <option value="es">Española</option>
+      <option value="pt">Portuguesa</option>
+      <option value="fr">Francesa</option>
+      <option value="uk">Británica</option>
+      <option value="it">Italiana</option>
+   </optgroup>
+   <optgroup label="América">
+      <option value="mx">Mejicana</option>
+      <option value="us">Estadounidense</option>
+      <option value="cu">Cubana</option>
+      <option value="ar">Argentina</option>
+      <option value="ve">Venezolana</option>
+   </optgroup>
+</select></div></dd>
+</dl>
+<p>Por último, hemos eludido hasta ahora el uso de las opciones <em>multiple</em> y
+<em>size</em>. Cuando <em>size</em> es mayor que <strong>1</strong>, lo navegadores tienden a dejar de
+mostrar la lista como una lista desplegable y pasan a mostrarla como una lista
+con barra de <em>scroll</em>. El uso de <em>multiple</em>, además de permitir la selección de
+varios ítem a la vez, pasa a mostrar la lista con barra de <em>scroll</em>:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>Nacionalidad:
+<span class="p">&lt;</span><span class="nt">select</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;nacionalidad&quot;</span> <span class="na">size</span><span class="o">=</span><span class="s">3</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>Española<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;pt&quot;</span> <span class="na">selected</span><span class="p">&gt;</span>Portuguesa<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;fr&quot;</span><span class="p">&gt;</span>Francesa<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;uk&quot;</span><span class="p">&gt;</span>Británica<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;it&quot;</span><span class="p">&gt;</span>Italiana<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>que se ve:</p>
+<div class="ej-html">Nacionalidad:
+<select name="nacionalidad" size=3>
+   <option value="es">Española</option>
+   <option value="pt" selected>Portuguesa</option>
+   <option value="fr">Francesa</option>
+   <option value="uk">Británica</option>
+   <option value="it">Italiana</option>
+</select></div></section>
+</section>
+<section id="botones">
+<h2><span class="section-number">6.7.4. </span>Botones<a class="headerlink" href="#botones" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Ningún formulario que se precisa sería tal, sino habilitamos un modo de enviar
+los datos al formularios. Para ello se habilitan los botones de envío, aunque
+no es su única función. Se encargan de:</p>
+<ul class="simple">
+<li><p>El <strong>envío</strong> del formulario.</p></li>
+<li><p>El <strong>reseteo</strong> del formulario, para recuperar los valores iniciales.</p></li>
+<li><p>No hacer nada. En realidad, más que no hacer nada lo que no tienen este tipo
+de botones es una función predefinida, de modo que para que sean útiles es
+necesario definirla a través de <em>Javascript</em>, lo cual se sale del propósito
+de esta unidad.</p></li>
+</ul>
+<p>Para implementar los botones hay dos elementos distintos con los que se puede
+lograr la misma funcionalidad: el omnipresente <a class="reference internal" href="#html-input"><span class="std std-ref">&lt;input&gt;</span></a> y <a class="reference internal" href="#html-button"><span class="std std-ref">&lt;button&gt;</span></a>:</p>
+<table class="el-html docutils align-default" id="id31">
+<caption><span class="caption-text">Elemento <em>button</em></span><a class="headerlink" href="#id31" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-button"><span class="std std-ref">&lt;button&gt;</span></a></p></td>
+<td><p>Permite definir botones en el formulario</p></td>
+</tr>
+</tbody>
+</table>
+<span id="index-4"></span><dl id="html-button">
+<dt><strong>button</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#technical_summary">button</a>)</dt><dd><p>Es el elemento que permite la inclusión con botones en los formularios <abbr title="HyperText Markup Language">HTML</abbr> y
+comparte esta función con algunos de los tipos de <a class="reference internal" href="#html-input"><span class="std std-ref">&lt;input&gt;</span></a>. El contenido del
+elemento define la forma en que se ve. Por tanto:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">button</span><span class="p">&gt;</span>Soy un botón<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Mostrará un botón de texto y:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">button</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Soy un botón&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;images/boton.png&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>una imagen pulsable.</p>
+<table class="attr-html docutils align-default" id="id32">
+<caption><span class="caption-text">Tipos de botones con el elemento <em>button</em></span><a class="headerlink" href="#id32" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p>submit</p></td>
+<td><p>Envía los datos del formulario. Este es el valor
+predeterminado</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>reset</p></td>
+<td><p>Resetea el formulario.</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p>button</p></td>
+<td><p>Sin funcionalidad definida.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Estos tipos de botón tienen su equivalencia con <em>input</em>:</p>
+<table class="attr-html docutils align-default" id="id33">
+<caption><span class="caption-text">Tipos de botones con el elemento <em>input</em></span><a class="headerlink" href="#id33" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/submit">submit</a></p></td>
+<td><p>Equivale a <code class="code docutils literal notranslate"><span class="pre">&lt;button</span> <span class="pre">type=&quot;submit&quot;&gt;</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image">image</a></p></td>
+<td><p>Equivale a <code class="code docutils literal notranslate"><span class="pre">&lt;button</span> <span class="pre">type=&quot;submit&quot;&gt;</span></code>, pero
+usando una imagen en vez de texto.</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/reset">reset</a></p></td>
+<td><p>Equivale a <code class="code docutils literal notranslate"><span class="pre">&lt;button</span> <span class="pre">type=&quot;reset&quot;&gt;</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/button">button</a></p></td>
+<td><p>Equivale a <code class="code docutils literal notranslate"><span class="pre">&lt;button</span> <span class="pre">type=&quot;button&quot;&gt;</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>En principio ambos elementos son equivalentes y, salvando el hecho de que uno (<a class="reference internal" href="#html-input"><span class="std std-ref">&lt;input&gt;</span></a>)
+usa su atributo <em>value</em> y el otro (<a class="reference internal" href="#html-button"><span class="std std-ref">&lt;button&gt;</span></a>) su contenido para definir su representación,
+no hay diferencias, de modo que todo lo indicado es aplicable a ambos.</p>
+</dd>
+</dl>
+<p>En principio, la función de estos elementos es desencadenar una acción, por lo
+que no es necesario que aporten información alguna. En consecuencia es muy
+común que no incluyan atributo <em>name</em>. Así este formulario:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;formulario&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;oculto&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;foobar&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">button</span><span class="p">&gt;</span>Enviar<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>enviaría al pulsar sobre el botón la información <code class="code docutils literal notranslate"><span class="pre">oculto=foobar</span></code>. Aunque
+por lo general se desea que ocurra esto, podría darse la circunstancia de que
+en el formulario dispusiéramos varios botones de envio y que quisiéramos saber
+en la aplicación de servidor cuál fue el botón que pulsó el usuario. Ello se
+podría resolver usando un mismo <em>name</em> para todos lo botones y modificando el
+valor que envía cada uno:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;formulario&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;oculto&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;foobar&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">button</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;1&quot;</span><span class="p">&gt;</span>Enviar 1<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">button</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;2&quot;</span><span class="p">&gt;</span>Enviar 2<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>De este modo, al pulsar el primer botón la información enviada sería
+<code class="code docutils literal notranslate"><span class="pre">oculto=foobar&amp;submit=1</span></code> y al pulsar el segundo
+<code class="code docutils literal notranslate"><span class="pre">oculto=foobar&amp;submit=2</span></code>.</p>
+<p>En cuanto a los atributos posibles para ambos elementos, aparte de los ya
+definidos como <em>name</em>, <em>value</em>, <em>type</em>, <em>autofocus</em>, <em>disabled</em> o <em>form</em> se
+incluyen que alteran, si se usa tal botón, el envío del formulario
+definido en la etiqueta <a class="reference internal" href="#html-form"><span class="std std-ref">&lt;form&gt;</span></a>:</p>
+<table class="attr-html docutils align-default" id="id34">
+<caption><span class="caption-text">Atributos de <em>input</em> y <em>button</em> para definir comportamiento</span><a class="headerlink" href="#id34" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>formaction</p></td>
+<td><p>url</p></td>
+<td><p>Redefine el atributo <em>action</em> del formulario.</p></td>
+</tr>
+<tr class="row-even"><td><p>formmethod</p></td>
+<td><p>get|post</p></td>
+<td><p>Redefine el atributo <em>method</em> del formulario.</p></td>
+</tr>
+<tr class="row-odd"><td><p>formnovalidate</p></td>
+<td><p>-</p></td>
+<td><p>Redefine el atributo <em>novalidate</em> del formulario.</p></td>
+</tr>
+<tr class="row-even"><td><p>formtarget</p></td>
+<td><p>valor</p></td>
+<td><p>Redefine el atributo <em>target</em> del formulario.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="otros-aspectos">
+<h2><span class="section-number">6.7.5. </span>Otros aspectos<a class="headerlink" href="#otros-aspectos" title="Enlace permanente a este encabezado">¶</a></h2>
+<span class="target" id="html-fieldset"></span><section id="organizacion">
+<span id="index-5"></span><h3><span class="section-number">6.7.5.1. </span>Organización<a class="headerlink" href="#organizacion" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Es común que al crear un formulario con varios campos de formulario, éstos
+puedan agruparse lógicamente de algún modo. Por ejemplo, todos los elementos
+<a class="reference internal" href="#html-input"><span class="std std-ref">&lt;input&gt;</span></a> que implementan una <a class="reference internal" href="#html-input-radio"><span class="std std-ref">selección de campos</span></a>
+forman una unidad. Para la reunión de campos de formulario se usa:</p>
+<table class="el-html docutils align-default" id="id35">
+<caption><span class="caption-text">Campos para listas de selección.</span><a class="headerlink" href="#id35" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-fieldset"><span class="std std-ref">&lt;fieldset&gt;</span></a></p></td>
+<td><p>Agrupa campos de formulario.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-legend"><span class="std std-ref">&lt;legend&gt;</span></a></p></td>
+<td><p>Primer elemento opcional de <a class="reference internal" href="#html-fieldset"><span class="std std-ref">&lt;fieldset&gt;</span></a> que
+añade una texto explicativo al grupo</p></td>
+</tr>
+</tbody>
+</table>
+<dl>
+<dt><strong>fieldset</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend#technical_summary">legend</a>)</dt><dd><p>Básicamente es un contenedor de campos de formularios, aunque puede contener
+otros elementos que ayuden a estructurarlos mejor (<a class="reference internal" href="07.struct.html#html-div"><span class="std std-ref">&lt;div&gt;</span></a>, <a class="reference internal" href="04.basico.html#html-p"><span class="std std-ref">&lt;p&gt;</span></a>, etc.).</p>
+<p>Puede incluir algunos atributos:</p>
+<table class="attr-html docutils align-default" id="id36">
+<caption><span class="caption-text">Atributos de <em>fieldset</em></span><a class="headerlink" href="#id36" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>disabled</p></td>
+<td><p>-</p></td>
+<td><p>Deshabilita todos los campos de formulario intermos.</p></td>
+</tr>
+<tr class="row-even"><td><p>form</p></td>
+<td><p>id</p></td>
+<td><p>Identificador del formulario al que pertenece.</p></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>nombre</p></td>
+<td><p>Nombre del grupo.</p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<span class="target" id="html-legend"></span><dl class="simple" id="index-6">
+<dt><strong>legend</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend#technical_summary">legend</a>)</dt><dd><p>Es un elemento que puede aparecer como primer hijo de un elemento <a class="reference internal" href="#html-fieldset"><span class="std std-ref">&lt;fieldset&gt;</span></a>
+para definir un texto que sirva de título al grupo de campos que reúne dicho
+elemento. Puede contener elementos en línea.</p>
+</dd>
+</dl>
+<p>Retomando un ejemplo anterior, podríamos hacer:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">fieldset</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">legend</span><span class="p">&gt;</span>Sexo<span class="p">&lt;/</span><span class="nt">legend</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;sexo&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;radio&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;V&quot;</span><span class="p">&gt;</span> Varón
+   <span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;sexo&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;radio&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;H&quot;</span><span class="p">&gt;</span> Hembra
+<span class="p">&lt;/</span><span class="nt">fieldset</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>que se verá:</p>
+<div class="ej-html"><fieldset>
+   <legend>Sexo</legend>
+   <input name="sexo" type="radio" value="V"> Varón
+   <input name="sexo" type="radio" value="H"> Hembra
+</fieldset></div></section>
+<section id="asociacion-de-texto-al-campo">
+<h3><span class="section-number">6.7.5.2. </span>Asociación de texto al campo<a class="headerlink" href="#asociacion-de-texto-al-campo" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>A lo largo del documento hemos usado algunos campos de formulario que en sí
+mismos no aclaran cuál es su función. Es el caso, de muchos de los tipos de
+<a class="reference internal" href="#html-input"><span class="std std-ref">&lt;input&gt;</span></a>:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;color&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;color&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;#ffff00&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>o sea:</p>
+<div class="ej-html"><input type="color" name="color" value="#ffff00"></div><p>Bien, ese selector de color, ¿para qué narices sirve? Es obvio que necesita un
+texto aclaratorio, de ahí que en nuestro ejemplo hiciéramos algo de este
+estilo:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>Color de fondo: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;color&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;color&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;#ffff00&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Es obvio que al verlo junto el lector entenderá que el selector se refiere a la
+elección de un color de fondo, pero esta es sólo una relación visual que no está
+reflejada semánticamente en el documento. Para crear esta relación debe hacerse
+uso del elemento <a class="reference internal" href="#html-label"><span class="std std-ref">&lt;label&gt;</span></a>:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;color&quot;</span><span class="p">&gt;</span>Color de fondo:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;color&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;color&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;color&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;#ffff00&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>que se ve:</p>
+<div class="ej-html"><label for="color">Color de fondo:</label> <input id="color" type="color" name="color" value="#ffff00"></div><p>Definámoslo más formalmente:</p>
+<span class="target" id="html-label"></span><span id="index-7"></span><table class="el-html docutils align-default" id="id37">
+<caption><span class="caption-text">Etiqueta <em>label</em></span><a class="headerlink" href="#id37" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-label"><span class="std std-ref">&lt;label&gt;</span></a></p></td>
+<td><p>Define el texto asociado a un campo de formulario</p></td>
+</tr>
+</tbody>
+</table>
+<dl>
+<dt><strong>label</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label#technical_summary">label</a>)</dt><dd><p>Define el texto asociado a un campo del formulario y puede tomar un atributo:</p>
+<table class="attr-html docutils align-default" id="id38">
+<caption><span class="caption-text">Atributos de <em>label</em></span><a class="headerlink" href="#id38" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>for</p></td>
+<td><p>id</p></td>
+<td><p>Identificador del campo con el que está relacionado.</p></td>
+</tr>
+</tbody>
+</table>
+<p>En el último ejemplo queda claro como se hace esta relación: se añade un
+identificador al campo y se usa en el atributo <em>for</em> de <a class="reference internal" href="#html-label"><span class="std std-ref">&lt;label&gt;</span></a>. Una
+alternativa, que no requiere el uso del atributo <em>for</em> en <a class="reference internal" href="#html-label"><span class="std std-ref">&lt;label&gt;</span></a> ni del
+identificador <em>id</em> en el campo es incluir el campo dentro de la etiqueta:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Color de fondo: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;color&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;color&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;#ffff00&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>que se ve:</p>
+<div class="ej-html"><label>Color de fondo: <input type="color" name="color" value="#ffff00"></label></div></dd>
+</dl>
+<p>Lo interesante de <a class="reference internal" href="#html-label"><span class="std std-ref">&lt;label&gt;</span></a> no es solamente la relación semántica, sino también
+la relación en el comportamiento: pinchar sobre la etiqueta equivale a
+pinchar sobre el propio campo<a class="footnote-reference brackets" href="#id12" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>.</p>
+</section>
+<section id="lista-de-sugerencias">
+<span id="html-datalist"></span><span id="index-8"></span><h3><span class="section-number">6.7.5.3. </span>Lista de sugerencias<a class="headerlink" href="#lista-de-sugerencias" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Cuando se trataron los atributos de los tipos de <a class="reference internal" href="#html-input"><span class="std std-ref">&lt;input&gt;</span></a> que permtían introducir
+texto, nos limitamos a citar el atributo <em>list</em> e indicar que servía para generar
+una lista precargada de sugerencias. No profundizamos más, porque ello requería
+la introducción de un nuevo elemento <abbr title="HyperText Markup Language">HTML</abbr>:</p>
+<table class="el-html docutils align-default" id="id39">
+<caption><span class="caption-text">Etiqueta <em>datalist</em></span><a class="headerlink" href="#id39" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-datalist"><span class="std std-ref">&lt;datalist&gt;</span></a></p></td>
+<td><p>Define una lista de sugerencias.</p></td>
+</tr>
+</tbody>
+</table>
+<dl>
+<dt><strong>datalist</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist#technical_summary">datalist</a>)</dt><dd><p>Define una lista de sugerencias para un campo de texto, más allá de las
+sugerencias que pueda mostrar el navegador como consecuencia de que esté
+habilitado el autocompletado (<em>autocomplete</em>). El elemento, que no es
+visible, no presenta más atributo que un identificador para que pueda
+referenciarlo el atributo <em>list</em> del campo <a class="reference internal" href="#html-input"><span class="std std-ref">&lt;input&gt;</span></a> y usa los elementos
+<a class="reference internal" href="#html-option"><span class="std std-ref">&lt;option&gt;</span></a> ya vistos al tratar <a class="reference internal" href="#html-select"><span class="std std-ref">&lt;select&gt;</span></a> para definir cuáles son estas
+sugerencias:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;esp&quot;</span><span class="p">&gt;</span>Especialidades: <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">list</span><span class="o">=</span><span class="s">&quot;especialidades&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;esp&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;especialidad&quot;</span>
+       <span class="na">autocomplete</span><span class="o">=</span><span class="s">&quot;off&quot;</span> <span class="na">pattern</span><span class="o">=</span><span class="s">&quot;[A-Z0-9]{2}[0-9]{6}&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">datalist</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;especialidades&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;00590107&quot;</span><span class="p">&gt;</span>Informática
+   <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;00590006&quot;</span><span class="p">&gt;</span>Matemáticas
+   <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;00590011&quot;</span><span class="p">&gt;</span>Inglés
+   <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;00590004&quot;</span><span class="p">&gt;</span>Lengua
+<span class="p">&lt;/</span><span class="nt">datalist</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="ej-html"><label for="esp">Especialidades: </label>
+<input list="especialidades" id="esp" name="especialidad"
+       autocomplete="off" pattern="[A-Z0-9]{2}[0-9]{6}">
+<datalist id="especialidades">
+   <option value="00590107">Informática
+   <option value="00590006">Matemáticas
+   <option value="00590011">Inglés
+   <option value="00590004">Lengua
+</datalist></div><div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Obsérvese que deshabilitamos el autocompletado para que a las
+sugerencias predefinidas no se añadan otras que vaya recordando el
+navegador. También hemos limitado los valores válidos usando un patrón.</p>
+</div>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Este solución no es equivalente al uso de un <a class="reference internal" href="#html-select"><span class="std std-ref">&lt;select&gt;</span></a>, puesto que
+este elemento restringe los valores posibles a los incluidos en la lista,
+mientras que un <a class="reference internal" href="#html-input"><span class="std std-ref">&lt;input&gt;</span></a> con lista de sugerencias sigue dando libertad
+para escribir otros. Ahora bien, haciendo uso de <em>Javascript</em> podemos lograr
+que los valores válidos se restrinjan exclusivamente a los sugeridos
+lo cual puede ser interesante si los valores posibles son muy numerosos y buscarlos
+en la lista puede causar gran engorro al usuario. Como ejemplo de ello, puede
+echarle un ojo a <a class="reference external" href="https://codepen.io/sio2/pen/rbEPgv">este caso alojado en codepen</a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Es posible incluir dentro del elemento <a class="reference internal" href="#html-datalist"><span class="std std-ref">&lt;datalist&gt;</span></a> un elemento
+<a class="reference internal" href="#html-select"><span class="std std-ref">&lt;select&gt;</span></a> dentro del cual se colocan las opciones. Es válido para la
+especificación y no tiene efecto alguno, pero si el navegador es algo antiguo
+y no soporta listas de sugerencias, las sugerencias  se verán como una lista
+desplegable; y con ayuda de código <em>Javascript</em> podremos hacer algún apaño
+para que el formularion funcione correctamente.</p>
+</div>
+<span class="target" id="html-dialog"></span></section>
+<section id="cuadro-de-dialogo">
+<span id="index-9"></span><h3><span class="section-number">6.7.5.4. </span>Cuadro de diálogo<a class="headerlink" href="#cuadro-de-dialogo" title="Enlace permanente a este encabezado">¶</a></h3>
+<p><abbr title="HyperText Markup Language">HTML</abbr>5 provee un sencillo mecanismo para crear diálogos emergentes a través
+del elemento <code class="docutils literal notranslate"><span class="pre">&lt;dialog&gt;</span></code>:</p>
+<table class="el-html docutils align-default" id="id40">
+<caption><span class="caption-text">Etiqueta <em>datalist</em></span><a class="headerlink" href="#id40" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-dialog"><span class="std std-ref">&lt;dialog&gt;</span></a></p></td>
+<td><p>Define un dialogo emergente</p></td>
+</tr>
+</tbody>
+</table>
+<dl>
+<dt><strong>dialog</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#technical_summary">dialog</a>)</dt><dd><p>Define un cuadro de diálogo emergente que se superpone al resto del contenido
+de la página a imitación de las <a class="reference external" href="https://es.wikipedia.org/wiki/Ventana_emergentehttps://es.wikipedia.org/wiki/Ventana_emergente">ventanas emergentes</a>.</p>
+<table class="attr-html docutils align-default" id="id41">
+<caption><span class="caption-text">Atributos de <em>label</em></span><a class="headerlink" href="#id41" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>open</p></td>
+<td><p>-</p></td>
+<td><p>Abre la ventana al cargar la página</p></td>
+</tr>
+</tbody>
+</table>
+<p>El elemento sólo tiene un atributo propio <em>open</em>, que hace que el cuadro
+aparezca emergido al cargar la página. De lo contrario, se encontrará oculto
+y sólo mediante programación con <em>Javascript</em> se podrá mostrar:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">dialog</span><span class="p">&gt;&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Esto es una ventana emergente<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;&lt;/</span><span class="nt">dialog</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>En principio, el elemento no es exclusivo de formularios, pero da pie a que
+se incluya en ellos un formulario con algún campo que requiera respuesta. De
+hecho, para posibilitarlo se ha definido un nuevo valor <em>dialog</em> para el
+atributo <em>method</em>, de modo que cuando se envía el formulario no se abandona
+la página, sino que se oculta el cuadro y se recupera el valor a
+través de <em>Javacript</em>. Para que el elemento sea funcional, es necesario el
+uso de <em>Javascript</em>, por lo que no se profundizará más en él.</p>
+<p>Si tiene curiosidad, puede consultar <a class="reference external" href="https://codepen.io/sio2/pen/MRNjOg">este ejemplo en codepen.io</a>.</p>
+</dd>
+</dl>
+</section>
+<section id="progreso">
+<span id="html-progress"></span><span id="index-10"></span><h3><span class="section-number">6.7.5.5. </span>Progreso<a class="headerlink" href="#progreso" title="Enlace permanente a este encabezado">¶</a></h3>
+<p><abbr title="HyperText Markup Language">HTML</abbr>5 permite también la inclusión de una barra de progreso que, aunque no
+es propiamente un campo de formulario, suele estar relacionada con alguna tarea
+en la que está involucrado un formulario:</p>
+<table class="el-html docutils align-default" id="id42">
+<caption><span class="caption-text">Etiqueta <em>progress</em></span><a class="headerlink" href="#id42" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-progress"><span class="std std-ref">&lt;progress&gt;</span></a></p></td>
+<td><p>Muestra una barra de progreso.</p></td>
+</tr>
+</tbody>
+</table>
+<dl>
+<dt><strong>progress</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#technical_summary">progress</a>)</dt><dd><p>Muestra la barra de progreso de una supuesta tarea. Ello, por supuesto,
+requiere que seamos capaces de especificar cuál es el grado de completitud
+de tal tarea, para lo cual podemos utiliar algunos atributos:</p>
+<table class="attr-html docutils align-default" id="id43">
+<caption><span class="caption-text">Atributos de <em>progress</em></span><a class="headerlink" href="#id43" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>max</p></td>
+<td><p>num</p></td>
+<td><p>Número que representa la terminación de la tarea. Su
+valor predeterminado es 1.</p></td>
+</tr>
+<tr class="row-even"><td><p>value</p></td>
+<td><p>num</p></td>
+<td><p>Número que representa el grado de completitud. Debe
+estar comprendido entre 0 y <em>max</em>.</p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference internal" href="#html-progress"><span class="std std-ref">&lt;progress&gt;</span></a> es un elemento en línea que, además, puede contener elementos en línea.
+Su contenido no se representa, pero puede ser útil si el navegador no tiene soporte
+para él:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;load&quot;</span><span class="p">&gt;</span>Carga del elemento:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">progress</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;load&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;.75&quot;</span><span class="p">&gt;</span>75%<span class="p">&lt;/</span><span class="nt">progress</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>que el navegador muestra:</p>
+<div class="ej-html"><label for="load">Carga del elemento:</label>
+<progress id="load" value=".75">75%</progress></div></dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>El elemento, obviamente, es estático, por lo que para presentar el
+carácter dinámico de una verdadera barra de progreso es necesario código
+<em>Javascript</em> que cambie el valor de <em>value</em> en sincronía con el progreso de
+la tarea.</p>
+</div>
+</section>
+</section>
+<section id="ejercicios-propuestos">
+<h2><span class="section-number">6.7.6. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Enlace permanente a este encabezado">¶</a></h2>
+<ol class="arabic">
+<li><p>Escriba una página <abbr title="HyperText Markup Language">HTML</abbr> que contenga un formulario
+con los siguientes campos agrupados en dos categorías:</p>
+<dl>
+<dt>Información personal</dt><dd><ol class="loweralpha simple">
+<li><p>Nombre.</p></li>
+<li><p>Apellidos.</p></li>
+<li><p>Fecha de nacimiento.</p></li>
+<li><p>Sexo (Hombre/Mujer).</p></li>
+<li><p>Estado civil (Soltero/Casado/Viudo/Divorciado).</p></li>
+<li><p>Teléfono.</p></li>
+<li><p>Teléfono móvil.</p></li>
+<li><p>Aficiones: Debe ser una lista que incluya los siguientes aspectos (que
+no son excluyentes entre sí):</p>
+<ul class="simple">
+<li><p>Literatura.</p></li>
+<li><p>Cine.</p></li>
+<li><p>Música.</p></li>
+<li><p>Informática.</p></li>
+<li><p>Actividades deportivas.</p></li>
+<li><p>Manualidades.</p></li>
+<li><p>Otras (especifíquelas).</p></li>
+</ul>
+<p>Debe haber, además, un cuadro de texto deshabilitado que
+se habilitaría si se marcase la opción «<em>Otras</em>». Como esto último
+requiere <em>Javascript</em>, quedará pendiente de hacer.</p>
+</li>
+</ol>
+</dd>
+<dt>Información de usuario:</dt><dd><ol class="loweralpha simple">
+<li><p>Nombre de usuario (debe ser una sola palabra y el primer carácter
+una letra).</p></li>
+<li><p>Contraseña (debe repetirse dos veces).</p></li>
+<li><p>¿Cómo llegó a esta web?</p>
+<ul class="simple">
+<li><p>Publicidad.</p></li>
+<li><p>A través de un amigo.</p></li>
+<li><p>A través de buscadores.</p></li>
+</ul>
+</li>
+<li><p>Puntúe la web (entre 0 y 10).</p></li>
+</ol>
+</dd>
+</dl>
+<p>El formulario debería enviarse por el método POST</p>
+</li>
+</ol>
+<p class="sol-oculta"><a class="reference download internal" download="" href="../_downloads/4eb317c21e3c49a8ce2f76817d84b06d/formulario.html"><code class="xref download docutils literal notranslate"><span class="pre">Solución</span> <span class="pre">propuesta</span></code></a>.</p>
+<p class="rubric">Notas al pie</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id7" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Los habituales son <a class="reference external" href="https://python.org">Python</a>, <a class="reference external" href="https://php.net">PHP</a>, <a class="reference external" href="https://www.java.com">Java</a> o el propio <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a>.</p>
+</aside>
+<aside class="footnote brackets" id="id8" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Especialmente cuando no se piensa enviar ninguna información al servidor
+y el dato de un campo de formulario, se procesa en el propio navegador para
+provocar algún cambio en el mismo.</p>
+</aside>
+<aside class="footnote brackets" id="id9" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>Entiéndase que, aunque este epígrafe esté dedicado exclusivamente a
+elementos relacionados con los formularios, un elemento <a class="reference internal" href="#html-form"><span class="std std-ref">&lt;form&gt;</span></a> puede contener
+elementos que no son propios de formulario como un elemento <a class="reference internal" href="04.basico.html#html-p"><span class="std std-ref">&lt;p&gt;</span></a> o un elemento
+<a class="reference internal" href="07.struct.html#html-div"><span class="std std-ref">&lt;div&gt;</span></a>.</p>
+</aside>
+<aside class="footnote brackets" id="id10" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>En realidad, <em>pattern</em> no es un atributo común a todos los tipos de
+<a class="reference internal" href="#html-input"><span class="std std-ref">&lt;input&gt;</span></a>, ya que hay algunos tipos que no permiten introducir datos y, en
+consecuencia, para los que no tiene sentido.</p>
+</aside>
+<aside class="footnote brackets" id="id11" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
+<p>Por su naturaleza, pues, este campo permie seleccionar un conjunto
+discreto de número y, en consecuencia, debería haberse incluido en el
+<a class="reference internal" href="#html-form-sel"><span class="std std-ref">epígrafe dedicado a la selección de datos</span></a>.</p>
+</aside>
+<aside class="footnote brackets" id="id12" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">6</a><span class="fn-bracket">]</span></span>
+<p>Esto último posibilita efectos interesantes si se sabe algo de <abbr title="Cascading Style Sheets">CSS</abbr>. Por
+ejemplo, podríamos asociar una etiqueta a un <a class="reference internal" href="#html-input-checkbox"><span class="std std-ref">input| de tipo checkbox</span></a>, y con <abbr title="Cascading Style Sheets">CSS</abbr> volver invisible la casilla de verificación
+y hacer que la etiqueta simule una tecla sin pulsar cuando la casilla no está
+marcada y una tecla pulsada cuando la casilla si lo está.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/logo.png" alt="Logo"/>
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">6.7. Formularios</a><ul>
+<li><a class="reference internal" href="#declaracion-del-formulario">6.7.1. Declaración del formulario</a></li>
+<li><a class="reference internal" href="#introduccion-manual-de-datos">6.7.2. Introducción manual de datos</a><ul>
+<li><a class="reference internal" href="#datos-numericos">6.7.2.1. Datos numéricos</a></li>
+<li><a class="reference internal" href="#fechas">6.7.2.2. Fechas</a></li>
+<li><a class="reference internal" href="#colores">6.7.2.3. Colores</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#seleccion-de-datos">6.7.3. Selección de datos</a><ul>
+<li><a class="reference internal" href="#campos-de-seleccion">6.7.3.1. Campos de selección</a></li>
+<li><a class="reference internal" href="#ficheros">6.7.3.2. Ficheros</a></li>
+<li><a class="reference internal" href="#listas-de-seleccion">6.7.3.3. Listas de selección</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#botones">6.7.4. Botones</a></li>
+<li><a class="reference internal" href="#otros-aspectos">6.7.5. Otros aspectos</a><ul>
+<li><a class="reference internal" href="#organizacion">6.7.5.1. Organización</a></li>
+<li><a class="reference internal" href="#asociacion-de-texto-al-campo">6.7.5.2. Asociación de texto al campo</a></li>
+<li><a class="reference internal" href="#lista-de-sugerencias">6.7.5.3. Lista de sugerencias</a></li>
+<li><a class="reference internal" href="#cuadro-de-dialogo">6.7.5.4. Cuadro de diálogo</a></li>
+<li><a class="reference internal" href="#progreso">6.7.5.5. Progreso</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ejercicios-propuestos">6.7.6. Ejercicios propuestos</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="07.struct.html"
+                          title="Previous page">&larr; <span class="section-number">6.6. </span>Estructura semántica</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="09.media.html"
+                          title="Next page">&rarr; <span class="section-number">6.8. </span>Empotrados</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/06.html/08.form.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="09.media.html" title="6.8. Empotrados"
+             >siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="07.struct.html" title="6.6. Estructura semántica"
+             >anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">6. </span><abbr title="HyperText Markup Language">HTML</abbr></a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">6.7. </span>Formularios</a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
+      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

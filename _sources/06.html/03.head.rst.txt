@@ -1,0 +1,441 @@
+.. highlight:: html
+
+.. _html-head:
+
+Cabecera
+********
+La cabecera del documento |HTML| es el contenido del elemento :code:`<head>`
+e incluye información ajena al contenido estricto de la página |HTML|.
+
+.. note:: El orden de los elementos de la cabecera es indiferente.
+
+.. index:: title
+.. _html-title:
+
+.. table::
+   :class: el-html
+
+   +--------------+----------------------------------------------------------+
+   | |title|      | Define cuál es el título que el navegador mostrará en la |
+   |              | barra superior de la ventana.                            |
+   +--------------+----------------------------------------------------------+
+
+**title** (:devmoz:`title`)
+   Su único contenido posible es simple texto. Por ejemplo::
+
+      <title>Página de prueba</title>
+
+   Es el único elemento **obligatorio** que debe incluir la cabecera.
+  
+El resto de etiquetas las agruparemos en:
+
+.. _html-style:
+.. _html-script:
+
+Etiquetas de complemento
+========================
+Son aquellas que permiten indicar qué código *Javascript* o |CSS| complementa el
+contenido |HTML| de la página.
+
+.. table::
+   :class: el-html
+
+   +--------------+--------------------------------------------------------------+
+   | |style|      | Permite declarar estilos |CSS| exclusivos para el documento  |
+   +--------------+--------------------------------------------------------------+
+   | |script|     | Refiere o incrustar código *Javascript*                      |
+   +--------------+--------------------------------------------------------------+
+
+.. index:: style  
+
+**style** (:devmoz:`style`)
+   Volveremos a esta etiqueta cuando tratemos :ref:`cómo declarar el CSS
+   aplicable <css-decl>` a la página. Por ahora, bástenos con un ejemplo::
+
+      <style>
+         table, table th, table td {
+            border: solid black 1px;
+         }
+      </style>
+
+   .. note:: Para referir estilo |CSS| que se encuentre en fichero aparte debe
+      usarse |link|, que se explica un poco más adelante.
+
+   .. note:: Al igual que con |link|, puede usarse un atributo :code:`title`
+      para dar nombre al estilo.
+
+.. index:: script
+
+**script** (:devmoz:`script`)
+   Podemos usarla de dos formas. Como :code:`<style>`, escribiendo el código
+   *Javascript* dentro del propio documento::
+
+      <script>
+         window.onload = function() {
+            console.log("Hemos acabado de cargar la página");
+         }
+      </script>
+
+   O bien, refiriendo dónde se encuentra el código para que el navegador lo
+   cargue::
+
+      <script src="scripts/codigo.js"></script>
+
+
+   .. warning:: Ambas formas en un mismo elemento son incompatibles: o se
+      incrusta el código o se refiere. Observe, además, cómo en el segundo caso
+      se cierra el elemento sin usar el modo abreviado, ya que al ser un
+      elemento que puede tener contenido, tal modo es ilegal.
+
+   Este elemento puede aparecer también dentro del cuerpo del documento.
+
+   .. seealso:: Aunque se escapa del propósito de estos apuntes, es importante
+      tener presente cómo carga y ejecuta los *scripts* el navegador. El
+      comportamiento predeterminado es que al encontrarse con una etiqueta
+      :code:`<script>`, el navegador para de procesar el |HTML| y se dedica a
+      cargar y ejecutar el *script*. Por tanto, los elementos |HTML| posteriores
+      al elemento :code:`<script>` no existirán aún y, en principio, no se
+      podrán manipular. Sin embargo, cuando el *script* es externo, o sea, se
+      usa el atributo :code:`src`, este comportamiento puede alterarse mediante
+      el uso de los atributos :code:`async` y :code:`defer`. Una lectura
+      imprecindible para entender cómo actúan es `este artículo somostechies.com
+      <https://somostechies.com/async-vs-defer/>`_.
+
+Tanto al cargar una hoja de estilos como al cargar un *script* externos se puede
+forzar a que el navegador compruebe la integridad del fichero::
+
+   <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==">
+   </script>
+
+El navegador comprobará la integridad haciendo el equivalente a la siguiente
+orden:
+
+.. code-block:: console
+
+   $ wget -qO - 'https://unpkg.com/leaflet@1.4.0/dist/leaflet.js' | openssl dgst -sha512 -binary | base64
+
+.. seealso:: Para más información consulte la `developer.mozilla.org sobre SRI
+   <https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity>`_.
+
+Es posible que al escribir código |CSS| o código *Javascript* usemos algún
+carácter que provoque que el navegador interprete mal y provoque algún fallo en
+el procesamiento de la página. Para evitarlo, podemos indicar al navegador que
+ambos códigos son :ref:`secciones CDATA <xml-sec-cdata>`:
+
+.. code:: html
+
+   <style>
+      /*<![CDATA[*/
+         table, table th, table td {
+            border: solid black 1px;
+         }
+      /*]]>*/
+   </style>
+
+   <script>
+      //<![CDATA[
+         window.onload = function() {
+            alert("Ya se ha cargado la página");
+         }
+      //]]>
+   </script>
+
+Etiquetas de relación 
+=====================
+Son aquellas que permiten establecer relaciones con otros documentos.
+
+.. table::
+   :class: el-html
+
+   +--------------+----------------------------------------------------------+
+   | |base|       | Establece la URL base para resolver rutas relativas      |
+   +--------------+----------------------------------------------------------+
+   | |link|       | Establece una relación entre el documento y otro externo |
+   +--------------+----------------------------------------------------------+
+
+.. index:: base
+.. _html-base:
+
+**base** (:devmoz:`base`)
+   :ref:`Al hablar sobre hiperenlaces <html-url>` se definió el :ref:`concepto
+   de ruta relativa relativa <html-abs-rel>` y cómo formar la ruta absoluta se
+   concatenan la |URL| base y la ruta relativa relativa (a partir de ahora,
+   *ruta relativa* a secas). Este elemento permite redefinir la |URL| base para
+   sea una distinta a la que se esperaría. Así, si nuestro documento tiene la
+   |URL|:
+
+   .. code-block:: none
+
+      http://docs.iescdl.es/~josem/XML/05.web/01.html/03.head.html
+
+   su |URL| base es:
+
+   .. code-block:: none
+
+      http://docs.iescdl.es/~josem/XML/05.web/01.html/
+
+   y las rutas relativas deberían añadirla para obtener la ruta absoluta. Sin
+   embargo, este elemento permite definir una |URL| distinta. Por ejemplo::
+
+      <base href="http://docs.iescdl.es/~josem/XML/index.html">
+
+   En este caso, la |URL| base para los enlaces será:
+
+   .. code-block:: none
+
+      http://docs.iescdl.es/~josem/XML/
+
+   El elemento permite también definir el valor predeterminado para el atributo
+   *target* de |a|:
+
+   .. code-block:: html
+
+      <base target="_blank">
+
+.. index:: link
+.. _html-link:
+
+**link** (:devmoz:`link`)
+   Es el elemento que propiamente relaciona con documentos externos. Su uso es
+   variado, pero se basa fundamentalmente en dar valor a dos de sus atributos:
+   :code:`rel` y :code:`href`.
+  
+   * El uso más habitual es definir para la página hojas de estilos |CSS|
+     externas::
+
+      <link rel="stylesheet" href="estilos.css">
+
+     En este caso el navegador aplicará las reglas de estilo y, si añadimos otro
+     elemento más::
+
+      <link rel="stylesheet" href="estilos.css">
+      <link rel="stylesheet" href="otrosestilos.css">
+
+     aplicará ambas. Sin embargo, puede añadirse un atributo :code:`title` para
+     nombrar al estilo::
+
+      <link rel="stylesheet" href="estilos.css" title="clasico">
+      <link rel="stylesheet" href="otrosestilos.css" title="moderno">
+      <link rel="stylesheet" href="masestilos.css" title="clasico">
+      <link rel="stylesheet" href="siempre.css">
+
+     En este caso, tenemos:
+
+     * Un estilo sin nombre, que el navegador aplica siempre, se encuentra en
+       :file:`siempre.css`.
+     * Un estilo de nombre "clasico" que se encuentra en las hojas de estilos
+       :file:`estilos.css` y :file:`masestilos.css`.
+     * Otro estilo de nombre "moderno" que se encuentra en la hoja
+       :file:`otrosestilos.css`.
+
+     El navegador aplicará los estilos sin nombre y sólo uno de los nombrados
+     ("clasico" o "moderno" en el ejemplo). Cuál de los nombrados aplique el
+     navegador, no está definido por la especificación, a menos que se
+     especifique expresamente a través de un elemento |meta|.
+
+   * Otro uso posible es definir versiones alternativas del documento en otros
+     formatos o lenguas::
+
+      <link rel="alternate" href="03.head.pdf" type="application/pdf">
+      <link rel="alternate" href="03.head-fr.html" hreflang="fr">
+
+   * Puede servir para definir cuál será el `favicon
+     <https://es.wikipedia.org/wiki/Favicon>`_::
+
+      <link rel="icon" href="/favicon.ico">
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+
+   * Refiere a páginas que contienen información sobre determinados aspectos::
+
+      <link rel="author" href="http://twitter.com/SoyElAutor">
+      <link rel="licence" href="https://creativecommons.org/licenses/by/4.0/">
+
+   * Facilita a los buscadores la navegación por las páginas del sitio::
+
+      <link rel="index" href="../../genindex.html" title="Índice">
+      <link rel="search" href="../../search.html" title="Búsqueda">
+      <link rel="next" href="04.basico.html" title="Elementso básicos">
+      <link rel="prev" href="02.estructura.html" title="Generalidades">
+
+   .. seealso:: Para conocer los valores que se pueden asignar al atributo *rel*
+      consulte `la documentación al respecto en MDN
+      <https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types>`_.
+
+Etiquetas de metadatos
+======================
+Son aquellas que ofrecen metainformación sobre el contenido de la página.
+
+.. table::
+   :class: el-html
+
+   +--------------+----------------------------------------------------------+
+   | |meta|       | Declara metadatos                                        |
+   +--------------+----------------------------------------------------------+
+
+.. index:: meta
+.. _html-meta:
+
+**meta** (:devmoz:`meta`)
+   Los metadatos pueden definirse de muy diversos modos, aunque lo habitual
+   es que se distingan unos de otros a través del atributo `name
+   <https://html.spec.whatwg.org/#attr-meta-name>`_. Sin
+   embargo, hay una excepción a ello muy importante: la definición de la
+   codificación del documento:
+
+   .. _html-meta-charset:
+
+   .. code-block:: html
+
+      <meta charset="UTF-8">
+
+   que es recomendable incluir siempre, aunque no sea obligatorio, ya que la
+   codificación predeterminado para los documentos |HTML| es, precisamente
+   *UTF-8*. Otros metadatos que sí se definen con el atributo :code:`name` son:
+
+   Metadatos sobre el **documento**
+      * *Descripción* del documento::
+
+         <meta name="desc" content="Cabecera del documento HTML5">
+
+      * *Autor* del documento::
+
+         <meta name="author" content="Perico de los Palotes">
+
+      * *Generador* (aplicación que ha generado la página web)::
+
+         <meta name="generator" content="Sphinx">
+
+        *Software* con el que se ha creado la página.
+
+      * Comportamiento de la *ventana visible del navegador*::
+
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        Consulte `esta entrada
+        <http://lenguajecss.com/p/css/propiedades/responsive-design#el-viewport>`_
+        para más información.
+
+   Metadatos para **buscadores**
+      * *Palabras clave* del documento, separadas por comas::
+
+         <meta name="keywords" content="html, head, html5, desarrollo web" >
+
+        .. warning:: Esta etiqueta no suelen usarla los buscadores, ya que se
+           presta a que se rellene con multitud de términos simplemente con el
+           fin de posicionar mejor la página.
+
+      * Indica a los buscadores si debe *indexar la página*::
+
+         <meta name="robots" content="index, nofollow">
+
+        Se pueden indicar *(no)index*, *(no)follow*, *(no)snippet* (mostrar
+        fragmentos de la página en el buscador), *(no)archive* (guardar cacheo),
+        *(no)imageindex* (no indexar imágenes para los buscadores de imágenes),
+        *none* (equivale a *noindex* y *nofollow*).
+
+   Fuera de este atributo :code:`name`, hay otros metadatos:
+
+   Metadatos que equivalen a **campos** de cabecera |HTTP|:
+      Para definirlos se utiliza el atributo `http-equiv
+      <https://html.spec.whatwg.org/#attr-meta-http-equiv>`_. En este caso, el
+      valor de :code:`http-equiv` define el nombre del campo, y el valor del
+      atributo :code:`content`, el valor de ese mismo campo. Sin embargo, no
+      pueden definirse metadatos para todos los campos definidos en el protocolo
+      y, de hecho, la especificación sólo reconoce unos pocos, algunos de los
+      cuáles, no obstante, desaconseja. Algunos interesantes son:
+
+      * *Redirige* a otra web después de un tiempo::
+
+         <meta http-equiv="refresh" content="20; url=http://docs.iescdl.es">
+
+      * Define el *estilo* predeterminado::
+
+         <meta http-equiv="default-style" content="clasico">
+
+        En este caso, :code:`content` introduce el nombre del estilo que el
+        navegador debe considerar predeterminado y que debe coincidir con el
+        nombre que se le haya dado a través del atributo :code:`title` en los
+        elementos |link| o |style|.
+
+      * También, aunque sólo para la variante |HTML| y no la |XML|, es aún
+        permitido por la especificación `content-type
+        <https://html.spec.whatwg.org/#attr-meta-http-equiv-content-type>`_ para definir el
+        tipo de documento y la codificación::
+
+         <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+        .. warning:: Este método, que se usaba en la versión 4 de |HTML| y es
+           aún adminitido, es **mejor no usarlo**, ya que es incompatible con el
+           ya comentado :ref:`charset <html-meta-charset>`, que es modo moderno
+           de indicar la codificación. Se cita, simplemente, por razones
+           históricas.
+
+      .. caution:: Otros valores para :code:`http-equiv`, que llegaron a usarse,
+         se consideraron en algún momento **obsoletos** y es probable que ya no
+         tengan soporte en los navegadores::
+
+            <!-- Cacheo -->
+            <meta http-equiv="pragma" content="no-cache">
+            <meta http-equiv="cache-control" content="no-cache">
+
+            <!-- Caducidad del documento -->
+            <meta http-equiv="expires" content="Mon, 11 Feb 2019 19:50:14 GMT">
+
+   Metadatos para **redes sociales**
+      Algunas redes sociales como Facebook_ o Twitter_ son capaces de leer
+      ciertos elementos :code:`<meta>` con el objeto de crear automáticamente
+      enlaces a la página:
+
+      Facebook_
+         .. code-block:: html
+
+            <head prefix="og: http://ogp.me/ns#">
+               <!-- Open Graph Data -->
+               <meta property="og:type" content="article">
+               <meta property="og:title" content="Cabecera de HTML">
+               <meta property="og:image" content="files/head.jpg">
+               <meta property="og:description" content="Apuntes sobre la cabecera head de HTML">
+
+               <!-- Otras etiquetas -->
+            </head>
+
+         .. seealso:: Puede echar un vistazo a la `web del Open Graph Protocol <http://ogp.me/>`_ 
+
+      Twitter_
+         .. code-block:: html
+
+            <!-- Twitter Card Data -->
+            <meta name="twitter:card" content="summary_large_image">
+            <meta name="twitter:creator" content="@SoyYo">
+            <meta name="twitter:title" content="Cabecera de HTML">
+            <meta name="twitter:image:src" content="files/head.jpg">
+            <meta name="twitter:description" content="Apuntes sobre la cabecera head de HTML">
+
+      .. seealso:: En *DigitalOcean* tienen `pequeño tutorial al respecto
+         <https://www.digitalocean.com/community/tutorials/how-to-add-twitter-card-and-open-graph-social-metadata-to-your-webpage-with-html>`_.
+
+Ejercicios propuestos
+=====================
+
+.. include:: /99.ejercicios/60.html-head.rst
+   :start-line: 3
+   :end-line: 79
+
+.. Desarrolla algunos elementos bien:
+   https://html5andcss3.org/html5history.php
+
+.. |HTTP| replace:: :abbr:`HTTP (HyperText Transfer Protocol)`
+.. |link| replace::  :ref:`<link> <html-link>`
+.. |style| replace::  :ref:`<style> <html-style>`
+.. |meta| replace::  :ref:`<meta> <html-meta>`
+.. |title| replace::  :ref:`<title> <html-title>`
+.. |script| replace::  :ref:`<script> <html-script>`
+.. |base| replace::  :ref:`<base> <html-base>`
+.. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`
+
+.. |a| replace:: :ref:`<a> <html-a>`
+
+.. _Facebook: https://www.facebook.com
+.. _Twitter: https://twitter.com
+

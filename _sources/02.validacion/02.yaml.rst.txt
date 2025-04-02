@@ -1,0 +1,1131 @@
+.. _json-schema:
+
+|JSON| Schema
+*************
+La definición de gramáticas para documentos |JSON| no está tan madura como
+para documentos |XML|. Hay distintas alternativas, de las cuales la más
+extendida es `JSON Schema`_, que puede utilizarse tanto en la definición de
+documentos |JSON| como de documentos |YAML|.
+
+Dedicaremos el epígrafe a describir cómo se utiliza `JSON Schema`_.
+
+Preliminares
+============
+Antes de entrar a definir su sintaxis es conveniente saber algunos aspectos de
+`JSON Schema`_:
+
+* Define gramáticas de documentos |JSON| (o |YAML|) usando un formato |JSON|.
+* No tiene tanta madurez como la definición de gramáticas para |XML|.
+* Existen nueve versiones del borrador de su especificación: la siete primeras
+  nombradas mediante un ordinal (*Draft 1*, *Draft  2*, etc.) y las dos últimas
+  con la fecha en que se publicaron: *2019-09* y `2020-12
+  <https://json-schema.org/specification.html>`_. En consecuencia a fecha de
+  redacción de este documento el borrador más reciente es el *2020-12*.
+
+.. note:: Obviamente, si se pretende definir una gramática de |YAML| con *JSON
+   Schema*, sólo podremos escribir en el |YAML| aquello que puede escribirse en
+   un |JSON|. Por ejemplo, no podremos usar ``undefined`` o deberemos hacer que
+   todas las claves sean cadenas, a pesar de que |YAML| no tiene esas
+   limitaciones.
+
+.. seealso:: Como la especificación es muy árida, ilustraremos aquí los aspectos
+   más básicos, pero para mayor profundización puede echarse mano de la guía
+   oficial `Understanding JSON Schema
+   <https://json-schema.org/understanding-json-schema>`_.
+
+.. _json-schema-ejemplo:
+
+Ejemplo
+-------
+Tomemos la versión |JSON| del :ref:`ejemplo introductorio <json-ejemplo-inicial>`:
+
+.. dropdown:: Casilleros
+
+   .. literalinclude:: /01.intro/files/casilleros.json
+      :language: json
+
+Este |JSON| se ajusta al siguiente esquema:
+
+.. dropdown:: Gramática de Casilleros con JSON Schema
+
+   .. literalinclude:: files/casilleros.schema.json
+      :language: json
+
+Como puede verse, el documento es en sí un documento |JSON| y tiene un modo algo
+particular (y nada intuitivo) de expresar una ocurrencia de nodos, que se habría
+resuelto muy fácilmente con |DTD|:
+
+.. code-block:: none
+
+   (id, apelativo?, nombre, apellidos, ((departamento, casillero?)|sustituye))
+
+Validación
+----------
+Antes de empezar, no obstante, es conveniente saber cómo validar:
+
+.. rst-class:: simple
+
+* `Validador online <https://jschon.dev/>`_, que tiene el inconveniente de que
+  no pueden subirse archivos locales.
+* La orden :command:`jsonschema`, disponible a través del paquete
+  :deb:`python3-jsonschema` de las distribuciones basadas en *Debian*.
+
+  .. code:: bash
+
+     $ jsonschema -i casilleros.json casilleros.schema.json
+
+  La orden no mostrará salida (y devolverá un **0** al sistema) si el documento
+  respeta la gramática definida en el esquema. En principio, sólo es capaz de
+  validar documentos |JSON|, pero para validar |YAML| puede hacerse una
+  `conversión previa a JSON con yq
+  <https://mikefarah.gitbook.io/yq/v/v3.x/usage/convert>`_.
+
+* :ref:`Visual Studio Code <vscode>`, que sirve para validar tanto |JSON|
+  como |YAML|.
+
+Sintaxis básica
+===============
+Ya sabemos que un documento |JSON| está constituido por nodos, cada uno de los
+cuales tiene un tipo. Construir el esquema de un documento |JSON| consiste
+básicamente en definir los subesquemas que describen cada uno de sus nodos\ [#]_.
+
+No nos proponemos profundizar mucho, ya que tienen algo más de complejidad que
+los :ref:`DTD <dtd>`.
+
+Esquema del nodo raíz
+---------------------
+Antes de analizar cómo se define el esquema de cada nodo en general, es preciso
+indicar las particularidades del nodo raíz.  Un nodo raíz tiene este aspecto:
+
+.. code-block:: yaml
+
+   {
+      "$schema": "URN-del-esquema-JSON-que-se-usa",
+      "$id": "URL-del-documento",
+
+      # Descripción del nodo
+   }
+
+donde:
+
+.. _json-schema-$schema:
+
+``$schema``
+   Es la |URN| de versión de `JSON Schema`_ que hemos usado en el archivo. La de
+   la última (*2020-12*) es la que hemos expresado en el ejemplo.
+
+.. _json-schema-$id:
+
+``$id``
+   Es la |URL| donde se encuentra el archivo con el esquema que estamos
+   definiendo. Tiene utilidad cuando el esquema necesita :ref:`referir
+   subesquemas que se encuentran definidos en otros archivos <json-schema-ref>`. Si no
+   es el caso, puede dejarse sin definir esta propiedad o indicar, simplemente,
+   el nombre del archivo.
+   
+   .. note:: En nuestro ejemplo, no hemos usado una |URL| porque no estamos
+      escribiendo un esquema público para uso general.
+
+El resto de parejas clave/valor que pueden encontrarse en la raíz describen qué
+contiene el nodo raíz y, por tanto, serán las claves típicas de un
+:ref:`subesquema de nodo <subesq-nodo>`.  Eso sí, como el nodo raíz de un
+documento |JSON| sólo puede ser un mapa o una secuencia, estas claves típicas
+sólo podrán ser las típicas de un nodo secuencia (:ref:`array
+<json-schema-array>`) o de un nodo mapa (:ref:`map <json-schema-map>`). En el
+ejemplo, el nodo raíz es un mapa por lo que el esquema inicial podría quedar en
+principio como:
+
+.. code-block:: json
+
+   {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "casilleros.schema.json",
+      
+      "type": "object",
+      "title": "Casilleros",
+      "description": "Asignación de casilleros a profesores",
+      "properties": {
+
+      }
+   }
+
+ya que cualquier subesquema de nodo nos permite añadir un título y una
+descripción y el nodo mapa en particular nos pide al menos indicar cuáles son
+las propiedades (o sea, las parejas clave/valor) lícitas, para lo cual debemos
+usar la propiedad ``properties``.
+
+.. note:: Dado que en principio no es obligatorio definir todas las propiedades
+   del objeto, un esquema tan simple como éste nos validará el documento |JSON|.
+   Bien es cierto que sirve de poco, porque la única limitación que introduce es
+   que el nodo raíz es un mapa y no secuencia.
+
+.. _subesq-nodo:
+
+Subesquemas de nodo
+-------------------
+Cómo se describa un nodo, depende fundamentalmente de su tipo (no es lo mismo
+describir qué debe cumplir un nodo numérico que un nodo secuencia, por ejemplo).
+Ahora bien, hay propiedades comunes a todos los nodos.
+
+.. _json-schema-title:
+
+``title``
+   permite indicar un título para el nodo.
+
+.. _json-schema-description:
+
+``description``
+   permite describir qué contiene el nodo de una manera más prolija.
+
+.. _json-schema-type:
+
+``type``
+   indica el tipo de dato (:ref:`integer <json-numero>`, :ref:`number <json-numero>`,
+   :ref:`string <json-cadena>`, :ref:`null <json-nulo>`, :ref:`boolean
+   <json-booleano>`, :ref:`array <json-array>` u :ref:`object <json-objeto>`).
+
+.. _json-schema-default:
+
+``default``
+   permite indicar el valor predeterminado, en caso de que el nodo no aparezca.
+
+.. _json-schema-enum:
+
+``enum``
+   define una lista de valores válidos para el nodo, fuera de los cuales debe
+   producirse un error. Por ejemplo:
+
+   .. code-block:: json
+
+      {
+         "type": "integer",
+         "description": "Este es un entero con sólo unos pocos valores válidos",
+         "enum": [1, 32, 55] 
+      }
+
+   es un subesquema que indica que el nodo es un entero con sólo tres posibles
+   valores válidos.
+
+   .. note:: En realidad, si especificamos cuáles son todos los valores válidos,
+      ya no es necesario especificar el tipo, así que es mejor definir así:
+
+      .. code-block:: json
+
+         {
+            "description": "Este es un entero con sólo unos pocos valores válidos",
+            "enum": [1, 32, 55] 
+         }
+
+.. _json-schema-const:
+
+``const``
+   define el único valor válido para el nodo por lo que equivale a un ``enum``
+   cuya lista sólo contenga un valor.
+
+   .. code-block:: json
+
+      {
+         "description": "Este es un entero con sólo unos pocos valores válidos",
+         "const": 32
+      }
+
+Estas propiedades que acabamos de enumerar son aquellas que podemos encontrar
+sea cual sea el tipo del nodo. Ahora bien, ¿cuáles son específicas?
+
+.. _json-schema-integer:
+.. _json-schema-number:
+
+:jsonschema:`numeric` (que comprende :ref:`integer <json-numero>` y :ref:`number <json-numero>`)
+   Tiene asociadas propiedades que no requieren demasiada explicación:
+
+   .. _json-schema-minimum:
+   .. _json-schema-maximum:
+
+   ``minimum``/``maximum``
+      define el valor mínimo y el máximo respectivamente.
+
+   .. _json-schema-exclusiveminimum:
+   .. _json-schema-exclusivemaximum:
+
+   ``exclusiveMinimum``/``exclusiveMaximum``
+      Si es ``true``, excluye el valor mínimo y máximo respectivamente como
+      valores validos. En su ausencia, lo son.
+
+   .. _json-schema-multipleof:
+
+   ``multipleOf``
+      fuerza a que el valor sea múltiplo del indicado.
+
+.. _json-schema-string:
+
+:jsonschema:`string`
+   El tipo tiene también algunas propiedades particulares:
+
+   .. _json-schema-minlength:
+
+   ``minLength``
+      define el número mínimo de caracteres que puede contener la cadena.
+
+   .. _json-schema-maxlength:
+
+   ``maxLength``
+      define el número máximo de caracteres que puede contener la cadena.
+
+   .. _json-schema-pattern:
+
+   ``pattern``
+      define una `expresión regular
+      <https://json-schema.org/understanding-json-schema/reference/regular_expressions.html>`_
+      que se usará como patrón para comprobar la validez de la cadena. Las
+      expresiones regulares que define Javascript_ son prácticamente los
+      patrones |ERE| y |PCRE| que pueden consultarse `en estos apuntes
+      <https://sio2sio2.github.io/doc-linux/02.conbas/10.texto/01.regex.html#tipos-de-expresiones-regulares>`_.
+      Por ejemplo:
+
+      .. code-block:: json
+
+         {
+            "type": "string",
+            "description": "Este dato sólo podrá contener cadenas de tres caracteres",
+            "pattern": "^...$"
+         }
+
+   .. _json-schema-format:
+
+   ``format``
+      dispone que la cadena cumple con un formato predefinido
+      determinado. Por ejemplo:
+
+      .. code-block:: json
+
+         {
+            "type": "string",
+            "description": "El valor tendrá que ser una fecha con la forma AAAA-MM-DD",
+            "format": "date"
+         }
+      
+      .. seealso:: Los formatos predefinidos se encuentran `enumerados en la
+         especificación
+         <https://json-schema.org/draft/2020-12/json-schema-validation.html#name-defined-formats>`_.
+
+      .. caution:: La especificación nos advierte de este campo sólo tiene valor
+         informativo y no afecta a la validación, por lo que una cadena que no
+         cumpla con el formato no tiene por qué producir un error en la
+         validación.
+
+.. _json-schema-null:
+
+:jsonschema:`null`
+   Dado que sólo hay un valor posible, no tiene ninguna propiedad adicional.
+
+.. _json-schema-boolean:
+
+:jsonschema:`boolean`
+   Tampoco presenta ninguna propiedad adicional.
+
+.. _json-schema-array:
+
+:jsonschema:`array`
+   Al no ser la secuencia un valor escalar (a diferencia de todos los
+   anteriores) su definición es algo más compleja. Las propiedades más sencillas
+   de entender son:
+
+   .. _json-schema-minitems:
+   .. _json-schema-maxitems:
+
+   ``minItems``/``maxItems``
+      es la cantidad mínima (o máxima) de elementos que debe contener la secuencia.
+      Por lo tanto, nos sirve para restringir la longitud de la secuencia.
+
+   .. _json-schema-uniqueitems:
+
+   ``uniqueItems``
+      fuerza a que no haya dos elementos iguales en la secuencia. Por ejemplo:
+
+      .. code-block:: json
+
+         {
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 2
+         }
+
+      forzaría a que la secuencia contuviera al menos dos elementos y que todos
+      fueran distintos entre sí.
+
+   .. _json-schema-contains:
+
+   ``contains``
+      indica que la secuencia contiene al menos un elemento con las
+      características del que se indica. Por ejemplo, la secuencia:
+
+      .. code-block:: 
+
+         {
+            "type": "array",
+            "contains": {
+               "enum": [1, 34, 56]
+            }
+         }
+
+      puede tener todos los elementos que se quiera y del tipo que se quiera,
+      pero uno al menos debe ser **1**, **34** o **56**.
+
+   .. _json-schema-mincontains:
+   .. _json-schema-maxcontains:
+
+   ``minContains``/``maxContains``
+      funcionan en conjunción con :ref:`contains <json-schema-contains>` e
+      indican la cantidad mínima o máxima de elementos que deben cumplir con el
+      subesquema incluido en él.  Así, en el ejemplo anterior, no se especificó
+      ninguno de estas dos propiedades, por lo que con que haya un elemento que
+      cumpla la prescripción de :ref:`contains <json-schema-contains>` la
+      validación tiene éxito. En cambio, si hacemos:
+
+      .. code-block:: json
+
+         {
+            "type": "array",
+            "contains": {
+               "enum": [1, 34, 56]
+            },
+            "minContains": 4
+         }
+
+      tendrá que haber al menos cuatro elementos que cumplan con el esquema de
+      :ref:`contains <json-schema-contains>`.
+
+   .. _json-schema-items:
+
+   ``items``
+      indica el esquema que deben cumplir **todos** los elementos que
+      constituyen la secuencia. Por tanto, definida así:
+
+      .. code-block:: json
+
+         {
+            "type": "array",
+            "items": {
+               "type": "integer",
+            }
+         }
+
+      la secuencia sólo podrá contener enteros. Si ``items`` tiene el valor
+      ``false``, no podrá contener elementos:
+
+      .. code-block:: json
+
+         {
+            "type": "array",
+            "description": "Esto valida una secuencia vacía",
+            "items": false,
+         }
+
+   .. _json-schema-prefixitems:
+
+   ``prefixItems``
+      tiene utilidad cuando a diferencia del caso anterior, cada elemento de la
+      secuencia tiene un esquema diferente:
+
+      .. code-block:: json
+
+         {
+            "type": "array"
+            "prefixItems": [
+               {"type": "integer"},
+               {"type": "string"}
+            ]
+         }
+
+      En este ejemplo, el primer elemento debe ser un entero y el segundo una
+      cadena, aunque la validación también tendrá éxito cuando haya más de dos
+      elementos (y éstos no están sujetos a ninguna condición) o incluso cuando
+      haya menos. Todos estas secuencias son válidas:
+
+      .. code-block:: yaml
+
+         [5, "x"]
+         [6, "y", true. null]
+         [5]
+         []
+
+      .. note:: Nótese que podríamos  establecer que los elementos fueran
+         exactamente **2** añadiendo al esquema :ref:`minItems
+         <json-schema-minitems>` y :ref:`maxItems <json-schema-maxitems>`.
+
+      La razón del nombre de la propiedad (*prefixItems*) es  que esta propiedad
+      define el esquema de los elementos anteriores a los definidos por
+      :ref:`items <json-schema-items>`. Por eso, esta definición:
+
+      .. code-block:: json
+
+         {
+            "type": "array"
+            "prefixItems": [
+               {"type": "integer"},
+               {"type": "string"}
+            ],
+            "items": {
+               "const": 32
+            }
+         }
+
+      obligaría a que a partir del tercer elemento (si los hubiere, todos fueran
+      el número **32**).
+
+.. _json-schema-map:
+
+:jsonschema:`object`
+   El subesquema que describe un mapa es el que entraña más dificultad. La
+   propiedad fundamental es:
+
+   .. _json-schema-properties:
+
+   ``properties``
+      que permite describir las propiedades que pueden encontrarse en el objeto.
+      Por ejemplo, un mapa con este aspecto:
+
+      .. code-block:: json
+
+         {
+            "nombre": "Pedro Martínez Álvarez",
+            "edad": 32,
+            "casado": true,
+            "hijos": [
+               "Felipe",
+               "Sonsoles"
+            ]
+         }
+
+      podríamos definirlo así:
+
+      .. code-block:: json
+
+         {
+            "type": "object",
+            "properties": {
+               "nombre": { "type": "string"},
+               "edad": { "type": "integer", "exclusiveMinimum": 0},
+               "casado": { "type": "boolean", "default": false},
+               "hijos": {
+                  "type": "array",
+                  "items": { "type": "string" }
+               }
+            }
+         }
+
+      Como puede apreciarse la claves de ``properties`` definen las claves del
+      propio mapa a definir y los valores el subesquema que define el nodo
+      valor. De los nodos que representan las claves, no hay en principio mucho
+      que definir, puesto que deben ser cadenas, así que no hay esquema para
+      ellos.
+
+   La definición de ``properties``, sin embargo, no obliga a que las únicas
+   claves posibles sean las definidas ni a que aparezcan todas. Para ello,
+   podemos añadir otras propiedades:
+
+   .. _json-schema-required:
+
+   ``required``
+      Lista las propiedades que son obligatorias. Por ejemplo:
+
+      .. code-block:: json
+
+         {
+            "type": "object",
+            "properties": {
+               "nombre": { "type": "string"},
+               "edad": { "type": "integer", "exclusiveMinimum": 0},
+               "casado": { "type": "boolean", "default": false},
+               "hijos": {
+                  "type": "array",
+                  "items": { "type": "string" }
+               }
+            },
+            "required": ["nombre"]
+         }
+
+      Una definición obliga a que el mapa siempre presente la propiedad "*nombre*".
+
+   .. _json-schema-additionalproperties:
+
+   ``additionalProperties``
+      Define el esquema que deben cumplir las propiedades que no han sido
+      listadas en :ref:`properties <json-schema-properties>` (ni
+      :ref:`patternProperties <json-schema-patternproperties>`). Por ejemplo:
+
+      .. code-block:: json
+         :emphasize-lines: 13
+
+         {
+            "type": "object",
+            "properties": {
+               "nombre": { "type": "string"},
+               "edad": { "type": "integer", "exclusiveMinimum": 0},
+               "casado": { "type": "boolean", "default": false},
+               "hijos": {
+                  "type": "array",
+                  "items": { "type": "string" }
+               }
+            },
+            "required": ["nombre"],
+            "additionalProperties": {"type": "string"}
+         }
+
+      provocaría que los valores de las propiedades no definidas expresamente
+      sólo pudieran ser cadenas. Si el valor, en vez de un subesquema, es
+      ``false``, **no se permitirá ninguna propiedad adicional**.
+
+   .. _json-schema-patternproperties:
+
+   ``patternProperties``
+      Funciona como :ref:`properties  <json-schema-properties>`, pero en vez de
+      definir propiedades con un nombre concreto, define propiedades cuya clave
+      cumple con un patrón (una `expresión regular`_).  Por ejemplo, este
+      esquema:
+
+      .. code-block:: json
+         :emphasize-lines: 7-10
+
+         {
+            "type": "object",
+            "properties": {
+               "concreta":  {"type": "integer"},
+               "tambienconcreta": {"type": "number"}   
+            }
+            "patternProperties": {
+               "^s-": {"type": "string"},
+               "^b-": {"type": "boolean"}
+            },
+            "additionalProperties": false
+         }
+
+      provoca que las claves válidas sean "*concreta*", "*tambienconcreta*",
+      cualquier clave que empiece por "*s-*" y cualquier clave que empiece por
+      "*b-*"\ .
+
+   .. json-schema-unevaluatedproperties:
+
+   ``unevaluatedProperties``
+      no entraremos a tratarla extensamente, pero básicamente viene a
+      complementar a :ref:`additionalProperties
+      <json-schema-additionalproperties>`, la cual sólo es afectada por las
+      propiedades enumeradas dentro de :ref:`properties
+      <json-schema-properties>` o a las que se ajustan en los patrones incluidos
+      en :ref:`patternProperties <json-schema-patternproperties>`. En cambio,
+      ``unevaluatedProperties`` es capaz de comprobar propiedades que se
+      encuentran dentro de :ref:`esquemas condicionales
+      <json-schema-condicional>` o en :ref:`esquemas referenciados
+      <json-schema-ref>`. Por ejemplo:
+
+      .. code-block:: json
+
+         {
+            "type": "object",
+            "properties": {
+               "nombre": { "type": "string"}
+            },
+            "oneOf": [
+               {
+                  "properties": { "edad": { "type": "integer", "exclusiveMinimum": 0} },
+                  "not": { "required": ["nacimiento"] }
+               },
+               {
+                  "properties": { "nacimiento": { "type": "string", "format": "date"} },
+                  "not": { "required": ["edad"] }
+               }
+            ],
+            "required": ["nombre"],
+            "unevaluatedProperties": false
+         }
+
+      En este esquema, ``edad`` y ``nacimiento`` están definidos dentro de un
+      esquema condicional (con :ref:`oneOf <json-schema-oneof>`)\ [#]_, por lo
+      que si usaramos :ref:`additionalProperties
+      <json-schema-additionalProperties>`, el documento |JSON| sería inválido si
+      incluyéramos ``edad`` o ``nacimiento``.
+
+      .. seealso:: Puede echarle un ojo a la `exposición sobre la necesidad de
+         incluir unevaluatedProperties en la especificación
+         <https://github.com/json-schema-org/json-schema-spec/issues/556>`_.
+
+   Además de las anteriores, hay otras también limitantes:
+
+   .. _json-schema-minproperties:
+   .. _json-schema-maxproperties:
+
+   ``minProperties``/``maxProperties``
+      define la cantidad mínima o máxima de propiedades que puede presentar el
+      objeto.
+
+   .. _json-schema-dependentrequired:
+
+   ``dependentRequired``
+      define qué propiedades deben existir en el objeto para que otra pueda
+      aparecer. Por ejemplo, imaginemos que queremos que ``casado`` aparezca
+      sólo si ``edad`` se incluyó en el mapa (que en principio no es obligatoria).
+      En ese caso, habría que definir el esquema así:
+
+      .. code-block:: json
+
+         {
+            "type": "object",
+            "properties": {
+               "nombre": { "type": "string"},
+               "edad": { "type": "integer", "exclusiveMinimum": 0},
+               "casado": { "type": "boolean", "default": false},
+               "hijos": {
+                  "type": "array",
+                  "items": { "type": "string" }
+               }
+            },
+            "required": ["nombre"],
+            "additionalProperties": false,
+            "dependentRequired": {
+               "casado": [ "edad" ]
+            }
+         }
+
+      Es decir, cada una de las claves es la propiedad que presenta
+      dependencias y para cada una de ella, se listan las propiedades
+      requeridas. 
+
+   .. _json-schema-dependentschemas:
+
+   ``dependentSchemas``
+      permite definir con más precisión la dependencia, ya que no se limita a
+      comprobar la existencia, sino también a comprobar  si los valores se
+      ajustan a un determinado esquema. Por ejemplo, legalmente no es posible
+      casarse hasta los 16 años, de modo que tal vez no nos interese sólo
+      asegurarnos de que está expresada la edad, sino de que ésta es de al menos
+      16 años:
+
+      .. code-block:: json
+
+         {
+            "type": "object",
+            "properties": {
+               "nombre": { "type": "string"},
+               "edad": { "type": "integer", "exclusiveMinimum": 0},
+               "casado": { "type": "boolean", "default": false},
+               "hijos": {
+                  "type": "array",
+                  "items": { "type": "string" }
+               }
+            },
+            "required": ["nombre"],
+            "additionalProperties": false,
+            "dependentSchemas": {
+               "casado": {
+                  "properties": {
+                     "edad": { "minimum": 16 }
+                  },
+                  "required": ["edad"]
+               }
+            }
+         }
+
+.. _json-schema-ref:
+
+Referencias
+===========
+Por la naturaleza del formato |JSON|, la definición de los subesquemas de los
+nodos se va anidando a otros subesquemas en los que se han definido secuencias o
+mapas. Ilustrémoslo con un |JSON| muy sencillo reciclado de ejemplos anteriores:
+
+.. code-block:: json
+
+   [
+      {
+         "nombre": "Pedro Martínez Álvarez",
+         "edad": 32,
+         "casado": true
+      },
+      {
+         "nombre": "Marta Martínez Campoy",
+         "edad": 12
+      }
+   ]
+
+Su esquema, a estas alturas, no debería entrañar ninguna dificultad:
+
+.. code-block:: json
+
+   {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "gente.schema.json",
+
+      "type": "array",
+      "title": "Ejemplo de referencia",
+      "description": "Un porrón de personas dentro de una secuencia",
+      "items": {
+         "type": "object",
+         "properties": {
+            "nombre": {
+               "type": "string",
+               "description": "Nombre completo de la persona"
+            },
+            "edad": {
+               "type": "integer",
+               "minimum": 0
+            },
+            "casado": {
+               "type": "boolean",
+               "default": false
+            }
+         },
+         "additionalProperties": false,
+         "required": ["nombre"]
+      },
+      "uniqueItems": true
+   }
+
+Como puede apreciarse, el subesquema que describe a la persona está anidado
+dentro de la definición de la secuencia, concretamente, en su propiedad
+``properties``. Como el esquema completo es sencillo, no hay problemas. Sin
+embargo, en esquemas más complejos con varios niveles de anidación, podemos
+encontrar dificultades para seguir las definiciones. Por ese motivo, `JSON
+Schema`_ permite incluir referencias a un subesquema y escribir éste
+separadamente. También son útiles las referencias cuando un subesquema se repite
+en varias partes del documento.
+
+Así pues, partamos la  definición en dos archivos:
+
+.. code-block:: json
+
+   {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "persona.schema.json",
+
+      "type": "object",
+      "properties": {
+         "nombre": {
+            "type": "string",
+            "description": "Nombre completo de la persona"
+         },
+         "edad": {
+            "type": "integer",
+            "minimum": 0
+         },
+         "casado": {
+            "type": "boolean",
+            "default": false
+         }
+      },
+      "additionalProperties": false,
+      "required": ["nombre"]
+   }
+
+y :file:`persona.schema.json`:
+
+.. _json-schema-$ref:
+
+.. code-block:: json
+   :emphasize-lines: 9
+
+   {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "gente.schema.json",
+
+      "type": "array",
+      "title": "Ejemplo de referencia",
+      "description": "Un porrón de personas dentro de una secuencia",
+      "items": {
+         "$ref": "URL-donde-puedo-encontrar-persona.schema.json"   
+      },
+      "uniqueItems": true
+   }
+      
+Como vemos, :file:`gente.schema.json` sustituye el subesquema de la persona, por
+una simple referencia al archivo :file:`persona.schema.json` a través de la
+propiedad ``$ref``. La única dificultad es saber cómo funcionan estas |URL|\ s.
+
+Podemos usar una |URL| absoluta (p.e. `https://example.net/schemas/persona.schema.json
+<https://example.net/schemas/persona.schema.json>`_), en cuyo caso no habrá
+problemas, pero si queremos usar una |URL| relativa, es necesario profundizar
+más.
+
+El primer concepto  a introducir es el de :dfn:`URL de recuperación`, que es la
+|URL| de la que toma el validador el archivo con el esquema. Por ejemplo, si ha
+tomado el archivo de `https://example.net/schemas/gente.schema.json
+<https://example.net/schemas/gente.schema.json>`_, esa será la |URL| de
+recuperación. A partir de ella se define la :dfn:`URL base`, que es la |URL|
+descontada la parte correspondiente al archivo. En este caso, la |URL| base es
+`https://example.net/schemas/ <https://example.net/schemas/>`_. Sin embargo, la
+|URL|  de recuperación puede no estar definida y, por tanto, tampoco la |URL|
+base. Por ese motivo, existe la propiedad :ref:`$id <json-schema-$id>` en el nodo
+raíz. Si existe, es su valor el que se toma como referencia para calcular la
+|URL| base.
+
+Así pues, tendríamos varias opciones para escribir la |URL| de
+:file:`persona.schema.json` (suponiendo que estuviera ubicando en el mismo lugar
+que :file:`gente.schema.json`):
+
+.. rst-class:: simple
+
+* *Absoluta*: `https://example.net/schemas/persona.schema.json <https://example.net/schemas/persona.schema.json>`_.
+* *Absoluta* sin máquina ni protocolo: :file:`/schemas/persona.schema.json`.
+* *Relativa*: :file:`persona.schema.json`.
+
+  .. caution:: Con la orden :command:`jsonschema` sugerida, se debe anteponer
+     :file:`file:` cuando se usan rutas relativas y los archivos son locales.
+     Por tanto, :file:`file:persona.schema.json`.
+
+Además de todo lo ya referido, es posible hacer referencia a subesquemas
+contenidos dentro de un esquema mayor. Por ejemplo,
+:file:`persona.schema.json#/properties/nombre` referiría el subesquema:
+
+.. code-block::
+
+   {
+      "type": "string",
+      "description": "Nombre completo de la persona"
+   }
+
+.. _json-schema-$defs:
+
+Esto da pie a recuperar subesquemas de otros archivos, pero también subesquemas
+definidos en otra parte del archivo. Con este fin existe la propiedad
+
+``$defs``
+   Contiene subesquemas con nombre a los que puede hacerse referencia:
+
+   .. dropdown:: Esquema con referencia interna
+
+      .. code-block:: json
+
+         {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "gente.schema.json",
+
+            "type": "array",
+            "title": "Ejemplo de referencia",
+            "description": "Un porrón de personas dentro de una secuencia",
+            "items": { "$ref": "#/$defs/persona" },
+            "uniqueItems": true,
+
+            "$defs": {
+               "persona": {
+                  "type": "object",
+                  "properties": {
+                     "nombre": {
+                        "type": "string",
+                        "description": "Nombre completo de la persona"
+                     },
+                     "edad": {
+                        "type": "integer",
+                        "minimum": 0
+                     },
+                     "casado": {
+                        "type": "boolean",
+                        "default": false
+                     }
+                  },
+                  "additionalProperties": false,
+                  "required": ["nombre"]
+               }
+            }
+         }
+
+.. _json-schema-condicional:
+
+Esquemas condicionales
+======================
+Un :dfn:`esquema condicional` es aquel cuyas características dependen de que se
+cumplan uno o varios requisitos. Por ejemplo, que una propiedad sea obligatoria
+sólo si se presenta otra. Ya hemos visto dos propiedades que crean esquemas
+condicionales: :ref:`dependentRequired <json-schema-dependentrequired>` y
+:ref:`dependentSchemas <json-schema-dependentschemas>`. Hay, si embargo, otros
+modos de crearlos:
+
+.. _json-schema-if:
+
+`if/then/else <https://json-schema.org/understanding-json-schema/reference/conditionals.html#if-then-else>`_
+   Estas propiedades funcionan de forma semejante a como lo hace la estructura
+   condicional en los lenguajes de programación:
+
+   #. El valor ``if`` es un esquema que se evalúa.
+   #. Si resulta verdadero, se evalúa el esquema de ``then``, que debe
+      resultar verdadero.
+   #. Si resulta falso, se evalúa en caso de existir el esquema de ``else``, que
+      debe resultar verdadero.
+
+   Por ejemplo, el mismo caso que resolvimos con :ref:`dependentSchemas
+   <json-schema-dependentschemas>`, podemos resolverlo así:
+
+   .. code-block:: json
+      :emphasize-lines: 14-22
+
+      {
+         "type": "object",
+         "properties": {
+            "nombre": { "type": "string"},
+            "edad": { "type": "integer", "exclusiveMinimum": 0},
+            "casado": { "type": "boolean", "default": false},
+            "hijos": {
+               "type": "array",
+               "items": { "type": "string" }
+            }
+         },
+         "required": ["nombre"],
+         "additionalProperties": false,
+         "if": {
+            "required": ["casado"]
+         },
+         "then": {
+            "properties": {
+               "edad": {"minimum": 16}
+            },
+            "required": ["edad"]
+         }
+      }
+
+   .. note:: Puede probar a reescribir con estas propiedades los requisitos de
+      presencia de ``casillero``, ``departamento`` y ``sustituye`` del
+      :ref:`ejemplo inicial <json-schema-ejemplo>`.
+
+   .. _json-schema-oneof:
+
+`oneOf <https://json-schema.org/understanding-json-schema/reference/combining.html#allof>`_
+   El esquema es válido sólo si uno de los propuestos en la lista es válido. Por ejemplo:
+
+   .. code-block:: json
+
+      {
+         "oneOf": [
+            { "type": "integer", "maximum": 10 },
+            { "type": "boolean" }
+         ]
+      }
+
+   En este caso, el valor puede ser un entero hasta **10** o un valor lógico. La
+   alternativa no tiene por qué ser únicamente sobre tipos:
+
+   .. code-block:: json
+
+      {
+         "oneOf": [
+            { "type": "integer", "maximum": 10 },
+            { "const": false }
+         ]
+      }
+
+   Y ni siquiera tiene abarcar toda la definición del subesquema:
+
+   .. code-block:: json
+
+      {
+         "type": "integer",
+         "oneOf":  [
+            {"maximum": 10},
+            {"minimum": 20}
+         ]
+      }
+
+   En este caso, cumplirían con el esquema todos los enteros, excepto
+   aquellos comprendidos entre **11** y **19**.
+
+.. _json-schema-anyof:
+
+`anyOf <https://json-schema.org/understanding-json-schema/reference/combining.html#anyof>`_
+   La diferencia respecto a :ref:`oneOf <json-schema-oneof>` es que basta con
+   que se cumpla uno, pero no necesariamente uno. Por ejemplo:
+
+   .. code-block:: json
+
+      {
+         "type": "integer",
+         "anyOf":  [
+            {"maximum": 10, "minimum": 0},
+            {"multipleOf": 5}
+         ]
+      }
+
+   En este caso, serán válidos todos los enteros hasta **10** y cualquier múltiplo
+   de 5. Sin embargo, si hubiéramos construido la combinación con :ref:`oneOf
+   <json-schema-oneof>`, **0**, **5** y **10** incumplirían el esquema, porque
+   cumplen ambas condiciones y sólo puede cumplirse una.
+
+.. _json-schema-allof:
+
+`allOf <https://json-schema.org/understanding-json-schema/reference/combining.html#allof>`_
+   Como las dos anteriores, pero obliga a que se cumplan todos los esquemas
+   incluidos en la lista. Por tanto:
+
+   .. code-block:: json
+
+      {
+         "type": "integer",
+         "allOf":  [
+            {"maximum": 10, "minimum": 0},
+            {"multipleOf": 5}
+         ]
+      }
+
+   sólo sería válido para **0**, **5** y **10**.
+
+.. _json-schema-not:
+
+`not <https://json-schema.org/understanding-json-schema/reference/combining.html#not>`_
+   Invierte la validez del esquema, es decir, el valor será válido, si el
+   esquema negado es inválido para el valor. Por ejemplo:
+
+   .. code-block:: json
+
+      {
+         "not": {
+            "type": "integer"
+         }
+      }
+
+   Cualquier valor será válido siempre que no sea un entero.
+
+Ejercicios resueltos
+====================
+Tomando las versiones |JSON| (o |YAML|) de :ref:`los dos ejercicios ya resueltos
+<yaml-resueltos>`, podemos para el primero definir así su gramática:
+
+.. dropdown:: recetas.schema.json
+
+   .. literalinclude:: files/recetas.schema.json
+      :language: json
+
+El segundo podemos definirlo con otra gramática que :ref:`referencie la primera
+<json-schema-ref>`:
+
+.. dropdown:: restaurantes.schema.json
+
+   .. literalinclude:: files/restaurantes.schema.json
+      :language: json
+
+Ejercicios propuestos
+=====================
+Tome de la relación de :ref:`ejercicios propuestos para la primera unidad
+<ej-li>` las soluciones |JSON| (o |YAML|, ambas deberían ser equivalentes)  que
+diseñó a partir del :ref:`enunciado 5 <ej10-05>`, y escriba para ellas la
+gramática con |JSON| Schemas.
+
+Asegúrese para cada enunciado de validar ambas soluciones (|JSON| y |YAML|) con
+el mismo esquema |JSON|.
+
+.. note:: Quizás el profesor prefiera proporcionar sus propias soluciones para
+   evitar que el alumno defina la gramática de una solución incompleta o deficiente.
+
+.. rubric:: Notas al pie
+
+.. [#] Aunque los nodos clave (o sea, los nodos que constituyen las claves de un
+   objeto), es forzoso que sean cadenas, así que en principio no hay que
+   describir cómo son, sino expresar simplemente qué palabras contienen.
+
+.. [#] En realidad, podríamos haber definido ``edad`` y ``nacimiento`` en
+   ``properties`` y no necesitaríamos recurrir a ``unevaluatedProperties``.
+
+.. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`
+.. |DTD| replace:: :abbr:`DTD (Document Type Definition)`
+.. |URN| replace:: :abbr:`URN (Uniform Resource Name)`
+.. |ERE| replace:: :abbr:`ERE (Extended Regular Expression)`
+.. |PCRE| replace:: :abbr:`PCRE (Perl-Compatible Regular Expression)`
+
+.. _JSON Schema: https://json-schema.org/
+.. _jsonschema: https://github.com/python-jsonschema/jsonschema
+.. _Visual Studio Code: https://code.visualstudio.com

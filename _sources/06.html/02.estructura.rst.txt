@@ -1,0 +1,435 @@
+Generalidades
+*************
+Antes de comenzar a estudiar qué elementos constituyen |HTML|, sobre todo
+teniendo conocimiento previos sobre |XML| y |SGML| como es nuestro caso, es
+conveniente aclarar algunas de sus características.
+
+Etiquetas
+=========
+Sintaxis
+--------
+
+.. note:: Exponemos aquí la sintaxis |HTML| de |HTML|\ 5. También existe una
+   sintaxis |XML|, que :ref:`comentaremos más abajo <xhtml5>`.
+
+Las etiquetas |HTML| cumplen con bastante fidelidad con la forma que se espera
+que tengan en un dialecto |SGML| y que ya se han visto:
+
+* ``<etiqueta>`` para abrir y ``</etiqueta>`` para cerrar:
+
+  .. code-block:: html
+
+     <p>Esto es un párrafo.</p>
+
+* Las etiquetas tanto de apertura como de cierre pueden sobreentenderse y, en
+  consecuencia, no ser necesario escribirlas explícitamente.
+
+* En los elementos vacíos, porque no pueden tener contenido, es válido tanto no
+  cerrar como usar el modo de cierre abreviado típico de |XML|:
+
+  .. code-block:: html
+
+      <meta charset="UTF-8">  <!-- No cerramos -->
+      <meta name="autor" content="Perico de los Palotes"/>  <!-- Cierre abreviado -->
+
+* Los atributos se incluyen dentro de la etiqueta de apertura y los valores
+  pueden estar o no entrecomillados. Son válidos los atributos abreviados, esto
+  es, los que carecen de valor:
+
+  .. code-block:: html
+
+     <select id="seleccion" disabled name=lista>
+         <option value=1>Primero</option>
+         <option value="2">Segundo</option>
+     </select>
+
+* El lenguaje es indiferente al uso de mayúsculas o minúsculas.
+
+* Los comentarios se notan de forma idéntica a cómo se hacen en |XML|:
+
+  .. code-block:: html
+
+     <!-- Esto es un comentario en HTML5 -->
+
+* Existen entidades predefinidas. Puede consultar la `lista completa de
+  entidades <https://dev.w3.org/html5/html-author/charref>`_.
+
+.. _xhtml5:
+
+Sintaxis |XML|
+--------------
+Si se conoce la sintaxis |HTML| es bastante sencillo producir una sintaxis
+|XML|. Las reglas las podemos resumir en las siguientes:
+
+#. Para asegurarnos de que el navegador interprete la sintaxis como |XML| el
+   servidor web debe informarle de que el documento es *application/xhtml+xml*\
+   [#]_:
+
+   .. code-block:: yaml
+
+      Content-Type: application/xhtml+xml
+
+   En su defecto (por ejemplo, porque leamos un archivo del disco local),
+   podemos usar la extensión :file:`.xhtml`.
+   
+#. El documento resultante debe ser un |XML| bien formado, de lo contrario el
+   navegador generará un error y no generará ninguna visualización. Esto es muy
+   importante respecto a la sintaxis |HTML| en la que la especificación
+   prescribe al navegador que ante un fallo haga lo que buenamente pueda para
+   mostrar algo.
+
+#. La declaración |XML|, o sea:
+
+   .. code-block:: xml
+
+      <?xml version="1.0" encoding="UTF-8"?>
+
+   no es necesaria si la codificación usada es *UTF-8*.
+
+#. La declaración del tipo de documento no es obligatoria a diferencia de lo que
+   ocurre con la sintaxis |HTML|. Deberíamos prescindir de ella, a menos que
+   deseemos definir alguna entidad. Por ejemplo:
+
+   .. code-block:: dtd
+
+      <!DOCTYPE html [
+         <!ENTITY HyG "Historia y Geografia">
+      ]>
+
+#. Es obligatorio indicar el espacio de nombres dentro de la etiqueta
+   ``<html>``:
+
+   .. code-block:: html
+
+      <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+         <!-- Contenido del documento -->
+      </html>
+
+#. Los nombres de las etiquetas y atributos siempre se deben escribir en
+   minúsculas (la sintaxis |HTML| puede usar mayúsculas o minúsculas a
+   voluntad).
+
+#. Es obligatorio el uso expreso de los elementos ``<html>``, ``<head>`` y
+   ``<body>``. Por otro lado, no puede usarse ``<noscript>``.
+
+#. El elemento ``<body>`` no puede contener directamente un nodo texto.
+
+#. Al escribirse elementos vacíos, dado que la sintaxis |XML| exige que se
+   cierren:
+
+   - Si el elemento, por definición, es vacío, debe escribirse en su forma
+     abreviada. Por ejemplo:
+
+     .. code-block:: html
+
+        <meta charset="UTF-8" />
+        <br />
+
+   - En cambio, si el elemento, aunque está vacío, puede tener contenido, no
+     debe usarse la forma abreviada. Por ejemplo:
+
+     .. code-block:: html
+
+        <script src="scripts/jquery.js"></script>
+
+#. Los atributos booleanos que son aquellos que sólo pueden tomar dos valores uno
+   que representa el valor verdadero y otro que representa el falso, en |HTML|\ 5.
+   Se escriben normalmente sin valor, si representan el valor verdadero, y no se
+   incluyen si su sentido es el de falso:
+
+   .. code-block:: html
+
+      <option value="xxx" selected>Opción seleccionada por defecto
+
+   Sin embargo, en |XML| los atributos tienen forzosamente que tener valor por
+   lo que esta representación del valor para el valor verdadereo no es válida.
+   Las especificaciones, sin embargo, permiten también representar el valor
+   verdadero con una cadena vacía o con una cadena que contenga exactamente el
+   valor del atributo. Por tanto, en sintaxis |XML| lo anterior puede
+   escribirse así:
+
+   .. code-block:: html
+
+      <option value="xxx" selected="">Opción seleccionada por defecto</option>
+
+   o así:
+
+   .. code-block:: html
+
+      <option value="xxx" selected="selected">Opción seleccionada por defecto</option>
+
+#. Las únicas entidades definidas con nombre son :ref:`las cinco predefinidas
+   para el XML <xml-entity>`. Esto quiere decir que entidades usadas
+   habitualmente en |HTML| como :code:`&nbsp;` o :code:`&copy;` no puede usarse.
+   Ahora bien, pueden obtenerse todos esos caracteres recurriendo a su código
+   *unicode*: :code:`&#160;` en  vez :code:`&nbsp;`.
+
+.. caution:: Es más recomendable usar sintaxis |HTML|, a menos que tengamos una
+   buena razón para no hacerlo. Por ejemplo, que el código |HTML| no lo hayamos
+   escrito directamente, sino que sea el resultado de aplicar una transformación
+   |XSLT|.
+
+.. seealso:: `Este antiguo artículo en la web de IBM
+   <https://web.archive.org/web/20190117034119/https://www.ibm.com/developerworks/xml/library/x-think45/>`_
+   describe algunas particularidades de |XHTML|\ 5.
+
+.. _html-maquetacion:
+
+Modelo de cajas
+---------------
+Bajo este epígrafe no trataremos la maquetación de los documentos |HTML|, que
+requiere el uso de :ref:`CSS <css>`, sino que nos limitaremos a aclarar que ésta
+se basa en el llamado `modelo de cajas
+<https://developer.mozilla.org/es/docs/Learn/CSS/Introduction_to_CSS/Modelo_cajas>`_.
+Muy a grandes trazos, el modelo de cajas se basa en considerar que cualquier
+elemento representable de |HTML| constituye una caja rectangular, cuyas
+características podemos resumir en la siguiente ilustración:
+
+.. image:: files/caja.png
+
+Así, este párrafo:
+
+.. code-block:: html
+
+   <p>Lorem ipsum dolor sit amet, <span>consectetur adipiscing elit</span>,
+   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+   minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+   commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+   esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+   cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+   laborum.</p>
+
+tiene dos elementos que podemos representar así:
+
+.. image:: files/maquetacion.png
+
+El párrafo, la caja externa, está representado con el elemento :code:`p` y la
+caja interna con el elemento :code:`span`. Entre ambas cajas, sin embargo, hay
+una diferencia radical: la primera es la caja de un *elemento en bloque* y la
+segunda la caja de un *elemento en línea*.
+
+**Elemento en bloque**
+   Un :dfn:`elemento en bloque` es aquel que ocupa todo el espacio disponible
+   del elemento que lo contiene, lo que supone que ni a la izquierda ni a la
+   derecha del elemento pueda haber otros bloques. En consecuencia, el siguiente
+   elemento de bloque deberá colocarse debajo. Es el caso de :code:`p`.
+
+**Elemento en línea**
+   Un :dfn:`elemento en línea`, en cambio, ocupa sólo el espacio que ocupa su
+   contenido. Por tanto, podrá convivir con otros elementos en la línea que ocupa,
+   esto es, podrá haber elementos a su izquierda y derecha. Es el caso de
+   :code:`span`.
+
+   .. caution:: Los elementos en línea no reemplazados\ [#]_ no tienen margen
+      superior ni inferior.
+
+La mayoría de los elementos son de uno de estos dos tipos, por lo que nos basta
+con esto por ahora.
+
+.. rubric:: Pero, oiga, ¿esto no es marcado descriptivo?
+
+Dejamos establecido al comienzo del curso que :ref:`HTML es un lenguaje de
+marcado descriptivo <lm-habituales>`, los cuales se caracterizan por no informar
+de cómo deben ser procesados. Sin embargo, un navegador *web* es capaz de
+mostrar un documento |HTML|. Esto es debido a que las especificaciones dan unas
+directrices de cómo debe ser la visualización (por ejemplo, definen si el
+elemento es de bloque o de línea) y, en consecuencia, todos los navegadores
+incorporan un |CSS| interno que, basándose en estas directrices, dota de
+representación visual a los documentos |HTML|. El |CSS| del usuario, pues,
+supone rectificaciones o añadidos a este representación prístina.
+
+Atributos comunes
+-----------------
+Como es natural, los atributos que pueden acompañar a una etiqueta son diversas
+y cada cuál tendrá las suyas. Sin embargo, hay un conjunto de atributos que son
+comunes a todos los elementos. Los más significativos son:
+
+**id**
+   Identifica de manera inequívoca a un elemento del documento. Básicamente, lo
+   que definiríamos como atributo de tipo *ID* si pudiéramos utilizar |DTD| para
+   definir la gramática.
+
+**class**
+   Establece la clase a la que pertenece un elemento. A diferencia del
+   anterior atributo, cuyo valor debe ser único, varios elementos pueden
+   pertenecer a una misma clase. Por ejemplo:
+
+   .. code-block:: html
+
+      <p>Este es un párrafo normal...</p>
+
+      <p class="advertencia">Este es un párrafo de atención al lector. Es
+      posible que deseemos que acabe destacado, por ejemplo, usando un fondo de
+      color rojo.</p>
+
+      <p>Esto es otro párrafo normal...</p>
+
+   Un mismo elemento puede pertenecer a varias clases a la vez. Basta con
+   separar los nombres de las clases con un espacio:
+
+   .. code-block:: html
+
+      <p class="advertencia desplegable">Debe tener en cuenta... </p>
+
+**lang**
+   Idioma en el que está escrito el contenido del elemento, en la notación de
+   dos letras propuesta en el la `norma ISO 639-1
+   <https://es.wikipedia.org/wiki/ISO_639-1>`_. 
+
+**title**
+   Define un mensaje que aparecera superpuesto al colocarse el ratón encima del
+   elemento.
+
+**style**
+   Define un aspecto visual mediante |CSS| aplicable solamente al elemento que
+   califica:
+
+   .. code-block:: html
+
+      <p style="color: red">Este párrafo se escribirá con tinta roja</p>
+
+   Como regla general, no suele ser muy buena idea, ya que el principio de
+   diseño es separar estructura de presentación, por lo que es más recomentable
+   definir las reglas |CSS| en archivo aparte.
+
+**data-\***
+   Son atributos que comienzan siempre con :code:`data-` y permiten definir
+   metainformación para usar luego de algún modo (por ejemplo, con
+   *Javascript*). Lo que acompañe a :code:`data-` es absolutamente arbitrario,
+   por lo que esta es una de las razones por la que es imposible utilizar |DTD|
+   para definir la gramática.
+
+**role**
+   Hay toda una serie de atributos |ARIA| pensados para facilitar la
+   accesibilidad del documento |HTML| a aquellos usuarios que no pueden verlos
+   por estar ciegos. Esto es debido a que, aunque |HTML|\ 5 ha evolucionado
+   desde |HTML|\ 4 incorporando muchos elementos semánticos, no ha podido cubrir
+   todos los casos. De entre los atributos definidos por |ARIA|, citaremos
+   `role <https://www.w3.org/TR/wai-aria-1.2/#role_definitions>`_ que especifica
+   qué significado tiene el elemento dentro del texto. Por ejemplo, si ante la
+   acción de un usuario, queremos añadir una nota de advertencia, para que tome
+   una decisión con urgencia, podríamos hacer:
+
+   .. code-block:: html
+
+      <p class="alert">¡Atención! Perderá todo si continúa.</p>
+
+   y añadir un estilo chillón para atraer la atención del lector. Sin embargo,
+   alguien ciego no podrá apreciar esos colores. Para mitigarlo podemos hacer:
+
+   .. code-block:: html
+
+      <p class="alert" role="alert">¡Atención! Perderá todo si continúa.</p>
+
+   .. caution:: La lista de roles válidos ya está predefinida por la
+      especificación (se puede consultar en el mensaje anterior). Volveremos
+      sobre este atributo al tratar la :ref:`estructura semántica <html-struct>`.
+
+   .. TODO:: Hablar de role-label.
+
+.. seealso:: Una relación completa y descriptiva de todos ellos, puede
+   encontrarla en `este este artículo de lenguajehtml.com
+   <https://lenguajehtml.com/p/html/introduccion/atributos-comunes-html>`_.
+
+Anatomía
+========
+Un documento |HTML| es esencialmente de este modo:
+
+.. code-block:: html
+
+   <!DOCTYPE html>
+   <html lang="es">
+      <head> <!-- Cabecera del documento -->
+         <title>Título que se observa en la barra de título de la ventana del navegador</title>
+         <meta charset="UTF-8">
+         <!-- Otra información de cabecera apropiada:
+            - CSS.
+            - scripts.
+         -->
+      </head>
+
+      <body> <!-- Contenido de la página -->
+         <!-- De saber rellenar esto trata precisamente la lección -->
+      </body>
+   </html>
+
+esto es:
+
+* La **declaración de tipo de documento**, que es siempre la misma y preceptiva.
+* Una **elemento raíz** :code:`<html>`, dentro del que se incluirá todo el contenido
+  del archivo. Es recomendable que incluya un atributo *lang* que declare la
+  lengua en la que se ha escrito el documento.
+* Un **elemento de cabecera** llamado :code:`<head>` dentro del que se incluyen 
+  declaraciones que no forman parte del contenido de la página web, pero que
+  informan acerca del mismo:
+
+  - Un elemento :code:`title` obligatorio.
+  - Elementos :code:`meta` que ya trataremos más adelante. Es recomendable, al
+    menos, que aparezca el indicado arriba a fin de declarar cuál es la
+    codificación de caracteres del archivo.
+  - Otros elemetos que trataremos más adelante que, fundamentalmente, declaran
+    el |CSS| (esto es, cuál será el aspecto de la página) o *scripts* de
+    *Javascript*.
+
+* Un **elemento de cuerpo** llamado :code:`<body>`` que incluye los contenidos
+  de la página web y, adicionalmente, más *scripts*.
+
+En estos breves apuntes trabajaremos sobre esta estructura, aunque la sintaxis
+|HTML| hereda la versatilidad del |SGML| y es posible no declarar ciertas
+etiquetas cuya existencia se sobreentiende. Por ejemplo, esto también es un
+documento |HTML|\ 5 válido:
+
+.. code-block:: html
+
+   <!DOCTYPE html>
+   <html lang="es">
+      <title>Título de la ventana</title>
+      <meta charset="UTF-8">
+
+      <h1>Título en la página</h1> <!-- Ya hemos entrado en body -->
+      <!-- Resto de contenido de la página -->
+   </html>
+
+.. note:: En |HTML|\ 5 cerrar las etiquetas vacías con :code:`/>` no es un error
+   incluso al usar la sintaxis |HTML|. Por tanto, es válido:
+
+   .. code-block:: html
+ 
+      <meta charset="UTF-8"/>
+
+Ejemplo
+=======
+Un |HTML| válido muy simple es:
+
+.. literalinclude:: files/ejemplo.html
+   :language: html
+
+cuya versión |XML| es la siguiente:
+
+.. literalinclude:: files/ejemplo.xhtml
+   :language: html
+
+.. rubric:: Notas al pie
+
+.. [#] La cabecera ``Content-Type:`` también puede contener la codificación:
+
+   .. code-block:: yaml
+
+      Content-Type: application/xhtml+xml; charset=UTF-8
+
+   aunque la codificación también la puede expresar el |HTML| con un elemento
+   ``<meta>`` y es lo recomendable. En el caso de que se incluyan a través de la
+   cabecera y del elemento, el navegador dará preferencia a la información de la
+   cabecera.
+
+.. [#] Un elemento reemplazado es aquel que se sustituye por algo externo. Por
+   ejemplo, una :ref:`imagen <html-img>` es un elemento reemplazado. Un
+   :ref:`video <html-video>` o un :ref:`audio <html-audio>` también lo son. Un
+   :ref:`enlace <html-a>`, en cambio, no lo es.
+
+.. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`
+.. |XHTML| replace:: :abbr:`XHTML (eXtensible HyperText Markup Language)`
+.. |SGML| replace:: :abbr:`SGML (Standard Generalized Markup Language)`
+.. |DTD| replace:: :abbr:`DTD (Document Type Definition)`
+.. |XSLT| replace:: :abbr:`XSLT (eXtensible Stylesheet Language Transformations)`
+.. |ARIA| replace:: :abbr:`ARIA (Accessible Rich Internet Applications)`

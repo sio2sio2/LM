@@ -1,0 +1,200 @@
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Xidel &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+    <link rel="stylesheet" href="../../_static/general.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/particular.css" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <script src="../../_static/design-tabs.js"></script>
+
+    
+    
+     
+        <script src="../../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="../../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="../../_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="Visual Studio Code" href="10-vscode.html" />
+    <link rel="prev" title="XMLStarlet" href="01-xmlstarlet.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="10-vscode.html" title="Visual Studio Code"
+             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="01-xmlstarlet.html" title="XMLStarlet"
+             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="../99.tools.html" accesskey="U">Herramientas</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Xidel</a></li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="xidel">
+<span id="id1"></span><h1>Xidel<a class="headerlink" href="#xidel" title="Enlace permanente a este encabezado">¶</a></h1>
+<p>La principal ventaja de usarlo frente a <a class="reference internal" href="01-xmlstarlet.html#xmlstarlet"><span class="std std-ref">xmlstarlet</span></a> es que
+podremos probar expresiones <em>XPath</em> 3.1.</p>
+<p>Hay dos modos distintos de usarlo:</p>
+<ul>
+<li><p>Si el resultado es texto:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>xidel<span class="w"> </span>-s<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;//profesor[1]/@id&#39;</span><span class="w"> </span>casilleros.xml
+<span class="go">p1</span>
+</pre></div>
+</div>
+<p>donde «<code class="docutils literal notranslate"><span class="pre">-s</span></code>» evita mensajes de información innecesarios, y «<code class="docutils literal notranslate"><span class="pre">-e</span></code>» introduce
+la expresión <em>XPath</em>.</p>
+</li>
+<li><p>Si el resultado es un nodo o un conjunto de nodos, es necesario añadir
+<code class="docutils literal notranslate"><span class="pre">--printed-node-format=xml</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>xidel<span class="w"> </span>--printed-node-format<span class="o">=</span>xml<span class="w"> </span>-s<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;//profesor/apelativo&#39;</span><span class="w"> </span>casilleros.xml
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>El programa no permite validar el documento, por lo que cabría la
+posibilidad de preguntarse si actúa o no en modo de compatibilidad con
+<em>XPath</em> 1.0. No existe ninguna opción al respecto, pero  por el modo en el
+que actúa, si no se especifica, parece actuar en modo semejante al de
+compatibilidad y, si se añade la opción <code class="docutils literal notranslate"><span class="pre">--strict-type-checking</span></code>, cambia.</p>
+</div>
+<p>En principio, el programa es capaz de distinguir expresiones <em>XPath</em> de
+expresiones <em>XQuery</em>, pero si hay algún problema de interpretación puede usarse
+la opción <code class="docutils literal notranslate"><span class="pre">--xquery</span></code> en sustitución de <code class="docutils literal notranslate"><span class="pre">-e</span></code>.</p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../../index.html" title="index">
+          <img class="logo" src="../../_static/logo.png" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="01-xmlstarlet.html"
+                          title="Previous page">&larr; XMLStarlet</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="10-vscode.html"
+                          title="Next page">&rarr; Visual Studio Code</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/98.apendices/99.tools/05-xidel.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="10-vscode.html" title="Visual Studio Code"
+             >siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="01-xmlstarlet.html" title="XMLStarlet"
+             >anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="../99.tools.html" >Herramientas</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Xidel</a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
+      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

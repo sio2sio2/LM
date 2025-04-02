@@ -1,0 +1,58 @@
+{
+   "centro":  "IES Pepe Botella",
+   "profesores": [
+      {
+         "id": 1,
+         "apelativo": "Pepe",
+         "nombre": "José",
+         "apellidos": "Suárez Lantilla",
+         "departamento": "Inglés"
+      },
+      {
+         "id": 13,
+         "apelativo": "Cristina",
+         "nombre": "María  Cristina",
+         "apellidos": "Prieto Monagas",
+         "departamento": "Biología y Geología"
+      },
+      {
+         "id": 15,
+         "apelativo": "Manolo",
+         "nombre": "Manuel",
+         "apellidos": "Páez Robledo",
+         "departamento": "Matemáticas"
+
+      },
+      {
+         "id": 17,
+         "casillero": [17, 43],
+         "apelativo": "Lucía",
+         "nombre": "Lucía",
+         "apellidos": "Gálvez Ruiz",
+         "departamento": "Inglés"
+      },
+      {
+         "id": 28,
+         "casillero": [52],
+         "apelativo": "Migue",
+         "nombre": "Miguel Ángel",
+         "apellidos": "Campos Sanchez",
+         "departamento": "Historia"
+      },
+      {
+         "id": 81,
+         "casillero": [],
+         "apelativo": "Vero",
+         "nombre": "Verónica",
+         "apellidos": "Martín Díaz",
+         "departamento": "Biología"
+      },
+      {
+         "id": 86,
+         "sustituye": 15,
+         "apelativo": "Roberto",
+         "nombre": "Roberto",
+         "apellidos": "Mínguez Torralbo"
+      }
+   ]
+}

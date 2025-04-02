@@ -1,0 +1,385 @@
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>5.1. Bases relacionales &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+    <link rel="stylesheet" href="../_static/general.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+
+    
+    
+     
+        <script src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="5.2. Bases nativas" href="02.nativas.html" />
+    <link rel="prev" title="5. Almacenamiento" href="index.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="02.nativas.html" title="5.2. Bases nativas"
+             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="index.html" title="5. Almacenamiento"
+             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">5. </span>Almacenamiento</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">5.1. </span>Bases relacionales</a></li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="bases-relacionales">
+<h1><span class="section-number">5.1. </span>Bases relacionales<a class="headerlink" href="#bases-relacionales" title="Enlace permanente a este encabezado">¶</a></h1>
+<p>El moderno estándar <abbr title="Structured Query Language">SQL</abbr> tiene soporte para incluir dentro de las bases
+relacionales:</p>
+<ul class="simple">
+<li><p><abbr title="eXtensible  Markup Language">XML</abbr> desde <a class="reference external" href="https://en.wikipedia.org/wiki/SQL:2003">SQL:2003</a>, que se conoce como <abbr title="Structured Query Language">SQL</abbr>/<abbr title="eXtensible  Markup Language">XML</abbr> y permite tanto
+almacenar información en <abbr title="eXtensible  Markup Language">XML</abbr> como generar salida <abbr title="eXtensible  Markup Language">XML</abbr>.</p></li>
+<li><p><abbr title="JavaScript Object Notation">JSON</abbr> desde <a class="reference external" href="https://en.wikipedia.org/wiki/SQL:2016">SQL:2016</a> y <a class="reference external" href="https://en.wikipedia.org/wiki/SQL:2023">SQL:2023</a>. En este caso, el soporte es más reciente y limitado al
+almacenamiento de información en <abbr title="JavaScript Object Notation">JSON</abbr>  (véanse <a class="reference external" href="https://peter.eisentraut.org/blog/2023/04/04/sql-2023-is-finished-here-is-whats-new#new-json-features">las funcionalidades del
+estándar al respecto</a>) gracias
+a la definición de un tipo de dato <abbr title="JavaScript Object Notation">JSON</abbr> y a la existencia de funciones que
+permiten extraer valores concretos de este dato. No hay, sin embargo, conversión de
+salida para obtener una salida <abbr title="JavaScript Object Notation">JSON</abbr> de datos almacenados en forma
+tradicional, aunque algunos <abbr title="Sistema Gestor de Bases de Datos">SGBD</abbr> sí lo permiten como <a class="reference external" href="https://www.postgresql.org/">PostgreSQL</a> con la
+<a class="reference external" href="https://www.commandprompt.com/education/postgresql-json_agg-function-by-practical-examples/">función JSON_AGG</a>.</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>La norma de <abbr title="Structured Query Language">SQL</abbr> (llamada <abbr title="American National Standards Institute">ANSI</abbr> <abbr title="Structured Query Language">SQL</abbr> por ser esta institución
+quien publicó la primera versión) ha ido evolucionando con el tiempo  y, en
+consecuencia, se han publicado <a class="reference external" href="https://en.wikipedia.org/wiki/SQL#Standardization_history">sucesivas versiones</a>. Hasta su
+segunda versión (<a class="reference external" href="https://en.wikipedia.org/wiki/SQL-92">SQL-92</a>) se ceñía al modelo propiamente relacional, pero a
+partir de su tercera versión (<a class="reference external" href="https://en.wikipedia.org/wiki/SQL:1999">SQL:1999</a>), empezó a incluir aspectos
+adicionales como es el caso de estos dos que nos ocupan. La interesante
+página <a class="reference external" href="https://modern-sql.com">modern SQL</a> explica muchas de estas
+adiciones y sirve para investigar la evolución histórica del lenguaje.</p>
+</div>
+<section id="xml">
+<h2><span class="section-number">5.1.1. </span><abbr title="eXtensible  Markup Language">XML</abbr><a class="headerlink" href="#xml" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>El soporte para <abbr title="eXtensible  Markup Language">XML</abbr> es bastante irregular entre los distintos <abbr title="Sistema Gestor de Bases de Datos">SGBD</abbr> y mejor
+en aquellos comerciales (<a class="reference external" href="https://en.wikipedia.org/wiki/Microsoft_SQL_Server">SQL server</a>, <a class="reference external" href="https://es.wikipedia.org/wiki/Oracle_Database">Oracle Database</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/IBM_Db2">DB2</a>) que en los
+libres (<a class="reference external" href="https://en.wikipedia.org/wiki/MariaDB">MariaDB</a>, <a class="reference external" href="https://www.postgresql.org/">PostgreSQL</a> o <a class="reference external" href="https://sqlite.org">SQLite</a>, este último sin soporte en absoluto).
+No entraremos en mucho detalle, pero apuntaremos algunas de sus posibilidades:</p>
+<ul class="simple">
+<li><p>Existe un tipo de datos específico para almacenar <abbr title="eXtensible  Markup Language">XML</abbr>.</p></li>
+<li><p>Permite la generación de una salida <abbr title="eXtensible  Markup Language">XML</abbr> a partir de datos almacenados en
+forma relacional a través de distintas funciones (<code class="docutils literal notranslate"><span class="pre">XMLELEMENT</span></code>, <code class="docutils literal notranslate"><span class="pre">XMLROOT</span></code>,
+etc.).</p></li>
+<li><p>Permite la generación de una salida <abbr title="eXtensible  Markup Language">XML</abbr> a partir de datos almacenados en
+forma <abbr title="eXtensible  Markup Language">XML</abbr> (a través del tipo <abbr title="eXtensible  Markup Language">XML</abbr>) gracias a la función <code class="docutils literal notranslate"><span class="pre">XMLQUERY</span></code>, que
+utiliza <a class="reference internal" href="../04.transformacion/index.html#xquery"><span class="std std-ref">XQuery</span></a> para generar la estructura <abbr title="eXtensible  Markup Language">XML</abbr>.</p></li>
+<li><p>Permite la extracción de valores de un dato de tipo <abbr title="eXtensible  Markup Language">XML</abbr> mediante la función
+<code class="docutils literal notranslate"><span class="pre">EXTRACTVALUE</span></code><a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. que utiliza para referirlos <a class="reference internal" href="../03.consulta/01.xpath.html#xpath"><span class="std std-ref">XPath</span></a>.</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Para profundizar en la inclusión de <abbr title="eXtensible  Markup Language">XML</abbr> dentro de los <abbr title="Sistema Gestor de Bases de Datos">SGBD</abbr>
+relacionales con ejemplos ilustrativos de uso puede consultar:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.oratechinfo.co.uk/sqlxml.html">SQL/XML and XPath</a>.</p></li>
+<li><p><a class="reference external" href="https://users.informatik.uni-halle.de/~brass/xml19/ca_sql.pdf">XML Support in Modern SQL Databases</a> (PDF).</p></li>
+</ul>
+</div>
+</section>
+<section id="json">
+<h2><span class="section-number">5.1.2. </span><abbr title="JavaScript Object Notation">JSON</abbr><a class="headerlink" href="#json" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>El soporte para <abbr title="JavaScript Object Notation">JSON</abbr> dentro de <abbr title="Structured Query Language">SQL</abbr> se ha desarrollado hasta ahora en dos
+estándares:</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://en.wikipedia.org/wiki/SQL:2016">SQL:2016</a></dt><dd><p>que definió cómo acceder a valores dentro de un documento <abbr title="JavaScript Object Notation">JSON</abbr> o cómo
+comprobar si una cadena representa un documento <abbr title="JavaScript Object Notation">JSON</abbr> válido. No define, sin
+embargo, un tipo específico para <abbr title="JavaScript Object Notation">JSON</abbr> por lo que los documentos <abbr title="JavaScript Object Notation">JSON</abbr> son
+representados, en realidad, como cadenas de texto.</p>
+</dd>
+<dt><a class="reference external" href="https://en.wikipedia.org/wiki/SQL:2023">SQL:2023</a></dt><dd><p>que amplía el soporte añadiendo un tipo específico.</p>
+</dd>
+</dl>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>A diferencia de lo que ocurre con <abbr title="eXtensible  Markup Language">XML</abbr>, el último estándar no
+define (al menos, aún) cómo generar una salida en formato <abbr title="JavaScript Object Notation">JSON</abbr>, aunque hay
+<abbr title="Sistema Gestor de Bases de Datos">SGBD</abbr> que ya lo hacen.</p>
+</div>
+<p>Los principales <abbr title="Sistema Gestor de Bases de Datos">SGBD</abbr> relacionales permiten la manipulación de documentos
+<abbr title="JavaScript Object Notation">JSON</abbr> en mayor o menor medida. La utilidad de ello se ve cuando se necesita
+definir una tabla con muchos campos, algunos de los cuales no tienen porqué
+tener relevancia o valor en todos los registros. Recordemos que el modelo
+relacional se caracteriza porque todos los registros tienen los mismos campos a
+diferencia de un documento <abbr title="JavaScript Object Notation">JSON</abbr> en donde podemos tener una secuencia de
+objetos, cada uno de los cuales no presenta exactamente las mismas claves. Como
+consecuencia una solución <abbr title="Structured Query Language">SQL</abbr> provocaría que necesitáramos crear una tabla con
+muchísimas columnas (campos), aunque muchos de ellos para muchos registros
+estarían vacíos.</p>
+<p>Para ilustrarlo, supongamos que tenemos una tabla en la que almacenamos los
+datos de nuestros proveedores y sus datos de contacto:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="ss">&quot;Proveedor&quot;</span><span class="w"> </span><span class="p">(</span>
+<span class="w">   </span><span class="ss">&quot;id&quot;</span><span class="w">                </span><span class="nb">INTEGER</span><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">   </span><span class="ss">&quot;nombre&quot;</span><span class="w">            </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">   </span><span class="cm">/* Todos estos datos son de contacto y algunos estarán vacíos */</span>
+<span class="w">   </span><span class="ss">&quot;tlfo&quot;</span><span class="w">              </span><span class="nb">INTEGER</span><span class="p">,</span>
+<span class="w">   </span><span class="ss">&quot;fax&quot;</span><span class="w">               </span><span class="nb">INTEGER</span><span class="p">,</span>
+<span class="w">   </span><span class="ss">&quot;web&quot;</span><span class="w">               </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span>
+<span class="w">   </span><span class="ss">&quot;mail&quot;</span><span class="w">              </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+<span class="w">   </span><span class="cm">/* En realidad los tipos son más de los aquí expresados */</span>
+<span class="w">   </span><span class="ss">&quot;dom_tipo_via&quot;</span><span class="w">      </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="w"> </span><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;dom_tipo_via&quot;</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;calle&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;avenida&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;plaza&#39;</span><span class="p">)),</span>
+<span class="w">   </span><span class="ss">&quot;dom_nombre_via&quot;</span><span class="w">    </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+<span class="w">   </span><span class="ss">&quot;dom_numero&quot;</span><span class="w">        </span><span class="nb">INTEGER</span><span class="p">,</span>
+<span class="w">   </span><span class="ss">&quot;dom_subnumero&quot;</span><span class="w">     </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">   </span><span class="ss">&quot;dom_puerta&quot;</span><span class="w">        </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+<span class="w">   </span><span class="ss">&quot;dom_bloque&quot;</span><span class="w">        </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+<span class="w">   </span><span class="ss">&quot;dom_escalera&quot;</span><span class="w">      </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+<span class="w">   </span><span class="ss">&quot;dom_piso&quot;</span><span class="w">          </span><span class="nb">INTEGER</span><span class="p">,</span>
+<span class="w">   </span><span class="ss">&quot;dom_letra&quot;</span><span class="w">         </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">   </span><span class="ss">&quot;dom_cp&quot;</span><span class="w">            </span><span class="nb">INTEGER</span><span class="p">,</span>
+<span class="w">   </span><span class="ss">&quot;dom_localidad&quot;</span><span class="w">     </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">75</span><span class="p">),</span>
+<span class="w">   </span><span class="ss">&quot;dom_municipio&quot;</span><span class="w">     </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">75</span><span class="p">),</span>
+<span class="w">   </span><span class="ss">&quot;dom_provincia&quot;</span><span class="w">     </span><span class="nb">INTEGER</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>La tabla tiene muchísimas columnas, porque la casuística de los datos de
+contacto es muy grande, queremos cubrirla toda (o, al menos, una gran parte) y
+el modelo relacional nos obliga a crear un campo para todo. En cambio, si
+echamos manos de <abbr title="JavaScript Object Notation">JSON</abbr>, podremos definir la tabla de este modo:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="ss">&quot;Proveedor&quot;</span><span class="w"> </span><span class="p">(</span>
+<span class="w">   </span><span class="ss">&quot;id&quot;</span><span class="w">          </span><span class="nb">INTEGER</span><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">   </span><span class="ss">&quot;nombre&quot;</span><span class="w">      </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+<span class="w">   </span><span class="ss">&quot;contacto&quot;</span><span class="w">    </span><span class="n">JSON</span><span class="w">    </span><span class="cm">/* Aquí en realidad se almacenan todos los datos anteriores */</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Y dentro del campo de contacto que se almacene una estructura <abbr title="JavaScript Object Notation">JSON</abbr> que
+facilita no tener definidos siempre todos los campos:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;tlfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">34956010203</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;fax&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;web&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.tuproveedordeconfianza.com/&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;mail&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;clientes@tuproveedordeconfianza.com&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;domicilio&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;tipo_via&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;calle&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;via&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Callo&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;numero&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;subnumero&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;A&quot;</span>
+<span class="w">      </span><span class="nt">&quot;puerta&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;bloque&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;escalera&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;piso&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;letra&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;cp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">11001</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;localidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cádiz&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;municipio&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;Cádiz&quot;</span>
+<span class="w">      </span><span class="nt">&quot;provincia&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Hemos expresado los campos con valor nulo para que se vea cómo se
+reproduce fielmente la estructura de la primera tabla, pero no son
+necesarios y, de hecho, no estarán cuando tengan este valor.</p>
+</div>
+<p>La idea que subyace en la incorporación de <abbr title="JavaScript Object Notation">JSON</abbr> al almacenamiento es ésta.
+Para rematar ilustrémoslo utilizando <a class="reference external" href="https://sqlite.org">SQLite</a>, que <a class="reference external" href="https://www.sqlite.org/json1.html">tiene soporte para JSON</a>, aunque sin llegar a crearse realmente un
+tipo de dato distinto (o sea, lo que estipula <a class="reference external" href="https://en.wikipedia.org/wiki/SQL:2016">SQL:2016</a>).</p>
+<p>Descargue <a class="reference download internal" download="" href="../_downloads/121fc6e3b66f5de47ad1fcd7b9eb902e/proveedor.sql"><code class="xref download docutils literal notranslate"><span class="pre">proveedor.sql</span></code></a> que contiene la
+creación de la segunda versión propuesta de la tabla<a class="footnote-reference brackets" href="#id5" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> y un par de registros
+de prueba, y pruebe cómo acceder a los campos individuales del <abbr title="JavaScript Object Notation">JSON</abbr>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sqlite<span class="w"> </span>/tmp/proveedor.db<span class="w"> </span>&lt;<span class="w"> </span>proveedor.sql
+<span class="gp">$ </span>sqlite<span class="w"> </span>/tmp/proveedor.db
+<span class="go">sqlite&gt; .tables</span>
+<span class="go">Proveedor</span>
+<span class="go">sqlite&gt; .mode columns</span>
+<span class="go">sqlite&gt; SELECT &quot;nombre&quot;, JSON_EXTRACT(&quot;contacto&quot;, &#39;$.domicilio.localidad&#39;) AS &#39;localidad&#39; FROM &quot;Proveedor&quot;;</span>
+<span class="go">nombre                 localidad</span>
+<span class="go">---------------------  ---------</span>
+<span class="go">Helados Babuino        Cádiz</span>
+<span class="go">Central de Chucherías  Málaga</span>
+<span class="go">sqlite&gt; SELECT &quot;id&quot;, &quot;nombre&quot; FROM &quot;Proveedor&quot; WHERE JSON_EXTRACT(&quot;contacto&quot;, &#39;$.domicilio.localidad&#39;) = &#39;Cádiz&#39;;</span>
+<span class="go">id  nombre</span>
+<span class="go">--  ---------------</span>
+<span class="go">1   Helados Babuino</span>
+</pre></div>
+</div>
+<p>Como puede verse, estamos usando una sintaxis derivada de <a class="reference internal" href="../03.consulta/02.jsonpath.html#jsonpath"><span class="std std-ref">JSONPath</span></a> para referir
+los valores individuales que contiene el <abbr title="JavaScript Object Notation">JSON</abbr> contenido en el campo <code class="docutils literal notranslate"><span class="pre">contacto</span></code><a class="footnote-reference brackets" href="#id6" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.</p>
+<p class="rubric">Notas al pie</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id4" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><code class="docutils literal notranslate"><span class="pre">EXTRACTVALUE</span></code> es la función equivalente a <code class="docutils literal notranslate"><span class="pre">JSON_EXTRACT</span></code> que veremos
+más en profundidad bajo el siguiente epígrafe.</p>
+</aside>
+<aside class="footnote brackets" id="id5" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p><strong class="program">SQLite</strong> permite indicar un tipo <code class="docutils literal notranslate"><span class="pre">JSON</span></code>,  aunque internamente
+ese tipo será simplemente <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>.</p>
+</aside>
+<aside class="footnote brackets" id="id6" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p><strong class="program">SQLite</strong> tiene  una <a class="reference external" href="https://www.postgresql.org/docs/9.5/functions-json.html">operador procedente de PostgreSQL</a> alternativo a JSON_EXTRACT
+como <a class="reference external" href="https://es.wikipedia.org/wiki/Az%C3%BAcar_sint%C3%A1ctico">azúcar sintáctico</a>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="ss">&quot;nombre&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;contacto&quot;</span><span class="o">-&gt;</span><span class="s1">&#39;domicilio&#39;</span><span class="o">-&gt;&gt;</span><span class="s1">&#39;localidad&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s1">&#39;localidad&#39;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;Proveedor&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Eche un vistazo a <a class="reference external" href="https://tirkarthi.github.io/programming/2022/02/26/sqlite-json-improvements.html">este tutorial de JSON con SQLite</a>.</p>
+</div>
+<p>Y <a class="reference external" href="https://en.wikipedia.org/wiki/SQL:2023">SQL:2023</a> ha definido el operador punto («.») con la misma intención:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="ss">&quot;nombre&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;contacto&quot;</span><span class="p">.</span><span class="ss">&quot;domicilio&quot;</span><span class="p">.</span><span class="ss">&quot;localidad&quot;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s1">&#39;localidad&#39;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;Proveedor&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>aunque para ello <strong class="program">SQLite</strong> no tiene aún soporte.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/logo.png" alt="Logo"/>
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">5.1. Bases relacionales</a><ul>
+<li><a class="reference internal" href="#xml">5.1.1. <abbr title="eXtensible  Markup Language">XML</abbr></a></li>
+<li><a class="reference internal" href="#json">5.1.2. <abbr title="JavaScript Object Notation">JSON</abbr></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="index.html"
+                          title="Previous page">&larr; <span class="section-number">5. </span>Almacenamiento</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="02.nativas.html"
+                          title="Next page">&rarr; <span class="section-number">5.2. </span>Bases nativas</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/05.almacenamiento/01.relacionales.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="02.nativas.html" title="5.2. Bases nativas"
+             >siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="index.html" title="5. Almacenamiento"
+             >anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">5. </span>Almacenamiento</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">5.1. </span>Bases relacionales</a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
+      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

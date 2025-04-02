@@ -1,0 +1,428 @@
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>BaseX &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+    <link rel="stylesheet" href="../_static/general.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+
+    
+    
+     
+        <script src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="HTML: Cabecera" href="60.html-head.html" />
+    <link rel="prev" title="XSLT" href="41.xslt.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="60.html-head.html" title="HTML: Cabecera"
+             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="41.xslt.html" title="XSLT"
+             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">BaseX</a></li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="basex">
+<span id="ej-basex"></span><h1>BaseX<a class="headerlink" href="#basex" title="Enlace permanente a este encabezado">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Los ejercicios que se proponen en esta relación no dejan de ser
+<a class="reference internal" href="40.xquery.html#ej-xquery"><span class="std std-ref">ejercicios sobre XQuery</span></a> más o menos sencillos, pensados
+para manipular las bases de datos cargadas en el gestor.</p>
+</div>
+<p>Tomando como referencia los documentos <abbr title="eXtensible  Markup Language">XML</abbr> diseñados en los <a class="reference internal" href="10.lenguajes.html#ej-li"><span class="std std-ref">ejercicios
+sobre lenguajes de marcas</span></a>, resuelva lo siguiente:</p>
+<ol class="arabic">
+<li><p>En el ejercicio sobre facturas:</p>
+<ol class="loweralpha simple">
+<li><p>Cámbiele el nombre a «<em>Mariquilla de la O</em>» por «<em>María de la O</em>».</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>replace value of node //cliente[nombre=&quot;Mariquilla de la O&quot;]/nombre with &quot;María de la O&quot;
+</pre></div>
+</div>
+</li>
+<li><p>Añada al final de todos los clientes un elemento que sea <code class="docutils literal notranslate"><span class="pre">&lt;solvente</span> <span class="pre">/&gt;</span></code>.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $cliente in //cliente
+return
+   insert node &lt;solvente/&gt; into $cliente
+</pre></div>
+</div>
+</li>
+<li><p>Elimine todos los elementos que acaba de añadir,</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>delete node //cliente/solvente
+</pre></div>
+</div>
+</li>
+<li><p>Cambie al cliente «c01» su identificar por «C01». Recuerde que debería
+también hacer el cambio de identificador en las facturas a su nombre.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $attr in //@*[. = &quot;c01&quot;]
+return
+   replace node $attr with attribute {fn:name($attr)} {&quot;C01&quot;}
+</pre></div>
+</div>
+</li>
+<li><p>Elimine los descuentos de todas las facturas.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>delete node //factura/@descuento
+</pre></div>
+</div>
+</li>
+<li><p>Añada a la factura «f01» un descuento del 15%.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>insert node attribute descuento {15} into //factura[@codigo=&quot;f01&quot;]
+</pre></div>
+</div>
+</li>
+<li><p>Aumente en +5% el descuento a todas las facturas.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $descuento in //factura/@descuento
+return
+   replace node $descuento with attribute {name($descuento)} {$descuento + 5}
+</pre></div>
+</div>
+</li>
+<li><p>Elimine de todas las facturas las líneas de facturas por debajo de la
+segunda, es decir, todas las facturas deben quedar como mucho con dos
+líneas de factura (<em>ítems</em>).</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>delete node //factura/item[position() &gt; 2]
+</pre></div>
+</div>
+</li>
+<li><p>Añada un atributo a cada factura llamado «items» que
+contenga la cantidad de líneas de factura que tiene.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $factura in //factura
+return
+   insert node attribute items {count($factura/item)} into $factura
+</pre></div>
+</div>
+</li>
+<li><p>Añada tres atributos a inventario llamados <em>superreducido</em>,  <em>reducido</em> y
+<em>normal</em> cuyo valor sea la cantidad de productos que tienen ese tipo de
+<abbr title="Impuesto sobre el Valor Añadido">IVA</abbr>.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $iva in (&quot;normal&quot;, &quot;reducido&quot;, &quot;superreducido&quot;)
+return
+   insert node attribute {$iva} {count(//inventario/producto[@iva=$iva])} into //inventario
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+<li><p>En el ejercicio <strong>8</strong> sobre concesionarios y clientes:</p>
+<ol class="loweralpha simple">
+<li><p>Cambiar la marca del concesionario por «Dacia».</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>replace node /concesionario/@marca with attribute marca {&quot;Dacia&quot;}
+</pre></div>
+</div>
+</li>
+<li><p>Limite la velocidad máxima a <strong>180</strong>.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $vel in //velmax
+where $vel &gt; 180
+return
+   replace value of node $vel with text {180}
+</pre></div>
+</div>
+</li>
+<li><p>Añadir un atributo con 10 Km a los coches de «<em>km0</em>».</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $coche in //coche
+where $coche/@tipo = &quot;km0&quot;
+return
+   insert node attribute km {10} into $coche
+</pre></div>
+</div>
+</li>
+<li><p>Sustituir todos los identificadores de cliente, por su equivalente en
+mayúsculas (p.e. «c01» pasa a ser «C01»). Por ahora, olvide que esos
+identificadores también se usan como referencia en el atributo
+<em>reservado</em> y que, en consecuencia, también deberían cambiar.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $cliente in //cliente
+let $id := $cliente/@id
+return
+   replace node $id with attribute cliente {fn:upper-case($id)},
+</pre></div>
+</div>
+</li>
+<li><p>Repite el ejercicio anterior, pero sin olvidar los atributos
+<em>reservado</em>.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $cliente in //cliente
+let $id := $cliente/@id
+return
+   (
+      replace node $id with attribute cliente {fn:upper-case($id)},
+      for $reservado in //coche/@reservado[. = $id]
+      return
+         replace node $reservado with attribute reservado {fn:upper-case($reservado)}
+   )
+</pre></div>
+</div>
+</li>
+<li><p>Añada un modelo «Mezcladito» que sea como el «Ibiza» pero con la
+cilindrada y la velocidad máxima del «León».</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>copy $mezcladito := //modelo[@nombre = &quot;Ibiza&quot;]
+modify (
+   replace value of node $mezcladito/@nombre with &quot;Mezcladito&quot;,
+   replace value of node $mezcladito/@id with text {fn:generate-id()},
+   replace value of node $mezcladito/cilindrada with text {//modelo[@nombre =&quot;León&quot;]/cilindrada},
+   replace value of node $mezcladito/velmax with text {//modelo[@nombre =&quot;León&quot;]/velmax}
+)
+return
+   insert node $mezcladito after //modelo[last()]
+</pre></div>
+</div>
+</li>
+<li><p>Convertir el número de plazas en un atributo del elemento modelo.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $modelo in //modelo
+return
+   (
+      insert node attribute plazas {$modelo/plazas} into $modelo,
+      delete node $modelo/plazas
+   )
+</pre></div>
+</div>
+</li>
+<li><p>Intercambiar el orden de DNI y nombre.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $cliente in //cliente
+return
+   (: Como es sencillo se podría recrear el elemento dni sin necesidad de copiarlo :)
+   copy $dni_c := $cliente/dni
+   modify ()
+   return (
+      delete node $cliente/dni,
+      insert node $dni_c after $cliente/nombre
+   )
+</pre></div>
+</div>
+</li>
+<li><p>Convertir el elemento <code class="docutils literal notranslate"><span class="pre">&lt;cp&gt;</span></code> de la dirección en un atributo de <code class="docutils literal notranslate"><span class="pre">&lt;poblacion&gt;</span></code>.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $direccion in //direccion
+return
+   (
+      insert node attribute cp {$direccion/cp} into $direccion/poblacion,
+      delete node $direccion/cp
+   )
+</pre></div>
+</div>
+</li>
+<li><p>Mover los coches reservados por un cliente al final del elemento
+cliente correspondiente y eliminar de ellos el atributo que identifica
+al comprador ya que no deja de ser necesario.</p>
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $coche in //coche[@reservado][@reservado != &quot;false&quot;]
+return
+   (
+      copy $coche_c := $coche
+      modify
+         delete node $coche_c/@reservado
+      return
+         insert node $coche_c into //cliente[@id = $coche/@reservado],
+      delete node $coche
+   )
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+<li><p>Tomando el <abbr title="eXtensible  Markup Language">XML</abbr> del ejercicio sobre <em>facturas</em> genere otro documento <abbr title="eXtensible  Markup Language">XML</abbr>
+con las siguientes diferencias:</p>
+<ul>
+<li><p>Divida el elemento <code class="docutils literal notranslate"><span class="pre">inventario</span></code> en tres grupos (elementos <code class="docutils literal notranslate"><span class="pre">grupo</span></code>) en
+cada uno de los cuales deben encontrarse los productos con un mismo tipo
+de <abbr title="Impuesto sobre el Valor Añadido">IVA</abbr> (<em>superreducido</em>, <em>reducido</em>, <em>normal</em>). Para identificar el tipo
+de <abbr title="Impuesto sobre el Valor Añadido">IVA</abbr> incluya un atributo llamado <abbr title="Impuesto sobre el Valor Añadido">IVA</abbr>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;inventario&gt;</span>
+<span class="w">    </span><span class="nt">&lt;grupo</span><span class="w"> </span><span class="na">iva=</span><span class="s">&quot;superreducido&quot;</span><span class="nt">&gt;</span>
+<span class="w">       </span><span class="cm">&lt;!-- Productos con IVA superreducido --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/grupo&gt;</span>
+
+<span class="w">    </span><span class="cm">&lt;!-- Resto de grupos --&gt;</span>
+<span class="nt">&lt;/inventario&gt;</span>
+</pre></div>
+</div>
+<p>Como ya no es necesario el atributo <em>iva</em> en los elementos <em>producto</em>,
+elimínelo.</p>
+</li>
+<li><p>Añada las facturas de cada cliente, al final del elemento <em>cliente</em>
+correspondiente y elimine los elementos <em>factura</em> originales. Como no ya
+no será necesarios los atributos <em>cliente</em> de cada factura, elimínelos
+también.</p></li>
+</ul>
+<div class="sol-oculta highlight-default notranslate"><div class="highlight"><pre><span></span>xquery version &quot;3.0&quot;; 
+
+(: Este copy se usa para que la solución no altere el documento de origen,
+   sino una copia en memoria y se genere un documento XML nuevo. Así no es
+   necesario que haya una base de datos. :)
+copy $facturacion := /facturacion
+modify (
+   (: Modificación del inventario :)
+   for $tipo in (&quot;superreducido&quot;, &quot;reducido&quot;, &quot;normal&quot;)
+   let $productos := $facturacion//producto[@iva = $tipo]
+   return (
+      (: No es posible asegurar el orden de las operaciones, por lo que
+         no podemos asegurar que la eliminación de @iva en $productos se
+         haga antes que su adición a grupo. Por eso hacemos la copia $p. :)
+      insert node element grupo {
+         attribute iva {$tipo},
+         (: No podemos copiar varios nodos, así que creamos uno que incluya
+            todos los que queremos copiar :)
+         copy $p := &lt;p&gt;{$productos}&lt;/p&gt;
+         modify (delete node $p//@iva)
+         return $p/producto (: Estos productos no tiene el atributo iva :)
+      } into $facturacion/inventario,
+      delete node $productos
+   ),
+   (: Traslado de las facturas a cada cliente :)
+   for $cliente in $facturacion//cliente
+   let $facturas := $facturacion/factura[@cliente = $cliente/@id]
+   return (
+      (: De nuevo, no es posible asegurar el orden de las operaciones,
+         así que necesitamos copiar facturas :)
+      insert node (
+         copy $f := &lt;f&gt;{$facturas}&lt;/f&gt;
+         modify (delete node $f//@cliente)
+         return $f/factura
+      ) into $cliente,
+      delete node $facturas
+   )
+)
+return
+   $facturacion
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/logo.png" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="41.xslt.html"
+                          title="Previous page">&larr; <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="60.html-head.html"
+                          title="Next page">&rarr; <abbr title="HyperText Markup Language">HTML</abbr>: Cabecera</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/99.ejercicios/50.basex.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="60.html-head.html" title="HTML: Cabecera"
+             >siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="41.xslt.html" title="XSLT"
+             >anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">BaseX</a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
+      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

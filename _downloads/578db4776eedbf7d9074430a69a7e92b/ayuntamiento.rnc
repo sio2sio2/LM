@@ -1,0 +1,28 @@
+start = habitantes
+
+habitantes = element habitantes { persona+,
+   attribute ayuntamiento { text }
+}
+
+persona = element persona { nombre, apellidos, direccion, tlfo, origen, padre?, madre?,
+   attribute id { xsd:ID { pattern="p\d+" } },
+   attribute padre { xsd:IDREF { pattern="p\d+" } }?,
+   attribute madre { xsd:IDREF { pattern="p\d+" } }?,
+   attribute sexo  { "hombre" | "mujer" }
+}
+
+nombre = element nombre { text }
+apellidos = element apellidos { text }
+tlfo = element tlfo { xsd:positiveInteger { pattern="[6-9][0-9]{8}" } }
+origen = element origen { text }
+padre = element padre { text }
+madre = element madre { text }
+
+direccion = element direccion { via, numero, piso, letra }
+
+via = element via { text,
+   attribute tipo { "calle" | "callejón" | "cuesta" | "costanilla" | "paseo" | "plaza" | "avenida" }
+}
+numero =  element numero { xsd:int { minExclusive="0" maxExclusive="5000" } }
+piso = element piso { xsd:int { minExclusive="0" maxExclusive="100" } | "bajo" }
+letra =  element letra { xsd:string { pattern="[A-Z]" } }

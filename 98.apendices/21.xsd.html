@@ -1,0 +1,1505 @@
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>W3C XML Schema &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+    <link rel="stylesheet" href="../_static/general.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+
+    
+    
+     
+        <script src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Relax-NG Compact" href="22.rnc.html" />
+    <link rel="prev" title="8. Javascript" href="../08.js/index.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="22.rnc.html" title="Relax-NG Compact"
+             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="../08.js/index.html" title="8. Javascript"
+             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">W3C <abbr title="eXtensible  Markup Language">XML</abbr> Schema</a></li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="w3c-xml-schema">
+<span id="xsd"></span><h1>W3C <abbr title="eXtensible  Markup Language">XML</abbr> Schema<a class="headerlink" href="#w3c-xml-schema" title="Enlace permanente a este encabezado">¶</a></h1>
+<section id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Las <abbr title="eXtensible  Markup Language">XML</abbr> Schemas (esquemas <abbr title="eXtensible  Markup Language">XML</abbr>, en castellano) son un método alternativo a
+los para la definición de la gramática de un dialecto <abbr title="eXtensible  Markup Language">XML</abbr>. Su utilidad radica
+en que tienen una serie de <strong>ventajas</strong> sobre ellos:</p>
+<ul class="simple">
+<li><p>Son en sí mismos, también dialectos <abbr title="eXtensible  Markup Language">XML</abbr>.</p></li>
+<li><p>Comparados con <abbr title="Document Type Definition">DTD</abbr>, permiten una definición mucho más precisa del tipo de
+contenido de los atributos y elementos. Por ejemplo, podremos especificar que
+el contenido es un número entero o una cadena de caracteres.</p></li>
+<li><p>Soportan espacios de nombres.</p></li>
+<li><p>Son más modulares y extensibles.</p></li>
+</ul>
+<p>Ahora bien, no todo son ventajas. También presentan <strong>desventajas</strong> frente a los
+<abbr title="Document Type Definition">DTD</abbr>:</p>
+<ul class="simple">
+<li><p>Son más complejos de entender que los <abbr title="Document Type Definition">DTD</abbr>.</p></li>
+<li><p>Son dialectos <abbr title="eXtensible  Markup Language">XML</abbr>. Sí esto es una ventaja, pero también una desventaja. Ya se
+expondrá más adelante <a class="reference internal" href="#xsd-consejos"><span class="std std-ref">por qué</span></a>.</p></li>
+<li><p>No permiten definir entidades. Las entidades parámetro se pueden sustituir por
+la definición de tipos y atributos derivados, pero no hay modo de emular a las
+entidades generales.</p></li>
+</ul>
+<blockquote>
+<div><p>No son el único dialecto <abbr title="eXtensible  Markup Language">XML</abbr> que existe para esta tarea: <a class="reference internal" href="22.rnc.html#rnc"><span class="std std-ref">Relax NG</span></a>, por ejemplo, también se creo para lo mismo.</p>
+</div></blockquote>
+</section>
+<section id="vistazo-rapido">
+<h2>Vistazo rápido<a class="headerlink" href="#vistazo-rapido" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Antes de meternos en harina, miremos por encima cómo es la definición de un
+documento con <abbr title="eXtensible  Markup Language">XML</abbr> Schemas. Sea el siguiente documento:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;</span>
+<span class="nt">&lt;persona&gt;</span>
+<span class="w">   </span><span class="nt">&lt;nombre&gt;</span>Perico<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">   </span><span class="nt">&lt;apellidos&gt;</span>de<span class="w"> </span>los<span class="w"> </span>palotes<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dni&gt;</span>41112233<span class="nt">&lt;/dni&gt;</span>
+<span class="w">   </span><span class="nt">&lt;tlfo&gt;</span>953112233<span class="nt">&lt;/tlfo&gt;</span>
+<span class="nt">&lt;/persona&gt;</span>
+</pre></div>
+</div>
+<p>Para el cual podríamos tener la siguiente definición <abbr title="Document Type Definition">DTD</abbr>:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">persona</span> <span class="o">(</span><span class="nt">nombre</span><span class="o">,</span><span class="nt">apellidos</span><span class="o">,</span><span class="nt">dni</span><span class="o">,</span><span class="nt">tlfo</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ELEMENT</span> <span class="nt">nombre</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ELEMENT</span> <span class="nt">apellidos</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ELEMENT</span> <span class="nt">dni</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ELEMENT</span> <span class="nt">tlfo</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<p>Y un <abbr title="eXtensible  Markup Language">XML</abbr> schema apropiado podría ser:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;xs:schema</span><span class="w"> </span><span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;persona&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:sequence&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nombre&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;apellidos&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;dni&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tlfo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/xs:sequence&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:element&gt;</span>
+<span class="nt">&lt;/xs:schema&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="tipos-simples">
+<h2>Tipos simples<a class="headerlink" href="#tipos-simples" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>En las definiciones mediante <abbr title="eXtensible  Markup Language">XML</abbr> schemas, elementos y atributos pueden ser de
+tipo simple o de tipo compuesto. Bajo este epígrafe se desarrollarán ambos.</p>
+<section id="elementos-simples">
+<h3>Elementos simples<a class="headerlink" href="#elementos-simples" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Los <em class="dfn">elementos simples</em> son aquellos que contienen únicamente texto y no tienen
+ningún atributo. En el ejemplo anterior <em>nombre</em>, <em>apellidos</em>, <em>dni</em> y <em>tlfo</em>. Sin
+embargo, a diferencia de un <abbr title="Document Type Definition">DTD</abbr>, puede definirse con más exactitud de qué tipo
+será ese texto. Algunos de estos tipos, sin ser muy exhaustivos, son:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">xs:string</span></code></dt><dd><p>Cadenas de caracteres.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">xs:integer</span></code></dt><dd><p>Números enteros.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">xs:decimal</span></code></dt><dd><p>Números con decimales.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">xs:boolean</span></code></dt><dd><p>Valores lógicos, que pueden ser 0,1,``true`` o <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">xs:date</span></code></dt><dd><p>Fechas en formato AAAA-MM-DD.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">xs:time</span></code></dt><dd><p>Horas en formato HH:MM:SS.</p>
+</dd>
+</dl>
+<p>Una relación completa puede ser consultada en <a class="reference download internal" download="" href="../_downloads/0a6df172794d280188fde20e6a70cd65/XMLSchema_DataTypes.pdf"><code class="xref download docutils literal notranslate"><span class="pre">este</span> <span class="pre">pdf</span></code></a>.</p>
+<p>Además de definir el tipo, se puede indicar si el elemento tendrá un valor
+predeterminado para el caso de que no se incluya:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;color&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;rojo&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>o un valor fijo, que no puede ser modificado:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;color&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="na">fixed=</span><span class="s">&quot;rojo&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="atributos-simples">
+<h3>Atributos simples<a class="headerlink" href="#atributos-simples" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Al igual que los elementos su valor es puro texto. Se definen exactamente igual
+que los elementos, excepto por el hecho que se usan la cláusula <code class="docutils literal notranslate"><span class="pre">xs:attribute</span></code>
+en vez de <code class="docutils literal notranslate"><span class="pre">xs:element</span></code>. Para los casos en los que el atributo era de tipo
+<code class="docutils literal notranslate"><span class="pre">CDATA</span></code> en la definición mediante <abbr title="Document Type Definition">DTD</abbr>, se pueden usar los tipos que se han
+indicado para los elementos. Ahora bien, los atributos pueden ser de otro tipo
+(identificadores, etc.) y ello también puede hacerse con <abbr title="eXtensible  Markup Language">XML</abbr> schemas:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">xs:ID</span></code></dt><dd><p>El valor del atributo será un identificador.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">xs:IDREF</span></code></dt><dd><p>El valor del atributo hará referencia a un identificador.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">xs:IDREFS</span></code></dt><dd><p>El valor del atributo hará referencia a una lista de identificadores.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">xs:NMTOKEN</span></code></dt><dd><p>El valor del atributo es una palabra XML válida.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">xs:NMTOKENS</span></code></dt><dd><p>El valor del atributo es una lista de palabras XML válidas.</p>
+</dd>
+</dl>
+<p>Asimismo, los atributos pueden tener un valor predeterminado o tener un valor
+fijo, cosa que se hace exactamente del mismo modo que para los elementos. Los
+atributos son, en principio, opcionales, así que se puede especificar si son
+obigatorios:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;idper&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:ID&quot;</span><span class="w"> </span><span class="na">use=</span><span class="s">&quot;required&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="restricciones">
+<h3>Restricciones<a class="headerlink" href="#restricciones" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Las restricciones (tanto en elementos como en atributos) sirven para eliminar
+libertad en los valores asignados. Cuando se quieren incluir restricciones, la
+sintaxis se enrevesa un poco:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;edad&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:simpleType&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:integer&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:minInclusive</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:maxInclusive</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;120&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:restriction&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:simpleType&gt;</span>
+<span class="nt">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+<p>Básicamente la definición de un elemento (o un atributo) que tenga restricciones
+consiste en definirlo como tipo simple, indicar que tipo base ya definido se
+usa, y a continuación indicar cuáles son las restricciones que han de aplicarse.
+En el <abbr title="Portable Document Format">PDF</abbr> anterior están expuestan también cuáles son estar restricciones
+posibles. No obstante, se enunciarán algunas muy recurrentes:</p>
+<ul>
+<li><p>Para restringir los valores a unos concretos, tal como se hacía en los <abbr title="Document Type Definition">DTD</abbr>, debe
+usarse la cláusla <code class="docutils literal notranslate"><span class="pre">xs:enumeration</span></code>. Por ejemplo:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;rango_edad&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:simpleType&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;niño&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;joven&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;adulto&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;anciano&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:restriction&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:simpleType&gt;</span>
+<span class="nt">&lt;/xs:attribute&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Una forma poderosa de restrindir cadenas de caracteres, es mediante el uso de
+<a class="reference external" href="https://sio2sio2.github.io/doc-linux/02.conbas/10.texto/01.regex.html#regex" title="(en Linuxnomicón versión rolling)"><span class="xref std std-ref">expresiones regulares</span></a> con <code class="docutils literal notranslate"><span class="pre">xs:pattern</span></code>. Por ejemplo, si
+quisiésemos que sólo se pudiesen escribir identificadores con la forma
+«id»+numero podríamos hacer:</p>
+<div class="highlight-xml notranslate" id="xsd-id-num"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;idper&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:simpleType&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:ID&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:pattern</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;id[0-9]+&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:restriction&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:simpleType&gt;</span>
+<span class="nt">&lt;/xs:attribute&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Para determinar cómo trataremos los espacios que aparezcan, puede usarse
+<code class="docutils literal notranslate"><span class="pre">xs:whiteSpace</span></code> con tres posibles valores: <em>preserve</em>, que los dejará tal cual;
+<em>replace</em>, que hará que sean sustituidos todos las tabulaciones, cambios de
+línea y retornos de carro por espacios; y <em>collapse</em> que hace lo mismo, pero
+además reduce a un sólo espacio varios seguidos y elimina los espacios con los
+que empieza y acaba una cadena. Por ejemplo:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nombre&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:simpleType&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:whiteSpace</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;collapse&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:restriction&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:simpleType&gt;</span>
+<span class="nt">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Pueden, obviamente, incluirse varias restricciones en la misma definición. De
+hecho, en el primer ejemplo se usaron dos: <code class="docutils literal notranslate"><span class="pre">xs:minInclusive</span></code> y
+<code class="docutils literal notranslate"><span class="pre">xs:maxInclusive</span></code>. Es también necesario notar que todas las restricciones no
+tiene significado para un tipo determinado. Por ejemplo para <code class="docutils literal notranslate"><span class="pre">xs:string</span></code> no
+tiene sentido la de valor mínimo ni la de valor máximo.</p></li>
+</ul>
+<p><abbr title="eXtensible  Markup Language">XML</abbr> schemas tiene definidos muchos tipos de valores, algunos derivados de
+otros y cuyas definiciones podría haber hecho el usuario mismo definiendo
+restricciones. Por ejemplo, el tipo <code class="docutils literal notranslate"><span class="pre">xs:normalizedString</span></code> es un tipo
+<code class="docutils literal notranslate"><span class="pre">xs:string</span></code> con la restricción del último ejemplo.</p>
+</section>
+<section id="tipos-derivados">
+<h3>Tipos derivados<a class="headerlink" href="#tipos-derivados" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Un usuario también puede definir tipos derivados de tipos simples ya definidos.
+Por ejemplo, podríamos hacer la siguiente definición (basándonos en <a class="reference internal" href="#xsd-id-num"><span class="std std-ref">este ejemplo
+anterior</span></a>):</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;idper&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;ident.numerico&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;xs:simpleType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ident.numerico&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:ID&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:pattern</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;id[0-9]+&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:restriction&gt;</span>
+<span class="nt">&lt;/xs:simpleType&gt;</span>
+</pre></div>
+</div>
+<p>La gracia de esta definición es que este nuevo tipo se podría usar para la
+definición de todos los atributos que quisiésemos.</p>
+</section>
+</section>
+<section id="tipos-complejos">
+<h2>Tipos complejos<a class="headerlink" href="#tipos-complejos" title="Enlace permanente a este encabezado">¶</a></h2>
+<p><em class="dfn">Elementos complejos</em> son aquellos que contienen elementos o tienen
+atributos. O ambos, claro. Sólo tiene sentido hablar de complejos en el caso de
+los elementos, porque el valor de los atributos siempre es texto, más o menos
+restringido, pero sólo texto.</p>
+<p>Un elemento <em>complejo</em>  es un <code class="docutils literal notranslate"><span class="pre">ComplexType</span></code> y puede contener sólo texto o contener a
+su vez otros elementos. Si contiene sólo texto su contenido será <code class="docutils literal notranslate"><span class="pre">simpleContent</span></code>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tlfo&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:simpleContent&gt;</span>
+<span class="w">         </span><span class="cm">&lt;!-- Ya veremos qué se pone aquí --&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:simpleContent&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="nt">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+<p>Si contiene otros elementos, su contenido será <code class="docutils literal notranslate"><span class="pre">complexContent</span></code>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;persona&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:complexContent&gt;</span>
+<span class="w">         </span><span class="cm">&lt;!-- Ya veremos qué se pone aquí --&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:complexContent&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="nt">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+<p>Pero ¿qué es lo que se pone dentro de <code class="docutils literal notranslate"><span class="pre">simpleContent</span></code> o <code class="docutils literal notranslate"><span class="pre">complexContent</span></code>?
+Simplemente una restricción o una extensión a un tipo que se toma como base. Al
+restringirlo, limitamos lo que en un principio se podía incluir en el elemento
+y, si lo extendemos, lo que haremos es añadir componentes a los originales del
+elemento. Analicémoslo por separado.</p>
+<section id="contenido-simple-texto-solo">
+<span id="xsd-simplecontent"></span><h3>Contenido simple (texto solo)<a class="headerlink" href="#contenido-simple-texto-solo" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Los tipos que se pueden tomar como base son los que se vieron ya cuando el
+elemento era simple: xs:string, xs:integer, etc. Y a estos tipos base se le
+pueden añadir restricciones o extensiones (pero no ambas a la vez). Por ejemplo,
+si añadimos restricciones:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;edad&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:simpleContent&gt;</span>
+<span class="hll"><span class="w">         </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:integer&quot;</span><span class="nt">&gt;</span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&lt;xs:minInclusive</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&lt;xs:maxInclusive</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;120&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="hll"><span class="w">         </span><span class="nt">&lt;/xs:restriction&gt;</span>
+</span><span class="w">      </span><span class="nt">&lt;/xs:simpleContent&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="nt">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+<p>De esta definición resulta un elemento llamado edad, que es de tipo complejo,
+cuyo contenido puede ser un número entero entre 0 y 120 y que tiene atributos,
+porque no aparecen por ningún sitio definidos. Ahora bien, esto no es un tipo
+simple con una restricción, tal como se hizo en este ejemplo? Sí, efectivamente,
+hemos venido a definir más rocambolescamente lo mismo. Es más, si hubiésemos
+definido así:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;entero&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:simpleContent&gt;</span>
+<span class="hll"><span class="w">         </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:integer&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="w">      </span><span class="nt">&lt;/xs:simpleContent&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="nt">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+<p>habríamos definido exactamente lo mismo que si hubiésemos hecho simplemente
+esto:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;entero&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Mucho código para casi nada. En realidad, si el contenido es simple, lo
+interesante es extender, no restringir; porque extender nos permite definir
+atributos para el elemento:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;edad&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:simpleContent&gt;</span>
+<span class="hll"><span class="w">         </span><span class="nt">&lt;xs:extension</span><span class="w">  </span><span class="na">base=</span><span class="s">&quot;xs:integer&quot;</span><span class="nt">&gt;</span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;unidad&quot;</span><span class="w"> </span><span class="na">fixed=</span><span class="s">&quot;años&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="hll"><span class="w">         </span><span class="nt">&lt;/xs:extension&gt;</span>
+</span><span class="w">      </span><span class="nt">&lt;/xs:simpleContent&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="nt">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+<p>Ahora sería válido que en el xml encontrásemos la siguiente línea:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;edad</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;años&quot;</span><span class="nt">&gt;</span>15<span class="nt">&lt;/edad&gt;</span>
+</pre></div>
+</div>
+<p>En el ejemplo, se ha extendido el tipo para añadir un atributo. Obviamente se
+pueden añadir todos los atributos que se quiera: basta con incluir más elementos
+<code class="docutils literal notranslate"><span class="pre">xs:attribute</span></code> dentro de <code class="docutils literal notranslate"><span class="pre">xs:extension</span></code>. Ahora bien, ¿qué se puede hacer si
+queremos restringir y extender a la vez: restringir para limitar el contenido
+del elemento (en el ejemplo, al rango 0-120) y extender para poder incluir
+atributos? No se pueden incluir <code class="docutils literal notranslate"><span class="pre">xs:restriction</span></code> y <code class="docutils literal notranslate"><span class="pre">xs:extension</span></code> a la vez,
+así que la solución pasa por hacer un tipo derivado de <code class="docutils literal notranslate"><span class="pre">xs:integer</span></code> con la
+restricción y usarlo como base luego en la extensión:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:simpleType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.edad&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:integer&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:minInclusive</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:maxInclusive</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;120&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:restriction&gt;</span>
+<span class="nt">&lt;/xs:simpleType&gt;</span>
+
+<span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;edad&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:simpleContent&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:extension</span><span class="w">  </span><span class="na">base=</span><span class="s">&quot;tipo.edad&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;unidad&quot;</span><span class="w"> </span><span class="na">fixed=</span><span class="s">&quot;años&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/xs:extension&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:simpleContent&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="nt">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="contenido-complejo">
+<span id="xsd-complexcontent"></span><h3>Contenido complejo<a class="headerlink" href="#contenido-complejo" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Ya sabemos que son elementos con <em>contenido complejo</em> aquellos contienen otros
+elementos. El principio para definir el contenido complejo es el mismo que para
+el simple: se toma un tipo base y se definen restricciones o extensiones para
+él. Ahora bien, ¿qué tipo complejo tomamos como base? Evidentemente podemos
+tomar uno que ya definiésemos antes, pero ¿y si quiero hacer una definición
+partiendo de cero? Entonces podemos partir de un tipo llamado <code class="docutils literal notranslate"><span class="pre">xs:anyType</span></code>,
+que permite absolutamente cualquier atributo y cualquier elemento dentro de él,
+y definirle restricciones. Las restricciones de un tipo complejo consisten en
+volver a especificar su contenido, pero añadiéndole restricciones. Como en
+<code class="docutils literal notranslate"><span class="pre">xs:anyType</span></code> cabe cualquier cosa, si se incluyen como restricción los
+elementos y atributos que se desea que contenga el elemento, esos serán los
+únicos elementos y atributos que podrá contener.</p>
+<p>Así, pues, puedo hacer lo siguiente:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;persona&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:complexContent&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:anyType&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="cm">&lt;!-- Primero se definen los elementos --&gt;</span>
+<span class="w">         </span><span class="cm">&lt;!-- Después se definen los atributos --&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/xs:restriction&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:complexContent&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="nt">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+<p>La definición de atributos ya se sabe cómo es: con <code class="docutils literal notranslate"><span class="pre">xs:attribute</span></code> tal y como
+se ha venido haciendo hasta ahora. Lo que merece apunte aparte es cómo se
+definen los elementos. Recuérdese que en los <abbr title="Document Type Definition">DTD</abbr> se habló de la secuencia y
+cardinalidad de elementos. En realidad hay otro concepto implícito, que es la
+agrupación de elementos. Fijémonos en esto:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(a|(b,c)+)
+</pre></div>
+</div>
+<p>En la expresión está el concepto de secuencia, representado por la tubería (<code class="docutils literal notranslate"><span class="pre">|</span></code>) y
+la coma (<code class="docutils literal notranslate"><span class="pre">,</span></code>); está el concepto de la cardinalidad, representado por el signo
+más (+), pero también está el concepto de la agrupación: la cardinalidad del
+<code class="docutils literal notranslate"><span class="pre">+</span></code> se aplica a la secuencia <code class="docutils literal notranslate"><span class="pre">b,c</span></code>, porque hay un paréntesis que así lo
+determina.  En los <abbr title="eXtensible  Markup Language">XML</abbr> Schemas hay que habilitar un mecanismo equivalente,
+para que se puedan especificar estos tres conceptos.</p>
+<section id="cardinalidad">
+<h4>Cardinalidad<a class="headerlink" href="#cardinalidad" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>Recordemos que indica el número de veces que se puede repetir un elemento. Para
+notarlo se añaden como atributos a la definición <code class="docutils literal notranslate"><span class="pre">xs:element</span></code>, los atributos
+<em>minOccurs</em> (mínimo de ocurrencias) y <em>maxOccurs</em> (número máximo de
+ocurrencias). Por ejemplo:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;hijo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;tipo.persona&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+</div>
+<p><em>unbounded</em> significa que no hay límite máximo. Esto es equivalente en <abbr title="Document Type Definition">DTD</abbr> a
+<code class="docutils literal notranslate"><span class="pre">nombre_elemento*</span></code>. Cuando no se especifican <em>minOccurs</em> o <em>maxOccurs</em>, se
+sobreentiende que valen <strong>1</strong>.</p>
+</section>
+<section id="secuencia">
+<h4>Secuencia<a class="headerlink" href="#secuencia" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>Hay tres secuencias diferentes:</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">xs:sequence</span></code></dt><dd><p>Determina que los elementos deben aparecer en el orden que se especifica
+(equivale a lo coma en <abbr title="Document Type Definition">DTD</abbr>):</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.persona&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:complexContent&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:anyType&quot;</span><span class="nt">&gt;</span>
+<span class="hll"><span class="w">         </span><span class="nt">&lt;xs:sequence&gt;</span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nombre&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;apellidos&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;dni&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tlfo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;hijo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;tipo.persona&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">&gt;</span>
+</span><span class="hll"><span class="w">         </span><span class="nt">&lt;/xs:sequence&gt;</span>
+</span><span class="w">      </span><span class="nt">&lt;/xs:restriction&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexContent&gt;</span>
+<span class="nt">&lt;/xs:complexType&gt;</span>
+</pre></div>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">xs:choice</span></code></dt><dd><p>Provoca que deba aparecer uno (y solo uno) de los elementos que se
+especifican como alternativa (equivale a la tubería del <abbr title="Document Type Definition">DTD</abbr>):</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.educador&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:complexContent&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:extension</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;tipo.persona&quot;</span><span class="nt">&gt;</span>
+<span class="hll"><span class="w">         </span><span class="nt">&lt;xs:choice&gt;</span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;colegio&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;tipo.centro&quot;</span><span class="nt">/&gt;</span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;instituto&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;tipo.centro&quot;</span><span class="nt">/&gt;</span>
+</span><span class="hll"><span class="w">         </span><span class="nt">&lt;/xs:choice&gt;</span>
+</span><span class="w">      </span><span class="nt">&lt;/xs:extension&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexContent&gt;</span>
+<span class="nt">&lt;/xs:complexType&gt;</span>
+</pre></div>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">xs:all</span></code></dt><dd><p>Fuerza a que aparezcan todos los elementos que se especifican en el
+orden que se desee, pero como máximo una vez (no tiene equivalencia en <abbr title="Document Type Definition">DTD</abbr>):</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.persona&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:complexContent&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:anyType&quot;</span><span class="nt">&gt;</span>
+<span class="hll"><span class="w">         </span><span class="nt">&lt;xs:all&gt;</span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nombre&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;apellidos&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;dni&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tlfo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="hll"><span class="w">         </span><span class="nt">&lt;/xs:all&gt;</span>
+</span><span class="w">      </span><span class="nt">&lt;/xs:restriction&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexContent&gt;</span>
+<span class="nt">&lt;/xs:complexType&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>En este caso, no puede especificarse <em>maxOccurs</em> (porque siempre debe valer 1),
+y <em>minOccurs</em> sólo puede valer 1 ó 0</p>
+</section>
+<section id="agrupacion">
+<h4>Agrupación<a class="headerlink" href="#agrupacion" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>Para emular el paréntesis de los dtd, es posible incluir los atributos
+<em>minOccurs</em> y <em>maxOccurs</em> dentro de etiquetas <code class="docutils literal notranslate"><span class="pre">xs:sequence</span></code> o <code class="docutils literal notranslate"><span class="pre">xs:choice</span></code>.
+De este modo, la expresión <code class="code docutils literal notranslate"><span class="pre">(a,(b|c)*)</span></code> podría escribirse del siguiente
+modo:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.foo&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:complexContent&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:anyType&quot;</span><span class="nt">&gt;</span>
+<span class="hll"><span class="w">         </span><span class="nt">&lt;xs:sequence&gt;</span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&lt;xs:choice</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">&gt;</span>
+</span><span class="hll"><span class="w">               </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;b&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="hll"><span class="w">               </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;c&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&lt;/xs:choice&gt;</span>
+</span><span class="hll"><span class="w">         </span><span class="nt">&lt;/xs:sequence&gt;</span>
+</span><span class="w">      </span><span class="nt">&lt;/xs:restriction&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexContent&gt;</span>
+<span class="nt">&lt;/xs:complexType&gt;</span>
+</pre></div>
+</div>
+<p>Obsérvese cómo se ha anidado un <code class="docutils literal notranslate"><span class="pre">xs:choice</span></code>, dentro de un <code class="docutils literal notranslate"><span class="pre">xs:sequence</span></code>. Es
+posible también darle nombre a determinadas agrupaciones para que se puedan
+reusar varias veces. Esto se logran con el elemento <code class="docutils literal notranslate"><span class="pre">xs:group</span></code>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="nt">&lt;xs:group</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;parentesis&quot;</span><span class="nt">&gt;</span>
+</span><span class="hll"><span class="w">   </span><span class="nt">&lt;xs:choice&gt;</span>
+</span><span class="hll"><span class="w">   </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;b&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="hll"><span class="w">   </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;c&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="hll"><span class="w">   </span><span class="nt">&lt;/xs:choice&gt;</span>
+</span><span class="hll"><span class="nt">&lt;/xs:group&gt;</span>
+</span>
+<span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.foo&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:complexContent&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:anyType&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:sequence&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="hll"><span class="w">            </span><span class="nt">&lt;xs:group</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;parentesis&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="w">         </span><span class="nt">&lt;/xs:sequence&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:restriction&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexContent&gt;</span>
+<span class="nt">&lt;/xs:complexType&gt;</span>
+</pre></div>
+</div>
+<p>Esto último permite reutilizar esta definición de grupo en otras definiciones y
+es un mecanismo que sustituye a las entidades parámetro de <abbr title="Document Type Definition">DTD</abbr>.</p>
+<p>Del mismo modo que pueden definirse grupos de elementos, también pueden
+definirse grupos de atributos, que no sirven para aplicar cardinalidad (porque
+los atributos no la tienen), pero sí para reutilizar sus definiciones en
+distintos elementos:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="nt">&lt;xs:attributeGroup</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;idti&quot;</span><span class="nt">&gt;</span>
+</span><span class="hll"><span class="w">   </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;id&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:ID&quot;</span><span class="w"> </span><span class="na">use=</span><span class="s">&quot;required&quot;</span><span class="nt">&gt;</span>
+</span><span class="hll"><span class="w">   </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:NMTOKEN&quot;</span><span class="nt">&gt;</span>
+</span><span class="hll"><span class="nt">&lt;/xs:attributeGroup&gt;</span>
+</span>
+<span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;coche&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:complexContent&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:anyType&quot;</span><span class="nt">&gt;</span>
+<span class="hll"><span class="w">            </span><span class="nt">&lt;xs:attributeGroup</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;idti&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="w">            </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;matricula&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/xs:restriction&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:complexContent&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="nt">&lt;xs:element&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Obsérvese que en este caso, no se usó <code class="docutils literal notranslate"><span class="pre">xs:sequence</span></code> o <code class="docutils literal notranslate"><span class="pre">xs:choice</span></code>:
+con atributos no tiene sentido porque los atributos sólo pueden aparecer como
+máximo una vez y en cualquier orden.</p>
+</div>
+</section>
+<section id="simplificacion">
+<h4>Simplificación<a class="headerlink" href="#simplificacion" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>Ya se ha visto que, cuando se quiere definir un tipo complejo con contenido
+complejo, se puede recurrir a la restricción del tipo base complejo <code class="docutils literal notranslate"><span class="pre">xs:anyType</span></code>.
+Esto habría de hacerse así, pero se admite una simplificación de la sintaxis: se
+puede incluir dentro de <code class="docutils literal notranslate"><span class="pre">xs:complexType</span></code> lo que se habría incluido dentro de
+<code class="docutils literal notranslate"><span class="pre">xs:restriction</span></code>. Así pues, <a class="reference internal" href="#xsd-complexcontent"><span class="std std-ref">esta definición</span></a>, podría
+haber sido simplemente:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;persona&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="w">      </span><span class="cm">&lt;!-- Primero se definen los elementos --&gt;</span>
+<span class="w">      </span><span class="cm">&lt;!-- Después se definen los atributos --&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="nt">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+<p>y la forma larga sólo se usará cuando estemos restringiendo o derivando un tipo
+complejo ya definido, tal como se tratará en un <a class="reference internal" href="#xsd-deriv-tipos"><span class="std std-ref">epígrafe posterior</span></a>.</p>
+</section>
+<section id="tipos-complejos-mixtos">
+<h4>Tipos complejos mixtos<a class="headerlink" href="#tipos-complejos-mixtos" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>Un elemento de tipo complejo mixto es aquel que a la vez contiene texto y
+elementos. Por ejemplo, supongamos este fragmento de <abbr title="eXtensible  Markup Language">XML</abbr>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;p&gt;</span>Esto<span class="w"> </span>es<span class="w"> </span>un<span class="w"> </span>ejemplo<span class="w"> </span>de<span class="w"> </span>párrafo<span class="w"> </span>en<span class="w"> </span>HTML,<span class="w"> </span>en<span class="w"> </span>los<span class="w"> </span>que<span class="w"> </span>puede
+haber<span class="w"> </span>palabras<span class="w"> </span>en<span class="w"> </span><span class="nt">&lt;i&gt;</span>cursiva<span class="nt">&lt;/i&gt;</span><span class="w"> </span>o<span class="w"> </span>en<span class="w"> </span><span class="nt">&lt;b&gt;</span>negrita<span class="nt">&lt;/b&gt;</span>.<span class="nt">&lt;/p&gt;</span>
+</pre></div>
+</div>
+<p>En el elemento <em>p</em> se observa que hay texto, pero arrebujado dentro elementos
+<em>i</em> y <em>b</em>. Para definir contenido mixto, basta con incluir el atributo
+.code:<cite>mixed=»true»</cite> en <code class="docutils literal notranslate"><span class="pre">xs:complexType</span></code> (o a <code class="docutils literal notranslate"><span class="pre">xs:complexContent</span></code>, si se usa
+la versión larga de la definición):</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;p&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;complexType</span><span class="w"> </span><span class="na">mixed=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:sequence&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:group</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:choice&gt;</span>
+<span class="w">               </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;i&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">/&gt;</span>
+<span class="w">               </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;b&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/xs:choice&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/xs:group&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:sequence&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/complexType&gt;</span>
+<span class="nt">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="xsd-deriv-tipos">
+<span id="id1"></span><h3>Tipos derivados<a class="headerlink" href="#xsd-deriv-tipos" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>De la misma manera que con los tipos simples es posible generar tipos derivados
+a partir de tipos complejos: basta con darle un nombre al tipo cuando se define.
+Por ejemplo, si en un <abbr title="eXtensible  Markup Language">XML</abbr> voy a usar varios elementos que representan personas,
+quizás me convenga definir un tipo complejo persona para a partir de él definir
+los elementos:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.persona&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:sequence&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nombre&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;apellidos&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;dni&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tlfo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;hijo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;tipo.persona&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:sequence&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;id&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:ID&quot;</span><span class="w"> </span><span class="na">use=</span><span class="s">&quot;required&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xs:complexType&gt;</span>
+</pre></div>
+</div>
+<p>A partir de este tipo complejo, puedo definir elementos que sea exactamentede
+este tipo, elementos que sean una extensión de este tipo o elementos que sean
+una restricción de este tipo. Por supuesto, también puedo definir otro tipo a
+partir de él.</p>
+<p>Imaginemos que queremos definir tres elementos: <em>adulto</em>, <em>niño</em> y <em>anciano</em>.
+Los tres elementos son personas, así que tendrán nombre, apellidos, etc. Para el
+elemento <em>anciano</em>, podemos considerar que esta definición de <em>tipo.persona</em> es
+perfecta; así que podemos hacer, simplemente:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;anciano&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;tipo.persona&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Al querer definir el elemento <em>adulto</em> nos podemos topar con que nos interesaría
+almacenar infomarción también de su sueldo, si trabaja. En ese caso podemos
+ampliar <em>tipo.persona</em>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;adulto&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:complexContent&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:extension</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;tipo.persona&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:sequence&gt;</span>
+<span class="w">               </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;sueldo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/xs:sequence&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/xs:extension&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:complexContent&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="nt">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+<p>Con el niño en cambio nos sucede justo lo contrario: el elemento <em>hijo</em> nos sobra,
+porque no tendrá ninguno. Incluso puede tener o no <abbr title="Documento Nacional de Identidad">DNI</abbr>. Así que en este caso
+tenemos que restringir la definición del tipo base. Para restringir tenemos que
+volver a definir todos los elementos y atributos que queremos que contenga el
+nuevo tipo: los que no aparezcan no serán válidos en el nuevo tipo. También
+podemos afinar las restricciones en elementos que sí citemos:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;niño&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:complexContent&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;tipo.persona&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:sequence&gt;</span>
+<span class="w">               </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nombre&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">               </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;apellidos&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="hll"><span class="w">               </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;dni&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="w">               </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tlfo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/xs:sequence&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;id&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:ID&quot;</span><span class="w"> </span><span class="na">use=</span><span class="s">&quot;required&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/xs:restriction&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:complexContent&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="nt">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+<p>Obsérvese que las modificaciones sobre el tipo base han sido dos: se ha
+eliminado el elemento <em>hijo</em> y se permite que <em>dni</em> pueda no aparecer. Sin
+embargo, esto no es correcto. Cuando se restringe un elemento, no se pueden
+crear restricciones que no existiesen ya en el tipo base. Por ese motivo, es
+válido eliminar el elemento hijo, ya que en el elemento base estaba recogido el
+caso de que no hubiese elementos <em>hijo</em>. Sin embargo, en el tipo base <em>dni</em>
+debía aparecer una vez y aquí indicamos que puede no aparecer ninguna.  Esto no
+puede hacerse a menos que en tipo.persona incluyamos también
+<code class="code docutils literal notranslate"><span class="pre">minOccurs=&quot;0&quot;</span></code> para <em>dni</em></p>
+</section>
+<section id="casos-particulares">
+<h3>Casos particulares<a class="headerlink" href="#casos-particulares" title="Enlace permanente a este encabezado">¶</a></h3>
+<section id="tipo-vacio-sin-atributos">
+<h4>Tipo vacío sin atributos<a class="headerlink" href="#tipo-vacio-sin-atributos" title="Enlace permanente a este encabezado">¶</a></h4>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;empty&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:complexContent&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:anyType&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexContent&gt;</span>
+<span class="nt">&lt;/xs:complexType&gt;</span>
+</pre></div>
+</div>
+<p>o de forma más sucinta:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;empty&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="tipo-vacio-con-atributos">
+<h4>Tipo vacío con atributos<a class="headerlink" href="#tipo-vacio-con-atributos" title="Enlace permanente a este encabezado">¶</a></h4>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;empty.attr&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;atributo1&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;atributo2&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xs:complexType&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="tipo-texto-con-atributos">
+<h4>Tipo texto con atributos<a class="headerlink" href="#tipo-texto-con-atributos" title="Enlace permanente a este encabezado">¶</a></h4>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;texto.attr&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:simpleContent&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:extension</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;atributo1&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;atributo2&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:extension&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:simpleContent&gt;</span>
+<span class="nt">&lt;/xs:complexType&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="consejos-de-escritura">
+<span id="xsd-consejos"></span><h2>Consejos de escritura<a class="headerlink" href="#consejos-de-escritura" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Los documentos <abbr title="eXtensible  Markup Language">XML</abbr> permiten estructurar muy eficazmente los información y
+permiten su fácil procesado. En el caso particular de los <abbr title="XML Schema Definition">XSD</abbr>, permiten ser
+mucho más preciso al definir el contenido de elementos y atributos que los
+<abbr title="Document Type Definition">DTD</abbr>.  Sin embargo, no todo son ventajas: los documentos <abbr title="eXtensible  Markup Language">XML</abbr> son fatigosos de
+leer por un humano, fundamentalmente porque son muy prolijos y gran parte del
+documento del contenido es metainformación y no información.</p>
+<p>Imaginemos un <abbr title="eXtensible  Markup Language">XML</abbr> como éste:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;no&quot;?&gt;</span>
+<span class="cp">&lt;!DOCTYPE gente SYSTEM &quot;gente.dtd&quot;&gt;</span>
+<span class="nt">&lt;gente</span><span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<span class="w">       </span><span class="na">xsi:noNamespaceSchemaLocation=</span><span class="s">&quot;gente.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;persona</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;i1&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre</span><span class="w"> </span><span class="na">apodo=</span><span class="s">&quot;Pepe&quot;</span><span class="nt">&gt;</span>Jose<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Moro<span class="w"> </span>Mayo<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;dni&gt;</span>11223344<span class="nt">&lt;/dni&gt;</span>
+<span class="w">      </span><span class="nt">&lt;flota&gt;</span>
+<span class="w">         </span><span class="nt">&lt;vehiculo</span><span class="w"> </span><span class="na">tipo=</span><span class="s">&quot;turismo&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;matricula</span><span class="w"> </span><span class="na">numeracion=</span><span class="s">&quot;antigua&quot;</span><span class="nt">&gt;</span>J-5464-AP<span class="nt">&lt;/matricula&gt;</span>
+<span class="w">            </span><span class="nt">&lt;color&gt;</span>azul<span class="nt">&lt;/color&gt;</span>
+<span class="w">            </span><span class="nt">&lt;marca&gt;</span>Citroën<span class="nt">&lt;/marca&gt;</span>
+<span class="w">            </span><span class="nt">&lt;modelo&gt;</span>Picasso<span class="nt">&lt;/modelo&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/vehiculo&gt;</span>
+<span class="w">         </span><span class="nt">&lt;vehiculo</span><span class="w"> </span><span class="na">tipo=</span><span class="s">&quot;furgoneta&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;matricula&gt;</span>5464-BBB<span class="nt">&lt;/matricula&gt;</span>
+<span class="w">            </span><span class="nt">&lt;color&gt;</span>verde<span class="nt">&lt;/color&gt;</span>
+<span class="w">            </span><span class="nt">&lt;marca&gt;</span>Ford<span class="nt">&lt;/marca&gt;</span>
+<span class="w">            </span><span class="nt">&lt;modelo&gt;</span>Transit<span class="nt">&lt;/modelo&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/vehiculo&gt;</span>
+<span class="w">         </span><span class="cm">&lt;!-- Resto de vehículos posea --&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/flota&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/persona&gt;</span>
+<span class="w">   </span><span class="cm">&lt;!-- Resto de personas --&gt;</span>
+<span class="nt">&lt;/gente&gt;</span>
+</pre></div>
+</div>
+<p>Si intentamos definir su gramática con un <abbr title="Document Type Definition">DTD</abbr>, no podremos ser muy precisos en
+el formato de los contenidos de elementos y atributos, pero a cambio es fácil de
+leer, porque todo es muy esquemático:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">gente</span> <span class="o">(</span><span class="nt">persona</span><span class="o">+)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ATTLIST</span> <span class="nt">gente</span> <span class="na">xmlns</span> <span class="kc">CDATA</span> <span class="kc">#IMPLIED</span><span class="k">&gt;</span>
+
+<span class="k">&lt;!ELEMENT</span> <span class="nt">persona</span> <span class="o">(</span><span class="nt">nombre</span><span class="o">,</span><span class="nt">apellidos</span><span class="o">,</span><span class="nt">dni</span><span class="o">,</span><span class="nt">flota</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ATTLIST</span> <span class="nt">persona</span> <span class="na">id</span> <span class="kc">ID</span> <span class="kc">#REQUIRED</span><span class="k">&gt;</span>
+
+<span class="k">&lt;!ELEMENT</span> <span class="nt">nombre</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ATTLIST</span> <span class="nt">nombre</span> <span class="na">apodo</span> <span class="kc">CDATA</span> <span class="kc">#IMPLIED</span><span class="k">&gt;</span>
+
+<span class="k">&lt;!ELEMENT</span> <span class="nt">apellidos</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ELEMENT</span> <span class="nt">dni</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ELEMENT</span> <span class="nt">flota</span> <span class="o">(</span><span class="nt">vehiculo</span><span class="o">*)</span><span class="k">&gt;</span>
+
+<span class="k">&lt;!ELEMENT</span> <span class="nt">vehiculo</span> <span class="o">(</span><span class="nt">matricula</span><span class="o">,</span><span class="nt">color</span><span class="o">,</span><span class="nt">marca</span><span class="o">,</span><span class="nt">modelo</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ATTLIST</span> <span class="nt">vehiculo</span> <span class="na">tipo</span> <span class="o">(</span><span class="na">turismo</span><span class="o">|</span><span class="na">furgoneta</span><span class="o">|</span><span class="na">moto</span><span class="o">|</span><span class="na">camión</span><span class="o">|</span><span class="na">autobús</span><span class="o">)</span> <span class="s2">&quot;turismo&quot;</span><span class="k">&gt;</span>
+
+<span class="k">&lt;!ELEMENT</span> <span class="nt">matricula</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ATTLIST</span> <span class="nt">matricula</span> <span class="na">numeracion</span> <span class="o">(</span><span class="na">antigua</span><span class="o">|</span><span class="na">nueva</span><span class="o">)</span> <span class="s2">&quot;nueva&quot;</span><span class="k">&gt;</span>
+
+<span class="k">&lt;!ELEMENT</span> <span class="nt">color</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ELEMENT</span> <span class="nt">marca</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ELEMENT</span> <span class="nt">modelo</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<p>Es fácil saber, de un único vistazo, cuáles son los elementos que puede contener
+el elemento persona o qué atributos y de qué tipo puede contener el atributo
+matricula. En cambio, una definición igual de imprecisa con un <abbr title="XML Schema Definition">XSD</abbr> (sin afinar
+el formato que debe tener un <abbr title="Documento Nacional de Identidad">DNI</abbr> o una matrícula) tiene esta pinta:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Un <abbr title="XML Schema Definition">XSD</abbr> que parece la carretera de la sierra…</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;xs:schema</span><span class="w"> </span><span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gente&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:sequence&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;persona&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">&gt;</span>
+<span class="w">               </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;xs:sequence&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nombre&quot;</span><span class="nt">&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;xs:simpleContent&gt;</span>
+<span class="w">                              </span><span class="nt">&lt;xs:extension</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                                 </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;apodo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">                              </span><span class="nt">&lt;/xs:extension&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;/xs:simpleContent&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/xs:element&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;apellidos&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;dni&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;flota&quot;</span><span class="nt">&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;xs:sequence&gt;</span>
+<span class="w">                              </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vehiculo&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">&gt;</span>
+<span class="w">                                 </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;xs:sequence&gt;</span>
+<span class="w">                                       </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;matricula&quot;</span><span class="nt">&gt;</span>
+<span class="w">                                          </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="w">                                             </span><span class="nt">&lt;xs:simpleContent&gt;</span>
+<span class="w">                                                </span><span class="nt">&lt;xs:extension</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                                                   </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;numeracion&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;nueva&quot;</span><span class="nt">&gt;</span>
+<span class="w">                                                      </span><span class="nt">&lt;xs:simpleType&gt;</span>
+<span class="w">                                                         </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                                                            </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;antigua&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                                                            </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;nueva&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                                                         </span><span class="nt">&lt;/xs:restriction&gt;</span>
+<span class="w">                                                      </span><span class="nt">&lt;/xs:simpleType&gt;</span>
+<span class="w">                                                   </span><span class="nt">&lt;/xs:attribute&gt;</span>
+<span class="w">                                                </span><span class="nt">&lt;/xs:extension&gt;</span>
+<span class="w">                                             </span><span class="nt">&lt;/xs:simpleContent&gt;</span>
+<span class="w">                                          </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="w">                                       </span><span class="nt">&lt;/xs:element&gt;</span>
+<span class="w">                                       </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;color&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">                                       </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;marca&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">                                       </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;modelo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;/xs:sequence&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;turismo&quot;</span><span class="nt">&gt;</span>
+<span class="w">                                       </span><span class="nt">&lt;xs:simpleType&gt;</span>
+<span class="w">                                          </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">                                             </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;turismo&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">                                             </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;furgoneta&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">                                             </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;moto&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">                                             </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;camión&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">                                             </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;autobús&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">                                          </span><span class="nt">&lt;/xs:restriction&gt;</span>
+<span class="w">                                       </span><span class="nt">&lt;/xs:simpleType&gt;</span>
+<span class="w">                                    </span><span class="nt">&lt;/xs:attribute&gt;</span>
+<span class="w">                                 </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="w">                              </span><span class="nt">&lt;/xs:element&gt;</span>
+<span class="w">                           </span><span class="nt">&lt;/xs:sequence&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;/xs:element&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/xs:sequence&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;id&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:ID&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">               </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/xs:element&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/xs:sequence&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:element&gt;</span>
+<span class="nt">&lt;/xs:schema&gt;</span>
+</pre></div>
+</div>
+</div>
+</details><p>Y, ahora, ¿qué elementos puede contener el elemento <em>flota</em>? Es difícil decirlo
+con un vistazo. Incluso con diez. Es tanta la cantidad de metainformación, tan
+larga y tan prolija, que es incluso difícil de escribir el documento sin que
+olvidemos por qué atributo o elemento íbamos definiendo. Esto, en realidad, es
+un problema intrínseco al <abbr title="eXtensible  Markup Language">XML</abbr>: no puede solucionarse, pero sí al menos
+paliarse. En los <abbr title="XML Schema Definition">XSD</abbr> la mejor forma de tener unas definiciones más compactas,
+es intentar no anidar las definición de tipos dentro de elementos, sino definir
+aparte los tipos complejos e ir incorporando esa definición a la definición de
+otros tipos y elementos. No se logra con esto que el documento sea más corto, al
+contrario; pero se consigue separar unas definiciones de otras, de modo que cada
+una de ellas sea más compacta.</p>
+<p>Partiendo de esta premisa se puede obrar del siguiente modo: empezamos
+definiendo a partir del elemento raíz y, cuando nos topamos con la definición de
+un tipo complejo (o un tipo simple con restricciones), no lo definimos hay mismo
+sino que le damos un nombre a ese tipo y lo definimos aparte:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Una solución más legible…</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;xs:schema</span><span class="w"> </span><span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gente&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:sequence&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;persona&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;tipo.persona&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/xs:sequence&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:element&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.persona&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:sequence&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nombre&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;tipo.nombre&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;apellidos&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;dni&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;flota&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;tipo.flota&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:sequence&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;id&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:ID&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexType&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.nombre&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:simpleContent&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:extension</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;apodo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/xs:extension&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:simpleContent&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexType&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.flota&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:sequence&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vehiculo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;tipo.vehiculo&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:sequence&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexType&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.vehiculo&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:sequence&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;matricula&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;tipo.matricula&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;color&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;marca&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;modelo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:sequence&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;tipo.tipo&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexType&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.matricula&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:simpleContent&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:extension</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;numeracion&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;tipo.numeracion&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/xs:extension&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:simpleContent&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexType&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;xs:simpleType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.numeracion&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;antigua&quot;</span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;nueva&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:restriction&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:simpleType&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;xs:simpleType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.tipo&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;turismo&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;furgoneta&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;moto&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;camión&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;autobús&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:restriction&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:simpleType&gt;</span>
+<span class="nt">&lt;/xs:schema&gt;</span>
+</pre></div>
+</div>
+</div>
+</details><p>El documento resultante no sale más corto, ni siquiera hay menos etiquetas, pero
+las definiciones de cada elemento y de cada tipo están separadas, de modo que
+mediante un vistazo se pueden entender más fácilmente. Además, permite
+reaprovechar las definiciones de tipos para usarlas en otro <abbr title="XML Schema Definition">XSD</abbr>, tal como se
+verá a continuación.</p>
+</section>
+<section id="reutilizacion-de-definiciones">
+<span id="xsd-modular"></span><h2>Reutilización de definiciones<a class="headerlink" href="#reutilizacion-de-definiciones" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Hasta ahora hemos considerado que la definición de la gramática de un <abbr title="eXtensible  Markup Language">XML</abbr> se
+encontraba toda dentro de un archivo <abbr title="XML Schema Definition">XSD</abbr>. Sin embargo, esto no es siempre así:
+puede ser que queramos separarla en varios ficheros, o bien que queramos tener
+ficheros en donde definimos tipos de elementos y atributos que vayan a
+encontrarse en distintos <abbr title="eXtensible  Markup Language">XML</abbr> y que queramos usar recurrentemente. Por ejemplo,
+un tipo para los elementos que representan personas, puesto que este tipo podrá
+encontrarse en muchos <abbr title="eXtensible  Markup Language">XML</abbr> distintos, desde uno para alquiler de coches (los
+compradores son personas) a otro para organizar los préstamos de una biblioteca
+(los lectores también lo son).</p>
+<p>Para ello existen dos mecanismos distintos: uno que consiste únicamente en
+yuxtaponer distintos ficheros <abbr title="XML Schema Definition">XSD</abbr> y otro que hace uso de los llamados espacios
+de nombres. La ventaja del segundo es que permite definir tipos con un mismos
+nombre dentro de espacios de nombres distintos.</p>
+<section id="composicion-de-ficheros-xsd">
+<span id="xsd-composicion"></span><h3>Composición de ficheros <abbr title="XML Schema Definition">XSD</abbr><a class="headerlink" href="#composicion-de-ficheros-xsd" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Imaginemos que queremos escribir definir la gramática del <abbr title="eXtensible  Markup Language">XML</abbr> del apartado
+anterior de manera que queremos crear dos archivos <abbr title="XML Schema Definition">XSD</abbr>: uno que incluya las
+definiciones relativas a los vehículos (o sea, todo lo incluido dentro del
+elemento flota) y otro que incluya el resto.</p>
+<p>Para ello podemos crear el siguente archivo <a class="reference download internal" download="" href="../_downloads/e2e8fb21c97aa8ea7f1ad0d07362833d/flota.xsd"><code class="xref download docutils literal notranslate"><span class="pre">flota.xsd</span></code></a>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;xs:schema</span><span class="w"> </span><span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span><span class="nt">&gt;</span>
+<span class="w"> </span>
+<span class="w">   </span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.flota&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:sequence&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vehiculo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;tipo.vehiculo&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:sequence&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="w"> </span>
+<span class="w">   </span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.vehiculo&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:sequence&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;matricula&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;tipo.matricula&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;color&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;marca&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;modelo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:sequence&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;tipo.tipo&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="w"> </span>
+<span class="w">   </span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.matricula&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:simpleContent&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:extension</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;numeracion&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;tipo.numeracion&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/xs:extension&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:simpleContent&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="w"> </span>
+<span class="w">   </span><span class="nt">&lt;xs:simpleType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.numeracion&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;antigua&quot;</span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;nueva&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:restriction&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:simpleType&gt;</span>
+<span class="w"> </span>
+<span class="w">   </span><span class="nt">&lt;xs:simpleType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.tipo&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;turismo&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;furgoneta&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;moto&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;camión&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;autobús&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:restriction&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:simpleType&gt;</span>
+<span class="w"> </span>
+<span class="nt">&lt;/xs:schema&gt;</span>
+</pre></div>
+</div>
+<p>Y el siguiente <a class="reference download internal" download="" href="../_downloads/9aa66352b079a67917143ecb91c83cf6/gente.xsd"><code class="xref download docutils literal notranslate"><span class="pre">gente.xsd</span></code></a> que haga referencia a
+file:<cite>flota.xsd</cite>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;xs:schema</span><span class="w"> </span><span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span><span class="nt">&gt;</span>
+<span class="w"> </span>
+<span class="hll"><span class="w">   </span><span class="nt">&lt;xs:include</span><span class="w"> </span><span class="na">schemaLocation=</span><span class="s">&quot;flota.xsd&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="w"> </span>
+<span class="w">   </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gente&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:sequence&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;persona&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;tipo.persona&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/xs:sequence&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:element&gt;</span>
+<span class="w"> </span>
+<span class="w">   </span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.persona&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:sequence&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nombre&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;tipo.nombre&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;apellidos&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;dni&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;flota&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;tipo.flota&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:sequence&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;id&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;ident.persona&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="w"> </span>
+<span class="w">   </span><span class="nt">&lt;xs:simpleType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ident.persona&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:ID&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:simpleType&gt;</span>
+<span class="w"> </span>
+<span class="w">   </span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.nombre&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:simpleContent&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:extension</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;apodo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/xs:extension&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:simpleContent&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="nt">&lt;/xs:schema&gt;</span>
+</pre></div>
+</div>
+<p>Además del elemento <code class="docutils literal notranslate"><span class="pre">xs:include</span></code> se puede usar el elemento <code class="docutils literal notranslate"><span class="pre">xs:redefine</span></code> que
+permite, a la vez que se incluyen los elementos del <abbr title="XML Schema Definition">XSD</abbr> enlazado, redefinir
+aquellos que consideremos oportunos. La redefinición, desgraciadamente, está
+limitada a que restrinjamos o extendamos el tipo original y no a que hagamos una
+redefinición totalmente nueva. Para esto último deberíamos usar el elemento
+<code class="docutils literal notranslate"><span class="pre">xs:override</span></code>, que existe en <abbr title="eXtensible  Markup Language">XML</abbr> Schemas 1.1:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;xs:schema</span><span class="w"> </span><span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span><span class="nt">&gt;</span>
+
+<span class="w">   </span><span class="cm">&lt;!--</span>
+<span class="cm">   - gente2.xsd es igual que gente.xsd salvo</span>
+<span class="cm">   - por la redefinición del tipo &quot;ident.persona&quot;.</span>
+<span class="cm">   --&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;xs:redefine</span><span class="w"> </span><span class="na">schemaLocation=</span><span class="s">&quot;gente.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:simpleType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ident.persona&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;ident.persona&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:pattern</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;p[0-9]+&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/xs:restriction&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:simpleType&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:redefine&gt;</span>
+
+<span class="nt">&lt;/xs:schema&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="espacios-de-nombres">
+<span id="xsd-namespaces"></span><h3>Espacios de nombres<a class="headerlink" href="#espacios-de-nombres" title="Enlace permanente a este encabezado">¶</a></h3>
+<section id="concepto">
+<h4>Concepto<a class="headerlink" href="#concepto" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>Lo visto en el epígrafe anterior soluciona nuestra necesidad de modularizar las
+definiciones. Sin embargo, nos topamos con un problema nada desdeñable: los
+nombres de los tipos no pueden repetirse, de modo que, cuando estuviéramos
+creando un nuevo <abbr title="XML Schema Definition">XSD</abbr> que reaprovechase definiciones de otros <abbr title="XML Schema Definition">XSD</abbr>, deberíamos
+comprobar que los nombres que elegimos para los nuevos tipos no fueran ya usados
+dentro de los otros ficheros. Esto puede llegar a ser engorroso y la solución es
+usar espacios de nombres.</p>
+<p>Los espacios de nombres son un mecanismo que permite convivir en un mismo <abbr title="eXtensible  Markup Language">XML</abbr>
+a elementos y atributos que tienen idéntico nombre, pero distintos significado
+porque pertenecen a distinto campo semántico.</p>
+<p>Para usarlos en nuestro <abbr title="eXtensible  Markup Language">XML</abbr> es necesario hacer uso del atributo <em>xmlns</em>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;</span>
+<span class="nt">&lt;p:persona</span><span class="w"> </span><span class="na">xmlns:p=</span><span class="s">&quot;urn:persona&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;p:nombre&gt;</span>Perico<span class="nt">&lt;/p:nombre&gt;</span>
+<span class="w">   </span><span class="nt">&lt;p:apellidos&gt;</span>de<span class="w"> </span>los<span class="w"> </span>palotes<span class="nt">&lt;/p:apellidos&gt;</span>
+<span class="w">   </span><span class="nt">&lt;p:dni&gt;</span>41112233<span class="nt">&lt;/p:dni&gt;</span>
+<span class="w">   </span><span class="nt">&lt;p:tlfo&gt;</span>953112233<span class="nt">&lt;/p:tlfo&gt;</span>
+<span class="nt">&lt;/p:persona&gt;</span>
+</pre></div>
+</div>
+<p>En este caso, <code class="docutils literal notranslate"><span class="pre">xmlns:p</span></code> indica que el prefijo para el espacio de nombres será
+<em>p</em>.  El valor es indiferente: simplemente tiene que cumplirse que sea único. Ni
+siquiera tiene que existir realmente el enlace. Esta definición del espacio de
+nombres tiene validez dentro el propio elemento en que se define (incluidos los
+subelementos que contiene). Por ese motivo, si se definen espacios de nombres se
+suele hacer en la etiqueta del elemento raíz.</p>
+<p>Es posible definir varios espacios de nombres a la vez:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;</span>
+<span class="nt">&lt;p:persona</span><span class="w"> </span><span class="na">xmlns:p=</span><span class="s">&quot;urn:persona&quot;</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">&quot;urn:direccion&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;p:nombre&gt;</span>Perico<span class="nt">&lt;/p:nombre&gt;</span>
+<span class="w">   </span><span class="nt">&lt;p:apellidos&gt;</span>de<span class="w"> </span>los<span class="w"> </span>palotes<span class="nt">&lt;/p:apellidos&gt;</span>
+<span class="w">   </span><span class="nt">&lt;p:dni&gt;</span>41112233<span class="nt">&lt;/p:dni&gt;</span>
+<span class="w">   </span><span class="nt">&lt;p:tlfo&gt;</span>953112233<span class="nt">&lt;/p:tlfo&gt;</span>
+<span class="w">   </span><span class="nt">&lt;p:direccion&gt;</span>
+<span class="w">      </span><span class="nt">&lt;d:via</span><span class="w"> </span><span class="na">tipo=</span><span class="s">&quot;calle&quot;</span><span class="nt">&gt;</span>Callo,<span class="w"> </span>5<span class="nt">&lt;/d:via&gt;</span>
+<span class="w">      </span><span class="nt">&lt;d:cp&gt;</span>12345<span class="nt">&lt;/d:cp&gt;</span>
+<span class="w">      </span><span class="nt">&lt;d:localidad&gt;</span>Villaconejos<span class="nt">&lt;/d:localidad&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/p:direccion&gt;</span>
+<span class="nt">&lt;/p:persona&gt;</span>
+</pre></div>
+</div>
+<p>Es posible definir un espacio de nombres por defecto, de manera que los
+elementos y atributos que no tengan prefijo, pertenezca a este espacio de
+nombres por defecto:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;</span>
+<span class="nt">&lt;persona</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;urn:persona&quot;</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">&quot;urn:direccion&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;nombre&gt;</span>Perico<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">   </span><span class="nt">&lt;apellidos&gt;</span>de<span class="w"> </span>los<span class="w"> </span>palotes<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dni&gt;</span>41112233<span class="nt">&lt;/dni&gt;</span>
+<span class="w">   </span><span class="nt">&lt;tlfo&gt;</span>953112233<span class="nt">&lt;/tlfo&gt;</span>
+<span class="w">   </span><span class="nt">&lt;direccion&gt;</span>
+<span class="w">      </span><span class="nt">&lt;d:via</span><span class="w"> </span><span class="na">tipo=</span><span class="s">&quot;calle&quot;</span><span class="nt">&gt;</span>Callo,<span class="w"> </span>5<span class="nt">&lt;/d:via&gt;</span>
+<span class="w">      </span><span class="nt">&lt;d:cp&gt;</span>12345<span class="nt">&lt;/d:cp&gt;</span>
+<span class="w">      </span><span class="nt">&lt;d:localidad&gt;</span>Villaconejos<span class="nt">&lt;/d:localidad&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/direccion&gt;</span>
+<span class="nt">&lt;/persona&gt;</span>
+</pre></div>
+</div>
+<p>Desgraciadamente los <abbr title="Document Type Definition">DTD</abbr> existen desde antes de la aparición de los espacios de
+nombres, así que no puede validarse con ellos un documento que use dos <abbr title="Document Type Definition">DTD</abbr>
+diferentes y dos espacios de nombres, cada uno para referenciar los elementos de
+cada <abbr title="Document Type Definition">DTD</abbr>. Sin embargo, esto sí es posible con <abbr title="eXtensible  Markup Language">XML</abbr> Schemas.</p>
+</section>
+<section id="definicion-del-espacio-de-nombres">
+<h4>Definición del espacio de nombres<a class="headerlink" href="#definicion-del-espacio-de-nombres" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>Retomemos el ejemplo de la definición de persona (en principio sin la dirección,
+que lo dejaremos para el siguiente epígrafe):</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;</span>
+<span class="nt">&lt;persona</span><span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<span class="w">         </span><span class="na">xmlns=</span><span class="s">&quot;urn:persona&quot;</span>
+<span class="w">         </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;urn:persona persona.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;nombre&gt;</span>Perico<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">   </span><span class="nt">&lt;apellidos&gt;</span>de<span class="w"> </span>los<span class="w"> </span>palotes<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dni&gt;</span>41112233<span class="nt">&lt;/dni&gt;</span>
+<span class="w">   </span><span class="nt">&lt;tlfo&gt;</span>953112233<span class="nt">&lt;/tlfo&gt;</span>
+<span class="nt">&lt;/persona&gt;</span>
+</pre></div>
+</div>
+<p>Observemos las diferencias con el código que con el que abrimos el tema y para
+el que no nos preocupamos de la definición del espacio de nombres: el atributo
+<em>xmlns</em> para definir un espacio de nombres predeterminado, y el atributo
+<em>xsi:schemaLocation</em> en el que indicamos el fichero <abbr title="XML Schema Definition">XSD</abbr> que sirve para la
+validación de tal espacio de nombres. El <abbr title="XML Schema Definition">XSD</abbr>, por su parte, quedará así:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;xs:schema</span><span class="w"> </span><span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span>
+<span class="w">           </span><span class="na">xmlns=</span><span class="s">&quot;urn:persona&quot;</span>
+<span class="w">           </span><span class="na">targetNamespace=</span><span class="s">&quot;urn:persona&quot;</span>
+<span class="w">           </span><span class="na">elementFormDefault=</span><span class="s">&quot;qualified&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;persona&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:sequence&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nombre&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;apellidos&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;dni&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tlfo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/xs:sequence&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:element&gt;</span>
+<span class="nt">&lt;/xs:schema&gt;</span>
+</pre></div>
+</div>
+<p>Como se ve, sólo hay que indicar cuál es el espacio de nombres que se define
+(<em>targetNamespace</em>) y <em>elementFormDefault</em>, que indica si los elementos
+pertenecerán a este espacio de nombres o no. Al ponerlo como qualified, sí
+pertenecerán (el valor predeterminado es unqualified). Obsérvese que en la
+definición del <abbr title="eXtensible  Markup Language">XML</abbr> todos los elementos pertenecen al espacio de nombres
+<em>urn:persona</em>, así que al hacer la definición con <abbr title="XML Schema Definition">XSD</abbr> los elementos deben
+pertenecer al mismo.</p>
+</section>
+<section id="mezclando-espacios-de-nombres">
+<h4>Mezclando espacios de nombres<a class="headerlink" href="#mezclando-espacios-de-nombres" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>Llega el momento de saber cómo se pueden definir por separado los elementos de
+distintos espacios de nombres (cada uno en un <abbr title="XML Schema Definition">XSD</abbr> diferente) y cómo se pueden
+usar todos esos espacios de nombres a la vez en un único <abbr title="eXtensible  Markup Language">XML</abbr>.</p>
+<p>Supongamos que la definición anterior de persona la queremos enriquecer con su
+dirección postal. Ahora bien, la dirección postal (que incluye el nombre de la
+calle, el número y el código postal, por ejemplo) se puede usar también cuando
+tratamos de definir el domicilio de una empresa. Así que supongamos que
+definimos en el archivo <a class="reference download internal" download="" href="../_downloads/6d5248e893bc2754e23e2495b589b6b8/direccion.xsd"><code class="xref download docutils literal notranslate"><span class="pre">direccion.xsd</span></code></a> el
+siguiente tipo complejo:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;xs:schema</span><span class="w"> </span><span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span>
+<span class="hll"><span class="w">           </span><span class="na">xmlns=</span><span class="s">&quot;urn:direccion&quot;</span>
+</span><span class="hll"><span class="w">           </span><span class="na">targetNamespace=</span><span class="s">&quot;urn:direccion&quot;</span>
+</span><span class="w">           </span><span class="na">elementFormDefault=</span><span class="s">&quot;qualified&quot;</span><span class="nt">&gt;</span>
+<span class="w"> </span>
+<span class="w">   </span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.direccion&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:sequence&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;via&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;tipo.via&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;cp&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;tipo.cp&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;localidad&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:sequence&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="w"> </span>
+<span class="w">   </span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.via&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:simpleContent&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:extension</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;tipo.clase.via&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;calle&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/xs:extension&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:simpleContent&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="w"> </span>
+<span class="w">   </span><span class="nt">&lt;xs:simpleType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.clase.via&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;calle&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;callejón&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;travesía&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;plaza&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;avenida&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;cuesta&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;costanilla&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:restriction&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:simpleType&gt;</span>
+<span class="w"> </span>
+<span class="w">   </span><span class="nt">&lt;xs:simpleType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tipo.cp&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:integer&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:pattern</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;[0-9]{5}&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:restriction&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:simpleType&gt;</span>
+<span class="w"> </span>
+<span class="nt">&lt;/xs:schema&gt;</span>
+</pre></div>
+</div>
+<p>En este fichero queda perfectamente definido el tipo dirección de manera que
+podríamos escribir nuestro <abbr title="eXtensible  Markup Language">XML</abbr> como sigue:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;</span>
+<span class="nt">&lt;persona</span><span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<span class="w">         </span><span class="na">xmlns=</span><span class="s">&quot;urn:persona&quot;</span>
+<span class="hll"><span class="w">         </span><span class="na">xmlns:d=</span><span class="s">&quot;urn:direccion&quot;</span>
+</span><span class="w">         </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;urn:persona persona.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;nombre&gt;</span>Perico<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">   </span><span class="nt">&lt;apellidos&gt;</span>de<span class="w"> </span>los<span class="w"> </span>palotes<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dni&gt;</span>41112233<span class="nt">&lt;/dni&gt;</span>
+<span class="w">   </span><span class="nt">&lt;tlfo&gt;</span>953112233<span class="nt">&lt;/tlfo&gt;</span>
+<span class="hll"><span class="w">   </span><span class="nt">&lt;direccion&gt;</span>
+</span><span class="hll"><span class="w">      </span><span class="nt">&lt;d:via</span><span class="w"> </span><span class="na">tipo=</span><span class="s">&quot;calle&quot;</span><span class="nt">&gt;</span>Callo,<span class="w"> </span>5<span class="nt">&lt;/d:via&gt;</span>
+</span><span class="hll"><span class="w">      </span><span class="nt">&lt;d:cp&gt;</span>12345<span class="nt">&lt;/d:cp&gt;</span>
+</span><span class="hll"><span class="w">      </span><span class="nt">&lt;d:localidad&gt;</span>Villaconejos<span class="nt">&lt;/d:localidad&gt;</span>
+</span><span class="hll"><span class="w">   </span><span class="nt">&lt;/direccion&gt;</span>
+</span><span class="nt">&lt;/persona&gt;</span>
+</pre></div>
+</div>
+<p>de manera que el nuevo elemento dirección haga uso de la definición. Por último
+alteramos <code class="file docutils literal notranslate"><span class="pre">persona.xsd</span></code> para que haga uso del tipo direccion, que está
+definido en <code class="file docutils literal notranslate"><span class="pre">direccion.xsd</span></code>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;xs:schema</span><span class="w"> </span><span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span>
+<span class="w">           </span><span class="na">xmlns=</span><span class="s">&quot;urn:persona&quot;</span>
+<span class="hll"><span class="w">           </span><span class="na">xmlns:d=</span><span class="s">&quot;urn:direccion&quot;</span>
+</span><span class="w">           </span><span class="na">targetNamespace=</span><span class="s">&quot;urn:persona&quot;</span>
+<span class="w">           </span><span class="na">elementFormDefault=</span><span class="s">&quot;qualified&quot;</span><span class="nt">&gt;</span>
+<span class="w"> </span>
+<span class="hll"><span class="w">   </span><span class="nt">&lt;xs:import</span><span class="w"> </span><span class="na">schemaLocation=</span><span class="s">&quot;direccion.xsd&quot;</span>
+</span><span class="hll"><span class="w">              </span><span class="na">namespace=</span><span class="s">&quot;urn:direccion&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="w"> </span>
+<span class="w">   </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;persona&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xs:complexType&gt;</span>
+<span class="w">         </span><span class="nt">&lt;xs:sequence&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;nombre&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;apellidos&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;dni&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tlfo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="hll"><span class="w">            </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;direccion&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;d:tipo.direccion&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="w">         </span><span class="nt">&lt;/xs:sequence&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/xs:complexType&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/xs:element&gt;</span>
+<span class="nt">&lt;/xs:schema&gt;</span>
+</pre></div>
+</div>
+<p>Cuando se usan espacios de nombres es posible usar también <code class="docutils literal notranslate"><span class="pre">xs:include</span></code> y
+<code class="docutils literal notranslate"><span class="pre">xs:redefine</span></code>. Sin embargo, los tipos de elementos y atributos que se definan
+en el <abbr title="XML Schema Definition">XSD</abbr> enlazados deberán tener el mismo espacio de nombres de destino
+(<em>targetNamespace</em>) que el fichero desde el que se enlazan.</p>
+</section>
+</section>
+</section>
+<section id="ejercicios-resueltos">
+<h2>Ejercicios resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Enlace permanente a este encabezado">¶</a></h2>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Por hacer</p>
+<p>Resolver los <a class="reference internal" href="../01.intro/02a.serial.html#yaml-resueltos"><span class="std std-ref">ejercicios de recetas y cadena</span></a>.</p>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/logo.png" alt="Logo"/>
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">W3C <abbr title="eXtensible  Markup Language">XML</abbr> Schema</a><ul>
+<li><a class="reference internal" href="#introduccion">Introducción</a></li>
+<li><a class="reference internal" href="#vistazo-rapido">Vistazo rápido</a></li>
+<li><a class="reference internal" href="#tipos-simples">Tipos simples</a><ul>
+<li><a class="reference internal" href="#elementos-simples">Elementos simples</a></li>
+<li><a class="reference internal" href="#atributos-simples">Atributos simples</a></li>
+<li><a class="reference internal" href="#restricciones">Restricciones</a></li>
+<li><a class="reference internal" href="#tipos-derivados">Tipos derivados</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tipos-complejos">Tipos complejos</a><ul>
+<li><a class="reference internal" href="#contenido-simple-texto-solo">Contenido simple (texto solo)</a></li>
+<li><a class="reference internal" href="#contenido-complejo">Contenido complejo</a><ul>
+<li><a class="reference internal" href="#cardinalidad">Cardinalidad</a></li>
+<li><a class="reference internal" href="#secuencia">Secuencia</a></li>
+<li><a class="reference internal" href="#agrupacion">Agrupación</a></li>
+<li><a class="reference internal" href="#simplificacion">Simplificación</a></li>
+<li><a class="reference internal" href="#tipos-complejos-mixtos">Tipos complejos mixtos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#xsd-deriv-tipos">Tipos derivados</a></li>
+<li><a class="reference internal" href="#casos-particulares">Casos particulares</a><ul>
+<li><a class="reference internal" href="#tipo-vacio-sin-atributos">Tipo vacío sin atributos</a></li>
+<li><a class="reference internal" href="#tipo-vacio-con-atributos">Tipo vacío con atributos</a></li>
+<li><a class="reference internal" href="#tipo-texto-con-atributos">Tipo texto con atributos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#consejos-de-escritura">Consejos de escritura</a></li>
+<li><a class="reference internal" href="#reutilizacion-de-definiciones">Reutilización de definiciones</a><ul>
+<li><a class="reference internal" href="#composicion-de-ficheros-xsd">Composición de ficheros <abbr title="XML Schema Definition">XSD</abbr></a></li>
+<li><a class="reference internal" href="#espacios-de-nombres">Espacios de nombres</a><ul>
+<li><a class="reference internal" href="#concepto">Concepto</a></li>
+<li><a class="reference internal" href="#definicion-del-espacio-de-nombres">Definición del espacio de nombres</a></li>
+<li><a class="reference internal" href="#mezclando-espacios-de-nombres">Mezclando espacios de nombres</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ejercicios-resueltos">Ejercicios resueltos</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="../08.js/index.html"
+                          title="Previous page">&larr; <span class="section-number">8. </span>Javascript</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="22.rnc.html"
+                          title="Next page">&rarr; Relax-NG Compact</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/98.apendices/21.xsd.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="22.rnc.html" title="Relax-NG Compact"
+             >siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="../08.js/index.html" title="8. Javascript"
+             >anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">W3C <abbr title="eXtensible  Markup Language">XML</abbr> Schema</a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
+      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

@@ -1,0 +1,541 @@
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>6.6. Estructura semántica &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+    <link rel="stylesheet" href="../_static/general.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+
+    
+    
+     
+        <script src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="6.7. Formularios" href="08.form.html" />
+    <link rel="prev" title="6.5. Tablas" href="05.tablas.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="08.form.html" title="6.7. Formularios"
+             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="05.tablas.html" title="6.5. Tablas"
+             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">6. </span><abbr title="HyperText Markup Language">HTML</abbr></a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">6.6. </span>Estructura semántica</a></li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="estructura-semantica">
+<span id="html-struct"></span><h1><span class="section-number">6.6. </span>Estructura semántica<a class="headerlink" href="#estructura-semantica" title="Enlace permanente a este encabezado">¶</a></h1>
+<p>Bajo este epígrafe se tratarán los elementos que permiten estructurar
+semánticamente el documento <abbr title="HyperText Markup Language">HTML</abbr>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>La idea de estos elementos es que sean transparentes al usuario que
+accede al documento gracias a sus ojos mediante un navegador; pero que, sin
+embargo, sirvan para dotar de significado semántico a las distintas partes
+del documento a fin de que un lector sea capaz de <em>contar</em> a una persona
+ciega cuál es el contenido de la página.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>A pesar del esfuerzo de <abbr title="HyperText Markup Language">HTML</abbr> por dotar de mayor semántica a sus
+elementos, aún puede interesarnos reforzar la semántica para facilitar la
+accesibilidad. Por ello existe <a class="reference external" href="https://www.w3.org/WAI/ARIA/">ARIA</a>, una
+colección de atributos que permiten afinar con más precisión la semántica.
+El grupo proporciona unos <a class="reference external" href="https://www.w3.org/WAI/ARIA/apg/practices/read-me-first/">principios básicos</a> y algunos
+consejos, como los <a class="reference external" href="https://www.w3.org/WAI/ARIA/apg/patterns/">patrones más habituales</a> que podemos aplicar para
+mejorar la accesibilidad de nuestra web.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Puede sernos de mucha utilidad el <a class="reference external" href="https://www.w3.org/WAI/tutorials/page-structure/">tutorial del W3C sobre estructura
+del documento</a>.</p>
+</div>
+<table class="el-html docutils align-default" id="id1">
+<caption><span class="caption-text">Elementos estructurales</span><a class="headerlink" href="#id1" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-div"><span class="std std-ref">&lt;div&gt;</span></a></p></td>
+<td><p>Contenedor genérico de bloques.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-section"><span class="std std-ref">&lt;section&gt;</span></a></p></td>
+<td><p>Agrupa un contenido como sección en un documento.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-hgroup"><span class="std std-ref">&lt;hgroup&gt;</span></a></p></td>
+<td><p>Agrupa varios elementos que constituyen un encabezado, como
+el elemento de encabezado en sí y un subtítulo.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-article"><span class="std std-ref">&lt;article&gt;</span></a></p></td>
+<td><p>Agrupa un contenido que tiene significado por sí mismo.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-aside"><span class="std std-ref">&lt;aside&gt;</span></a></p></td>
+<td><p>Acotación tangencialmente relacionada con el texto principal.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-figure"><span class="std std-ref">&lt;figure&gt;</span></a></p></td>
+<td><p>Elemento autocontenido como una imagen con su leyenda o una
+cita junto a la obra de la que se extrae.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-nav"><span class="std std-ref">&lt;nav&gt;</span></a></p></td>
+<td><p>Identifica una sección del documento dedicada a
+proporcionar enlaces de navegación a partes del propio
+documento (un índice, por ejemplo) u otros documentos.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-header"><span class="std std-ref">&lt;header&gt;</span></a></p></td>
+<td><p>Contenido introductorio.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-main"><span class="std std-ref">&lt;main&gt;</span></a></p></td>
+<td><p>Contenido principal de la página (no de una sección)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-footer"><span class="std std-ref">&lt;footer&gt;</span></a></p></td>
+<td><p>Contenido que remata una parte del documento.</p></td>
+</tr>
+</tbody>
+</table>
+<span id="index-0"></span><dl id="html-div">
+<dt><strong>div</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#technical_summary">div</a>)</dt><dd><p>Es un elemento que permite agrupar otros elementos de bloque, pero sin
+tener asignado un papel semántico concreto. Es el equivalente en el bloque a
+<a class="reference internal" href="04.basico.html#html-span"><span class="std std-ref">&lt;span&gt;</span></a> en la línea. En <abbr title="HyperText Markup Language">HTML</abbr>4, por falta de elementos más
+específicos se usaba para estructurar los documentos:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- Este es un típico código de HTML4: NI SE LE OCURRA REPRODUCIRLO --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;section&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Los mamíferos<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bla, bla, bla...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;section&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Los homínidos<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bla, bla, bla<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;section&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Los felinos<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bla, bla, bla<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Aunque este uso está obsoleto y absolutamente desaconsejado, el elemento
+sigue teniendo utilidad para agrupar elementos cuyo significado no se ajusta a
+ninguno de los que tienen los restantes elementos. Por ejemplo, puede ser
+útil para establecer un idioma con el atributo <code class="code docutils literal notranslate"><span class="pre">lang</span></code> o a efectos de
+presentación</p>
+</dd>
+</dl>
+<span id="index-1"></span><dl id="html-section">
+<dt><strong>section</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section#technical_summary">section</a>)</dt><dd><p>El elemento nació en <abbr title="HyperText Markup Language">HTML</abbr>5 con la intención de <em>estructurar semánticamente</em> el
+contenido del documento de esta forma:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- No utilice esta estructura: es un ejemplo de lo que se pensó que fuera y no fue --&gt;</span>
+<span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;mamiferos&quot;</span><span class="p">&gt;</span>Los mamíferos<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bla, bla, bla<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+   <span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;hominidos&quot;</span><span class="p">&gt;</span>Los homínidos<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bla, bla, bla<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+
+   <span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;felinos&quot;</span><span class="p">&gt;</span>Los felinos<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bla, bla, bla<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>donde todos los elementos que marcan la cabecera son <a class="reference internal" href="04.basico.html#html-h1"><span class="std std-ref">&lt;h1&gt;</span></a>. Esto debería
+servir para generar esta estructura:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. Los mamíferos
+   1.1 Los homínidos
+   1.2 Los felinos
+</pre></div>
+</div>
+<p>El problema es que esta idea nunca la llegaron a implementar los navegadores
+y tampoco llegó a plasmarse nunca en las especificaciones oficiales del <abbr title="W3 Consortium">W3C</abbr>
+para <abbr title="HyperText Markup Language">HTML</abbr>5.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Adrian Roselli tiene <a class="reference external" href="https://adrianroselli.com/2016/08/there-is-no-document-outline-algorithm.html">un interesantísimo artículo</a>
+sobre cómo, en realidad, a pesar de los múltiples intentos, nunca ha habido
+en <abbr title="HyperText Markup Language">HTML</abbr> un algoritmo para la estructuración del documento basado en
+<a class="reference internal" href="#html-section"><span class="std std-ref">&lt;section&gt;</span></a> y un elemento único de cabecera (en el ejemplo la  combinación
+de <a class="reference internal" href="#html-section"><span class="std std-ref">&lt;section&gt;</span></a> y <a class="reference internal" href="04.basico.html#html-h1"><span class="std std-ref">&lt;h1&gt;</span></a>).</p>
+</div>
+<p>En realidad, la única forma de estructurar semánticamente el documento es usar
+las cabeceras de distinto nivel (<a class="reference internal" href="04.basico.html#html-h1"><span class="std std-ref">&lt;h1&gt;</span></a>, <a class="reference internal" href="04.basico.html#html-h2"><span class="std std-ref">&lt;h2&gt;</span></a>, etc), porque la estructura
+anterior es semánticamente equivalente a:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;mamiferos&quot;</span><span class="p">&gt;</span>Los mamíferos<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bla, bla, bla<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;hominidos&quot;</span><span class="p">&gt;</span>Los homínidos<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bla, bla, bla<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;felinos&quot;</span><span class="p">&gt;</span>Los felinos<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bla, bla, bla<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>lo cual implica poner al mismo nivel los tres encabezados. Así pues, lo
+correcto es:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Reino animal<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bla, bla, bla<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Los mamíferos<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bla, bla, bla<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Los homínidos<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bla, bla, bla<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Los felinos<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bla, bla, bla<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Los reptiles<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bla, bla, bla<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>cuya estructura semántica es:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. Reino animal
+   1.1 Los mamíferos
+      1.1.1 Los homñinidos
+      1.1.2 Los felinos
+   1.2 Los reptiles
+</pre></div>
+</div>
+<p>Además, se recomienda que sólo exista un <a class="reference internal" href="04.basico.html#html-h1"><span class="std std-ref">&lt;h1&gt;</span></a> en el documento que actúe como
+su título.</p>
+<p>Así, pues, ¿para qué sirve <a class="reference internal" href="#html-section"><span class="std std-ref">&lt;section&gt;</span></a>? Desde luego, no para estructurar el
+documento, que fue para lo que se ideó. En opinión de <a class="reference external" href="https://brucelawson.co.uk/">Bruce Lawson</a> en su artículo <a class="reference external" href="https://www.smashingmagazine.com/2020/01/html5-article-section/">Why You Should Choose HTML5
+article Over section</a>,
+simplemente, para señalar dónde empieza y acaba una porción del texto que
+por alguna razón queremos particularizar y siempre deberíamos acompañarla de
+un atributo <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/Accessibility/ARIA/Attributes/aria-label">aria-label</a> para que un lector web lea su valor y se justifique
+esa particularización. Al final de ese artículo, hay <a class="reference external" href="https://www.smashingmagazine.com/2020/01/html5-article-section/#conclusion">unas conclusiones
+interesantes</a>
+sobre los elementos de estructura.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Inspeccionar el código <abbr title="HyperText Markup Language">HTML</abbr> del artículo de <em>Smashing Magazine</em>
+es un buen ejercicio para comprobar cómo se utilizan los elementos de
+estructura semántica (<a class="reference internal" href="#html-header"><span class="std std-ref">&lt;header&gt;</span></a>, <a class="reference internal" href="#html-main"><span class="std std-ref">&lt;main&gt;</span></a>, <a class="reference internal" href="#html-footer"><span class="std std-ref">&lt;footer&gt;</span></a>, <a class="reference internal" href="#html-nav"><span class="std std-ref">&lt;nav&gt;</span></a>, <a class="reference internal" href="#html-aside"><span class="std std-ref">&lt;aside&gt;</span></a>, etc.)
+citados en este apartado. En particular <a class="reference internal" href="#html-section"><span class="std std-ref">&lt;section&gt;</span></a> se utiliza únicamente
+para encerrar dentro de él la entradilla inicial del artículo.</p>
+</div>
+</dd>
+</dl>
+<span id="index-2"></span><dl id="html-hgroup">
+<dt><strong>hgroup</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hgroup#technical_summary">hgroup</a>)</dt><dd><p>Permite agrupar varios elementos que hagan de encabezado conjunto (recordemos que <a class="reference internal" href="04.basico.html#html-h1"><span class="std std-ref">&lt;h1&gt;</span></a>
+y demás familia sólo permiten incluir dentro de sí elementos en línea):</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">hgroup</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Los mamíferos<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Los reyes de la creación<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">hgroup</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bla, bla, bla<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<span id="index-3"></span><dl id="html-article">
+<dt><strong>article</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article#technical_summary">article</a>)</dt><dd><p>El elemento está destinado a agrupar contenidos independientes de por sí, que
+pueden ser reutilizados y repetidos. Por ejemplo, una entrada de <em>blog</em> o el
+artículo de un periódico o un mensaje de texto. Son, pues, una parte
+autocontenida que puede reusarse perfectamente en otra página:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">article</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;entrada_01&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;entrada&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hoy he comprado libros<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>por Fulano, <span class="p">&lt;</span><span class="nt">time</span> <span class="na">datetime</span><span class="o">=</span><span class="s">&quot;2019-04-01&quot;</span><span class="p">&gt;</span>1 de abril de 2019<span class="p">&lt;/</span><span class="nt">time</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Pues sí, señores, hoy me he levantado con unas irresistibles ganas
+de ampliar mi biblioteca y, etc...
+<span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span>
+   <span class="cm">&lt;!-- Información relativa a categoría y etiquetas --&gt;</span>
+<span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<span id="index-4"></span><dl id="html-aside">
+<dt><strong>aside</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside#technical_summary">aside</a>)</dt><dd><p>Representa una porción del documento que está vagamente relacionada con el
+contenido principal. Podría ser apropiada, por ejemplo, para incluir
+publicidad, un aparte donde se incluye una breve reseña bibliográfica del
+autor, un conjunto de enlaces a direcciones relacionadas, las acotaciones que
+se incluyen en los textos de revistas, etc:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Los mamíferos<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bla, bla, bla...
+   <span class="p">&lt;</span><span class="nt">aside</span><span class="p">&gt;</span>En el mundo existen más de 4000 especies de mamíferos.<span class="p">&lt;/</span><span class="nt">aside</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Más bla, bla, bla.
+<span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<span id="index-5"></span><dl id="html-figure">
+<dt><strong>figure</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure#technical_summary">figure</a>)</dt><dd><p>Representa un bloque de contenido con información adicional que por lo
+general contiene una leyenda. El caso más tipico es el de incluir una imagen
+con un pie de foto que la describe o una cita larga con la referencia a la
+obra de la que sale:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">figure</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">svg</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;img&quot;</span> <span class="na">aria-labelledby</span><span class="o">=</span><span class="s">&quot;japan&quot;</span> <span class="na">xmlns</span><span class="o">=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;200&quot;</span> <span class="na">viewBox</span><span class="o">=</span><span class="s">&quot;0 0 900 600&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">title</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;japan&quot;</span><span class="p">&gt;</span>Bandera de Japón<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">rect</span> <span class="na">fill</span><span class="o">=</span><span class="s">&quot;#fff&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;600&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;900&quot;</span><span class="p">/&gt;</span>
+      <span class="p">&lt;</span><span class="nt">circle</span> <span class="na">fill</span><span class="o">=</span><span class="s">&quot;#bc002d&quot;</span> <span class="na">cx</span><span class="o">=</span><span class="s">&quot;450&quot;</span> <span class="na">cy</span><span class="o">=</span><span class="s">&quot;300&quot;</span> <span class="na">r</span><span class="o">=</span><span class="s">&quot;180&quot;</span><span class="p">/&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">svg</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>Bandera de Japón<span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">figure</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="ej-html"><figure>
+   <svg role="img" xmlns="http://www.w3.org/2000/svg" width="200" viewBox="0 0 900 600">
+      <rect fill="#fff" height="600" width="900"/>
+      <circle fill="#bc002d" cx="450" cy="300" r="180"/>
+   </svg>
+   <figcaption>Bandera de Japón</figcaption>
+</figure></div><p id="html-figcaption"><span id="index-6"></span>Para expresar su leyenda <a class="reference internal" href="#html-figure"><span class="std std-ref">&lt;figure&gt;</span></a> permite añadir un elemento <a class="reference internal" href="#html-figcaption"><span class="std std-ref">&lt;figcaption&gt;</span></a>
+antes o después del contenido principal, que en este caso es una imagen en
+que se ha usado un elemento <a class="reference internal" href="09.media.html#svg"><span class="std std-ref">&lt;svg&gt;</span></a> que se verá más adelante.</p>
+<div class="admonition caution">
+<p class="admonition-title">Prudencia</p>
+<p>Si se usa <a class="reference internal" href="04.basico.html#html-img"><span class="std std-ref">&lt;img&gt;</span></a> dentro de <a class="reference internal" href="#html-figure"><span class="std std-ref">&lt;figure&gt;</span></a>, puede dejarse vacío el
+atributo <em>alt</em>, puesto que <a class="reference internal" href="#html-figcaption"><span class="std std-ref">&lt;figcaption&gt;</span></a> hará su función. Deberá, sin
+embargo, aparecer puesto que es un atributo obligatorio.</p>
+</div>
+</dd>
+</dl>
+<span id="index-7"></span><dl id="html-nav">
+<dt><strong>nav</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav#technical_summary">nav</a>)</dt><dd><p>Elemento de bloque ideado para albergar enlaces de navegación en el propio
+sitio, como las barras que aparecen en muchos sitios web del estilo:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Inicio &gt; Perfil &gt; Editar perfil
+</pre></div>
+</div>
+<p>o en un índice del documento si el <abbr title="HyperText Markup Language">HTML</abbr> es un tema desarrollado en
+secciones. Por ejemplo:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">ol</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#a1&quot;</span><span class="p">&gt;</span>Los mamíferos<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+         <span class="p">&lt;</span><span class="nt">ol</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#a1.1&quot;</span><span class="p">&gt;</span>Los homínidos<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#a1.1&quot;</span><span class="p">&gt;</span>Los felinos<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+         <span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#a2&quot;</span><span class="p">&gt;</span>Los reptiles<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<span id="index-8"></span><dl class="simple" id="html-header">
+<dt><strong>header</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header#technical_summary">header</a>)</dt><dd><p>Incluye contenido introductorio como encabezados o ayudas a la navegación.
+Como ejemplo, consulte el incluido para <a class="reference internal" href="#html-article"><span class="std std-ref">&lt;article&gt;</span></a>. En esta página que lee, la
+parte superior que no forma parte de esta sección <a class="reference internal" href="#html-struct">html-struct</a> también
+podríamos incluirla dentro de un elemento <a class="reference internal" href="#html-header"><span class="std std-ref">&lt;header&gt;</span></a>.</p>
+</dd>
+</dl>
+<span id="index-9"></span><dl class="simple" id="html-main">
+<dt><strong>main</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main#technical_summary">main</a>)</dt><dd><p>Elemento destinado a incluir el contenido principal del documento. Debe, por
+tanto, sólo existir uno en la página. En esta página que lee, todo el cuerpo
+dedicada a <a class="reference internal" href="#html-struct">html-struct</a> podría ir incluido en este elemento.</p>
+</dd>
+</dl>
+<span id="index-10"></span><dl class="simple" id="html-footer">
+<dt><strong>footer</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer#technical_summary">footer</a>)</dt><dd><p>Incluye los elementos que remantan algunos elementos de bloque como <a class="reference internal" href="#html-section"><span class="std std-ref">&lt;section&gt;</span></a>
+o <a class="reference internal" href="#html-article"><span class="std std-ref">&lt;article&gt;</span></a>.  Como ejemplo, consulte el incluido para <a class="reference internal" href="#html-article"><span class="std std-ref">&lt;article&gt;</span></a>. En esta
+página que lee, el pie final, ajeno al apartado <a class="reference internal" href="#html-struct">html-struct</a>, podría
+incluirlo en uno o dos elementos <a class="reference internal" href="#html-footer"><span class="std std-ref">&lt;footer&gt;</span></a> (uno para la navegación y otro para
+la licencia).</p>
+</dd>
+</dl>
+<section id="ejercicios-propuestos">
+<h2><span class="section-number">6.6.1. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Enlace permanente a este encabezado">¶</a></h2>
+<ol class="arabic">
+<li><p>Tome la página sobre <a class="reference internal" href="04.basico.html#html-basicos"><span class="std std-ref">elementos básicos</span></a> y
+reproduzca hasta la exposición del elemento <a class="reference internal" href="04.basico.html#html-a"><span class="std std-ref">&lt;a&gt;</span></a> (inclusive).
+A partir de ahí incluya sólo la estructura con los títulos y
+un párrafo que diga «Aquí se trata…».</p>
+<p>Incluya:</p>
+<ul class="simple">
+<li><p>La barra superior de navegación.</p></li>
+<li><p>La tabla de contenidos, pero no las siguientes secciones de la
+barra lateral. Olvídese de que está a la izquierda: sitúela bajo
+la barra.</p></li>
+<li><p>El cuerpo del texto tal como se ha descrito.</p></li>
+<li><p>El pie de la página</p></li>
+</ul>
+</li>
+<li id="ej-html-struct"><p>Componga la página web de una tienda de informática que tendrá la siguiente
+estructura:</p>
+<img alt="../_images/tienda-info.png" src="../_images/tienda-info.png" />
+<p>El aspecto o la maquetación son irrelevantes a estas alturas. Lo que debe
+hacer es:</p>
+<ul class="simple">
+<li><p>Definir correctamente los elementos <abbr title="HyperText Markup Language">HTML</abbr> que componen la página en
+función de qué papel cumplen.</p></li>
+<li><p>Dotar de contenido cada uno de estos bloques:</p>
+<ol class="loweralpha simple">
+<li><p><strong>Título</strong>: Incluya algo apropiado como un logo o similar.</p></li>
+<li><p>Defina correctamente la <strong>ruta de navegación</strong> del artículo.</p></li>
+<li><p>Defina correctamente el <strong>menú de navegación</strong> con algunas categorías y
+subcategorías dentro de ellas.</p></li>
+<li><p>Incluya la descripción de un <strong>artículo</strong>:</p>
+<ul>
+<li><p>Imagen.</p></li>
+<li><p>Lista de características.</p></li>
+<li><p>Párrafo de descripción.</p></li>
+</ul>
+</li>
+<li><p>Para la <strong>publicidad</strong> no ponga nada, simplemente reserve el elemento
+apropiado.</p></li>
+<li><p>Incluya información para el <strong>pie</strong> de la página.</p></li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/logo.png" alt="Logo"/>
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">6.6. Estructura semántica</a><ul>
+<li><a class="reference internal" href="#ejercicios-propuestos">6.6.1. Ejercicios propuestos</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="05.tablas.html"
+                          title="Previous page">&larr; <span class="section-number">6.5. </span>Tablas</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="08.form.html"
+                          title="Next page">&rarr; <span class="section-number">6.7. </span>Formularios</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/06.html/07.struct.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="08.form.html" title="6.7. Formularios"
+             >siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="05.tablas.html" title="6.5. Tablas"
+             >anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">6. </span><abbr title="HyperText Markup Language">HTML</abbr></a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">6.6. </span>Estructura semántica</a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
+      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

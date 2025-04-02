@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="urn:direccion"
+           targetNamespace="urn:direccion"
+           elementFormDefault="qualified">
+ 
+   <xs:complexType name="tipo.direccion">
+      <xs:sequence>
+         <xs:element name="via" type="tipo.via" />
+         <xs:element name="cp" type="tipo.cp" />
+         <xs:element name="localidad" type="xs:string" />
+      </xs:sequence>
+   </xs:complexType>
+ 
+   <xs:complexType name="tipo.via">
+      <xs:simpleContent>
+         <xs:extension base="xs:string">
+            <xs:attribute name="tipo" type="tipo.clase.via" default="calle" />
+         </xs:extension>
+      </xs:simpleContent>
+   </xs:complexType>
+ 
+   <xs:simpleType name="tipo.clase.via">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="calle" />
+         <xs:enumeration value="callejón" />
+         <xs:enumeration value="travesía" />
+         <xs:enumeration value="plaza" />
+         <xs:enumeration value="avenida" />
+         <xs:enumeration value="cuesta" />
+         <xs:enumeration value="costanilla" />
+      </xs:restriction>
+   </xs:simpleType>
+ 
+   <xs:simpleType name="tipo.cp">
+      <xs:restriction base="xs:integer">
+         <xs:pattern value="[0-9]{5}" />
+      </xs:restriction>
+   </xs:simpleType>
+ 
+</xs:schema>

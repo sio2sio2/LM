@@ -1,0 +1,432 @@
+Introducción
+************
+
+Concepto
+========
+.. _lm:
+
+Un :dfn:`lenguaje de marcas` o :dfn:`lenguaje de marcado` es un lenguaje que
+mediante marcas incorporadas al *texto de un documento* permite informar de la
+estructura del propio texto, su significado o su presentación visual.
+
+Por ejemplo, supongamos lo siguiente:
+
+.. code-block:: tex
+
+   {\titulo Libro interesantísimo}
+   {\parrafo Desgraciadamente he olvidado las ideas que me animaron a escribirlo}
+
+Está claro que hemos introducido una serie de marcas que nos informan de cuál es
+el título del documento y de que tiene un párrafo. Cada lenguaje dispone de unas
+etiquetas propias (su :dfn:`vocabulario`) que se combinan mediante unas determinadas
+reglas (la :dfn:`sintaxis`).
+
+.. _lml:
+
+Dentro de los lenguajes de marcas existen los :dfn:`lenguajes de marcas
+ligeros`, que son aquellos diseñados para que sean fáciles de escribir usando un
+simple editor de textos, e incluso fáciles de leer en crudo.
+
+Es tremendamente importante notar que el concepto de lenguaje de marcas surge
+por la necesidad de marcar el texto de un documento (de ahí, que esta expresión se
+escribiera en cursiva en su definición), no un conjunto de datos que no
+constituye un texto. Por ejemplo, un lenguaje de marcas sería apropiado para
+dotar de marcas al texto que constituye mi diario personal, pero no tanto para
+marcar mi lista de la compra que es una mera enumeración de artículos que
+necesito, o sea, un conjunto de datos sin una estructura narrativa\ [#]_.
+Entonces, ¿qué sería más apropiado para enumerar datos? He aquí la respuesta:
+
+.. _l-ser:
+
+Un :dfn:`lenguaje de serialización de datos` es un lenguaje especialmente
+diseñado para serializar datos, esto es, para transmitir un conjunto de datos o
+almacenarlos temporalmente. El lenguaje, en principio no tiene por qué producir
+:ref:`documentos legibles <texto-plano>`, pero nosotros nos centraremos en los
+textuales, esto es, en los que generan flujos de datos directamente leíbles por
+un humano, ya que los lenguajes de marcas definidos anteriormente se
+caracterizan por ser textuales.
+
+La confusión entre ambos tipos de lenguajes deriva de que ha sido y es muy común
+usar *lenguajes de marcas* (en especial dialectos |XML| como trataremos más
+adelante) para serializar datos. Profundizaremos en ello.
+
+.. caution:: A pesar del uso común de la palabra "lenguaje", ni los *lenguajes de
+   marcas* ni los *lenguajes de serialización de datos* son *lenguajes de
+   programación*, sin perjuicio, eso sí, de que podamos definir lenguajes de
+   programación cuya sintaxis se ajuste a un lenguaje de marcas. Por ejemplo,
+   :ref:`XSLT <xslt>` es un lenguaje de programación con sintaxis |XML|.
+
+.. rubric:: Terminología
+
+Antes de empezar, es conveniente aclarar algunos de los conceptos con los que
+nos encontraremos en este  texto:
+
+.. _texto-plano:
+
+:dfn:`Texto plano`
+   Es el archivo digital que contiene únicamente caracteres legibles por los
+   humanos.
+
+:dfn:`Editor de texto`
+  Es la aplicación que permite escribir documentos de texto sin formato, o sea, lo
+  que vulgarmente se conoce como archivos de *texto plano*.
+
+:dfn:`Procesador de texto`
+   Es la aplicación que permite escribir documentos de texto con formato
+   tipográfico (distintos tipos de letra, negritas, cursivas, etc.)
+
+:dfn:`Procesador` (a secas)
+   Es la aplicación que permite procesar un texto de entrada a fin de obtener
+   otro de salida. Por ejemplo, en este sentido un navegador es un procesador ya
+   que permite convertir un texto plano (ya veremos que los archivos "*web*"\
+   [#]_ lo son) en un documento con formato agradable a la vista.
+
+Marcas\ [#]_
+============
+Este epígrafe está dedicado a exponer dos aspectos de las marcas:
+
+Tipos
+-----
+En el marcado se pueden distinguir cinco tipos distintos:
+
+.. rst-class:: simple
+
+:dfn:`Marcado de puntuación`
+   Es el sistema de marcas que proporciona, fundamentalmente, información
+   sintáctica sobre el texto. Los puntos o las comas en un texto manuscrito, por
+   ejemplo, son marcado de puntuación. El problema de este marcado es que no es
+   inequívoco y, además, está sujeto a variaciones en el estilo. Todos hemos
+   dudado a la hora de poner una coma y, aún más, hasta entre reputados expertos
+   podría haber disputa sobre si se debe escribir o no. O bien, ¿qué significa
+   un punto? Porque a veces indica el final de una frase y a veces marca el
+   final de una abreviatura.
+
+:dfn:`Marcado de presentación`
+   Es el marcado que se realiza sobre entidades de nivel superior\ [#]_ para que la
+   presentación sea más clara. Dejar una línea en blanco entre párrafos o
+   sangrar su primera línea es marcado de este tipo. Empezar un nuevo capítulo
+   en la siguiente página impar también lo es.
+
+.. _marc-procedim:
+
+:dfn:`Marcado de procedimiento`
+   Es el marcado que expresa las órdenes para formatear el texto. Por ejemplo,
+   al acabar un párrafo y comenzar el siguiente, se incluiría una orden que
+   indicase al procesador que hiciese un doble salto de línea. Esa orden sería
+   un marcado de procedimiento.
+
+.. _marc-descp:
+
+:dfn:`Marcado descriptivo`
+   El marcado descriptivo identifica qué significa cada elemento de texto, pero
+   sin expresar cómo ha de procesarse. Por supuesto, es necesario que el marcado
+   identifique tanto el comienzo como el final de ese elemento de texto. El
+   ejemplo con el que abrió la explicación es un ejemplo de marcado descriptivo:
+
+   .. code-block:: tex
+
+      {\titulo Libro interesantísimo}
+
+   La marca identifica "Libro interesantísimo" como un título, pero no expresa
+   cómo debe representarse. 
+
+.. _mark-ref:
+
+:dfn:`Marcado referencial`
+   Son marcas que refieren entidades externas y que durante el procesamiento
+   deben ser reemplazadas por estas. Por ejemplo, durante la escritura de este
+   documento se usa la marca referencial ``|XML|`` que el procesador acaba
+   sustituyendo por un acrónimo que incluye su significado.
+
+:dfn:`Metamarcado`
+   Es marcado que permiten controlar la interpretación del propio marcado o
+   ampliar el vocabulario con nuevas marcas. Por ejemplo, la definición de una
+   marca que define una macro equivalente a la inclusión de varias marcas, es un
+   metamarcado.
+
+Estrategias de marcado
+----------------------
+Atendiendo a la estrategia que siga un lenguaje al marcar, podemos distinguir:
+
+:dfn:`Marcado de presentación`
+   Es aquel en que se informa del formato del texto. Se usan para maquetar
+   el texto, pero por lo general no precisan cuál es su estructura, por lo que
+   es muy complicado mediante un procedimiento automático deducir cuál es ésta.
+   Los procesadores de textos |WYSIWYG| suelen usar este tipo de marcado.
+
+   Ejemplo:
+
+   .. code-block:: none
+
+      El Quijote comienza con este célebre fragmento:
+
+         En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho
+         que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín
+         flaco y galgo corredor.
+
+      El Buscón, en cambio, ...
+
+   En este caso, hemos marcado una cita sangrando un poco el párrafo.
+
+:dfn:`Marcado procedimental`
+   Son aquellas marcas que proveen instrucciones para que el sistema informático
+   procese el texto, por lo general, para su presentación.
+
+   Ejemplo:
+
+   .. code-block:: nroff
+
+      El Quijote comienza con este célebre fragmento:
+      .sk 2 a;.in +10 -10;.ls 0;.cp 2
+      En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho que
+      vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y
+      galgo corredor.
+      .sk 2 a;.in -10 +10;.cp 2;.ls 1
+      El Buscón, en cambio, ...
+
+   Las marcas incluidas indican al procesador hacer lo siguiente:
+
+   #. Saltar dos líneas.
+   #. Empezar en la columna 10 y acabar 10 columnas antes.
+   #. Forzar el interlineado sencillo.
+   #. Saltar de página en caso de que falten menos de dos líneas para acabar la
+      página.
+
+:dfn:`Marcado descriptivo` (o :dfn:`semántico`)
+   Son marcas que definen qué significa cada fragmento del texto, pero por lo
+   general, sin proporcionar información de cómo debe ser procesado.
+
+   Ejemplo (|HTML|):
+
+   .. code-block:: xml
+
+      <p>El Quijote comienza con este célebre fragmento:
+      <blockquote>
+      En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho
+      que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín
+      flaco y galgo corredor.
+      </blockquote>
+      <p>El Buscón, en cambio, ...
+
+   A su vez, dependiendo de la función descriptiva de las etiquetas, podemos
+   distinguir entre:
+
+   :dfn:`Marcado descriptivo orientado al documento`
+      Las marcas describen cuál es la función semántica de cada parte del
+      documento: *éste es el título*, *esto es un párrafo*, *esto otro es una
+      cita*, etc...  como en el ejemplo superior. |HTML| es un típico ejemplo de
+      lenguaje de este tipo de marcado. Incluiremos su estudio en la parte del
+      módulo dedicada a las tecnologías web.
+
+      Un aspecto muy importante de esta estrategia es cómo procesar luego el
+      documento para obtener un texto cómodamente legible. Hay dos vías para
+      ello:
+
+      #. Definir cómo debe representarse cada componente de la estructura
+         del texto mediante hojas de estilo como:
+
+         * |DSSSL| para documentos |SGML|.
+         * |CSS| para documentos |XML| (y |HTML|)
+
+      #. Transformarlo en otro documento que sí tenga representación. Para obrar
+         la transformación es preciso utilizar un *procesador*. Por ejemplo:
+
+         * Sphinx_, si el documento está escrito en formato *reST*, que es capaz de
+           generar un |HTML| o un |PDF|. Es la herramienta que usa este manual para
+           obtener la página que ahora mismo está leyendo.
+         * En documentos |XML|, |XSLT| que permite transformar a otro tipo de documento como
+           |HTML|, legible con navegador, o |XSL-FO|, que a su vez ya tiene definidas
+           transformaciones para |PDF| o PostScript_.
+         * Crear nosotros mismos el procesador con un lenguaje de propósito general. Si
+           el formato original es |XML|, prácticamente todos los lenguajes
+           tienen librerías para su manipulación.
+
+   :dfn:`Marcado descriptivo orientado al dato`
+      En archivos que contienen datos, las marcas identifican el significado de
+      cada dato y los estructuran. Más adelante veremos :ref:`un ejemplo de
+      documento con este tipo de marcado <xml-ejemplo>`.
+
+   .. note:: Los :ref:`lenguajes de marcas <lm>`, propiamente, son aptos para
+      esta primera estrategia descriptiva, ya que existe un texto narrativo que
+      marcar. La segunda estrategia, en cambio, es la propia de los
+      :ref:`lenguajes de serialización de datos <l-ser>`.
+
+      En el módulo, dedicaremos el primer tramo del curso a estudiar unos y otros
+      lenguajes para el *marcado descriptivo orientado al dato*. En cambio, el
+      segundo, que aborda la tecnología web, trata |HTML|, que es un lenguaje de
+      *marcado descriptivo orientado al documento*.
+
+Los lenguajes de marcas suelen ensayar preferentemente una estrategia de
+marcado, aunque puede tener marcas de alguna estrategia distinta. Por ejemplo,
+|HTML| dispone, por lo general, de marcas descriptivas (como ``<p>`` o
+``<h1>``), pero también de algunas marcas procedimentales (como ``<b>`` o
+``<br>``).
+
+.. _lm-validez:
+
+Validez
+=======
+Como iremos descubriendo más adelante, todos estos lenguajes no son lenguajes
+independientes, sino que por lo general existen definidas unas reglas generales
+que deben cumplir todos los lenguajes basados en un determinado tipo; y, luego,
+cada lenguaje en particular tiene un vocabulario propio que deben recoger todos
+los documentos que se escriban con él. Por ejemplo, ya hemos citado |XML|,
+|YAML| o |JSON|. Estos tres no son lenguajes particulares, sino un conjunto de
+reglas que deben cumplir los lenguajes que se ajusten a ellos. |HTML|, el
+lenguaje para escribir páginas web, en cambio, es |XML|\ [#]_; y, por tanto,
+además de cumplir las reglas generales tiene una gramática concreta con un
+vocabulario concreto (``<p>`` introduce un párrafo, ``<ol>``, una lista
+numerada, etc.). Aclarado esto podemos introducir dos conceptos:
+
+* Se dice que un documento está :dfn:`bien formado` cuando tal documento cumple
+  con las reglas generales del tipo al que pertenece.
+* Se dice que un documento es :dfn:`válido` cuando, además de *bien formado*,
+  cumple con las reglas gramaticales particulares que se han definido para el
+  lenguaje.
+
+Por ejemplo, como en |HTML| marcar un párrafo se hace  con ``<p>`` cada vez que
+queramos introducir un párrafo deberemos usar esa marca. ¿Qué pasa si en vez de
+ella usamos la marca ``<parrafo>``?  El documento seguirá siendo bien formado,
+puesto que esta nueva marca es una etiqueta válida para |XML|. Sin embargo, la
+marca no está definida dentro del vocabulario de |HTML|, por lo que el documento
+no será válido.
+
+.. _lm-habituales:
+
+Lenguajes habituales
+====================
+Bajo el próximo epígrafe analizaremos los lenguajes que más deben atraer nuestro
+interés, pero existe otros muchos ampliamente utilizados:
+
+**Lenguajes de serialización de datos**
+   * :ref:`CSV`, que es un lenguaje para la representación de datos en forma de tabla.
+   * TOML_, que es una extensión estandarizada del `formato INI
+     <https://es.wikipedia.org/wiki/INI_(extensi%C3%B3n_de_archivo)>`_
+     inicialmente típica de los archivos de configuración del *Windows* de
+     *Microsoft*.
+   * :ref:`JSON`, que nació para la representación en texto de objetos de Javascript_,
+     pero que amplió su uso y es ahora usado en muchos otros ámbitos.
+   * :ref:`YAML`, que es otro de los lenguajes de serialización de datos más
+     utilizado, sobre todo en configuración de aplicaciones.
+
+**Lenguajes de marcas**
+   Dentro de ellos distinguiremos dos grupos:
+
+   **Procedimentales**
+      * TeX_, es un sistema tipográfico desarrollado por `Donald Knuth
+        <https://es.wikipedia.org/wiki/Donald_Knuth>`_ a finales de los setenta y
+        es el estándar de facto en el mundo académico sobre todo a través de
+        lenguajes de macros desarrollados a partir de él como LaTeX_, AMS-TeX_ o
+        ConTeXt_.
+      * |RTF|, desarrollado por Microsoft_ a mediados de los años 80. La mayor
+        parte de los procesadores de texto modernos son capaces de leer y escribir
+        este formato.
+      * Postscript_, usado para la descripción de páginas de impresión. Muchas
+        impresoras son capaces de interpretarlo y es en este formato en el que se
+        le debe proporcionar el documento de impresión.
+      * PDF_, que se basa en el anterior y es un estándar *de facto* para la
+        representación digital de documentos.
+      * troff_ y su evolución nroff_, que es un sistema tipográfico al que relegó
+        la aparición de TeX_, pero que se sigue usando en la maquetación de las
+        páginas de manual en los sistemas *UNIX*.
+
+   **Descriptivos**
+         * `reStructured Text`_ (denominado también simplemente como *reST*) es un
+           *lenguaje de marcas ligero* diseñado originariamente para la
+           documentación técnica de programas escritos en Python_, pero se ha
+           extendido su uso a otros ámbitos de la documentación. Github_, por
+           ejemplo, permite su uso; y `desde 2016
+           <https://lwn.net/Articles/704613/>`_, Linux_ usa este formato para `generar
+           la documentación sobre el kernel
+           <https://www.kernel.org/doc/html/v4.11/doc-guide/sphinx.html>`_. Este curso
+           está escrito usando este lenguaje de marcas y puede pulsar en la barra
+           lateral en la leyenda "Mostrar el código" para comprobar el aspecto que
+           tiene el código fuente original de esta página.
+         * Markdown_ es un *lenguaje de marcas ligero*, concebido para escribir con un
+           editor de forma simple y cómoda texto que pueda ser luego traducido a
+           |HTML|.
+         * `Wiki Text`_ (o *Wiki markup*) es un lenguaje de marcado ligero usado para
+           escribir el contenido de las páginas de la Wikipedia_.
+         * Los lenguajes de macros desarrollados a partir de un lenguaje procedimental
+           como LaTeX_, AMS-TeX_ o ConTeXt_, derivados los tres de TeX_
+         * |SGML|, |XML| y derivados, que se tratarán en este curso. También lo
+           es |HTML|, que originariamente derivó de ellos.
+
+.. seealso:: Puede echarle un ojo a esta `comparativa entre distintos lenguajes
+   de marcas
+   <https://en.wikipedia.org/wiki/Comparison_of_document_markup_languages>`_ y a
+   `esta otra sobre lenguajes de serialización de datos
+   <https://en.wikipedia.org/wiki/Comparison_of_data-serialization_formats>`_.
+
+
+.. rubric:: Notas al pie
+
+.. [#] Lo cual no quiere decir que los datos no estén estructurados. Pueden
+   estarlo y, de hecho, acostumbran a estarlo. Por ejemplo, yo podría organizado
+   mi lista de la compra por secciones del supermercado para que *in situ* me
+   resultara más cómodo localizar los productos:
+
+   * Lácteos:
+
+     - 2 de leche entera.
+     - 12 yogures naturales.
+
+   * Carne:
+
+     - 1 pechuga de pollo.
+     - 3 filetes de ternera.
+
+.. [#] O sea, los documentos |HTML|.
+.. [#] Tanto para este como para el siguiente epígrafe se ha seguido el artículo
+   "`Markup Systems and the Future of Scholarly Text Processing
+   <http://xml.coverpages.org/coombs.html>`_"
+.. [#] Decíamos aquí entidades de nivel superior (párrafos, páginas) para
+   contraponerlas a las entidades de nivel inferior (frases, trozos de frases)
+   afectadas por el marcado de puntuación.
+.. [#] |HTML|, en realidad, no es |XML| y su versión **5**, ni siquiera es ya
+   |SGML|. Lo apropiado sería decir que |XHTML| es |XML|, pero aún tenemos pocos
+   conocimientos para hilar tan fino, así que aceptaremos la imprecisión y ya la
+   aclararemos más adelante.
+
+.. |WYSIWYG| replace:: :abbr:`WYSIWYG (What You See Is What You Get)`
+.. |RTF| replace:: :abbr:`RTF (Rich Text Format)`
+.. |SGML| replace:: :abbr:`SGML (Standard Generalized Markup Language)`
+.. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`
+.. |XSLT| replace:: :abbr:`XSLT (eXtensible Stylesheet Language Transformations)`
+.. |ISO| replace:: :abbr:`ISO (International Organization for Standardization)`
+.. |TEI| replace:: :abbr:`TEI (Text Encoding Initiative)`
+.. |RAE| replace:: :abbr:`RAE (Real Academia Española)`
+.. |RSS| replace:: :abbr:`RSS (Really Simple Syndication)`
+.. |DSSSL| replace:: :abbr:`DSSSL (Document Style Semantics and Specification Language)`
+.. |XSL-FO| replace:: :abbr:`XSL-FO (XSL Formatting Object)`
+.. |PDF| replace:: :abbr:`PDF (Portable Document Format)`
+.. |YAML| replace:: :abbr:`YAML (YAML Ain't Markup Language)`
+.. |XHTML| replace:: :abbr:`XHTML (eXtensible HyperText Markup Language)`
+.. _TeX: https://tug.org/ 
+.. _LaTeX: https://www.latex-project.org/
+.. _AMS-TeX: https://es.wikipedia.org/wiki/AMS-LaTeX
+.. _ConTeXt: https://wiki.contextgarden.net/Main_Page
+.. _Postscript: https://www.adobe.com/es/products/postscript.html
+.. _troff: https://es.wikipedia.org/wiki/Troff
+.. _nroff: https://es.wikipedia.org/wiki/Nroff
+.. _Microsoft: https://www.microsoft.com/
+.. _reStructured Text: http://docutils.sourceforge.net/rst.html
+.. _Markdown: https://daringfireball.net/projects/markdown/
+.. _Python: https://www.python.org
+.. _Linux: https://www.kernel.org
+.. _Github: https://github.com/
+.. _Wiki Text: https://es.wikipedia.org/wiki/Wikitexto
+.. _Wikipedia: https://es.wikipedia.org/
+.. _DocBook: https://docbook.org/
+.. _Sphinx: http://www.sphinx-doc.org/en/master/
+.. _MathML: https://www.w3.org/Math/
+.. _OpenDocument: http://opendocumentformat.org/
+.. _SVG: https://developer.mozilla.org/es/docs/Web/SVG/Tutorial
+.. _LibreOffice: https://www.documentfoundation.org/
+.. _Inkscape: https://inkscape.org
+.. _TOML: https://toml.io/
+.. _PDF: https://es.wikipedia.org/wiki/PDF
+
+.. |uostr| unicode:: U+00D8 .. LATIN CAPITAL LETTER O WITH STROKE
+
+

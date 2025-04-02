@@ -1,0 +1,22 @@
+%YAML 1.2
+---
+unidad: "cm"
+entidades:
+  - id: 1
+    tipo: "punto"
+    coord: [0, 0]
+  - id: 2
+    tipo: "recta"
+    ini: [0, 0]
+    fin: [5, 10]
+  - id: 5
+    tipo: "punto"
+    coord: [-1, 10]
+  - id: 3
+    tipo: "circunferencia"
+    centro: [10, 10]
+    r: 5
+  - id: 4
+    tipo: "rectangulo"
+    ini: [4, 4]
+    fin: [10, 10]

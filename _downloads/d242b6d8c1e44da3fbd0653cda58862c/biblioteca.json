@@ -1,0 +1,64 @@
+{
+   "biblioteca": "Biblioteca Municipal",
+   "catalogo": [
+      {
+         "isbn": "id85-359-0277-5",
+         "nombre": "Don Quijote de La Mancha",
+         "autor": "Miguel de Cervantes Saavedra",
+         "año": 1997,
+         "editorial": "Castalia",
+         "ejemplares": [1, 2]
+      },
+      {
+         "isbn": "id85-359-0277-6",
+         "nombre": "Historia de la vida del Buscón",
+         "autor": "Francisco de Quevedo",
+         "año": 2002,
+         "editorial": "Alianza",
+         "ejemplares": [6, 7]
+      }
+   ],
+   "socios": [
+      {
+         "numero": 1,
+         "dni": "12345678Z",
+         "nombre": "Perico de los Palotes",
+         "direccion": {
+            "domicilio": "c/ AAAA, 22",
+            "cp": 12345,
+            "poblacion": "Villaarriba"
+         }
+      },
+      {
+         "numero": 2,
+         "dni": "01234567L",
+         "nombre": "Mercedes Verdugo Cordero",
+         "direccion": {
+            "domicilio": "c/ BBBB, 23",
+            "cp": 54321,
+            "poblacion": "Villaabajo"
+         }
+      }
+   ],
+   "prestamos": [
+      { 
+         "ejemplar": 1,
+         "lector": 1,
+         "fecha": "2018-10-02",
+         "plazo": 10,
+         "devolucion": "2018-10-10"
+      },
+      { 
+         "ejemplar": 6,
+         "lector": 2,
+         "fecha": "2018-09-01",
+         "plazo": 15
+      },
+      { 
+         "ejemplar": 7,
+         "lector": 1,
+         "fecha": "2018-10-15",
+         "plazo": 10
+      }
+   ]
+}

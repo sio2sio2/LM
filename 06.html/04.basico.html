@@ -1,0 +1,1211 @@
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>6.4. Elementos básicos &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+    <link rel="stylesheet" href="../_static/general.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+
+    
+    
+     
+        <script src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="6.5. Tablas" href="05.tablas.html" />
+    <link rel="prev" title="6.3. Cabecera" href="03.head.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="05.tablas.html" title="6.5. Tablas"
+             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="03.head.html" title="6.3. Cabecera"
+             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">6. </span><abbr title="HyperText Markup Language">HTML</abbr></a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">6.4. </span>Elementos básicos</a></li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="elementos-basicos">
+<span id="html-basicos"></span><h1><span class="section-number">6.4. </span>Elementos básicos<a class="headerlink" href="#elementos-basicos" title="Enlace permanente a este encabezado">¶</a></h1>
+<p>Incluimos dentro de esta macrocategoría aquellos elementos de más simple uso
+que nos permiten escribir documentos <abbr title="HyperText Markup Language">HTML</abbr> muy sencillos de texto puro, esto
+es, documentos que no incrustan imágenes u otros elementos multimedia.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>La presentación de los elementos bajo este epígrafe y los
+siguientes y los ya vistos al tratar la cabecera es algo vaga, y no incluye
+exactamente cuál es el contenido admisible o cuáles pueden ser sus
+elementos padre. Hay para cada cual, no obstante, un enlace a su descripción
+en <a class="reference external" href="https://developer.mozilla.org/es/">la página para desarrolladores del proyecto Mozilla</a>, donde la información es más
+exhaustiva.</p>
+</div>
+<section id="encabezados">
+<h2><span class="section-number">6.4.1. </span>Encabezados<a class="headerlink" href="#encabezados" title="Enlace permanente a este encabezado">¶</a></h2>
+<p><abbr title="HyperText Markup Language">HTML</abbr> dispone de una serie de etiquetas para definir títulos o encabezados:</p>
+<table class="el-html docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-h1"><span class="std std-ref">&lt;h1&gt;</span></a></p></td>
+<td><p>Encabezado de nivel superior</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-h2"><span class="std std-ref">&lt;h2&gt;</span></a></p></td>
+<td><p>Encabezado de segundo nivel</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-h3"><span class="std std-ref">&lt;h3&gt;</span></a></p></td>
+<td><p>Encabezado de tercer nivel</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-h4"><span class="std std-ref">&lt;h4&gt;</span></a></p></td>
+<td><p>Encabezado de cuarto nivel</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-h5"><span class="std std-ref">&lt;h5&gt;</span></a></p></td>
+<td><p>Encabezado de quinto nivel</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-h6"><span class="std std-ref">&lt;h6&gt;</span></a></p></td>
+<td><p>Encabezado de sexto nivel</p></td>
+</tr>
+</tbody>
+</table>
+<span id="html-h5"></span><span id="html-h4"></span><span id="html-h3"></span><span id="html-h2"></span><span id="html-h1"></span><span id="index-0"></span><dl id="html-h6">
+<dt><strong>h1</strong>, <strong>h2</strong>, <strong>h3</strong>, <strong>h4</strong>, <strong>h5</strong>, <strong>h6</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h1#technical_summary">h1</a>)</dt><dd><p>Permiten establecer los títulos del documento en orden decreciente de
+importancia. Es habitual conjugar estos elementos con el uso de los
+<a class="reference internal" href="07.struct.html#html-struct"><span class="std std-ref">elementos semánticos de estructura</span></a>, aunque por ahora
+podemos limitarnos a usarlos según la importancia que tenga el título:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Título de la página<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Introducción<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bla, bla, bla...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Primeros pasos<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bla, bla, bla...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Son elementos de bloque que pueden contener elementos en línea.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Lo lógico es que en una página sólo exista un encabezado de
+primer nivel (<a class="reference internal" href="#html-h1"><span class="std std-ref">&lt;h1&gt;</span></a>) que, dependiendo de cómo hayamos creado la página estará
+en el <a class="reference internal" href="07.struct.html#html-header"><span class="std std-ref">&lt;header&gt;</span></a> de la página o dentro del contenido en sí. Para más
+información échele un ojo al <a class="reference external" href="https://www.w3.org/WAI/tutorials/page-structure/headings/">tutorial del W3C sobre encabezados</a>.</p>
+</div>
+</dd>
+</dl>
+</section>
+<section id="elementos-de-parrafo">
+<h2><span class="section-number">6.4.2. </span>Elementos de párrafo<a class="headerlink" href="#elementos-de-parrafo" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Incluimos bajo este epígrafe los elementos de bloque que permiten crear párrafos
+o estructuras análogas:</p>
+<table class="el-html docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-p"><span class="std std-ref">&lt;p&gt;</span></a></p></td>
+<td><p>Párrafo de texto</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-pre"><span class="std std-ref">&lt;pre&gt;</span></a></p></td>
+<td><p>Párrafo en el que se respetan espacios y saltos de línea</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-blockquote"><span class="std std-ref">&lt;blockquote&gt;</span></a></p></td>
+<td><p>Cita larga mostrada como texto independiente</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-details"><span class="std std-ref">&lt;details&gt;</span></a></p></td>
+<td><p>Genera un elemento en que la información se hace visible
+al pinchar sobre él.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-address"><span class="std std-ref">&lt;address&gt;</span></a></p></td>
+<td><p>Permite especificar información de contacto</p></td>
+</tr>
+</tbody>
+</table>
+<span id="index-1"></span><dl id="html-p">
+<dt><strong>p</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p#technical_summary">p</a>)</dt><dd><p>Es el elemento en bloque apropiado para definir párrafos. Puede contener una
+mezcla de texto y <a class="reference internal" href="#html-el-linea"><span class="std std-ref">elementos en línea</span></a>, pero nunca otros
+elementos de bloque. Podemos prescindir de su cierre, ya que el procesador
+entenderá que el elemento acaba cuando comience el siguiente elemento de
+bloque:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Esto es un párrafo bastante corto que dejamos sin cerrar.
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Este es un segundo párrafo, independiente del anterior, aunque aquel no
+se haya cerrado, ya que un párrafo no puede contener a otro párrafo.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<span id="index-2"></span><dl id="html-pre">
+<dt><strong>pre</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pre#technical_summary">pre</a>)</dt><dd><p>Elemento de bloque que permite escribir un texto preformateado, esto es, un
+texto del que el procesador respeta espacios en blanco (no se colapsan),
+tabulaciones, cambios de línea, etc. Al igual que el párrafo contiene texto y
+elementos en línea. Es muy común que se use para escribir fragmentos de
+código, así que suele acompañarse de <a class="reference internal" href="#html-code"><span class="std std-ref">&lt;code&gt;</span></a>:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">pre</span><span class="p">&gt;&lt;</span><span class="nt">code</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;javascript&quot;</span><span class="p">&gt;</span>
+encodeImg = function(svg) {
+   var type = &quot;image/svg+xml&quot;;
+
+   return &quot;data:&quot; + type + &quot;,&quot; +
+   svg.outerHTML.replace(/(:?&quot;|&#39;|#|\s+)/g, function(c) {
+      return {
+         &#39;&quot;&#39;: &quot;%22&quot;,
+         &quot;&#39;&quot;: &quot;%27&quot;,
+         &quot;#&quot;: &quot;%23&quot;
+      }[c] || &quot; &quot;;
+   });
+}
+<span class="p">&lt;/</span><span class="nt">code</span><span class="p">&gt;&lt;/</span><span class="nt">pre</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<span id="index-3"></span><dl id="html-blockquote">
+<dt><strong>blockquote</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote#technical_summary">blockquote</a>)</dt><dd><p>Permite incluir en el documento una cita larga que puede estar compuesta por
+uno o más párrafos. A diferencia de los dos elementos anteriores, es posible
+incluir dentro de él otros elementos de bloque:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">blockquote</span> <span class="na">cite</span><span class="o">=</span><span class="s">&quot;http://www.rae.es/sites/default/files/HOJEAR_La_vida_del_Buscon.pdf&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Yo, señor, soy de Segovia. Mi padre se llamó Clemente Pablo, natural
+   del mismo pueblo; Dios le tenga en el cielo. Fue, tal como todos dicen, de
+   oficio barbero; aunque eran tan altos sus pensamientos, que se corría de
+   que le llamasen así, diciendo que él era tundidor de mejillas y sastre de
+   barbas. Dicen que era de muy buena cepa, y, según él bebía, es cosa para
+   creer.
+   <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Estuvo casado con Aldonza de San Pedro, hija de Diego de San Juan y
+   nieta de Andrés de San Cristóbal. Sospechábase en el pueblo que no era
+   cristiana vieja, aunque ella, por los nombres y sobrenombres de sus
+   pasados, quiso esforzar que era descendiente de la letanía. Tuvo muy buen
+   parecer, y fue tan celebrada, que en el tiempo que ella vivió, casi todos
+   los copleros de España hacían cosas sobre ella.
+   <span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span>
+      Comienzo de la
+      <span class="p">&lt;</span><span class="nt">cite</span><span class="p">&gt;&lt;</span><span class="nt">a</span>
+      <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://es.wikipedia.org/wiki/La_vida_del_Busc%C3%B3n&quot;</span><span class="p">&gt;</span>Historia
+      de la vida del buscón<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> de Francisco de Quevedo<span class="p">&lt;/</span><span class="nt">cite</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">blockquote</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<table class="attr-html docutils align-default" id="id5">
+<caption><span class="caption-text">Atributos de blockquote</span><a class="headerlink" href="#id5" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>cite</p></td>
+<td><p>url</p></td>
+<td><p><abbr title="Uniform Resource Locator">URL</abbr> de donde se obtiene el texto citado</p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<span id="index-4"></span><dl id="html-details">
+<dt><strong>details</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details#technical_summary">details</a>)</dt><dd><p>Sirve para ocultar detalles y que estos se hagan visibles al desplegarlos.
+Suele incluir un primer elemento <code class="code docutils literal notranslate"><span class="pre">&lt;summary&gt;</span></code> que es lo único que se
+muestra cuando el elemento no está desplegado. El resto del contenido pueden
+ser texto, elementos de línea o elementos de bloque:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">details</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">summary</span><span class="p">&gt;</span>Datos<span class="p">&lt;/</span><span class="nt">summary</span><span class="p">&gt;</span>
+   Extraidos del <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://www.ine.es&quot;</span><span class="p">&gt;</span>Instituto Nacional de Estadistica<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">details</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="ej-html"><details>
+   <summary>Datos</summary>
+   Extraidos del <a href="https://www.ine.es">Instituto Nacional de Estadistica</a>.
+</details></div><table class="attr-html docutils align-default" id="id6">
+<caption><span class="caption-text">Atributos de details</span><a class="headerlink" href="#id6" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>open</p></td>
+<td><p>-</p></td>
+<td><p>Muestra abierto los detalles.</p></td>
+</tr>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>token</p></td>
+<td><p>Permite relacionar todos los elementos
+<a class="reference internal" href="#html-details"><span class="std std-ref">&lt;details&gt;</span></a> cuyo valor de este atributo sea
+el mismo. Esto provoca que solamente uno
+del grupo pueda estar abierto.</p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<span id="index-5"></span><dl id="html-address">
+<dt><strong>address</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address#technical_summary">address</a>)</dt><dd><p>elemento de bloque que permite definir una información de contacto relativa a
+un particular o una organización:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Información de contacto:
+
+<span class="p">&lt;</span><span class="nt">address</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;http://www.mipagina.com&quot;</span><span class="p">&gt;</span>Página web personal<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">a</span> <span class="na">data-rel</span><span class="o">=</span><span class="s">&quot;external&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;mailto:elmio@pagina.com&quot;</span><span class="p">&gt;</span>Email: elmio@pagina.com<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">a</span> <span class="na">data-rel</span><span class="o">=</span><span class="s">&quot;external&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;tel:+34959959959&quot;</span><span class="p">&gt;</span>Teléfono: +34959959959<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">address</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</section>
+<section id="elementos-en-linea">
+<span id="html-el-linea"></span><h2><span class="section-number">6.4.3. </span>Elementos en línea<a class="headerlink" href="#elementos-en-linea" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>El epígrafe está dedicado a elementos en línea que muy habitualmente se
+encuentran incluidos dentro de párrafos y estructuras similares.</p>
+<table class="el-html docutils align-default" id="index-6">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-strong"><span class="std std-ref">&lt;strong&gt;</span></a></p></td>
+<td><p>Marca un trozo de texto de relevancia.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-b"><span class="std std-ref">&lt;b&gt;</span></a></p></td>
+<td><p>Marca un texto que, sin tener especial importancia,
+requiere distinguirse del resto, como las palabras clave
+en la entradilla de un artículo.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-em"><span class="std std-ref">&lt;em&gt;</span></a></p></td>
+<td><p>Marca un texto que debe enfatizarse.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-i"><span class="std std-ref">&lt;i&gt;</span></a></p></td>
+<td><p>Marca un texto que requiere una modulación especial de la
+voz o que por cualquier otra razón suele escribirse en
+letras cursivas (título de una obra, etc.)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-u"><span class="std std-ref">&lt;u&gt;</span></a></p></td>
+<td><p>Marca un trozo de texto incorrecto (p.e. una palabra mal
+escrita).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-s"><span class="std std-ref">&lt;s&gt;</span></a></p></td>
+<td><p>Marca un trozo de texto inexacto o que dejó de ser válido.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-mark"><span class="std std-ref">&lt;mark&gt;</span></a></p></td>
+<td><p>Marca un texto remarcado por alguna cuestión relevantes,
+como cuando se marca un texto con rotulador <em>fosforito</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-span"><span class="std std-ref">&lt;span&gt;</span></a></p></td>
+<td><p>Marca de forma genérica un trozo de texto, que por alguna
+razón se quiere diferenciar del texto (muy probablemente
+para aplicarse algún estilo <abbr title="Cascading Style Sheets">CSS</abbr>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-cite"><span class="std std-ref">&lt;cite&gt;</span></a></p></td>
+<td><p>Permite referir una obra.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-q"><span class="std std-ref">&lt;q&gt;</span></a></p></td>
+<td><p>Representa una cita corta (frente a <a class="reference internal" href="#html-blockquote"><span class="std std-ref">&lt;blockquote&gt;</span></a> que
+representa una larga).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-sup"><span class="std std-ref">&lt;sup&gt;</span></a></p></td>
+<td><p>Marca texto en superíndice.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-sub"><span class="std std-ref">&lt;sub&gt;</span></a></p></td>
+<td><p>Marca texto en subíndice.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-small"><span class="std std-ref">&lt;small&gt;</span></a></p></td>
+<td><p>Marca pequeños comentarios como aquellos dedicados a
+definir la licencia o el copyright.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-abbr"><span class="std std-ref">&lt;abbr&gt;</span></a></p></td>
+<td><p>Marca una abreviatura o acrónimo.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-dfn"><span class="std std-ref">&lt;dfn&gt;</span></a></p></td>
+<td><p>Marca el término que se está definiendo en una sentencia.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-br"><span class="std std-ref">&lt;br&gt;</span></a></p></td>
+<td><p>Fuerza un cambio de línea.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-img"><span class="std std-ref">&lt;img&gt;</span></a></p></td>
+<td><p>Permite incrustar una imagen.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-a"><span class="std std-ref">&lt;a&gt;</span></a></p></td>
+<td><p>Permite hacer un hipervínculo</p></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="index-7"></span><span class="target" id="index-8"></span><span class="target" id="index-9"></span><div class="line-block" id="html-i">
+<span id="html-em"></span><span id="html-b"></span><span id="html-strong"></span><span id="index-10"></span><div class="line"><strong>strong</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong#technical_summary">strong</a>)</div>
+<div class="line"><strong>b</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/b#technical_summary">b</a>)</div>
+<div class="line"><strong>em</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em#technical_summary">em</a>)</div>
+<div class="line"><strong>i</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i#technical_summary">i</a>)</div>
+<div class="line-block">
+<div class="line">El uso de estos elementos no tiene mayor dificultad más allá de conocer
+exactamente cuándo deben usarse. En <a class="reference external" href="http://stellify.net/html5-b-and-i-tags-are-going-to-be-useful-read-semantic-again/">esta página de stellify.net</a>
+discute sobre cuándo deben usarse unos u otros. Tengo presente que tanto
+<code class="code docutils literal notranslate"><span class="pre">&lt;strong&gt;</span></code> como <code class="code docutils literal notranslate"><span class="pre">&lt;b&gt;</span></code> suelen representarse con letras negritas, y
+tanto <code class="code docutils literal notranslate"><span class="pre">&lt;em&gt;</span></code> como <code class="code docutils literal notranslate"><span class="pre">&lt;i&gt;</span></code> con letras cursivas. Sin embargo, <abbr title="HyperText Markup Language">HTML</abbr>5 desterró el marcado procedimental, por lo que todas estas etiquetas tienen
+un significado semántico.</div>
+</div>
+</div>
+<span id="index-11"></span><dl id="html-u">
+<dt><strong>u</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/u#technical_summary">u</a>)</dt><dd><p>Permite significar que la palabra o expresión es incorrecta. Por ejemplo:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Un molesto vulgarismo es el llamado <span class="p">&lt;</span><span class="nt">dfn</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;deque&quot;</span><span class="p">&gt;</span>dequeismo<span class="p">&lt;/</span><span class="nt">dfn</span><span class="p">&gt;</span>, que
+consiste en <span class="p">&lt;</span><span class="nt">span</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;definition&quot;</span> <span class="na">aria-labelledby</span><span class="o">=</span><span class="s">&quot;deque&quot;</span><span class="p">&gt;</span>incluir una
+superflua preposición &quot;de&quot; delante de la conjunción &quot;que&quot; que introduce
+oraciones subordinadas sustantivas: Pienso <span class="p">&lt;</span><span class="nt">u</span><span class="p">&gt;</span>de<span class="p">&lt;/</span><span class="nt">u</span><span class="p">&gt;</span> que no sea en realidad
+muy importante.
+</pre></div>
+</div>
+<div class="ej-html"><p>Un molesto vulgarismo es el llamado <dfn id="deque">dequeismo</dfn>, que
+consiste en <span role="definition" aria-labelledby="deque">incluir una
+superflua preposición "de" delante de la conjunción "que" que introduce
+oraciones subordinadas sustantivas: Pienso <u>de</u> que no sea en realidad
+muy importante.</div><div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>El navegador, por defecto, representa esta incorrección subrayando
+la palabra, a pesar de que en castellano las incorrecciones se notan
+anteponiendo un asterisco. Para adaptarnos a las normas ortográficas del
+castellano podrían añadir este código <abbr title="Cascading Style Sheets">CSS</abbr>:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">u</span><span class="p">::</span><span class="nd">before</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">content</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="nt">u</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">text-decoration</span><span class="p">:</span><span class="w"> </span><span class="kc">inherit</span><span class="p">;</span>
+<span class="w">   </span><span class="k">font-style</span><span class="p">:</span><span class="w"> </span><span class="kc">italic</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>En el ejemplo, se han usado atributos <abbr title="Accessible Rich Internet Applications">ARIA</abbr>, que facilitan la
+compresión del documento a discapacitados. Puede echar un ojo a esta
+<a class="reference external" href="https://developer.mozilla.org/es/docs/Web/Accessibility/ARIA">página al respecto</a>.</p>
+</div>
+</dd>
+</dl>
+<span id="index-12"></span><dl id="html-s">
+<dt><strong>s</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/s#technical_summary">s</a>)</dt><dd><p>Dado que significa al fragmento de texto inválido, suele tener el efecto de
+tachar el texto:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>HTML, como lenguaje de marcas <span class="p">&lt;</span><span class="nt">s</span><span class="p">&gt;</span>SGML<span class="p">&lt;/</span><span class="nt">s</span><span class="p">&gt;</span>, es...
+</pre></div>
+</div>
+<div class="ej-html"><p>HTML, como lenguaje de marcas <s>SGML</s>, es...</div></dd>
+</dl>
+<span id="index-13"></span><dl id="html-mark">
+<dt><strong>mark</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark#technical_summary">mark</a>)</dt><dd><p>Cumple la misma función que en el texto manuscrito el rotulador de color
+chillón: remarcar especialmente una palabra o fragmento del texto. Es muy
+común en los resultados de búsqueda para remarcar el término que se buscaba:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Resultados para la búsqueda &quot;HTML&quot;:
+<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">mark</span><span class="p">&gt;</span>HTML<span class="p">&lt;/</span><span class="nt">mark</span><span class="p">&gt;</span> es un lenguaje de marcas nacido a comienzos de los 90...
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>La sintaxis del <span class="p">&lt;</span><span class="nt">mark</span><span class="p">&gt;</span>HTML<span class="p">&lt;/</span><span class="nt">mark</span><span class="p">&gt;</span> ha dejado de ser SGML...
+</pre></div>
+</div>
+<div class="ej-html"><p>Resultados para la búsqueda "HTML":
+<hr>
+<p><mark>HTML</mark> es un lenguaje de marcas nacido a comienzos de los 90...
+<p>La sintaxis del <mark>HTML</mark> ha dejado de ser SGML...</div></dd>
+</dl>
+<span id="index-14"></span><dl id="html-span">
+<dt><strong>span</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span#technical_summary">span</a>)</dt><dd><p>Agrupa un fragmento en línea del texto al que generalmente se le quiere
+asignar unas características comunes (idioma, estilos, etc). Por ejemplo:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Habrá quien dude de este chascarrillo, pero <span class="p">&lt;</span><span class="nt">span</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;it&quot;</span><span class="p">&gt;</span>se non è vero,
+è ben trovato<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>.
+</pre></div>
+</div>
+<p>No debe usarse si se pretende notar algo para lo que ya hay un elemento
+específico. De hecho, el ejemplo anterior en concreto podríamos haberlo
+escrito:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Habrá quien dude de este chascarrillo, pero <span class="p">&lt;</span><span class="nt">i</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;it&quot;</span><span class="p">&gt;</span>se non è vero,
+è ben trovato<span class="p">&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>.
+</pre></div>
+</div>
+<p>ya que suelen notarse las expresiones extranjeras de un modo distinto
+(cursiva) a como se escribe el resto del texto.</p>
+</dd>
+</dl>
+<span id="index-15"></span><dl id="html-cite">
+<dt><strong>cite</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite#technical_summary">cite</a>)</dt><dd><p>La referencia a una obra, que exige incluir el título (o <abbr title="Uniform Resource Locator">URL</abbr> de la obra) y
+el autor:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">q</span> <span class="na">cite</span><span class="o">=</span><span class="s">&quot;https://cvc.cervantes.es/literatura/clasicos/quijote/default.htm&quot;</span><span class="p">&gt;</span>En
+un lugar de la Mancha...<span class="p">&lt;/</span><span class="nt">q</span><span class="p">&gt;</span> arranca el primer capítulo del <span class="p">&lt;</span><span class="nt">cite</span><span class="p">&gt;&lt;</span><span class="nt">i</span><span class="p">&gt;</span>don
+Quijote<span class="p">&lt;/</span><span class="nt">i</span><span class="p">&gt;</span> de Miguel de Cervantes<span class="p">&lt;/</span><span class="nt">cite</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<span id="index-16"></span><dl class="simple" id="html-q">
+<dt><strong>q</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q#technical_summary">q</a>)</dt><dd><p>Es el equivalente en línea a <a class="reference internal" href="#html-blockquote"><span class="std std-ref">&lt;blockquote&gt;</span></a>. Como aquel, puede estar acompañado
+por un atributo <code class="code docutils literal notranslate"><span class="pre">cite</span></code>.</p>
+</dd>
+</dl>
+<span id="index-17"></span><dl id="html-sup">
+<dt><strong>sup</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sup#technical_summary">sup</a>)</dt><dd><p>Permite escribir superíndices:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>La fórmula del <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>teorema de Pitágoras<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span> es: <span class="p">&lt;</span><span class="nt">var</span><span class="p">&gt;</span>a<span class="p">&lt;/</span><span class="nt">var</span><span class="p">&gt;&lt;</span><span class="nt">sup</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">sup</span><span class="p">&gt;</span>
++ <span class="p">&lt;</span><span class="nt">var</span><span class="p">&gt;</span>b<span class="p">&lt;/</span><span class="nt">var</span><span class="p">&gt;&lt;</span><span class="nt">sup</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">sup</span><span class="p">&gt;</span> = <span class="p">&lt;</span><span class="nt">var</span><span class="p">&gt;</span>c<span class="p">&lt;/</span><span class="nt">var</span><span class="p">&gt;&lt;</span><span class="nt">sup</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">sup</span><span class="p">&gt;</span>.
+</pre></div>
+</div>
+<div class="ej-html"><p>La fórmula del <em>teorema de Pitágoras</em> es: <var>a</var><sup>2</sup>
++ <var>b</var><sup>2</sup> = <var>c</var><sup>2</sup>.</div></dd>
+</dl>
+<span id="index-18"></span><dl id="html-sub">
+<dt><strong>sub</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sub#technical_summary">sub</a>)</dt><dd><p>Permite escribir subíndices:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Es posible que si le pido H<span class="p">&lt;</span><span class="nt">sub</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">sub</span><span class="p">&gt;</span>O, así que le pediré que me
+sirva agua.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="ej-html"><p>Es posible que si le pido H<sub>2</sub>O, no me entienda, así que mejor
+le pido que me sirva agua.</p></div></dd>
+</dl>
+<span id="index-19"></span><dl id="html-small">
+<dt><strong>small</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small#technical_summary">small</a>)</dt><dd><p>Muy comúnmente representa comentarios que incluyen el <em>copyright</em> o la
+licencia:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>... final del documento
+<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">small</span><span class="p">&gt;</span><span class="ni">&amp;copy;</span> Perico de los Palotes. Publicado bajo la <span class="p">&lt;</span><span class="nt">a</span>
+<span class="na">href</span><span class="o">=</span><span class="s">&quot;https://creativecommons.org/licenses/by/4.0/&quot;</span><span class="p">&gt;</span>licencia Creative
+Commons<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">small</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="ej-html"><p>... final del documento
+<hr>
+<p><small>&copy; Perico de los Palotes. Publicado bajo la <a
+href="https://creativecommons.org/licenses/by/4.0/">licencia Creative
+Commons</a></small>.</p></div></dd>
+</dl>
+<span id="index-20"></span><dl id="html-abbr">
+<dt><strong>abbr</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr#technical_summary">abbr</a>)</dt><dd><p>Permite notar una abreviatura o un acrónimo<a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">abbr</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;HyperText Markup Language&quot;</span><span class="p">&gt;</span>HTML<span class="p">&lt;/</span><span class="nt">abbr</span><span class="p">&gt;</span> es un lenguaje de marcas.
+</pre></div>
+</div>
+</dd>
+</dl>
+<span id="index-21"></span><dl class="simple" id="html-dfn">
+<dt><strong>dfn</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dfn#technical_summary">dfn</a>)</dt><dd><p>Marca el término definido en una definición. Para un ejemplo de uso,
+consulte el ejemplo ilustrativo del uso del elemento <a class="reference internal" href="#html-u"><span class="std std-ref">&lt;u&gt;</span></a>.</p>
+</dd>
+</dl>
+<span id="index-22"></span><dl id="html-br">
+<dt><strong>br</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/br#technical_summary">br</a>)</dt><dd><p>Fuerza un cambio de línea. El comportamiento por defecto de <abbr title="HyperText Markup Language">HTML</abbr> es
+colapsar los caracteres seguidos de espaciado (sean espacios, tabulaciones a
+cambios de línea) a un único espacio, y sólo transformar el espacio por un
+cambio de línea cuando se alcance la anchura del bloque contenedor, salvo
+dentro del elemento <a class="reference internal" href="#html-pre"><span class="std std-ref">&lt;pre&gt;</span></a>.</p>
+<p>Cuando en un elemento normal se quiere forzar un cambio de línea, es preciso
+usar el elemento <code class="code docutils literal notranslate"><span class="pre">&lt;br&gt;</span></code>:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Primera línea<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+Segunda línea<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="ej-html"><p>Primera línea<br>
+Segunda línea</p></div></dd>
+</dl>
+<span id="index-23"></span><dl id="html-img">
+<dt><strong>img</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#technical_summary">img</a>)</dt><dd><p>Permite incrustar una imagen en la página <abbr title="HyperText Markup Language">HTML</abbr>. Existen otros modos de
+incrustar imágenes <a class="reference internal" href="09.media.html#html-media"><span class="std std-ref">que se verán más adelante</span></a>.</p>
+<table class="attr-html docutils align-default" id="id7">
+<caption><span class="caption-text">Atributos más frecuentes para &lt;img&gt;</span><a class="headerlink" href="#id7" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>src</p></td>
+<td><p>url</p></td>
+<td><p><abbr title="Uniform Resource Locator">URL</abbr> de donde descargar la imagen.</p></td>
+</tr>
+<tr class="row-even"><td><p>alt</p></td>
+<td><p>texto</p></td>
+<td><p>Descripción de la imagen.</p></td>
+</tr>
+<tr class="row-odd"><td><p>height</p></td>
+<td><p>dimension</p></td>
+<td><p>Altura de la imagen.</p></td>
+</tr>
+<tr class="row-even"><td><p>width</p></td>
+<td><p>dimension</p></td>
+<td><p>Anchura de la imagen.</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="code docutils literal notranslate"><span class="pre">src</span></code> y <code class="code docutils literal notranslate"><span class="pre">alt</span></code> son atributos obligatorios. Si no se proporcionan
+dimensiones, la imagen tenderá a mostrarse en su tamaño original, y si se
+proprociona una de ellas, la otra adquirirá una longitud proporcional, esto
+es, si la anchura de la imagen es de <em>1200px</em> y se fija
+<code class="code docutils literal notranslate"><span class="pre">width=&quot;600px&quot;</span></code>, la anchura de la imagen pasará a ser también la mitad
+que la original. Lo habitual es proporcionar las dimensiones en píxeles o
+porcentaje sobre la dimensión original. Por tanto, para la imagen de <em>1200px</em>
+de ancho <code class="code docutils literal notranslate"><span class="pre">width=&quot;600px&quot;</span></code> es equivalente a <code class="code docutils literal notranslate"><span class="pre">width=&quot;50%&quot;</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>En <abbr title="HyperText Markup Language">HTML</abbr>5, a diferencia de lo que ocurría en versiones
+anteriores, no pueden usarse porcentajes como valores de los atributos de
+ancho o alto. Si queremos utilizar porcentajes, deberemos recurrir a
+<abbr title="Cascading Style Sheets">CSS</abbr>.</p>
+</div>
+<p>Los navegadores suelen soportan varios tipos de imágenes: los más frecuentes
+son <a class="reference external" href="https://en.wikipedia.org/wiki/JPEG">JPEG</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/PNG">PNG</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/GIF">GIF</a> en imágenes de píxeles, y <a class="reference external" href="https://en.wikipedia.org/wiki/SVG">SVG</a> en imágenes vectoriales.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p><abbr title="HyperText Markup Language">HTML</abbr>5 introdujo un par de atributos más para facilitar el
+diseño adaptable. <a class="reference internal" href="09.media.html#html-img2"><span class="std std-ref">Más adelante</span></a> se volverá a tratar este
+elemento.</p>
+</div>
+</dd>
+</dl>
+<span id="index-24"></span><dl id="html-a">
+<dt><strong>a</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#technical_summary">a</a>)</dt><dd><p>Es el elemento en línea que permite crear hipervínculos.</p>
+<table class="attr-html docutils align-default" id="id8">
+<caption><span class="caption-text">Atributos más habituales para &lt;a&gt;</span><a class="headerlink" href="#id8" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>href</p></td>
+<td><p>url</p></td>
+<td><p><abbr title="Uniform Resource Locator">URL</abbr> del hipervínculo</p></td>
+</tr>
+<tr class="row-even"><td><p>download</p></td>
+<td><p>-</p></td>
+<td><p>Indica que el destino se debe descargar, en
+vez de dirigir el navegador a él</p></td>
+</tr>
+<tr class="row-odd"><td><p>rel</p></td>
+<td><p>texto</p></td>
+<td><p>Tiene el mismo propósito que el atributo
+homónimo del elemento <a class="reference internal" href="03.head.html#html-link"><span class="std std-ref">&lt;link&gt;</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>target</p></td>
+<td><p>valor</p></td>
+<td><p>Indica dónde mostrar el destino.</p></td>
+</tr>
+</tbody>
+</table>
+<p>El uso es bastante simple y ya se ha mostrado en ejemplo anteriores (p.e. al
+ilustrar el elemento <a class="reference internal" href="#html-small"><span class="std std-ref">&lt;small&gt;</span></a> y enlazar con la página que contiene las
+cláusulas de la licencia). No obstante, es aconsejable aclarar cuáles son los
+valores que puede adoptar el atributo <code class="code docutils literal notranslate"><span class="pre">target</span></code>:</p>
+<dl class="simple">
+<dt><em>_self</em></dt><dd><p>Carga el destino en el contexto de navegación del documento en el que
+se encuentra el enlace. En la mayor parte de los casos esto supone que el
+navegador cargue la nueva página en la misma pestaña.</p>
+</dd>
+<dt><em>_blank</em></dt><dd><p>Carga el destino en un nuevo contexto de navegación. Dependiendo de cómo
+se haya configurado el navegador esto supondrá cargar en una nueva pestaña
+o una nueva ventana.</p>
+</dd>
+<dt><em>_parent</em></dt><dd><p>Carga el destino en el contexto de navegación del documento padre. Esto
+tiene sentido cuando el documento se encuentra en dentro de un <a class="reference internal" href="09.media.html#html-iframe"><span class="std std-ref">&lt;iframe&gt;</span></a>,
+de modo que el documento padre es aquel que contiene el <a class="reference internal" href="09.media.html#html-iframe"><span class="std std-ref">&lt;iframe&gt;</span></a>.
+Si no es el caso, se comporta como <em>_self</em>.</p>
+</dd>
+<dt><em>_top</em></dt><dd><p>Carga el destino en el contexto de navegación del documento que es el
+primer ancenstro. Sólo tiene sentido cuando hay varios elementos <a class="reference internal" href="09.media.html#html-iframe"><span class="std std-ref">&lt;iframe&gt;</span></a>
+anidados. Si no es el caso, se comporta como <em>_self</em>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+<section id="contenido-informatico">
+<h2><span class="section-number">6.4.4. </span>Contenido informático<a class="headerlink" href="#contenido-informatico" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Incluimos bajo este epígrafe los elementos en línea orientados a textos de
+temática informática.</p>
+<table class="el-html docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-kbd"><span class="std std-ref">&lt;kbd&gt;</span></a></p></td>
+<td><p>Entrada de información de usuario.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-samp"><span class="std std-ref">&lt;samp&gt;</span></a></p></td>
+<td><p>Salida de un programa informático.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-var"><span class="std std-ref">&lt;var&gt;</span></a></p></td>
+<td><p>Variable (matemática o informática)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-time"><span class="std std-ref">&lt;time&gt;</span></a></p></td>
+<td><p>Hora y fecha legible por humanos.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-data"><span class="std std-ref">&lt;data&gt;</span></a></p></td>
+<td><p>Información con expresión del valor orientado a la
+máquina.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-code"><span class="std std-ref">&lt;code&gt;</span></a></p></td>
+<td><p>Fragmento de código fuente</p></td>
+</tr>
+</tbody>
+</table>
+<span id="index-25"></span><dl id="html-kbd">
+<dt><strong>kbd</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd#technical_summary">kbd</a>)</dt><dd><p>Marcan entradas de usuario:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Para cancelar el programa basta con pulsar <span class="p">&lt;</span><span class="nt">kbd</span><span class="p">&gt;</span>Ctrl<span class="p">&lt;/</span><span class="nt">kbd</span><span class="p">&gt;</span>+<span class="p">&lt;</span><span class="nt">kbd</span><span class="p">&gt;</span>T<span class="p">&lt;/</span><span class="nt">kbd</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="ej-html"><p>Para cancelar el programa basta con pulsar <kbd>Ctrl</kbd>+<kbd>T</kbd></div><div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Para crear el efecto se ha usado el siguiente estilo:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">kbd</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">Monospace</span><span class="p">;</span>
+<span class="w">   </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="mi">6</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">   </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#eee</span><span class="p">;</span>
+<span class="w">   </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#bbb</span><span class="p">;</span>
+<span class="w">   </span><span class="k">border-top-width</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">   </span><span class="k">border-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#777</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</dd>
+</dl>
+<span id="index-26"></span><dl id="html-samp">
+<dt><strong>samp</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/samp#technical_summary">samp</a>)</dt><dd><p>Marca un texto que representa la salida de un programa:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Es posible que reciba el siguiente mensaje:<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">samp</span><span class="p">&gt;</span>-bash: saas: command not found<span class="p">&lt;/</span><span class="nt">samp</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="ej-html"><p>Es posible que reciba el siguiente mensaje:</p>
+<p><samp>-bash: saas: command not found</samp></p></div></dd>
+</dl>
+<span id="index-27"></span><dl class="simple" id="html-var">
+<dt><strong>var</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/var#technical_summary">var</a>)</dt><dd><p>Permite marcar texto que representa variables informáticas o matemáticas.
+Consulte el ejemplo dedicado a <a class="reference internal" href="#html-sup"><span class="std std-ref">&lt;sup&gt;</span></a>, donde se usa también este elemento.</p>
+</dd>
+</dl>
+<span id="index-28"></span><dl id="html-time">
+<dt><strong>time</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time#technical_summary">time</a>)</dt><dd><p>El elemento permite escribir una hora o fecha en formato legible por un
+humano, pero de modo que también pueda ser procesado por una máquina. Tiene
+un atributo:</p>
+<table class="attr-html docutils align-default" id="id9">
+<caption><span class="caption-text">Atributos para time</span><a class="headerlink" href="#id9" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>datetime</p></td>
+<td><p>hora/fecha</p></td>
+<td><p>Fecha, hora o duración en formato
+inteligible por la máquina.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Ejemplos:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">time</span> <span class="na">datatime</span><span class="o">=</span><span class="s">&quot;2019-02-16&quot;</span><span class="p">&gt;</span>16 de febrero de 2019<span class="p">&lt;/</span><span class="nt">time</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">time</span> <span class="na">datatime</span><span class="o">=</span><span class="s">&quot;12:15&quot;</span><span class="p">&gt;</span>doce y cuarto<span class="p">&lt;/</span><span class="nt">datetime</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">time</span> <span class="na">datatime</span><span class="o">=</span><span class="s">&quot;1990-02-15T14:15&quot;</span><span class="p">&gt;</span>El quince de febrero de 1990 a las dos y cuarto<span class="p">&lt;/</span><span class="nt">time</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">time</span> <span class="na">datatime</span><span class="o">=</span><span class="s">&quot;P2H30M&quot;</span><span class="p">&gt;</span>2 horas y media<span class="p">&lt;/</span><span class="nt">datetime</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<span id="index-29"></span><dl id="html-data">
+<dt><strong>data</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/data#technical_summary">data</a>)</dt><dd><p>Se utiliza para proporcionar una versión legible por la máquina de su propio
+contenido. Por ejemplo:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Los idiomas soportados son:<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">data</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>Inglés<span class="p">&lt;/</span><span class="nt">data</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">data</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;fr&quot;</span><span class="p">&gt;</span>Francés<span class="p">&lt;/</span><span class="nt">data</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">data</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>Español<span class="p">&lt;/</span><span class="nt">data</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">data</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;de&quot;</span><span class="p">&gt;</span>Alemán<span class="p">&lt;/</span><span class="nt">data</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">data</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;it&quot;</span><span class="p">&gt;</span>Italiano<span class="p">&lt;/</span><span class="nt">data</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<span id="index-30"></span><dl id="html-code">
+<dt><strong>code</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code#technical_summary">code</a>)</dt><dd><p>Marca que su contenido es código informático:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>La función <span class="p">&lt;</span><span class="nt">code</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;python&quot;</span><span class="p">&gt;</span>print()<span class="p">&lt;/</span><span class="nt">code</span><span class="p">&gt;</span> permite imprimir mensajes en la
+pantalla o, si se usa el parámetro <span class="p">&lt;</span><span class="nt">code</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;python&quot;</span><span class="p">&gt;</span>file=/code&gt; cualquier
+fichero.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Para códigos más largos, suele combinarse con <a class="reference internal" href="#html-pre"><span class="std std-ref">&lt;pre&gt;</span></a>, tal como se ilustró al
+tratar ese elemento. Es común que incluya un atributo <code class="code docutils literal notranslate"><span class="pre">class</span></code> para
+significar el lenguaje en el que se escribe tal código. Esto es debido a que
+existen librerías de Javascript como <a class="reference external" href="https://highlightjs.org/">highlight.js</a> que, leyendo ese atributo,
+son capaces de colorear el código para hacerlo más legible.</p>
+</dd>
+</dl>
+</section>
+<section id="elementos-de-revision">
+<h2><span class="section-number">6.4.5. </span>Elementos de revisión<a class="headerlink" href="#elementos-de-revision" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Sirven para marcar las correcciones a un documento ya publicado.</p>
+<table class="el-html docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-ins"><span class="std std-ref">&lt;ins&gt;</span></a></p></td>
+<td><p>Añade contenido con posterioridad a la fecha inicial de
+publicación.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-del"><span class="std std-ref">&lt;del&gt;</span></a></p></td>
+<td><p>Elimina contenido con posterioridad a la fecha inicial de
+publicación.</p></td>
+</tr>
+</tbody>
+</table>
+<span id="index-31"></span><dl id="html-ins">
+<dt><strong>ins</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins#technical_summary">ins</a>)</dt><dd><p>Marca el texto añadido:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Para abreviaturas y acrónimos en HTML<span class="p">&lt;</span><span class="nt">ins</span><span class="p">&gt;</span>5<span class="p">&lt;/</span><span class="nt">ins</span><span class="p">&gt;</span> se usa<span class="p">&lt;</span><span class="nt">del</span><span class="p">&gt;</span>n<span class="p">&lt;/</span><span class="nt">del</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">code</span><span class="p">&gt;</span>abbr<span class="p">&lt;/</span><span class="nt">code</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">del</span><span class="p">&gt;</span>y <span class="p">&lt;</span><span class="nt">code</span><span class="p">&gt;</span>acronym<span class="p">&lt;/</span><span class="nt">code</span><span class="p">&gt;&lt;/</span><span class="nt">del</span><span class="p">&gt;</span>.
+</pre></div>
+</div>
+<div class="ej-html"><p>Para abreviaturas y acrónimos en HTML<ins>5</ins> se usa<del>n</del> <code>abbr</code><del>
+y <code>acronym</code></del>.</div></dd>
+</dl>
+<span id="index-32"></span><dl class="simple" id="html-del">
+<dt><strong>del</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del#technical_summary">del</a>)</dt><dd><p>Marca el texto eliminado. Véase el ejemplo anterior.</p>
+</dd>
+</dl>
+<table class="attr-html docutils align-default" id="id10">
+<caption><span class="caption-text">Atributos de ins/del</span><a class="headerlink" href="#id10" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>cite</p></td>
+<td><p>[url]</p></td>
+<td><p><abbr title="Uniform Resource Locator">URL</abbr> que explica el cambio</p></td>
+</tr>
+<tr class="row-even"><td><p>datetime</p></td>
+<td><p>[fecha]</p></td>
+<td><p>Fecha del cambio</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="listas">
+<h2><span class="section-number">6.4.6. </span>Listas<a class="headerlink" href="#listas" title="Enlace permanente a este encabezado">¶</a></h2>
+<p><abbr title="HyperText Markup Language">HTML</abbr> permite la generación de listas de distintos tipos.</p>
+<section id="listas-numeradas-y-no-numeradas">
+<h3><span class="section-number">6.4.6.1. </span>Listas numeradas y no numeradas<a class="headerlink" href="#listas-numeradas-y-no-numeradas" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Son listas de ítems antecedidos por un número (las numeradas) o por una viñeta
+(las no numeradas).</p>
+<table class="el-html docutils align-default" id="index-33">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-ol"><span class="std std-ref">&lt;ol&gt;</span></a></p></td>
+<td><p>Define listas numeradas</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-ul"><span class="std std-ref">&lt;ul&gt;</span></a></p></td>
+<td><p>Define listas no numeradas.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-li"><span class="std std-ref">&lt;li&gt;</span></a></p></td>
+<td><p>Define cada ítem en una lista numerada o no numerada</p></td>
+</tr>
+</tbody>
+</table>
+<span id="html-ol"></span><span id="index-34"></span><dl id="html-ul">
+<dt><strong>ol</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol#technical_summary">ol</a>), <strong>ul</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul#technical_summary">ul</a>)</dt><dd><p>Son elementos de bloque que declaran que se introducirán una serie de ítems
+que componen una lista numerada (<code class="code docutils literal notranslate"><span class="pre">&lt;ol&gt;</span></code>) o no numerada (<code class="code docutils literal notranslate"><span class="pre">&lt;ul&gt;</span></code>).
+Están constituidos exclusivamente por elementos <code class="code docutils literal notranslate"><span class="pre">&lt;li&gt;</span></code>.</p>
+<p>Tanto para uno como para otro elemento es posible añadir tres opciones:</p>
+<table class="attr-html docutils align-default" id="id11">
+<caption><span class="caption-text">Atributos de ol/ul</span><a class="headerlink" href="#id11" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>start</p></td>
+<td><p>[num]</p></td>
+<td><p>Define el número del primer ítem de la lista</p></td>
+</tr>
+<tr class="row-even"><td><p>reversed</p></td>
+<td><p>-</p></td>
+<td><p>Si se incluye, se numera la lista al revés</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p>[1aAiI]</p></td>
+<td><p>Tipo de numeración: números, letras minúsculas,
+letras mayúsculas, números romanos en minúscula,
+números romanos en mayúscula (sólo <code class="code docutils literal notranslate"><span class="pre">&lt;ol&gt;</span></code>)</p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<span id="index-35"></span><dl id="html-li">
+<dt><strong>li</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li#technical_summary">li</a>)</dt><dd><p>Elemento de bloque que define cada ítem de una lista numerada o no numerada.
+Dentro de él se pueden incluir tanto texto como los elementos de línea
+descritos en el apartado anterior como otros elementos de bloque. Dentro de
+estos últimos, puede encontrarse otro elemento de lista, lo que permite
+anidarlas.</p>
+<p>No es necesario cerrar el elemento, ya que se considera cerrado cuando se
+abre otro <code class="code docutils literal notranslate"><span class="pre">&lt;li&gt;</span></code> o cuando acaba la lista.</p>
+<table class="attr-html docutils align-default" id="id12">
+<caption><span class="caption-text">Atributos de li</span><a class="headerlink" href="#id12" title="Enlace permanente a esta tabla">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>value</p></td>
+<td><p>[num]</p></td>
+<td><p>Cambia el ordinal del ítem al que se especifique
+como valor. Los ítems sucesivos continúan la
+secuencia a partir de este valor y no el que les
+correspondería de no haberse usado este
+atributo.</p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<p>Por ejemplo, el código:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">ol</span> <span class="na">start</span><span class="o">=</span><span class="s">&quot;2&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;i&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Primer ítem.
+   <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Segundo ítem.
+   <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Tercer ítem.
+<span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>que genera:</p>
+<ol class="lowerroman simple" start="2">
+<li><p>Primer ítem</p></li>
+<li><p>Segundo ítem</p></li>
+<li><p>Tercer ítem</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Por supuesto, pueden anidarse listas. Basta con incluir elementos
+<code class="code docutils literal notranslate"><span class="pre">ol</span></code> o <code class="code docutils literal notranslate"><span class="pre">ul</span></code> dentro de alguno de los ítem (<code class="code docutils literal notranslate"><span class="pre">&lt;li&gt;</span></code>).</p>
+</div>
+</section>
+<section id="listas-de-definicion">
+<h3><span class="section-number">6.4.6.2. </span>Listas de definición<a class="headerlink" href="#listas-de-definicion" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Las listas de definición consisten en una enumeración de términos de cada uno de
+los cuales se proporciona una definión o una descripción.</p>
+<table class="el-html docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-dl"><span class="std std-ref">&lt;dl&gt;</span></a></p></td>
+<td><p>Define una lista de definición</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-dt"><span class="std std-ref">&lt;dt&gt;</span></a></p></td>
+<td><p>Define cada término en una lista de definición</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-dd"><span class="std std-ref">&lt;dd&gt;</span></a></p></td>
+<td><p>Define cada definición o descripción de término en una
+lista de definicion</p></td>
+</tr>
+</tbody>
+</table>
+<span id="index-36"></span><dl class="simple" id="html-dl">
+<dt><strong>dl</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl#technical_summary">dl</a>)</dt><dd><p>Contiene una sucesión de parejas<a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> de elementos <code class="code docutils literal notranslate"><span class="pre">&lt;dt&gt;</span></code> y <code class="code docutils literal notranslate"><span class="pre">&lt;dd&gt;</span></code>.</p>
+</dd>
+</dl>
+<span id="index-37"></span><dl class="simple" id="html-dt">
+<dt><strong>dt</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dt#technical_summary">dt</a>)</dt><dd><p>Por lo general contiene elementos en línea, ya que debe incluir el término
+que se define, pero es posible incluir en él elementos de bloque. Lo más
+habitual es que sea seguido por un elemento <code class="code docutils literal notranslate"><span class="pre">&lt;dd&gt;</span></code>, pero puede
+encontrarse dos o más elementos <code class="code docutils literal notranslate"><span class="pre">&lt;dl&gt;</span></code> seguidos si todos comparten una
+misma definición.</p>
+</dd>
+</dl>
+<span id="index-38"></span><dl class="simple" id="html-dd">
+<dt><strong>dd</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dd#technical_summary">dd</a>)</dt><dd><p>Contiene la descripción o definición del elemento (o los elementos)
+<code class="code docutils literal notranslate"><span class="pre">&lt;dl&gt;</span></code> a los que sucede. Puede contener tanto elementos en línea como
+elementos de bloque. Lo habitual es que sólo haya una definición por término,
+pero pueden escribirse varias seguidas, todas referentes a él.</p>
+</dd>
+</dl>
+<p>Un ejemplo de lista de definición es precisamente la realizada para describir
+estas tres etiquetas:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">dl</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">dt</span><span class="p">&gt;</span>dl
+   <span class="p">&lt;</span><span class="nt">dd</span><span class="p">&gt;</span>Contiene una sucesión de parejas de elementos <span class="p">&lt;</span><span class="nt">code</span><span class="p">&gt;</span>dt<span class="p">&lt;/</span><span class="nt">code</span><span class="p">&gt;</span> y
+   <span class="p">&lt;</span><span class="nt">code</span><span class="p">&gt;</span>dd<span class="p">&lt;/</span><span class="nt">code</span><span class="p">&gt;</span>.
+
+   <span class="p">&lt;</span><span class="nt">dt</span><span class="p">&gt;</span>dt
+   <span class="p">&lt;</span><span class="nt">dd</span><span class="p">&gt;</span>Por lo general contiene elementos en línea, ya que debe incluir el
+   término que se define, pero es posible incluir en él elementos de bloque.
+   Lo más habitual es que sea seguido por un elemento <span class="p">&lt;</span><span class="nt">code</span><span class="p">&gt;</span>dd<span class="p">&lt;/</span><span class="nt">code</span><span class="p">&gt;</span>, pero
+   puede encontrarse dos o más elementos <span class="p">&lt;</span><span class="nt">code</span><span class="p">&gt;</span>dl<span class="p">&lt;/</span><span class="nt">code</span><span class="p">&gt;</span> seguidos si todos
+   comparten una misma definición.
+
+   <span class="p">&lt;</span><span class="nt">dt</span><span class="p">&gt;</span>dd
+   <span class="p">&lt;</span><span class="nt">dd</span><span class="p">&gt;</span>Contiene la descripción o definición del elemento (o los elementos)
+   <span class="p">&lt;</span><span class="nt">code</span><span class="p">&gt;</span>dl<span class="p">&lt;/</span><span class="nt">code</span><span class="p">&gt;</span> a los que sucede. Puede contener tanto elementos en línea
+   como elementos de bloque.
+<span class="p">&lt;/</span><span class="nt">dl</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Es posible usar elementos <a class="reference internal" href="07.struct.html#html-div"><span class="std std-ref">&lt;div&gt;</span></a> como hijos de
+<code class="code docutils literal notranslate"><span class="pre">&lt;dl&gt;</span></code> para agrupar todos los elementos <code class="code docutils literal notranslate"><span class="pre">&lt;dt&gt;</span></code> y <code class="code docutils literal notranslate"><span class="pre">&lt;dd&gt;</span></code> que
+estén relacionados entre sí. Como esa es su función, el elemento
+<code class="code docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> sólo podrá contener elementos <code class="code docutils literal notranslate"><span class="pre">&lt;dt&gt;</span></code> y <code class="code docutils literal notranslate"><span class="pre">&lt;dd&gt;</span></code>.</p>
+</div>
+</section>
+</section>
+<section id="contenido-incontenido">
+<h2><span class="section-number">6.4.7. </span>Contenido <em>incontenido</em><a class="headerlink" href="#contenido-incontenido" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Bajo este epígrafe con nombre de chanza, tratamos elementos cuyo contenido, en
+principio, no es visible.</p>
+<table class="el-html docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#html-noscript"><span class="std std-ref">&lt;noscript&gt;</span></a></p></td>
+<td><p>Define contenido que sólo se añadirá a la página en caso
+de que el navegador tenga deshabilitado Javascript.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#html-template"><span class="std std-ref">&lt;template&gt;</span></a></p></td>
+<td><p>Define contenido que no se incluirá en la página.</p></td>
+</tr>
+</tbody>
+</table>
+<span id="index-39"></span><dl id="html-noscript">
+<dt><strong>noscript</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript#technical_summary">noscript</a>)</dt><dd><p>Tiene utilidad si deseamos mostrar un contenido alternativo cuando no es
+posible ejecutar Javascript. Por ejemplo:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;indice&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">noscript</span><span class="p">&gt;</span>
+      Índice automáticamente generado con Javascript. Habilítelo o cambie de navegador.
+   <span class="p">&lt;/</span><span class="nt">noscript</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<span id="index-40"></span><dl id="html-template">
+<dt><strong>template</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template#technical_summary">template</a>)</dt><dd><p>El contenido de este elemento no forma parte de la página, pero sirve como
+plantilla para crear contenido dinámico con Javascript. Por ejemplo,
+supongamos que la página albergará una tabla cuyas filas se irán creando con
+una serie de datos obtenidos dinámicamente (p.e. a través de una petición
+<a class="reference external" href="https://developer.mozilla.org/es/docs/Web/Guide/AJAX">AJAX</a> que devuelve
+un objeto <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/JSON">JSON</a>).
+En este caso, de la tabla sólo podremos escribir el encabezado, pero ninguna
+fila de datos. Lo que sí podemos hacer es crear la plantilla de cómo serán
+esas filas para que el <em>script</em> la tome como base para generarlas:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">template</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;fila_def&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;termino&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</section>
+<section id="ejercicios-propuestos">
+<h2><span class="section-number">6.4.8. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Enlace permanente a este encabezado">¶</a></h2>
+<ol class="arabic">
+<li><p>Con lo aprendido hasta ahora, escriba en <abbr title="HyperText Markup Language">HTML</abbr> el siguiente texto usando
+los elementos semánticos adecuados. No es necesario aún que estructure
+semánticamente el documento tal como se expone en <a class="reference internal" href="07.struct.html#html-struct"><span class="std std-ref">Estructura semántica</span></a>.</p>
+<p>Tenga presente que hemos usado algunas marcas para dar indicaciones:</p>
+<ul class="simple">
+<li><p>Los encabezados están subrayados según su orden jerárquico.</p></li>
+<li><p>**, significa que el texto tiene especial relevancia.</p></li>
+<li><p>*, significa que el texto debe enfatizarse.</p></li>
+<li><p>El texto entre corchetes (<code class="docutils literal notranslate"><span class="pre">[]</span></code>) son aclaraciones y no forman parte del
+contenido, así que no la traslade a su solución.</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>HTML
+****
+
+HTML[1], siglas en inglés de HyperText Markup Language[2]
+(lenguaje de marcado de hipertexto), hace referencia al
+**lenguaje de marcado** para la elaboración de páginas web[3]. Es un estándar que
+sirve de referencia del software[4] que conecta con la elaboración de páginas
+web[4] en sus diferentes versiones, define una estructura básica y un código
+(denominado código HTML) para la definición de contenido de una página
+web[4], como texto, imágenes, videos, juegos, entre otros. Es un estándar a
+cargo del World Wide Web Consortium[5] (W3C[1]) o Consorcio WWW[1], organización
+dedicada a la estandarización de casi todas las tecnologías ligadas a la
+web[4], sobre todo en lo referente a su escritura e interpretación. HTML[1] se
+considera el lenguaje web más importante siendo su invención crucial en la
+aparición, desarrollo y expansión de la World Wide Web[6] (WWW[1]). Es el
+estándar que se ha impuesto en la visualización de páginas web[4] y es el que
+todos los navegadores actuales han adoptado.
+
+[Insertar aquí una imagen con el logo de HTML5]
+
+Primeras especificaciones de HTML
+=================================
+Tim Berners-Lee[7] en 1991 18 elementos que incluyen el diseño inicial y
+relativamente simple de HTML[1]. Trece de estos elementos todavía existen
+en HTML[1] 4.
+
+[Los dos próximo párrafos son una cita de &quot;A short history of the Web&quot;
+que se encuentra en https://home.cern/science/computing/birth-web/short-history-web]
+Tim Berners-Lee wrote the first proposal for the World Wide Web in March
+1989 and his second proposal in May 1990. Together with Belgian systems
+engineer Robert Cailliau, this was formalised as a management proposal in
+November 1990. This outlined the principal concepts and it defined
+important terms behind the Web. The document described a &quot;hypertext
+project&quot; called &quot;WorldWideWeb&quot; in which a &quot;web&quot; of &quot;hypertext documents&quot;
+could be viewed by “browsers”.
+
+By the end of 1990, Tim Berners-Lee had the
+first Web server and browser up and running at CERN, demonstrating his
+ideas. He developed the code for his Web server on a NeXT computer. To
+prevent it being accidentally switched off, the computer had a
+hand-written label in red ink: &quot;This machine is a server. DO NOT POWER IT
+DOWN!!&quot;
+
+Marcador HTML
+=============
+El HTML[1] se escribe en forma de «etiquetas», rodeadas por corchetes
+angulares. El HTML[1] también puede describir, hasta un cierto punto,
+la apariencia de un documento, y puede incluir o hacer referencia a un
+tipo de programa llamado script[4], el cual puede afectar el comportamiento
+de navegadores web[4] y otros procesadores de HTML[1].
+
+Elementos
+---------
+Los elementos son la estructura básica de HTML[1]. Los elementos tienen dos
+propiedades básicas: *atributos* y *contenido*. Cada atributo y contenido
+tiene ciertas restricciones para que se considere válido al documento
+HTML[1]. Un elemento generalmente tiene una etiqueta de inicio (por ejemplo,
+&lt;nombre-de-elemento&gt;[8]) y una etiqueta de cierre (por ejemplo,
+&lt;/nombre-de-elemento&gt;[8]). Los atributos del elemento están contenidos en la
+etiqueta de inicio y el contenido está ubicado entre las dos etiquetas
+(por ejemplo, &lt;nombre-de-elemento
+atributo=&quot;valor&quot;&gt;Contenido&lt;/nombre-de-elemento&gt;[8]). Algunos elementos, tales
+como &lt;br&gt;[8], no tienen contenido ni llevan una etiqueta de cierre. Debajo se
+listan varios tipos de elementos de marcado usados en HTML[1].
+
+Atributos
+---------
+En su mayoría los atributos de un elemento son **pares nombre-valor**,
+separados por un signo de igual (=) y escritos en la etiqueta de comienzo
+de un elemento, después del nombre del elemento. El valor puede estar
+rodeado por comillas dobles o simples, aunque ciertos tipos de valores
+pueden estar sin comillas en HTML[1] (pero no en XHTML[1]). De
+todas maneras, dejar los valores sin comillas es considerado poco
+seguro. En contraste con los pares nombre-elemento, hay algunos
+atributos que afectan al elemento simplemente por su presencia
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">[1] abreviatura</div>
+<div class="line">[2] expresión en inglés</div>
+<div class="line">[3] «páginas web» es un enlace a <a class="reference external" href="https://es.wikipedia.org/wiki/P%C3%A1gina_web">Página web</a>.</div>
+<div class="line">[4] extranjerismo (o sea, palabra de uso común, pero extranjera).</div>
+<div class="line">[5] «World Wibe Web Consortium» es un enlace a <a class="reference external" href="https://es.wikipedia.org/wiki/World_Wide_Web">W3C</a>.</div>
+<div class="line">[6] «World Wide Web» es un enlace a <a class="reference external" href="https://es.wikipedia.org/wiki/World_Wide_Web">WWW</a>.</div>
+<div class="line">[7] «Tim Berners-Lee» es un enlace a <a class="reference external" href="https://es.wikipedia.org/wiki/Tim_Berners-Lee">Tim Berners-Lee</a>.</div>
+<div class="line">[8] Código</div>
+</div>
+</li>
+</ol>
+<p class="rubric">Notas al pie</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id3" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Para definir acrónimos había en <abbr title="HyperText Markup Language">HTML</abbr>4 un elemento ya desechado
+llamado <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/acronym">&lt;acronym&gt;</a>.</p>
+</aside>
+<aside class="footnote brackets" id="id4" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Esto no es cierto del todo, ya que puede haber varios elementos
+<code class="code docutils literal notranslate"><span class="pre">dl</span></code> consecutivos. Se tratará a continuación.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/logo.png" alt="Logo"/>
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">6.4. Elementos básicos</a><ul>
+<li><a class="reference internal" href="#encabezados">6.4.1. Encabezados</a></li>
+<li><a class="reference internal" href="#elementos-de-parrafo">6.4.2. Elementos de párrafo</a></li>
+<li><a class="reference internal" href="#elementos-en-linea">6.4.3. Elementos en línea</a></li>
+<li><a class="reference internal" href="#contenido-informatico">6.4.4. Contenido informático</a></li>
+<li><a class="reference internal" href="#elementos-de-revision">6.4.5. Elementos de revisión</a></li>
+<li><a class="reference internal" href="#listas">6.4.6. Listas</a><ul>
+<li><a class="reference internal" href="#listas-numeradas-y-no-numeradas">6.4.6.1. Listas numeradas y no numeradas</a></li>
+<li><a class="reference internal" href="#listas-de-definicion">6.4.6.2. Listas de definición</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#contenido-incontenido">6.4.7. Contenido <em>incontenido</em></a></li>
+<li><a class="reference internal" href="#ejercicios-propuestos">6.4.8. Ejercicios propuestos</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="03.head.html"
+                          title="Previous page">&larr; <span class="section-number">6.3. </span>Cabecera</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="05.tablas.html"
+                          title="Next page">&rarr; <span class="section-number">6.5. </span>Tablas</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/06.html/04.basico.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="05.tablas.html" title="6.5. Tablas"
+             >siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="03.head.html" title="6.3. Cabecera"
+             >anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">6. </span><abbr title="HyperText Markup Language">HTML</abbr></a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">6.4. </span>Elementos básicos</a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
+      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

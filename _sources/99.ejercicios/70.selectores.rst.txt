@@ -1,0 +1,70 @@
+|CSS|: Selectores
+=================
+.. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`
+
+#. Escriba el selector apropiado para las descripciones que se hacen a continuación:
+
+   a. Los párrafos de la clase *alerta*.
+   #. Cualquier elemento de la clase *alerta* e *importante*
+   #. Las celdas normales y de cabecera de la tabla de clase *elementos*.
+   #. Las celdas normales y de cabecera de la tabla con identificador *principal*.
+   #. Los enlaces a recursos accesibles mediante el protocolo *ed2k*.
+   #. El seudoelemento que antecede a los enlaces referidos en el punto anterior.
+   #. Los elementos ``input`` de sólo lectura.
+   #. Elementos *article* que contienen encabezados de nivel 2.
+   #. Los enlaces sobre los que se pasa el ratón.
+   #. El seudoelemento que sucede a los enlaces referidos en el punto anterior.
+   #. El primer hijo de un elemento ``section``.
+   #. Las celdas de las filas impares de la tabla de la clase *elementos*.
+   #. La primera, cuarta, séptima, etc. celdas de la tabla de la clase *elementos*.
+   #. Empezando por atrás, lo mismo del apartado anterior.
+   #. El párrafo que sigue inmediatamente a un encabezado de nivel 3.
+   #. El pseudoelemento ``marker`` de ítems de listas numeradas o no numeradas,
+      las cuales son hijas de un elemento ``article``.
+   #. Abreviaturas sin atributo *title*.
+   #. Todas las celdas de filas pares excepto la última (celda, no fila).
+   #. El primer carácter del término de una lista de definiciones.
+   #. Las celdas no vacías de la tabla con identificador *principal*.
+
+#. Calcule justificadamente cuál de los selectores tiene más especifidad:
+
+   a. Regla |CSS| que se aplica con:
+
+      .. code:: css
+
+         [id] a.externo { /* ... */ }
+         a[href] { /* ... */ }
+         p a { /* ... */ }
+
+   #. Regla |CSS| que se aplica con:
+
+      .. code:: css
+
+         .tabla :is(td, th) { /* ... */ }
+         table :where(td, th):hover { /* ... */ }
+         .tabla :where(td, th):hover { /* ... */ }
+
+   #. Regla |CSS| que se aplica con:
+
+      .. code:: css
+
+         h1 + p>ol[class] { /* ... */ }
+         [id] ol.listita li { /* ... */ }
+         .seccion ol li { /* ... */ }
+
+
+   #. Regla |CSS| que se aplica con:
+
+      .. code:: css
+
+         #a1 :is(ol, ul) :where(ol, ul).interna li { /* ... */ }
+         #a1 :is(ol, ul) :is(ol, ul) li { /* ... */ }
+         section :is(ol, ul).externa :is(ol, ul).interna li { /* ... */ }
+
+   #. Regla |CSS| que se aplica con:
+
+      .. code:: css
+
+         form fieldset :invalid { /* ... */ }
+         .formulario :where(fieldset, div) input:invalid { /* ... */ }
+         .formulario input:invalid { /* ... */ }

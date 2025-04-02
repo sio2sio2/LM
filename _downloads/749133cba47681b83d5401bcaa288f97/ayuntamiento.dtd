@@ -1,0 +1,22 @@
+<!ELEMENT habitantes (persona+)>
+<!ATTLIST habitantes ayuntamiento      CDATA    #REQUIRED>
+
+<!ELEMENT persona (nombre, apellidos, direccion, tlfo, origen, padre?, madre?)>
+<!ATTLIST persona id       ID             #REQUIRED
+                  padre    IDREF          #IMPLIED
+                  madre    IDREF          #IMPLIED
+                  sexo     (hombre|mujer) #REQUIRED>
+
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT apellidos (#PCDATA)>
+<!ELEMENT tlfo (#PCDATA)>
+<!ELEMENT origen (#PCDATA)>
+<!ELEMENT padre (#PCDATA)>
+<!ELEMENT madre (#PCDATA)>
+
+<!ELEMENT direccion (via, numero, piso, letra)>
+<!ELEMENT via (#PCDATA)>
+<!ATTLIST via tipo      (calle|callejón|cuesta|costanilla|plaza|avenida|paseo) "calle">
+<!ELEMENT numero (#PCDATA)>
+<!ELEMENT piso (#PCDATA)>
+<!ELEMENT letra (#PCDATA)>

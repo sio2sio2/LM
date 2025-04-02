@@ -1,0 +1,36 @@
+start = grafico
+
+grafico = element grafico { (punto|recta|circunferencia|rectangulo)*,
+   attribute unidad { "m" | "cm" | "mm" }
+}
+
+id = attribute id { xsd:ID }
+
+xy = attribute x { xsd:integer },
+     attribute y { xsd:integer }
+
+punto = element punto { empty,
+   id,
+   xy
+}
+
+circunferencia = element circunferencia { empty,
+   id,
+   xy,
+   attribute r { xsd:positiveInteger }
+}
+
+x1y1x2y2 = attribute x1 { xsd:integer },
+           attribute y1 { xsd:integer },
+           attribute x2 { xsd:integer },
+           attribute y2 { xsd:integer }
+
+rectangulo = element rectangulo {empty,
+   id,
+   x1y1x2y2
+}
+
+recta = element recta {empty,
+   id,
+   x1y1x2y2
+}

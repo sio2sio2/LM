@@ -1,0 +1,1058 @@
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>2.1. DTD &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+    <link rel="stylesheet" href="../_static/general.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+
+    
+    
+     
+        <script src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="2.2. JSON Schema" href="02.yaml.html" />
+    <link rel="prev" title="2. Validación" href="index.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="02.yaml.html" title="2.2. JSON Schema"
+             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="index.html" title="2. Validación"
+             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">2. </span>Validación</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2.1. </span><abbr title="Document Type Definition">DTD</abbr></a></li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="dtd">
+<span id="id1"></span><h1><span class="section-number">2.1. </span><abbr title="Document Type Definition">DTD</abbr><a class="headerlink" href="#dtd" title="Enlace permanente a este encabezado">¶</a></h1>
+<p>Para definir gramáticas de documentos <abbr title="eXtensible  Markup Language">XML</abbr> se usan distintos lenguajes, pero
+los más habituales son:</p>
+<ul class="simple">
+<li><p><abbr title="Document Type Definition">DTD</abbr> <abbr title="eXtensible  Markup Language">XML</abbr>, derivado del <abbr title="Document Type Definition">DTD</abbr> que se usa para validar documentos <abbr title="Standard Generalized Markup Language">SGML</abbr>.
+Básicamente es un documento <abbr title="Standard Generalized Markup Language">SGML</abbr> usado para definir la gramática de un
+dialecto <abbr title="eXtensible  Markup Language">XML</abbr> concreto.</p></li>
+<li><p><a class="reference internal" href="../98.apendices/21.xsd.html#xsd"><span class="std std-ref">W3C XML Schema</span></a>, que es un lenguaje con sintaxis <abbr title="eXtensible  Markup Language">XML</abbr> desarrollado
+por el <abbr title="W3 Consortium">W3C</abbr>.</p></li>
+<li><p><a class="reference internal" href="../98.apendices/22.rnc.html#rnc"><span class="std std-ref">Relax-NG</span></a>, que es otro lenguaje de esquemas <abbr title="eXtensible  Markup Language">XML</abbr> más sencillo que
+el anterior y que, además de la sintaxis <abbr title="eXtensible  Markup Language">XML</abbr>, dispone de una sintaxis
+alternativa llamada <em>Compacta</em>.</p></li>
+</ul>
+<p>Desarrollaremos sólo el primer lenguaje, que es el más extendido, aunque también
+el más limitado y menos expresivo. Los otros dos, los desarrollaremos como
+material adicional en los apéndices.</p>
+<section id="preliminares">
+<h2><span class="section-number">2.1.1. </span>Preliminares<a class="headerlink" href="#preliminares" title="Enlace permanente a este encabezado">¶</a></h2>
+<section id="declaracion">
+<span id="dtd-doctype"></span><h3><span class="section-number">2.1.1.1. </span>Declaración<a class="headerlink" href="#declaracion" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Antes de comenzar, es preciso indicar cómo declarar en un <abbr title="eXtensible  Markup Language">XML</abbr> cuál es el <abbr title="Document Type Definition">DTD</abbr>
+que lo define. Ello se logra mediante la línea de definición de tipo de
+documento ya mencionada:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!DOCTYPE</span> <span class="nt">nodo_raiz</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;gramatica.dtd&quot;</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<p>Esta línea, no obstante, no siempre tiene la misma estructura, porque ésta
+depende de dos factores:</p>
+<ul class="simple">
+<li><p>La <strong>ubicación</strong> del <abbr title="Document Type Definition">DTD</abbr>, esto es, dónde se encuentren definidas las reglas
+que constituyen el <abbr title="Document Type Definition">DTD</abbr>: si dentro de la propia declaración de documento o en
+archivo aparte.</p></li>
+<li><p>El <strong>carácter</strong> <em>público</em> o <em>privado</em> de la definición. Un <abbr title="Document Type Definition">DTD</abbr> que
+construyamos en nuestro disco duro para describir un <abbr title="eXtensible  Markup Language">XML</abbr> particular tiene
+carácter <em>privado</em>. En cambio, el <abbr title="Document Type Definition">DTD</abbr> que describe <abbr title="eXtensible HyperText Markup Language">XHTML</abbr> es de carácter
+<em>público</em>.</p></li>
+</ul>
+<p>Combinando estos dos aspectos tenemos las distintas formas que adquiere la
+declaración:</p>
+<ol class="arabic">
+<li><p><strong>Interno privado</strong></p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE nodo_raiz [</span>
+<span class="cp">   regla1</span>
+<span class="cp">   regla2</span>
+<span class="cp">   etc...</span>
+<span class="cp">]&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Externo privado</strong>, que será el que habitualmente usemos en estos apuntes:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE claustro SYSTEM &quot;claustro.dtd&quot;&gt;</span>
+</pre></div>
+</div>
+<p>En este caso, entre comillas debe incluirse la ruta y el nombre de archivo
+correspondiente al <abbr title="Document Type Definition">DTD</abbr>. En ausencia de ruta, se sobreentiende que el <abbr title="Document Type Definition">DTD</abbr>
+se encuentra en el mismo directorio que el <abbr title="eXtensible  Markup Language">XML</abbr>.</p>
+</li>
+<li><p><strong>Externo público</strong></p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE nodo_raiz PUBLIC &quot;FPI&quot; &quot;URL&quot;&gt;</span>
+</pre></div>
+</div>
+<p>En este caso la <abbr title="Uniform Resource Locator">URL</abbr> es, por lo general, una dirección web en la que se
+encuentra el propio <abbr title="Document Type Definition">DTD</abbr>, mientras que el <abbr title="Formal Public Identifier">FPI</abbr> (Identificador Público
+Formal) es un modo de identificar inequívocamente ese <abbr title="Document Type Definition">DTD</abbr> público, por lo
+que cumple el papel de un <abbr title="Uniform Resource Identifier">URI</abbr>. Que en este caso se use <abbr title="Formal Public Identifier">FPI</abbr> y no <abbr title="Uniform Resource Identifier">URI</abbr> es
+una cuestión heredada de tiempos en que no existía aún el segundo concepto,
+por lo que los <abbr title="Formal Public Identifier">FPI</abbr>s constituyen un <a class="reference external" href="https://es.wikipedia.org/wiki/Sistema_heredado">sistema heredado</a><a class="footnote-reference brackets" href="#id7" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p>Un ejemplo de declaración es la que define la versión 1.0 de <abbr title="eXtensible HyperText Markup Language">XHTML</abbr>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Híbrido privado</strong>, que mezclan reglas definidas en un archivo externo con
+reglas incluidas en la propia declaración:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE claustro SYSTEM &quot;claustro.dtd&quot; [</span>
+<span class="cp">   &lt;!ENTITY SAN &quot;Sanitaria&quot;&gt;</span>
+]&gt;
+</pre></div>
+</div>
+</li>
+<li><p><strong>Híbrido público</strong></p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE nodo_raiz PUBLIC &quot;FPI&quot; &quot;URL&quot; [</span>
+<span class="cp">   regla1</span>
+<span class="cp">   regla2</span>
+<span class="cp">]&gt;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="ejemplo">
+<h3><span class="section-number">2.1.1.2. </span>Ejemplo<a class="headerlink" href="#ejemplo" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Antes de entrar en harina, no está de más ver qué aspecto tiene un <abbr title="Document Type Definition">DTD</abbr>. Para
+ello tomemos el <a class="reference internal" href="../01.intro/02b.marcas.html#xml-ejemplo"><span class="std std-ref">documento XML usado como ejemplo introductorio</span></a>, aunque con una ligera variación<a class="footnote-reference brackets" href="#id8" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> (descárguelo de <a class="reference download internal" download="" href="../_downloads/4cb21890aa27e222184ac6820327e0c7/casilleros_v2.xml"><code class="xref download docutils literal notranslate"><span class="pre">aquí</span></code></a>):</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">XML de casilleros</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="cp">&lt;!DOCTYPE claustro SYSTEM &quot;casilleros.dtd&quot;&gt;</span>
+
+<span class="nt">&lt;claustro</span><span class="w"> </span><span class="na">centro=</span><span class="s">&quot;IES Pepe Botella&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p1&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Pepe<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>José<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Suárez<span class="w"> </span>Lantilla<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;ING;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p13&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Cristina<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>María<span class="w"> </span>Cristina<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Prieto<span class="w"> </span>Monagas<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;ByG;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+
+<span class="w">   </span><span class="cm">&lt;!-- Si se sustituye a sí mismo es que está de baja --&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p15&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Manolo<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Manuel<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Páez<span class="w"> </span>Robledo<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;MAT;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+
+<span class="w">   </span><span class="cm">&lt;!-- Profesor con casillero(s) adicional(es) --&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p17&quot;</span><span class="w"> </span><span class="na">casillero=</span><span class="s">&quot;17 43&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Lucía<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Lucía<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Gálvez<span class="w"> </span>Ruiz<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;ING;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+
+<span class="w">   </span><span class="cm">&lt;!-- En principio, si el casillero está vacío</span>
+<span class="cm">        la aplicación les asigna el que indica su identificador,</span>
+<span class="cm">        pero se puede asignar uno distinto.</span>
+<span class="cm">    --&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p28&quot;</span><span class="w"> </span><span class="na">casillero=</span><span class="s">&quot;28&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Miguel<span class="w"> </span>Ángel<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Miguel<span class="w"> </span>Ángel<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Campos<span class="w"> </span>Sánchez<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;HIS;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p81&quot;</span><span class="w"> </span><span class="na">casillero=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Verónica<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Verónica<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Martín<span class="w"> </span>Díaz<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;ByG;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+
+<span class="w">   </span><span class="cm">&lt;!-- Profesor sustituto --&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p86&quot;</span><span class="w"> </span><span class="na">sustituye=</span><span class="s">&quot;p13&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Roberto<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Roberto<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Mínguez<span class="w"> </span>Torralbo<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+<span class="nt">&lt;/claustro&gt;</span>
+</pre></div>
+</div>
+</div>
+</details><p>La definición de su gramática hecha en <abbr title="Document Type Definition">DTD</abbr> es <a class="reference download internal" download="" href="../_downloads/a6529720d5fe24d479590edf6b7a9f2b/casilleros_v2.dtd"><code class="xref download docutils literal notranslate"><span class="pre">la</span> <span class="pre">siguiente</span></code></a>:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">DTD de casilleros</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">departamentos</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;departamentos.ent&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">datospers</span> <span class="s2">&quot;(apelativo,nombre,apellidos)&quot;</span><span class="k">&gt;</span>
+<span class="c">&lt;!--</span>
+<span class="c">   id:         Identificador del profesor (formato i&lt;N&gt;)</span>
+<span class="c">   sustituye:  A quién sustituye al profesor.</span>
+<span class="c">   casillero:  Número de casillero asignado. Si no se especifica:</span>
+<span class="c">                  - En caso de profesor titular, la &lt;N&gt; de &quot;id&quot;</span>
+<span class="c">                  - En caso de sustituto, el casillero del titular.</span>
+<span class="c">               Si está vacío, el profesor no tiene asignado casillero.</span>
+<span class="c">--&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">attrpers</span> 
+   <span class="s2">&quot;id        ID       #REQUIRED</span>
+<span class="s2">    casillero CDATA    #IMPLIED</span>
+<span class="s2">    sustituye IDREF    #IMPLIED&quot;</span><span class="k">&gt;</span>
+
+<span class="ni">%departamentos;</span>
+
+<span class="k">&lt;!ELEMENT</span> <span class="nt">claustro</span> <span class="o">(</span><span class="nt">profesor</span><span class="o">|</span><span class="nt">asistente</span><span class="o">)+</span><span class="k">&gt;</span>
+<span class="k">&lt;!ATTLIST</span> <span class="nt">claustro</span> <span class="na">centro</span> <span class="kc">CDATA</span> <span class="kc">#REQUIRED</span><span class="k">&gt;</span>
+<span class="k">&lt;!ELEMENT</span> <span class="nt">profesor</span> <span class="o">(</span><span class="ni">%datospers;</span><span class="o">,</span><span class="nt">departamento</span><span class="o">?)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ELEMENT</span> <span class="nt">asistente</span> <span class="ni">%datospers;</span><span class="k">&gt;</span>
+<span class="k">&lt;!ATTLIST</span> <span class="nt">profesor</span> <span class="ni">%attrpers;</span><span class="k">&gt;</span>
+<span class="k">&lt;!ATTLIST</span> <span class="nt">asistente</span> <span class="ni">%attrpers;</span><span class="k">&gt;</span>
+<span class="k">&lt;!ELEMENT</span> <span class="nt">nombre</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ELEMENT</span> <span class="nt">apellidos</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ELEMENT</span> <span class="nt">apelativo</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ELEMENT</span> <span class="nt">departamento</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+</div>
+</details><p>Este <abbr title="Document Type Definition">DTD</abbr>, a su vez, llama a otro que contiene exclusivamente <a class="reference download internal" download="" href="../_downloads/4a4a530913f66a6de7951e6d554d5941/departamentos.ent"><code class="xref download docutils literal notranslate"><span class="pre">las</span>
+<span class="pre">entidades</span> <span class="pre">que</span> <span class="pre">definen</span> <span class="pre">los</span> <span class="pre">departamentos</span></code></a><a class="footnote-reference brackets" href="#id9" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">DTD de definición de entidades</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ENTITY</span> <span class="ni">FyQ</span> <span class="s2">&quot;Física y Química&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">EFI</span> <span class="s2">&quot;Educación Física&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">ING</span> <span class="s2">&quot;Inglés&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">INF</span> <span class="s2">&quot;Informática&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">FRA</span> <span class="s2">&quot;Francés&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">ORI</span> <span class="s2">&quot;Orientación&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">MUS</span> <span class="s2">&quot;Música&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">LEN</span> <span class="s2">&quot;Lengua Castellana y Literatura&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">MAT</span> <span class="s2">&quot;Matemáticas&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">ByG</span> <span class="s2">&quot;Biología y Geología&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">FIL</span> <span class="s2">&quot;Filosofía&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">HIS</span> <span class="s2">&quot;Geografía e Historia&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">LAT</span> <span class="s2">&quot;Latín&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">GRI</span> <span class="s2">&quot;Griego&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">DIB</span> <span class="s2">&quot;Dibujo&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">FOL</span> <span class="s2">&quot;Formación y Orientación Laboral&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">TEC</span> <span class="s2">&quot;Tecnología&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">REL</span> <span class="s2">&quot;Religión&quot;</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+</div>
+</details></section>
+<section id="validacion">
+<span id="xml-valid"></span><h3><span class="section-number">2.1.1.3. </span>Validación<a class="headerlink" href="#validacion" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Antes de entrar en harina, conviene que sepamos cómo llevar a cabo las
+validaciones. Se propone:</p>
+<ul class="simple">
+<li><p>Una solución en línea como <a class="reference external" href="https://www.xmlvalidation.com/">xmlvalidation.com</a>, que permite validar documentos <abbr title="eXtensible  Markup Language">XML</abbr> a
+partir de su <abbr title="Document Type Definition">DTD</abbr>.</p></li>
+<li><p><a class="reference external" href="https://code.visualstudio.com">Visual Studio Code</a>, cuya <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml">extensión XML</a>,
+consulta la gramática definida en el <abbr title="Document Type Definition">DTD</abbr> que se refiera en la declaración<a class="footnote-reference brackets" href="#id10" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> e indica las violaciones a ella según se escribe.</p></li>
+<li><p><a class="reference internal" href="../98.apendices/99.tools/01-xmlstarlet.html#xmlstarlet"><span class="std std-ref">XMLStarlet</span></a>, que tiene paquete en las distribuciones basadas en
+<em>Debian</em> (<a class="reference external" href="https://packages.debian.org/stable/xmlstarlet">xmlstarlet</a>).</p></li>
+</ul>
+</section>
+</section>
+<section id="sintaxis-basica">
+<h2><span class="section-number">2.1.2. </span>Sintaxis básica<a class="headerlink" href="#sintaxis-basica" title="Enlace permanente a este encabezado">¶</a></h2>
+<section id="elementos">
+<span id="dtd-ele"></span><h3><span class="section-number">2.1.2.1. </span>Elementos<a class="headerlink" href="#elementos" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Para definir un elemento se usa la sintaxis:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">nombre_elemento</span> <span class="nt">contenido</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<p>La expresión del <em>contenido</em> puede ser:</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">ANY</span></code></dt><dd><p>Representa cualquier contenido. Por tanto, deja libertad absoluta, lo cual
+significa en realidad no definir nada. En consecuencia, en la versión
+definitiva de un <abbr title="Document Type Definition">DTD</abbr> no debería aparecer nunca, pero puede ser útil en
+versiones preliminares en las que aún no hemos definido toda la gramática:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">profesor</span> <span class="kc">ANY</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">EMPTY</span></code></dt><dd><p>Representa un elemento vacío, esto es, un elemento sin contenido (aunque puede
+tener atributos):</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">hr</span> <span class="kc">EMPTY</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">(#PCDATA)</span></code></dt><dd><p>El nodo contiene texto:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">apodo</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">(elemento_hijo)</span></code></dt><dd><p>El nodo contiene dentro de sí un nodo hijo:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">claustro</span> <span class="o">(</span><span class="nt">profesor</span><span class="o">)</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>Ahora bien, por lo general los elementos no contienen únicamente un único hijo,
+sino varios lo que lleva a definir dos conceptos:</p>
+<dl>
+<dt><strong>Secuencia</strong></dt><dd><p>que representa cómo se suceden los nodos hijos dentro del padre. <abbr title="Document Type Definition">DTD</abbr> define
+dos secuencias:</p>
+<ul>
+<li><p>Un elemento seguido a continuación por otro, mediante la coma:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">profesor</span> <span class="o">(</span><span class="nt">apodo</span><span class="o">,</span> <span class="nt">nombre</span><span class="o">,</span> <span class="nt">apellidos</span><span class="o">,</span> <span class="nt">departamento</span><span class="o">)</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>O un elemento y otro elemento, mediante la tubería:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">claustro</span> <span class="o">(</span><span class="nt">profesor</span><span class="o">|</span><span class="nt">lector</span><span class="o">)</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<p>En este caso, estamos afirmando que un claustro está compuesto por o <em>un</em>
+profesor o por <em>un</em> lector, pero no por ambos. Sí, es algo estúpido, pero
+aún no sabemos cardinalidad.</p>
+</li>
+</ul>
+<p>Por supuesto, podemos hacer composiciones de ambos tipos de secuencias e,
+incluso, usar paréntesis para agruparlas. Suponiendo dos nodos hijos llamados
+<em>a</em> y <em>b</em>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(a,b)
+(a|b)
+(a,(b|c))
+((a,b)|c)
+(a,(b|c),d)
+(a,((b,c)|d))
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl id="dtd-cardinalidad">
+<dt><strong>Cardinalidad</strong></dt><dd><p>que representa la posible repetición de un elemento y que <abbr title="Document Type Definition">DTD</abbr> la significa
+añadiendo tras el elemento un modificador. El modificador permite expresar:</p>
+<ul>
+<li><p><strong>Una y sólo una aparición</strong>, si no se añade modificador, que es lo que hemos
+hecho en las expresiones del contenido incluidas en la explicación sobre la
+secuencia.</p></li>
+<li><p><strong>Una o ninguna aparición</strong>, que se expresa con una <strong>interrogación</strong>. Por
+ejemplo:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">profesor</span> <span class="o">(</span><span class="nt">apodo</span><span class="o">?,</span> <span class="nt">nombre</span><span class="o">,</span> <span class="nt">apellidos</span><span class="o">,</span> <span class="nt">departamento</span><span class="o">?)</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<p>En esta definición, cada profesor obligatoriamente tendrá un nombre y unos
+apellidos, pero podrá no tener apodo o no pertenecer a un departamento. Por
+tanto, este nodo es válido:</p>
+<blockquote>
+<div><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p9&quot;</span><span class="w"> </span><span class="na">sexo=</span><span class="s">&quot;mujer&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;nombre&gt;</span>María<span class="w"> </span>Isabel<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">   </span><span class="nt">&lt;apellidos&gt;</span>Peinado<span class="w"> </span>Sanjuán<span class="nt">&lt;/apellidos&gt;</span>
+<span class="nt">&lt;/profesor&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p><strong>Una o más apariciones</strong>, que se expresa con el signo de la <strong>suma</strong>:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">claustro</span> <span class="o">(</span><span class="nt">profesor</span><span class="o">)+</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<p>Por tanto, un claustro está constituido por profesores, pero al menos debe
+haber uno.</p>
+</li>
+<li><p><strong>Ninguna, una o más apariciones</strong>, que se expresa con el <strong>asterisco</strong>:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">claustro</span> <span class="o">(</span><span class="nt">profesor</span><span class="o">)*</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<p>Con esta definición, el <em>claustro</em> podría estar vacío.</p>
+</li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Pueden existir nodos de contenido mixto, es decir, nodos que mezclan
+texto con nodos hijos. En este caso, se debe escribir así:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">p</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">|</span><span class="nt">em</span><span class="o">|</span><span class="nt">b</span><span class="o">|</span><span class="nt">strong</span><span class="o">|</span><span class="nt">i</span><span class="o">)*</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<p>o sea, poner <code class="docutils literal notranslate"><span class="pre">#PCDATA</span></code> al principio de una secuencia de elementos
+alternativos y añadir una cardinalidad con el asterisco.</p>
+</div>
+</section>
+<section id="atributos">
+<span id="dtd-attr"></span><h3><span class="section-number">2.1.2.2. </span>Atributos<a class="headerlink" href="#atributos" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Los atributos se definen para el elemento al que pertenecen con la siguiente
+sintaxis:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ATTLIST</span> <span class="nt">nombre_elemento</span> <span class="na">nombre_atributo1</span> <span class="na">tipo_atributo1</span> <span class="na">valor_defecto1</span>
+                          <span class="na">nombre_atributo2</span> <span class="na">tipo_atributo2</span> <span class="na">valor_defecto2</span>
+                                             <span class="na">....</span>                       <span class="k">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Es posible definir atributos de un mismo elemento en <em>ATTLIST</em>
+distintos, pero lo habitual es verlos en el mismo.</p>
+</div>
+<section id="tipos">
+<h4><span class="section-number">2.1.2.2.1. </span>Tipos<a class="headerlink" href="#tipos" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>El valor de un atributo puede ser de uno de los siguientes tipos:</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">CDATA</span></code></dt><dd><p>Texto libre:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ATTLIST</span> <span class="nt">claustro</span> <span class="na">centro</span> <span class="kc">CDATA</span> <span class="kc">#REQUIRED</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">(valor1|valor2|valor3|...)</span></code></dt><dd><p>El valor debe ser uno de los incluidos en la lista de opciones:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ATTLIST</span> <span class="nt">profesor</span> <span class="na">sexo</span> <span class="o">(</span><span class="na">hombre</span><span class="o">|</span><span class="na">mujer</span><span class="o">)</span> <span class="kc">#REQUIRED</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ID</span></code></dt><dd><p>El valor del atributo es un identificador único, por lo que no podrá haber
+otro atributo identificador que tenga el mismo valor. El identificador es una
+palabra, el primero de cuyos caracteres debe ser una letra, un subrayado o
+dos puntos:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ATTLIST</span> <span class="nt">profesor</span> <span class="na">id</span>   <span class="kc">ID</span>    <span class="kc">#REQUIRED</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IDREF</span></code></dt><dd><p>El valor del atributo es una referencia a un identificador del documento, es
+decir, el valor debe coincidir con el valor de otro atributo que haya sido
+definido como identificador:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ATTLIST</span> <span class="nt">grupo</span> <span class="na">tutor</span>  <span class="kc">IDREF</span>  <span class="kc">#REQUIRED</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<p>Si ampliáramos nuestro <abbr title="eXtensible  Markup Language">XML</abbr> para que se pudieran definir los grupos de
+alumnos del centro, el elemento <em>grupo</em> podría tener un atributo que indicase
+cuál es su tutor. En este caso, ese atributo debería referir a un profesor
+que esté definido en el documento.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IDREFS</span></code></dt><dd><p>El valor del atributo es una lista de referencias a identificadores separados
+por espacios. Por ejemplo:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ATTLIST</span> <span class="nt">grupo</span> <span class="na">profesores</span>  <span class="kc">IDREFS</span>  <span class="kc">#REQUIRED</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<p>En este caso, el atributo <em>profesores</em> representaría todos los profesores que
+dan clase al grupo.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">NMTOKEN</span></code></dt><dd><p>El valor del atributo debe ser una palabra que contenga letras, números,
+puntos, guiones, subrayados o dos puntos:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ATTLIST</span> <span class="nt">grupo</span> <span class="na">letra</span>  <span class="kc">NMTOKEN</span>  <span class="kc">#IMPLIED</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">NMTOKENS</span></code></dt><dd><p>El valor del atributo será una lista de <em>tokens</em> tal como se han definido
+antes:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ATTLIST</span> <span class="nt">grupo</span> <span class="na">asignaturas</span> <span class="kc">NMTOKENS</span>  <span class="kc">#REQUIRED</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<p>que traduciría un <abbr title="eXtensible  Markup Language">XML</abbr> de este tipo:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;grupo</span><span class="w"> </span><span class="na">letra=</span><span class="s">&quot;A&quot;</span><span class="w"> </span><span class="na">tutor=</span><span class="s">&quot;p1&quot;</span><span class="w"> </span><span class="na">profesores=</span><span class="s">&quot;p2 p5 p8&quot;</span><span class="w"> </span><span class="na">asignaturas=</span><span class="s">&quot;lengua inglés sociales&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl id="dtd-ej-ent-no-p">
+<dt><code class="docutils literal notranslate"><span class="pre">ENTITY</span></code></dt><dd><p>El valor del atributo debe ser una <a class="reference internal" href="#dtd-ent-no-p"><span class="std std-ref">entidad no procesable</span></a> definida
+en la gramática (lo cual requiere a su vez haber definido también una notación):</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!NOTATION</span> <span class="nt">JPEG</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;image/jpeg&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">foto_carne1</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;careto1.jpg&quot;</span> <span class="kc">NDATA</span> <span class="ni">JPEG</span><span class="k">&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">foto_carne2</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;careto2.jpg&quot;</span> <span class="kc">NDATA</span> <span class="ni">JPEG</span><span class="k">&gt;</span>
+<span class="k">&lt;!ATTLIST</span> <span class="nt">profesor</span> <span class="na">foto</span>  <span class="kc">ENTITY</span>  <span class="kc">#IMPLIED</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<p>Lo que llevaría a que en el <abbr title="eXtensible  Markup Language">XML</abbr> hubiera algo así:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p5&quot;</span><span class="w"> </span><span class="na">sexo=</span><span class="s">&quot;hombre&quot;</span><span class="w"> </span><span class="na">foto=</span><span class="s">&quot;foto_carne2&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ENTITIES</span></code></dt><dd><p>El valor del atributo debe ser una lista de entidades no procesables.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">NOTATION</span></code></dt><dd><p>El valor del atributo es una de las notaciones definidas en la gramática:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!NOTATION</span> <span class="nt">JPG</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;image/jpeg&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!NOTATION</span> <span class="nt">PNG</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;image/png&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!NOTATION</span> <span class="nt">GIF</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;image/gif&quot;</span><span class="k">&gt;</span>
+
+<span class="k">&lt;!ATTLIST</span> <span class="nt">profesor</span> <span class="na">formato_foto</span>  <span class="kc">NOTATION</span> <span class="o">(</span><span class="na">JPEG</span><span class="o">|</span><span class="na">PNG</span><span class="o">|</span><span class="na">GIF</span><span class="o">)</span>  <span class="s2">&quot;JPEG&quot;</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</section>
+<section id="valor-por-defecto">
+<h4><span class="section-number">2.1.2.2.2. </span>Valor por defecto<a class="headerlink" href="#valor-por-defecto" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>La última parte de la definición del atributo se dedica a definir cuál es el
+valor predeterminado del atributo, para lo cual hay cuatro posibilidades:</p>
+<ol class="arabic">
+<li><p>Un valor entre comillas, que implica que ése es el valor en caso de que
+dentro del <abbr title="eXtensible  Markup Language">XML</abbr> no se incluya el atributo:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ATTLIST</span> <span class="nt">profesor</span> <span class="na">nacionalidad</span> <span class="kc">NMTOKEN</span> <span class="s2">&quot;española&quot;</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#IMPLIED</span></code>, que significa que no hay ningún valor predeterminado y que
+además el valor no es estrictamente necesario, por lo que si no se consigna
+en el <abbr title="eXtensible  Markup Language">XML</abbr>, su valor queda indefinido.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#REQUIRED</span></code>, que significa que no hay valor predeterminado, pero que
+obligatoriamente se necesita un valor, por lo que forzosamente habrá
+que incluir el atributo en el <abbr title="eXtensible  Markup Language">XML</abbr>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#FIXED</span></code>, que significa que el valor obligatoriamente debe ser el que se
+indica en el propio <abbr title="Document Type Definition">DTD</abbr>, pero en el <abbr title="eXtensible  Markup Language">XML</abbr> debe aparecer de todas formas:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ATTLIST</span> <span class="nt">profesor</span> <span class="na">especie</span> <span class="kc">NMTOKEN</span> <span class="kc">#FIXED</span> <span class="s2">&quot;humana&quot;</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="notaciones">
+<span id="dtd-not"></span><h3><span class="section-number">2.1.2.3. </span>Notaciones<a class="headerlink" href="#notaciones" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Se usan para definir formatos distintos al <abbr title="eXtensible  Markup Language">XML</abbr> y pueden ser tanto públicas
+como privadas:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!NOTATION</span> <span class="nt">nombre</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;IDSistema&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!NOTATION</span> <span class="nt">nombre</span> <span class="kc">PUBLIC</span> <span class="s2">&quot;IDPublico&quot;</span> <span class="s2">&quot;IDSistema&quot;</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<p>El identificador del sistema suele ser el tipo <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> asociado a ese formato<a class="footnote-reference brackets" href="#id11" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!NOTATION</span> <span class="nt">JPG</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;image/jpeg&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!NOTATION</span> <span class="nt">PNG</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;image/png&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!NOTATION</span> <span class="nt">GIF</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;image/gif&quot;</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<p>o bien:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!NOTATION</span> <span class="nt">JPG</span> <span class="kc">PUBLIC</span> <span class="s2">&quot;JPEG 1.0&quot;</span> <span class="s2">&quot;image/jpeg&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!NOTATION</span> <span class="nt">PNG</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;PNG 1.0&quot;</span> <span class="s2">&quot;image/png&quot;</span><span class="k">&gt;</span>
+<span class="k">&lt;!NOTATION</span> <span class="nt">GIF</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;GIF 1.0&quot;</span> <span class="s2">&quot;image/gif&quot;</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="entidades">
+<span id="dtd-ent"></span><h3><span class="section-number">2.1.2.4. </span>Entidades<a class="headerlink" href="#entidades" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Las entidades son mecanismos de sustitución. Las hay de dos tipos:</p>
+<ul class="simple">
+<li><p><em>Entidades generales</em>, que hacen las sustituciones en el documento <abbr title="eXtensible  Markup Language">XML</abbr>.</p></li>
+<li><p><em>Entidades parámetro</em>, que operan la sustitución en el propio <abbr title="Document Type Definition">DTD</abbr>.</p></li>
+</ul>
+<section id="generales">
+<span id="dtd-ent-gen"></span><h4><span class="section-number">2.1.2.4.1. </span>Generales<a class="headerlink" href="#generales" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>Las entidades generales pueden ser:</p>
+<dl id="dtd-ent-p">
+<dt><strong>Procesables</strong></dt><dd><p>que son aquellas de las que se puede hacer sustitución. Como <abbr title="eXtensible  Markup Language">XML</abbr> es texto
+plano, sólo son procesables aquellas cuando la sustitución es texto plano.
+Pueden ser <strong>internas</strong> en que se escribe directamente cuál debe ser la
+sustitución:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ENTITY</span> <span class="ni">ING</span> <span class="s2">&quot;Inglés&quot;</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<p>o <strong>externas</strong> en que el texto sustitutorio se encuentra en un archivo
+aparte:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ENTITY</span> <span class="ni">ING</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;ingles.txt&quot;</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Para que la sustitución fuera equivalente a la interna el archivo
+<code class="file docutils literal notranslate"><span class="pre">ingles.txt</span></code> debería contener la palabra «<em>Inglés</em>».</p>
+</div>
+<p>Las <em>entidades procesables externas</em> también pueden ser públicas (la del
+ejemplo anterior es privada):</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ENTITY</span> <span class="ni">nombre</span> <span class="kc">PUBLIC</span> <span class="s2">&quot;FPI&quot;</span> <span class="s2">&quot;URL&quot;</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl id="dtd-ent-no-p">
+<dt><strong>No procesables</strong></dt><dd><p>que son aquellas en las que por no ser de texto no puede operarse la
+sustitución. Obviamente, siempre son externas. Su definición se hace de este
+modo:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ENTITY</span> <span class="ni">nombre</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;URL&quot;</span> <span class="kc">NDATA</span> <span class="ni">tipo</span><span class="k">&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">nombre</span> <span class="kc">PUBLIC</span> <span class="s2">&quot;FPI&quot;</span> <span class="s2">&quot;URL&quot;</span> <span class="kc">NDATA</span> <span class="ni">tipo</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<p>donde <em>tipo</em> es un formato definido previamente mediante una <a class="reference internal" href="#dtd-not"><span class="std std-ref">notación</span></a>. Ya se puso un <a class="reference internal" href="#dtd-ej-ent-no-p"><span class="std std-ref">ejemplo de uso</span></a> al hablar
+de los atributos cuyo tipo es una <em>entidad</em>.</p>
+</dd>
+</dl>
+</section>
+<section id="parametro">
+<span id="dtd-ent-par"></span><h4><span class="section-number">2.1.2.4.2. </span>Parámetro<a class="headerlink" href="#parametro" title="Enlace permanente a este encabezado">¶</a></h4>
+<p>Operan su sustitución en el propio <abbr title="Document Type Definition">DTD</abbr>, por lo que sólo tiene sentido que sean
+procesables (internas, externas privadas o externas públicas):</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">nombre</span> <span class="s2">&quot;valor&quot;</span><span class="k">&gt;</span>              <span class="c">&lt;!-- interna --&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">nombre</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;URL&quot;</span><span class="k">&gt;</span>         <span class="c">&lt;!-- externa privada --&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">nombre</span> <span class="kc">PUBLIC</span> <span class="s2">&quot;FPI&quot;</span> <span class="s2">&quot;URL&quot;</span><span class="k">&gt;</span>   <span class="c">&lt;!-- externa pública --&gt;</span>
+</pre></div>
+</div>
+<p>Las <em>entidades parámetro internas</em> tienen la utilidad de hacer definiciones que
+podemos usar repetidamente, ahorrando código y errores. Por ejemplo:</p>
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">datospers</span> <span class="s2">&quot;(nombre,apellidos,sexo)&quot;</span><span class="k">&gt;</span>  <span class="c">&lt;!-- Datos personales comunes --&gt;</span>
+
+<span class="k">&lt;!ELEMENT</span> <span class="nt">adulto</span> <span class="o">(</span><span class="ni">%datospers;</span><span class="o">,</span> <span class="nt">dni</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ELEMENT</span> <span class="nt">niño</span> <span class="o">(</span><span class="ni">%datospers;</span><span class="o">,</span> <span class="nt">dni</span><span class="o">?)</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+<p>Las <em>externas privadas</em>, por su parte, nos permiten hacer modular la definición
+de la gramática, esto es, dividir el <abbr title="Document Type Definition">DTD</abbr> en partes bien diferenciadas y meter
+cada una de estas partes en un archivo independiente. Lea cuidadosamente el
+siguiente ejercicio para ver un ejemplo de lo expresado en este párrafo.</p>
+</section>
+</section>
+<section id="espacios-de-nombres">
+<h3><span class="section-number">2.1.2.5. </span>Espacios de nombres<a class="headerlink" href="#espacios-de-nombres" title="Enlace permanente a este encabezado">¶</a></h3>
+<p><abbr title="Document Type Definition">DTD</abbr> <strong>no soporta</strong> espacios de nombres, pero una etiqueta con el nombre
+<em>c:claustro</em> es válida. Por ello, podemos intentar definir <abbr title="Document Type Definition">DTD</abbr>s que validen
+un <abbr title="eXtensible  Markup Language">XML</abbr> que use espacios de nombres. Ahora bien, si revisamos <a class="reference internal" href="../01.intro/02b.marcas.html#xmlns"><span class="std std-ref">el epígrafe
+que introduce los espacios de nombres</span></a>, veremos que tenemos libertad en
+el <abbr title="eXtensible  Markup Language">XML</abbr> para escoger prefijos y espacios de nombres predeterminados. En métodos
+de definición de la gramática como <a class="reference internal" href="../98.apendices/21.xsd.html#xsd"><span class="std std-ref">XSD</span></a> o <a class="reference internal" href="../98.apendices/22.rnc.html#rnc"><span class="std std-ref">Relax-NG</span></a> esto
+no es un problema, por lo que podremos escribir el <abbr title="eXtensible  Markup Language">XML</abbr> como mejor nos
+convenga, pero sí lo es en <abbr title="Document Type Definition">DTD</abbr>, ya que al entender <em>c:apelativo</em> como un
+nombre, y no como un nombre con un prefijo, la etiqueta siempre tendrá que ser
+<em>c:apelativo</em>.</p>
+<p>Para el caso particular del ejemplo de profesores y direcciones, dado que no se
+entremezclan los elementos de los espacios de nombres, lo más fácil es escribir
+siempre el <abbr title="eXtensible  Markup Language">XML</abbr> de la última forma que se propuso, o sea, cambiando el espacio
+de nombres predeterminado y definir <code class="file docutils literal notranslate"><span class="pre">casilleros.dtd</span></code> así:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">DTD de casilleros</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">departamentos</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;departamentos.ent&quot;</span><span class="k">&gt;</span>
+<span class="hll"><span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">direccion</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;direccion_ns.dtd&quot;</span><span class="k">&gt;</span>
+</span><span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">datospers</span> <span class="s2">&quot;(apelativo,nombre,apellidos)&quot;</span><span class="k">&gt;</span>
+<span class="c">&lt;!--</span>
+<span class="c">   id:         Identificador del profesor (formato i&lt;N&gt;)</span>
+<span class="c">   sustituye:  A quién sustituye al profesor.</span>
+<span class="c">   casillero:  Número de casillero asignado. Si no se especifica:</span>
+<span class="c">                  - En caso de profesor titular, la &lt;N&gt; de &quot;id&quot;</span>
+<span class="c">                  - En caso de sustituto, el casillero del titular.</span>
+<span class="c">               Si está vacío, el profesor no tiene asignado casillero.</span>
+<span class="c">--&gt;</span>
+<span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">attrpers</span> 
+   <span class="s2">&quot;id        ID       #REQUIRED</span>
+<span class="s2">    casillero NMTOKEN  #IMPLIED</span>
+<span class="s2">    sustituye IDREF    #IMPLIED&quot;</span><span class="k">&gt;</span>
+
+<span class="ni">%departamentos;</span>
+<span class="ni">%direccion;</span>
+
+<span class="k">&lt;!ELEMENT</span> <span class="nt">claustro</span> <span class="o">(</span><span class="nt">profesor</span><span class="o">|</span><span class="nt">asistente</span><span class="o">)+</span><span class="k">&gt;</span>
+<span class="k">&lt;!ATTLIST</span> <span class="nt">claustro</span> <span class="na">centro</span> <span class="kc">CDATA</span> <span class="kc">#REQUIRED</span>
+<span class="hll">                   <span class="na">xmlns</span>  <span class="kc">CDATA</span> <span class="kc">#FIXED</span>    <span class="s2">&quot;urn:profesores&quot;</span><span class="k">&gt;</span>
+</span><span class="k">&lt;!ELEMENT</span> <span class="nt">profesor</span> <span class="o">(</span><span class="ni">%datospers;</span><span class="o">,</span><span class="nt">departamento</span><span class="o">?,</span><span class="nt">direccion</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ELEMENT</span> <span class="nt">asistente</span> <span class="o">(</span><span class="ni">%datospers;</span><span class="o">,</span><span class="nt">direccion</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="hll"><span class="k">&lt;!ATTLIST</span> <span class="nt">profesor</span> <span class="ni">%attrpers;</span><span class="k">&gt;</span>
+</span><span class="hll"><span class="k">&lt;!ATTLIST</span> <span class="nt">asistente</span> <span class="ni">%attrpers;</span><span class="k">&gt;</span>
+</span><span class="hll"><span class="k">&lt;!ELEMENT</span> <span class="nt">nombre</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+</span><span class="hll"><span class="k">&lt;!ELEMENT</span> <span class="nt">apellidos</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+</span><span class="k">&lt;!ELEMENT</span> <span class="nt">apelativo</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ELEMENT</span> <span class="nt">departamento</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+</div>
+</details><p>y <code class="file docutils literal notranslate"><span class="pre">direccion.dtd</span></code> de este otro modo:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">DTD de direccion</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">direccion</span> <span class="o">(</span><span class="nt">via</span><span class="o">,</span> <span class="nt">cp</span><span class="o">,</span> <span class="nt">localidad</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="hll"><span class="k">&lt;!ATTLIST</span> <span class="nt">direccion</span> <span class="na">xmlns</span>  <span class="kc">CDATA</span>    <span class="kc">#FIXED</span> <span class="s2">&quot;urn:direccion&quot;</span><span class="k">&gt;</span>
+</span>
+<span class="k">&lt;!ELEMENT</span> <span class="nt">via</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ATTLIST</span> <span class="nt">via</span> <span class="na">tipo</span>    <span class="o">(</span><span class="na">calle</span><span class="o">|</span><span class="na">callejón</span><span class="o">|</span><span class="na">travesía</span><span class="o">|</span><span class="na">plaza</span><span class="o">|</span><span class="na">avenida</span><span class="o">|</span><span class="na">cuesta</span><span class="o">|</span><span class="na">costanilla</span><span class="o">)</span>  <span class="kc">#REQUIRED</span><span class="k">&gt;</span>
+
+<span class="k">&lt;!ELEMENT</span> <span class="nt">cp</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ELEMENT</span> <span class="nt">localidad</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+</div>
+</details><p>En cualquier caso, cuando hay espacios de nombres, lo más juicioso es evitar <abbr title="Document Type Definition">DTD</abbr>.</p>
+</section>
+</section>
+<section id="ejercicios-resueltos">
+<span id="dtd-resueltos"></span><h2><span class="section-number">2.1.3. </span>Ejercicios resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Enlace permanente a este encabezado">¶</a></h2>
+<ol class="arabic">
+<li><p>Tomando el <abbr title="eXtensible  Markup Language">XML</abbr> sobre recetas, <a class="reference internal" href="../01.intro/02b.marcas.html#xml-resueltos"><span class="std std-ref">ya resuelto en la unidad anterior</span></a>, escriba un <abbr title="Document Type Definition">DTD</abbr> para validarlo.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">DTD para el XML propuesto</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">recetas</span> <span class="o">(</span><span class="nt">receta</span><span class="o">+)</span><span class="k">&gt;</span>
+
+<span class="k">&lt;!ELEMENT</span> <span class="nt">receta</span> <span class="o">(</span><span class="nt">ingrediente</span><span class="o">+)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ATTLIST</span> <span class="nt">receta</span> <span class="na">id</span>              <span class="kc">ID</span>                <span class="kc">#REQUIRED</span>
+                 <span class="na">nombre</span>          <span class="kc">CDATA</span>             <span class="kc">#REQUIRED</span>
+                 <span class="na">preparacion</span>     <span class="kc">CDATA</span>             <span class="kc">#IMPLIED</span><span class="k">&gt;</span>
+
+<span class="k">&lt;!ELEMENT</span> <span class="nt">ingrediente</span> <span class="kc">EMPTY</span><span class="k">&gt;</span>
+<span class="k">&lt;!ATTLIST</span> <span class="nt">ingrediente</span> <span class="na">nombre</span>     <span class="kc">CDATA</span>             <span class="kc">#REQUIRED</span>
+                      <span class="na">unidad</span>     <span class="o">(</span><span class="na">pieza</span><span class="o">|</span><span class="na">gramo</span><span class="o">|</span><span class="na">cc</span><span class="o">)</span>  <span class="kc">#REQUIRED</span>
+                      <span class="na">cantidad</span>   <span class="kc">NMTOKEN</span>           <span class="kc">#REQUIRED</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+</div>
+</details></li>
+<li><p>Tomando el <abbr title="eXtensible  Markup Language">XML</abbr> sobre una cadena de restaurantes <a class="reference internal" href="../01.intro/02b.marcas.html#xml-resueltos"><span class="std std-ref">ya resuelto en el
+epígrafe anterior</span></a>, escriba un <abbr title="Document Type Definition">DTD</abbr> para validarlo. Procure
+reaprovechar el <abbr title="Document Type Definition">DTD</abbr> del ejercicio anterior.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">DTD para el XML propuesto</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">recetas</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;recetas.dtd&quot;</span><span class="k">&gt;</span>
+<span class="ni">%recetas;</span>
+
+<span class="k">&lt;!ELEMENT</span> <span class="nt">cadena</span> <span class="o">(</span><span class="nt">recetas</span><span class="o">,</span> <span class="nt">restaurante</span><span class="o">+)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ATTLIST</span> <span class="nt">cadena</span> <span class="na">nombre</span>       <span class="kc">CDATA</span>          <span class="kc">#REQUIRED</span><span class="k">&gt;</span>
+
+<span class="k">&lt;!ELEMENT</span> <span class="nt">restaurante</span> <span class="o">(</span><span class="nt">domicilio</span><span class="o">,</span> <span class="nt">carta</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ATTLIST</span> <span class="nt">restaurante</span> <span class="na">id</span>      <span class="kc">ID</span>             <span class="kc">#REQUIRED</span>
+                      <span class="na">nombre</span>  <span class="kc">CDATA</span>          <span class="kc">#IMPLIED</span><span class="k">&gt;</span>
+
+<span class="k">&lt;!ELEMENT</span> <span class="nt">domicilio</span> <span class="o">(</span><span class="nt">direccion</span><span class="o">,</span> <span class="nt">municipio</span><span class="o">,</span> <span class="nt">cp</span><span class="o">)</span><span class="k">&gt;</span>
+
+<span class="k">&lt;!ELEMENT</span> <span class="nt">direccion</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ELEMENT</span> <span class="nt">municipio</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+<span class="k">&lt;!ELEMENT</span> <span class="nt">cp</span>        <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
+
+<span class="k">&lt;!ELEMENT</span> <span class="nt">carta</span> <span class="o">(</span><span class="nt">plato</span><span class="o">+)</span><span class="k">&gt;</span>
+
+<span class="k">&lt;!ELEMENT</span> <span class="nt">plato</span> <span class="kc">EMPTY</span><span class="k">&gt;</span>
+<span class="k">&lt;!ATTLIST</span> <span class="nt">plato</span> <span class="na">ref</span>           <span class="kc">IDREF</span>          <span class="kc">#REQUIRED</span>
+                <span class="na">tipo</span>          <span class="kc">NMTOKENS</span>       <span class="kc">#REQUIRED</span><span class="k">&gt;</span>
+</pre></div>
+</div>
+</div>
+</details></li>
+</ol>
+</section>
+<section id="conclusiones">
+<h2><span class="section-number">2.1.4. </span>Conclusiones<a class="headerlink" href="#conclusiones" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Escribir la gramática de los <abbr title="eXtensible  Markup Language">XML</abbr> con <abbr title="Document Type Definition">DTD</abbr> presenta una serie de ventajas e
+inconvenientes.</p>
+<dl class="simple">
+<dt><strong>Ventajas</strong></dt><dd><ul class="simple">
+<li><p>Su sintaxis no es <abbr title="eXtensible  Markup Language">XML</abbr>, por lo que es más compacta. Alguno quizás
+podría considerar el hecho de que no sea <abbr title="eXtensible  Markup Language">XML</abbr> un inconveniente, pero no hay
+más que leer una gramática escrita en <abbr title="XML Schema Definition">XSD</abbr> (o incluso en <abbr title="Relax-NG XML">RNG</abbr> que es más
+sencillo), para darse cuenta que una sintaxis no-<abbr title="eXtensible  Markup Language">XML</abbr> es, por lo general,
+infinitamente más legible.</p></li>
+<li><p>Es bastante sencillo de aprender y aplicar.</p></li>
+<li><p>Es probable que cualquier validador de <abbr title="eXtensible  Markup Language">XML</abbr> tenga soporte para <abbr title="Document Type Definition">DTD</abbr>.</p></li>
+</ul>
+</dd>
+<dt><strong>Inconvenientes</strong></dt><dd><ul class="simple">
+<li><p>No tiene soporte para tipos de datos, por lo que la definición del contenido
+de elementos de texto y atributos es muy vaga.</p></li>
+<li><p>La definición de cada elemento no depende de su contexto (o sea, de cuál sea
+su padre), por lo que no puede haber dos elementos de distinto padre con igual
+nombre, si su definición es diferente.</p></li>
+<li><p>No soporta espacios de nombres.</p></li>
+<li><p>La cardinalidad está limitada a cuatro casos. No hay forma de expresar (al
+menos de modo simple aplicable) cardinalidades más complejas como que un
+elemento se pueda repetir entre 3 y 25 veces.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="ejercicios-propuestos">
+<h2><span class="section-number">2.1.5. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Tome de la relación de <a class="reference internal" href="../99.ejercicios/10.lenguajes.html#ej-li"><span class="std std-ref">ejercicios propuestos para la primera unidad</span></a> las soluciones <abbr title="eXtensible  Markup Language">XML</abbr> que diseñó a partir del <a class="reference internal" href="../99.ejercicios/20.val.html#ej10-05"><span class="std std-ref">enunciado 5</span></a>,
+y escriba para ellas la gramática <abbr title="Document Type Definition">DTD</abbr>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Quizás el profesor prefiera proporcionar sus propias soluciones para
+evitar que el alumno defina la gramática de una solución incompleta o deficiente.</p>
+</div>
+<p class="rubric">Notas al pie</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id7" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>De hecho, para la definición de <a class="reference internal" href="../98.apendices/22.rnc.html#rnc-ns"><span class="std std-ref">espacios de nombres</span></a>, que
+son más modernos, ya sólo se usa una <abbr title="Uniform Resource Identifier">URI</abbr> para identificarlos.</p>
+</aside>
+<aside class="footnote brackets" id="id8" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
+<p>La variación es que hemos incluido la definición del tipo de documento
+con <code class="code docutils literal notranslate"><span class="pre">&lt;!DOCTYPE</span> <span class="pre">...</span> <span class="pre">&gt;</span></code>.</p>
+</aside>
+<aside class="footnote brackets" id="id9" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
+<p>Podríamos haber introducido esas definiciones dentro del propio
+<code class="file docutils literal notranslate"><span class="pre">casilleros.dtd</span></code> o incluso haberlas incluido como adición a la propia
+declaración del documento en el <abbr title="eXtensible  Markup Language">XML</abbr>:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">XML de casilleros con entidades empotradas</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="cp">&lt;!DOCTYPE claustro SYSTEM &quot;casilleros.dtd&quot; [</span>
+<span class="cp">   &lt;!ENTITY FyQ &quot;Física y Química&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY EFI &quot;Educación Física&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY ING &quot;Inglés&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY INF &quot;Informática&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY FRA &quot;Francés&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY ORI &quot;Orientación&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY MUS &quot;Música&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY LEN &quot;Lengua Castellana y Literatura&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY MAT &quot;Matemáticas&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY ByG &quot;Biología y Geología&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY FIL &quot;Filosofía&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY HIS &quot;Geografía e Historia&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY LAT &quot;Latín&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY GRI &quot;Griego&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY DIB &quot;Dibujo&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY FOL &quot;Formación y Orientación Laboral&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY TEC &quot;Tecnología&quot;&gt;</span>
+<span class="w">   </span><span class="cp">&lt;!ENTITY REL &quot;Religión&quot;&gt;</span>
+]&gt;
+
+<span class="nt">&lt;claustro</span><span class="w"> </span><span class="na">centro=</span><span class="s">&quot;IES Pepe Botella&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p1&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Pepe<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>José<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Suárez<span class="w"> </span>Lantilla<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;ING;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p13&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Cristina<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>María<span class="w"> </span>Cristina<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Prieto<span class="w"> </span>Monagas<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;ByG;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+
+<span class="w">   </span><span class="cm">&lt;!-- Si se sustituye a sí mismo es que está de baja --&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p15&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Manolo<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Manuel<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Páez<span class="w"> </span>Robledo<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;MAT;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+
+<span class="w">   </span><span class="cm">&lt;!-- Profesor con casillero(s) adicional(es) --&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p17&quot;</span><span class="w"> </span><span class="na">casillero=</span><span class="s">&quot;17 43&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Lucía<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Lucía<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Gálvez<span class="w"> </span>Ruiz<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;ING;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+
+<span class="w">   </span><span class="cm">&lt;!-- En principio, si el casillero está vacío</span>
+<span class="cm">        la aplicación les asigna el que indica su identificador,</span>
+<span class="cm">        pero se puede asignar uno distinto.</span>
+<span class="cm">    --&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p28&quot;</span><span class="w"> </span><span class="na">casillero=</span><span class="s">&quot;28&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Miguel<span class="w"> </span>Ángel<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Miguel<span class="w"> </span>Ángel<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Campos<span class="w"> </span>Sánchez<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;HIS;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p81&quot;</span><span class="w"> </span><span class="na">casillero=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Verónica<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Verónica<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Martín<span class="w"> </span>Díaz<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">      </span><span class="nt">&lt;departamento&gt;</span><span class="ni">&amp;ByG;</span><span class="nt">&lt;/departamento&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+
+<span class="w">   </span><span class="cm">&lt;!-- Profesor sustituto --&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p86&quot;</span><span class="w"> </span><span class="na">sustituye=</span><span class="s">&quot;p13&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apelativo&gt;</span>Roberto<span class="nt">&lt;/apelativo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;nombre&gt;</span>Roberto<span class="nt">&lt;/nombre&gt;</span>
+<span class="w">      </span><span class="nt">&lt;apellidos&gt;</span>Mínguez<span class="w"> </span>Torralbo<span class="nt">&lt;/apellidos&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/profesor&gt;</span>
+<span class="nt">&lt;/claustro&gt;</span>
+</pre></div>
+</div>
+</div>
+</details></aside>
+<aside class="footnote brackets" id="id10" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">4</a><span class="fn-bracket">]</span></span>
+<p>También soporta <a class="reference internal" href="../98.apendices/22.rnc.html#rnc"><span class="std std-ref">Relax-NG Compact</span></a> y <a class="reference internal" href="../98.apendices/21.xsd.html#xsd"><span class="std std-ref">XML Schemas</span></a>.</p>
+</aside>
+<aside class="footnote brackets" id="id11" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">5</a><span class="fn-bracket">]</span></span>
+<p>Los tipos <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> identifican de forma única los distintos tipos de
+archivos y se crearon en un principio para los adjuntos al correo
+electrónico. Véase una explicación más detallada <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/HTTP/Basics_of_HTTP/MIME_types">aquí</a>.
+En los sistemas <em>linux</em> hay una lista de tipos mime en <code class="file docutils literal notranslate"><span class="pre">/etc/mime.types</span></code>.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/logo.png" alt="Logo"/>
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">2.1. <abbr title="Document Type Definition">DTD</abbr></a><ul>
+<li><a class="reference internal" href="#preliminares">2.1.1. Preliminares</a><ul>
+<li><a class="reference internal" href="#declaracion">2.1.1.1. Declaración</a></li>
+<li><a class="reference internal" href="#ejemplo">2.1.1.2. Ejemplo</a></li>
+<li><a class="reference internal" href="#validacion">2.1.1.3. Validación</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sintaxis-basica">2.1.2. Sintaxis básica</a><ul>
+<li><a class="reference internal" href="#elementos">2.1.2.1. Elementos</a></li>
+<li><a class="reference internal" href="#atributos">2.1.2.2. Atributos</a><ul>
+<li><a class="reference internal" href="#tipos">2.1.2.2.1. Tipos</a></li>
+<li><a class="reference internal" href="#valor-por-defecto">2.1.2.2.2. Valor por defecto</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#notaciones">2.1.2.3. Notaciones</a></li>
+<li><a class="reference internal" href="#entidades">2.1.2.4. Entidades</a><ul>
+<li><a class="reference internal" href="#generales">2.1.2.4.1. Generales</a></li>
+<li><a class="reference internal" href="#parametro">2.1.2.4.2. Parámetro</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#espacios-de-nombres">2.1.2.5. Espacios de nombres</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ejercicios-resueltos">2.1.3. Ejercicios resueltos</a></li>
+<li><a class="reference internal" href="#conclusiones">2.1.4. Conclusiones</a></li>
+<li><a class="reference internal" href="#ejercicios-propuestos">2.1.5. Ejercicios propuestos</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="index.html"
+                          title="Previous page">&larr; <span class="section-number">2. </span>Validación</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="02.yaml.html"
+                          title="Next page">&rarr; <span class="section-number">2.2. </span><abbr title="JavaScript Object Notation">JSON</abbr> Schema</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/02.validacion/01.dtdxml.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="02.yaml.html" title="2.2. JSON Schema"
+             >siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="index.html" title="2. Validación"
+             >anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">2. </span>Validación</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2.1. </span><abbr title="Document Type Definition">DTD</abbr></a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
+      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

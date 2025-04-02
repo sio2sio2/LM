@@ -1,0 +1,245 @@
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>2. Validación &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+    <link rel="stylesheet" href="../_static/general.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+
+    
+    
+     
+        <script src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="2.1. DTD" href="01.dtdxml.html" />
+    <link rel="prev" title="1.3. Ejercicios propuestos" href="../01.intro/03.ejercicios.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="01.dtdxml.html" title="2.1. DTD"
+             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="../01.intro/03.ejercicios.html" title="1.3. Ejercicios propuestos"
+             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>Validación</a></li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="validacion">
+<span id="lm-ut2"></span><h1><span class="section-number">2. </span>Validación<a class="headerlink" href="#validacion" title="Enlace permanente a este encabezado">¶</a></h1>
+<p>En la primera parte de la <a class="reference internal" href="../01.intro/index.html#lm-ut1"><span class="std std-ref">unidad anterior</span></a> introdujimos el concepto
+de  <a class="reference internal" href="../01.intro/01.intro.html#lm-validez"><span class="std std-ref">validez</span></a> e hicimos la distinción entre un documento <em>bien
+formado</em> (ajustado a las reglas gramaticales generales) y un documento <em>válido</em>
+(ajustado a las reglas gramaticales específicas). La segunda parte de la unidad
+citada nos enseñó cuáles eran las reglas generales de algunas lenguajes y nos
+permitió escribir documentos y comprobar que estaban bien formados. Para ello
+usamos &quot;validadores&quot; (<strong class="command">jsonlint</strong>, <strong class="command">xamllint</strong>, etc.), que no
+eran tales, pues sólo informaban de si el documento estaba bien formado.</p>
+<p>En esta unidad aprenderemos cómo definir gramáticas específicas y usar
+auténticos <em>validadores</em> que comprueban si el documento las cumple, esto es,
+si son (además de bien formados) válidos. Entiéndase:</p>
+<p>Si ha realizado los <a class="reference internal" href="../99.ejercicios/10.lenguajes.html#ej-li"><span class="std std-ref">ejercicios propuestos de la unidad anterior</span></a>,
+ya habrá diseñado bastantes documentos para intercambiar información
+a partir de unas especificaciones dadas. Sin embargo, aún no tiene medios para
+saber que el documento de ejemplo que ha escrito se ajusta a la gramática
+<em>mental</em> que ha desarrollado en su cabeza para cumplir tales especificaciones.
+Por ejemplo, la solución <abbr title="eXtensible  Markup Language">XML</abbr> del <a class="reference internal" href="../01.intro/02b.marcas.html#xml-resueltos"><span class="std std-ref">primer ejercicio resuelto</span></a> era esta:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Primer ejercicio resuelto</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;recetas&gt;</span>
+<span class="w">   </span><span class="cm">&lt;!-- El tiempo está en minutos --&gt;</span>
+<span class="w">   </span><span class="nt">&lt;receta</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;r01&quot;</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;ensalada&quot;</span><span class="w"> </span><span class="na">preparacion=</span><span class="s">&quot;5&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;tomate&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;pieza&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;cebolla&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;pieza&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;.25&quot;</span><span class="w"> </span><span class="nt">/&gt;</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;lechuga&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;gramo&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;150&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;sal&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;gramo&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;vinagre&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;cc&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;3&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;aceite&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;cc&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;6&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/receta&gt;</span>
+
+<span class="w">   </span><span class="nt">&lt;receta</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;r02&quot;</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;bocadillo de anchoas&quot;</span><span class="w"> </span><span class="na">preparacion=</span><span class="s">&quot;4&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;pan&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;pieza&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ingrediente</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;anchoa&quot;</span><span class="w"> </span><span class="na">unidad=</span><span class="s">&quot;pieza&quot;</span><span class="w"> </span><span class="na">cantidad=</span><span class="s">&quot;3&quot;</span><span class="w"> </span><span class="nt">/&gt;</span><span class="w"> </span>
+<span class="w">   </span><span class="nt">&lt;/receta&gt;</span>
+
+<span class="w">   </span><span class="cm">&lt;!-- Más recetas --&gt;</span>
+<span class="nt">&lt;/recetas&gt;</span>
+</pre></div>
+</div>
+</div>
+</details><p>Esto implica mucho: que la etiqueta del nodo raíz es <code class="code docutils literal notranslate"><span class="pre">&lt;recetas&gt;</span></code> y que
+no tiene ninguna propiedad, pero sí varios nodos  <code class="code docutils literal notranslate"><span class="pre">&lt;receta&gt;</span></code>  dentro, etc.
+¿Cómo podemos comprobar que un <abbr title="eXtensible  Markup Language">XML</abbr> de ejemplo cumple todos estos requisitos
+(p.e. que <code class="code docutils literal notranslate"><span class="pre">&lt;recetas&gt;</span></code> no tiene propiedades), esto es, que cumple con la
+gramática específica que hemos diseñado? El propósito que nos planteamos ahora
+implica aprender dos tareas:</p>
+<ol class="arabic simple">
+<li><p>Escribir esa gramática específica.</p></li>
+<li><p>Utilizar un validador al que se proporcionen documento y gramática, y
+compruebe que el primero cumple la segunda.</p></li>
+</ol>
+<p>Comencemos.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contenidos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="01.dtdxml.html">2.1. <abbr title="Document Type Definition">DTD</abbr></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01.dtdxml.html#preliminares">2.1.1. Preliminares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.dtdxml.html#sintaxis-basica">2.1.2. Sintaxis básica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.dtdxml.html#ejercicios-resueltos">2.1.3. Ejercicios resueltos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.dtdxml.html#conclusiones">2.1.4. Conclusiones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.dtdxml.html#ejercicios-propuestos">2.1.5. Ejercicios propuestos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="02.yaml.html">2.2. <abbr title="JavaScript Object Notation">JSON</abbr> Schema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="02.yaml.html#preliminares">2.2.1. Preliminares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.yaml.html#sintaxis-basica">2.2.2. Sintaxis básica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.yaml.html#referencias">2.2.3. Referencias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.yaml.html#esquemas-condicionales">2.2.4. Esquemas condicionales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.yaml.html#ejercicios-resueltos">2.2.5. Ejercicios resueltos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.yaml.html#ejercicios-propuestos">2.2.6. Ejercicios propuestos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="03.ej.html">2.3. Ejercicios propuestos</a></li>
+</ul>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/logo.png" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="../01.intro/03.ejercicios.html"
+                          title="Previous page">&larr; <span class="section-number">1.3. </span>Ejercicios propuestos</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="01.dtdxml.html"
+                          title="Next page">&rarr; <span class="section-number">2.1. </span><abbr title="Document Type Definition">DTD</abbr></a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/02.validacion/index.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="01.dtdxml.html" title="2.1. DTD"
+             >siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="../01.intro/03.ejercicios.html" title="1.3. Ejercicios propuestos"
+             >anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>Validación</a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
+      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

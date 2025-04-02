@@ -1,0 +1,398 @@
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>XMLStarlet &#8212; documentación de Lenguajes de Marcas - rolling</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+    <link rel="stylesheet" href="../../_static/general.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/particular.css" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <script src="../../_static/design-tabs.js"></script>
+
+    
+    
+     
+        <script src="../../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="../../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="../../_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="Xidel" href="05-xidel.html" />
+    <link rel="prev" title="Herramientas" href="../99.tools.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="05-xidel.html" title="Xidel"
+             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="../99.tools.html" title="Herramientas"
+             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="../99.tools.html" accesskey="U">Herramientas</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">XMLStarlet</a></li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="xmlstarlet">
+<span id="id1"></span><h1>XMLStarlet<a class="headerlink" href="#xmlstarlet" title="Enlace permanente a este encabezado">¶</a></h1>
+<p>Es un programa para la <abbr title="Command Line Interface">CLI</abbr> de <em>Linux</em> que nos permite hacer validaciones,
+extracción de datos con <a class="reference internal" href="../../03.consulta/01.xpath.html#xpath"><span class="std std-ref">XPath</span></a> 1.0 y transformaciones con <a class="reference internal" href="../41.xslt.html#xslt"><span class="std std-ref">XSLT</span></a>.</p>
+<section id="bien-formado">
+<span id="xmlstarlet-val"></span><h2>Bien formado<a class="headerlink" href="#bien-formado" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Para comprobar si un <abbr title="eXtensible  Markup Language">XML</abbr> está bien formado basta con hacer:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>xmlstarlet<span class="w"> </span>val<span class="w"> </span>-e<span class="w"> </span>claustro.xml
+</pre></div>
+</div>
+<p>La opción <code class="docutils literal notranslate"><span class="pre">-e</span></code> provoca que se muestren los errores, en caso de que los
+hubiera. De lo contrario sólo informa de si es <em>válido</em>. Obsérvese que el
+mensaje no es preciso: debería indicar, simplemente, que es <em>bien formado</em>, ya
+sólo comprueba si el <abbr title="eXtensible  Markup Language">XML</abbr> se ajusta a las reglas generales del <abbr title="eXtensible  Markup Language">XML</abbr>.</p>
+</section>
+<section id="validacion">
+<h2>Validación<a class="headerlink" href="#validacion" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Para realmente <em>validar</em> un documento, y no simplemente comprobar que está bien
+formado, el programa nos da la posibilidad de usar <abbr title="Document Type Definition">DTD</abbr>, <abbr title="XML Schema Definition">XSD</abbr> o <abbr title="Relax-NG">RNG</abbr>.</p>
+<section id="dtd">
+<span id="xmlstartlet-dtd"></span><h3><abbr title="Document Type Definition">DTD</abbr><a class="headerlink" href="#dtd" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Es necesario añadir la opción <code class="docutils literal notranslate"><span class="pre">-d</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>xmlstarlet<span class="w"> </span>val<span class="w"> </span>-e<span class="w"> </span>-d<span class="w"> </span>claustro.dtd<span class="w"> </span>claustro.xml
+</pre></div>
+</div>
+<p>Pero si el <abbr title="Document Type Definition">DTD</abbr> está declarado en el <abbr title="eXtensible  Markup Language">XML</abbr> (en la declaración de tipo de
+documento), puede simplificarse a:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>xmlstarlet<span class="w"> </span>val<span class="w"> </span>-e<span class="w"> </span>-E<span class="w"> </span>claustro.xml
+</pre></div>
+</div>
+</section>
+<section id="xsd">
+<span id="xmlstarlet-xsd"></span><h3><abbr title="XML Schema Definition">XSD</abbr><a class="headerlink" href="#xsd" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Para validar un <abbr title="eXtensible  Markup Language">XML</abbr> haciendo uso de un <abbr title="XML Schema Definition">XSD</abbr>, puede usarse la opción <code class="docutils literal notranslate"><span class="pre">-sp</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>xmlstarlet<span class="w"> </span>val<span class="w"> </span>-s<span class="w"> </span>archivo.xsd<span class="w"> </span>archivo.xml
+</pre></div>
+</div>
+<p>Como en casos anteriores, si se quiere ver cuáles son los errores, hay que
+incluir la opción <code class="docutils literal notranslate"><span class="pre">-e</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>xmlstarlet<span class="w"> </span>val<span class="w"> </span>-s<span class="w"> </span>archivo.xsd<span class="w"> </span>-e<span class="w"> </span>archivo.xml
+</pre></div>
+</div>
+</section>
+<section id="rng-rnc">
+<span id="xmlstarlet-rnc"></span><span id="xmlstarlet-rng"></span><h3><abbr title="Relax-NG">RNG</abbr>/<abbr title="Relax-NG Compact">RNC</abbr><a class="headerlink" href="#rng-rnc" title="Enlace permanente a este encabezado">¶</a></h3>
+<p><strong class="program">xmlstarlet</strong> no es capaz de validar directamente usando <abbr title="Relax-NG Compact">RNC</abbr>, pero
+tenemos la opción de usar un conversor como <a class="reference external" href="http://www.thaiopensource.com/relaxng/trang.html">trang</a>, del que hay en <em>Debian</em> un
+paquete con ese mismo nombre, para transformar el <abbr title="Relax-NG Compact">RNC</abbr> en un <abbr title="Relax-NG">RNG</abbr>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>trang<span class="w"> </span>casilleros.rnc<span class="w"> </span>casilleros.rng
+<span class="gp">$ </span>xmlstarlet<span class="w"> </span>val<span class="w"> </span>-e<span class="w"> </span>-r<span class="w"> </span>casilleros.rng<span class="w"> </span>casilleros.xml<span class="w">  </span><span class="c1"># -e muestra errores si los hay</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong class="command">trang</strong> traduce a <abbr title="Document Type Definition">DTD</abbr> (o <abbr title="XML Schema Definition">XSD</abbr>), por lo que también podemos
+obtener el <abbr title="Document Type Definition">DTD</abbr> (o <abbr title="XML Schema Definition">XSD</abbr>) equivalente a nuestro <abbr title="Relax-NG Compact">RNC</abbr>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>trang<span class="w"> </span>casilleros.rnc<span class="w"> </span>casilleros.dtd
+</pre></div>
+</div>
+<p>Puede ser útil esta traduccion para ver cómo se ve la gramática definida en
+<abbr title="Document Type Definition">DTD</abbr>, pero es absolutamente desconsejable hacer esta traducción con el
+propósito de validar después, ya que <abbr title="Document Type Definition">DTD</abbr> es menos expresivo y, en
+consecuencia, es muy probable que se pierda expresividad.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong class="command">trang</strong> permite también otra cosa: obtener la gramática a
+partir del documento <abbr title="eXtensible  Markup Language">XML</abbr>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>trang<span class="w"> </span>casilleros.xml<span class="w"> </span>casilleros.rnc<span class="w">  </span><span class="c1"># O casilleros.dtd para obtener el DTD</span>
+</pre></div>
+</div>
+<p>Esto, sin embargo, crea siempre gramáticas deficientes, ya que rara vez la
+herramienta es capaz de adivinar nuestra intención de hacer que un atributo
+fuera un identificador o que un contenido responda a una enumeración. Su
+utlidad se reduce, por lo general, a brindarnos un esqueleto sobre el que
+perfilar la gramática.</p>
+</div>
+</section>
+</section>
+<section id="xpath">
+<span id="xmlstarlet-xpath"></span><h2>XPath<a class="headerlink" href="#xpath" title="Enlace permanente a este encabezado">¶</a></h2>
+<p>Con este programa podemos usar <em>XPath</em> tanto para seleccionar datos como para
+introducir modificaciones al <abbr title="eXtensible  Markup Language">XML</abbr> original. Para lo segundo es mejor
+<a class="reference internal" href="../../04.transformacion/index.html#xquery"><span class="std std-ref">XQuery</span></a> o <a class="reference internal" href="../41.xslt.html#xslt"><span class="std std-ref">XSLT</span></a>, pero por completar la información sobre la orden
+incluiremos las posibilidades que brinda.</p>
+<section id="seleccion">
+<h3>Selección<a class="headerlink" href="#seleccion" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>Para lograrlo es necesario usar el comando <code class="docutils literal notranslate"><span class="pre">sel</span></code>, seguido de la opción <code class="docutils literal notranslate"><span class="pre">-t</span></code>, y
+la acción que se quiere realizar a continuación, que puede ser:</p>
+<dl>
+<dt><code class="code docutils literal notranslate"><span class="pre">-v</span> <span class="pre">&lt;expresión-xpath&gt;</span></code></dt><dd><p>Muestra el valor de lo seleccionado mediante la expresión. Se debe usar esta
+opción cuando el resultado de la expresión es un valor escalar: un único
+atributo, un nodo que contiene texto o la evaluación de una función o una
+operación. Por ejemplo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet sel -t -v &#39;//profesor[1]/@id&#39; -n casilleros.xml
+p1
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Se ha añadido la opción <code class="docutils literal notranslate"><span class="pre">-n</span></code> para añadir un cambio de línea al
+final del resultado.</p>
+</div>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">-c</span> <span class="pre">&lt;expresion-path&gt;</span></code></dt><dd><p>Copia el nodo seleccionado, por tanto deberá usarse cuando el resultado de
+nuestra selección es un nodo elemento o un conjunto de nodos elemento. Por
+ejemplo, lo siguiente devuelve todos los nodos <em>apelativo</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet sel -t -c &#39;//profesor/apelativo&#39; -n casilleros.xml
+&lt;apelativo&gt;Pepe&lt;/apelativo&gt;&lt;apelativo&gt;Paco&lt;/apelativo&gt;&lt;apelativo&gt;Mari&lt;/apelativo&gt;
+</pre></div>
+</div>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">-m</span> <span class="pre">&lt;expresión-path&gt;</span></code></dt><dd><p>Selecciona un nodo o un conjunto de nodos para seguir trabajando sobre
+ellos. Por tanto, requerirá que luego se use <code class="docutils literal notranslate"><span class="pre">-v</span></code> o <code class="docutils literal notranslate"><span class="pre">-c</span></code>. Por ejemplo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet sel -t -m &#39;//profesor/apelativo&#39; -v &#39;.&#39; casilleros.xml
+PepePacoMari
+</pre></div>
+</div>
+<p>En este caso, habría sido fundamental usar <code class="docutils literal notranslate"><span class="pre">-n</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet sel -t -m &#39;//profesor/apelativo&#39; -v &#39;.&#39; -n casilleros.xml
+Pepe
+Paco
+Mari
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong class="command">xmlstarlet</strong> es capaz de devolvernos el código <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr>
+equivalente a nuestra selección añadiendo tras <code class="docutils literal notranslate"><span class="pre">sel</span></code> la opción <code class="docutils literal notranslate"><span class="pre">-C</span></code>.</p>
+</div>
+</section>
+<section id="edicion">
+<h3>Edición<a class="headerlink" href="#edicion" title="Enlace permanente a este encabezado">¶</a></h3>
+<p>En este caso, debe usarse <code class="docutils literal notranslate"><span class="pre">ed</span></code>, una acción y el uso de expresiones <em>XPath</em>:</p>
+<dl>
+<dt><code class="code docutils literal notranslate"><span class="pre">-d</span> <span class="pre">&lt;expresion-xpath&gt;</span></code></dt><dd><p>Borra los nodos que selecciona la expresión:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet ed -d &#39;//profesor[last()]&#39; casilleros.xml
+</pre></div>
+</div>
+<p>Esta expresión elimina el último de los profesores.</p>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">-u</span> <span class="pre">&lt;expresion-xpath&gt;</span> <span class="pre">-v</span> <span class="pre">valor</span></code></dt><dd><p>Actualiza el valor del nodo o nodos seleccionados:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet ed -u &#39;//profesor[1]/apelativo&#39; -v &quot;Manolo&quot; casilleros.xml
+</pre></div>
+</div>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">-i</span> <span class="pre">&lt;expresión-xpath&gt;</span> <span class="pre">-t</span> <span class="pre">(elem|text|attr)</span> <span class="pre">-n</span> <span class="pre">&lt;nombre&gt;</span> <span class="pre">-v</span> <span class="pre">&lt;valor&gt;</span></code></dt><dd><p>Permite insertar antes del nodo seleccionado (o los nodos) un nodo de tipo
+elemento, texto o atributo del nombre y valor referidos. Se deben hacer
+varias puntualizaciones:</p>
+<ul class="simple">
+<li><p>Los nodos de texto no tienen nombre, así que da igual el nombre que se les
+dé.</p></li>
+<li><p>El valor sólo puede ser texto, así que, directamente, sólo se pueden crear
+nodos elemento que contienen texto.</p></li>
+<li><p>Si se quiere crear nodos elemento que tienen atributos o contienen otros
+nodos elemento, entonces hay que componer varias acciones.</p></li>
+</ul>
+<p>Por ejemplo, esto añadiría un nuevo apelativo al primer profesor:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet ed -i &#39;//profesor[1]/nombre&#39; -t elem -n &quot;apelativo&quot; -v &quot;Pancho&quot; casilleros.xml
+</pre></div>
+</div>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">-a</span> <span class="pre">&lt;expresión-xpath&gt;</span> <span class="pre">-t</span> <span class="pre">(elem|text|attr)</span> <span class="pre">-n</span> <span class="pre">nombre</span> <span class="pre">-v</span> <span class="pre">valor</span></code></dt><dd><p>Como  <code class="docutils literal notranslate"><span class="pre">-i</span></code> pero añade el nodo después, no antes. Por ejemplo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet ed -a &#39;//profesor[1]/apelativo[last()]&#39; -t elem -n &quot;apelativo&quot; -v &quot;Pancho&quot; casilleros.xml
+</pre></div>
+</div>
+</dd>
+<dt><code class="code docutils literal notranslate"><span class="pre">-s</span> <span class="pre">&lt;expresión-xpath&gt;</span> <span class="pre">-t</span> <span class="pre">(elemen|text|attr)</span> <span class="pre">-n</span> <span class="pre">nombre</span> <span class="pre">-v</span> <span class="pre">valor</span></code></dt><dd><p>Añade el nuevo elemento como último elemento del elemento seleccionado:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xmlstarlet ed -s &#39;//profesor[2]/nombre&#39; -t text -n foo -v &quot; María&quot; casilleros.xml
+</pre></div>
+</div>
+</dd>
+</dl>
+</section>
+</section>
+<section id="xslt">
+<span id="xmlstarlet-xslt"></span><h2><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr><a class="headerlink" href="#xslt" title="Enlace permanente a este encabezado">¶</a></h2>
+<p><strong class="program">XMLStarlet</strong> usa las librerías <a class="reference external" href="http://xmlsoft.org/libxml2/">libxml2</a> y <a class="reference external" href="http://xmlsoft.org/libxslt/">libxslt</a>, de modo que sólo
+tiene soporte para <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr> 1.0 y bastantes extensiones. La manera más sencilla de
+usarlo es utilizar el argumento <code class="docutils literal notranslate"><span class="pre">tr</span></code> seguido de la hoja <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr> y el <abbr title="eXtensible  Markup Language">XML</abbr>
+original:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>xmlstarlet<span class="w"> </span>tr<span class="w"> </span>disco.txt.xsl<span class="w"> </span>disco.xml
+</pre></div>
+</div>
+<p>Ahora bien, si el <abbr title="eXtensible  Markup Language">XML</abbr> declara algún hoja <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr> para su transformación con la
+instrucción de procesamiento <code class="code docutils literal notranslate"><span class="pre">&lt;?xml-steelsheet</span> <span class="pre">...</span> <span class="pre">?&gt;</span></code> (véanse los ejemplos
+ya expuestos), entonces puede omitirse el fichero xsl incluyendo el parámetro -E:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>xmlstarlet<span class="w"> </span>tr<span class="w"> </span>-E<span class="w"> </span>disco.xml
+</pre></div>
+</div>
+<p>En el ejemplo, la hoja de transformación debería llamarse
+<code class="file docutils literal notranslate"><span class="pre">discos.txt.xsl</span></code>, de modo que esta última orden es equivalente a la
+anterior. En algunas hojas de transformación se requiere pasar parámetros. Para
+ello existen las opciones <code class="docutils literal notranslate"><span class="pre">-p</span></code> y <code class="docutils literal notranslate"><span class="pre">-s</span></code>. Ambas sirven para lo mismo con la
+diferencia de que -s está pensada para pasar parámetros que sean cadenas. Por
+ejemplo:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>xmlstarlet<span class="w"> </span>tr<span class="w"> </span>libros.xsl<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;año=1994&quot;</span><span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;bibliotecario=Juan Palomo&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                           </span>-p<span class="w"> </span><span class="s2">&quot;nombre=&#39;Biblioteca Municipal&#39;&quot;</span><span class="w"> </span>libros.xml
+</pre></div>
+</div>
+<p>Obsérvese la diferencia: se han escrito todas las parejas <em>nombre-valor</em> entre
+comillas dobles para que bash no haga travesuras. La primera pareja es un número
+y las dos restantes son cadenas. Como con la segunda se usó <code class="docutils literal notranslate"><span class="pre">-s</span></code>, bastó con
+escribir tal cual la cadena. En la tercera, sin embargo, se escribió <code class="docutils literal notranslate"><span class="pre">-p</span></code>, así
+que hubo explícitamente que informar al procesador de que era una cadena
+escribiendo el valor entre comillas.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../../index.html" title="index">
+          <img class="logo" src="../../_static/logo.png" alt="Logo"/>
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="../../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">XMLStarlet</a><ul>
+<li><a class="reference internal" href="#bien-formado">Bien formado</a></li>
+<li><a class="reference internal" href="#validacion">Validación</a><ul>
+<li><a class="reference internal" href="#dtd"><abbr title="Document Type Definition">DTD</abbr></a></li>
+<li><a class="reference internal" href="#xsd"><abbr title="XML Schema Definition">XSD</abbr></a></li>
+<li><a class="reference internal" href="#rng-rnc"><abbr title="Relax-NG">RNG</abbr>/<abbr title="Relax-NG Compact">RNC</abbr></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#xpath">XPath</a><ul>
+<li><a class="reference internal" href="#seleccion">Selección</a></li>
+<li><a class="reference internal" href="#edicion">Edición</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#xslt"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="../99.tools.html"
+                          title="Previous page">&larr; Herramientas</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="05-xidel.html"
+                          title="Next page">&rarr; Xidel</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/98.apendices/99.tools/01-xmlstarlet.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="05-xidel.html" title="Xidel"
+             >siguiente</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="../99.tools.html" title="Herramientas"
+             >anterior</a> &nbsp; &nbsp;</li>
+    <li><a href="../../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="../99.tools.html" >Herramientas</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">XMLStarlet</a></li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
+      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>
