@@ -39,17 +39,17 @@ Ejemplo
 -------
 Tomemos la versión |JSON| del :ref:`ejemplo introductorio <json-ejemplo-inicial>`:
 
-.. dropdown:: Casilleros
-
-   .. literalinclude:: /01.intro/files/casilleros.json
-      :language: json
+.. literalinclude:: /01.intro/files/casilleros.json
+   :class: toggle
+   :caption: Casilleros
+   :language: json
 
 Este |JSON| se ajusta al siguiente esquema:
 
-.. dropdown:: Gramática de Casilleros con JSON Schema
-
-   .. literalinclude:: files/casilleros.schema.json
-      :language: json
+.. literalinclude:: files/casilleros.schema.json
+   :caption: Gramática de Casilleros con JSON Schema
+   :class: toggle
+   :language: json
 
 Como puede verse, el documento es en sí un documento |JSON| y tiene un modo algo
 particular (y nada intuitivo) de expresar una ocurrencia de nodos, que se habría
@@ -890,42 +890,42 @@ definidos en otra parte del archivo. Con este fin existe la propiedad
 ``$defs``
    Contiene subesquemas con nombre a los que puede hacerse referencia:
 
-   .. dropdown:: Esquema con referencia interna
+   .. code-block:: json
+      :caption: Esquema con referencia interna
+      :class: toggle
 
-      .. code-block:: json
+      {
+         "$schema": "https://json-schema.org/draft/2020-12/schema",
+         "$id": "gente.schema.json",
 
-         {
-            "$schema": "https://json-schema.org/draft/2020-12/schema",
-            "$id": "gente.schema.json",
+         "type": "array",
+         "title": "Ejemplo de referencia",
+         "description": "Un porrón de personas dentro de una secuencia",
+         "items": { "$ref": "#/$defs/persona" },
+         "uniqueItems": true,
 
-            "type": "array",
-            "title": "Ejemplo de referencia",
-            "description": "Un porrón de personas dentro de una secuencia",
-            "items": { "$ref": "#/$defs/persona" },
-            "uniqueItems": true,
-
-            "$defs": {
-               "persona": {
-                  "type": "object",
-                  "properties": {
-                     "nombre": {
-                        "type": "string",
-                        "description": "Nombre completo de la persona"
-                     },
-                     "edad": {
-                        "type": "integer",
-                        "minimum": 0
-                     },
-                     "casado": {
-                        "type": "boolean",
-                        "default": false
-                     }
+         "$defs": {
+            "persona": {
+               "type": "object",
+               "properties": {
+                  "nombre": {
+                     "type": "string",
+                     "description": "Nombre completo de la persona"
                   },
-                  "additionalProperties": false,
-                  "required": ["nombre"]
-               }
+                  "edad": {
+                     "type": "integer",
+                     "minimum": 0
+                  },
+                  "casado": {
+                     "type": "boolean",
+                     "default": false
+                  }
+               },
+               "additionalProperties": false,
+               "required": ["nombre"]
             }
          }
+      }
 
 .. _json-schema-condicional:
 
@@ -1085,18 +1085,18 @@ Ejercicios resueltos
 Tomando las versiones |JSON| (o |YAML|) de :ref:`los dos ejercicios ya resueltos
 <yaml-resueltos>`, podemos para el primero definir así su gramática:
 
-.. dropdown:: recetas.schema.json
-
-   .. literalinclude:: files/recetas.schema.json
-      :language: json
+.. literalinclude:: files/recetas.schema.json
+   :class: toggle
+   :caption: recetas.schema.json
+   :language: json
 
 El segundo podemos definirlo con otra gramática que :ref:`referencie la primera
 <json-schema-ref>`:
 
-.. dropdown:: restaurantes.schema.json
-
-   .. literalinclude:: files/restaurantes.schema.json
-      :language: json
+.. literalinclude:: files/restaurantes.schema.json
+   :class: toggle
+   :caption: restaurantes.schema.json
+   :language: json
 
 Ejercicios propuestos
 =====================

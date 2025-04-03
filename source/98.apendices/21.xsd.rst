@@ -866,79 +866,79 @@ el elemento persona o qué atributos y de qué tipo puede contener el atributo
 matricula. En cambio, una definición igual de imprecisa con un |XSD| (sin afinar
 el formato que debe tener un |DNI| o una matrícula) tiene esta pinta:
 
-.. dropdown:: Un |XSD| que parece la carretera de la sierra...
+.. code-block:: xml
+   :caption: Un |XSD| que parece la carretera de la sierra...
+   :class: toggle
 
-   .. code-block:: xml
-
-      <?xml version="1.0" encoding="utf-8"?>
-      <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-         <xs:element name="gente">
-            <xs:complexType>
-               <xs:sequence>
-                  <xs:element name="persona" maxOccurs="unbounded">
-                     <xs:complexType>
-                        <xs:sequence>
-                           <xs:element name="nombre">
-                              <xs:complexType>
-                                 <xs:simpleContent>
-                                    <xs:extension base="xs:string">
-                                       <xs:attribute name="apodo" type="xs:string" />
-                                    </xs:extension>
-                                 </xs:simpleContent>
-                              </xs:complexType>
-                           </xs:element>
-                           <xs:element name="apellidos" type="xs:string" />
-                           <xs:element name="dni" type="xs:string" />
-                           <xs:element name="flota">
-                              <xs:complexType>
-                                 <xs:sequence>
-                                    <xs:element name="vehiculo" minOccurs="0" maxOccurs="unbounded">
-                                       <xs:complexType>
-                                          <xs:sequence>
-                                             <xs:element name="matricula">
-                                                <xs:complexType>
-                                                   <xs:simpleContent>
-                                                      <xs:extension base="xs:string">
-                                                         <xs:attribute name="numeracion" default="nueva">
-                                                            <xs:simpleType>
-                                                               <xs:restriction base="xs:string">
-                                                                  <xs:enumeration value="antigua"/>
-                                                                  <xs:enumeration value="nueva"/>
-                                                               </xs:restriction>
-                                                            </xs:simpleType>
-                                                         </xs:attribute>
-                                                      </xs:extension>
-                                                   </xs:simpleContent>
-                                                </xs:complexType>
-                                             </xs:element>
-                                             <xs:element name="color" type="xs:string" />
-                                             <xs:element name="marca" type="xs:string" />
-                                             <xs:element name="modelo" type="xs:string" />
-                                          </xs:sequence>
-                                          <xs:attribute name="tipo" default="turismo">
-                                             <xs:simpleType>
-                                                <xs:restriction base="xs:string">
-                                                   <xs:enumeration value="turismo" />
-                                                   <xs:enumeration value="furgoneta" />
-                                                   <xs:enumeration value="moto" />
-                                                   <xs:enumeration value="camión" />
-                                                   <xs:enumeration value="autobús" />
-                                                </xs:restriction>
-                                             </xs:simpleType>
-                                          </xs:attribute>
-                                       </xs:complexType>
-                                    </xs:element>
-                                 </xs:sequence>
-                              </xs:complexType>
-                           </xs:element>
-                        </xs:sequence>
-                        <xs:attribute name="id" type="xs:ID" />
-                     </xs:complexType>
-                  </xs:element>
-               </xs:sequence>
-            </xs:complexType>
-         </xs:element>
-      </xs:schema>
+   <?xml version="1.0" encoding="utf-8"?>
+   <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="gente">
+         <xs:complexType>
+            <xs:sequence>
+               <xs:element name="persona" maxOccurs="unbounded">
+                  <xs:complexType>
+                     <xs:sequence>
+                        <xs:element name="nombre">
+                           <xs:complexType>
+                              <xs:simpleContent>
+                                 <xs:extension base="xs:string">
+                                    <xs:attribute name="apodo" type="xs:string" />
+                                 </xs:extension>
+                              </xs:simpleContent>
+                           </xs:complexType>
+                        </xs:element>
+                        <xs:element name="apellidos" type="xs:string" />
+                        <xs:element name="dni" type="xs:string" />
+                        <xs:element name="flota">
+                           <xs:complexType>
+                              <xs:sequence>
+                                 <xs:element name="vehiculo" minOccurs="0" maxOccurs="unbounded">
+                                    <xs:complexType>
+                                       <xs:sequence>
+                                          <xs:element name="matricula">
+                                             <xs:complexType>
+                                                <xs:simpleContent>
+                                                   <xs:extension base="xs:string">
+                                                      <xs:attribute name="numeracion" default="nueva">
+                                                         <xs:simpleType>
+                                                            <xs:restriction base="xs:string">
+                                                               <xs:enumeration value="antigua"/>
+                                                               <xs:enumeration value="nueva"/>
+                                                            </xs:restriction>
+                                                         </xs:simpleType>
+                                                      </xs:attribute>
+                                                   </xs:extension>
+                                                </xs:simpleContent>
+                                             </xs:complexType>
+                                          </xs:element>
+                                          <xs:element name="color" type="xs:string" />
+                                          <xs:element name="marca" type="xs:string" />
+                                          <xs:element name="modelo" type="xs:string" />
+                                       </xs:sequence>
+                                       <xs:attribute name="tipo" default="turismo">
+                                          <xs:simpleType>
+                                             <xs:restriction base="xs:string">
+                                                <xs:enumeration value="turismo" />
+                                                <xs:enumeration value="furgoneta" />
+                                                <xs:enumeration value="moto" />
+                                                <xs:enumeration value="camión" />
+                                                <xs:enumeration value="autobús" />
+                                             </xs:restriction>
+                                          </xs:simpleType>
+                                       </xs:attribute>
+                                    </xs:complexType>
+                                 </xs:element>
+                              </xs:sequence>
+                           </xs:complexType>
+                        </xs:element>
+                     </xs:sequence>
+                     <xs:attribute name="id" type="xs:ID" />
+                  </xs:complexType>
+               </xs:element>
+            </xs:sequence>
+         </xs:complexType>
+      </xs:element>
+   </xs:schema>
 
 Y, ahora, ¿qué elementos puede contener el elemento *flota*? Es difícil decirlo
 con un vistazo. Incluso con diez. Es tanta la cantidad de metainformación, tan
@@ -957,79 +957,79 @@ definiendo a partir del elemento raíz y, cuando nos topamos con la definición 
 un tipo complejo (o un tipo simple con restricciones), no lo definimos hay mismo
 sino que le damos un nombre a ese tipo y lo definimos aparte:
 
-.. dropdown:: Una solución más legible...
+.. code-block:: xml
+   :caption: Una solución más legible...
+   :class: toggle
 
-   .. code-block:: xml
-
-      <?xml version="1.0" encoding="utf-8"?>
-      <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-         <xs:element name="gente">
-            <xs:complexType>
-               <xs:sequence>
-                  <xs:element name="persona" type="tipo.persona" maxOccurs="unbounded" />
-               </xs:sequence>
-            </xs:complexType>
-         </xs:element>
-       
-         <xs:complexType name="tipo.persona">
+   <?xml version="1.0" encoding="utf-8"?>
+   <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="gente">
+         <xs:complexType>
             <xs:sequence>
-               <xs:element name="nombre" type="tipo.nombre" />
-               <xs:element name="apellidos" type="xs:string" />
-               <xs:element name="dni" type="xs:string" />
-               <xs:element name="flota" type="tipo.flota" minOccurs="0" maxOccurs="unbounded" />
-            </xs:sequence>
-            <xs:attribute name="id" type="xs:ID" />
-         </xs:complexType>
-       
-         <xs:complexType name="tipo.nombre">
-            <xs:simpleContent>
-               <xs:extension base="xs:string">
-                  <xs:attribute name="apodo" type="xs:string"/>
-               </xs:extension>
-            </xs:simpleContent>
-         </xs:complexType>
-       
-         <xs:complexType name="tipo.flota">
-            <xs:sequence>
-               <xs:element name="vehiculo" type="tipo.vehiculo" minOccurs="0" maxOccurs="unbounded" />
+               <xs:element name="persona" type="tipo.persona" maxOccurs="unbounded" />
             </xs:sequence>
          </xs:complexType>
-       
-         <xs:complexType name="tipo.vehiculo">
-            <xs:sequence>
-               <xs:element name="matricula" type="tipo.matricula" />
-               <xs:element name="color" type="xs:string" />
-               <xs:element name="marca" type="xs:string" />
-               <xs:element name="modelo" type="xs:string" />
-            </xs:sequence>
-            <xs:attribute name="tipo" type="tipo.tipo" />
-         </xs:complexType>
-       
-         <xs:complexType name="tipo.matricula">
-            <xs:simpleContent>
-               <xs:extension base="xs:string">
-                  <xs:attribute name="numeracion" type="tipo.numeracion" />
-               </xs:extension>
-            </xs:simpleContent>
-         </xs:complexType>
-       
-         <xs:simpleType name="tipo.numeracion">
-            <xs:restriction base="xs:string">
-               <xs:enumeration value="antigua"/>
-               <xs:enumeration value="nueva"/>
-            </xs:restriction>
-         </xs:simpleType>
-       
-         <xs:simpleType name="tipo.tipo">
-            <xs:restriction base="xs:string">
-               <xs:enumeration value="turismo" />
-               <xs:enumeration value="furgoneta" />
-               <xs:enumeration value="moto" />
-               <xs:enumeration value="camión" />
-               <xs:enumeration value="autobús" />
-            </xs:restriction>
-         </xs:simpleType>
-      </xs:schema>
+      </xs:element>
+    
+      <xs:complexType name="tipo.persona">
+         <xs:sequence>
+            <xs:element name="nombre" type="tipo.nombre" />
+            <xs:element name="apellidos" type="xs:string" />
+            <xs:element name="dni" type="xs:string" />
+            <xs:element name="flota" type="tipo.flota" minOccurs="0" maxOccurs="unbounded" />
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID" />
+      </xs:complexType>
+    
+      <xs:complexType name="tipo.nombre">
+         <xs:simpleContent>
+            <xs:extension base="xs:string">
+               <xs:attribute name="apodo" type="xs:string"/>
+            </xs:extension>
+         </xs:simpleContent>
+      </xs:complexType>
+    
+      <xs:complexType name="tipo.flota">
+         <xs:sequence>
+            <xs:element name="vehiculo" type="tipo.vehiculo" minOccurs="0" maxOccurs="unbounded" />
+         </xs:sequence>
+      </xs:complexType>
+    
+      <xs:complexType name="tipo.vehiculo">
+         <xs:sequence>
+            <xs:element name="matricula" type="tipo.matricula" />
+            <xs:element name="color" type="xs:string" />
+            <xs:element name="marca" type="xs:string" />
+            <xs:element name="modelo" type="xs:string" />
+         </xs:sequence>
+         <xs:attribute name="tipo" type="tipo.tipo" />
+      </xs:complexType>
+    
+      <xs:complexType name="tipo.matricula">
+         <xs:simpleContent>
+            <xs:extension base="xs:string">
+               <xs:attribute name="numeracion" type="tipo.numeracion" />
+            </xs:extension>
+         </xs:simpleContent>
+      </xs:complexType>
+    
+      <xs:simpleType name="tipo.numeracion">
+         <xs:restriction base="xs:string">
+            <xs:enumeration value="antigua"/>
+            <xs:enumeration value="nueva"/>
+         </xs:restriction>
+      </xs:simpleType>
+    
+      <xs:simpleType name="tipo.tipo">
+         <xs:restriction base="xs:string">
+            <xs:enumeration value="turismo" />
+            <xs:enumeration value="furgoneta" />
+            <xs:enumeration value="moto" />
+            <xs:enumeration value="camión" />
+            <xs:enumeration value="autobús" />
+         </xs:restriction>
+      </xs:simpleType>
+   </xs:schema>
 
 El documento resultante no sale más corto, ni siquiera hay menos etiquetas, pero
 las definiciones de cada elemento y de cada tipo están separadas, de modo que

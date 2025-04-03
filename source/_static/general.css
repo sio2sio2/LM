@@ -4,6 +4,10 @@
    padding: 2px 4px;
 }
 
+html[data-theme="dark"] .dfn {
+   color: black;
+}
+
 dl dd  p:first-child {
    margin-top: 0;
 }

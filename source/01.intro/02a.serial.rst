@@ -96,10 +96,10 @@ herramientas anterior, facilitamos un :download:`documento JSON
 <files/casilleros.json>` que enumera los profesores de un centro educativo con
 los casilleros que tienen asignados:
 
-.. dropdown:: JSON sobre casilleros
-
-   .. literalinclude:: files/casilleros.json
-      :language: json
+.. literalinclude:: files/casilleros.json
+   :language: json
+   :caption: JSON sobre casilleros
+   :class: toggle
 
 Las ideas que inspiran este documento son las siguientes\ [#]_:
 
@@ -332,12 +332,11 @@ Un ejemplo sencillo de este tipo de documentos es:
 o, si queremos uno más amplio, equivalente al :ref:`ejemplo introductorio
 para JSON <json-ejemplo-inicial>`:
 
-.. _yaml-ejemplo-inicial:
-
-.. dropdown:: YAML de casilleros
-
-   .. literalinclude:: files/casilleros.yaml
-      :language: yaml
+.. literalinclude:: files/casilleros.yaml
+   :language: yaml
+   :caption: YAML de casilleros
+   :name: yaml-ejemplo-inicial
+   :class: toggle
 
 Como en el caso de |JSON| nos resultará enormemente útil validadores:
 
@@ -919,15 +918,15 @@ Ejercicios resueltos
      en la que se mide. Por ejemplo, en alguna receta se necesitarán 200 gramos de
      tomate, pero en otra bastará con indicar dos piezas.
 
-   .. dropdown:: Solución propuesta JSON
+   .. literalinclude:: files/ejyaml1.recetas.json
+      :language: json
+      :class: toggle
+      :caption: Solución propuesta JSON
 
-      .. literalinclude:: files/ejyaml1.recetas.json
-         :language: json
-
-   .. dropdown:: Solución propuesta YAML
-
-      .. literalinclude:: files/ejyaml1.recetas.yaml
-         :language: yaml
+   .. literalinclude:: files/ejyaml1.recetas.yaml
+      :language: yaml
+      :class: toggle
+      :caption: Solución propuesta YAML
 
 #. Tomando como referencia el documento anterior, escriba otro que enumere la
    red de restaurantes de una cadena, de cada uno de los cuales se refiera:
@@ -938,15 +937,15 @@ Ejercicios resueltos
      ofrecen al público (tapa, media ración o ración). Por supuesto, varios
      restaurantes pueden ofrecer la misma receta.
 
-   .. dropdown:: Solución propuesta JSON
+   .. literalinclude:: files/ejyaml2.cadena.json
+      :language: json
+      :class: toggle
+      :caption: Solución propuesta JSON
 
-      .. literalinclude:: files/ejyaml2.cadena.json
-         :language: json
-
-   .. dropdown:: Solución propuesta YAML
-
-      .. literalinclude:: files/ejyaml2.cadena.yaml
-         :language: yaml
+   .. literalinclude:: files/ejyaml2.cadena.yaml
+      :language: yaml
+      :class: toggle
+      :caption: Solución propuesta YAML
 
 .. rubric:: Enlaces de interés
 

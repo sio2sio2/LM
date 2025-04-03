@@ -19,11 +19,11 @@ release = 'rolling'
 extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.mathjax',
-#    'sphinx.ext.githubpages',
     'sphinx.ext.extlinks',
     'sphinx.ext.intersphinx',
-    'sphinx_design',
-    'sphinx_multitoc_numbering'
+    'sphinx_multitoc_numbering',
+    'sphinx_copybutton',
+    'sphinx_togglebutton',
 ]
 
 templates_path = ['_templates']
@@ -36,11 +36,7 @@ todo_include_todos = True
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'cloud'
-
-html_theme_options = { "defaultcollapsed": True,
-                       "borderless_decor": False }
-#html_theme = 'piccolo_theme'
+html_theme = 'sphinx_book_theme'
 
 html_static_path = ['_static']
 html_logo = "_static/logo.png"

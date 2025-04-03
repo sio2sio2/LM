@@ -189,57 +189,57 @@ lo siguiente:
 
 #. Sustituya la unidad "cc" por "ml".
 
-   .. dropdown:: Solución propuesta
+   .. code-block:: xquery
+      :caption: Solución propuesta
+      :class: toggle
 
-      .. code-block:: xquery
-
-         (: También podría usarse un where para la condición :)
-         for $unidad in //@unidad[. = "cc"]
-         return
-            replace node $unidad with attribute {fn:name($unidad)} {"ml"}
+      (: También podría usarse un where para la condición :)
+      for $unidad in //@unidad[. = "cc"]
+      return
+         replace node $unidad with attribute {fn:name($unidad)} {"ml"}
       
 
 #. Cambie el nombre de "El tragón feliz" a "La cueva de Juanchu"
 
-   .. dropdown:: Solución propuesta
+   .. code-block:: xquery
+      :caption: Solución propuesta
+      :class: toggle
 
-      .. code-block:: xquery
-
-         replace node //restaurante/@nombre[. = "El tragón feliz"] with attribute nombre {"La cueva de Juanchu"}
+      replace node //restaurante/@nombre[. = "El tragón feliz"] with attribute nombre {"La cueva de Juanchu"}
 
 #. Añada a cada receta un atributo *ingredientes* cuyo valor sea el número de
    ingredientes que componen la receta.
 
-   .. dropdown:: Solución propuesta
+   .. code-block:: xquery
+      :caption: Solución propuesta
+      :class: toggle
 
-      .. code-block:: xquery
-
-         for $receta in //receta
-         return
-            insert node attribute ingredientes {count($receta/ingrediente)} into $receta
+      for $receta in //receta
+      return
+         insert node attribute ingredientes {count($receta/ingrediente)} into $receta
 
 #. Sume **5** a la cantidad de vinagre de todas las recetas.
 
-   .. dropdown:: Solución propuesta
+   .. code-block:: xquery
+      :caption: Solución propuesta
+      :class: toggle
 
-      .. code-block:: xquery
-
-         (: También podría usarse un where para la condición :)
-         for $vinagre in //ingrediente[@nombre = "vinagre"]
-         return
-            replace node $vinagre/@cantidad with attribute cantidad {$vinagre/@cantidad + 5}
+      (: También podría usarse un where para la condición :)
+      for $vinagre in //ingrediente[@nombre = "vinagre"]
+      return
+         replace node $vinagre/@cantidad with attribute cantidad {$vinagre/@cantidad + 5}
 
 #. Pase a mayúsculas los nombres de todos los municipios. En *XPath* 3 existe
    `fn:upper-case()
    <https://www.altova.com/training/xpath3/built-in-functions#functions-on-string-values->`_:
 
-   .. dropdown:: Solucion propuesta
+   .. code-block:: xquery
+      :caption: Solución propuesta
+      :class: toggle
 
-      .. code-block:: xquery
-
-         for $texto in //municipio/text()
-         return
-            replace node $texto with text {fn:upper-case($texto)}
+      for $texto in //municipio/text()
+      return
+         replace node $texto with text {fn:upper-case($texto)}
 
 #. Elimine las medias raciones de la carta de todos los restaurantes (y si el plato
    sólo se servía en ese formato, elimine el plato).
@@ -271,22 +271,22 @@ lo siguiente:
 
            ("a", "b", "c", "d")[. != "c"]
 
-   .. dropdown:: Solución propuesta
+   .. code-block:: xquery
+      :caption: Solución propuesta
+      :class: toggle
 
-      .. code-block:: xquery
-
-         (
-            for $plato in //plato
-            where $plato/@tipo = "media"
-            return
-               delete node $plato,
-            for $plato in //plato
-            let $tipo := $plato/@tipo
-            where contains($tipo, "media")
-            return
-               (: Separamos los componentes de la cadena, filtramos "media" y volvemos a unirlos :)
-               replace node $tipo with attribute tipo {fn:string-join(fn:tokenize($tipo)[. != "media"], " ")}
-         )
+      (
+         for $plato in //plato
+         where $plato/@tipo = "media"
+         return
+            delete node $plato,
+         for $plato in //plato
+         let $tipo := $plato/@tipo
+         where contains($tipo, "media")
+         return
+            (: Separamos los componentes de la cadena, filtramos "media" y volvemos a unirlos :)
+            replace node $tipo with attribute tipo {fn:string-join(fn:tokenize($tipo)[. != "media"], " ")}
+      )
 
       También podemos usar el :ref:`if de XPath <xpath2-const-if>` para evitar
       hacer dos estructuras |FLWOR|:

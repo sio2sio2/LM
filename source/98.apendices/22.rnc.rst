@@ -86,17 +86,17 @@ Ejemplo
 Si retomamos el :ref:`ejemplo sobre el claustro de profesores
 <xml-ejemplo>`\ [#]_:
 
-.. dropdown:: XML de casilleros.
-
-   .. literalinclude:: /01.intro/files/casilleros.xml
-      :language: xml
+.. literalinclude:: /01.intro/files/casilleros.xml
+   :caption: XML de casilleros
+   :class: toggle
+   :language: xml
 
 La definición mediante |RNC| podría ser la siguiente (buscando la mayor
 similitud sintáctica con |DTD|):
 
-.. dropdown:: Gramática con |RNC|
-
-   .. literalinclude:: files/casilleros.rnc
+.. literalinclude:: files/casilleros.rnc
+   :caption: Gramática con |RNC|
+   :class: toggle
 
 La sintaxis es bastante elocuente. Obsérvese cómo la cardinalidad la expresamos
 de la misma forma que en |DTD| y que hemos sido capaces de definir con bastante

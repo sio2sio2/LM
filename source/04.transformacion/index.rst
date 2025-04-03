@@ -1087,10 +1087,10 @@ Ejercicios resueltos
 Para ilustrar el uso de *XQuery* tomemos el :ref:`primer ejercicio XML resuelto
 sobre recetas <xml-resueltos>`:
 
-.. dropdown:: XML propuesto
-
-   .. literalinclude:: /01.intro/files/ejxml1.recetas.xml
-      :language: xml
+.. literalinclude:: /01.intro/files/ejxml1.recetas.xml
+   :language: xml
+   :caption: XML propuesto
+   :class: toggle
 
 
 a. Obtener un listado de texto ordenado alfabéticamente con las recetas de más
@@ -1110,18 +1110,18 @@ a. Obtener un listado de texto ordenado alfabéticamente con las recetas de más
 
    Este listado se puede obtener con el siguiente código:
 
-   .. dropdown:: XQuery propuesto
-
-      .. literalinclude:: files/recetas-txt.xq
-         :language: xquery
+   .. literalinclude:: files/recetas-txt.xq
+      :language: xquery
+      :caption: XQuery propuesto
+      :class: toggle
 
 #. Generar otro |XML| idéntico en que los atributos *nombre* y *cantidad* de
    cada ingrediente se conviertan en nodos elemento:
 
-   .. dropdown:: XQuery propuesto
-
-      .. literalinclude:: files/recetas-xml.xq
-         :language: xquery
+   .. literalinclude:: files/recetas-xml.xq
+      :language: xquery
+      :caption: XQuery propuesto
+      :class: toggle
 
 |XSLT|
 ******

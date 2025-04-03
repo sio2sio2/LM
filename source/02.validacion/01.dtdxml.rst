@@ -114,24 +114,25 @@ ello tomemos el :ref:`documento XML usado como ejemplo introductorio
 <xml-ejemplo>`, aunque con una ligera variación\ [#]_ (descárguelo de :download:`aquí
 <files/casilleros_v2.xml>`):
 
-.. dropdown:: XML de casilleros
-
-   .. literalinclude:: files/casilleros_v2.xml
-      :language: xml
+.. literalinclude:: files/casilleros_v2.xml
+   :caption: XML de casilleros
+   :class: toggle
+   :language: xml
 
 La definición de su gramática hecha en |DTD| es :download:`la siguiente
 <files/casilleros_v2.dtd>`:
 
-.. dropdown:: DTD de casilleros
+.. literalinclude:: files/casilleros_v2.dtd
+   :caption: DTD de casilleros
+   :class: toggle
 
-   .. literalinclude:: files/casilleros_v2.dtd
 
 Este |DTD|, a su vez, llama a otro que contiene exclusivamente :download:`las
 entidades que definen los departamentos <files/departamentos.ent>`\ [#]_:
 
-.. dropdown:: DTD de definición de entidades
-
-   .. literalinclude:: files/departamentos.ent
+.. literalinclude:: files/departamentos.ent
+   :caption: DTD de definición de entidades
+   :class: toggle
 
 .. _xml-valid:
 
@@ -513,17 +514,17 @@ entremezclan los elementos de los espacios de nombres, lo más fácil es escribi
 siempre el |XML| de la última forma que se propuso, o sea, cambiando el espacio
 de nombres predeterminado y definir :file:`casilleros.dtd` así:
 
-.. dropdown:: DTD de casilleros
-
-   .. literalinclude:: files/casilleros_ns.dtd
-      :emphasize-lines: 2, 22, 25-28
+.. literalinclude:: files/casilleros_ns.dtd
+   :caption: DTD de casilleros
+   :class: toggle
+   :emphasize-lines: 2, 22, 25-28
 
 y :file:`direccion.dtd` de este otro modo:
 
-.. dropdown:: DTD de direccion
-
-   .. literalinclude:: files/direccion_ns.dtd
-      :emphasize-lines: 2
+.. literalinclude:: files/direccion_ns.dtd
+   :caption: DTD de direccion
+   :class: toggle
+   :emphasize-lines: 2
 
 En cualquier caso, cuando hay espacios de nombres, lo más juicioso es evitar |DTD|.
 
@@ -535,17 +536,17 @@ Ejercicios resueltos
 #. Tomando el |XML| sobre recetas, :ref:`ya resuelto en la unidad anterior
    <xml-resueltos>`, escriba un |DTD| para validarlo.
 
-   .. dropdown:: DTD para el XML propuesto
-
-      .. literalinclude:: files/ejxml1.recetas.dtd
+   .. literalinclude:: files/ejxml1.recetas.dtd
+      :caption: DTD para el XML propuesto
+      :class: toggle
 
 #. Tomando el |XML| sobre una cadena de restaurantes :ref:`ya resuelto en el
    epígrafe anterior <xml-resueltos>`, escriba un |DTD| para validarlo. Procure
    reaprovechar el |DTD| del ejercicio anterior.
 
-   .. dropdown:: DTD para el XML propuesto
-
-      .. literalinclude:: files/ejxml2.cadena.dtd
+   .. literalinclude:: files/ejxml2.cadena.dtd
+      :caption: DTD para el XML propuesto
+      :class: toggle
 
 Conclusiones
 ************
@@ -598,10 +599,9 @@ y escriba para ellas la gramática |DTD|.
    :file:`casilleros.dtd` o incluso haberlas incluido como adición a la propia
    declaración del documento en el |XML|:
 
-   .. dropdown::  XML de casilleros con entidades empotradas
-
-      .. literalinclude:: files/casilleros_v1.xml
-         :language: xml
+   .. literalinclude:: files/casilleros_v1.xml
+      :caption: XML de casilleros con entidades empotradas
+      :language: xml
 
 .. [#] También soporta :ref:`Relax-NG Compact <rnc>` y :ref:`XML Schemas <xsd>`.
 

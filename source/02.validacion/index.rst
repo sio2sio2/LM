@@ -23,10 +23,10 @@ saber que el documento de ejemplo que ha escrito se ajusta a la gramática
 Por ejemplo, la solución |XML| del :ref:`primer ejercicio resuelto
 <xml-resueltos>` era esta:
 
-.. dropdown:: Primer ejercicio resuelto
-
-   .. literalinclude:: /01.intro/files/ejxml1.recetas.xml
-      :language: xml
+.. literalinclude:: /01.intro/files/ejxml1.recetas.xml
+   :caption: Primer ejercicio resuelto
+   :class: toggle
+   :language: xml
 
 Esto implica mucho: que la etiqueta del nodo raíz es :code:`<recetas>` y que
 no tiene ninguna propiedad, pero sí varios nodos  :code:`<receta>`  dentro, etc.

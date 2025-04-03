@@ -131,10 +131,10 @@ podrían devolver varios.
 Traigamos el ejemplo del claustro de profesores para ilustrar las rutas que
 expresemos a continuación:
 
-.. dropdown:: XML de casilleros
-
-   .. literalinclude:: ../02.validacion/files/casilleros_v2.xml
-      :language: xml
+.. literalinclude:: ../02.validacion/files/casilleros_v2.xml
+   :caption: XML de casilleros
+   :class: toggle
+   :language: xml
 
 En este caso, la expresión:
 
@@ -1819,172 +1819,174 @@ restaurantes <xml-resueltos>`, determine las expresiones *XPath* apropiadas para
 
 #. Obtener todas las recetas disponibles.
 
-   .. dropdown:: Solución...
+   .. code-block:: xquery
+      :caption: Solución...
+      :class: toggle
 
-      .. code-block:: xquery
-
-         //receta
+      //receta
 
 #. Obtener el nodo que representa la receta de nombre "ensalada".
 
-   .. dropdown:: Solución...
+   .. code-block:: xquery
+      :caption: Solución...
+      :class: toggle
 
-      .. code-block:: xquery
-
-         //receta[@nombre="ensalada"]
+      //receta[@nombre="ensalada"]
 
 #. Obtener la carta del restaurante de identificador "re01".
 
-   .. dropdown:: Solución...
+   .. code-block:: xquery
+      :caption: Solución...
+      :class: toggle
 
-      .. code-block:: xquery
-
-         /cadena/restaurante[@id="re01"]/carta
+      /cadena/restaurante[@id="re01"]/carta
 
 #. Obtener el código postal del restaurante "El tragón feliz"-
 
-   .. dropdown:: Solución...
+   .. code-block:: xquery
+      :caption: Solución...
+      :class: toggle
 
-      .. code-block:: xquery
-
-         /cadena/restaurante[@nombre="El dragon feliz"]/domicilio/cp
+      /cadena/restaurante[@nombre="El dragon feliz"]/domicilio/cp
 
 #. Contar las recetas de las que dispone la cadena.
 
-   .. dropdown:: Solución...
+   .. code-block:: xquery
+      :caption: Solución...
+      :class: toggle
 
-      .. code-block:: xquery
-
-         count(//receta)
+      count(//receta)
 
 #. Contar cuántos ingredientes necesita la receta de la *ensalada*.
 
-   .. dropdown:: Solución...
+   .. code-block:: xquery
+      :caption: Solución...
+      :class: toggle
 
-      .. code-block:: xquery
-
-         count(//receta[@nombre="ensalada"]/ingrediente)
+      count(//receta[@nombre="ensalada"]/ingrediente)
 
 #. Contar cuántos ingredientes de "ensalada" se deben medir en gramos.
 
-   .. dropdown:: Solución...
+   .. code-block:: xquery
+      :caption: Solución...
+      :class: toggle
 
-      .. code-block:: xquery
-
-         count(//receta[@nombre="ensalada"]/ingrediente[@unidad="gramo"])
+      count(//receta[@nombre="ensalada"]/ingrediente[@unidad="gramo"])
 
 #. Obtener la carta del restaurante "El tragón feliz".
 
-   .. dropdown:: Solución...
+   .. code-block:: xquery
+      :caption: Solución...
+      :class: toggle
 
-      .. code-block:: xquery
-
-         /cadena/restaurante[@nombre="El tragón feliz"]/carta
+      /cadena/restaurante[@nombre="El tragón feliz"]/carta
 
 #. Obtener el nombre de las recetas en las que se usa *lechuga*.
 
-   .. dropdown:: Solución...
+   .. code-block:: xquery
+      :caption: Solución...
+      :class: toggle
 
-      .. code-block:: xquery
-
-         //receta[ingrediente/@nombre = "lechuga"]/@nombre
+      //receta[ingrediente/@nombre = "lechuga"]/@nombre
 
 #. Obtener el nombre de las recetas en las que **no** se usa *lechuga*.
 
-   .. dropdown:: Solución...
+   .. code-block:: xquery
+      :caption: Solución...
+      :class: toggle
 
-      .. code-block:: xquery
-
-         //receta[not(ingrediente/@nombre = "lechuga")]/@nombre
+      //receta[not(ingrediente/@nombre = "lechuga")]/@nombre
 
 #. Obtener el identificador de los restaurantes en los que se sirven tapas.
 
-   .. dropdown:: Solución...
+   .. code-block:: xquery
+      :caption: Solución...
+      :class: toggle
 
-      .. code-block:: xquery
+      /cadena/restaurante[carta/plato/@tipo = "tapa" ]/@id
 
-         /cadena/restaurante[carta/plato/@tipo = "tapa" ]/@id
+   o mejor:
 
-      o mejor:
+   .. code-block:: xquery
+      :caption: Solución...
+      :class: toggle
 
-      .. code-block:: xquery
-
-         /cadena/restaurante[carta/plato[contains(@tipo, "tapa")]]/@id
+      /cadena/restaurante[carta/plato[contains(@tipo, "tapa")]]/@id
 
 #. Obtener el identificador de los restaurantes en los que **no** se sirven tapas.
 
-   .. dropdown:: Solución...
+   .. code-block:: xquery
+      :caption: Solución...
+      :class: toggle
 
-      .. code-block:: xquery
-
-         /cadena/restaurante[carta/plato[not(contains(@tipo, "tapa"))]]/@id
+      /cadena/restaurante[carta/plato[not(contains(@tipo, "tapa"))]]/@id
 
 #. Obtener el nombre de los restaurantes con más de 10 platos en la carta.
 
-   .. dropdown:: Solución...
+   .. code-block:: xquery
+      :caption: Solución...
+      :class: toggle
 
-      .. code-block:: xquery
-
-         /cadena/restaurante[count(carta/plato) > 10]/@nombre
+      /cadena/restaurante[count(carta/plato) > 10]/@nombre
 
 #. Obtener los nombres de las recetas que se sirven en "El tragón feliz".
 
-   .. dropdown:: Solución...
+   .. code-block:: xquery
+      :caption: Solución...
+      :class: toggle
 
-      .. code-block:: xquery
-
-         //receta[@id = /cadena/restaurante[@nombre="El tragón feliz"]/carta/plato/@ref]/@nombre
+      //receta[@id = /cadena/restaurante[@nombre="El tragón feliz"]/carta/plato/@ref]/@nombre
 
 #. Obtener el nombre de los restaurantes situados en la provincia de Huelva
    (hágalo a partir del código postal)
 
-   .. dropdown:: Solución...
+   .. code-block:: xquery
+      :caption: Solución...
+      :class: toggle
 
-      .. code-block:: xquery
-
-         /cadena/restaurante[substring(domicilio/cp, 1, 2) = "21"]/@nombre
+      /cadena/restaurante[substring(domicilio/cp, 1, 2) = "21"]/@nombre
 
 #. Obtener el nombre de las recetas que se sirven como tapa en algún restaurante.
 
-   .. dropdown:: Solución...
+   .. code-block:: xquery
+      :caption: Solución...
+      :class: toggle
 
-      .. code-block:: xquery
-
-         //receta[@id = /cadena/restaurante/carta/plato[contains(@tipo, "tapa")]/@ref]/@nombre
+      //receta[@id = /cadena/restaurante/carta/plato[contains(@tipo, "tapa")]/@ref]/@nombre
 
 #. Obtener el nombre de los restaurantes que sirven bocadillos de anchoa.
 
-   .. dropdown:: Solución...
+   .. code-block:: xquery
+      :caption: Solución...
+      :class: toggle
 
-      .. code-block:: xquery
-
-         /cadena/restaurante[carta/plato/@ref = //receta[@nombre="bocadillo de anchoas"]/@id]/@nombre
+      /cadena/restaurante[carta/plato/@ref = //receta[@nombre="bocadillo de anchoas"]/@id]/@nombre
 
 #. Contar los restaurantes que usan lechuga en su carta.
 
-   .. dropdown:: Solución...
+   .. code-block:: xquery
+      :caption: Solución...
+      :class: toggle
 
-      .. code-block:: xquery
-
-         count(/cadena/restaurante[carta/plato/@ref = //receta[ingrediente/@nombre = "lechuga"]/@id])
+      count(/cadena/restaurante[carta/plato/@ref = //receta[ingrediente/@nombre = "lechuga"]/@id])
 
 
 #. Contar los restaurantes que **no** usan lechuga en su carta.
 
-   .. dropdown:: Solución...
+   .. code-block:: xquery
+      :caption: Solución...
+      :class: toggle
 
-      .. code-block:: xquery
-
-         count(/cadena/restaurante[not(carta/plato/@ref = //receta[ingrediente/@nombre = "lechuga"]/@id)])
+      count(/cadena/restaurante[not(carta/plato/@ref = //receta[ingrediente/@nombre = "lechuga"]/@id)])
 
 #. ¿Qué receta requiere más aceite? Suponga que el aceite siempre se mide en las
    mismas unidades.
 
-   .. dropdown:: Solución...
+   .. code-block:: xquery
+      :caption: Solución...
+      :class: toggle
 
-      .. code-block:: xquery
-
-         //receta[not(ingrediente[@nombre = "aceite"]/@cantidad < //receta/ingrediente[@nombre = "aceite"]/@cantidad)]
+      //receta[not(ingrediente[@nombre = "aceite"]/@cantidad < //receta/ingrediente[@nombre = "aceite"]/@cantidad)]
 
 Ejercicios propuestos
 *********************

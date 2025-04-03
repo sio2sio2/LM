@@ -1,4 +1,5 @@
-sphinx==5.3
-sphinx-design
-cloud_sptheme
+sphinx
+sphinx-book-theme
+sphinx-copybutton
+sphinx-togglebutton
 sphinx-multitoc-numbering

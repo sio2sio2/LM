@@ -225,10 +225,10 @@ Cuando el nodo es una secuencia, no sólo pueden seleccionarse elementos por su
 posición, sino utilizar filtros para escoger aquellos nodos que cumplen una
 determinada condición. Tomemos el ejemplo de casilleros para ilustrarlo:
 
-.. dropdown:: JSON de casilleros
-
-   .. literalinclude:: /01.intro/files/casilleros.json
-      :language: json
+.. literalinclude:: /01.intro/files/casilleros.json
+   :caption: JSON de casilleros
+   :class: toggle
+   :language: json
 
 En este caso, puede interesarnos escoger sólo los profesores cuyo departamento
 sea "Matemáticas":
