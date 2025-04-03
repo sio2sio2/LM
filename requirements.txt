@@ -1,0 +1,4 @@
+sphinx==5.3
+sphinx-design
+cloud_sptheme
+sphinx-multitoc-numbering

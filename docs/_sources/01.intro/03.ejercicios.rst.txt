@@ -1,8 +1,0 @@
-Ejercicios propuestos
-=====================
-.. include:: /99.ejercicios/10.lenguajes.rst
-   :start-line: 4
-   :end-before: _ej-li-doc:
-
-.. include:: /99.ejercicios/10.lenguajes.rst
-   :start-after: _ej-li-doc:

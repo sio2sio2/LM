@@ -19,7 +19,7 @@ release = 'rolling'
 extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.mathjax',
-    'sphinx.ext.githubpages',
+#    'sphinx.ext.githubpages',
     'sphinx.ext.extlinks',
     'sphinx.ext.intersphinx',
     'sphinx_design',

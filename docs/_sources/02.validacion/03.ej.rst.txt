@@ -1,4 +1,0 @@
-Ejercicios propuestos
-=====================
-.. include:: /99.ejercicios/20.val.rst
-   :start-line: 4
