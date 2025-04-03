@@ -1,5 +1,5 @@
-|CSS|: Selectores
-=================
+Selectores
+==========
 .. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`
 
 #. Escriba el selector apropiado para las descripciones que se hacen a continuación:

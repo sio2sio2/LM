@@ -976,7 +976,7 @@ principio, no es visible.
 Ejercicios propuestos
 =====================
 
-.. include:: /99.ejercicios/61.html-basicos.rst
+.. include:: /99.ejercicios/60.html/05.basicos.rst
    :start-line: 3
 
 .. rubric:: Notas al pie

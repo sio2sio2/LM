@@ -387,7 +387,7 @@ existir:
 Ejercicios propuestos
 =====================
 
-.. include:: /99.ejercicios/62.html-tablas.rst
+.. include:: /99.ejercicios/60.html/10.tablas.rst
    :start-line: 3
 
 .. |details| replace:: :ref:`<details> <html-details>`

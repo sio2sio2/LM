@@ -1,0 +1,11 @@
+|CSS|
+======
+Ejercicios propuestos sobre |CSS|
+
+.. toctree:: 
+   :maxdepth: 1
+   :glob:
+
+   70.css/[0-9]*
+
+.. |CSS| replace:: :abbr:`CSS (Cascading Style Sheets)`

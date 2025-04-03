@@ -352,7 +352,7 @@ semánticamente el documento |HTML|.
 Ejercicios propuestos
 =====================
 
-.. include:: /99.ejercicios/63.html-struct.rst
+.. include:: /99.ejercicios/60.html/15.struct.rst
    :start-line: 3
 
 .. _aria-label: https://developer.mozilla.org/es/docs/Web/Accessibility/ARIA/Attributes/aria-label

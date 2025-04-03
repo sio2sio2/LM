@@ -418,7 +418,7 @@ Son aquellas que ofrecen metainformación sobre el contenido de la página.
 Ejercicios propuestos
 =====================
 
-.. include:: /99.ejercicios/60.html-head.rst
+.. include:: /99.ejercicios/60.html/01.head.rst
    :start-line: 3
    :end-line: 79
 

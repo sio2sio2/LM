@@ -1,5 +1,5 @@
-Javascript y |DOM|
-==================
+|DOM|
+=====
 
 #. Tome :download:`este primer documento HTML <files/ejJH01.html>` y mediante
    Javascript añada:
@@ -41,7 +41,7 @@ Javascript y |DOM|
 
    .. rst-class:: sol-oculta
 
-      :download:`Solución propuesta <soluciones/JS/DOM03-conmutar.js>`.
+      :download:`Solución propuesta <soluciones/DOM03-conmutar.js>`.
 
 #. Vuelva a resolver los ejercicios 3 y 6 de la :ref:`relación básica
    <ej-js-basicos>`, pero mediante una interfaz |HTML| para tomar datos y
@@ -76,7 +76,7 @@ Javascript y |DOM|
    
    .. rst-class:: sol-oculta
 
-      :download:`Solución propuesta <soluciones/JS/DOM07-formulario.js>`.
+      :download:`Solución propuesta <soluciones/DOM07-formulario.js>`.
 
 .. |AJAX| replace:: :abbr:`AJAX (Asynchronous JavaScript and XML)`
 .. |DOM| replace:: :abbr:`DOM (Document Object Model)`

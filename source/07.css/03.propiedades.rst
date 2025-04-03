@@ -569,7 +569,7 @@ Para aprender más posibilidades intente completar los 28 niveles de
 Ejercicios propuestos
 =====================
 
-.. include:: /99.ejercicios/71.reglas.rst
+.. include:: /99.ejercicios/70.css/05.reglas.rst
    :start-line: 4
    :end-line: 44
 

@@ -1,5 +1,5 @@
-Javascript: Sintaxis
-====================
+Sintaxis
+========
 
 .. _ej-js-basicos:
 

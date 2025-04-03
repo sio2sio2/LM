@@ -1151,7 +1151,7 @@ en la que está involucrado un formulario:
 Ejercicios propuestos
 =====================
 
-.. include:: /99.ejercicios/64.html-form.rst
+.. include:: /99.ejercicios/60.html/20.form.rst
    :start-line: 5
 
 .. rubric:: Notas al pie

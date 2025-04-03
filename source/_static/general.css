@@ -8,6 +8,14 @@ html[data-theme="dark"] .dfn {
    color: black;
 }
 
+hr {
+   border-top: 2px solid #000;
+}
+
+html[data-theme="dark"] hr {
+   border-top: 2px solid #FFF;
+}
+
 dl dd  p:first-child {
    margin-top: 0;
 }

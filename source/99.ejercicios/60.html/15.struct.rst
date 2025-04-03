@@ -1,5 +1,5 @@
-|HTML|: Estructura
-==================
+Estructura
+==========
 
 #. Tome la página sobre :ref:`elementos básicos <html-basicos>` y
    reproduzca hasta la exposición del elemento |a| (inclusive).
