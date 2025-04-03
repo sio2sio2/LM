@@ -1,7 +1,7 @@
 .. _ej-html-form:
 
-|HTML|: Formularios
-===================
+Formularios
+===========
 
 #. Escriba una página |HTML| que contenga un formulario
    con los siguientes campos agrupados en dos categorías:

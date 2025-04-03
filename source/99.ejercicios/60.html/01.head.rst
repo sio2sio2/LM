@@ -1,5 +1,5 @@
-|HTML|: Cabecera
-================
+Cabecera
+========
 
 .. Comprobar:
    https://www.ticarte.com/contenido/ejercicios-practicos-de-html5

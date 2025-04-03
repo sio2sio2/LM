@@ -1059,7 +1059,7 @@ elemento mismo.
 Ejercicios propuestos
 =====================
 
-.. include:: /99.ejercicios/70.selectores.rst
+.. include:: /99.ejercicios/70.css/01.selectores.rst
    :start-line: 4
 
 .. rubric:: Notas al pie

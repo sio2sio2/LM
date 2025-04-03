@@ -57,25 +57,20 @@ unidades con el de éstos.
    Pequeño bloque que sirve de introducción al módulo posterior de *Sistemas de
    gestión empresarial* (supuesto que se curse |DAM|).
 
-.. _lm-apendices:
-
-Apéndices
----------
+----
 
 .. toctree::
-   :maxdepth: 1
-   :glob:
+   :maxdepth: 2
 
-   98.apendices/[0-9]*
+   98.apendices/index
 
-Ejercicios
-----------
+----
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 3
    :glob:
 
-   99.ejercicios/[0-9]*
+   99.ejercicios/index
 
 Referencias rápidas
 -------------------

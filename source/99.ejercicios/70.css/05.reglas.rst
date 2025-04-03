@@ -1,5 +1,5 @@
-|CSS|: Reglas y maquetación
-===========================
+Reglas y maquetación
+====================
 
 #. Tome el :ref:`ejercicio de estructuración de HTML <ej-html-struct>` y
    escribas reglas |CSS| para lograr el siguiente aspecto:
