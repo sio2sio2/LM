@@ -1,91 +1,437 @@
 
 
 
-
-
 <!DOCTYPE html>
 
-<html lang="es">
+
+<html lang="es" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>6.3. Cabecera &#8212; documentación de Lenguajes de Marcas - rolling</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" href="../_static/general.css" type="text/css" />
     <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
-    
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/translations.js"></script>
-    <script src="../_static/design-tabs.js"></script>
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    
-    
-     
-        <script src="../_static/jquery.cookie.js"></script>
-    
-
-    
-     
-        <script src="../_static/cloud.base.js"></script>
-    
-
-    
-     
-        <script src="../_static/cloud.js"></script>
-    
-
+    <script src="../_static/documentation_options.js?v=461dccb6"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '06.html/03.head';</script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
     <link rel="next" title="6.4. Elementos básicos" href="04.basico.html" />
-    <link rel="prev" title="6.2. Generalidades" href="02.estructura.html" /> 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head><body>
-    <div class="relbar-top">
-        
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navegación</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="Índice General"
-             accesskey="I">índice</a></li>
-        <li class="right" >
-          <a href="04.basico.html" title="6.4. Elementos básicos"
-             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
-        <li class="right" >
-          <a href="02.estructura.html" title="6.2. Generalidades"
-             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+    <link rel="prev" title="6.2. Generalidades" href="02.estructura.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">6. </span><abbr title="HyperText Markup Language">HTML</abbr></a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">6.3. </span>Cabecera</a></li> 
-      </ul>
-    </div>
-    </div>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="documentación de Lenguajes de Marcas - rolling - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="documentación de Lenguajes de Marcas - rolling - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Búsqueda</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01.intro/index.html">1. Lenguajes para el intercambio de datos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01.intro/01.intro.html">1.1. Introducción</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../01.intro/02.sintaxis.html">1.2. Sintaxis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01.intro/02a.serial.html">1.2.1. Lenguajes de serialización de datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../01.intro/02b.marcas.html">1.2.2. Lenguajes de marcas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../01.intro/03.ejercicios.html">1.3. Ejercicios propuestos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02.validacion/index.html">2. Validación</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02.validacion/01.dtdxml.html">2.1. <abbr title="Document Type Definition">DTD</abbr></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.validacion/02.yaml.html">2.2. <abbr title="JavaScript Object Notation">JSON</abbr> Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.validacion/03.ej.html">2.3. Ejercicios propuestos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03.consulta/index.html">3. Consulta de datos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03.consulta/01.xpath.html">3.1. XPath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.consulta/02.jsonpath.html">3.2. <abbr title="JavaScript Object Notation">JSON</abbr>Path</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../04.transformacion/index.html">4. Transformación de datos</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05.almacenamiento/index.html">5. Almacenamiento</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05.almacenamiento/01.relacionales.html">5.1. Bases relacionales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.almacenamiento/02.nativas.html">5.2. Bases nativas</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">6. <abbr title="HyperText Markup Language">HTML</abbr></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01.intro.html">6.1. Introducción</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.estructura.html">6.2. Generalidades</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.3. Cabecera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.basico.html">6.4. Elementos básicos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.tablas.html">6.5. Tablas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07.struct.html">6.6. Estructura semántica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08.form.html">6.7. Formularios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="09.media.html">6.8. Empotrados</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../07.css/index.html">7. <abbr title="Cascading Style Sheets">CSS</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/01.general.html">7.1. Generalidades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/02.sintaxis.html">7.2. Sintaxis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/03.propiedades.html">7.3. Propiedades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/04.bootstrap.html">7.4. Bootstrap</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../08.js/index.html">8. Javascript</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../98.apendices/index.html">Apendices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../98.apendices/21.xsd.html">W3C <abbr title="eXtensible  Markup Language">XML</abbr> Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../98.apendices/22.rnc.html">Relax-NG Compact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../98.apendices/41.xslt.html"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../98.apendices/99.tools.html">Herramientas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../98.apendices/99.tools/01-xmlstarlet.html">XMLStarlet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../98.apendices/99.tools/05-xidel.html">Xidel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../98.apendices/99.tools/10-vscode.html">Visual Studio Code</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../99.ejercicios/index.html">Ejercicios</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/10.lenguajes.html">Lenguajes para el intercambio de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/20.val.html">Validación de documentos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/30.xpath.html"><em>XPath</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/40.xquery.html">XQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/41.xslt.html"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/50.basex.html">BaseX</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/60.html.html"><abbr title="HyperText Markup Language">HTML</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/01.head.html">Cabecera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/05.basicos.html">Básicos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/10.tablas.html">Tablas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/15.struct.html">Estructura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/20.form.html">Formularios</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/70.css.html"><abbr title="Cascading Style Sheets">CSS</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/70.css/01.selectores.html">Selectores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/70.css/05.reglas.html">Reglas y maquetación</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/80.js.html">Javascript</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/80.js/01.basico.html">Sintaxis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/80.js/05.dom.html"><abbr title="Document Object Model">DOM</abbr></a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/06.html/03.head.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Cabecera</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etiquetas-de-complemento">6.3.1. Etiquetas de complemento</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etiquetas-de-relacion">6.3.2. Etiquetas de relación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etiquetas-de-metadatos">6.3.3. Etiquetas de metadatos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios-propuestos">6.3.4. Ejercicios propuestos</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section id="cabecera">
-<span id="html-head"></span><h1><span class="section-number">6.3. </span>Cabecera<a class="headerlink" href="#cabecera" title="Enlace permanente a este encabezado">¶</a></h1>
+<span id="html-head"></span><h1><span class="section-number">6.3. </span>Cabecera<a class="headerlink" href="#cabecera" title="Link to this heading">#</a></h1>
 <p>La cabecera del documento <abbr title="HyperText Markup Language">HTML</abbr> es el contenido del elemento <code class="code docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code>
 e incluye información ajena al contenido estricto de la página <abbr title="HyperText Markup Language">HTML</abbr>.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>El orden de los elementos de la cabecera es indiferente.</p>
 </div>
-<span id="index-0"></span><table class="el-html docutils align-default" id="html-title">
+<div class="pst-scrollable-table-container"><span id="index-0"></span><table class="el-html table" id="html-title">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#html-title"><span class="std std-ref">&lt;title&gt;</span></a></p></td>
 <td><p>Define cuál es el título que el navegador mostrará en la
@@ -93,8 +439,9 @@ barra superior de la ventana.</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 <dl>
-<dt><strong>title</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title#technical_summary">title</a>)</dt><dd><p>Su único contenido posible es simple texto. Por ejemplo:</p>
+<dt><strong>title</strong> (<a class="extlink-devmoz reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title#technical_summary">title</a>)</dt><dd><p>Su único contenido posible es simple texto. Por ejemplo:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Página de prueba<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
 </pre></div>
 </div>
@@ -103,10 +450,10 @@ barra superior de la ventana.</p></td>
 </dl>
 <p>El resto de etiquetas las agruparemos en:</p>
 <section id="etiquetas-de-complemento">
-<span id="html-script"></span><span id="html-style"></span><h2><span class="section-number">6.3.1. </span>Etiquetas de complemento<a class="headerlink" href="#etiquetas-de-complemento" title="Enlace permanente a este encabezado">¶</a></h2>
+<span id="html-script"></span><span id="html-style"></span><h2><span class="section-number">6.3.1. </span>Etiquetas de complemento<a class="headerlink" href="#etiquetas-de-complemento" title="Link to this heading">#</a></h2>
 <p>Son aquellas que permiten indicar qué código <em>Javascript</em> o <abbr title="Cascading Style Sheets">CSS</abbr> complementa el
 contenido <abbr title="HyperText Markup Language">HTML</abbr> de la página.</p>
-<table class="el-html docutils align-default">
+<div class="pst-scrollable-table-container"><table class="el-html table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#html-style"><span class="std std-ref">&lt;style&gt;</span></a></p></td>
 <td><p>Permite declarar estilos <abbr title="Cascading Style Sheets">CSS</abbr> exclusivos para el documento</p></td>
@@ -116,8 +463,9 @@ contenido <abbr title="HyperText Markup Language">HTML</abbr> de la página.</p>
 </tr>
 </tbody>
 </table>
+</div>
 <dl id="index-1">
-<dt><strong>style</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style#technical_summary">style</a>)</dt><dd><p>Volveremos a esta etiqueta cuando tratemos <a class="reference internal" href="../07.css/01.general.html#css-decl"><span class="std std-ref">cómo declarar el CSS
+<dt><strong>style</strong> (<a class="extlink-devmoz reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style#technical_summary">style</a>)</dt><dd><p>Volveremos a esta etiqueta cuando tratemos <a class="reference internal" href="../07.css/01.general.html#css-decl"><span class="std std-ref">cómo declarar el CSS
 aplicable</span></a> a la página. Por ahora, bástenos con un ejemplo:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
 <span class="w">   </span><span class="nt">table</span><span class="o">,</span><span class="w"> </span><span class="nt">table</span><span class="w"> </span><span class="nt">th</span><span class="o">,</span><span class="w"> </span><span class="nt">table</span><span class="w"> </span><span class="nt">td</span><span class="w"> </span><span class="p">{</span>
@@ -139,7 +487,7 @@ para dar nombre al estilo.</p>
 </dd>
 </dl>
 <dl id="index-2">
-<dt><strong>script</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#technical_summary">script</a>)</dt><dd><p>Podemos usarla de dos formas. Como <code class="code docutils literal notranslate"><span class="pre">&lt;style&gt;</span></code>, escribiendo el código
+<dt><strong>script</strong> (<a class="extlink-devmoz reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#technical_summary">script</a>)</dt><dd><p>Podemos usarla de dos formas. Como <code class="code docutils literal notranslate"><span class="pre">&lt;style&gt;</span></code>, escribiendo el código
 <em>Javascript</em> dentro del propio documento:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="w">   </span><span class="nb">window</span><span class="p">.</span><span class="nx">onload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -215,9 +563,9 @@ ambos códigos son <a class="reference internal" href="../01.intro/02b.marcas.ht
 </div>
 </section>
 <section id="etiquetas-de-relacion">
-<h2><span class="section-number">6.3.2. </span>Etiquetas de relación<a class="headerlink" href="#etiquetas-de-relacion" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">6.3.2. </span>Etiquetas de relación<a class="headerlink" href="#etiquetas-de-relacion" title="Link to this heading">#</a></h2>
 <p>Son aquellas que permiten establecer relaciones con otros documentos.</p>
-<table class="el-html docutils align-default">
+<div class="pst-scrollable-table-container"><table class="el-html table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#html-base"><span class="std std-ref">&lt;base&gt;</span></a></p></td>
 <td><p>Establece la URL base para resolver rutas relativas</p></td>
@@ -227,8 +575,9 @@ ambos códigos son <a class="reference internal" href="../01.intro/02b.marcas.ht
 </tr>
 </tbody>
 </table>
+</div>
 <span id="index-3"></span><dl id="html-base">
-<dt><strong>base</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base#technical_summary">base</a>)</dt><dd><p><a class="reference internal" href="01.intro.html#html-url"><span class="std std-ref">Al hablar sobre hiperenlaces</span></a> se definió el <a class="reference internal" href="01.intro.html#html-abs-rel"><span class="std std-ref">concepto
+<dt><strong>base</strong> (<a class="extlink-devmoz reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base#technical_summary">base</a>)</dt><dd><p><a class="reference internal" href="01.intro.html#html-url"><span class="std std-ref">Al hablar sobre hiperenlaces</span></a> se definió el <a class="reference internal" href="01.intro.html#html-abs-rel"><span class="std std-ref">concepto
 de ruta relativa relativa</span></a> y cómo formar la ruta absoluta se
 concatenan la <abbr title="Uniform Resource Locator">URL</abbr> base y la ruta relativa relativa (a partir de ahora,
 <em>ruta relativa</em> a secas). Este elemento permite redefinir la <abbr title="Uniform Resource Locator">URL</abbr> base para
@@ -258,7 +607,7 @@ embargo, este elemento permite definir una <abbr title="Uniform Resource Locator
 </dd>
 </dl>
 <span id="index-4"></span><dl id="html-link">
-<dt><strong>link</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#technical_summary">link</a>)</dt><dd><p>Es el elemento que propiamente relaciona con documentos externos. Su uso es
+<dt><strong>link</strong> (<a class="extlink-devmoz reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#technical_summary">link</a>)</dt><dd><p>Es el elemento que propiamente relaciona con documentos externos. Su uso es
 variado, pero se basa fundamentalmente en dar valor a dos de sus atributos:
 <code class="code docutils literal notranslate"><span class="pre">rel</span></code> y <code class="code docutils literal notranslate"><span class="pre">href</span></code>.</p>
 <ul>
@@ -332,17 +681,18 @@ consulte <a class="reference external" href="https://developer.mozilla.org/en-US
 </dl>
 </section>
 <section id="etiquetas-de-metadatos">
-<h2><span class="section-number">6.3.3. </span>Etiquetas de metadatos<a class="headerlink" href="#etiquetas-de-metadatos" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">6.3.3. </span>Etiquetas de metadatos<a class="headerlink" href="#etiquetas-de-metadatos" title="Link to this heading">#</a></h2>
 <p>Son aquellas que ofrecen metainformación sobre el contenido de la página.</p>
-<table class="el-html docutils align-default">
+<div class="pst-scrollable-table-container"><table class="el-html table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#html-meta"><span class="std std-ref">&lt;meta&gt;</span></a></p></td>
 <td><p>Declara metadatos</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 <span id="index-5"></span><dl id="html-meta">
-<dt><strong>meta</strong> (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#technical_summary">meta</a>)</dt><dd><p>Los metadatos pueden definirse de muy diversos modos, aunque lo habitual
+<dt><strong>meta</strong> (<a class="extlink-devmoz reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#technical_summary">meta</a>)</dt><dd><p>Los metadatos pueden definirse de muy diversos modos, aunque lo habitual
 es que se distingan unos de otros a través del atributo <a class="reference external" href="https://html.spec.whatwg.org/#attr-meta-name">name</a>. Sin
 embargo, hay una excepción a ello muy importante: la definición de la
 codificación del documento:</p>
@@ -497,7 +847,7 @@ enlaces a la página:</p>
 </dl>
 </section>
 <section id="ejercicios-propuestos">
-<h2><span class="section-number">6.3.4. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">6.3.4. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Link to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Escriba el documento <abbr title="HyperText Markup Language">HTML</abbr> completo, aunque deje sin contenido el
@@ -560,101 +910,106 @@ desde <a class="reference external" href="https://www.facebook.com">Facebook</a>
 </section>
 
 
-            <div class="clearer"></div>
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/logo.png" alt="Logo"/>
-        </a></p><div class="sphinx-toc sphinxlocaltoc">
-    <h3><a href="../index.html">Page contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">6.3. Cabecera</a><ul>
-<li><a class="reference internal" href="#etiquetas-de-complemento">6.3.1. Etiquetas de complemento</a></li>
-<li><a class="reference internal" href="#etiquetas-de-relacion">6.3.2. Etiquetas de relación</a></li>
-<li><a class="reference internal" href="#etiquetas-de-metadatos">6.3.3. Etiquetas de metadatos</a></li>
-<li><a class="reference internal" href="#ejercicios-propuestos">6.3.4. Ejercicios propuestos</a></li>
-</ul>
-</li>
-</ul>
+                </article>
+              
 
-  </div>
-  <div class="sphinxprev">
-    <h4>Previous page</h4>
-    <p class="topless"><a href="02.estructura.html"
-                          title="Previous page">&larr; <span class="section-number">6.2. </span>Generalidades</a></p>
-  </div>
-  <div class="sphinxnext">
-    <h4>Next page</h4>
-    <p class="topless"><a href="04.basico.html"
-                          title="Next page">&rarr; <span class="section-number">6.4. </span>Elementos básicos</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>Esta página</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/06.html/03.head.rst.txt"
-            rel="nofollow">Mostrar el código</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Búsqueda rápida</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Ir a" />
-    </form>
-    </div>
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02.estructura.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title"><span class="section-number">6.2. </span>Generalidades</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="04.basico.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title"><span class="section-number">6.4. </span>Elementos básicos</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-    
-    
-        <div class="sidebar-toggle-group no-js">
+                </footer>
+              
+            </div>
             
-            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
-                 «
-                <span class="show-for-small">hide menu</span>
-                
-            </button>
-            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
-                
-                <span class="show-for-small">menu</span>
-                <span class="hide-for-small">sidebar</span>
-                 »
-            </button>
-        </div>
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etiquetas-de-complemento">6.3.1. Etiquetas de complemento</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etiquetas-de-relacion">6.3.2. Etiquetas de relación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etiquetas-de-metadatos">6.3.3. Etiquetas de metadatos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios-propuestos">6.3.4. Ejercicios propuestos</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
     
-      <div class="clearer"></div>
-    </div>
-    <div class="relbar-bottom">
+<p class="component-author">
+Por José Miguel Sánchez Alés
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
         
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navegación</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="Índice General"
-             >índice</a></li>
-        <li class="right" >
-          <a href="04.basico.html" title="6.4. Elementos básicos"
-             >siguiente</a> &nbsp; &nbsp;</li>
-        <li class="right" >
-          <a href="02.estructura.html" title="6.2. Generalidades"
-             >anterior</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
 
-          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">6. </span><abbr title="HyperText Markup Language">HTML</abbr></a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">6.3. </span>Cabecera</a></li> 
-      </ul>
+      </main>
     </div>
-    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <div class="footer" role="contentinfo">
-        &#169; Derechos de autor CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
-      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
-    </div>
-    <!-- cloud_sptheme 1.4 -->
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

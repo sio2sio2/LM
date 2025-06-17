@@ -1,84 +1,441 @@
 
 
 
-
-
 <!DOCTYPE html>
 
-<html lang="es">
+
+<html lang="es" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>3.1. XPath &#8212; documentación de Lenguajes de Marcas - rolling</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" href="../_static/general.css" type="text/css" />
     <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
-    
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/translations.js"></script>
-    <script src="../_static/design-tabs.js"></script>
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    
-    
-     
-        <script src="../_static/jquery.cookie.js"></script>
-    
-
-    
-     
-        <script src="../_static/cloud.base.js"></script>
-    
-
-    
-     
-        <script src="../_static/cloud.js"></script>
-    
-
+    <script src="../_static/documentation_options.js?v=461dccb6"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '03.consulta/01.xpath';</script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
     <link rel="next" title="3.2. JSONPath" href="02.jsonpath.html" />
-    <link rel="prev" title="3. Consulta de datos" href="index.html" /> 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head><body>
-    <div class="relbar-top">
-        
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navegación</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="Índice General"
-             accesskey="I">índice</a></li>
-        <li class="right" >
-          <a href="02.jsonpath.html" title="3.2. JSONPath"
-             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
-        <li class="right" >
-          <a href="index.html" title="3. Consulta de datos"
-             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+    <link rel="prev" title="3. Consulta de datos" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">3. </span>Consulta de datos</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3.1. </span>XPath</a></li> 
-      </ul>
-    </div>
-    </div>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="documentación de Lenguajes de Marcas - rolling - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="documentación de Lenguajes de Marcas - rolling - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Búsqueda</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01.intro/index.html">1. Lenguajes para el intercambio de datos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01.intro/01.intro.html">1.1. Introducción</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../01.intro/02.sintaxis.html">1.2. Sintaxis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01.intro/02a.serial.html">1.2.1. Lenguajes de serialización de datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../01.intro/02b.marcas.html">1.2.2. Lenguajes de marcas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../01.intro/03.ejercicios.html">1.3. Ejercicios propuestos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02.validacion/index.html">2. Validación</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02.validacion/01.dtdxml.html">2.1. <abbr title="Document Type Definition">DTD</abbr></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.validacion/02.yaml.html">2.2. <abbr title="JavaScript Object Notation">JSON</abbr> Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.validacion/03.ej.html">2.3. Ejercicios propuestos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">3. Consulta de datos</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.1. XPath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.jsonpath.html">3.2. <abbr title="JavaScript Object Notation">JSON</abbr>Path</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../04.transformacion/index.html">4. Transformación de datos</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05.almacenamiento/index.html">5. Almacenamiento</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05.almacenamiento/01.relacionales.html">5.1. Bases relacionales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.almacenamiento/02.nativas.html">5.2. Bases nativas</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06.html/index.html">6. <abbr title="HyperText Markup Language">HTML</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/01.intro.html">6.1. Introducción</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/02.estructura.html">6.2. Generalidades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/03.head.html">6.3. Cabecera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/04.basico.html">6.4. Elementos básicos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/05.tablas.html">6.5. Tablas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/07.struct.html">6.6. Estructura semántica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/08.form.html">6.7. Formularios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/09.media.html">6.8. Empotrados</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../07.css/index.html">7. <abbr title="Cascading Style Sheets">CSS</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/01.general.html">7.1. Generalidades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/02.sintaxis.html">7.2. Sintaxis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/03.propiedades.html">7.3. Propiedades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/04.bootstrap.html">7.4. Bootstrap</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../08.js/index.html">8. Javascript</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../98.apendices/index.html">Apendices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../98.apendices/21.xsd.html">W3C <abbr title="eXtensible  Markup Language">XML</abbr> Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../98.apendices/22.rnc.html">Relax-NG Compact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../98.apendices/41.xslt.html"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../98.apendices/99.tools.html">Herramientas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../98.apendices/99.tools/01-xmlstarlet.html">XMLStarlet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../98.apendices/99.tools/05-xidel.html">Xidel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../98.apendices/99.tools/10-vscode.html">Visual Studio Code</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../99.ejercicios/index.html">Ejercicios</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/10.lenguajes.html">Lenguajes para el intercambio de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/20.val.html">Validación de documentos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/30.xpath.html"><em>XPath</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/40.xquery.html">XQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/41.xslt.html"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/50.basex.html">BaseX</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/60.html.html"><abbr title="HyperText Markup Language">HTML</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/01.head.html">Cabecera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/05.basicos.html">Básicos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/10.tablas.html">Tablas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/15.struct.html">Estructura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/20.form.html">Formularios</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/70.css.html"><abbr title="Cascading Style Sheets">CSS</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/70.css/01.selectores.html">Selectores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/70.css/05.reglas.html">Reglas y maquetación</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/80.js.html">Javascript</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/80.js/01.basico.html">Sintaxis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/80.js/05.dom.html"><abbr title="Document Object Model">DOM</abbr></a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/03.consulta/01.xpath.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>XPath</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#procesadores">3.1.1. Procesadores</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sintaxis">3.1.2. Sintaxis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtros">3.1.2.1. Filtros</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejes">3.1.2.2. Ejes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predicados">3.1.2.3. Predicados</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#operadores">3.1.2.3.1. Operadores</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones">3.1.2.3.2. Funciones</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xpath-1-0">3.1.3. XPath 1.0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xpath-2-0-3-0">3.1.4. XPath 2.0/3.0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-resuelto">3.1.5. Ejercicio resuelto</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios-propuestos">3.1.6. Ejercicios propuestos</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section id="xpath">
-<span id="id1"></span><h1><span class="section-number">3.1. </span>XPath<a class="headerlink" href="#xpath" title="Enlace permanente a este encabezado">¶</a></h1>
+<span id="id1"></span><h1><span class="section-number">3.1. </span>XPath<a class="headerlink" href="#xpath" title="Link to this heading">#</a></h1>
 <p>En muchas de las operaciones que se hacen con un documento <abbr title="eXtensible  Markup Language">XML</abbr>, como extraer
 información o escribir reglas para su transformación es necesario referirse a
 nodos o conjuntos de nodos. <em class="dfn">XPath</em> es un lenguaje estándar para la
@@ -146,7 +503,7 @@ y para una comparación más sucinta <a class="reference external" href="https:/
 soporte) y expondremos luego cuáles son los cambios y ampliaciones que presenta
 <em>XPath</em> 2.0.</p>
 <section id="procesadores">
-<span id="xpath-procesadores"></span><h2><span class="section-number">3.1.1. </span>Procesadores<a class="headerlink" href="#procesadores" title="Enlace permanente a este encabezado">¶</a></h2>
+<span id="xpath-procesadores"></span><h2><span class="section-number">3.1.1. </span>Procesadores<a class="headerlink" href="#procesadores" title="Link to this heading">#</a></h2>
 <p>Como en unidades anteriores, antes de entrar en profundidad en el asunto, es
 conveniente conocer qué herramientas tenemos para procesar nuestras expresiones
 <em>Xpath</em> tenemos muchas alternativas. Hay muchas entre las que señalaremos:</p>
@@ -164,7 +521,7 @@ Podemos usarlo directamente o <a class="reference internal" href="../98.apendice
 </ul>
 </section>
 <section id="sintaxis">
-<h2><span class="section-number">3.1.2. </span>Sintaxis<a class="headerlink" href="#sintaxis" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">3.1.2. </span>Sintaxis<a class="headerlink" href="#sintaxis" title="Link to this heading">#</a></h2>
 <p>Una expresión <em>XPath</em> es, simplemente, una expresión evaluable que devuelve un
 resultado. Por lo general, dentro de esta expresión se refirieron nodos del <abbr title="eXtensible  Markup Language">XML</abbr>,
 pero no necesariamente. Ésta es una expresión <em>XPath</em> perfectamente válida:</p>
@@ -184,10 +541,9 @@ ruta de archivos, con la salvedad de que los directorios son únicos y no se
 podrían devolver varios.</p>
 <p>Traigamos el ejemplo del claustro de profesores para ilustrar las rutas que
 expresemos a continuación:</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">XML de casilleros</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-text">XML de casilleros</span><a class="headerlink" href="#id20" title="Link to this code">#</a></div>
+<div class="toggle highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="cp">&lt;!DOCTYPE claustro SYSTEM &quot;casilleros.dtd&quot;&gt;</span>
 
 <span class="nt">&lt;claustro</span><span class="w"> </span><span class="na">centro=</span><span class="s">&quot;IES Pepe Botella&quot;</span><span class="nt">&gt;</span>
@@ -253,7 +609,7 @@ expresemos a continuación:</p>
 </pre></div>
 </div>
 </div>
-</details><p>En este caso, la expresión:</p>
+<p>En este caso, la expresión:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span>
 </pre></div>
 </div>
@@ -342,7 +698,7 @@ los <em>atributos</em>, que son <em>nodos atributo</em>; los <em>comentarios</em
 comentario</em>; el texto, que son <em>nodos texto</em>, etc.</p>
 </div>
 <section id="filtros">
-<h3><span class="section-number">3.1.2.1. </span>Filtros<a class="headerlink" href="#filtros" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><span class="section-number">3.1.2.1. </span>Filtros<a class="headerlink" href="#filtros" title="Link to this heading">#</a></h3>
 <p>El <em class="dfn">filtro</em> es aquella parte de la ruta <em>XPath</em> que expresa qué nodo o nodos
 quieren referirse con tal ruta. Puede ser:</p>
 <dl id="xpath-qname">
@@ -542,14 +898,14 @@ unión de los nodos que seleccionan las distintas rutas. Para ello usa el
 profesores.</p>
 </section>
 <section id="ejes">
-<span id="xpath-eje"></span><h3><span class="section-number">3.1.2.2. </span>Ejes<a class="headerlink" href="#ejes" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="xpath-eje"></span><h3><span class="section-number">3.1.2.2. </span>Ejes<a class="headerlink" href="#ejes" title="Link to this heading">#</a></h3>
 <p>El <em class="dfn">eje</em> es la parte de la ruta <em>XPath</em> que determina el sentido que se
 tomará al interpretar la siguiente parte de la ruta. Recordemos que, si nos
 encontramos procesando un nodo y queremos referirnos a otro, podemos buscar
 entre sus descendientes, entre sus ascendientes, entre sus hermanos o entre sus
 atributos.</p>
-<table class="tb-eje docutils align-default" id="id20">
-<caption><span class="caption-text"><strong>Ejes en XPath</strong></span><a class="headerlink" href="#id20" title="Enlace permanente a esta tabla">¶</a></caption>
+<div class="pst-scrollable-table-container"><table class="tb-eje table" id="id21">
+<caption><span class="caption-text"><strong>Ejes en XPath</strong></span><a class="headerlink" href="#id21" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Sentido</p></th>
 <th class="head"><p>Nombre</p></th>
@@ -640,9 +996,10 @@ atributos.</p>
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 <section id="predicados">
-<h3><span class="section-number">3.1.2.3. </span>Predicados<a class="headerlink" href="#predicados" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><span class="section-number">3.1.2.3. </span>Predicados<a class="headerlink" href="#predicados" title="Link to this heading">#</a></h3>
 <p>El <em class="dfn">predicado</em> es la parte de la ruta que permite añadir condiciones al
 filtro al que acompaña y se escribe entre corchetes. Por ejemplo:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="na">@sexo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;hombre&#39;</span><span class="p">]</span>
@@ -685,10 +1042,10 @@ es una expresión <em>XPath</em> válida:</p>
 <p>Sin embargo, como habitualmente aparecen dentro de predicados las introduciremos
 como apartados dentro de este epígrafe.</p>
 <section id="operadores">
-<h4><span class="section-number">3.1.2.3.1. </span>Operadores<a class="headerlink" href="#operadores" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><span class="section-number">3.1.2.3.1. </span>Operadores<a class="headerlink" href="#operadores" title="Link to this heading">#</a></h4>
 <p>Dentro de los predicados pueden usarse los siguientes operadores:</p>
-<span id="xpath-op-arit"></span><table class="xpath-oper docutils align-default" id="id21">
-<caption><span class="caption-text"><strong>Operadores aritméticos</strong></span><a class="headerlink" href="#id21" title="Enlace permanente a esta tabla">¶</a></caption>
+<div class="pst-scrollable-table-container"><span id="xpath-op-arit"></span><table class="xpath-oper table" id="id22">
+<caption><span class="caption-text"><strong>Operadores aritméticos</strong></span><a class="headerlink" href="#id22" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operador</p></th>
 <th class="head"><p>Significado</p></th>
@@ -712,8 +1069,9 @@ como apartados dentro de este epígrafe.</p>
 </tr>
 </tbody>
 </table>
-<span id="xpath-op-comp"></span><table class="xpath-oper docutils align-default" id="id22">
-<caption><span class="caption-text"><strong>Operadores de comparación</strong></span><a class="headerlink" href="#id22" title="Enlace permanente a esta tabla">¶</a></caption>
+</div>
+<div class="pst-scrollable-table-container"><span id="xpath-op-comp"></span><table class="xpath-oper table" id="id23">
+<caption><span class="caption-text"><strong>Operadores de comparación</strong></span><a class="headerlink" href="#id23" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operador</p></th>
 <th class="head"><p>Significado</p></th>
@@ -740,8 +1098,9 @@ como apartados dentro de este epígrafe.</p>
 </tr>
 </tbody>
 </table>
-<span id="xpath-op-log"></span><table class="xpath-oper docutils align-default" id="id23">
-<caption><span class="caption-text"><strong>Operadores lógicos</strong></span><a class="headerlink" href="#id23" title="Enlace permanente a esta tabla">¶</a></caption>
+</div>
+<div class="pst-scrollable-table-container"><span id="xpath-op-log"></span><table class="xpath-oper table" id="id24">
+<caption><span class="caption-text"><strong>Operadores lógicos</strong></span><a class="headerlink" href="#id24" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operador</p></th>
 <th class="head"><p>Significado</p></th>
@@ -759,6 +1118,7 @@ como apartados dentro de este epígrafe.</p>
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>Ejemplos</strong>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">profesor</span><span class="p">[</span><span class="nd">@sexo</span> <span class="o">=</span> <span class="s1">&#39;hombre&#39;</span><span class="p">]</span>
 <span class="o">//</span><span class="n">profesor</span><span class="p">[</span><span class="n">nombre</span> <span class="o">!=</span> <span class="s1">&#39;José&#39;</span><span class="p">]</span>
@@ -776,7 +1136,7 @@ ambos predicados. Por tanto, el último ejemplo es equivalente a:</p>
 </div>
 </section>
 <section id="funciones">
-<h4><span class="section-number">3.1.2.3.2. </span>Funciones<a class="headerlink" href="#funciones" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><span class="section-number">3.1.2.3.2. </span>Funciones<a class="headerlink" href="#funciones" title="Link to this heading">#</a></h4>
 <p>Junto a nodos y operadores, en los predicados<a class="footnote-reference brackets" href="#id13" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> también es posible usar
 funciones. En el sitio para desarrolladores de <strong class="program">mozilla</strong> puede
 consultarse <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/XPath/Functions">una relación completa de funciones para XPath 1.0</a>, de las cuales
@@ -838,7 +1198,7 @@ números.</p>
 </section>
 </section>
 <section id="xpath-1-0">
-<h2><span class="section-number">3.1.3. </span>XPath 1.0<a class="headerlink" href="#xpath-1-0" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">3.1.3. </span>XPath 1.0<a class="headerlink" href="#xpath-1-0" title="Link to this heading">#</a></h2>
 <p>Los aspectos introducidos hasta ahora sobre <em>XPath</em> son generales e
 independientes de qué versión utilicemos. Han sido expuestos de forma tan
 general que pecan (a sabiendas) de superficialidad y dejan aún muchos aspectos
@@ -1068,7 +1428,7 @@ profesor es «Pepe».</p>
 </dl>
 </section>
 <section id="xpath-2-0-3-0">
-<h2><span class="section-number">3.1.4. </span>XPath 2.0/3.0<a class="headerlink" href="#xpath-2-0-3-0" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">3.1.4. </span>XPath 2.0/3.0<a class="headerlink" href="#xpath-2-0-3-0" title="Link to this heading">#</a></h2>
 <p>La versión 2.0 del lenguaje supuso un gran cambio hasta el punto de que, aunque
 procuró mantenerse cierta compatibilidad con la primera versión, no todas las
 expresiones se evalúan del mismo modo. Además, la especificación permite que los
@@ -1278,19 +1638,19 @@ nombre del nodo. Por tanto, es verdadera esta expresión:</p>
 </div>
 <p>Como segundo argumento de <code class="docutils literal notranslate"><span class="pre">element()</span></code>, además, se puede indicar el tipo
 del contenido, por lo que también podríamos hacer:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>/claustro/profesor[1]/nombre instance of element(nombre, xs:string)
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]/</span><span class="nt">nombre</span><span class="w"> </span><span class="k">instance</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nt">element</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="err"> xs:string</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>si existiera una gramática con la que el procesador hubiera validado el
 documento. En ausencia de ésta, sería cierto:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>/claustro/profesor[1]/nombre instance of element(nombre, xs:untypedAtomic)
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]/</span><span class="nt">nombre</span><span class="w"> </span><span class="k">instance</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nt">element</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="err"> xs:untypedAtomic</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>ya que el contenido del elemento <em>nombre</em> es un valor atómico. Para
 documentos no validados el tipo de todos los elementos (incluido el de
 aquellos que contienen a su vez elementos y, por tanto, su contenido no es
 un valor atómico) es <code class="docutils literal notranslate"><span class="pre">xs:untyped</span></code>:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>/claustro/profesor[1] instance of element(profesor, xs:untyped)
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="k">instance</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nt">element</span><span class="p">(</span><span class="n">profesor</span><span class="p">,</span><span class="err"> xs:untyped</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Cuando se pregunta sobre secuencias de ítems, es posible usar la
@@ -1444,8 +1804,8 @@ componentes de la serie. Por ejemplo, ante <code class="code docutils literal no
 </li>
 </ul>
 <p>Además de estos operadores hay definidos unos nuevos:</p>
-<table class="xpath-oper docutils align-default" id="id24">
-<caption><span class="caption-text"><strong>Nuevos operadores de comparación</strong></span><a class="headerlink" href="#id24" title="Enlace permanente a esta tabla">¶</a></caption>
+<div class="pst-scrollable-table-container"><table class="xpath-oper table" id="id25">
+<caption><span class="caption-text"><strong>Nuevos operadores de comparación</strong></span><a class="headerlink" href="#id25" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Operador</p></th>
 <th class="head"><p>Significado</p></th>
@@ -1466,6 +1826,7 @@ componentes de la serie. Por ejemplo, ante <code class="code docutils literal no
 </tr>
 </tbody>
 </table>
+</div>
 <p>La diferencia con los anteriores es que éstos sólo permiten las
 comparaciones uno a uno, por lo que si alguno de los operandos es una
 secuencia de longitud distinta a uno, genera un error.</p>
@@ -1576,7 +1937,7 @@ que nuestra intención es hacer un <a class="reference external" href="https://e
 </div>
 <p>Pues bien, gracias al operador flecha, podemos pasarle el argumento a la
 función de este modo:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $c in fn:string-to-codepoints(&#39;hola&#39;) return $c + 3 =&gt; fn:codepoints-to-string()
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">c</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nf">fn:string-to-codepoints</span><span class="p">(</span><span class="s1">&#39;hola&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nv">$</span><span class="n">c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">=</span><span class="err">&gt;</span><span class="w"> </span><span class="nf">fn:codepoints-to-string</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1652,7 +2013,7 @@ extraño (como la Ø danesa). Tenga presente, no obstante, que
 en <em>XPath</em> deberemos escribir el código hexadecimal como <code class="docutils literal notranslate"><span class="pre">0xd8</span></code>
 o directamente el código decimal equivalente (<code class="docutils literal notranslate"><span class="pre">216</span></code>). Por
 tanto:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>fn:string-to-codepoints(0xd8) || &quot;rsted&quot;
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">fn:string-to-codepoints</span><span class="p">(</span><span class="mi">0</span><span class="err">xd8</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;rsted&quot;</span>
 </pre></div>
 </div>
 <p>devolverá el apellido del padre del electromagnetismo (Ørsted).</p>
@@ -1772,200 +2133,183 @@ que trata sobre <em>XPath</em> y que ofrece de balde la editorial O’Reilly.</p
 </div>
 </section>
 <section id="ejercicio-resuelto">
-<h2><span class="section-number">3.1.5. </span>Ejercicio resuelto<a class="headerlink" href="#ejercicio-resuelto" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">3.1.5. </span>Ejercicio resuelto<a class="headerlink" href="#ejercicio-resuelto" title="Link to this heading">#</a></h2>
 <p>Dado el <abbr title="eXtensible  Markup Language">XML</abbr> <a class="reference internal" href="../01.intro/02b.marcas.html#xml-resueltos"><span class="std std-ref">propuesto para representar el negocio de una cadena de
 restaurantes</span></a>, determine las expresiones <em>XPath</em> apropiadas para:</p>
 <ol class="arabic">
 <li><p>Obtener todas las recetas disponibles.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solución…</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span>
+<div class="literal-block-wrapper docutils container" id="id26">
+<div class="code-block-caption"><span class="caption-text">Solución…</span><a class="headerlink" href="#id26" title="Link to this code">#</a></div>
+<div class="toggle highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span>
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 <li><p>Obtener el nodo que representa la receta de nombre «ensalada».</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solución…</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;ensalada&quot;</span><span class="p">]</span>
+<div class="literal-block-wrapper docutils container" id="id27">
+<div class="code-block-caption"><span class="caption-text">Solución…</span><a class="headerlink" href="#id27" title="Link to this code">#</a></div>
+<div class="toggle highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;ensalada&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 <li><p>Obtener la carta del restaurante de identificador «re01».</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solución…</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="na">@id</span><span class="o">=</span><span class="s2">&quot;re01&quot;</span><span class="p">]/</span><span class="nt">carta</span>
+<div class="literal-block-wrapper docutils container" id="id28">
+<div class="code-block-caption"><span class="caption-text">Solución…</span><a class="headerlink" href="#id28" title="Link to this code">#</a></div>
+<div class="toggle highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="na">@id</span><span class="o">=</span><span class="s2">&quot;re01&quot;</span><span class="p">]/</span><span class="nt">carta</span>
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 <li><p>Obtener el código postal del restaurante «El tragón feliz»-</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solución…</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;El dragon feliz&quot;</span><span class="p">]/</span><span class="nt">domicilio</span><span class="p">/</span><span class="nt">cp</span>
+<div class="literal-block-wrapper docutils container" id="id29">
+<div class="code-block-caption"><span class="caption-text">Solución…</span><a class="headerlink" href="#id29" title="Link to this code">#</a></div>
+<div class="toggle highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;El dragon feliz&quot;</span><span class="p">]/</span><span class="nt">domicilio</span><span class="p">/</span><span class="nt">cp</span>
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 <li><p>Contar las recetas de las que dispone la cadena.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solución…</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">receta</span><span class="p">)</span>
+<div class="literal-block-wrapper docutils container" id="id30">
+<div class="code-block-caption"><span class="caption-text">Solución…</span><a class="headerlink" href="#id30" title="Link to this code">#</a></div>
+<div class="toggle highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">receta</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 <li><p>Contar cuántos ingredientes necesita la receta de la <em>ensalada</em>.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solución…</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">receta</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;ensalada&quot;</span><span class="p">]/</span><span class="nt">ingrediente</span><span class="p">)</span>
+<div class="literal-block-wrapper docutils container" id="id31">
+<div class="code-block-caption"><span class="caption-text">Solución…</span><a class="headerlink" href="#id31" title="Link to this code">#</a></div>
+<div class="toggle highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">receta</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;ensalada&quot;</span><span class="p">]/</span><span class="nt">ingrediente</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 <li><p>Contar cuántos ingredientes de «ensalada» se deben medir en gramos.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solución…</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">receta</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;ensalada&quot;</span><span class="p">]/</span><span class="nt">ingrediente</span><span class="p">[</span><span class="na">@unidad</span><span class="o">=</span><span class="s2">&quot;gramo&quot;</span><span class="p">])</span>
+<div class="literal-block-wrapper docutils container" id="id32">
+<div class="code-block-caption"><span class="caption-text">Solución…</span><a class="headerlink" href="#id32" title="Link to this code">#</a></div>
+<div class="toggle highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(//</span><span class="nt">receta</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;ensalada&quot;</span><span class="p">]/</span><span class="nt">ingrediente</span><span class="p">[</span><span class="na">@unidad</span><span class="o">=</span><span class="s2">&quot;gramo&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 <li><p>Obtener la carta del restaurante «El tragón feliz».</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solución…</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;El tragón feliz&quot;</span><span class="p">]/</span><span class="nt">carta</span>
+<div class="literal-block-wrapper docutils container" id="id33">
+<div class="code-block-caption"><span class="caption-text">Solución…</span><a class="headerlink" href="#id33" title="Link to this code">#</a></div>
+<div class="toggle highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;El tragón feliz&quot;</span><span class="p">]/</span><span class="nt">carta</span>
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 <li><p>Obtener el nombre de las recetas en las que se usa <em>lechuga</em>.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solución…</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="nt">ingrediente</span><span class="p">/</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lechuga&quot;</span><span class="p">]/</span><span class="na">@nombre</span>
+<div class="literal-block-wrapper docutils container" id="id34">
+<div class="code-block-caption"><span class="caption-text">Solución…</span><a class="headerlink" href="#id34" title="Link to this code">#</a></div>
+<div class="toggle highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="nt">ingrediente</span><span class="p">/</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lechuga&quot;</span><span class="p">]/</span><span class="na">@nombre</span>
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 <li><p>Obtener el nombre de las recetas en las que <strong>no</strong> se usa <em>lechuga</em>.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solución…</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="nt">ingrediente</span><span class="p">/</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lechuga&quot;</span><span class="p">)]/</span><span class="na">@nombre</span>
+<div class="literal-block-wrapper docutils container" id="id35">
+<div class="code-block-caption"><span class="caption-text">Solución…</span><a class="headerlink" href="#id35" title="Link to this code">#</a></div>
+<div class="toggle highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="nt">ingrediente</span><span class="p">/</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lechuga&quot;</span><span class="p">)]/</span><span class="na">@nombre</span>
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 <li><p>Obtener el identificador de los restaurantes en los que se sirven tapas.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solución…</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">/</span><span class="na">@tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;tapa&quot;</span><span class="w"> </span><span class="p">]/</span><span class="na">@id</span>
-</pre></div>
-</div>
-<p class="sd-card-text">o mejor:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">[</span><span class="nf">contains</span><span class="p">(</span><span class="na">@tipo</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tapa&quot;</span><span class="p">)]]/</span><span class="na">@id</span>
+<div class="literal-block-wrapper docutils container" id="id36">
+<div class="code-block-caption"><span class="caption-text">Solución…</span><a class="headerlink" href="#id36" title="Link to this code">#</a></div>
+<div class="toggle highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">/</span><span class="na">@tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;tapa&quot;</span><span class="w"> </span><span class="p">]/</span><span class="na">@id</span>
 </pre></div>
 </div>
 </div>
-</details></li>
+<p>o mejor:</p>
+<div class="literal-block-wrapper docutils container" id="id37">
+<div class="code-block-caption"><span class="caption-text">Solución…</span><a class="headerlink" href="#id37" title="Link to this code">#</a></div>
+<div class="toggle highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">[</span><span class="nf">contains</span><span class="p">(</span><span class="na">@tipo</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tapa&quot;</span><span class="p">)]]/</span><span class="na">@id</span>
+</pre></div>
+</div>
+</div>
+</li>
 <li><p>Obtener el identificador de los restaurantes en los que <strong>no</strong> se sirven tapas.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solución…</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="nf">contains</span><span class="p">(</span><span class="na">@tipo</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tapa&quot;</span><span class="p">))]]/</span><span class="na">@id</span>
+<div class="literal-block-wrapper docutils container" id="id38">
+<div class="code-block-caption"><span class="caption-text">Solución…</span><a class="headerlink" href="#id38" title="Link to this code">#</a></div>
+<div class="toggle highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="nf">contains</span><span class="p">(</span><span class="na">@tipo</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tapa&quot;</span><span class="p">))]]/</span><span class="na">@id</span>
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 <li><p>Obtener el nombre de los restaurantes con más de 10 platos en la carta.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solución…</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nf">count</span><span class="p">(</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">]/</span><span class="na">@nombre</span>
+<div class="literal-block-wrapper docutils container" id="id39">
+<div class="code-block-caption"><span class="caption-text">Solución…</span><a class="headerlink" href="#id39" title="Link to this code">#</a></div>
+<div class="toggle highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nf">count</span><span class="p">(</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">]/</span><span class="na">@nombre</span>
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 <li><p>Obtener los nombres de las recetas que se sirven en «El tragón feliz».</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solución…</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="na">@id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;El tragón feliz&quot;</span><span class="p">]/</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">/</span><span class="na">@ref</span><span class="p">]/</span><span class="na">@nombre</span>
+<div class="literal-block-wrapper docutils container" id="id40">
+<div class="code-block-caption"><span class="caption-text">Solución…</span><a class="headerlink" href="#id40" title="Link to this code">#</a></div>
+<div class="toggle highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="na">@id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;El tragón feliz&quot;</span><span class="p">]/</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">/</span><span class="na">@ref</span><span class="p">]/</span><span class="na">@nombre</span>
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 <li><p>Obtener el nombre de los restaurantes situados en la provincia de Huelva
 (hágalo a partir del código postal)</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solución…</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nf">substring</span><span class="p">(</span><span class="nt">domicilio</span><span class="p">/</span><span class="nt">cp</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;21&quot;</span><span class="p">]/</span><span class="na">@nombre</span>
+<div class="literal-block-wrapper docutils container" id="id41">
+<div class="code-block-caption"><span class="caption-text">Solución…</span><a class="headerlink" href="#id41" title="Link to this code">#</a></div>
+<div class="toggle highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nf">substring</span><span class="p">(</span><span class="nt">domicilio</span><span class="p">/</span><span class="nt">cp</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;21&quot;</span><span class="p">]/</span><span class="na">@nombre</span>
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 <li><p>Obtener el nombre de las recetas que se sirven como tapa en algún restaurante.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solución…</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="na">@id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">/</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">[</span><span class="nf">contains</span><span class="p">(</span><span class="na">@tipo</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tapa&quot;</span><span class="p">)]/</span><span class="na">@ref</span><span class="p">]/</span><span class="na">@nombre</span>
+<div class="literal-block-wrapper docutils container" id="id42">
+<div class="code-block-caption"><span class="caption-text">Solución…</span><a class="headerlink" href="#id42" title="Link to this code">#</a></div>
+<div class="toggle highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="na">@id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">/</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">[</span><span class="nf">contains</span><span class="p">(</span><span class="na">@tipo</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tapa&quot;</span><span class="p">)]/</span><span class="na">@ref</span><span class="p">]/</span><span class="na">@nombre</span>
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 <li><p>Obtener el nombre de los restaurantes que sirven bocadillos de anchoa.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solución…</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">/</span><span class="na">@ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;bocadillo de anchoas&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">]/</span><span class="na">@nombre</span>
+<div class="literal-block-wrapper docutils container" id="id43">
+<div class="code-block-caption"><span class="caption-text">Solución…</span><a class="headerlink" href="#id43" title="Link to this code">#</a></div>
+<div class="toggle highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">/</span><span class="na">@ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="na">@nombre</span><span class="o">=</span><span class="s2">&quot;bocadillo de anchoas&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">]/</span><span class="na">@nombre</span>
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 <li><p>Contar los restaurantes que usan lechuga en su carta.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solución…</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">/</span><span class="na">@ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="nt">ingrediente</span><span class="p">/</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lechuga&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">])</span>
+<div class="literal-block-wrapper docutils container" id="id44">
+<div class="code-block-caption"><span class="caption-text">Solución…</span><a class="headerlink" href="#id44" title="Link to this code">#</a></div>
+<div class="toggle highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">/</span><span class="na">@ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="nt">ingrediente</span><span class="p">/</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lechuga&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 <li><p>Contar los restaurantes que <strong>no</strong> usan lechuga en su carta.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solución…</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">/</span><span class="na">@ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="nt">ingrediente</span><span class="p">/</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lechuga&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">)])</span>
+<div class="literal-block-wrapper docutils container" id="id45">
+<div class="code-block-caption"><span class="caption-text">Solución…</span><a class="headerlink" href="#id45" title="Link to this code">#</a></div>
+<div class="toggle highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">count</span><span class="p">(/</span><span class="nt">cadena</span><span class="p">/</span><span class="nt">restaurante</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="nt">carta</span><span class="p">/</span><span class="nt">plato</span><span class="p">/</span><span class="na">@ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="nt">ingrediente</span><span class="p">/</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;lechuga&quot;</span><span class="p">]/</span><span class="na">@id</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 <li><p>¿Qué receta requiere más aceite? Suponga que el aceite siempre se mide en las
 mismas unidades.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solución…</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="nt">ingrediente</span><span class="p">[</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aceite&quot;</span><span class="p">]/</span><span class="na">@cantidad</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">//</span><span class="nt">receta</span><span class="p">/</span><span class="nt">ingrediente</span><span class="p">[</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aceite&quot;</span><span class="p">]/</span><span class="na">@cantidad</span><span class="p">)]</span>
+<div class="literal-block-wrapper docutils container" id="id46">
+<div class="code-block-caption"><span class="caption-text">Solución…</span><a class="headerlink" href="#id46" title="Link to this code">#</a></div>
+<div class="toggle highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">receta</span><span class="p">[</span><span class="nf">not</span><span class="p">(</span><span class="nt">ingrediente</span><span class="p">[</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aceite&quot;</span><span class="p">]/</span><span class="na">@cantidad</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">//</span><span class="nt">receta</span><span class="p">/</span><span class="nt">ingrediente</span><span class="p">[</span><span class="na">@nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aceite&quot;</span><span class="p">]/</span><span class="na">@cantidad</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 </ol>
 </section>
 <section id="ejercicios-propuestos">
-<h2><span class="section-number">3.1.6. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">3.1.6. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Link to this heading">#</a></h2>
 <ol class="arabic">
 <li><p>Dada la solución propuesta para almacenar la información sobre las facturas de una empresa, determinar la expresión <em>XPath</em> que selecciona:</p>
 <ol class="arabic simple">
@@ -1980,7 +2324,7 @@ mismas unidades.</p>
 </pre></div>
 </div>
 <p class="sol-oculta"><em>XPath</em> 2/3:</p>
-<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>//factura[fn:year-from-date(@fecha) &lt; fn:current-date  =&gt; fn:year-from-date()]
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">factura</span><span class="p">[</span><span class="nf">fn:year-from-date</span><span class="p">(</span><span class="na">@fecha</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nt">fn:current-date</span><span class="w">  </span><span class="o">=</span><span class="err">&gt;</span><span class="w"> </span><span class="nf">fn:year-from-date</span><span class="p">()]</span>
 </pre></div>
 </div>
 </li>
@@ -2107,7 +2451,7 @@ determinar la expresión <em>XPath</em> que devuelve:</p>
 </div>
 </li>
 <li><p>Los libros cuyo año de edición sea 1985.</p>
-<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>//libro[año=1985]
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">libro</span><span class="p">[</span><span class="nt">a</span><span class="err">ño</span><span class="o">=</span><span class="mi">1985</span><span class="p">]</span>
 </pre></div>
 </div>
 </li>
@@ -2646,7 +2990,7 @@ técnico en dos dimensiones, determinar la expresión <em>XPath</em> que selecci
 </div>
 </li>
 <li><p>Todos los rectángulos cuyo lado horizontal sea el doble de largo que el vertical.</p>
-<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span>//rectangulo[(@x2-@x1)*(@x2-@x1) = 4(@y2-@y1)*(@y2-@y1)]
+<div class="sol-oculta highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">//</span><span class="nt">rectangulo</span><span class="p">[(</span><span class="na">@x2-</span><span class="err">@x1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="na">@x2-</span><span class="err">@x1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="err">(@y2</span><span class="o">-</span><span class="na">@y1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="na">@y2-</span><span class="err">@y1</span><span class="p">)]</span>
 </pre></div>
 </div>
 </li>
@@ -2655,28 +2999,28 @@ técnico en dos dimensiones, determinar la expresión <em>XPath</em> que selecci
 </ol>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id12" role="note">
+<aside class="footnote brackets" id="id12" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
 <p>En realidad, <code class="docutils literal notranslate"><span class="pre">not()</span></code> es una función, no un operador.</p>
 </aside>
-<aside class="footnote brackets" id="id13" role="note">
+<aside class="footnote brackets" id="id13" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
 <p>Y no sólo. Ya veremos más adelante.</p>
 </aside>
-<aside class="footnote brackets" id="id14" role="note">
+<aside class="footnote brackets" id="id14" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
 <p><a class="reference external" href="https://es.wikipedia.org/wiki/Operaci%C3%B3n_binaria">Operación binaria</a> en el sentido de que
 hay involucrados dos operandos y un operador, no en el sentido de que los
 operadores sean números binarios.</p>
 </aside>
-<aside class="footnote brackets" id="id15" role="note">
+<aside class="footnote brackets" id="id15" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">4</a><span class="fn-bracket">]</span></span>
 <p>De haberlo hecho, la expresión verdadera hubiera sido:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nf">data</span><span class="p">(/</span><span class="nt">claustro</span><span class="p">/</span><span class="nt">profesor</span><span class="p">/</span><span class="nt">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">instance</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="kt">xs:string</span><span class="o">+</span>
 </pre></div>
 </div>
 </aside>
-<aside class="footnote brackets" id="id16" role="note">
+<aside class="footnote brackets" id="id16" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">5</a><span class="fn-bracket">]</span></span>
 <p>O sea, los operandos o son literales:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;1&quot;</span>
@@ -2684,18 +3028,18 @@ operadores sean números binarios.</p>
 </div>
 <p>o son nodos cuyo tipo se conoce gracias a una validación.</p>
 </aside>
-<aside class="footnote brackets" id="id17" role="note">
+<aside class="footnote brackets" id="id17" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">6</a><span class="fn-bracket">]</span></span>
 <p>No estamos hablando de la versión 1.0, así que, en realidad, nos
 referimos a una secuencia de nodos.</p>
 </aside>
-<aside class="footnote brackets" id="id18" role="note">
+<aside class="footnote brackets" id="id18" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">7</a><span class="fn-bracket">]</span></span>
 <p>Con la diferencia de que ésta función espera recibir las cadenas como
 ítems de una secuencia, mientras que a <code class="docutils literal notranslate"><span class="pre">fn:concat</span></code> hay que proporcionarle
 cada cadena  en argumento independiente.</p>
 </aside>
-<aside class="footnote brackets" id="id19" role="note">
+<aside class="footnote brackets" id="id19" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">8</a><span class="fn-bracket">]</span></span>
 <p>Lo cierto es que muchas de estas nuevas funciones de <em>XPath</em> 3 implementen
 funciones para las que en <em>XPath</em> 1.0 había que recurrir a <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/EXSLT/exsl">exslt</a>.</p>
@@ -2705,112 +3049,117 @@ funciones para las que en <em>XPath</em> 1.0 había que recurrir a <a class="ref
 </section>
 
 
-            <div class="clearer"></div>
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/logo.png" alt="Logo"/>
-        </a></p><div class="sphinx-toc sphinxlocaltoc">
-    <h3><a href="../index.html">Page contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">3.1. XPath</a><ul>
-<li><a class="reference internal" href="#procesadores">3.1.1. Procesadores</a></li>
-<li><a class="reference internal" href="#sintaxis">3.1.2. Sintaxis</a><ul>
-<li><a class="reference internal" href="#filtros">3.1.2.1. Filtros</a></li>
-<li><a class="reference internal" href="#ejes">3.1.2.2. Ejes</a></li>
-<li><a class="reference internal" href="#predicados">3.1.2.3. Predicados</a><ul>
-<li><a class="reference internal" href="#operadores">3.1.2.3.1. Operadores</a></li>
-<li><a class="reference internal" href="#funciones">3.1.2.3.2. Funciones</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#xpath-1-0">3.1.3. XPath 1.0</a></li>
-<li><a class="reference internal" href="#xpath-2-0-3-0">3.1.4. XPath 2.0/3.0</a></li>
-<li><a class="reference internal" href="#ejercicio-resuelto">3.1.5. Ejercicio resuelto</a></li>
-<li><a class="reference internal" href="#ejercicios-propuestos">3.1.6. Ejercicios propuestos</a></li>
-</ul>
-</li>
-</ul>
+                </article>
+              
 
-  </div>
-  <div class="sphinxprev">
-    <h4>Previous page</h4>
-    <p class="topless"><a href="index.html"
-                          title="Previous page">&larr; <span class="section-number">3. </span>Consulta de datos</a></p>
-  </div>
-  <div class="sphinxnext">
-    <h4>Next page</h4>
-    <p class="topless"><a href="02.jsonpath.html"
-                          title="Next page">&rarr; <span class="section-number">3.2. </span><abbr title="JavaScript Object Notation">JSON</abbr>Path</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>Esta página</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/03.consulta/01.xpath.rst.txt"
-            rel="nofollow">Mostrar el código</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Búsqueda rápida</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Ir a" />
-    </form>
-    </div>
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Consulta de datos</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02.jsonpath.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title"><span class="section-number">3.2. </span><abbr title="JavaScript Object Notation">JSON</abbr>Path</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-    
-    
-        <div class="sidebar-toggle-group no-js">
+                </footer>
+              
+            </div>
             
-            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
-                 «
-                <span class="show-for-small">hide menu</span>
-                
-            </button>
-            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
-                
-                <span class="show-for-small">menu</span>
-                <span class="hide-for-small">sidebar</span>
-                 »
-            </button>
-        </div>
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#procesadores">3.1.1. Procesadores</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sintaxis">3.1.2. Sintaxis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtros">3.1.2.1. Filtros</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejes">3.1.2.2. Ejes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predicados">3.1.2.3. Predicados</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#operadores">3.1.2.3.1. Operadores</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones">3.1.2.3.2. Funciones</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xpath-1-0">3.1.3. XPath 1.0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xpath-2-0-3-0">3.1.4. XPath 2.0/3.0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-resuelto">3.1.5. Ejercicio resuelto</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios-propuestos">3.1.6. Ejercicios propuestos</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
     
-      <div class="clearer"></div>
-    </div>
-    <div class="relbar-bottom">
+<p class="component-author">
+Por José Miguel Sánchez Alés
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
         
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navegación</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="Índice General"
-             >índice</a></li>
-        <li class="right" >
-          <a href="02.jsonpath.html" title="3.2. JSONPath"
-             >siguiente</a> &nbsp; &nbsp;</li>
-        <li class="right" >
-          <a href="index.html" title="3. Consulta de datos"
-             >anterior</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
 
-          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">3. </span>Consulta de datos</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3.1. </span>XPath</a></li> 
-      </ul>
+      </main>
     </div>
-    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <div class="footer" role="contentinfo">
-        &#169; Derechos de autor CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
-      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
-    </div>
-    <!-- cloud_sptheme 1.4 -->
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

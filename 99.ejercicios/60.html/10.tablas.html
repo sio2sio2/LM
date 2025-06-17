@@ -1,0 +1,686 @@
+
+
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tablas &#8212; documentación de Lenguajes de Marcas - rolling</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" href="../../_static/general.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/particular.css" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=461dccb6"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/translations.js?v=f85f4cfb"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '99.ejercicios/60.html/10.tablas';</script>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="Estructura" href="15.struct.html" />
+    <link rel="prev" title="Básicos" href="05.basicos.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="documentación de Lenguajes de Marcas - rolling - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="documentación de Lenguajes de Marcas - rolling - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Búsqueda</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01.intro/index.html">1. Lenguajes para el intercambio de datos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01.intro/01.intro.html">1.1. Introducción</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../01.intro/02.sintaxis.html">1.2. Sintaxis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01.intro/02a.serial.html">1.2.1. Lenguajes de serialización de datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.intro/02b.marcas.html">1.2.2. Lenguajes de marcas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01.intro/03.ejercicios.html">1.3. Ejercicios propuestos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02.validacion/index.html">2. Validación</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02.validacion/01.dtdxml.html">2.1. <abbr title="Document Type Definition">DTD</abbr></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02.validacion/02.yaml.html">2.2. <abbr title="JavaScript Object Notation">JSON</abbr> Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02.validacion/03.ej.html">2.3. Ejercicios propuestos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../03.consulta/index.html">3. Consulta de datos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../03.consulta/01.xpath.html">3.1. XPath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03.consulta/02.jsonpath.html">3.2. <abbr title="JavaScript Object Notation">JSON</abbr>Path</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04.transformacion/index.html">4. Transformación de datos</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../05.almacenamiento/index.html">5. Almacenamiento</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../05.almacenamiento/01.relacionales.html">5.1. Bases relacionales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../05.almacenamiento/02.nativas.html">5.2. Bases nativas</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../06.html/index.html">6. <abbr title="HyperText Markup Language">HTML</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../06.html/01.intro.html">6.1. Introducción</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06.html/02.estructura.html">6.2. Generalidades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06.html/03.head.html">6.3. Cabecera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06.html/04.basico.html">6.4. Elementos básicos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06.html/05.tablas.html">6.5. Tablas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06.html/07.struct.html">6.6. Estructura semántica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06.html/08.form.html">6.7. Formularios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06.html/09.media.html">6.8. Empotrados</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../07.css/index.html">7. <abbr title="Cascading Style Sheets">CSS</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../07.css/01.general.html">7.1. Generalidades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07.css/02.sintaxis.html">7.2. Sintaxis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07.css/03.propiedades.html">7.3. Propiedades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07.css/04.bootstrap.html">7.4. Bootstrap</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08.js/index.html">8. Javascript</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../98.apendices/index.html">Apendices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../98.apendices/21.xsd.html">W3C <abbr title="eXtensible  Markup Language">XML</abbr> Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../98.apendices/22.rnc.html">Relax-NG Compact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../98.apendices/41.xslt.html"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../98.apendices/99.tools.html">Herramientas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../98.apendices/99.tools/01-xmlstarlet.html">XMLStarlet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../98.apendices/99.tools/05-xidel.html">Xidel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../98.apendices/99.tools/10-vscode.html">Visual Studio Code</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Ejercicios</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../10.lenguajes.html">Lenguajes para el intercambio de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20.val.html">Validación de documentos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../30.xpath.html"><em>XPath</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../40.xquery.html">XQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../41.xslt.html"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../50.basex.html">BaseX</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../60.html.html"><abbr title="HyperText Markup Language">HTML</abbr></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.head.html">Cabecera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05.basicos.html">Básicos</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Tablas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="15.struct.html">Estructura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="20.form.html">Formularios</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../70.css.html"><abbr title="Cascading Style Sheets">CSS</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../70.css/01.selectores.html">Selectores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../70.css/05.reglas.html">Reglas y maquetación</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../80.js.html">Javascript</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../80.js/01.basico.html">Sintaxis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../80.js/05.dom.html"><abbr title="Document Object Model">DOM</abbr></a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/99.ejercicios/60.html/10.tablas.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tablas</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="tablas">
+<h1>Tablas<a class="headerlink" href="#tablas" title="Link to this heading">#</a></h1>
+<ol class="arabic">
+<li><p>Recree una siguiente tabla con las siguientes columnas:</p>
+<img alt="../../_images/colrow.png" src="../../_images/colrow.png" />
+<p>Para que la tabla tenga tal aspecto, añada al documento <abbr title="HyperText Markup Language">HTML</abbr> el siguiente
+estilo:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">table</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">border-collapse</span><span class="p">:</span><span class="kc">collapse</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">td</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="kc">black</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">em</span><span class="p">;</span>
+<span class="w">    </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Cree un <abbr title="HyperText Markup Language">HTML</abbr> con una tabla que contenga el horario de clases del grupo y
+que cumpla los siguientes requisitos:</p>
+<ul class="simple">
+<li><p>Deben aparecer como cabecera los días de lunes a viernes.</p></li>
+<li><p>En la primera columna deben indicarse las horas de comienzo
+de cada clase.</p></li>
+<li><p>El recreo debe encontrarse fusionado en una misma fila de lunes a viernes.</p></li>
+<li><p>Si se tienen de un mismo módulo dos o más clases consecutivas, deben
+fusionar las celdas.</p></li>
+</ul>
+</li>
+<li><p>Cree una tabla con los siguientes datos sobre tasa de desempleo
+<a class="reference external" href="http://www.ine.es/jaxiT3/Tabla.htm?t=4247">extraídos del INE</a>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Comunidad Autónoma</p></th>
+<th class="head"><p>2013</p></th>
+<th class="head"><p>2014</p></th>
+<th class="head"><p>2015</p></th>
+<th class="head"><p>2016</p></th>
+<th class="head"><p>2017</p></th>
+<th class="head"><p>2018</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Andalucía</p></td>
+<td><p>36,26</p></td>
+<td><p>34,23</p></td>
+<td><p>29,83</p></td>
+<td><p>28,25</p></td>
+<td><p>24,43</p></td>
+<td><p>21,26</p></td>
+</tr>
+<tr class="row-odd"><td><p>Aragón</p></td>
+<td><p>20,59</p></td>
+<td><p>18,85</p></td>
+<td><p>14,60</p></td>
+<td><p>13,53</p></td>
+<td><p>11,37</p></td>
+<td><p>11,11</p></td>
+</tr>
+<tr class="row-even"><td><p>Asturias</p></td>
+<td><p>22,29</p></td>
+<td><p>20,78</p></td>
+<td><p>20,33</p></td>
+<td><p>14,59</p></td>
+<td><p>14,64</p></td>
+<td><p>12,86</p></td>
+</tr>
+<tr class="row-odd"><td><p>Baleares</p></td>
+<td><p>22,72</p></td>
+<td><p>18,88</p></td>
+<td><p>17,02</p></td>
+<td><p>13,80</p></td>
+<td><p>12,61</p></td>
+<td><p>10,91</p></td>
+</tr>
+<tr class="row-even"><td><p>Canarias</p></td>
+<td><p>33,09</p></td>
+<td><p>31,08</p></td>
+<td><p>26,75</p></td>
+<td><p>24,90</p></td>
+<td><p>22,04</p></td>
+<td><p>19,99</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cantabria</p></td>
+<td><p>19,81</p></td>
+<td><p>18,42</p></td>
+<td><p>17,71</p></td>
+<td><p>12,89</p></td>
+<td><p>13,49</p></td>
+<td><p>9,68</p></td>
+</tr>
+<tr class="row-even"><td><p>Castilla y León</p></td>
+<td><p>22,02</p></td>
+<td><p>20,28</p></td>
+<td><p>17,58</p></td>
+<td><p>14,81</p></td>
+<td><p>13,71</p></td>
+<td><p>11,21</p></td>
+</tr>
+<tr class="row-odd"><td><p>Castilla-La Mancha</p></td>
+<td><p>28,99</p></td>
+<td><p>28,50</p></td>
+<td><p>24,97</p></td>
+<td><p>22,14</p></td>
+<td><p>19,74</p></td>
+<td><p>16,16</p></td>
+</tr>
+<tr class="row-even"><td><p>Cataluña</p></td>
+<td><p>21,87</p></td>
+<td><p>19,88</p></td>
+<td><p>17,73</p></td>
+<td><p>14,85</p></td>
+<td><p>12,63</p></td>
+<td><p>11,75</p></td>
+</tr>
+<tr class="row-odd"><td><p>Comunidad Valenciana</p></td>
+<td><p>27,15</p></td>
+<td><p>23,48</p></td>
+<td><p>21,45</p></td>
+<td><p>19,15</p></td>
+<td><p>16,76</p></td>
+<td><p>14,30</p></td>
+</tr>
+<tr class="row-even"><td><p>Extremadura</p></td>
+<td><p>32,40</p></td>
+<td><p>29,96</p></td>
+<td><p>28,07</p></td>
+<td><p>28,31</p></td>
+<td><p>25,12</p></td>
+<td><p>23,10</p></td>
+</tr>
+<tr class="row-odd"><td><p>Galicia</p></td>
+<td><p>21,88</p></td>
+<td><p>20,87</p></td>
+<td><p>17,74</p></td>
+<td><p>16,29</p></td>
+<td><p>14,71</p></td>
+<td><p>12,04</p></td>
+</tr>
+<tr class="row-even"><td><p>Madrid</p></td>
+<td><p>20,45</p></td>
+<td><p>18,00</p></td>
+<td><p>16,51</p></td>
+<td><p>14,60</p></td>
+<td><p>13,75</p></td>
+<td><p>11,54</p></td>
+</tr>
+<tr class="row-odd"><td><p>Murcia</p></td>
+<td><p>28,50</p></td>
+<td><p>27,26</p></td>
+<td><p>23,51</p></td>
+<td><p>18,58</p></td>
+<td><p>17,21</p></td>
+<td><p>15,83</p></td>
+</tr>
+<tr class="row-even"><td><p>Navarra</p></td>
+<td><p>16,44</p></td>
+<td><p>14,92</p></td>
+<td><p>13,53</p></td>
+<td><p>10,01</p></td>
+<td><p>9,63</p></td>
+<td><p>9,99</p></td>
+</tr>
+<tr class="row-odd"><td><p>País Vasco</p></td>
+<td><p>16,58</p></td>
+<td><p>16,60</p></td>
+<td><p>12,89</p></td>
+<td><p>12,27</p></td>
+<td><p>10,57</p></td>
+<td><p>9,58</p></td>
+</tr>
+<tr class="row-even"><td><p>Rioja</p></td>
+<td><p>20,24</p></td>
+<td><p>17,17</p></td>
+<td><p>13,97</p></td>
+<td><p>10,90</p></td>
+<td><p>11,51</p></td>
+<td><p>10,30</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Incluya un título para la tabla y la referencia al origen de los
+datos.</p>
+</li>
+</ol>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="05.basicos.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Básicos</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="15.struct.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Estructura</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por José Miguel Sánchez Alés
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

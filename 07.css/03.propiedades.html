@@ -1,84 +1,433 @@
 
 
 
-
-
 <!DOCTYPE html>
 
-<html lang="es">
+
+<html lang="es" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>7.3. Propiedades &#8212; documentación de Lenguajes de Marcas - rolling</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" href="../_static/general.css" type="text/css" />
     <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
-    
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/translations.js"></script>
-    <script src="../_static/design-tabs.js"></script>
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    
-    
-     
-        <script src="../_static/jquery.cookie.js"></script>
-    
-
-    
-     
-        <script src="../_static/cloud.base.js"></script>
-    
-
-    
-     
-        <script src="../_static/cloud.js"></script>
-    
-
+    <script src="../_static/documentation_options.js?v=461dccb6"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '07.css/03.propiedades';</script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
     <link rel="next" title="7.4. Bootstrap" href="04.bootstrap.html" />
-    <link rel="prev" title="7.2. Sintaxis" href="02.sintaxis.html" /> 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head><body>
-    <div class="relbar-top">
-        
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navegación</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="Índice General"
-             accesskey="I">índice</a></li>
-        <li class="right" >
-          <a href="04.bootstrap.html" title="7.4. Bootstrap"
-             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
-        <li class="right" >
-          <a href="02.sintaxis.html" title="7.2. Sintaxis"
-             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+    <link rel="prev" title="7.2. Sintaxis" href="02.sintaxis.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">7. </span><abbr title="Cascading Style Sheets">CSS</abbr></a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">7.3. </span>Propiedades</a></li> 
-      </ul>
-    </div>
-    </div>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="documentación de Lenguajes de Marcas - rolling - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="documentación de Lenguajes de Marcas - rolling - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Búsqueda</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01.intro/index.html">1. Lenguajes para el intercambio de datos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01.intro/01.intro.html">1.1. Introducción</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../01.intro/02.sintaxis.html">1.2. Sintaxis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01.intro/02a.serial.html">1.2.1. Lenguajes de serialización de datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../01.intro/02b.marcas.html">1.2.2. Lenguajes de marcas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../01.intro/03.ejercicios.html">1.3. Ejercicios propuestos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02.validacion/index.html">2. Validación</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02.validacion/01.dtdxml.html">2.1. <abbr title="Document Type Definition">DTD</abbr></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.validacion/02.yaml.html">2.2. <abbr title="JavaScript Object Notation">JSON</abbr> Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.validacion/03.ej.html">2.3. Ejercicios propuestos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03.consulta/index.html">3. Consulta de datos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03.consulta/01.xpath.html">3.1. XPath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.consulta/02.jsonpath.html">3.2. <abbr title="JavaScript Object Notation">JSON</abbr>Path</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../04.transformacion/index.html">4. Transformación de datos</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05.almacenamiento/index.html">5. Almacenamiento</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05.almacenamiento/01.relacionales.html">5.1. Bases relacionales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.almacenamiento/02.nativas.html">5.2. Bases nativas</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06.html/index.html">6. <abbr title="HyperText Markup Language">HTML</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/01.intro.html">6.1. Introducción</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/02.estructura.html">6.2. Generalidades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/03.head.html">6.3. Cabecera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/04.basico.html">6.4. Elementos básicos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/05.tablas.html">6.5. Tablas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/07.struct.html">6.6. Estructura semántica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/08.form.html">6.7. Formularios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/09.media.html">6.8. Empotrados</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">7. <abbr title="Cascading Style Sheets">CSS</abbr></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01.general.html">7.1. Generalidades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.sintaxis.html">7.2. Sintaxis</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.3. Propiedades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.bootstrap.html">7.4. Bootstrap</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../08.js/index.html">8. Javascript</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../98.apendices/index.html">Apendices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../98.apendices/21.xsd.html">W3C <abbr title="eXtensible  Markup Language">XML</abbr> Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../98.apendices/22.rnc.html">Relax-NG Compact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../98.apendices/41.xslt.html"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../98.apendices/99.tools.html">Herramientas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../98.apendices/99.tools/01-xmlstarlet.html">XMLStarlet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../98.apendices/99.tools/05-xidel.html">Xidel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../98.apendices/99.tools/10-vscode.html">Visual Studio Code</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../99.ejercicios/index.html">Ejercicios</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/10.lenguajes.html">Lenguajes para el intercambio de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/20.val.html">Validación de documentos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/30.xpath.html"><em>XPath</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/40.xquery.html">XQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/41.xslt.html"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/50.basex.html">BaseX</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/60.html.html"><abbr title="HyperText Markup Language">HTML</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/01.head.html">Cabecera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/05.basicos.html">Básicos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/10.tablas.html">Tablas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/15.struct.html">Estructura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/20.form.html">Formularios</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/70.css.html"><abbr title="Cascading Style Sheets">CSS</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/70.css/01.selectores.html">Selectores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/70.css/05.reglas.html">Reglas y maquetación</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/80.js.html">Javascript</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/80.js/01.basico.html">Sintaxis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/80.js/05.dom.html"><abbr title="Document Object Model">DOM</abbr></a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/07.css/03.propiedades.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Propiedades</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pautas">7.3.1. Pautas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#css-maquetacion">7.3.2. Maquetación</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flexbox">7.3.2.1. Flexbox</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid">7.3.2.2. Grid</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios-propuestos">7.3.3. Ejercicios propuestos</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section id="propiedades">
-<h1><span class="section-number">7.3. </span>Propiedades<a class="headerlink" href="#propiedades" title="Enlace permanente a este encabezado">¶</a></h1>
+<h1><span class="section-number">7.3. </span>Propiedades<a class="headerlink" href="#propiedades" title="Link to this heading">#</a></h1>
 <p><abbr title="Cascading Style Sheets">CSS</abbr>3 es una especificación inmensa con <a class="reference external" href="https://www.w3.org/Style/CSS/current-work">múltiples módulos definidos en
 distintos documentos</a> y no tenemos
 el tiempo ni las fuerzas para desarrollar en esta documentación un resumen
@@ -97,7 +446,7 @@ aprender las propiedades <abbr title="Cascading Style Sheets">CSS</abbr> y expon
 maquetación con las dos estrategias más modernas y potentes: <a class="reference internal" href="#css-flexbox"><span class="std std-ref">Flexbox</span></a>
 y <a class="reference internal" href="#css-grid"><span class="std std-ref">Grid</span></a>.</p>
 <section id="pautas">
-<h2><span class="section-number">7.3.1. </span>Pautas<a class="headerlink" href="#pautas" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">7.3.1. </span>Pautas<a class="headerlink" href="#pautas" title="Link to this heading">#</a></h2>
 <p>Para su compresión necesitamos conocer:</p>
 <ol class="arabic">
 <li><p>Los fundamentos de su <a class="reference internal" href="02.sintaxis.html#css-sintaxis"><span class="std std-ref">sintaxis</span></a>: cómo se escriben las
@@ -145,7 +494,7 @@ páginas. Otras no serán tan necesarias en ese caso, pero son indispensables,
 si no se usa tal herramienta:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://lenguajecss.com/css/maquetacion-y-colocacion/propiedad-display/">Maquetación</a>
-(<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">display</a>, etc).</p></li>
+(<a class="extlink-devmozcss reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">display</a>, etc).</p></li>
 <li><p><a class="reference external" href="https://lenguajecss.com/css/responsive-web-design/que-es/">Diseño adaptativo</a>, ya que
 nuestro público objetivo en muchos casos accederá desde dispositivos
 distintos a un ordenador (móviles o <em>tablets</em>).</p></li>
@@ -159,11 +508,11 @@ sobre CSS de Kiko Palomares</a>.</p>
 </div>
 </section>
 <section id="css-maquetacion">
-<span id="id2"></span><h2><span class="section-number">7.3.2. </span>Maquetación<a class="headerlink" href="#css-maquetacion" title="Enlace permanente a este encabezado">¶</a></h2>
+<span id="id2"></span><h2><span class="section-number">7.3.2. </span>Maquetación<a class="headerlink" href="#css-maquetacion" title="Link to this heading">#</a></h2>
 <p>La maquetación tradicional con <abbr title="Cascading Style Sheets">CSS</abbr> se basaba en <a class="reference internal" href="../06.html/02.estructura.html#html-maquetacion"><span class="std std-ref">elementos de bloque</span></a> (que de forma natural tendían a ocupar todo el ancho
 disponible y a situarse el siguiente por debajo del anterior), definición de sus
-anchos (para que no ocuparan todo), la propiedad <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/float">float</a> y, en
-ocasiones, la propiedad <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">position</a>. Como consecuencia, se tenían que
+anchos (para que no ocuparan todo), la propiedad <a class="extlink-devmozcss reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/float">float</a> y, en
+ocasiones, la propiedad <a class="extlink-devmozcss reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">position</a>. Como consecuencia, se tenían que
 hacer auténticas recetas esotéricas para lograr hacer maquetaciones
 relativamente sencillas<a class="footnote-reference brackets" href="#id9" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>, que, además, ni siquiera resultaban adaptables a
 distintos dispositivos.</p>
@@ -200,7 +549,7 @@ ambos casos, para ver mejor la maquetación de los bloques:</p>
 <span class="pre">HTML</span></code></a>.</p>
 </div>
 <section id="flexbox">
-<span id="css-flexbox"></span><h3><span class="section-number">7.3.2.1. </span>Flexbox<a class="headerlink" href="#flexbox" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="css-flexbox"></span><h3><span class="section-number">7.3.2.1. </span>Flexbox<a class="headerlink" href="#flexbox" title="Link to this heading">#</a></h3>
 <div class="admonition caution">
 <p class="admonition-title">Prudencia</p>
 <p>Las explicaciones son totalmente insuficientes, por lo que lo
@@ -208,7 +557,7 @@ conveniene es profundizar con una <a class="reference external" href="https://le
 </div>
 <ul>
 <li><p>Este método de maquetación se aplica sobre las cajas contenidas dentro de
-una caja contenedora cuya propiedad <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">display</a> tenga el valor de
+una caja contenedora cuya propiedad <a class="extlink-devmozcss reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">display</a> tenga el valor de
 <code class="docutils literal notranslate"><span class="pre">flex</span></code>:</p>
 <div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="p">#</span><span class="nn">container</span><span class="w"> </span><span class="p">{</span>
 </span><span class="hll"><span class="w"> </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
@@ -268,7 +617,7 @@ la otra:</p>
 <img alt="../_images/flexbox02.png" src="../_images/flexbox02.png" />
 </li>
 <li><p>Sin embargo, puede cambiarse la dirección y que se sitúen verticalmente
-(<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction">flex-direction</a>):</p>
+(<a class="extlink-devmozcss reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction">flex-direction</a>):</p>
 <div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">container</span><span class="w"> </span><span class="p">{</span>
 <span class="w">   </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
 <span class="hll"><span class="w">   </span><span class="k">flex-direction</span><span class="p">:</span><span class="w"> </span><span class="kc">column</span><span class="p">;</span>
@@ -291,7 +640,7 @@ queries</span></a> a tal fin:</p>
 </pre></div>
 </div>
 </li>
-<li><p>También se pueden <em>justificar</em> los bloques (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content">justify-content</a>):</p>
+<li><p>También se pueden <em>justificar</em> los bloques (<a class="extlink-devmozcss reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content">justify-content</a>):</p>
 <div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">container</span><span class="w"> </span><span class="p">{</span>
 <span class="w"> </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
 <span class="hll"><span class="w"> </span><span class="k">justify-content</span><span class="p">:</span><span class="w"> </span><span class="kc">right</span><span class="p">;</span>
@@ -308,7 +657,7 @@ queries</span></a> a tal fin:</p>
 </div>
 <img alt="../_images/flexbox05.png" src="../_images/flexbox05.png" />
 </li>
-<li><p>Es posible también alterar el orden de los bloques (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/order">order</a>):</p>
+<li><p>Es posible también alterar el orden de los bloques (<a class="extlink-devmozcss reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/order">order</a>):</p>
 <div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">item-1</span><span class="w"> </span><span class="p">{</span>
 <span class="w"> </span><span class="c">/* Por defecto, todos los ítem tienen para su orden valor 0 */</span>
 <span class="hll"><span class="w"> </span><span class="k">order</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
@@ -322,7 +671,7 @@ queries</span></a> a tal fin:</p>
 <a class="reference external" href="https://flexboxfroggy.com/">Flexbox Froggy</a>.</p>
 </section>
 <section id="grid">
-<span id="css-grid"></span><h3><span class="section-number">7.3.2.2. </span>Grid<a class="headerlink" href="#grid" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="css-grid"></span><h3><span class="section-number">7.3.2.2. </span>Grid<a class="headerlink" href="#grid" title="Link to this heading">#</a></h3>
 <div class="admonition caution">
 <p class="admonition-title">Prudencia</p>
 <p>Como en el caso de <a class="reference internal" href="#css-flexbox"><span class="std std-ref">Flexbox</span></a>, las explicaciones son
@@ -337,7 +686,7 @@ realizar maquetaciones complejas. Empezemos por definir algunos términos:</p>
 <dt><em class="dfn">Cell</em></dt><dd><p>Es cada una de las posiciones en que se descompone la cuadrícula. En
 principio, los elementos hijos (<em>ítems</em>) del contenedor ocupan una celda, a
 menos que se especifique que ocupa varias filas o varias columnas mediante
-las propiedades <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-start">grid-row-start</a>, etc. que se tratarán más
+las propiedades <a class="extlink-devmozcss reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-start">grid-row-start</a>, etc. que se tratarán más
 adelante.</p>
 </dd>
 <dt><em class="dfn">Line</em></dt><dd><p>Son las líneas horizontales o verticales imaginarias que separan unas celdas
@@ -346,7 +695,7 @@ de otras.</p>
 <dt><em class="dfn">Gap</em></dt><dd><p>Es el espacio (o margen) que queda entre celdas. Por defecto, no existe. En
 principio, también puede lograrse este espacio de separación definiendo
 márgenes para los ítems, pero es mejor definirlo mediante la propiedad
-<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gap">gap</a>, ya que si se define con ella este espacio formará parte de
+<a class="extlink-devmozcss reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gap">gap</a>, ya que si se define con ella este espacio formará parte de
 los cálculos que hace el navegador para definir las dimesiones de los ítems
 (p.e. cuando se definen con <code class="docutils literal notranslate"><span class="pre">fr</span></code> como se verá más adelante).</p>
 </dd>
@@ -363,7 +712,7 @@ rectángulo constituído por celdas contíguas es un <em>área</em> válida.</p>
 <p>Dicho lo cual, podemos enunciar algunas de sus pautas más importantes:</p>
 <ul>
 <li><p>Se aplica sobre las cajas que se encuentran contenidas en un elemento cuya
-propiedad <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">display</a> tenga el valor <code class="docutils literal notranslate"><span class="pre">grid</span></code>, de modo que las dichas
+propiedad <a class="extlink-devmozcss reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">display</a> tenga el valor <code class="docutils literal notranslate"><span class="pre">grid</span></code>, de modo que las dichas
 cajas se disponen en una rejilla o cuadrícula (de ahí su nombre) para la cual
 debemos indicar cuántas filas y columnas tiene:</p>
 <div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">container</span><span class="w"> </span><span class="p">{</span>
@@ -408,10 +757,10 @@ ocupará un pelín menos.</p>
 </div>
 <img alt="../_images/grid02.png" src="../_images/grid02.png" />
 </li>
-<li><p>También podemos jugar con las propiedades <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-start">grid-row-start</a>,
-<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-start">grid-column-start</a>, <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-start">grid-row-start</a>,
-<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-end">grid-column-end</a>, y las propiedades que las resumen
-<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row">grid-row</a>, <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column">grid-column</a> y <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-area">grid-area</a> para
+<li><p>También podemos jugar con las propiedades <a class="extlink-devmozcss reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-start">grid-row-start</a>,
+<a class="extlink-devmozcss reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-start">grid-column-start</a>, <a class="extlink-devmozcss reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-start">grid-row-start</a>,
+<a class="extlink-devmozcss reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-end">grid-column-end</a>, y las propiedades que las resumen
+<a class="extlink-devmozcss reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row">grid-row</a>, <a class="extlink-devmozcss reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column">grid-column</a> y <a class="extlink-devmozcss reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-area">grid-area</a> para
 colocar alguna de las cajas en cualquier posición o para hacer que ocupe
 varias posiciones en vertical u horizontal:</p>
 <div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">item-1</span><span class="w"> </span><span class="p">{</span>
@@ -478,7 +827,7 @@ implícitas. Las explícitas las controlamos, ya que las definimos y sabemos
 que se reparten equitativamente el espacio disponible (<code class="docutils literal notranslate"><span class="pre">1fr</span></code>). En cambio,
 ¿qué ocurre con las implícitas?</p>
 <p>Las implícitas ocupan el espacio (ancho, porque son columnas) definido por la
-propiedad <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-columns">grid-auto-columns</a>, que en ausencia de definición tiene
+propiedad <a class="extlink-devmozcss reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-columns">grid-auto-columns</a>, que en ausencia de definición tiene
 el valor <code class="docutils literal notranslate"><span class="pre">auto</span></code>, o sea, el ancho necesario para albergar el contenido. Por
 ese motivo, en la captura ajustan su ancho a la longitud del texto<a class="footnote-reference brackets" href="#id11" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>. En
 cambio, si hiciéramos:</p>
@@ -491,9 +840,9 @@ cambio, si hiciéramos:</p>
 </div>
 <p>las dos últimas columnas, por ser implícitas, ocuparían 300px cada una.</p>
 <p>Hemos ilustrado este concepto para columnas, pero es análogo en filas (en
-este caso con la propiedad <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-rows">grid-auto-rows</a>). Abundando en este
-concepto, tanto <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows">grid-template-rows</a> como
-<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns">grid-template-columns</a> tiene por defecto el valor <code class="docutils literal notranslate"><span class="pre">none</span></code> que
+este caso con la propiedad <a class="extlink-devmozcss reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-rows">grid-auto-rows</a>). Abundando en este
+concepto, tanto <a class="extlink-devmozcss reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows">grid-template-rows</a> como
+<a class="extlink-devmozcss reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns">grid-template-columns</a> tiene por defecto el valor <code class="docutils literal notranslate"><span class="pre">none</span></code> que
 significa que todas las filas (o columnas) necesarias son implícitas. Por ese
 motivo el código:</p>
 <div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">container</span><span class="w"> </span><span class="p">{</span>
@@ -521,7 +870,7 @@ altura de los propios elementos.</p></li>
 contener su contenido, por lo que <code class="docutils literal notranslate"><span class="pre">1fr</span></code> para todas las filas equivale a
 <code class="docutils literal notranslate"><span class="pre">auto</span></code> para todas ellas<a class="footnote-reference brackets" href="#id12" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>.</p></li>
 <li><p>El valor de <code class="docutils literal notranslate"><span class="pre">none</span></code> equivale al de <code class="docutils literal notranslate"><span class="pre">auto</span></code> para todas las filas porque
-<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-rows">grid-auto-rows</a> no se ha definido y, en consecuencia, su
+<a class="extlink-devmozcss reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-rows">grid-auto-rows</a> no se ha definido y, en consecuencia, su
 valor es <code class="docutils literal notranslate"><span class="pre">auto</span></code>.</p></li>
 </ul>
 </div>
@@ -533,7 +882,7 @@ estas se entienden las equivalentes para columnas).</p>
 </div>
 </li>
 <li><p>Cuando la maquetación es complicada, pueden mapearse las distintas áreas que
-ocupan las cajas con la propiedad <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas">grid-template-areas</a> y asociar
+ocupan las cajas con la propiedad <a class="extlink-devmozcss reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas">grid-template-areas</a> y asociar
 luego cada caja a una de estas áreas. Por ejemplo, para estas áreas:</p>
 <img alt="../_images/grid-template-areas.png" src="../_images/grid-template-areas.png" />
 <p>Deberíamos crear un <abbr title="Cascading Style Sheets">CSS</abbr> así:</p>
@@ -568,7 +917,7 @@ luego cada caja a una de estas áreas. Por ejemplo, para estas áreas:</p>
 </section>
 </section>
 <section id="ejercicios-propuestos">
-<h2><span class="section-number">7.3.3. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">7.3.3. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Link to this heading">#</a></h2>
 <blockquote>
 <div><p>escribas reglas <abbr title="Cascading Style Sheets">CSS</abbr> para lograr el siguiente aspecto:</p>
 <ol class="loweralpha simple">
@@ -617,7 +966,7 @@ elementos puede añadir atributos <code class="docutils literal notranslate"><sp
 </div></blockquote>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id8" role="note">
+<aside class="footnote brackets" id="id8" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>Que el término no le lleve a confusión. En inglés, existe el concepto de
 <em class="dfn">responsive web design</em>, que hace referencia a lo que nosotros tratamos
@@ -628,24 +977,24 @@ que se detectan las características del dispositivo y se envía al servidor
 para que este adapte su respuesta y envío una página u otra. Esta última, por
 tanto, es una solución en el servidor.</p>
 </aside>
-<aside class="footnote brackets" id="id9" role="note">
+<aside class="footnote brackets" id="id9" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
 <p>Véase <a class="reference external" href="https://desarrolloweb.com/articulos/2112.php">este artículo de 2005</a> sobre cómo hacer una página
 con dos columnas.</p>
 </aside>
-<aside class="footnote brackets" id="id10" role="note">
+<aside class="footnote brackets" id="id10" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
 <p>En realidad, el elemento contenedor ocupa todo el ancho del dispositivo.
 En cambio, el alto está indefinido a menos que le demos explícitamente una
 altura (cosa que no hemos hecho).</p>
 </aside>
-<aside class="footnote brackets" id="id11" role="note">
+<aside class="footnote brackets" id="id11" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">4</a><span class="fn-bracket">]</span></span>
 <p>Lo cual no significa necesariamente que el texto ocupe siempre una
 línea. Todo dependerá del ancho total de la cuadrícula y la cantidad de
 texto.</p>
 </aside>
-<aside class="footnote brackets" id="id12" role="note">
+<aside class="footnote brackets" id="id12" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">5</a><span class="fn-bracket">]</span></span>
 <p>En cambio, si no necesitaran la misma altura, <code class="docutils literal notranslate"><span class="pre">1fr</span></code> provocaría que
 todas las filas tuvieran la altura de la fila más alta.</p>
@@ -655,104 +1004,109 @@ todas las filas tuvieran la altura de la fila más alta.</p>
 </section>
 
 
-            <div class="clearer"></div>
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/logo.png" alt="Logo"/>
-        </a></p><div class="sphinx-toc sphinxlocaltoc">
-    <h3><a href="../index.html">Page contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">7.3. Propiedades</a><ul>
-<li><a class="reference internal" href="#pautas">7.3.1. Pautas</a></li>
-<li><a class="reference internal" href="#css-maquetacion">7.3.2. Maquetación</a><ul>
-<li><a class="reference internal" href="#flexbox">7.3.2.1. Flexbox</a></li>
-<li><a class="reference internal" href="#grid">7.3.2.2. Grid</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#ejercicios-propuestos">7.3.3. Ejercicios propuestos</a></li>
-</ul>
-</li>
-</ul>
+                </article>
+              
 
-  </div>
-  <div class="sphinxprev">
-    <h4>Previous page</h4>
-    <p class="topless"><a href="02.sintaxis.html"
-                          title="Previous page">&larr; <span class="section-number">7.2. </span>Sintaxis</a></p>
-  </div>
-  <div class="sphinxnext">
-    <h4>Next page</h4>
-    <p class="topless"><a href="04.bootstrap.html"
-                          title="Next page">&rarr; <span class="section-number">7.4. </span>Bootstrap</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>Esta página</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/07.css/03.propiedades.rst.txt"
-            rel="nofollow">Mostrar el código</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Búsqueda rápida</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Ir a" />
-    </form>
-    </div>
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02.sintaxis.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title"><span class="section-number">7.2. </span>Sintaxis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="04.bootstrap.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title"><span class="section-number">7.4. </span>Bootstrap</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-    
-    
-        <div class="sidebar-toggle-group no-js">
+                </footer>
+              
+            </div>
             
-            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
-                 «
-                <span class="show-for-small">hide menu</span>
-                
-            </button>
-            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
-                
-                <span class="show-for-small">menu</span>
-                <span class="hide-for-small">sidebar</span>
-                 »
-            </button>
-        </div>
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pautas">7.3.1. Pautas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#css-maquetacion">7.3.2. Maquetación</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flexbox">7.3.2.1. Flexbox</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid">7.3.2.2. Grid</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios-propuestos">7.3.3. Ejercicios propuestos</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
     
-      <div class="clearer"></div>
-    </div>
-    <div class="relbar-bottom">
+<p class="component-author">
+Por José Miguel Sánchez Alés
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
         
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navegación</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="Índice General"
-             >índice</a></li>
-        <li class="right" >
-          <a href="04.bootstrap.html" title="7.4. Bootstrap"
-             >siguiente</a> &nbsp; &nbsp;</li>
-        <li class="right" >
-          <a href="02.sintaxis.html" title="7.2. Sintaxis"
-             >anterior</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
 
-          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">7. </span><abbr title="Cascading Style Sheets">CSS</abbr></a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">7.3. </span>Propiedades</a></li> 
-      </ul>
+      </main>
     </div>
-    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <div class="footer" role="contentinfo">
-        &#169; Derechos de autor CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
-      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
-    </div>
-    <!-- cloud_sptheme 1.4 -->
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

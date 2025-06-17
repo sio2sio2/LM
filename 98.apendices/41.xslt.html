@@ -1,87 +1,461 @@
 
 
 
-
-
 <!DOCTYPE html>
 
-<html lang="es">
+
+<html lang="es" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>XSLT &#8212; documentación de Lenguajes de Marcas - rolling</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" href="../_static/general.css" type="text/css" />
     <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
-    
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/translations.js"></script>
-    <script src="../_static/design-tabs.js"></script>
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    
-    
-     
-        <script src="../_static/jquery.cookie.js"></script>
-    
-
-    
-     
-        <script src="../_static/cloud.base.js"></script>
-    
-
-    
-     
-        <script src="../_static/cloud.js"></script>
-    
-
+    <script src="../_static/documentation_options.js?v=461dccb6"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '98.apendices/41.xslt';</script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
     <link rel="next" title="Herramientas" href="99.tools.html" />
-    <link rel="prev" title="Relax-NG Compact" href="22.rnc.html" /> 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head><body>
-    <div class="relbar-top">
-        
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navegación</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="Índice General"
-             accesskey="I">índice</a></li>
-        <li class="right" >
-          <a href="99.tools.html" title="Herramientas"
-             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
-        <li class="right" >
-          <a href="22.rnc.html" title="Relax-NG Compact"
-             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+    <link rel="prev" title="Relax-NG Compact" href="22.rnc.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-        <li class="nav-item nav-item-this"><a href=""><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li> 
-      </ul>
-    </div>
-    </div>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="documentación de Lenguajes de Marcas - rolling - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="documentación de Lenguajes de Marcas - rolling - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Búsqueda</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01.intro/index.html">1. Lenguajes para el intercambio de datos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01.intro/01.intro.html">1.1. Introducción</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../01.intro/02.sintaxis.html">1.2. Sintaxis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01.intro/02a.serial.html">1.2.1. Lenguajes de serialización de datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../01.intro/02b.marcas.html">1.2.2. Lenguajes de marcas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../01.intro/03.ejercicios.html">1.3. Ejercicios propuestos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02.validacion/index.html">2. Validación</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02.validacion/01.dtdxml.html">2.1. <abbr title="Document Type Definition">DTD</abbr></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.validacion/02.yaml.html">2.2. <abbr title="JavaScript Object Notation">JSON</abbr> Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.validacion/03.ej.html">2.3. Ejercicios propuestos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03.consulta/index.html">3. Consulta de datos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03.consulta/01.xpath.html">3.1. XPath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.consulta/02.jsonpath.html">3.2. <abbr title="JavaScript Object Notation">JSON</abbr>Path</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../04.transformacion/index.html">4. Transformación de datos</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05.almacenamiento/index.html">5. Almacenamiento</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05.almacenamiento/01.relacionales.html">5.1. Bases relacionales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.almacenamiento/02.nativas.html">5.2. Bases nativas</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06.html/index.html">6. <abbr title="HyperText Markup Language">HTML</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/01.intro.html">6.1. Introducción</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/02.estructura.html">6.2. Generalidades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/03.head.html">6.3. Cabecera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/04.basico.html">6.4. Elementos básicos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/05.tablas.html">6.5. Tablas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/07.struct.html">6.6. Estructura semántica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/08.form.html">6.7. Formularios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/09.media.html">6.8. Empotrados</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../07.css/index.html">7. <abbr title="Cascading Style Sheets">CSS</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/01.general.html">7.1. Generalidades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/02.sintaxis.html">7.2. Sintaxis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/03.propiedades.html">7.3. Propiedades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/04.bootstrap.html">7.4. Bootstrap</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../08.js/index.html">8. Javascript</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Apendices</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="21.xsd.html">W3C <abbr title="eXtensible  Markup Language">XML</abbr> Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22.rnc.html">Relax-NG Compact</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="99.tools.html">Herramientas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="99.tools/01-xmlstarlet.html">XMLStarlet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="99.tools/05-xidel.html">Xidel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="99.tools/10-vscode.html">Visual Studio Code</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../99.ejercicios/index.html">Ejercicios</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/10.lenguajes.html">Lenguajes para el intercambio de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/20.val.html">Validación de documentos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/30.xpath.html"><em>XPath</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/40.xquery.html">XQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/41.xslt.html"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/50.basex.html">BaseX</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/60.html.html"><abbr title="HyperText Markup Language">HTML</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/01.head.html">Cabecera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/05.basicos.html">Básicos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/10.tablas.html">Tablas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/15.struct.html">Estructura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/20.form.html">Formularios</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/70.css.html"><abbr title="Cascading Style Sheets">CSS</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/70.css/01.selectores.html">Selectores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/70.css/05.reglas.html">Reglas y maquetación</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/80.js.html">Javascript</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/80.js/01.basico.html">Sintaxis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/80.js/05.dom.html"><abbr title="Document Object Model">DOM</abbr></a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/98.apendices/41.xslt.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>XSLT</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#que-es-xslt">¿Qué es <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr>?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-introductorio">Ejemplo introductorio</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expresiones">Expresiones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elementos">Elementos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cabecera">Cabecera</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plantillas">Plantillas</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion">Definición</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#invocacion">Invocación</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generacion-de-la-salida">Generación de la salida</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sentencias-condicionales">Sentencias condicionales</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#elemento-xsl-if">Elemento <code class="docutils literal notranslate"><span class="pre">&lt;xsl:if&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#elemento-xsl-choose">Elemento <code class="docutils literal notranslate"><span class="pre">&lt;xsl:choose&gt;</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bucles">Bucles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#otros-elementos">Otros elementos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones">Funciones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extensiones">Extensiones</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extensiones-estandar">Extensiones estándar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extensiones-propias">Extensiones propias</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios-propuestos">Ejercicios propuestos</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section id="xslt">
-<span id="id1"></span><h1><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr><a class="headerlink" href="#xslt" title="Enlace permanente a este encabezado">¶</a></h1>
+<span id="id1"></span><h1><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr><a class="headerlink" href="#xslt" title="Link to this heading">#</a></h1>
 <section id="introduccion">
-<h2>Introducción<a class="headerlink" href="#introduccion" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Link to this heading">#</a></h2>
 <section id="que-es-xslt">
-<h3>¿Qué es <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr>?<a class="headerlink" href="#que-es-xslt" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>¿Qué es <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr>?<a class="headerlink" href="#que-es-xslt" title="Link to this heading">#</a></h3>
 <p><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr> (en castellano, algo así como lenguaje para transformaciones basadas en
 hojas de estilos extensibles) es un lenguaje de programación basado en <abbr title="eXtensible  Markup Language">XML</abbr>
 que permite traducir entre distintos dialectos <abbr title="eXtensible  Markup Language">XML</abbr> o entre un dialecto <abbr title="eXtensible  Markup Language">XML</abbr>
@@ -151,7 +525,7 @@ dificultad alguna si ya se conoce <em>XPath</em> 3.1.</p>
 </div>
 </section>
 <section id="ejemplo-introductorio">
-<span id="xslt-ejemplo"></span><h3>Ejemplo introductorio<a class="headerlink" href="#ejemplo-introductorio" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="xslt-ejemplo"></span><h3>Ejemplo introductorio<a class="headerlink" href="#ejemplo-introductorio" title="Link to this heading">#</a></h3>
 <p>Antes de entrar en harina es más didáctico plantear un ejemplo y ver cuál es el
 aspecto del código <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr>. Supongamos el siguiente documento <abbr title="eXtensible  Markup Language">XML</abbr>:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;</span>
@@ -378,7 +752,7 @@ transformaciones intermedias.</p>
 </section>
 </section>
 <section id="expresiones">
-<span id="xslt-expresiones"></span><h2>Expresiones<a class="headerlink" href="#expresiones" title="Enlace permanente a este encabezado">¶</a></h2>
+<span id="xslt-expresiones"></span><h2>Expresiones<a class="headerlink" href="#expresiones" title="Link to this heading">#</a></h2>
 <p>Muchos de los elementos de <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr> permiten incluir atributos cuyo valor puede
 ser un literal o una expresión <a class="reference internal" href="../03.consulta/01.xpath.html#xpath"><span class="std std-ref">XPath</span></a>, dentro de la cual, además
 de sus propias funciones, podrán usarse <a class="reference internal" href="#xslt-func"><span class="std std-ref">funciones de XSLT</span></a> y
@@ -426,12 +800,12 @@ mediante las funciones <code class="code docutils literal notranslate"><span cla
 </div>
 </section>
 <section id="elementos">
-<h2>Elementos<a class="headerlink" href="#elementos" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Elementos<a class="headerlink" href="#elementos" title="Link to this heading">#</a></h2>
 <p><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr> es un lenguaje de programación con sintaxis <abbr title="eXtensible  Markup Language">XML</abbr> y, por tanto, estudiar
 la sintaxis de <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr> es repasar qué elementos admite y que atributos soporta
 cada elemento.</p>
 <section id="cabecera">
-<h3>Cabecera<a class="headerlink" href="#cabecera" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Cabecera<a class="headerlink" href="#cabecera" title="Link to this heading">#</a></h3>
 <p>Un documentos <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr> es un documento <abbr title="eXtensible  Markup Language">XML</abbr>. Por tanto, la primera línea debe ser
 la de todo documento <abbr title="eXtensible  Markup Language">XML</abbr>:</p>
 <div class="highlight-xslt notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
@@ -540,9 +914,9 @@ con un sangrado que lo haga legible. Los <a class="reference internal" href="#xs
 <p><a class="reference internal" href="#xsl-stylesheet"><span class="std std-ref">&lt;xsl:stylesheet&gt;</span></a> tiene otros hijos posibles, pero se introducirán adelante.</p>
 </section>
 <section id="plantillas">
-<h3>Plantillas<a class="headerlink" href="#plantillas" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Plantillas<a class="headerlink" href="#plantillas" title="Link to this heading">#</a></h3>
 <section id="definicion">
-<h4>Definición<a class="headerlink" href="#definicion" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4>Definición<a class="headerlink" href="#definicion" title="Link to this heading">#</a></h4>
 <p>La definicion de las transformaciones consiste basicamente en describir cómo se
 transformara cada uno de los nodos del <abbr title="eXtensible  Markup Language">XML</abbr> original, esto es, en crear
 plantillas para la transformacion de cada nodo.</p>
@@ -581,7 +955,7 @@ elemento. Cuál de las plantillas se use, dependerá entonces del atribute
 </dd>
 <dt><em>priority</em></dt><dd><p>modifica la prioridad predeterminada de la plantilla, que se calcula
 atendiendo al valor de <em>match</em>. Esta prioridad predeterminada es:</p>
-<table class="xslt-prioridad docutils align-default">
+<div class="pst-scrollable-table-container"><table class="xslt-prioridad table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Prioridad</p></th>
 <th class="head"><p>Descripción</p></th>
@@ -625,6 +999,7 @@ atendiendo al valor de <em>match</em>. Esta prioridad predeterminada es:</p>
 </tr>
 </tbody>
 </table>
+</div>
 <p>Esto significa que si tuvieramos dos plantillas, una con
 <code class="code docutils literal notranslate"><span class="pre">match=&quot;disco&quot;</span></code> y otra con <code class="code docutils literal notranslate"><span class="pre">match=&quot;disco[last()]&quot;</span></code>, el último
 elemento «disco» cumple con ambas expresiones, pero como la segunda expresión
@@ -713,7 +1088,7 @@ utlizarse la misma sintaxis que para las <strong>constantes</strong> definidas m
 <a class="reference internal" href="#xsl-variable"><span class="std std-ref">&lt;xsl:variable&gt;</span></a>.</p>
 </section>
 <section id="invocacion">
-<h4>Invocación<a class="headerlink" href="#invocacion" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4>Invocación<a class="headerlink" href="#invocacion" title="Link to this heading">#</a></h4>
 <p>Hay dos modos de invocar una plantilla:</p>
 <ol class="arabic" id="xsl-apply-templates">
 <li><p>Basándose en el nodo con <code class="docutils literal notranslate"><span class="pre">&lt;xsl:apply-templates&gt;</span></code>, para aquellas plantillas
@@ -1017,7 +1392,7 @@ LISTA ALTERNATIVA DE DISCOS
 </section>
 </section>
 <section id="variables">
-<span id="xslt-variables"></span><h3>Variables<a class="headerlink" href="#variables" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="xslt-variables"></span><h3>Variables<a class="headerlink" href="#variables" title="Link to this heading">#</a></h3>
 <p>En <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr> no existen variables, sino exclusivamente constantes que pueden ser:</p>
 <ul id="xsl-variable">
 <li><p>Definidas a través del elemento <code class="docutils literal notranslate"><span class="pre">&lt;xsl-variables&gt;</span></code> que puede incluirse dentro
@@ -1081,7 +1456,7 @@ valor predeterminado sería la cadena «xxxx».</p>
 </ul>
 </section>
 <section id="generacion-de-la-salida">
-<h3>Generación de la salida<a class="headerlink" href="#generacion-de-la-salida" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Generación de la salida<a class="headerlink" href="#generacion-de-la-salida" title="Link to this heading">#</a></h3>
 <p>El objeto de escribir una transformación <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr> es generar un documento de salida:
 en principio, un fichero de texto o un fichero <abbr title="eXtensible  Markup Language">XML</abbr> (o algo similar) como un
 <abbr title="HyperText Markup Language">HTML</abbr>. Por tanto, el objetivo de las plantillas que creamos con <a class="reference internal" href="#xsl-template"><span class="std std-ref">&lt;xsl:template&gt;</span></a> es
@@ -1356,13 +1731,13 @@ discos de jazz que consiste en… no traducir nada. La consecuencia es que en la
 salida obtendremos un <abbr title="eXtensible  Markup Language">XML</abbr> como el original, pero sin los discos de <em>jazz</em>.</p>
 </section>
 <section id="sentencias-condicionales">
-<h3>Sentencias condicionales<a class="headerlink" href="#sentencias-condicionales" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Sentencias condicionales<a class="headerlink" href="#sentencias-condicionales" title="Link to this heading">#</a></h3>
 <p>En <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr> hay dos elementos que permiten crear sentencias condicionales
 <code class="docutils literal notranslate"><span class="pre">&lt;xsl:if&gt;</span></code> y <code class="docutils literal notranslate"><span class="pre">&lt;xsl:choose&gt;</span></code>. El primero es una suerte de sentencia <em>if</em>,
 pero sin posibilidad de incluir un <em>else</em>, mientras que el segundo hace las
 veces de cláusula <em>switch</em>.</p>
 <section id="elemento-xsl-if">
-<span id="xsl-if"></span><h4>Elemento <code class="docutils literal notranslate"><span class="pre">&lt;xsl:if&gt;</span></code><a class="headerlink" href="#elemento-xsl-if" title="Enlace permanente a este encabezado">¶</a></h4>
+<span id="xsl-if"></span><h4>Elemento <code class="docutils literal notranslate"><span class="pre">&lt;xsl:if&gt;</span></code><a class="headerlink" href="#elemento-xsl-if" title="Link to this heading">#</a></h4>
 <p>Permite generar una determinada salida si se cumple una condición:</p>
 <div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">xsl:if</span> <span class="o">(</span><span class="nt">template</span><span class="o">)</span><span class="k">&gt;</span>
 <span class="k">&lt;!ATTLIST</span> <span class="nt">xsl:if</span> <span class="na">test</span> <span class="kc">CDATA</span>  <span class="kc">#REQUIRED</span><span class="k">&gt;</span>
@@ -1379,7 +1754,7 @@ expositorios</span></a> tiene una muestra del uso de este elemento:</p>
 primer disco de su tipo</em>.</p>
 </section>
 <section id="elemento-xsl-choose">
-<span id="xsl-choose"></span><h4>Elemento <code class="docutils literal notranslate"><span class="pre">&lt;xsl:choose&gt;</span></code><a class="headerlink" href="#elemento-xsl-choose" title="Enlace permanente a este encabezado">¶</a></h4>
+<span id="xsl-choose"></span><h4>Elemento <code class="docutils literal notranslate"><span class="pre">&lt;xsl:choose&gt;</span></code><a class="headerlink" href="#elemento-xsl-choose" title="Link to this heading">#</a></h4>
 <p>Este elemento permite generar distintas salidas dependiendo de la evaluación de
 distintas expresiones. Se ha dicho que equivale a una cláusula <em>switch</em>, pero más
 bien equivale a una serie de <em>if</em>: <code class="code docutils literal notranslate"><span class="pre">if...</span> <span class="pre">elif...</span> <span class="pre">elif...</span> <span class="pre">else</span> <span class="pre">...</span> <span class="pre">fi</span></code>:</p>
@@ -1464,7 +1839,7 @@ tendrá que usar la <a class="reference internal" href="#xslt-notacion-parent"><
 </section>
 </section>
 <section id="bucles">
-<span id="xsl-for-each"></span><h3>Bucles<a class="headerlink" href="#bucles" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="xsl-for-each"></span><h3>Bucles<a class="headerlink" href="#bucles" title="Link to this heading">#</a></h3>
 <p><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr> implementa un tipo de bucle, <code class="docutils literal notranslate"><span class="pre">&lt;xsl:for-each&gt;</span></code><a class="footnote-reference brackets" href="#id15" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>, que nos permite recorrer
 una serie de elementos del <abbr title="eXtensible  Markup Language">XML</abbr> original:</p>
 <div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">xsl:for-each</span> <span class="o">(</span><span class="nt">xsl:sort</span><span class="o">*,</span> <span class="nt">template</span><span class="o">)</span><span class="k">&gt;</span>
@@ -1550,7 +1925,7 @@ de proponer.</p>
 </div>
 </section>
 <section id="otros-elementos">
-<h3>Otros elementos<a class="headerlink" href="#otros-elementos" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Otros elementos<a class="headerlink" href="#otros-elementos" title="Link to this heading">#</a></h3>
 <p>Además de los elementos ya descritos, <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr> dispone de algunos otros que permiten
 hacer cosas interesantes:</p>
 <dl class="simple" id="xsl-fall-back">
@@ -1621,7 +1996,7 @@ lleve a cabo con la función <a class="reference internal" href="#xsl-func-forma
 </section>
 </section>
 <section id="funciones">
-<span id="xslt-func"></span><h2>Funciones<a class="headerlink" href="#funciones" title="Enlace permanente a este encabezado">¶</a></h2>
+<span id="xslt-func"></span><h2>Funciones<a class="headerlink" href="#funciones" title="Link to this heading">#</a></h2>
 <p><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr> <strong>1.0</strong> tiene unas pocas funciones que pueden usarse para hacer más poderosas
 las expresiones <em>XPath</em>. De hecho, <a class="reference internal" href="#e-xslt"><span class="std std-ref">EXSLT</span></a> consisten básicamente en aumentar
 este número de funciones disponibles.</p>
@@ -1880,13 +2255,13 @@ en la sección dedicada a <abbr title="Document Type Definition">DTD</abbr>.</p>
 </div>
 </section>
 <section id="extensiones">
-<span id="xslt-extensiones"></span><h2>Extensiones<a class="headerlink" href="#extensiones" title="Enlace permanente a este encabezado">¶</a></h2>
+<span id="xslt-extensiones"></span><h2>Extensiones<a class="headerlink" href="#extensiones" title="Link to this heading">#</a></h2>
 <p>Además de las funciones que define las especificación para <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr> <strong>1.0</strong>,
 algunos procesadores que soportan esta versión, pero no la <strong>2.0</strong> han
 implementado los elementos y funciones definidos por la <a class="reference external" href="http://exslt.org">comunidad EXSLT</a>.</p>
 <p>Por otro lado, es también posible crear extensiones propias.</p>
 <section id="extensiones-estandar">
-<span id="e-xslt"></span><h3>Extensiones estándar<a class="headerlink" href="#extensiones-estandar" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="e-xslt"></span><h3>Extensiones estándar<a class="headerlink" href="#extensiones-estandar" title="Link to this heading">#</a></h3>
 <p>Como los procesadores no tienen por qué implementar todas, lo recomentables
 es conocer cuáles, que en nuestro caso se hace:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>xmlstarlet<span class="w"> </span>tr<span class="w"> </span>--show-ext
@@ -2041,7 +2416,7 @@ de nombres de discos, podemos hacer lo siguiente:</p>
 </div>
 </section>
 <section id="extensiones-propias">
-<h3>Extensiones propias<a class="headerlink" href="#extensiones-propias" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Extensiones propias<a class="headerlink" href="#extensiones-propias" title="Link to this heading">#</a></h3>
 <p>Se han presentado ya los principios de <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr> <strong>1.0</strong> y también las extensiones
 estándar definidas por la <a class="reference external" href="http://exslt.org">comunidad EXSLT</a> para éste, implementadas muchas de forma
 nativa en los propios procesadores. Sin embargo, realizar una tarea algo
@@ -2065,7 +2440,7 @@ definir nuevas funciones de transformación.</p></li>
 </div>
 </section>
 <section id="ejercicios-propuestos">
-<h3>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Link to this heading">#</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Los ejercicios está organizados según el <abbr title="eXtensible  Markup Language">XML</abbr> que traducen y
@@ -2274,34 +2649,34 @@ importe total de la factura, en vez de el importe en cada producto.</p></li>
 </ol>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id11" role="note">
+<aside class="footnote brackets" id="id11" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
 <p>No es exactamente así y, de hecho, podría definir una plantilla para el
 nodo <code class="code docutils literal notranslate"><span class="pre">/</span></code>, dentro del cual se encuentra <code class="code docutils literal notranslate"><span class="pre">&lt;discoteca&gt;</span></code>. A efectos,
 prácticos es lo mismo, y ya responderemos por qué cuando veamos <a class="reference internal" href="#xslt-default-template"><span class="std std-ref">cuál es
 la plantilla predeterminada</span></a>.</p>
 </aside>
-<aside class="footnote brackets" id="id12" role="note">
+<aside class="footnote brackets" id="id12" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
 <p>Simplificamos la invocación eliminado <a class="reference internal" href="#xsl-sort"><span class="std std-ref">&lt;xsl:sort&gt;</span></a>, porque ahora mismo no
 aporta nada a la explicación del concepto su inclusión.</p>
 </aside>
-<aside class="footnote brackets" id="id13" role="note">
+<aside class="footnote brackets" id="id13" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
 <p>Obsérvese que esto, conceptualmente, es la ejecución de un bucle en un
 lenguaje de programación estructurada.</p>
 </aside>
-<aside class="footnote brackets" id="id14" role="note">
+<aside class="footnote brackets" id="id14" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">4</a><span class="fn-bracket">]</span></span>
 <p>Obviamente en la definición deberá haber un elemento <a class="reference internal" href="#xsl-param"><span class="std std-ref">&lt;xsl:param&gt;</span></a>
 correspondiente</p>
 </aside>
-<aside class="footnote brackets" id="id15" role="note">
+<aside class="footnote brackets" id="id15" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">5</a><span class="fn-bracket">]</span></span>
 <p>Bucle a medias porque la especificación no asegura el orden en que se
 recorrerán los nodos.</p>
 </aside>
-<aside class="footnote brackets" id="id16" role="note">
+<aside class="footnote brackets" id="id16" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">6</a><span class="fn-bracket">]</span></span>
 <p>Si disponemos de <strong class="program">xidel</strong>, que sí soporta <em>XPath</em> <strong>2.0</strong>,
 podemos probar la función así:</p>
@@ -2312,7 +2687,7 @@ podemos probar la función así:</p>
 </pre></div>
 </div>
 </aside>
-<aside class="footnote brackets" id="id17" role="note">
+<aside class="footnote brackets" id="id17" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">7</a><span class="fn-bracket">]</span></span>
 <p>Podemos también ahorrarnos el espacio de nombres metiendo la función
 dentro del espacio <code class="docutils literal notranslate"><span class="pre">xsl</span></code>, pero ciertamente no es algo muy pulcro.</p>
@@ -2323,127 +2698,133 @@ dentro del espacio <code class="docutils literal notranslate"><span class="pre">
 </section>
 
 
-            <div class="clearer"></div>
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/logo.png" alt="Logo"/>
-        </a></p><div class="sphinx-toc sphinxlocaltoc">
-    <h3><a href="../index.html">Page contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a><ul>
-<li><a class="reference internal" href="#introduccion">Introducción</a><ul>
-<li><a class="reference internal" href="#que-es-xslt">¿Qué es <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr>?</a></li>
-<li><a class="reference internal" href="#ejemplo-introductorio">Ejemplo introductorio</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#expresiones">Expresiones</a></li>
-<li><a class="reference internal" href="#elementos">Elementos</a><ul>
-<li><a class="reference internal" href="#cabecera">Cabecera</a></li>
-<li><a class="reference internal" href="#plantillas">Plantillas</a><ul>
-<li><a class="reference internal" href="#definicion">Definición</a></li>
-<li><a class="reference internal" href="#invocacion">Invocación</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#variables">Variables</a></li>
-<li><a class="reference internal" href="#generacion-de-la-salida">Generación de la salida</a></li>
-<li><a class="reference internal" href="#sentencias-condicionales">Sentencias condicionales</a><ul>
-<li><a class="reference internal" href="#elemento-xsl-if">Elemento <code class="docutils literal notranslate"><span class="pre">&lt;xsl:if&gt;</span></code></a></li>
-<li><a class="reference internal" href="#elemento-xsl-choose">Elemento <code class="docutils literal notranslate"><span class="pre">&lt;xsl:choose&gt;</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#bucles">Bucles</a></li>
-<li><a class="reference internal" href="#otros-elementos">Otros elementos</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#funciones">Funciones</a></li>
-<li><a class="reference internal" href="#extensiones">Extensiones</a><ul>
-<li><a class="reference internal" href="#extensiones-estandar">Extensiones estándar</a></li>
-<li><a class="reference internal" href="#extensiones-propias">Extensiones propias</a></li>
-<li><a class="reference internal" href="#ejercicios-propuestos">Ejercicios propuestos</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+                </article>
+              
 
-  </div>
-  <div class="sphinxprev">
-    <h4>Previous page</h4>
-    <p class="topless"><a href="22.rnc.html"
-                          title="Previous page">&larr; Relax-NG Compact</a></p>
-  </div>
-  <div class="sphinxnext">
-    <h4>Next page</h4>
-    <p class="topless"><a href="99.tools.html"
-                          title="Next page">&rarr; Herramientas</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>Esta página</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/98.apendices/41.xslt.rst.txt"
-            rel="nofollow">Mostrar el código</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Búsqueda rápida</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Ir a" />
-    </form>
-    </div>
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="22.rnc.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Relax-NG Compact</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="99.tools.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Herramientas</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-    
-    
-        <div class="sidebar-toggle-group no-js">
+                </footer>
+              
+            </div>
             
-            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
-                 «
-                <span class="show-for-small">hide menu</span>
-                
-            </button>
-            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
-                
-                <span class="show-for-small">menu</span>
-                <span class="hide-for-small">sidebar</span>
-                 »
-            </button>
-        </div>
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#que-es-xslt">¿Qué es <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr>?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-introductorio">Ejemplo introductorio</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expresiones">Expresiones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elementos">Elementos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cabecera">Cabecera</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plantillas">Plantillas</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion">Definición</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#invocacion">Invocación</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generacion-de-la-salida">Generación de la salida</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sentencias-condicionales">Sentencias condicionales</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#elemento-xsl-if">Elemento <code class="docutils literal notranslate"><span class="pre">&lt;xsl:if&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#elemento-xsl-choose">Elemento <code class="docutils literal notranslate"><span class="pre">&lt;xsl:choose&gt;</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bucles">Bucles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#otros-elementos">Otros elementos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones">Funciones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extensiones">Extensiones</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extensiones-estandar">Extensiones estándar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extensiones-propias">Extensiones propias</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios-propuestos">Ejercicios propuestos</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
     
-      <div class="clearer"></div>
-    </div>
-    <div class="relbar-bottom">
+<p class="component-author">
+Por José Miguel Sánchez Alés
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
         
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navegación</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="Índice General"
-             >índice</a></li>
-        <li class="right" >
-          <a href="99.tools.html" title="Herramientas"
-             >siguiente</a> &nbsp; &nbsp;</li>
-        <li class="right" >
-          <a href="22.rnc.html" title="Relax-NG Compact"
-             >anterior</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
 
-        <li class="nav-item nav-item-this"><a href=""><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li> 
-      </ul>
+      </main>
     </div>
-    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <div class="footer" role="contentinfo">
-        &#169; Derechos de autor CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
-      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
-    </div>
-    <!-- cloud_sptheme 1.4 -->
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

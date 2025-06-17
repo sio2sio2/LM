@@ -1,83 +1,442 @@
 
 
 
-
-
 <!DOCTYPE html>
 
-<html lang="es">
+
+<html lang="es" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>4. Transformación de datos &#8212; documentación de Lenguajes de Marcas - rolling</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" href="../_static/general.css" type="text/css" />
     <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
-    
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/translations.js"></script>
-    <script src="../_static/design-tabs.js"></script>
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    
-    
-     
-        <script src="../_static/jquery.cookie.js"></script>
-    
-
-    
-     
-        <script src="../_static/cloud.base.js"></script>
-    
-
-    
-     
-        <script src="../_static/cloud.js"></script>
-    
-
+    <script src="../_static/documentation_options.js?v=461dccb6"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '04.transformacion/index';</script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
     <link rel="next" title="5. Almacenamiento" href="../05.almacenamiento/index.html" />
-    <link rel="prev" title="3.2. JSONPath" href="../03.consulta/02.jsonpath.html" /> 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head><body>
-    <div class="relbar-top">
-        
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navegación</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="Índice General"
-             accesskey="I">índice</a></li>
-        <li class="right" >
-          <a href="../05.almacenamiento/index.html" title="5. Almacenamiento"
-             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
-        <li class="right" >
-          <a href="../03.consulta/02.jsonpath.html" title="3.2. JSONPath"
-             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+    <link rel="prev" title="3.2. JSONPath" href="../03.consulta/02.jsonpath.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">4. </span>Transformación de datos</a></li> 
-      </ul>
-    </div>
-    </div>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="documentación de Lenguajes de Marcas - rolling - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="documentación de Lenguajes de Marcas - rolling - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Búsqueda</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01.intro/index.html">1. Lenguajes para el intercambio de datos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01.intro/01.intro.html">1.1. Introducción</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../01.intro/02.sintaxis.html">1.2. Sintaxis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01.intro/02a.serial.html">1.2.1. Lenguajes de serialización de datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../01.intro/02b.marcas.html">1.2.2. Lenguajes de marcas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../01.intro/03.ejercicios.html">1.3. Ejercicios propuestos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02.validacion/index.html">2. Validación</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02.validacion/01.dtdxml.html">2.1. <abbr title="Document Type Definition">DTD</abbr></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.validacion/02.yaml.html">2.2. <abbr title="JavaScript Object Notation">JSON</abbr> Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.validacion/03.ej.html">2.3. Ejercicios propuestos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03.consulta/index.html">3. Consulta de datos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03.consulta/01.xpath.html">3.1. XPath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.consulta/02.jsonpath.html">3.2. <abbr title="JavaScript Object Notation">JSON</abbr>Path</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Transformación de datos</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05.almacenamiento/index.html">5. Almacenamiento</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05.almacenamiento/01.relacionales.html">5.1. Bases relacionales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.almacenamiento/02.nativas.html">5.2. Bases nativas</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06.html/index.html">6. <abbr title="HyperText Markup Language">HTML</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/01.intro.html">6.1. Introducción</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/02.estructura.html">6.2. Generalidades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/03.head.html">6.3. Cabecera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/04.basico.html">6.4. Elementos básicos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/05.tablas.html">6.5. Tablas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/07.struct.html">6.6. Estructura semántica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/08.form.html">6.7. Formularios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/09.media.html">6.8. Empotrados</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../07.css/index.html">7. <abbr title="Cascading Style Sheets">CSS</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/01.general.html">7.1. Generalidades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/02.sintaxis.html">7.2. Sintaxis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/03.propiedades.html">7.3. Propiedades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/04.bootstrap.html">7.4. Bootstrap</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../08.js/index.html">8. Javascript</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../98.apendices/index.html">Apendices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../98.apendices/21.xsd.html">W3C <abbr title="eXtensible  Markup Language">XML</abbr> Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../98.apendices/22.rnc.html">Relax-NG Compact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../98.apendices/41.xslt.html"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../98.apendices/99.tools.html">Herramientas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../98.apendices/99.tools/01-xmlstarlet.html">XMLStarlet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../98.apendices/99.tools/05-xidel.html">Xidel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../98.apendices/99.tools/10-vscode.html">Visual Studio Code</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../99.ejercicios/index.html">Ejercicios</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/10.lenguajes.html">Lenguajes para el intercambio de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/20.val.html">Validación de documentos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/30.xpath.html"><em>XPath</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/40.xquery.html">XQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/41.xslt.html"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/50.basex.html">BaseX</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/60.html.html"><abbr title="HyperText Markup Language">HTML</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/01.head.html">Cabecera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/05.basicos.html">Básicos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/10.tablas.html">Tablas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/15.struct.html">Estructura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/20.form.html">Formularios</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/70.css.html"><abbr title="Cascading Style Sheets">CSS</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/70.css/01.selectores.html">Selectores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/70.css/05.reglas.html">Reglas y maquetación</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/80.js.html">Javascript</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/80.js/01.basico.html">Sintaxis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/80.js/05.dom.html"><abbr title="Document Object Model">DOM</abbr></a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/04.transformacion/index.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Transformación de datos</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xquery">4.1. XQuery</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#procesadores">4.1.1. Procesadores</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flwor-basico">4.1.2. <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> básico</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-de-salida-xml">4.1.3. Construcción de salida <abbr title="eXtensible  Markup Language">XML</abbr></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones-de-usuario">4.1.4. Funciones de usuario</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clausulas-adicionales">4.1.5. Cláusulas adicionales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#actualizacion-de-datos">4.1.6. Actualización de datos</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modificacion">4.1.6.1. Modificación</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modificacion-en-memoria">4.1.6.2. Modificación en memoria</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios-resueltos">4.1.7. Ejercicios resueltos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xslt">4.2. <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios-propuestos">4.3. Ejercicios propuestos</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section id="transformacion-de-datos">
-<span id="lm-ut4"></span><h1><span class="section-number">4. </span>Transformación de datos<a class="headerlink" href="#transformacion-de-datos" title="Enlace permanente a este encabezado">¶</a></h1>
+<span id="lm-ut4"></span><h1><span class="section-number">4. </span>Transformación de datos<a class="headerlink" href="#transformacion-de-datos" title="Link to this heading">#</a></h1>
 <p>Habitualmente de los datos almacenados en documentos sólo requerimos obtener una
 parte de ellos u obtenerlos todos, pero en un formato distinto. En esta unidad
 trataremos los lenguajes que permiten la conversión entre distintos documentos de
@@ -98,7 +457,7 @@ de la unidad.</p></li>
 un estudio más detallado y extenso.</p></li>
 </ul>
 <section id="xquery">
-<span id="id1"></span><h2><span class="section-number">4.1. </span>XQuery<a class="headerlink" href="#xquery" title="Enlace permanente a este encabezado">¶</a></h2>
+<span id="id1"></span><h2><span class="section-number">4.1. </span>XQuery<a class="headerlink" href="#xquery" title="Link to this heading">#</a></h2>
 <p><em class="dfn">XQuery</em> es un lenguaje de consulta que permite obtener una salida <abbr title="eXtensible  Markup Language">XML</abbr>
 (aunque no necesariamente) a partir de una fuente <abbr title="eXtensible  Markup Language">XML</abbr> (aunque, de nuevo, no
 necesariamente). Para ello, usa <a class="reference internal" href="../03.consulta/01.xpath.html#xpath"><span class="std std-ref">XPath</span></a> como herramienta de selección la
@@ -149,7 +508,7 @@ un curso sobre los añadidos de la versión 3. El curso no está, pero el solo
 índice nos permite tener una enumeración de cuáles son las novedades.</p></li>
 </ul>
 <section id="procesadores">
-<h3><span class="section-number">4.1.1. </span>Procesadores<a class="headerlink" href="#procesadores" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><span class="section-number">4.1.1. </span>Procesadores<a class="headerlink" href="#procesadores" title="Link to this heading">#</a></h3>
 <p>Tenemos varias alternativas para ejecutar consultas <em>XQuery</em>:</p>
 <ul class="simple">
 <li><p>El programa <a class="reference internal" href="../98.apendices/99.tools/05-xidel.html#xidel"><span class="std std-ref">Xidel</span></a>, que ya usamos para probar <em>XPath</em>.</p></li>
@@ -175,7 +534,7 @@ ejecución confesando su incapacidad:</p>
 esto es, 1.0.</p>
 </section>
 <section id="flwor-basico">
-<h3><span class="section-number">4.1.2. </span><abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> básico<a class="headerlink" href="#flwor-basico" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><span class="section-number">4.1.2. </span><abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> básico<a class="headerlink" href="#flwor-basico" title="Link to this heading">#</a></h3>
 <p>La estructura <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> es una estructura iterativa (esto es, un bucle), que en
 <em>XQuery</em> (ya veremos que la versión 3 añade otras) está constituida por la
 sucesión de cinco cláusulas:</p>
@@ -334,10 +693,10 @@ llegue a mostrar antes.</p>
 </div>
 <p>Como deja vislumbrar la cardinalidad antes mostrada, puede haber varios
 <code class="docutils literal notranslate"><span class="pre">for</span></code> en la misma estructura:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $animal in (&quot;perro&quot;, &quot;gato&quot;)
-for $dueño in (&quot;Marta&quot;, &quot;Francisco&quot;)
-return
-   $dueño || &quot; tiene un &quot; || $animal || &quot;.&quot;
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;perro&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gato&quot;</span><span class="p">)</span>
+<span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">due</span><span class="err">ño</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;Marta&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Francisco&quot;</span><span class="p">)</span>
+<span class="k">return</span>
+<span class="w">   </span><span class="nv">$</span><span class="n">due</span><span class="err">ño</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot; tiene un &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;.&quot;</span>
 </pre></div>
 </div>
 <p>El código devuelve:</p>
@@ -348,10 +707,10 @@ Francisco tiene un gato.
 </pre></div>
 </div>
 <p>Lo anterior también puede ser escrito con un único <code class="docutils literal notranslate"><span class="pre">for</span></code>:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $animal in (&quot;perro&quot;, &quot;gato&quot;),
-    $dueño in (&quot;Marta&quot;, &quot;Francisco&quot;)
-return
-   $dueño || &quot; tiene un &quot; || $animal || &quot;.&quot;
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;perro&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;gato&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="nv">$</span><span class="n">due</span><span class="err">ño</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;Marta&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Francisco&quot;</span><span class="p">)</span>
+<span class="k">return</span>
+<span class="w">   </span><span class="nv">$</span><span class="n">due</span><span class="err">ño</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot; tiene un &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$</span><span class="n">animal</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;.&quot;</span>
 </pre></div>
 </div>
 </dd>
@@ -402,7 +761,7 @@ Nombres habituales de gato son:
 </dl>
 </section>
 <section id="construccion-de-salida-xml">
-<span id="xquery-output-xml"></span><h3><span class="section-number">4.1.3. </span>Construcción de salida <abbr title="eXtensible  Markup Language">XML</abbr><a class="headerlink" href="#construccion-de-salida-xml" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="xquery-output-xml"></span><h3><span class="section-number">4.1.3. </span>Construcción de salida <abbr title="eXtensible  Markup Language">XML</abbr><a class="headerlink" href="#construccion-de-salida-xml" title="Link to this heading">#</a></h3>
 <p>Hasta ahora, para ilustrar los principios de la estructura <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr>, estamos
 generando resultados que son mero texto. Sin embargo, podemos también generar
 una salida <abbr title="eXtensible  Markup Language">XML</abbr> y en este caso, el uso y comportamiento de <em>XQuery</em> será
@@ -564,7 +923,7 @@ también para los demás componentes de un <abbr title="eXtensible  Markup Langu
 </dl>
 </section>
 <section id="funciones-de-usuario">
-<span id="xquery-user-functions"></span><h3><span class="section-number">4.1.4. </span>Funciones de usuario<a class="headerlink" href="#funciones-de-usuario" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="xquery-user-functions"></span><h3><span class="section-number">4.1.4. </span>Funciones de usuario<a class="headerlink" href="#funciones-de-usuario" title="Link to this heading">#</a></h3>
 <p><em>XQuery</em> permite, antes de la estructura <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr>, definir funciones de usuario
 que piensen usarse luego en la estructura. Por ejemplo:</p>
 <div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="c">(: función propia :)</span>
@@ -591,7 +950,7 @@ que piensen usarse luego en la estructura. Por ejemplo:</p>
 </div>
 </section>
 <section id="clausulas-adicionales">
-<span id="xquery3"></span><h3><span class="section-number">4.1.5. </span>Cláusulas adicionales<a class="headerlink" href="#clausulas-adicionales" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="xquery3"></span><h3><span class="section-number">4.1.5. </span>Cláusulas adicionales<a class="headerlink" href="#clausulas-adicionales" title="Link to this heading">#</a></h3>
 <p><em>XQuery</em> 3 hizo algunos añadidos a la estructura original <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(FOR | LET | WINDOW)+ - WHERE? - ORDER BY? - GROUP BY? - COUNT? - RETURN
 </pre></div>
@@ -695,13 +1054,13 @@ ventanas consecutivas podrán tener uno o más ítems comunes.</p>
 </ol>
 <p>Para definir los límites de la ventana la sintaxis permite definir una
 condición de comienzo y otra de fin. Por ejemplo:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>xquery version &quot;3.0&quot;;
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="kp">xquery</span><span class="w"> </span><span class="kp">version</span><span class="w"> </span><span class="s2">&quot;3.0&quot;</span><span class="p">;</span>
 
-for tumbling window $w in (1 to 10)
-start when true()
-end at $e when $e mod 3 = 0
-return
-   &quot;- &quot; || string-join($w, &quot;,&quot;)
+<span class="k">for</span><span class="w"> </span><span class="k">tumbling</span><span class="w"> </span><span class="k">window</span><span class="w"> </span><span class="nv">$</span><span class="n">w</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="k">start</span><span class="w"> </span><span class="nt">when</span><span class="w"> </span><span class="err">true(</span><span class="p">)</span>
+<span class="k">end</span><span class="w"> </span><span class="nt">at</span><span class="w"> </span><span class="nv">$</span><span class="n">e</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="nv">$</span><span class="n">e</span><span class="w"> </span><span class="k">mod</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="k">return</span>
+<span class="w">   </span><span class="s2">&quot;- &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nf">string-join</span><span class="p">(</span><span class="nv">$</span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>establece una condición de comienzo que siempre cumple y una de final en
@@ -722,13 +1081,13 @@ final) de la ventana usando <code class="docutils literal notranslate"><span cla
 </div>
 <p>A las condiciones podemos añadirle <code class="docutils literal notranslate"><span class="pre">only</span></code> para forzar a que se cumpla y, si
 no es así, que no se llegue a constituir la ventana. Por tanto, el código:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>xquery version &quot;3.0&quot;;
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="kp">xquery</span><span class="w"> </span><span class="kp">version</span><span class="w"> </span><span class="s2">&quot;3.0&quot;</span><span class="p">;</span>
 
-for tumbling window $w in (1 to 10)
-start when true()
-only end at $e when $e mod 3 = 0
-return
-   &quot;- &quot; || string-join($w, &quot;,&quot;)
+<span class="k">for</span><span class="w"> </span><span class="k">tumbling</span><span class="w"> </span><span class="k">window</span><span class="w"> </span><span class="nv">$</span><span class="n">w</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="k">start</span><span class="w"> </span><span class="nt">when</span><span class="w"> </span><span class="err">true(</span><span class="p">)</span>
+<span class="k">only</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="nt">at</span><span class="w"> </span><span class="nv">$</span><span class="n">e</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="nv">$</span><span class="n">e</span><span class="w"> </span><span class="k">mod</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="k">return</span>
+<span class="w">   </span><span class="s2">&quot;- &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nf">string-join</span><span class="p">(</span><span class="nv">$</span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>no llegará a constituir la última ventana anterior, ya que ésta no acababa en
@@ -739,13 +1098,13 @@ un múltiplo de tres:</p>
 </pre></div>
 </div>
 <p>En cambio, si cambiamos el tipo de ventana…</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>xquery version &quot;3.0&quot;;
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="kp">xquery</span><span class="w"> </span><span class="kp">version</span><span class="w"> </span><span class="s2">&quot;3.0&quot;</span><span class="p">;</span>
 
-for sliding window $w in (1 to 10)
-start when true()
-only end at $e when $e mod 3 = 0
-return
-   &quot;- &quot; || string-join($w, &quot;,&quot;)
+<span class="k">for</span><span class="w"> </span><span class="k">sliding</span><span class="w"> </span><span class="k">window</span><span class="w"> </span><span class="nv">$</span><span class="n">w</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="k">start</span><span class="w"> </span><span class="nt">when</span><span class="w"> </span><span class="err">true(</span><span class="p">)</span>
+<span class="k">only</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="nt">at</span><span class="w"> </span><span class="nv">$</span><span class="n">e</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="nv">$</span><span class="n">e</span><span class="w"> </span><span class="k">mod</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="k">return</span>
+<span class="w">   </span><span class="s2">&quot;- &quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nf">string-join</span><span class="p">(</span><span class="nv">$</span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>…ahora las ventanas se pueden solapar y, como cualquier ítem, es susceptible
@@ -791,7 +1150,7 @@ ahorrárnosla: <code class="code docutils literal notranslate"><span class="pre"
 </dl>
 </section>
 <section id="actualizacion-de-datos">
-<span id="xquery-update"></span><h3><span class="section-number">4.1.6. </span>Actualización de datos<a class="headerlink" href="#actualizacion-de-datos" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="xquery-update"></span><h3><span class="section-number">4.1.6. </span>Actualización de datos<a class="headerlink" href="#actualizacion-de-datos" title="Link to this heading">#</a></h3>
 <p>Estrictamente <em>XQuery</em> permite la consulta de datos y la generación de una
 salida en forma de nuevo <abbr title="eXtensible  Markup Language">XML</abbr>. Buscando la analogía con <abbr title="Strctured Query Language">SQL</abbr>, esto lo hace
 equivalente a <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> que obtiene datos de una base de datos relacional y
@@ -825,7 +1184,7 @@ reescribir el código para asegurarnos que la evaluación de <code class="code d
 hará en segundo lugar.</p>
 </div>
 <section id="modificacion">
-<h4><span class="section-number">4.1.6.1. </span>Modificación<a class="headerlink" href="#modificacion" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><span class="section-number">4.1.6.1. </span>Modificación<a class="headerlink" href="#modificacion" title="Link to this heading">#</a></h4>
 <div class="admonition caution">
 <p class="admonition-title">Prudencia</p>
 <p>Estas sentencias de actualización de la fuente tienen sentido
@@ -838,46 +1197,46 @@ explicación para no desgajarla del resto del lenguaje <em>XQuery</em>.</p>
 <dl id="xquery-insert">
 <dt><code class="docutils literal notranslate"><span class="pre">insert</span></code></dt><dd><p>Podemos insertar tanto elementos como atributos y especificando exactamente
 dónde. Por ejemplo, la expresión:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>insert node &lt;foo/&gt; into //profesor[1]
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nt">insert</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="o">&lt;</span><span class="nt">foo</span><span class="p">/</span><span class="err">&gt;</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Añade un elemento <em>foo</em> al final del primer profesor. Variantes a esto
 podrían haber sido:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>insert node &lt;foo/&gt; as last into //profesor[1]
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nt">insert</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="o">&lt;</span><span class="nt">foo</span><span class="p">/</span><span class="err">&gt;</span><span class="w"> </span><span class="nt">as</span><span class="w"> </span><span class="err">last</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>o, si lo queremos añadir al comienzo del elemento:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>insert node &lt;foo/&gt; as first into //profesor[1]
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nt">insert</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="o">&lt;</span><span class="nt">foo</span><span class="p">/</span><span class="err">&gt;</span><span class="w"> </span><span class="nt">as</span><span class="w"> </span><span class="err">first</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Para agregarlo en algún punto intermedio, tendríamos que echar mano de
 <code class="docutils literal notranslate"><span class="pre">before</span></code> o <code class="docutils literal notranslate"><span class="pre">after</span></code>:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>insert node &lt;foo/&gt; after //profesor[1]/nombre
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nt">insert</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="o">&lt;</span><span class="nt">foo</span><span class="p">/</span><span class="err">&gt;</span><span class="w"> </span><span class="nt">after</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]/</span><span class="nt">nombre</span>
 </pre></div>
 </div>
 <p>Obsérvese que estamos agregando un nodo y, en consecuencia, el destino debe
 ser único y no varios, ya que un nodo sólo puede añadirse en un lugar. Si
 quisiéramos agregar un nodo <em>foo</em> a cada profesor, entonces tendríamos que
 echar mano de la estructura <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> explícita:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $p at $n in //profesor
-return
-   insert node &lt;foo&gt;{$n}&lt;/foo&gt; after //profesor[1]/nombre
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="nv">$</span><span class="n">n</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span>
+<span class="k">return</span>
+<span class="w">   </span><span class="nt">insert</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="o">&lt;</span><span class="nt">foo</span><span class="o">&gt;</span><span class="p">{</span><span class="nv">$</span><span class="n">n</span><span class="p">}</span><span class="o">&lt;</span><span class="p">/</span><span class="nt">foo</span><span class="o">&gt;</span><span class="w"> </span><span class="nt">after</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]/</span><span class="nt">nombre</span>
 </pre></div>
 </div>
 <p>Hemos complicado un poco la inserción para que se vea que estamos usando un
 <a class="reference internal" href="#xquery-const-directo"><span class="std std-ref">constructor directo</span></a> para el elemento <em>foo</em>. De
 hecho, también podríamos haber usado un <a class="reference internal" href="#xquery-const-eval"><span class="std std-ref">constructor evaluado</span></a>:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>for $p at $n in //profesor
-return
-   insert node element foo {$n} after $p/nombre
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="nv">$</span><span class="n">n</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span>
+<span class="k">return</span>
+<span class="w">   </span><span class="nt">insert</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="err">element</span><span class="w"> </span><span class="err">foo</span><span class="w"> </span><span class="p">{</span><span class="nv">$</span><span class="n">n</span><span class="p">}</span><span class="w"> </span><span class="err">after</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="nt">nombre</span>
 </pre></div>
 </div>
 <p>En realidad, es posible insertar una secuencia de nodos:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>insert node (&lt;foo/&gt;, &lt;bar/&gt;) into //profesor[1]
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nt">insert</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="err">(</span><span class="o">&lt;</span><span class="nt">foo</span><span class="p">/</span><span class="err">&gt;</span><span class="p">,</span><span class="w"> </span><span class="nt">&lt;bar/&gt;</span><span class="p">)</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Y también atributos, aunque usando un <em>constructor evaluado</em>:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>insert node attribute foo {&quot;bar&quot;} into //profesor[1]
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nt">insert</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="k">at</span><span class="nt">tribute</span><span class="w"> </span><span class="err">foo</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;bar&quot;</span><span class="p">}</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </dd>
@@ -886,40 +1245,40 @@ return
 <dt><code class="docutils literal notranslate"><span class="pre">delete</span></code></dt><dd><p>Borra la secuencia de nodos que se exprese como argumento. Por ejemplo,
 la siguiente expresión elimina el atributo casillero de todos los profesores
 que lo tengan.</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>delete node //profesor/@casillero
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nt">delete</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span><span class="p">/</span><span class="na">@casillero</span>
 </pre></div>
 </div>
 </dd>
 </dl>
 <dl id="xquery-replace">
 <dt><code class="docutils literal notranslate"><span class="pre">replace</span></code></dt><dd><p>Reemplaza el nodo indicado por otro que se le facilite:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>replace node //profesor[1]/apelativo with &lt;apelativo&gt;Joselito&lt;/apelativo&gt;
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nt">replace</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]/</span><span class="nt">apelativo</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="nt">&lt;apelativo&gt;</span><span class="l">Joselito</span><span class="nt">&lt;/apelativo&gt;</span>
 </pre></div>
 </div>
 <p>Aunque en este caso, como nuestra intención era cambiar el contenido y no el
 nombre del nodo, quizás habría sido mejor:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>replace node //profesor[1]/apelativo/text() with &quot;Josélito&quot;
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nt">replace</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]/</span><span class="nt">apelativo</span><span class="p">/</span><span class="nf">text</span><span class="p">()</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="s2">&quot;Josélito&quot;</span>
 </pre></div>
 </div>
 <p>Por supuesto, también podemos cambiar atributos:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>replace node //profesor[1]/@id with attribute id {&quot;p22&quot;}
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nt">replace</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]/</span><span class="na">@id</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="k">attribute</span><span class="w"> </span><span class="nv">id</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;p22&quot;</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>Cuando lo que se quiere es reemplazar no el nodo completo, sino su valor (que
 es lo que hemos pretendido en los dos ejemplos anteriores, puede usarse la
 expresión <code class="docutils literal notranslate"><span class="pre">replace</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">node</span></code> en vez de <code class="docutils literal notranslate"><span class="pre">replace</span> <span class="pre">node</span></code>:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>replace value of node //profesor[1]/apelativo with &quot;Joselito&quot;
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nt">replace</span><span class="w"> </span><span class="err">value</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]/</span><span class="nt">apelativo</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="s2">&quot;Joselito&quot;</span>
 </pre></div>
 </div>
 <p>y también:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>replace value of node //profesor[1]/@id with &quot;p22&quot;
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nt">replace</span><span class="w"> </span><span class="err">value</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]/</span><span class="na">@id</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="s2">&quot;p22&quot;</span>
 </pre></div>
 </div>
 <div class="admonition caution">
 <p class="admonition-title">Prudencia</p>
 <p>Si la expresión no es un literal, como es el caso, sino una expresión que
 debe evaluarse, entonces tiene que escribirse <code class="docutils literal notranslate"><span class="pre">text</span> <span class="pre">{expr}</span></code>:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>replace value of node //profesor[1]/@id with text {fn:generate-id()}
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nt">replace</span><span class="w"> </span><span class="err">value</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]/</span><span class="na">@id</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="k">text</span><span class="w"> </span><span class="p">{</span><span class="nf">fn:generate-id</span><span class="p">()}</span>
 </pre></div>
 </div>
 </div>
@@ -929,18 +1288,18 @@ debe evaluarse, entonces tiene que escribirse <code class="docutils literal notr
 <dt><code class="docutils literal notranslate"><span class="pre">rename</span></code></dt><dd><p><code class="docutils literal notranslate"><span class="pre">replace</span></code> sustituye por completo el nodo, lo cual incluye todos sus
 descendientes. <code class="docutils literal notranslate"><span class="pre">rename</span></code>, en cambio, nos permite cambiar el nombre del nodo
 sin alterar en absoluto su contenido:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>rename node //profesor[1]/apelativo as &quot;apodo&quot;
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nt">rename</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]/</span><span class="nt">apelativo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="err">&quot;</span><span class="kt">apodo</span><span class="err">&quot;</span>
 </pre></div>
 </div>
 <p>Y, de nuevo, también permite cambiar el nombre de un atributo:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>rename node //profesor[1]/@id as &quot;codigo&quot;
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="nt">rename</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="p">//</span><span class="nt">profesor</span><span class="p">[</span><span class="mi">1</span><span class="p">]/</span><span class="na">@id</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="err">&quot;</span><span class="kt">codigo</span><span class="err">&quot;</span>
 </pre></div>
 </div>
 </dd>
 </dl>
 </section>
 <section id="modificacion-en-memoria">
-<h4><span class="section-number">4.1.6.2. </span>Modificación en memoria<a class="headerlink" href="#modificacion-en-memoria" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><span class="section-number">4.1.6.2. </span>Modificación en memoria<a class="headerlink" href="#modificacion-en-memoria" title="Link to this heading">#</a></h4>
 <p>Los ejemplos anteriores sirven todos para modificar el documento original. Ahora
 bien, supongamos que queremos generar una salida que es muy parecida al archivo
 original. Con las técnicas vistas antes de este <a class="reference internal" href="#xquery-update"><span class="std std-ref">epígrafe de actualización</span></a>, esa generación a pesar de ser una pequeña variante del
@@ -951,18 +1310,18 @@ usando las técnicas arriba vistas y, finalmente, volcar en la salida la copia.<
 casilleros exactamente igual al original con la única diferencia de que el
 elemento <em>casillero</em> pasa a ser un atributo. El ejercicio podríamos realizarlo
 así:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>xquery version &quot;3.0&quot;;
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="kp">xquery</span><span class="w"> </span><span class="kp">version</span><span class="w"> </span><span class="s2">&quot;3.0&quot;</span><span class="p">;</span>
 
-<span class="hll">copy $claustro := //claustro
-</span><span class="hll">modify (
-</span>   for $p in $claustro/profesor
-   return (
-      insert node attribute departamento {$p/departamento} into $p,
-      delete node $p/departamento
-   )
-)
-<span class="hll">return
-</span>   $claustro
+<span class="hll"><span class="nt">copy</span><span class="w"> </span><span class="nv">$</span><span class="n">claustro</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">//</span><span class="nt">claustro</span>
+</span><span class="hll"><span class="k">mod</span><span class="nf">ify</span><span class="w"> </span><span class="p">(</span>
+</span><span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nv">$</span><span class="n">claustro</span><span class="p">/</span><span class="nt">profesor</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="nt">insert</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="k">at</span><span class="nt">tribute</span><span class="w"> </span><span class="err">departamen</span><span class="k">to</span><span class="w"> </span><span class="p">{</span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="nt">departamento</span><span class="p">}</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">delete</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="nt">departamento</span>
+<span class="w">   </span><span class="p">)</span>
+<span class="p">)</span>
+<span class="hll"><span class="k">return</span>
+</span><span class="w">   </span><span class="nv">$</span><span class="n">claustro</span>
 </pre></div>
 </div>
 <p>Esto es:</p>
@@ -975,33 +1334,32 @@ así:</p>
 profesores sin departamento a los que, por tanto, no hay que hacerle ninguna
 modificación. Esto, no obstante, no es algo que no podamos resolver con
 <a class="reference internal" href="../03.consulta/01.xpath.html#xpath2-const-if"><span class="std std-ref">if</span></a>:</p>
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>xquery version &quot;3.0&quot;;
+<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="kp">xquery</span><span class="w"> </span><span class="kp">version</span><span class="w"> </span><span class="s2">&quot;3.0&quot;</span><span class="p">;</span>
 
-<span class="hll">copy $claustro := //claustro
-</span><span class="hll">modify (
-</span>   for $p in $claustro/profesor
-   return (
-      if ($p/departamento) then (
-         insert node attribute departamento {$p/departamento} into $p,
-         delete node $p/departamento
-      )
-      else ( (: No hay modificación alguna :) )
-   )
-)
-<span class="hll">return
-</span>   $claustro
+<span class="hll"><span class="nt">copy</span><span class="w"> </span><span class="nv">$</span><span class="n">claustro</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">//</span><span class="nt">claustro</span>
+</span><span class="hll"><span class="k">mod</span><span class="nf">ify</span><span class="w"> </span><span class="p">(</span>
+</span><span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nv">$</span><span class="n">claustro</span><span class="p">/</span><span class="nt">profesor</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="nt">departamento</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="p">(</span>
+<span class="w">         </span><span class="nt">insert</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="k">at</span><span class="nt">tribute</span><span class="w"> </span><span class="err">departamen</span><span class="k">to</span><span class="w"> </span><span class="p">{</span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="nt">departamento</span><span class="p">}</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">delete</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="nv">$</span><span class="n">p</span><span class="p">/</span><span class="nt">departamento</span>
+<span class="w">      </span><span class="p">)</span>
+<span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="c">(: No hay modificación alguna :)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="p">)</span>
+<span class="p">)</span>
+<span class="hll"><span class="k">return</span>
+</span><span class="w">   </span><span class="nv">$</span><span class="n">claustro</span>
 </pre></div>
 </div>
 </section>
 </section>
 <section id="ejercicios-resueltos">
-<h3><span class="section-number">4.1.7. </span>Ejercicios resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><span class="section-number">4.1.7. </span>Ejercicios resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Link to this heading">#</a></h3>
 <p>Para ilustrar el uso de <em>XQuery</em> tomemos el <a class="reference internal" href="../01.intro/02b.marcas.html#xml-resueltos"><span class="std std-ref">primer ejercicio XML resuelto
 sobre recetas</span></a>:</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">XML propuesto</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">XML propuesto</span><a class="headerlink" href="#id8" title="Link to this code">#</a></div>
+<div class="toggle highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="nt">&lt;recetas&gt;</span>
 <span class="w">   </span><span class="cm">&lt;!-- El tiempo está en minutos --&gt;</span>
 <span class="w">   </span><span class="nt">&lt;receta</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;r01&quot;</span><span class="w"> </span><span class="na">nombre=</span><span class="s">&quot;ensalada&quot;</span><span class="w"> </span><span class="na">preparacion=</span><span class="s">&quot;5&quot;</span><span class="nt">&gt;</span>
@@ -1023,7 +1381,7 @@ sobre recetas</span></a>:</p>
 </pre></div>
 </div>
 </div>
-</details><ol class="loweralpha">
+<ol class="loweralpha">
 <li><p>Obtener un listado de texto ordenado alfabéticamente con las recetas de más
 de tres ingredientes:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Recetas de cocina:
@@ -1038,10 +1396,9 @@ de tres ingredientes:</p>
 </pre></div>
 </div>
 <p>Este listado se puede obtener con el siguiente código:</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">XQuery propuesto</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">XQuery propuesto</span><a class="headerlink" href="#id9" title="Link to this code">#</a></div>
+<div class="toggle highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
 <span class="w">   </span><span class="s2">&quot;Recetas de cocina:&quot;</span><span class="p">,</span>
 <span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">receta</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">//</span><span class="nt">receta</span>
 <span class="w">   </span><span class="c">(: Sólo mostramos las recetas complicadas: +3 ingredietes :)</span>
@@ -1059,47 +1416,46 @@ de tres ingredientes:</p>
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 <li><p>Generar otro <abbr title="eXtensible  Markup Language">XML</abbr> idéntico en que los atributos <em>nombre</em> y <em>cantidad</em> de
 cada ingrediente se conviertan en nodos elemento:</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">XQuery propuesto</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xquery notranslate"><div class="highlight"><pre><span></span>element {fn:local-name(/*)} {(
-   /*/@*,
-   for $receta in //receta
-   return
-      element receta {
-         $receta/@*,
-         for $ingrediente in $receta/ingrediente
-         return
-            (: En vez de reconstruir de 0 un elemento ingrediente
-               tomamos una copia e insertamos y eliminamos :)
-            copy $i := $ingrediente
-            modify (
-               insert node element nombre {data($i/@nombre)} into $i,
-               insert node element cantidad {data($i/@cantidad)} into $i,
-               delete node $i/@nombre,
-               delete node $i/@cantidad
-            )
-            return $i
-      }
-)}
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">XQuery propuesto</span><a class="headerlink" href="#id10" title="Link to this code">#</a></div>
+<div class="toggle highlight-xquery notranslate"><div class="highlight"><pre><span></span><span class="k">element</span><span class="w"> </span><span class="p">{</span><span class="nf">fn:local-name</span><span class="p">(/</span><span class="nt">*</span><span class="p">)}</span><span class="w"> </span><span class="p">{(</span>
+<span class="w">   </span><span class="p">/</span><span class="nt">*</span><span class="p">/</span><span class="na">@*</span><span class="p">,</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">receta</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">//</span><span class="nt">receta</span>
+<span class="w">   </span><span class="k">return</span>
+<span class="w">      </span><span class="k">element</span><span class="w"> </span><span class="nv">receta</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nv">$</span><span class="n">receta</span><span class="p">/</span><span class="na">@*</span><span class="p">,</span>
+<span class="w">         </span><span class="k">for</span><span class="w"> </span><span class="nv">$</span><span class="n">ingrediente</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nv">$</span><span class="n">receta</span><span class="p">/</span><span class="nt">ingrediente</span>
+<span class="w">         </span><span class="k">return</span>
+<span class="w">            </span><span class="c">(: En vez de reconstruir de 0 un elemento ingrediente</span>
+<span class="c">               tomamos una copia e insertamos y eliminamos :)</span>
+<span class="w">            </span><span class="nt">copy</span><span class="w"> </span><span class="nv">$</span><span class="n">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">$</span><span class="n">ingrediente</span>
+<span class="w">            </span><span class="k">mod</span><span class="nf">ify</span><span class="w"> </span><span class="p">(</span>
+<span class="w">               </span><span class="nt">insert</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="err">element</span><span class="w"> </span><span class="err">nombre</span><span class="w"> </span><span class="p">{</span><span class="nf">data</span><span class="p">(</span><span class="nv">$</span><span class="n">i</span><span class="p">/</span><span class="na">@nombre</span><span class="p">)}</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="nv">$</span><span class="n">i</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">insert</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="err">element</span><span class="w"> </span><span class="err">cantidad</span><span class="w"> </span><span class="p">{</span><span class="nf">data</span><span class="p">(</span><span class="nv">$</span><span class="n">i</span><span class="p">/</span><span class="na">@cantidad</span><span class="p">)}</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="nv">$</span><span class="n">i</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">delete</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="nv">$</span><span class="n">i</span><span class="p">/</span><span class="na">@nombre</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">delete</span><span class="w"> </span><span class="err">node</span><span class="w"> </span><span class="nv">$</span><span class="n">i</span><span class="p">/</span><span class="na">@cantidad</span>
+<span class="w">            </span><span class="p">)</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nv">$</span><span class="n">i</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="p">)}</span>
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 </ol>
 </section>
 </section>
 <section id="xslt">
-<h2><span class="section-number">4.2. </span><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr><a class="headerlink" href="#xslt" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">4.2. </span><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr><a class="headerlink" href="#xslt" title="Link to this heading">#</a></h2>
 <p>Un estudio consistente de este lenguaje de transformación es demasiado amplio
 para la escasa carga lectiva del módulo, pero pertinente a la vista del
 currículo. Por ello, trasladamos su desarrollo al <a class="reference internal" href="../98.apendices/41.xslt.html#xslt"><span class="std std-ref">apéndice correspondiente</span></a>.</p>
 </section>
 <section id="ejercicios-propuestos">
-<h2><span class="section-number">4.3. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">4.3. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Link to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Para no despojar de interés práctico la <a class="reference internal" href="../05.almacenamiento/index.html#lm-ut5"><span class="std std-ref">unidad dedicada al
@@ -1210,19 +1566,19 @@ que se pide para el <a class="reference internal" href="../99.ejercicios/41.xslt
 </ol>
 <p class="rubric">Nota al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id5" role="note">
+<aside class="footnote brackets" id="id5" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
 <p>Porque estas son las cláusulas de las que podía constar la estructura. La
 versión <strong>3</strong> añadió otras cláusulas adicionales.</p>
 </aside>
-<aside class="footnote brackets" id="id6" role="note">
+<aside class="footnote brackets" id="id6" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
 <p>En realidad, se puede escribir conjunto mayor de expresiones de las
 válidas para <em>XPath</em>, ya que <em>XQuery</em> soporta cláusulas inexistentes en
 <em>XPath</em> como la propia estructura <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> o los <a class="reference internal" href="#xquery-output-xml"><span class="std std-ref">constructores para
 generar una salida XML</span></a>.</p>
 </aside>
-<aside class="footnote brackets" id="id7" role="note">
+<aside class="footnote brackets" id="id7" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
 <p>En realidad, podríamos considerar que la evaluación de una estructura
 <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> devuelve en sí misma una secuencia con tantos ítems como iteraciones
@@ -1233,112 +1589,118 @@ haya.</p>
 </section>
 
 
-            <div class="clearer"></div>
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/logo.png" alt="Logo"/>
-        </a></p><div class="sphinx-toc sphinxlocaltoc">
-    <h3><a href="../index.html">Page contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">4. Transformación de datos</a><ul>
-<li><a class="reference internal" href="#xquery">4.1. XQuery</a><ul>
-<li><a class="reference internal" href="#procesadores">4.1.1. Procesadores</a></li>
-<li><a class="reference internal" href="#flwor-basico">4.1.2. <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> básico</a></li>
-<li><a class="reference internal" href="#construccion-de-salida-xml">4.1.3. Construcción de salida <abbr title="eXtensible  Markup Language">XML</abbr></a></li>
-<li><a class="reference internal" href="#funciones-de-usuario">4.1.4. Funciones de usuario</a></li>
-<li><a class="reference internal" href="#clausulas-adicionales">4.1.5. Cláusulas adicionales</a></li>
-<li><a class="reference internal" href="#actualizacion-de-datos">4.1.6. Actualización de datos</a><ul>
-<li><a class="reference internal" href="#modificacion">4.1.6.1. Modificación</a></li>
-<li><a class="reference internal" href="#modificacion-en-memoria">4.1.6.2. Modificación en memoria</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#ejercicios-resueltos">4.1.7. Ejercicios resueltos</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#xslt">4.2. <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
-<li><a class="reference internal" href="#ejercicios-propuestos">4.3. Ejercicios propuestos</a></li>
-</ul>
-</li>
-</ul>
+                </article>
+              
 
-  </div>
-  <div class="sphinxprev">
-    <h4>Previous page</h4>
-    <p class="topless"><a href="../03.consulta/02.jsonpath.html"
-                          title="Previous page">&larr; <span class="section-number">3.2. </span><abbr title="JavaScript Object Notation">JSON</abbr>Path</a></p>
-  </div>
-  <div class="sphinxnext">
-    <h4>Next page</h4>
-    <p class="topless"><a href="../05.almacenamiento/index.html"
-                          title="Next page">&rarr; <span class="section-number">5. </span>Almacenamiento</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>Esta página</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/04.transformacion/index.rst.txt"
-            rel="nofollow">Mostrar el código</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Búsqueda rápida</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Ir a" />
-    </form>
-    </div>
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../03.consulta/02.jsonpath.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title"><span class="section-number">3.2. </span><abbr title="JavaScript Object Notation">JSON</abbr>Path</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../05.almacenamiento/index.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Almacenamiento</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-    
-    
-        <div class="sidebar-toggle-group no-js">
+                </footer>
+              
+            </div>
             
-            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
-                 «
-                <span class="show-for-small">hide menu</span>
-                
-            </button>
-            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
-                
-                <span class="show-for-small">menu</span>
-                <span class="hide-for-small">sidebar</span>
-                 »
-            </button>
-        </div>
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xquery">4.1. XQuery</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#procesadores">4.1.1. Procesadores</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flwor-basico">4.1.2. <abbr title="For, Let, Where, Order by, Return">FLWOR</abbr> básico</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-de-salida-xml">4.1.3. Construcción de salida <abbr title="eXtensible  Markup Language">XML</abbr></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones-de-usuario">4.1.4. Funciones de usuario</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clausulas-adicionales">4.1.5. Cláusulas adicionales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#actualizacion-de-datos">4.1.6. Actualización de datos</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modificacion">4.1.6.1. Modificación</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modificacion-en-memoria">4.1.6.2. Modificación en memoria</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios-resueltos">4.1.7. Ejercicios resueltos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xslt">4.2. <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios-propuestos">4.3. Ejercicios propuestos</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
     
-      <div class="clearer"></div>
-    </div>
-    <div class="relbar-bottom">
+<p class="component-author">
+Por José Miguel Sánchez Alés
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
         
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navegación</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="Índice General"
-             >índice</a></li>
-        <li class="right" >
-          <a href="../05.almacenamiento/index.html" title="5. Almacenamiento"
-             >siguiente</a> &nbsp; &nbsp;</li>
-        <li class="right" >
-          <a href="../03.consulta/02.jsonpath.html" title="3.2. JSONPath"
-             >anterior</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
 
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">4. </span>Transformación de datos</a></li> 
-      </ul>
+      </main>
     </div>
-    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <div class="footer" role="contentinfo">
-        &#169; Derechos de autor CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
-      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
-    </div>
-    <!-- cloud_sptheme 1.4 -->
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

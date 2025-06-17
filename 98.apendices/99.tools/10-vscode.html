@@ -1,89 +1,450 @@
 
 
 
-
-
 <!DOCTYPE html>
 
-<html lang="es">
+
+<html lang="es" data-content_root="../../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Visual Studio Code &#8212; documentación de Lenguajes de Marcas - rolling</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/cloud.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" href="../../_static/general.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/particular.css" type="text/css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
-    
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
-    <script src="../../_static/translations.js"></script>
-    <script src="../../_static/design-tabs.js"></script>
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    
-    
-     
-        <script src="../../_static/jquery.cookie.js"></script>
-    
-
-    
-     
-        <script src="../../_static/cloud.base.js"></script>
-    
-
-    
-     
-        <script src="../../_static/cloud.js"></script>
-    
-
+    <script src="../../_static/documentation_options.js?v=461dccb6"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/translations.js?v=f85f4cfb"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '98.apendices/99.tools/10-vscode';</script>
     <link rel="index" title="Índice" href="../../genindex.html" />
     <link rel="search" title="Búsqueda" href="../../search.html" />
-    <link rel="next" title="Lenguajes para el intercambio de datos" href="../../99.ejercicios/10.lenguajes.html" />
-    <link rel="prev" title="Xidel" href="05-xidel.html" /> 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head><body>
-    <div class="relbar-top">
-        
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navegación</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="Índice General"
-             accesskey="I">índice</a></li>
-        <li class="right" >
-          <a href="../../99.ejercicios/10.lenguajes.html" title="Lenguajes para el intercambio de datos"
-             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
-        <li class="right" >
-          <a href="05-xidel.html" title="Xidel"
-             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
-    <li><a href="../../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+    <link rel="next" title="Ejercicios" href="../../99.ejercicios/index.html" />
+    <link rel="prev" title="Xidel" href="05-xidel.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-          <li class="nav-item nav-item-1"><a href="../99.tools.html" accesskey="U">Herramientas</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Visual Studio Code</a></li> 
-      </ul>
-    </div>
-    </div>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="documentación de Lenguajes de Marcas - rolling - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="documentación de Lenguajes de Marcas - rolling - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Búsqueda</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01.intro/index.html">1. Lenguajes para el intercambio de datos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01.intro/01.intro.html">1.1. Introducción</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../01.intro/02.sintaxis.html">1.2. Sintaxis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01.intro/02a.serial.html">1.2.1. Lenguajes de serialización de datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01.intro/02b.marcas.html">1.2.2. Lenguajes de marcas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01.intro/03.ejercicios.html">1.3. Ejercicios propuestos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02.validacion/index.html">2. Validación</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02.validacion/01.dtdxml.html">2.1. <abbr title="Document Type Definition">DTD</abbr></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02.validacion/02.yaml.html">2.2. <abbr title="JavaScript Object Notation">JSON</abbr> Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02.validacion/03.ej.html">2.3. Ejercicios propuestos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../03.consulta/index.html">3. Consulta de datos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../03.consulta/01.xpath.html">3.1. XPath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03.consulta/02.jsonpath.html">3.2. <abbr title="JavaScript Object Notation">JSON</abbr>Path</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04.transformacion/index.html">4. Transformación de datos</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../05.almacenamiento/index.html">5. Almacenamiento</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../05.almacenamiento/01.relacionales.html">5.1. Bases relacionales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../05.almacenamiento/02.nativas.html">5.2. Bases nativas</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../06.html/index.html">6. <abbr title="HyperText Markup Language">HTML</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../06.html/01.intro.html">6.1. Introducción</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06.html/02.estructura.html">6.2. Generalidades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06.html/03.head.html">6.3. Cabecera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06.html/04.basico.html">6.4. Elementos básicos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06.html/05.tablas.html">6.5. Tablas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06.html/07.struct.html">6.6. Estructura semántica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06.html/08.form.html">6.7. Formularios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06.html/09.media.html">6.8. Empotrados</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../07.css/index.html">7. <abbr title="Cascading Style Sheets">CSS</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../07.css/01.general.html">7.1. Generalidades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07.css/02.sintaxis.html">7.2. Sintaxis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07.css/03.propiedades.html">7.3. Propiedades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07.css/04.bootstrap.html">7.4. Bootstrap</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08.js/index.html">8. Javascript</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Apendices</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../21.xsd.html">W3C <abbr title="eXtensible  Markup Language">XML</abbr> Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../22.rnc.html">Relax-NG Compact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../41.xslt.html"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../99.tools.html">Herramientas</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01-xmlstarlet.html">XMLStarlet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05-xidel.html">Xidel</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Visual Studio Code</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../99.ejercicios/index.html">Ejercicios</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../99.ejercicios/10.lenguajes.html">Lenguajes para el intercambio de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../99.ejercicios/20.val.html">Validación de documentos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../99.ejercicios/30.xpath.html"><em>XPath</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../99.ejercicios/40.xquery.html">XQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../99.ejercicios/41.xslt.html"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../99.ejercicios/50.basex.html">BaseX</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../99.ejercicios/60.html.html"><abbr title="HyperText Markup Language">HTML</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../99.ejercicios/60.html/01.head.html">Cabecera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../99.ejercicios/60.html/05.basicos.html">Básicos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../99.ejercicios/60.html/10.tablas.html">Tablas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../99.ejercicios/60.html/15.struct.html">Estructura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../99.ejercicios/60.html/20.form.html">Formularios</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../99.ejercicios/70.css.html"><abbr title="Cascading Style Sheets">CSS</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../99.ejercicios/70.css/01.selectores.html">Selectores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../99.ejercicios/70.css/05.reglas.html">Reglas y maquetación</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../99.ejercicios/80.js.html">Javascript</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../99.ejercicios/80.js/01.basico.html">Sintaxis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../99.ejercicios/80.js/05.dom.html"><abbr title="Document Object Model">DOM</abbr></a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/98.apendices/99.tools/10-vscode.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Visual Studio Code</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generalidades">Generalidades</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#personalizacion">Personalización</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminares">Preliminares</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integracion-con-git">Integración con Git</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requisitos">Requisitos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inicializacion">Inicialización</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sincronizacion">Sincronización</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ramas">Ramas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perfiles-de-desarrollo">Perfiles de desarrollo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xml"><abbr title="eXtensible  Markup Language">XML</abbr></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#json"><abbr title="JavaScript Object Notation">JSON</abbr></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#yaml"><abbr title="YAML Ain't Markup Language">YAML</abbr></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#html-css"><abbr title="HyperText Markup Language">HTML</abbr>/<abbr title="Cascading Style Sheets">CSS</abbr></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#javascript">Javascript</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#java">Java</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section id="visual-studio-code">
-<span id="vscode"></span><h1>Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="Enlace permanente a este encabezado">¶</a></h1>
+<span id="vscode"></span><h1>Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="Link to this heading">#</a></h1>
 <p>Es un editor de texto, con innumerables extensiones, especialmente diseñado para
 la escritura de código, y con versiones para los principales sistemas
 operativos. Esta disponible para su descarga gratuita en <a class="reference external" href="https://code.visualstudio.com/">su página web</a> y su código fuente en <a class="reference external" href="https://github.com/microsoft/vscode">su página de github</a>.</p>
 <section id="generalidades">
-<h2>Generalidades<a class="headerlink" href="#generalidades" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Generalidades<a class="headerlink" href="#generalidades" title="Link to this heading">#</a></h2>
 <dl id="vscode-language">
 <dt><strong>Idioma</strong></dt><dd><p>Si la instalación trae el programa en inglés, puede instalarse el paquete de
 nuestra lengua pulsando <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd> (o
@@ -109,7 +470,7 @@ ejemplo, los errores de validación.</p></li>
 </dl>
 </section>
 <section id="personalizacion">
-<h2>Personalización<a class="headerlink" href="#personalizacion" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Personalización<a class="headerlink" href="#personalizacion" title="Link to this heading">#</a></h2>
 <p>El entorno es muy, muy configurable y permite alterar su comportamiento
 mediante la manipulación de varios aspectos cuya descripción se almacena en
 archivos de configuración <abbr title="JavaScript Object Notation">JSON</abbr>:</p>
@@ -345,7 +706,7 @@ página oficial.</p>
 </dl>
 </section>
 <section id="preliminares">
-<span id="vscode-start"></span><h2>Preliminares<a class="headerlink" href="#preliminares" title="Enlace permanente a este encabezado">¶</a></h2>
+<span id="vscode-start"></span><h2>Preliminares<a class="headerlink" href="#preliminares" title="Link to this heading">#</a></h2>
 <p>Antes de empezar cualquier configuración específica a un lenguaje determinado es
 conveniente preparar en el <a class="reference internal" href="#vscode-profile"><span class="std std-ref">perfil Predeterminado</span></a> todo
 aquellas configuraciones que deseemos que sean universales independientemente de
@@ -373,20 +734,20 @@ apropiada para desarrollar en <a class="reference internal" href="#vscode-javasc
 </ol>
 </section>
 <section id="integracion-con-git">
-<h2>Integración con Git<a class="headerlink" href="#integracion-con-git" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Integración con Git<a class="headerlink" href="#integracion-con-git" title="Link to this heading">#</a></h2>
 <p>Un aspecto fundamental del desarrollo de aplicaciones es tener un adecuado
 control de versiones. Si decidimos usar <a class="reference external" href="https://git-scm.com">Git</a>, <strong class="program">Visual Studio Code</strong> nos
 proporcionará una excelente integración.</p>
 <section id="requisitos">
-<h3>Requisitos<a class="headerlink" href="#requisitos" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Requisitos<a class="headerlink" href="#requisitos" title="Link to this heading">#</a></h3>
 <p>Previamente, sin embargo, necesitaremos:</p>
 <ul class="simple">
-<li><p>Tener instalado <a class="reference external" href="https://packages.debian.org/stable/git">git</a> en el sistema.</p></li>
+<li><p>Tener instalado <a class="extlink-deb reference external" href="https://packages.debian.org/stable/git">git</a> en el sistema.</p></li>
 <li><p>Tener creada una cuenta en <a class="reference external" href="https://github.com">Github</a>.</p></li>
 </ul>
 </section>
 <section id="inicializacion">
-<h3>Inicialización<a class="headerlink" href="#inicializacion" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Inicialización<a class="headerlink" href="#inicializacion" title="Link to this heading">#</a></h3>
 <p>Cumplido eso podemos partir de dos comienzos distintos para convertir el espacio de trabajo en un repositorio de Git también:</p>
 <ol class="arabic simple">
 <li><p>Definir el control de versiones en un espacio de trabajo que antes careciera
@@ -469,7 +830,7 @@ previamente), se sustituirá esa leyenda por la lista de repositorios del usuari
 y podremos elegirlos directamente.</p>
 </section>
 <section id="sincronizacion">
-<h3>Sincronización<a class="headerlink" href="#sincronizacion" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Sincronización<a class="headerlink" href="#sincronizacion" title="Link to this heading">#</a></h3>
 <p>Una vez que tengamos asociado el directorio local con un repositorio remoto, el
 programa será capaz de marcarnos qué archivos hemos cambiado respecto a la
 versión del último <em>commit</em>, nos lo mostrará en el propio editor e incluso
@@ -510,7 +871,7 @@ que hay cambios pendientes (en este caso, 1 de bajada y ninguno de subida).</p>
 </div>
 </section>
 <section id="ramas">
-<h3>Ramas<a class="headerlink" href="#ramas" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Ramas<a class="headerlink" href="#ramas" title="Link to this heading">#</a></h3>
 <p>El soporte nativo también nos permite tratar con ramas, cambiar entre ellas y
 mezclarlas de forma bastante intuitiva. En la parte izquierda de la barra
 inferior de estado podemos ver en qué rama estamos trabajando y, si pulsamos
@@ -523,12 +884,12 @@ sección de control de versiones:</p>
 </section>
 </section>
 <section id="perfiles-de-desarrollo">
-<h2>Perfiles de desarrollo<a class="headerlink" href="#perfiles-de-desarrollo" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Perfiles de desarrollo<a class="headerlink" href="#perfiles-de-desarrollo" title="Link to this heading">#</a></h2>
 <section id="xml">
-<span id="vscode-xml"></span><h3><abbr title="eXtensible  Markup Language">XML</abbr><a class="headerlink" href="#xml" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="vscode-xml"></span><h3><abbr title="eXtensible  Markup Language">XML</abbr><a class="headerlink" href="#xml" title="Link to this heading">#</a></h3>
 <p>Para manipular documentos <abbr title="eXtensible  Markup Language">XML</abbr> es recomendable instalar algunas extensiones:</p>
-<table class="vscode-extensions docutils align-default" id="id20">
-<caption><span class="caption-text">Extensiones recomendadas</span><a class="headerlink" href="#id20" title="Enlace permanente a esta tabla">¶</a></caption>
+<div class="pst-scrollable-table-container"><table class="vscode-extensions table" id="id20">
+<caption><span class="caption-text">Extensiones recomendadas</span><a class="headerlink" href="#id20" title="Link to this table">#</a></caption>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml">XML de RedHat</a></p></td>
 <td><p>Facilita la edición de documentos <abbr title="eXtensible  Markup Language">XML</abbr> (cierre de etiquetas, etc.) y
@@ -539,6 +900,7 @@ la validación con <abbr title="Document Type Definition">DTD</abbr> y <abbr tit
 </tr>
 </tbody>
 </table>
+</div>
 <p>La comprobación de que el documento es bien formado, además de otras
 funcionalidades como cerrar automáticamente la etiqueta que se acaba de abrir,
 se puede lograr instalando la extensión <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml">XML de RedHat</a>.</p>
@@ -618,7 +980,7 @@ directamente en una subventana.</p></li>
 </dl>
 </section>
 <section id="json">
-<span id="vscode-json"></span><h3><abbr title="JavaScript Object Notation">JSON</abbr><a class="headerlink" href="#json" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="vscode-json"></span><h3><abbr title="JavaScript Object Notation">JSON</abbr><a class="headerlink" href="#json" title="Link to this heading">#</a></h3>
 <p>El editor tiene soporte nativo, por lo que, en principio, no necesita extensiones
 para que podamos trabajar cómodamente con este formato. De hecho, nos señalará
 sin configuración adicional si el documento <abbr title="JavaScript Object Notation">JSON</abbr> que editamos no es bien
@@ -656,17 +1018,18 @@ es la lista de archivos que siguen el esquema, mientras que <code class="docutil
 propia carpeta del proyecto, hemos preferido una <abbr title="Uniform Resource Locator">URL</abbr> relativa.</p>
 </section>
 <section id="yaml">
-<span id="vscode-yaml"></span><h3><abbr title="YAML Ain't Markup Language">YAML</abbr><a class="headerlink" href="#yaml" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="vscode-yaml"></span><h3><abbr title="YAML Ain't Markup Language">YAML</abbr><a class="headerlink" href="#yaml" title="Link to this heading">#</a></h3>
 <p>A diferencia de lo que ocurre con <abbr title="JavaScript Object Notation">JSON</abbr>, el soporte para <abbr title="YAML Ain't Markup Language">YAML</abbr> no es nativo,
 así que es preciso instalar extensiones.</p>
-<table class="vscode-extensions docutils align-default" id="id21">
-<caption><span class="caption-text">Extensiones recomendadas</span><a class="headerlink" href="#id21" title="Enlace permanente a esta tabla">¶</a></caption>
+<div class="pst-scrollable-table-container"><table class="vscode-extensions table" id="id21">
+<caption><span class="caption-text">Extensiones recomendadas</span><a class="headerlink" href="#id21" title="Link to this table">#</a></caption>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml">YAML de RedHat</a></p></td>
 <td><p>Da soporte para <abbr title="YAML Ain't Markup Language">YAML</abbr> (<em>buenformidad</em>, validación, etc.).</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 <p>Si, además, queremos confrontarlo con un esquema <abbr title="JavaScript Object Notation">JSON</abbr> para validarlo, entonces
 requeriremos configuración adicional que relacione los archivos con su esquema
 correspondiente:</p>
@@ -695,13 +1058,13 @@ propia del área de trabajo.</p>
 </div>
 </section>
 <section id="html-css">
-<span id="vscode-html"></span><h3><abbr title="HyperText Markup Language">HTML</abbr>/<abbr title="Cascading Style Sheets">CSS</abbr><a class="headerlink" href="#html-css" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="vscode-html"></span><h3><abbr title="HyperText Markup Language">HTML</abbr>/<abbr title="Cascading Style Sheets">CSS</abbr><a class="headerlink" href="#html-css" title="Link to this heading">#</a></h3>
 <p>Como en el caso del formato <abbr title="JavaScript Object Notation">JSON</abbr>, <strong class="program">Visual Studio Core</strong> tiene soporte
 nativo para <abbr title="HyperText Markup Language">HTML</abbr>, de manera que es capaz de proporcionarnos sugerencias o
 autocompletado sin configuración adicional. Sin embargo, podemos afinar un poco
 para ampliar las facilidades con algunas extensiones:</p>
-<table class="vscode-extensions docutils align-default" id="id22">
-<caption><span class="caption-text">Extensiones recomendadas</span><a class="headerlink" href="#id22" title="Enlace permanente a esta tabla">¶</a></caption>
+<div class="pst-scrollable-table-container"><table class="vscode-extensions table" id="id22">
+<caption><span class="caption-text">Extensiones recomendadas</span><a class="headerlink" href="#id22" title="Link to this table">#</a></caption>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag">Auto Close Tag</a></p></td>
 <td><p>Afina el cierre de etiquetas.</p></td>
@@ -714,6 +1077,7 @@ para ampliar las facilidades con algunas extensiones:</p>
 </tr>
 </tbody>
 </table>
+</div>
 <dl id="vscode-html-close">
 <dt><strong>Cierre de etiquetas</strong></dt><dd><p>Ya existe soporte para ello, pero si somos de aquellos a los que gusta no cerrar
 las etiquetas que no necesitan cierre, puede resultarnos molesta que esta
@@ -826,13 +1190,13 @@ ilustramos cómo crear tareas</span></a>.</p>
 </dl>
 </section>
 <section id="javascript">
-<span id="vscode-javascript"></span><h3>Javascript<a class="headerlink" href="#javascript" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="vscode-javascript"></span><h3>Javascript<a class="headerlink" href="#javascript" title="Link to this heading">#</a></h3>
 <p>Al igual que <a class="reference internal" href="#vscode-javascript"><span class="std std-ref">ocurre con JSON</span></a>, el programa tiene
 soporte nativo para la escritura de <a class="reference internal" href="../../08.js/index.html#js"><span class="std std-ref">Javascript</span></a>
 (autocompletado, <a class="reference external" href="https://es.wikipedia.org/wiki/Snippet">snippets</a>), pese a lo cual podemos hacer algunos añadidos
 para mejorarla:</p>
-<table class="vscode-extensions docutils align-default" id="id23">
-<caption><span class="caption-text">Extensiones recomendadas</span><a class="headerlink" href="#id23" title="Enlace permanente a esta tabla">¶</a></caption>
+<div class="pst-scrollable-table-container"><table class="vscode-extensions table" id="id23">
+<caption><span class="caption-text">Extensiones recomendadas</span><a class="headerlink" href="#id23" title="Link to this table">#</a></caption>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets">Javascript (ES6) code snippets</a></p></td>
 <td><p>Añade <em>snippets</em> adicionales.</p></td>
@@ -845,6 +1209,7 @@ para mejorarla:</p>
 </tr>
 </tbody>
 </table>
+</div>
 <dl>
 <dt><strong>Ejecución</strong></dt><dd><p><em>Javascript</em> es un lenguaje de programación que requiere de un intérprete.
 Cuando el código forma parte de un documento <abbr title="HyperText Markup Language">HTML</abbr> (que és el propósito de
@@ -877,7 +1242,7 @@ ello ya existe <kbd class="kbd docutils literal notranslate">F5</kbd>.</p></li>
 <p><strong>Análisis estático</strong></p>
 </section>
 <section id="java">
-<span id="vscode-java"></span><h3>Java<a class="headerlink" href="#java" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="vscode-java"></span><h3>Java<a class="headerlink" href="#java" title="Link to this heading">#</a></h3>
 <div class="admonition caution">
 <p class="admonition-title">Prudencia</p>
 <p>El desarrollo con <em>Java</em> nada tiene que ver con los propósitos del
@@ -892,8 +1257,8 @@ operativos. En los sistemas <em>Linux</em> sus versiones son las versiones de
 referencia<a class="footnote-reference brackets" href="#id16" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>, así que podremos instalarla mediante el sistema de paquetería;
 mientras que en <em>Windows</em> podemos utilizar los instalables que nos ofrece
 <a class="reference external" href="https://adoptium.net/">Adoptium</a>.</p>
-<table class="vscode-extensions docutils align-default" id="id24">
-<caption><span class="caption-text">Extensiones recomendadas</span><a class="headerlink" href="#id24" title="Enlace permanente a esta tabla">¶</a></caption>
+<div class="pst-scrollable-table-container"><table class="vscode-extensions table" id="id24">
+<caption><span class="caption-text">Extensiones recomendadas</span><a class="headerlink" href="#id24" title="Link to this table">#</a></caption>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.java">Language Support for Java by Red Hat</a></p></td>
 <td></td>
@@ -918,6 +1283,7 @@ ejecución paso a paso, etc.</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 <div class="admonition caution">
 <p class="admonition-title">Prudencia</p>
 <p><a class="reference internal" href="#code-runner"><span class="std std-ref">Code Runner</span></a> es absolutamente prescindible, ya que al tener
@@ -1173,22 +1539,22 @@ podremos ejecutar la aplicación con:</p>
 </dl>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id11" role="note">
+<aside class="footnote brackets" id="id11" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>En realidad, las instrucciones se caracterizan por empezar a escribirse
 con <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, por lo que, si pulsamos <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd> y luego
 escribimos <kbd class="kbd docutils literal notranslate">&gt;</kbd>, obtendremos el mismo efecto.</p>
 </aside>
-<aside class="footnote brackets" id="id12" role="note">
+<aside class="footnote brackets" id="id12" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
 <p>Cuatro de las cuales sí instalaremos de forma individual nosotros.</p>
 </aside>
-<aside class="footnote brackets" id="id13" role="note">
+<aside class="footnote brackets" id="id13" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
 <p>O sea, de que internamente se haga el equivalente a un <code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code>
 que deberíamos ejecutar nosotros si realizáramos a mano esta acción.</p>
 </aside>
-<aside class="footnote brackets" id="id14" role="note">
+<aside class="footnote brackets" id="id14" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">4</a><span class="fn-bracket">]</span></span>
 <p>Lo cual es útil si es un proyecto personal que sólo desarrollamos
 nosotros. Si hay otros desarrolladores trabajando, quizás sea más conveniente
@@ -1197,20 +1563,20 @@ segundos). Por tanto, quizás la primera línea de configuración es útil a
 nivel de perfil, pero la segunda debería ser más propia del nivel de área de
 trabajo.</p>
 </aside>
-<aside class="footnote brackets" id="id15" role="note">
+<aside class="footnote brackets" id="id15" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">5</a><span class="fn-bracket">]</span></span>
 <p>La extensión, para no entrar en conflicto, deshabilitó el autocierre
 predeterminado para <abbr title="HyperText Markup Language">HTML</abbr> cuando el soporte nativo lo introdujo. Por otra
 parte, la extensión sirve para autocompletar otros lenguajes, así que tal vez
 nos podría interesar añadir más lenguajes a la secuencia.</p>
 </aside>
-<aside class="footnote brackets" id="id16" role="note">
+<aside class="footnote brackets" id="id16" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">6</a><span class="fn-bracket">]</span></span>
-<p>En <em>Debian</em>, por ejemplo, los paquetes <a class="reference external" href="https://packages.debian.org/stable/default-jre">default-jre</a> y
-<a class="reference external" href="https://packages.debian.org/stable/default-jdk">default-jdk</a> apuntan a los paquetes creados con el <em>software</em> de
+<p>En <em>Debian</em>, por ejemplo, los paquetes <a class="extlink-deb reference external" href="https://packages.debian.org/stable/default-jre">default-jre</a> y
+<a class="extlink-deb reference external" href="https://packages.debian.org/stable/default-jdk">default-jdk</a> apuntan a los paquetes creados con el <em>software</em> de
 <a class="reference external" href="https://openjdk.org/">OpenJDK</a>.</p>
 </aside>
-<aside class="footnote brackets" id="id17" role="note">
+<aside class="footnote brackets" id="id17" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">7</a><span class="fn-bracket">]</span></span>
 <p>El <code class="file docutils literal notranslate"><span class="pre">launch.json</span></code> predeterminado de <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug">Debugger for Java</a> es como el
 que hemos propuesto pero con:</p>
@@ -1220,7 +1586,7 @@ que hemos propuesto pero con:</p>
 <p>de ahí que se espere encontrar activo el archivo que contiene la clase
 principal.</p>
 </aside>
-<aside class="footnote brackets" id="id18" role="note">
+<aside class="footnote brackets" id="id18" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">8</a><span class="fn-bracket">]</span></span>
 <p>La cual se presta a <a class="reference internal" href="#vscode-tasks"><span class="std std-ref">crear una tarea</span></a> y <a class="reference internal" href="#vscode-atajos"><span class="std std-ref">asociarle un atajo</span></a>.</p>
 </aside>
@@ -1230,116 +1596,121 @@ principal.</p>
 </section>
 
 
-            <div class="clearer"></div>
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../../index.html" title="index">
-          <img class="logo" src="../../_static/logo.png" alt="Logo"/>
-        </a></p><div class="sphinx-toc sphinxlocaltoc">
-    <h3><a href="../../index.html">Page contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">Visual Studio Code</a><ul>
-<li><a class="reference internal" href="#generalidades">Generalidades</a></li>
-<li><a class="reference internal" href="#personalizacion">Personalización</a></li>
-<li><a class="reference internal" href="#preliminares">Preliminares</a></li>
-<li><a class="reference internal" href="#integracion-con-git">Integración con Git</a><ul>
-<li><a class="reference internal" href="#requisitos">Requisitos</a></li>
-<li><a class="reference internal" href="#inicializacion">Inicialización</a></li>
-<li><a class="reference internal" href="#sincronizacion">Sincronización</a></li>
-<li><a class="reference internal" href="#ramas">Ramas</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#perfiles-de-desarrollo">Perfiles de desarrollo</a><ul>
-<li><a class="reference internal" href="#xml"><abbr title="eXtensible  Markup Language">XML</abbr></a></li>
-<li><a class="reference internal" href="#json"><abbr title="JavaScript Object Notation">JSON</abbr></a></li>
-<li><a class="reference internal" href="#yaml"><abbr title="YAML Ain't Markup Language">YAML</abbr></a></li>
-<li><a class="reference internal" href="#html-css"><abbr title="HyperText Markup Language">HTML</abbr>/<abbr title="Cascading Style Sheets">CSS</abbr></a></li>
-<li><a class="reference internal" href="#javascript">Javascript</a></li>
-<li><a class="reference internal" href="#java">Java</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+                </article>
+              
 
-  </div>
-  <div class="sphinxprev">
-    <h4>Previous page</h4>
-    <p class="topless"><a href="05-xidel.html"
-                          title="Previous page">&larr; Xidel</a></p>
-  </div>
-  <div class="sphinxnext">
-    <h4>Next page</h4>
-    <p class="topless"><a href="../../99.ejercicios/10.lenguajes.html"
-                          title="Next page">&rarr; Lenguajes para el intercambio de datos</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>Esta página</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../_sources/98.apendices/99.tools/10-vscode.rst.txt"
-            rel="nofollow">Mostrar el código</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Búsqueda rápida</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Ir a" />
-    </form>
-    </div>
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="05-xidel.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Xidel</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../99.ejercicios/index.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Ejercicios</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-    
-    
-        <div class="sidebar-toggle-group no-js">
+                </footer>
+              
+            </div>
             
-            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
-                 «
-                <span class="show-for-small">hide menu</span>
-                
-            </button>
-            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
-                
-                <span class="show-for-small">menu</span>
-                <span class="hide-for-small">sidebar</span>
-                 »
-            </button>
-        </div>
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generalidades">Generalidades</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#personalizacion">Personalización</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminares">Preliminares</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integracion-con-git">Integración con Git</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requisitos">Requisitos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inicializacion">Inicialización</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sincronizacion">Sincronización</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ramas">Ramas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perfiles-de-desarrollo">Perfiles de desarrollo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xml"><abbr title="eXtensible  Markup Language">XML</abbr></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#json"><abbr title="JavaScript Object Notation">JSON</abbr></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#yaml"><abbr title="YAML Ain't Markup Language">YAML</abbr></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#html-css"><abbr title="HyperText Markup Language">HTML</abbr>/<abbr title="Cascading Style Sheets">CSS</abbr></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#javascript">Javascript</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#java">Java</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
     
-      <div class="clearer"></div>
-    </div>
-    <div class="relbar-bottom">
+<p class="component-author">
+Por José Miguel Sánchez Alés
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
         
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navegación</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="Índice General"
-             >índice</a></li>
-        <li class="right" >
-          <a href="../../99.ejercicios/10.lenguajes.html" title="Lenguajes para el intercambio de datos"
-             >siguiente</a> &nbsp; &nbsp;</li>
-        <li class="right" >
-          <a href="05-xidel.html" title="Xidel"
-             >anterior</a> &nbsp; &nbsp;</li>
-    <li><a href="../../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
 
-          <li class="nav-item nav-item-1"><a href="../99.tools.html" >Herramientas</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Visual Studio Code</a></li> 
-      </ul>
+      </main>
     </div>
-    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <div class="footer" role="contentinfo">
-        &#169; Derechos de autor CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
-      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
-    </div>
-    <!-- cloud_sptheme 1.4 -->
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

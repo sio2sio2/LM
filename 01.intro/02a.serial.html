@@ -1,86 +1,445 @@
 
 
 
-
-
 <!DOCTYPE html>
 
-<html lang="es">
+
+<html lang="es" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>1.2.1. Lenguajes de serialización de datos &#8212; documentación de Lenguajes de Marcas - rolling</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" href="../_static/general.css" type="text/css" />
     <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
-    
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/translations.js"></script>
-    <script src="../_static/design-tabs.js"></script>
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=461dccb6"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-    
-    
-     
-        <script src="../_static/jquery.cookie.js"></script>
-    
-
-    
-     
-        <script src="../_static/cloud.base.js"></script>
-    
-
-    
-     
-        <script src="../_static/cloud.js"></script>
-    
-
+    <script>DOCUMENTATION_OPTIONS.pagename = '01.intro/02a.serial';</script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
     <link rel="next" title="1.2.2. Lenguajes de marcas" href="02b.marcas.html" />
-    <link rel="prev" title="1.2. Sintaxis" href="02.sintaxis.html" /> 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head><body>
-    <div class="relbar-top">
-        
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navegación</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="Índice General"
-             accesskey="I">índice</a></li>
-        <li class="right" >
-          <a href="02b.marcas.html" title="1.2.2. Lenguajes de marcas"
-             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
-        <li class="right" >
-          <a href="02.sintaxis.html" title="1.2. Sintaxis"
-             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+    <link rel="prev" title="1.2. Sintaxis" href="02.sintaxis.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">1. </span>Lenguajes para el intercambio de datos</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="02.sintaxis.html" accesskey="U"><span class="section-number">1.2. </span>Sintaxis</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1.2.1. </span>Lenguajes de serialización de datos</a></li> 
-      </ul>
-    </div>
-    </div>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="documentación de Lenguajes de Marcas - rolling - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="documentación de Lenguajes de Marcas - rolling - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Búsqueda</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">1. Lenguajes para el intercambio de datos</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01.intro.html">1.1. Introducción</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="02.sintaxis.html">1.2. Sintaxis</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">1.2.1. Lenguajes de serialización de datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02b.marcas.html">1.2.2. Lenguajes de marcas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="03.ejercicios.html">1.3. Ejercicios propuestos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02.validacion/index.html">2. Validación</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02.validacion/01.dtdxml.html">2.1. <abbr title="Document Type Definition">DTD</abbr></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.validacion/02.yaml.html">2.2. <abbr title="JavaScript Object Notation">JSON</abbr> Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.validacion/03.ej.html">2.3. Ejercicios propuestos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03.consulta/index.html">3. Consulta de datos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03.consulta/01.xpath.html">3.1. XPath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.consulta/02.jsonpath.html">3.2. <abbr title="JavaScript Object Notation">JSON</abbr>Path</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../04.transformacion/index.html">4. Transformación de datos</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05.almacenamiento/index.html">5. Almacenamiento</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05.almacenamiento/01.relacionales.html">5.1. Bases relacionales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.almacenamiento/02.nativas.html">5.2. Bases nativas</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06.html/index.html">6. <abbr title="HyperText Markup Language">HTML</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/01.intro.html">6.1. Introducción</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/02.estructura.html">6.2. Generalidades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/03.head.html">6.3. Cabecera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/04.basico.html">6.4. Elementos básicos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/05.tablas.html">6.5. Tablas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/07.struct.html">6.6. Estructura semántica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/08.form.html">6.7. Formularios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/09.media.html">6.8. Empotrados</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../07.css/index.html">7. <abbr title="Cascading Style Sheets">CSS</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/01.general.html">7.1. Generalidades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/02.sintaxis.html">7.2. Sintaxis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/03.propiedades.html">7.3. Propiedades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/04.bootstrap.html">7.4. Bootstrap</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../08.js/index.html">8. Javascript</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../98.apendices/index.html">Apendices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../98.apendices/21.xsd.html">W3C <abbr title="eXtensible  Markup Language">XML</abbr> Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../98.apendices/22.rnc.html">Relax-NG Compact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../98.apendices/41.xslt.html"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../98.apendices/99.tools.html">Herramientas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../98.apendices/99.tools/01-xmlstarlet.html">XMLStarlet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../98.apendices/99.tools/05-xidel.html">Xidel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../98.apendices/99.tools/10-vscode.html">Visual Studio Code</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../99.ejercicios/index.html">Ejercicios</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/10.lenguajes.html">Lenguajes para el intercambio de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/20.val.html">Validación de documentos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/30.xpath.html"><em>XPath</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/40.xquery.html">XQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/41.xslt.html"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/50.basex.html">BaseX</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/60.html.html"><abbr title="HyperText Markup Language">HTML</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/01.head.html">Cabecera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/05.basicos.html">Básicos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/10.tablas.html">Tablas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/15.struct.html">Estructura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/20.form.html">Formularios</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/70.css.html"><abbr title="Cascading Style Sheets">CSS</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/70.css/01.selectores.html">Selectores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/70.css/05.reglas.html">Reglas y maquetación</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/80.js.html">Javascript</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/80.js/01.basico.html">Sintaxis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/80.js/05.dom.html"><abbr title="Document Object Model">DOM</abbr></a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/01.intro/02a.serial.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lenguajes de serialización de datos</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csv">1.2.1.1. <abbr title="Comma-Separated Values">CSV</abbr></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#json">1.2.1.2. <abbr title="JavaScript Object Notation">JSON</abbr></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estructura">1.2.1.2.1. Estructura</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reglas-basicas">1.2.1.2.2. Reglas básicas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-nodos">1.2.1.2.3. Tipos de nodos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yaml">1.2.1.3. <abbr title="YAML Ain't Markup Language">YAML</abbr></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#yaml-struct">1.2.1.3.1. Estructura</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#directivas">1.2.1.3.2. Directivas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contenido">1.2.1.3.3. Contenido</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#esquemas">1.2.1.3.4. Esquemas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos">1.2.1.3.5. Tipos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias">1.2.1.3.6. Referencias</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#etiquetas-tags">1.2.1.3.7. Etiquetas (<em>tags</em>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios-resueltos">1.2.1.4. Ejercicios resueltos</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section id="lenguajes-de-serializacion-de-datos">
-<h1><span class="section-number">1.2.1. </span>Lenguajes de serialización de datos<a class="headerlink" href="#lenguajes-de-serializacion-de-datos" title="Enlace permanente a este encabezado">¶</a></h1>
+<h1><span class="section-number">1.2.1. </span>Lenguajes de serialización de datos<a class="headerlink" href="#lenguajes-de-serializacion-de-datos" title="Link to this heading">#</a></h1>
 <p>Ya se ha explicado que los <strong>lenguajes de serialización de datos</strong> están
 especialmente diseñados para la transmisión y el almacenamiento de datos
 estructurados, por lo que resultan más adecuados para esta tarea que los
@@ -89,7 +448,7 @@ hasta el abuso) durante años.</p>
 <p>Trataremos la sintaxis de tres lenguajes (aunque quizás sería recomendable añadir la
 de <a class="reference external" href="https://toml.io">TOML</a>, muy útil para crear archivos de configuración).</p>
 <section id="csv">
-<span id="id1"></span><h2><span class="section-number">1.2.1.1. </span><abbr title="Comma-Separated Values">CSV</abbr><a class="headerlink" href="#csv" title="Enlace permanente a este encabezado">¶</a></h2>
+<span id="id1"></span><h2><span class="section-number">1.2.1.1. </span><abbr title="Comma-Separated Values">CSV</abbr><a class="headerlink" href="#csv" title="Link to this heading">#</a></h2>
 <p>Es un formato centrado en la representación de datos en columnas y está
 descrito en el <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4180.html"><strong>RFC 4180</strong></a>. Es muy simple y sus principales reglas son las
 siguientes:</p>
@@ -129,7 +488,7 @@ a,b,c,d e
 </div>
 </section>
 <section id="json">
-<span id="id4"></span><h2><span class="section-number">1.2.1.2. </span><abbr title="JavaScript Object Notation">JSON</abbr><a class="headerlink" href="#json" title="Enlace permanente a este encabezado">¶</a></h2>
+<span id="id4"></span><h2><span class="section-number">1.2.1.2. </span><abbr title="JavaScript Object Notation">JSON</abbr><a class="headerlink" href="#json" title="Link to this heading">#</a></h2>
 <p>Este lenguaje nació como forma de representar objetos en <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a>, por lo que
 su aspecto guarda bastante parecido con ellos. Muy probablemente por esta
 filiación con el lenguaje de programación se usa habitualmente en la transmisión
@@ -141,7 +500,7 @@ comprobar si un documento cumple con tal sintaxis:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://codebeautify.org/jsonvalidator">Validador JSON online</a>, que nos
 permite hacer las comprobación con un navegador y conexión a internet.</p></li>
-<li><p>El paquete <a class="reference external" href="https://packages.debian.org/stable/python3-demjson">python3-demjson</a> disponible en las distribuciones basadas en
+<li><p>El paquete <a class="extlink-deb reference external" href="https://packages.debian.org/stable/python3-demjson">python3-demjson</a> disponible en las distribuciones basadas en
 <em>Debian</em>, que proporciona la librería <em>demjson</em> de <a class="reference external" href="https://www.python.org">Python</a> y un ejecutable
 llamado <strong class="command">jsonlint</strong>, cuyo  uso es muy sencillo:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>jsonlint<span class="w"> </span>documento.json<span class="w">     </span><span class="c1"># Solo comprueba si es bien formado</span>
@@ -162,10 +521,9 @@ bien formado.</p>
 <p id="json-ejemplo-inicial">Para familiarizarnos con el aspecto de estos documentos y poder probar las
 herramientas anterior, facilitamos un <a class="reference download internal" download="" href="../_downloads/ed697793d53867cc8cfa43ac3e3af3ad/casilleros.json"><code class="xref download docutils literal notranslate"><span class="pre">documento</span> <span class="pre">JSON</span></code></a> que enumera los profesores de un centro educativo con
 los casilleros que tienen asignados:</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">JSON sobre casilleros</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="literal-block-wrapper docutils container" id="id25">
+<div class="code-block-caption"><span class="caption-text">JSON sobre casilleros</span><a class="headerlink" href="#id25" title="Link to this code">#</a></div>
+<div class="toggle highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">&quot;centro&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;IES Pepe Botella&quot;</span><span class="p">,</span>
 <span class="w">   </span><span class="nt">&quot;profesores&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
@@ -226,7 +584,7 @@ los casilleros que tienen asignados:</p>
 </pre></div>
 </div>
 </div>
-</details><p>Las ideas que inspiran este documento son las siguientes<a class="footnote-reference brackets" href="#id17" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>:</p>
+<p>Las ideas que inspiran este documento son las siguientes<a class="footnote-reference brackets" href="#id17" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>:</p>
 <ul class="simple">
 <li><p>De cada profesor incluimos algunos datos que nos resultan relevantes.</p></li>
 <li><p>Si no se expresa el apelativo, es que se le nombra con su nombre de pila.</p></li>
@@ -247,7 +605,7 @@ ser una lista.</p></li>
 </li>
 </ul>
 <section id="estructura">
-<span id="json-nodo"></span><h3><span class="section-number">1.2.1.2.1. </span>Estructura<a class="headerlink" href="#estructura" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="json-nodo"></span><h3><span class="section-number">1.2.1.2.1. </span>Estructura<a class="headerlink" href="#estructura" title="Link to this heading">#</a></h3>
 <p>Básicamente los datos en un documento <abbr title="JavaScript Object Notation">JSON</abbr> se estructuran en <em>nodos</em>. Un
 <em class="dfn">nodo</em> representa un dato de uno de estos supertipos:</p>
 <ol class="arabic">
@@ -303,7 +661,7 @@ gramática particular que permita <a class="reference internal" href="01.intro.h
 </ol>
 </section>
 <section id="reglas-basicas">
-<h3><span class="section-number">1.2.1.2.2. </span>Reglas básicas<a class="headerlink" href="#reglas-basicas" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><span class="section-number">1.2.1.2.2. </span>Reglas básicas<a class="headerlink" href="#reglas-basicas" title="Link to this heading">#</a></h3>
 <p>Conocida su estructura, las reglas básicas son:</p>
 <ul class="simple">
 <li><p>Un archivo o flujo de datos  sólo puede contener un documento <abbr title="JavaScript Object Notation">JSON</abbr>.</p></li>
@@ -326,7 +684,7 @@ la legibilidad o el ahorro en el tamaño, podremos usar más o menos espacios.</
 proseguiremos con ellos.</p>
 </section>
 <section id="tipos-de-nodos">
-<h3><span class="section-number">1.2.1.2.3. </span>Tipos de nodos<a class="headerlink" href="#tipos-de-nodos" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><span class="section-number">1.2.1.2.3. </span>Tipos de nodos<a class="headerlink" href="#tipos-de-nodos" title="Link to this heading">#</a></h3>
 <p>Los tipos existentes en <abbr title="JavaScript Object Notation">JSON</abbr> son:</p>
 <dl class="simple" id="json-cadena">
 <dt><strong>Cadena</strong></dt><dd><p>Es un escalar que debe estar encerrado entre comillas dobles (las simples no
@@ -415,7 +773,7 @@ más completo de un documento <abbr title="JavaScript Object Notation">JSON</abb
 </section>
 </section>
 <section id="yaml">
-<span id="id7"></span><h2><span class="section-number">1.2.1.3. </span><abbr title="YAML Ain't Markup Language">YAML</abbr><a class="headerlink" href="#yaml" title="Enlace permanente a este encabezado">¶</a></h2>
+<span id="id7"></span><h2><span class="section-number">1.2.1.3. </span><abbr title="YAML Ain't Markup Language">YAML</abbr><a class="headerlink" href="#yaml" title="Link to this heading">#</a></h2>
 <p><abbr title="YAML Ain't Markup Language">YAML</abbr> (<a class="reference external" href="https://yaml.org">página web oficial</a>) es otro lenguaje de
 serialización que, como <abbr title="JavaScript Object Notation">JSON</abbr>, construye su estructura de datos basándose en el
 concepto de <a class="reference internal" href="#json-nodo"><span class="std std-ref">nodo</span></a> (escalar, de secuencia o de mapa), lo que
@@ -434,10 +792,9 @@ transmisión de datos entre servidor y cliente<a class="footnote-reference brack
 </div>
 <p>o, si queremos uno más amplio, equivalente al <a class="reference internal" href="#json-ejemplo-inicial"><span class="std std-ref">ejemplo introductorio
 para JSON</span></a>:</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="yaml-ejemplo-inicial">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">YAML de casilleros</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">%YAML</span><span class="w"> </span><span class="m">1.2</span>
+<div class="literal-block-wrapper docutils container" id="yaml-ejemplo-inicial">
+<div class="code-block-caption"><span class="caption-text">YAML de casilleros</span><a class="headerlink" href="#yaml-ejemplo-inicial" title="Link to this code">#</a></div>
+<div class="toggle highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">%YAML</span><span class="w"> </span><span class="m">1.2</span>
 <span class="nn">---</span>
 <span class="nt">centro</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;IES</span><span class="nv"> </span><span class="s">Pepe</span><span class="nv"> </span><span class="s">Botella&quot;</span>
 <span class="nt">profesores</span><span class="p">:</span>
@@ -490,19 +847,19 @@ para JSON</span></a>:</p>
 </pre></div>
 </div>
 </div>
-</details><p>Como en el caso de <abbr title="JavaScript Object Notation">JSON</abbr> nos resultará enormemente útil validadores:</p>
+<p>Como en el caso de <abbr title="JavaScript Object Notation">JSON</abbr> nos resultará enormemente útil validadores:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.yamllint.com/">YAMLLint online</a>, que nos permite comprobar si
 un documento <abbr title="YAML Ain't Markup Language">YAML</abbr> es bien formado mediante un navegador y una conexión a
 red.</p></li>
 <li><p>El programa de <em>Linux</em> <strong class="command">yamllint</strong> que en las distribuciones basadas
-en <em>Debian</em> se encuentra en el paquete homónimo (<a class="reference external" href="https://packages.debian.org/stable/yamllint">yamllint</a>).</p></li>
+en <em>Debian</em> se encuentra en el paquete homónimo (<a class="extlink-deb reference external" href="https://packages.debian.org/stable/yamllint">yamllint</a>).</p></li>
 <li><p>Como en el caso de <abbr title="JavaScript Object Notation">JSON</abbr>, <a class="reference internal" href="../98.apendices/99.tools/10-vscode.html#vscode"><span class="std std-ref">Visual Studio Code</span></a> es capaz de
 comprobar sobre la marcha si el documento es bien fmado. En este caso, el
 soporte no es nativo y hay que añadirlo a través de la <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml">extensión YAML</a>.</p></li>
 </ul>
 <section id="yaml-struct">
-<span id="id9"></span><h3><span class="section-number">1.2.1.3.1. </span>Estructura<a class="headerlink" href="#yaml-struct" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="id9"></span><h3><span class="section-number">1.2.1.3.1. </span>Estructura<a class="headerlink" href="#yaml-struct" title="Link to this heading">#</a></h3>
 <p>Un archivo o un flujo de información está constituido por uno o más documentos
 <abbr title="YAML Ain't Markup Language">YAML</abbr> que se separan a través de tres guiones seguidos (<code class="code docutils literal notranslate"><span class="pre">---</span></code>). La
 estructura de cada documento es:</p>
@@ -551,7 +908,7 @@ una línea de datos (como ocurre en la línea del primer ejemplo correspondiente
 al dato de la edad).</p>
 </section>
 <section id="directivas">
-<span id="yaml-direct"></span><h3><span class="section-number">1.2.1.3.2. </span>Directivas<a class="headerlink" href="#directivas" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="yaml-direct"></span><h3><span class="section-number">1.2.1.3.2. </span>Directivas<a class="headerlink" href="#directivas" title="Link to this heading">#</a></h3>
 <p>Se notan anteponiéndoles el carácter <code class="docutils literal notranslate"><span class="pre">%</span></code> y sirven para dirigir el análisis
 del procesador. Por ahora, la especificación sólo definido dos:</p>
 <dl class="simple">
@@ -564,7 +921,7 @@ sobre <a class="reference internal" href="#yaml-tags"><span class="std std-ref">
 </dl>
 </section>
 <section id="contenido">
-<span id="yaml-data"></span><h3><span class="section-number">1.2.1.3.3. </span>Contenido<a class="headerlink" href="#contenido" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="yaml-data"></span><h3><span class="section-number">1.2.1.3.3. </span>Contenido<a class="headerlink" href="#contenido" title="Link to this heading">#</a></h3>
 <p>El contenido esta constituido por un único nodo, como en el caso de <abbr title="JavaScript Object Notation">JSON</abbr>, pero
 a diferencia de éste, también es válido un nodo escalar. Por tanto, esto es un
 YAML válido:</p>
@@ -577,7 +934,7 @@ identifican cadenas, números y valores lógicos? La explicación nos la
 proporcionan los esquemas.</p>
 </section>
 <section id="esquemas">
-<span id="yaml-schemas"></span><h3><span class="section-number">1.2.1.3.4. </span>Esquemas<a class="headerlink" href="#esquemas" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="yaml-schemas"></span><h3><span class="section-number">1.2.1.3.4. </span>Esquemas<a class="headerlink" href="#esquemas" title="Link to this heading">#</a></h3>
 <p>Hasta ahora los nodos que hemos incluido en nuestros ejemplos son nodos
 sin etiquetar o, siendo más precisos, son nodos etiquetados implícitamente,
 puesto que las <em>etiquetas</em> permiten definir de qué tipo es el nodo. Al no
@@ -653,7 +1010,7 @@ escribirse este dato como <code class="code docutils literal notranslate"><span 
 habitual es que implemente un esquema que extienda el esquema básico.</p>
 </section>
 <section id="tipos">
-<span id="yaml-tipos"></span><h3><span class="section-number">1.2.1.3.5. </span>Tipos<a class="headerlink" href="#tipos" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="yaml-tipos"></span><h3><span class="section-number">1.2.1.3.5. </span>Tipos<a class="headerlink" href="#tipos" title="Link to this heading">#</a></h3>
 <p>Analicemos los tipos incluidos dentro de los esquemas de <abbr title="YAML Ain't Markup Language">YAML</abbr> (entre
 paréntesis se indica cuál es la etiqueta que los identifica):</p>
 <dl class="simple" id="yaml-int">
@@ -867,7 +1224,8 @@ datos binarios en <a class="reference external" href="https://es.wikipedia.org/w
 </div>
 <p>En este ejemplo, la codificación es la representación <abbr title="Scalable Vector Graphics">SVG</abbr> de la bandera de
 Japón:</p>
-<a class="reference internal image-reference" href="../_images/japan.svg"><img alt="Bandera de Japón" src="../_images/japan.svg" width="200" /></a>
+<a class="reference internal image-reference" href="../_images/japan.svg"><img alt="Bandera de Japón" src="../_images/japan.svg" style="width: 200px;" />
+</a>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Por otra parte hemos utilizados una <a class="reference internal" href="#yaml-tags"><span class="std std-ref">etiqueta</span></a>
@@ -901,7 +1259,7 @@ hora y uso horario mediante espacios).</p>
 </dl>
 </section>
 <section id="referencias">
-<span id="yaml-ref"></span><h3><span class="section-number">1.2.1.3.6. </span>Referencias<a class="headerlink" href="#referencias" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="yaml-ref"></span><h3><span class="section-number">1.2.1.3.6. </span>Referencias<a class="headerlink" href="#referencias" title="Link to this heading">#</a></h3>
 <p>Las referencias (o anclas) permiten referir el valor de un nodo dentro de otro.
 Pueden crear referencias tanto a escalares:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">nombre</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;pedro</span><span class="w"> </span><span class="s">&quot;Pedro</span><span class="nv"> </span><span class="s">Martínez</span><span class="nv"> </span><span class="s">Álvarez&quot;</span>
@@ -948,7 +1306,7 @@ de otro para añadir a éste las parejas clave-valor del primero:</p>
 </div>
 </section>
 <section id="etiquetas-tags">
-<span id="yaml-tags"></span><h3><span class="section-number">1.2.1.3.7. </span>Etiquetas (<em>tags</em>)<a class="headerlink" href="#etiquetas-tags" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="yaml-tags"></span><h3><span class="section-number">1.2.1.3.7. </span>Etiquetas (<em>tags</em>)<a class="headerlink" href="#etiquetas-tags" title="Link to this heading">#</a></h3>
 <p>Sin profundizar en ellas ya hemos introducido que una <em class="dfn">etiqueta</em> sirve para
 declarar el tipo del nodo. También dimos un ejemplo de una etiqueta explícita:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="kt">!!int</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
@@ -975,7 +1333,7 @@ tener que escribir <abbr title="Uniform Resource Locator">URN</abbr> distintas d
 </section>
 </section>
 <section id="ejercicios-resueltos">
-<span id="yaml-resueltos"></span><h2><span class="section-number">1.2.1.4. </span>Ejercicios resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Enlace permanente a este encabezado">¶</a></h2>
+<span id="yaml-resueltos"></span><h2><span class="section-number">1.2.1.4. </span>Ejercicios resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Link to this heading">#</a></h2>
 <ol class="arabic">
 <li><p>Diseñar un documento <abbr title="JavaScript Object Notation">JSON</abbr> y su equivalente <abbr title="YAML Ain't Markup Language">YAML</abbr> que almacene recetas de
 cocina, de manera que:</p>
@@ -988,10 +1346,9 @@ preparación.</p></li>
 en la que se mide. Por ejemplo, en alguna receta se necesitarán 200 gramos de
 tomate, pero en otra bastará con indicar dos piezas.</p></li>
 </ul>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solución propuesta JSON</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<div class="literal-block-wrapper docutils container" id="id26">
+<div class="code-block-caption"><span class="caption-text">Solución propuesta JSON</span><a class="headerlink" href="#id26" title="Link to this code">#</a></div>
+<div class="toggle highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
 <span class="w">   </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ensalada&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;tiempo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
@@ -1016,10 +1373,9 @@ tomate, pero en otra bastará con indicar dos piezas.</p></li>
 </pre></div>
 </div>
 </div>
-</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solución propuesta YAML</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">%YAML</span><span class="w"> </span><span class="m">1.2</span>
+<div class="literal-block-wrapper docutils container" id="id27">
+<div class="code-block-caption"><span class="caption-text">Solución propuesta YAML</span><a class="headerlink" href="#id27" title="Link to this code">#</a></div>
+<div class="toggle highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">%YAML</span><span class="w"> </span><span class="m">1.2</span>
 <span class="nn">---</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">nombre</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ensalada</span>
 <span class="w">  </span><span class="nt">tiempo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w">  </span><span class="c1"># El tiempo es en minutos.</span>
@@ -1055,7 +1411,7 @@ tomate, pero en otra bastará con indicar dos piezas.</p></li>
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 <li><p>Tomando como referencia el documento anterior, escriba otro que enumere la
 red de restaurantes de una cadena, de cada uno de los cuales se refiera:</p>
 <ul class="simple">
@@ -1065,10 +1421,9 @@ red de restaurantes de una cadena, de cada uno de los cuales se refiera:</p>
 ofrecen al público (tapa, media ración o ración). Por supuesto, varios
 restaurantes pueden ofrecer la misma receta.</p></li>
 </ul>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solución propuesta JSON</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="literal-block-wrapper docutils container" id="id28">
+<div class="code-block-caption"><span class="caption-text">Solución propuesta JSON</span><a class="headerlink" href="#id28" title="Link to this code">#</a></div>
+<div class="toggle highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">&quot;recetas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
 <span class="w">         </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ensalada&quot;</span><span class="p">,</span>
@@ -1116,10 +1471,9 @@ restaurantes pueden ofrecer la misma receta.</p></li>
 </pre></div>
 </div>
 </div>
-</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solución propuesta YAML</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">%YAML</span><span class="w"> </span><span class="m">1.2</span>
+<div class="literal-block-wrapper docutils container" id="id29">
+<div class="code-block-caption"><span class="caption-text">Solución propuesta YAML</span><a class="headerlink" href="#id29" title="Link to this code">#</a></div>
+<div class="toggle highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">%YAML</span><span class="w"> </span><span class="m">1.2</span>
 <span class="nn">---</span>
 <span class="nt">recetas</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">nombre</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;ensalada</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ensalada</span>
@@ -1174,7 +1528,7 @@ restaurantes pueden ofrecer la misma receta.</p></li>
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 </ol>
 <p class="rubric">Enlaces de interés</p>
 <ul class="simple">
@@ -1186,12 +1540,12 @@ un vistazo la sintaxis de los tipos más habituales de nodos.</p></li>
 </ul>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id15" role="note">
+<aside class="footnote brackets" id="id15" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
 <p>Que, curiosamente, es justo lo contrario que se hacía en una máquina de
 escribir en las que primero se cambiaba de línea y luego se volvía el carro.</p>
 </aside>
-<aside class="footnote brackets" id="id16" role="note">
+<aside class="footnote brackets" id="id16" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
 <p>Obsérvese que cuando un campo se entrecomilla, las comillas dobles
 siempre deben ser el primero y el último carácter del campo, ya que por la
@@ -1210,46 +1564,46 @@ todo el campo:</p>
 </pre></div>
 </div>
 </aside>
-<aside class="footnote brackets" id="id17" role="note">
+<aside class="footnote brackets" id="id17" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">3</a><span class="fn-bracket">]</span></span>
 <p>Desgraciadamente, no se pueden incluir comentarios en los documentos
 <abbr title="JavaScript Object Notation">JSON</abbr>, por lo que no podemos hacer estos puntualizaciones dentro del propio
 texto.</p>
 </aside>
-<aside class="footnote brackets" id="id18" role="note">
+<aside class="footnote brackets" id="id18" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">4</a><span class="fn-bracket">]</span></span>
 <p>Por esta razón, las claves siempre se muestran entrecomilladas. Esto es
 una diferencia con <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a> en que se permite no entgrecomillar las claves.</p>
 </aside>
-<aside class="footnote brackets" id="id19" role="note">
+<aside class="footnote brackets" id="id19" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">5</a><span class="fn-bracket">]</span></span>
 <p>Al menos en servicios web. La razón muy probablemente sea que el cliente
 de las aplicaciones web es un navegador con <a class="reference external" href="https://es.wikipedia.org/wiki/JavaScript">Javascript</a> para el cual el
 soporte de <abbr title="JavaScript Object Notation">JSON</abbr> es nativo.</p>
 </aside>
-<aside class="footnote brackets" id="id20" role="note">
+<aside class="footnote brackets" id="id20" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">6</a><span class="fn-bracket">]</span></span>
 <p>En esta notación son válidas todas las expresiones que ya vimos para
 <abbr title="JavaScript Object Notation">JSON</abbr>.</p>
 </aside>
-<aside class="footnote brackets" id="id21" role="note">
+<aside class="footnote brackets" id="id21" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">7</a><span class="fn-bracket">]</span></span>
 <p>«No es un número» es la forma de representar en algunos lenguajes de
 programación que una operación es imposible de calcular es imposible. Por
 ejemplo, la operación <span class="math notranslate nohighlight">\(0/0\)</span>.</p>
 </aside>
-<aside class="footnote brackets" id="id22" role="note">
+<aside class="footnote brackets" id="id22" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id12">8</a><span class="fn-bracket">]</span></span>
 <p>En realidad, no es necesario que el tipo sea una cadena (véase <a class="reference internal" href="#yaml-binary"><span class="std std-ref">tipo
 binario</span></a>, por ejemplo), pero lo habitual es que un valor que
 ocupe más de una línea sea una cadena.</p>
 </aside>
-<aside class="footnote brackets" id="id23" role="note">
+<aside class="footnote brackets" id="id23" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id13">9</a><span class="fn-bracket">]</span></span>
 <p>Aunque no es necesario, se recomienda que estos caracteres de espaciado
 sean espacios.</p>
 </aside>
-<aside class="footnote brackets" id="id24" role="note">
+<aside class="footnote brackets" id="id24" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id14">10</a><span class="fn-bracket">]</span></span>
 <p>Como no tendremos ningún procesador que soporte tal etiqueta no podremos
 hacer la comprobación. Sin embargo, aunque no tenga interés práctico, podemos
@@ -1267,116 +1621,120 @@ probar que funciona:</p>
 </section>
 
 
-            <div class="clearer"></div>
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/logo.png" alt="Logo"/>
-        </a></p><div class="sphinx-toc sphinxlocaltoc">
-    <h3><a href="../index.html">Page contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">1.2.1. Lenguajes de serialización de datos</a><ul>
-<li><a class="reference internal" href="#csv">1.2.1.1. <abbr title="Comma-Separated Values">CSV</abbr></a></li>
-<li><a class="reference internal" href="#json">1.2.1.2. <abbr title="JavaScript Object Notation">JSON</abbr></a><ul>
-<li><a class="reference internal" href="#estructura">1.2.1.2.1. Estructura</a></li>
-<li><a class="reference internal" href="#reglas-basicas">1.2.1.2.2. Reglas básicas</a></li>
-<li><a class="reference internal" href="#tipos-de-nodos">1.2.1.2.3. Tipos de nodos</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#yaml">1.2.1.3. <abbr title="YAML Ain't Markup Language">YAML</abbr></a><ul>
-<li><a class="reference internal" href="#yaml-struct">1.2.1.3.1. Estructura</a></li>
-<li><a class="reference internal" href="#directivas">1.2.1.3.2. Directivas</a></li>
-<li><a class="reference internal" href="#contenido">1.2.1.3.3. Contenido</a></li>
-<li><a class="reference internal" href="#esquemas">1.2.1.3.4. Esquemas</a></li>
-<li><a class="reference internal" href="#tipos">1.2.1.3.5. Tipos</a></li>
-<li><a class="reference internal" href="#referencias">1.2.1.3.6. Referencias</a></li>
-<li><a class="reference internal" href="#etiquetas-tags">1.2.1.3.7. Etiquetas (<em>tags</em>)</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#ejercicios-resueltos">1.2.1.4. Ejercicios resueltos</a></li>
-</ul>
-</li>
-</ul>
+                </article>
+              
 
-  </div>
-  <div class="sphinxprev">
-    <h4>Previous page</h4>
-    <p class="topless"><a href="02.sintaxis.html"
-                          title="Previous page">&larr; <span class="section-number">1.2. </span>Sintaxis</a></p>
-  </div>
-  <div class="sphinxnext">
-    <h4>Next page</h4>
-    <p class="topless"><a href="02b.marcas.html"
-                          title="Next page">&rarr; <span class="section-number">1.2.2. </span>Lenguajes de marcas</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>Esta página</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/01.intro/02a.serial.rst.txt"
-            rel="nofollow">Mostrar el código</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Búsqueda rápida</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Ir a" />
-    </form>
-    </div>
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02.sintaxis.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title"><span class="section-number">1.2. </span>Sintaxis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02b.marcas.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title"><span class="section-number">1.2.2. </span>Lenguajes de marcas</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-    
-    
-        <div class="sidebar-toggle-group no-js">
+                </footer>
+              
+            </div>
             
-            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
-                 «
-                <span class="show-for-small">hide menu</span>
-                
-            </button>
-            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
-                
-                <span class="show-for-small">menu</span>
-                <span class="hide-for-small">sidebar</span>
-                 »
-            </button>
-        </div>
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csv">1.2.1.1. <abbr title="Comma-Separated Values">CSV</abbr></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#json">1.2.1.2. <abbr title="JavaScript Object Notation">JSON</abbr></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estructura">1.2.1.2.1. Estructura</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reglas-basicas">1.2.1.2.2. Reglas básicas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-nodos">1.2.1.2.3. Tipos de nodos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yaml">1.2.1.3. <abbr title="YAML Ain't Markup Language">YAML</abbr></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#yaml-struct">1.2.1.3.1. Estructura</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#directivas">1.2.1.3.2. Directivas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contenido">1.2.1.3.3. Contenido</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#esquemas">1.2.1.3.4. Esquemas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos">1.2.1.3.5. Tipos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias">1.2.1.3.6. Referencias</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#etiquetas-tags">1.2.1.3.7. Etiquetas (<em>tags</em>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios-resueltos">1.2.1.4. Ejercicios resueltos</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
     
-      <div class="clearer"></div>
-    </div>
-    <div class="relbar-bottom">
+<p class="component-author">
+Por José Miguel Sánchez Alés
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
         
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navegación</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="Índice General"
-             >índice</a></li>
-        <li class="right" >
-          <a href="02b.marcas.html" title="1.2.2. Lenguajes de marcas"
-             >siguiente</a> &nbsp; &nbsp;</li>
-        <li class="right" >
-          <a href="02.sintaxis.html" title="1.2. Sintaxis"
-             >anterior</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
 
-          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">1. </span>Lenguajes para el intercambio de datos</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="02.sintaxis.html" ><span class="section-number">1.2. </span>Sintaxis</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1.2.1. </span>Lenguajes de serialización de datos</a></li> 
-      </ul>
+      </main>
     </div>
-    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <div class="footer" role="contentinfo">
-        &#169; Derechos de autor CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
-      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
-    </div>
-    <!-- cloud_sptheme 1.4 -->
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

@@ -1,84 +1,451 @@
 
 
 
-
-
 <!DOCTYPE html>
 
-<html lang="es">
+
+<html lang="es" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>2.1. DTD &#8212; documentación de Lenguajes de Marcas - rolling</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" href="../_static/general.css" type="text/css" />
     <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
-    
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/translations.js"></script>
-    <script src="../_static/design-tabs.js"></script>
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    
-    
-     
-        <script src="../_static/jquery.cookie.js"></script>
-    
-
-    
-     
-        <script src="../_static/cloud.base.js"></script>
-    
-
-    
-     
-        <script src="../_static/cloud.js"></script>
-    
-
+    <script src="../_static/documentation_options.js?v=461dccb6"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '02.validacion/01.dtdxml';</script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
     <link rel="next" title="2.2. JSON Schema" href="02.yaml.html" />
-    <link rel="prev" title="2. Validación" href="index.html" /> 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head><body>
-    <div class="relbar-top">
-        
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navegación</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="Índice General"
-             accesskey="I">índice</a></li>
-        <li class="right" >
-          <a href="02.yaml.html" title="2.2. JSON Schema"
-             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
-        <li class="right" >
-          <a href="index.html" title="2. Validación"
-             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+    <link rel="prev" title="2. Validación" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">2. </span>Validación</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2.1. </span><abbr title="Document Type Definition">DTD</abbr></a></li> 
-      </ul>
-    </div>
-    </div>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="documentación de Lenguajes de Marcas - rolling - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="documentación de Lenguajes de Marcas - rolling - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Búsqueda</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01.intro/index.html">1. Lenguajes para el intercambio de datos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01.intro/01.intro.html">1.1. Introducción</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../01.intro/02.sintaxis.html">1.2. Sintaxis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01.intro/02a.serial.html">1.2.1. Lenguajes de serialización de datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../01.intro/02b.marcas.html">1.2.2. Lenguajes de marcas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../01.intro/03.ejercicios.html">1.3. Ejercicios propuestos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">2. Validación</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.1. <abbr title="Document Type Definition">DTD</abbr></a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.yaml.html">2.2. <abbr title="JavaScript Object Notation">JSON</abbr> Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03.ej.html">2.3. Ejercicios propuestos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03.consulta/index.html">3. Consulta de datos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03.consulta/01.xpath.html">3.1. XPath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.consulta/02.jsonpath.html">3.2. <abbr title="JavaScript Object Notation">JSON</abbr>Path</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../04.transformacion/index.html">4. Transformación de datos</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05.almacenamiento/index.html">5. Almacenamiento</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05.almacenamiento/01.relacionales.html">5.1. Bases relacionales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.almacenamiento/02.nativas.html">5.2. Bases nativas</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06.html/index.html">6. <abbr title="HyperText Markup Language">HTML</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/01.intro.html">6.1. Introducción</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/02.estructura.html">6.2. Generalidades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/03.head.html">6.3. Cabecera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/04.basico.html">6.4. Elementos básicos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/05.tablas.html">6.5. Tablas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/07.struct.html">6.6. Estructura semántica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/08.form.html">6.7. Formularios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/09.media.html">6.8. Empotrados</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../07.css/index.html">7. <abbr title="Cascading Style Sheets">CSS</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/01.general.html">7.1. Generalidades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/02.sintaxis.html">7.2. Sintaxis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/03.propiedades.html">7.3. Propiedades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/04.bootstrap.html">7.4. Bootstrap</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../08.js/index.html">8. Javascript</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../98.apendices/index.html">Apendices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../98.apendices/21.xsd.html">W3C <abbr title="eXtensible  Markup Language">XML</abbr> Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../98.apendices/22.rnc.html">Relax-NG Compact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../98.apendices/41.xslt.html"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../98.apendices/99.tools.html">Herramientas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../98.apendices/99.tools/01-xmlstarlet.html">XMLStarlet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../98.apendices/99.tools/05-xidel.html">Xidel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../98.apendices/99.tools/10-vscode.html">Visual Studio Code</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../99.ejercicios/index.html">Ejercicios</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/10.lenguajes.html">Lenguajes para el intercambio de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/20.val.html">Validación de documentos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/30.xpath.html"><em>XPath</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/40.xquery.html">XQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/41.xslt.html"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/50.basex.html">BaseX</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/60.html.html"><abbr title="HyperText Markup Language">HTML</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/01.head.html">Cabecera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/05.basicos.html">Básicos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/10.tablas.html">Tablas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/15.struct.html">Estructura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/20.form.html">Formularios</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/70.css.html"><abbr title="Cascading Style Sheets">CSS</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/70.css/01.selectores.html">Selectores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/70.css/05.reglas.html">Reglas y maquetación</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/80.js.html">Javascript</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/80.js/01.basico.html">Sintaxis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/80.js/05.dom.html"><abbr title="Document Object Model">DOM</abbr></a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/02.validacion/01.dtdxml.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>DTD</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminares">2.1.1. Preliminares</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#declaracion">2.1.1.1. Declaración</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">2.1.1.2. Ejemplo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validacion">2.1.1.3. Validación</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sintaxis-basica">2.1.2. Sintaxis básica</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elementos">2.1.2.1. Elementos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atributos">2.1.2.2. Atributos</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos">2.1.2.2.1. Tipos</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#valor-por-defecto">2.1.2.2.2. Valor por defecto</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notaciones">2.1.2.3. Notaciones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entidades">2.1.2.4. Entidades</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#generales">2.1.2.4.1. Generales</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parametro">2.1.2.4.2. Parámetro</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#espacios-de-nombres">2.1.2.5. Espacios de nombres</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios-resueltos">2.1.3. Ejercicios resueltos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones">2.1.4. Conclusiones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios-propuestos">2.1.5. Ejercicios propuestos</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section id="dtd">
-<span id="id1"></span><h1><span class="section-number">2.1. </span><abbr title="Document Type Definition">DTD</abbr><a class="headerlink" href="#dtd" title="Enlace permanente a este encabezado">¶</a></h1>
+<span id="id1"></span><h1><span class="section-number">2.1. </span><abbr title="Document Type Definition">DTD</abbr><a class="headerlink" href="#dtd" title="Link to this heading">#</a></h1>
 <p>Para definir gramáticas de documentos <abbr title="eXtensible  Markup Language">XML</abbr> se usan distintos lenguajes, pero
 los más habituales son:</p>
 <ul class="simple">
@@ -95,9 +462,9 @@ alternativa llamada <em>Compacta</em>.</p></li>
 el más limitado y menos expresivo. Los otros dos, los desarrollaremos como
 material adicional en los apéndices.</p>
 <section id="preliminares">
-<h2><span class="section-number">2.1.1. </span>Preliminares<a class="headerlink" href="#preliminares" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">2.1.1. </span>Preliminares<a class="headerlink" href="#preliminares" title="Link to this heading">#</a></h2>
 <section id="declaracion">
-<span id="dtd-doctype"></span><h3><span class="section-number">2.1.1.1. </span>Declaración<a class="headerlink" href="#declaracion" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="dtd-doctype"></span><h3><span class="section-number">2.1.1.1. </span>Declaración<a class="headerlink" href="#declaracion" title="Link to this heading">#</a></h3>
 <p>Antes de comenzar, es preciso indicar cómo declarar en un <abbr title="eXtensible  Markup Language">XML</abbr> cuál es el <abbr title="Document Type Definition">DTD</abbr>
 que lo define. Ello se logra mediante la línea de definición de tipo de
 documento ya mencionada:</p>
@@ -169,13 +536,12 @@ reglas incluidas en la propia declaración:</p>
 </ol>
 </section>
 <section id="ejemplo">
-<h3><span class="section-number">2.1.1.2. </span>Ejemplo<a class="headerlink" href="#ejemplo" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><span class="section-number">2.1.1.2. </span>Ejemplo<a class="headerlink" href="#ejemplo" title="Link to this heading">#</a></h3>
 <p>Antes de entrar en harina, no está de más ver qué aspecto tiene un <abbr title="Document Type Definition">DTD</abbr>. Para
 ello tomemos el <a class="reference internal" href="../01.intro/02b.marcas.html#xml-ejemplo"><span class="std std-ref">documento XML usado como ejemplo introductorio</span></a>, aunque con una ligera variación<a class="footnote-reference brackets" href="#id8" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> (descárguelo de <a class="reference download internal" download="" href="../_downloads/4cb21890aa27e222184ac6820327e0c7/casilleros_v2.xml"><code class="xref download docutils literal notranslate"><span class="pre">aquí</span></code></a>):</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">XML de casilleros</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">XML de casilleros</span><a class="headerlink" href="#id12" title="Link to this code">#</a></div>
+<div class="toggle highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="cp">&lt;!DOCTYPE claustro SYSTEM &quot;casilleros.dtd&quot;&gt;</span>
 
 <span class="nt">&lt;claustro</span><span class="w"> </span><span class="na">centro=</span><span class="s">&quot;IES Pepe Botella&quot;</span><span class="nt">&gt;</span>
@@ -241,11 +607,10 @@ ello tomemos el <a class="reference internal" href="../01.intro/02b.marcas.html#
 </pre></div>
 </div>
 </div>
-</details><p>La definición de su gramática hecha en <abbr title="Document Type Definition">DTD</abbr> es <a class="reference download internal" download="" href="../_downloads/a6529720d5fe24d479590edf6b7a9f2b/casilleros_v2.dtd"><code class="xref download docutils literal notranslate"><span class="pre">la</span> <span class="pre">siguiente</span></code></a>:</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">DTD de casilleros</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">departamentos</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;departamentos.ent&quot;</span><span class="k">&gt;</span>
+<p>La definición de su gramática hecha en <abbr title="Document Type Definition">DTD</abbr> es <a class="reference download internal" download="" href="../_downloads/a6529720d5fe24d479590edf6b7a9f2b/casilleros_v2.dtd"><code class="xref download docutils literal notranslate"><span class="pre">la</span> <span class="pre">siguiente</span></code></a>:</p>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-text">DTD de casilleros</span><a class="headerlink" href="#id13" title="Link to this code">#</a></div>
+<div class="toggle highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">departamentos</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;departamentos.ent&quot;</span><span class="k">&gt;</span>
 <span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">datospers</span> <span class="s2">&quot;(apelativo,nombre,apellidos)&quot;</span><span class="k">&gt;</span>
 <span class="c">&lt;!--</span>
 <span class="c">   id:         Identificador del profesor (formato i&lt;N&gt;)</span>
@@ -275,12 +640,11 @@ ello tomemos el <a class="reference internal" href="../01.intro/02b.marcas.html#
 </pre></div>
 </div>
 </div>
-</details><p>Este <abbr title="Document Type Definition">DTD</abbr>, a su vez, llama a otro que contiene exclusivamente <a class="reference download internal" download="" href="../_downloads/4a4a530913f66a6de7951e6d554d5941/departamentos.ent"><code class="xref download docutils literal notranslate"><span class="pre">las</span>
+<p>Este <abbr title="Document Type Definition">DTD</abbr>, a su vez, llama a otro que contiene exclusivamente <a class="reference download internal" download="" href="../_downloads/4a4a530913f66a6de7951e6d554d5941/departamentos.ent"><code class="xref download docutils literal notranslate"><span class="pre">las</span>
 <span class="pre">entidades</span> <span class="pre">que</span> <span class="pre">definen</span> <span class="pre">los</span> <span class="pre">departamentos</span></code></a><a class="footnote-reference brackets" href="#id9" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>:</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">DTD de definición de entidades</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ENTITY</span> <span class="ni">FyQ</span> <span class="s2">&quot;Física y Química&quot;</span><span class="k">&gt;</span>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-text">DTD de definición de entidades</span><a class="headerlink" href="#id14" title="Link to this code">#</a></div>
+<div class="toggle highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ENTITY</span> <span class="ni">FyQ</span> <span class="s2">&quot;Física y Química&quot;</span><span class="k">&gt;</span>
 <span class="k">&lt;!ENTITY</span> <span class="ni">EFI</span> <span class="s2">&quot;Educación Física&quot;</span><span class="k">&gt;</span>
 <span class="k">&lt;!ENTITY</span> <span class="ni">ING</span> <span class="s2">&quot;Inglés&quot;</span><span class="k">&gt;</span>
 <span class="k">&lt;!ENTITY</span> <span class="ni">INF</span> <span class="s2">&quot;Informática&quot;</span><span class="k">&gt;</span>
@@ -301,9 +665,9 @@ ello tomemos el <a class="reference internal" href="../01.intro/02b.marcas.html#
 </pre></div>
 </div>
 </div>
-</details></section>
+</section>
 <section id="validacion">
-<span id="xml-valid"></span><h3><span class="section-number">2.1.1.3. </span>Validación<a class="headerlink" href="#validacion" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="xml-valid"></span><h3><span class="section-number">2.1.1.3. </span>Validación<a class="headerlink" href="#validacion" title="Link to this heading">#</a></h3>
 <p>Antes de entrar en harina, conviene que sepamos cómo llevar a cabo las
 validaciones. Se propone:</p>
 <ul class="simple">
@@ -312,14 +676,14 @@ partir de su <abbr title="Document Type Definition">DTD</abbr>.</p></li>
 <li><p><a class="reference external" href="https://code.visualstudio.com">Visual Studio Code</a>, cuya <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml">extensión XML</a>,
 consulta la gramática definida en el <abbr title="Document Type Definition">DTD</abbr> que se refiera en la declaración<a class="footnote-reference brackets" href="#id10" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> e indica las violaciones a ella según se escribe.</p></li>
 <li><p><a class="reference internal" href="../98.apendices/99.tools/01-xmlstarlet.html#xmlstarlet"><span class="std std-ref">XMLStarlet</span></a>, que tiene paquete en las distribuciones basadas en
-<em>Debian</em> (<a class="reference external" href="https://packages.debian.org/stable/xmlstarlet">xmlstarlet</a>).</p></li>
+<em>Debian</em> (<a class="extlink-deb reference external" href="https://packages.debian.org/stable/xmlstarlet">xmlstarlet</a>).</p></li>
 </ul>
 </section>
 </section>
 <section id="sintaxis-basica">
-<h2><span class="section-number">2.1.2. </span>Sintaxis básica<a class="headerlink" href="#sintaxis-basica" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">2.1.2. </span>Sintaxis básica<a class="headerlink" href="#sintaxis-basica" title="Link to this heading">#</a></h2>
 <section id="elementos">
-<span id="dtd-ele"></span><h3><span class="section-number">2.1.2.1. </span>Elementos<a class="headerlink" href="#elementos" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="dtd-ele"></span><h3><span class="section-number">2.1.2.1. </span>Elementos<a class="headerlink" href="#elementos" title="Link to this heading">#</a></h3>
 <p>Para definir un elemento se usa la sintaxis:</p>
 <div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">nombre_elemento</span> <span class="nt">contenido</span><span class="k">&gt;</span>
 </pre></div>
@@ -436,7 +800,7 @@ alternativos y añadir una cardinalidad con el asterisco.</p>
 </div>
 </section>
 <section id="atributos">
-<span id="dtd-attr"></span><h3><span class="section-number">2.1.2.2. </span>Atributos<a class="headerlink" href="#atributos" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="dtd-attr"></span><h3><span class="section-number">2.1.2.2. </span>Atributos<a class="headerlink" href="#atributos" title="Link to this heading">#</a></h3>
 <p>Los atributos se definen para el elemento al que pertenecen con la siguiente
 sintaxis:</p>
 <div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ATTLIST</span> <span class="nt">nombre_elemento</span> <span class="na">nombre_atributo1</span> <span class="na">tipo_atributo1</span> <span class="na">valor_defecto1</span>
@@ -450,7 +814,7 @@ sintaxis:</p>
 distintos, pero lo habitual es verlos en el mismo.</p>
 </div>
 <section id="tipos">
-<h4><span class="section-number">2.1.2.2.1. </span>Tipos<a class="headerlink" href="#tipos" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><span class="section-number">2.1.2.2.1. </span>Tipos<a class="headerlink" href="#tipos" title="Link to this heading">#</a></h4>
 <p>El valor de un atributo puede ser de uno de los siguientes tipos:</p>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">CDATA</span></code></dt><dd><p>Texto libre:</p>
@@ -535,7 +899,7 @@ en la gramática (lo cual requiere a su vez haber definido también una notació
 </dl>
 </section>
 <section id="valor-por-defecto">
-<h4><span class="section-number">2.1.2.2.2. </span>Valor por defecto<a class="headerlink" href="#valor-por-defecto" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4><span class="section-number">2.1.2.2.2. </span>Valor por defecto<a class="headerlink" href="#valor-por-defecto" title="Link to this heading">#</a></h4>
 <p>La última parte de la definición del atributo se dedica a definir cuál es el
 valor predeterminado del atributo, para lo cual hay cuatro posibilidades:</p>
 <ol class="arabic">
@@ -561,7 +925,7 @@ indica en el propio <abbr title="Document Type Definition">DTD</abbr>, pero en e
 </section>
 </section>
 <section id="notaciones">
-<span id="dtd-not"></span><h3><span class="section-number">2.1.2.3. </span>Notaciones<a class="headerlink" href="#notaciones" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="dtd-not"></span><h3><span class="section-number">2.1.2.3. </span>Notaciones<a class="headerlink" href="#notaciones" title="Link to this heading">#</a></h3>
 <p>Se usan para definir formatos distintos al <abbr title="eXtensible  Markup Language">XML</abbr> y pueden ser tanto públicas
 como privadas:</p>
 <div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!NOTATION</span> <span class="nt">nombre</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;IDSistema&quot;</span><span class="k">&gt;</span>
@@ -582,14 +946,14 @@ como privadas:</p>
 </div>
 </section>
 <section id="entidades">
-<span id="dtd-ent"></span><h3><span class="section-number">2.1.2.4. </span>Entidades<a class="headerlink" href="#entidades" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="dtd-ent"></span><h3><span class="section-number">2.1.2.4. </span>Entidades<a class="headerlink" href="#entidades" title="Link to this heading">#</a></h3>
 <p>Las entidades son mecanismos de sustitución. Las hay de dos tipos:</p>
 <ul class="simple">
 <li><p><em>Entidades generales</em>, que hacen las sustituciones en el documento <abbr title="eXtensible  Markup Language">XML</abbr>.</p></li>
 <li><p><em>Entidades parámetro</em>, que operan la sustitución en el propio <abbr title="Document Type Definition">DTD</abbr>.</p></li>
 </ul>
 <section id="generales">
-<span id="dtd-ent-gen"></span><h4><span class="section-number">2.1.2.4.1. </span>Generales<a class="headerlink" href="#generales" title="Enlace permanente a este encabezado">¶</a></h4>
+<span id="dtd-ent-gen"></span><h4><span class="section-number">2.1.2.4.1. </span>Generales<a class="headerlink" href="#generales" title="Link to this heading">#</a></h4>
 <p>Las entidades generales pueden ser:</p>
 <dl id="dtd-ent-p">
 <dt><strong>Procesables</strong></dt><dd><p>que son aquellas de las que se puede hacer sustitución. Como <abbr title="eXtensible  Markup Language">XML</abbr> es texto
@@ -630,7 +994,7 @@ de los atributos cuyo tipo es una <em>entidad</em>.</p>
 </dl>
 </section>
 <section id="parametro">
-<span id="dtd-ent-par"></span><h4><span class="section-number">2.1.2.4.2. </span>Parámetro<a class="headerlink" href="#parametro" title="Enlace permanente a este encabezado">¶</a></h4>
+<span id="dtd-ent-par"></span><h4><span class="section-number">2.1.2.4.2. </span>Parámetro<a class="headerlink" href="#parametro" title="Link to this heading">#</a></h4>
 <p>Operan su sustitución en el propio <abbr title="Document Type Definition">DTD</abbr>, por lo que sólo tiene sentido que sean
 procesables (internas, externas privadas o externas públicas):</p>
 <div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">nombre</span> <span class="s2">&quot;valor&quot;</span><span class="k">&gt;</span>              <span class="c">&lt;!-- interna --&gt;</span>
@@ -653,7 +1017,7 @@ siguiente ejercicio para ver un ejemplo de lo expresado en este párrafo.</p>
 </section>
 </section>
 <section id="espacios-de-nombres">
-<h3><span class="section-number">2.1.2.5. </span>Espacios de nombres<a class="headerlink" href="#espacios-de-nombres" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3><span class="section-number">2.1.2.5. </span>Espacios de nombres<a class="headerlink" href="#espacios-de-nombres" title="Link to this heading">#</a></h3>
 <p><abbr title="Document Type Definition">DTD</abbr> <strong>no soporta</strong> espacios de nombres, pero una etiqueta con el nombre
 <em>c:claustro</em> es válida. Por ello, podemos intentar definir <abbr title="Document Type Definition">DTD</abbr>s que validen
 un <abbr title="eXtensible  Markup Language">XML</abbr> que use espacios de nombres. Ahora bien, si revisamos <a class="reference internal" href="../01.intro/02b.marcas.html#xmlns"><span class="std std-ref">el epígrafe
@@ -668,10 +1032,9 @@ nombre, y no como un nombre con un prefijo, la etiqueta siempre tendrá que ser
 entremezclan los elementos de los espacios de nombres, lo más fácil es escribir
 siempre el <abbr title="eXtensible  Markup Language">XML</abbr> de la última forma que se propuso, o sea, cambiando el espacio
 de nombres predeterminado y definir <code class="file docutils literal notranslate"><span class="pre">casilleros.dtd</span></code> así:</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">DTD de casilleros</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">departamentos</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;departamentos.ent&quot;</span><span class="k">&gt;</span>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-text">DTD de casilleros</span><a class="headerlink" href="#id15" title="Link to this code">#</a></div>
+<div class="toggle highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">departamentos</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;departamentos.ent&quot;</span><span class="k">&gt;</span>
 <span class="hll"><span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">direccion</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;direccion_ns.dtd&quot;</span><span class="k">&gt;</span>
 </span><span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">datospers</span> <span class="s2">&quot;(apelativo,nombre,apellidos)&quot;</span><span class="k">&gt;</span>
 <span class="c">&lt;!--</span>
@@ -704,11 +1067,10 @@ de nombres predeterminado y definir <code class="file docutils literal notransla
 </pre></div>
 </div>
 </div>
-</details><p>y <code class="file docutils literal notranslate"><span class="pre">direccion.dtd</span></code> de este otro modo:</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">DTD de direccion</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">direccion</span> <span class="o">(</span><span class="nt">via</span><span class="o">,</span> <span class="nt">cp</span><span class="o">,</span> <span class="nt">localidad</span><span class="o">)</span><span class="k">&gt;</span>
+<p>y <code class="file docutils literal notranslate"><span class="pre">direccion.dtd</span></code> de este otro modo:</p>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-text">DTD de direccion</span><a class="headerlink" href="#id16" title="Link to this code">#</a></div>
+<div class="toggle highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">direccion</span> <span class="o">(</span><span class="nt">via</span><span class="o">,</span> <span class="nt">cp</span><span class="o">,</span> <span class="nt">localidad</span><span class="o">)</span><span class="k">&gt;</span>
 <span class="hll"><span class="k">&lt;!ATTLIST</span> <span class="nt">direccion</span> <span class="na">xmlns</span>  <span class="kc">CDATA</span>    <span class="kc">#FIXED</span> <span class="s2">&quot;urn:direccion&quot;</span><span class="k">&gt;</span>
 </span>
 <span class="k">&lt;!ELEMENT</span> <span class="nt">via</span> <span class="o">(</span><span class="kc">#PCDATA</span><span class="o">)</span><span class="k">&gt;</span>
@@ -719,17 +1081,16 @@ de nombres predeterminado y definir <code class="file docutils literal notransla
 </pre></div>
 </div>
 </div>
-</details><p>En cualquier caso, cuando hay espacios de nombres, lo más juicioso es evitar <abbr title="Document Type Definition">DTD</abbr>.</p>
+<p>En cualquier caso, cuando hay espacios de nombres, lo más juicioso es evitar <abbr title="Document Type Definition">DTD</abbr>.</p>
 </section>
 </section>
 <section id="ejercicios-resueltos">
-<span id="dtd-resueltos"></span><h2><span class="section-number">2.1.3. </span>Ejercicios resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Enlace permanente a este encabezado">¶</a></h2>
+<span id="dtd-resueltos"></span><h2><span class="section-number">2.1.3. </span>Ejercicios resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Link to this heading">#</a></h2>
 <ol class="arabic">
 <li><p>Tomando el <abbr title="eXtensible  Markup Language">XML</abbr> sobre recetas, <a class="reference internal" href="../01.intro/02b.marcas.html#xml-resueltos"><span class="std std-ref">ya resuelto en la unidad anterior</span></a>, escriba un <abbr title="Document Type Definition">DTD</abbr> para validarlo.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">DTD para el XML propuesto</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">recetas</span> <span class="o">(</span><span class="nt">receta</span><span class="o">+)</span><span class="k">&gt;</span>
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-text">DTD para el XML propuesto</span><a class="headerlink" href="#id17" title="Link to this code">#</a></div>
+<div class="toggle highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ELEMENT</span> <span class="nt">recetas</span> <span class="o">(</span><span class="nt">receta</span><span class="o">+)</span><span class="k">&gt;</span>
 
 <span class="k">&lt;!ELEMENT</span> <span class="nt">receta</span> <span class="o">(</span><span class="nt">ingrediente</span><span class="o">+)</span><span class="k">&gt;</span>
 <span class="k">&lt;!ATTLIST</span> <span class="nt">receta</span> <span class="na">id</span>              <span class="kc">ID</span>                <span class="kc">#REQUIRED</span>
@@ -743,14 +1104,13 @@ de nombres predeterminado y definir <code class="file docutils literal notransla
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 <li><p>Tomando el <abbr title="eXtensible  Markup Language">XML</abbr> sobre una cadena de restaurantes <a class="reference internal" href="../01.intro/02b.marcas.html#xml-resueltos"><span class="std std-ref">ya resuelto en el
 epígrafe anterior</span></a>, escriba un <abbr title="Document Type Definition">DTD</abbr> para validarlo. Procure
 reaprovechar el <abbr title="Document Type Definition">DTD</abbr> del ejercicio anterior.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">DTD para el XML propuesto</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">recetas</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;recetas.dtd&quot;</span><span class="k">&gt;</span>
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-text">DTD para el XML propuesto</span><a class="headerlink" href="#id18" title="Link to this code">#</a></div>
+<div class="toggle highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ENTITY</span> <span class="ni">%</span> <span class="ni">recetas</span> <span class="kc">SYSTEM</span> <span class="s2">&quot;recetas.dtd&quot;</span><span class="k">&gt;</span>
 <span class="ni">%recetas;</span>
 
 <span class="k">&lt;!ELEMENT</span> <span class="nt">cadena</span> <span class="o">(</span><span class="nt">recetas</span><span class="o">,</span> <span class="nt">restaurante</span><span class="o">+)</span><span class="k">&gt;</span>
@@ -774,11 +1134,11 @@ reaprovechar el <abbr title="Document Type Definition">DTD</abbr> del ejercicio 
 </pre></div>
 </div>
 </div>
-</details></li>
+</li>
 </ol>
 </section>
 <section id="conclusiones">
-<h2><span class="section-number">2.1.4. </span>Conclusiones<a class="headerlink" href="#conclusiones" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">2.1.4. </span>Conclusiones<a class="headerlink" href="#conclusiones" title="Link to this heading">#</a></h2>
 <p>Escribir la gramática de los <abbr title="eXtensible  Markup Language">XML</abbr> con <abbr title="Document Type Definition">DTD</abbr> presenta una serie de ventajas e
 inconvenientes.</p>
 <dl class="simple">
@@ -807,7 +1167,7 @@ elemento se pueda repetir entre 3 y 25 veces.</p></li>
 </dl>
 </section>
 <section id="ejercicios-propuestos">
-<h2><span class="section-number">2.1.5. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2><span class="section-number">2.1.5. </span>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Link to this heading">#</a></h2>
 <p>Tome de la relación de <a class="reference internal" href="../99.ejercicios/10.lenguajes.html#ej-li"><span class="std std-ref">ejercicios propuestos para la primera unidad</span></a> las soluciones <abbr title="eXtensible  Markup Language">XML</abbr> que diseñó a partir del <a class="reference internal" href="../99.ejercicios/20.val.html#ej10-05"><span class="std std-ref">enunciado 5</span></a>,
 y escriba para ellas la gramática <abbr title="Document Type Definition">DTD</abbr>.</p>
 <div class="admonition note">
@@ -817,24 +1177,23 @@ evitar que el alumno defina la gramática de una solución incompleta o deficien
 </div>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id7" role="note">
+<aside class="footnote brackets" id="id7" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
 <p>De hecho, para la definición de <a class="reference internal" href="../98.apendices/22.rnc.html#rnc-ns"><span class="std std-ref">espacios de nombres</span></a>, que
 son más modernos, ya sólo se usa una <abbr title="Uniform Resource Identifier">URI</abbr> para identificarlos.</p>
 </aside>
-<aside class="footnote brackets" id="id8" role="note">
+<aside class="footnote brackets" id="id8" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
 <p>La variación es que hemos incluido la definición del tipo de documento
 con <code class="code docutils literal notranslate"><span class="pre">&lt;!DOCTYPE</span> <span class="pre">...</span> <span class="pre">&gt;</span></code>.</p>
 </aside>
-<aside class="footnote brackets" id="id9" role="note">
+<aside class="footnote brackets" id="id9" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
 <p>Podríamos haber introducido esas definiciones dentro del propio
 <code class="file docutils literal notranslate"><span class="pre">casilleros.dtd</span></code> o incluso haberlas incluido como adición a la propia
 declaración del documento en el <abbr title="eXtensible  Markup Language">XML</abbr>:</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">XML de casilleros con entidades empotradas</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-text">XML de casilleros con entidades empotradas</span><a class="headerlink" href="#id19" title="Link to this code">#</a></div>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="cp">&lt;!DOCTYPE claustro SYSTEM &quot;casilleros.dtd&quot; [</span>
 <span class="cp">   &lt;!ENTITY FyQ &quot;Física y Química&quot;&gt;</span>
@@ -920,12 +1279,12 @@ declaración del documento en el <abbr title="eXtensible  Markup Language">XML</
 </pre></div>
 </div>
 </div>
-</details></aside>
-<aside class="footnote brackets" id="id10" role="note">
+</aside>
+<aside class="footnote brackets" id="id10" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">4</a><span class="fn-bracket">]</span></span>
 <p>También soporta <a class="reference internal" href="../98.apendices/22.rnc.html#rnc"><span class="std std-ref">Relax-NG Compact</span></a> y <a class="reference internal" href="../98.apendices/21.xsd.html#xsd"><span class="std std-ref">XML Schemas</span></a>.</p>
 </aside>
-<aside class="footnote brackets" id="id11" role="note">
+<aside class="footnote brackets" id="id11" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">5</a><span class="fn-bracket">]</span></span>
 <p>Los tipos <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> identifican de forma única los distintos tipos de
 archivos y se crearon en un principio para los adjuntos al correo
@@ -937,122 +1296,127 @@ En los sistemas <em>linux</em> hay una lista de tipos mime en <code class="file 
 </section>
 
 
-            <div class="clearer"></div>
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/logo.png" alt="Logo"/>
-        </a></p><div class="sphinx-toc sphinxlocaltoc">
-    <h3><a href="../index.html">Page contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">2.1. <abbr title="Document Type Definition">DTD</abbr></a><ul>
-<li><a class="reference internal" href="#preliminares">2.1.1. Preliminares</a><ul>
-<li><a class="reference internal" href="#declaracion">2.1.1.1. Declaración</a></li>
-<li><a class="reference internal" href="#ejemplo">2.1.1.2. Ejemplo</a></li>
-<li><a class="reference internal" href="#validacion">2.1.1.3. Validación</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#sintaxis-basica">2.1.2. Sintaxis básica</a><ul>
-<li><a class="reference internal" href="#elementos">2.1.2.1. Elementos</a></li>
-<li><a class="reference internal" href="#atributos">2.1.2.2. Atributos</a><ul>
-<li><a class="reference internal" href="#tipos">2.1.2.2.1. Tipos</a></li>
-<li><a class="reference internal" href="#valor-por-defecto">2.1.2.2.2. Valor por defecto</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#notaciones">2.1.2.3. Notaciones</a></li>
-<li><a class="reference internal" href="#entidades">2.1.2.4. Entidades</a><ul>
-<li><a class="reference internal" href="#generales">2.1.2.4.1. Generales</a></li>
-<li><a class="reference internal" href="#parametro">2.1.2.4.2. Parámetro</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#espacios-de-nombres">2.1.2.5. Espacios de nombres</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#ejercicios-resueltos">2.1.3. Ejercicios resueltos</a></li>
-<li><a class="reference internal" href="#conclusiones">2.1.4. Conclusiones</a></li>
-<li><a class="reference internal" href="#ejercicios-propuestos">2.1.5. Ejercicios propuestos</a></li>
-</ul>
-</li>
-</ul>
+                </article>
+              
 
-  </div>
-  <div class="sphinxprev">
-    <h4>Previous page</h4>
-    <p class="topless"><a href="index.html"
-                          title="Previous page">&larr; <span class="section-number">2. </span>Validación</a></p>
-  </div>
-  <div class="sphinxnext">
-    <h4>Next page</h4>
-    <p class="topless"><a href="02.yaml.html"
-                          title="Next page">&rarr; <span class="section-number">2.2. </span><abbr title="JavaScript Object Notation">JSON</abbr> Schema</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>Esta página</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/02.validacion/01.dtdxml.rst.txt"
-            rel="nofollow">Mostrar el código</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Búsqueda rápida</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Ir a" />
-    </form>
-    </div>
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Validación</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02.yaml.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title"><span class="section-number">2.2. </span><abbr title="JavaScript Object Notation">JSON</abbr> Schema</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-    
-    
-        <div class="sidebar-toggle-group no-js">
+                </footer>
+              
+            </div>
             
-            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
-                 «
-                <span class="show-for-small">hide menu</span>
-                
-            </button>
-            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
-                
-                <span class="show-for-small">menu</span>
-                <span class="hide-for-small">sidebar</span>
-                 »
-            </button>
-        </div>
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminares">2.1.1. Preliminares</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#declaracion">2.1.1.1. Declaración</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">2.1.1.2. Ejemplo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validacion">2.1.1.3. Validación</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sintaxis-basica">2.1.2. Sintaxis básica</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elementos">2.1.2.1. Elementos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atributos">2.1.2.2. Atributos</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos">2.1.2.2.1. Tipos</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#valor-por-defecto">2.1.2.2.2. Valor por defecto</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notaciones">2.1.2.3. Notaciones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entidades">2.1.2.4. Entidades</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#generales">2.1.2.4.1. Generales</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parametro">2.1.2.4.2. Parámetro</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#espacios-de-nombres">2.1.2.5. Espacios de nombres</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios-resueltos">2.1.3. Ejercicios resueltos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones">2.1.4. Conclusiones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios-propuestos">2.1.5. Ejercicios propuestos</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
     
-      <div class="clearer"></div>
-    </div>
-    <div class="relbar-bottom">
+<p class="component-author">
+Por José Miguel Sánchez Alés
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
         
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navegación</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="Índice General"
-             >índice</a></li>
-        <li class="right" >
-          <a href="02.yaml.html" title="2.2. JSON Schema"
-             >siguiente</a> &nbsp; &nbsp;</li>
-        <li class="right" >
-          <a href="index.html" title="2. Validación"
-             >anterior</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
 
-          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">2. </span>Validación</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2.1. </span><abbr title="Document Type Definition">DTD</abbr></a></li> 
-      </ul>
+      </main>
     </div>
-    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <div class="footer" role="contentinfo">
-        &#169; Derechos de autor CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
-      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
-    </div>
-    <!-- cloud_sptheme 1.4 -->
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

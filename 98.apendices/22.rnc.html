@@ -1,83 +1,455 @@
 
 
 
-
-
 <!DOCTYPE html>
 
-<html lang="es">
+
+<html lang="es" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Relax-NG Compact &#8212; documentación de Lenguajes de Marcas - rolling</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" href="../_static/general.css" type="text/css" />
     <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
-    
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/translations.js"></script>
-    <script src="../_static/design-tabs.js"></script>
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    
-    
-     
-        <script src="../_static/jquery.cookie.js"></script>
-    
-
-    
-     
-        <script src="../_static/cloud.base.js"></script>
-    
-
-    
-     
-        <script src="../_static/cloud.js"></script>
-    
-
+    <script src="../_static/documentation_options.js?v=461dccb6"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '98.apendices/22.rnc';</script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
     <link rel="next" title="XSLT" href="41.xslt.html" />
-    <link rel="prev" title="W3C XML Schema" href="21.xsd.html" /> 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head><body>
-    <div class="relbar-top">
-        
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navegación</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="Índice General"
-             accesskey="I">índice</a></li>
-        <li class="right" >
-          <a href="41.xslt.html" title="XSLT"
-             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
-        <li class="right" >
-          <a href="21.xsd.html" title="W3C XML Schema"
-             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+    <link rel="prev" title="W3C XML Schema" href="21.xsd.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-        <li class="nav-item nav-item-this"><a href="">Relax-NG Compact</a></li> 
-      </ul>
-    </div>
-    </div>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="documentación de Lenguajes de Marcas - rolling - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="documentación de Lenguajes de Marcas - rolling - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Búsqueda</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01.intro/index.html">1. Lenguajes para el intercambio de datos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01.intro/01.intro.html">1.1. Introducción</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../01.intro/02.sintaxis.html">1.2. Sintaxis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01.intro/02a.serial.html">1.2.1. Lenguajes de serialización de datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../01.intro/02b.marcas.html">1.2.2. Lenguajes de marcas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../01.intro/03.ejercicios.html">1.3. Ejercicios propuestos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02.validacion/index.html">2. Validación</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02.validacion/01.dtdxml.html">2.1. <abbr title="Document Type Definition">DTD</abbr></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.validacion/02.yaml.html">2.2. <abbr title="JavaScript Object Notation">JSON</abbr> Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.validacion/03.ej.html">2.3. Ejercicios propuestos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03.consulta/index.html">3. Consulta de datos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03.consulta/01.xpath.html">3.1. XPath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.consulta/02.jsonpath.html">3.2. <abbr title="JavaScript Object Notation">JSON</abbr>Path</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../04.transformacion/index.html">4. Transformación de datos</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05.almacenamiento/index.html">5. Almacenamiento</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05.almacenamiento/01.relacionales.html">5.1. Bases relacionales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.almacenamiento/02.nativas.html">5.2. Bases nativas</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06.html/index.html">6. <abbr title="HyperText Markup Language">HTML</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/01.intro.html">6.1. Introducción</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/02.estructura.html">6.2. Generalidades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/03.head.html">6.3. Cabecera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/04.basico.html">6.4. Elementos básicos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/05.tablas.html">6.5. Tablas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/07.struct.html">6.6. Estructura semántica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/08.form.html">6.7. Formularios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/09.media.html">6.8. Empotrados</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../07.css/index.html">7. <abbr title="Cascading Style Sheets">CSS</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/01.general.html">7.1. Generalidades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/02.sintaxis.html">7.2. Sintaxis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/03.propiedades.html">7.3. Propiedades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/04.bootstrap.html">7.4. Bootstrap</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../08.js/index.html">8. Javascript</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Apendices</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="21.xsd.html">W3C <abbr title="eXtensible  Markup Language">XML</abbr> Schema</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Relax-NG Compact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="41.xslt.html"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="99.tools.html">Herramientas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="99.tools/01-xmlstarlet.html">XMLStarlet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="99.tools/05-xidel.html">Xidel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="99.tools/10-vscode.html">Visual Studio Code</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../99.ejercicios/index.html">Ejercicios</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/10.lenguajes.html">Lenguajes para el intercambio de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/20.val.html">Validación de documentos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/30.xpath.html"><em>XPath</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/40.xquery.html">XQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/41.xslt.html"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/50.basex.html">BaseX</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/60.html.html"><abbr title="HyperText Markup Language">HTML</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/01.head.html">Cabecera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/05.basicos.html">Básicos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/10.tablas.html">Tablas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/15.struct.html">Estructura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/20.form.html">Formularios</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/70.css.html"><abbr title="Cascading Style Sheets">CSS</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/70.css/01.selectores.html">Selectores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/70.css/05.reglas.html">Reglas y maquetación</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/80.js.html">Javascript</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/80.js/01.basico.html">Sintaxis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/80.js/05.dom.html"><abbr title="Document Object Model">DOM</abbr></a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/98.apendices/22.rnc.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Relax-NG Compact</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminares">Preliminares</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#declaracion">Declaración</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">Ejemplo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validacion">Validación</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sintaxis-basica">Sintaxis básica</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elementos">Elementos</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#elementos-de-solo-texto">Elementos de sólo texto</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#secuencia">Secuencia</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atributos">Atributos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comentarios-anotaciones">Comentarios. Anotaciones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#y-las-entidades">¿Y las entidades?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-datos">Tipos de datos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relacion">Relación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#restricciones">Restricciones</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-modular">Definición modular</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-patrones">Importación de patrones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-gramaticas">Importación de gramáticas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#espacios-de-nombres">Espacios de nombres</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios-resueltos">Ejercicios resueltos</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section id="relax-ng-compact">
-<span id="rnc"></span><h1>Relax-NG Compact<a class="headerlink" href="#relax-ng-compact" title="Enlace permanente a este encabezado">¶</a></h1>
+<span id="rnc"></span><h1>Relax-NG Compact<a class="headerlink" href="#relax-ng-compact" title="Link to this heading">#</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Se presupone que el lector ya sabe describir la gramática con
@@ -141,9 +513,9 @@ contexto, es perfectamente posible que ambos nodos se llamen <em>direccion</em>.
 cardinalidad, recuerda a <abbr title="Document Type Definition">DTD</abbr>.</p></li>
 </ul>
 <section id="preliminares">
-<h2>Preliminares<a class="headerlink" href="#preliminares" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Preliminares<a class="headerlink" href="#preliminares" title="Link to this heading">#</a></h2>
 <section id="declaracion">
-<h3>Declaración<a class="headerlink" href="#declaracion" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Declaración<a class="headerlink" href="#declaracion" title="Link to this heading">#</a></h3>
 <p>A diferencia del <abbr title="Document Type Definition">DTD</abbr>, no hay un modo estándar de relacionar un documento <abbr title="eXtensible  Markup Language">XML</abbr>
 con el fichero <abbr title="Relax-NG Compact">RNC</abbr> que describe su gramática. Un modo habitual de hacerlo es
 usar una instrucción de procesamiento:</p>
@@ -152,12 +524,11 @@ usar una instrucción de procesamiento:</p>
 </div>
 </section>
 <section id="ejemplo">
-<span id="rnc-ejemplo-inicial"></span><h3>Ejemplo<a class="headerlink" href="#ejemplo" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="rnc-ejemplo-inicial"></span><h3>Ejemplo<a class="headerlink" href="#ejemplo" title="Link to this heading">#</a></h3>
 <p>Si retomamos el <a class="reference internal" href="../01.intro/02b.marcas.html#xml-ejemplo"><span class="std std-ref">ejemplo sobre el claustro de profesores</span></a><a class="footnote-reference brackets" href="#id13" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>:</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">XML de casilleros.</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<div class="literal-block-wrapper docutils container" id="id22">
+<div class="code-block-caption"><span class="caption-text">XML de casilleros</span><a class="headerlink" href="#id22" title="Link to this code">#</a></div>
+<div class="toggle highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 
 <span class="nt">&lt;claustro</span><span class="w"> </span><span class="na">centro=</span><span class="s">&quot;IES Pepe Botella&quot;</span><span class="nt">&gt;</span>
 <span class="w">   </span><span class="nt">&lt;profesor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;p1&quot;</span><span class="nt">&gt;</span>
@@ -222,12 +593,11 @@ usar una instrucción de procesamiento:</p>
 </pre></div>
 </div>
 </div>
-</details><p>La definición mediante <abbr title="Relax-NG Compact">RNC</abbr> podría ser la siguiente (buscando la mayor
+<p>La definición mediante <abbr title="Relax-NG Compact">RNC</abbr> podría ser la siguiente (buscando la mayor
 similitud sintáctica con <abbr title="Document Type Definition">DTD</abbr>):</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Gramática con <abbr title="Relax-NG Compact">RNC</abbr></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span>start <span class="o">=</span> claustro
+<div class="literal-block-wrapper docutils container" id="id23">
+<div class="code-block-caption"><span class="caption-text">Gramática con <abbr title="Relax-NG Compact">RNC</abbr></span><a class="headerlink" href="#id23" title="Link to this code">#</a></div>
+<div class="toggle highlight-rnc notranslate"><div class="highlight"><pre><span></span>start <span class="o">=</span> claustro
 
 claustro <span class="o">=</span> <span class="kd">element</span><span class="nv"> claustro </span><span class="p">{</span> <span class="p">(</span>profesor<span class="o">|</span>asistente<span class="p">)</span>+<span class="o">,</span>
    <span class="kd">attribute</span><span class="nv"> centro </span><span class="p">{</span> <span class="kt">text</span> <span class="p">}</span>
@@ -252,26 +622,26 @@ departamento <span class="o">=</span> <span class="kd">element</span><span class
 </pre></div>
 </div>
 </div>
-</details><p>La sintaxis es bastante elocuente. Obsérvese cómo la cardinalidad la expresamos
+<p>La sintaxis es bastante elocuente. Obsérvese cómo la cardinalidad la expresamos
 de la misma forma que en <abbr title="Document Type Definition">DTD</abbr> y que hemos sido capaces de definir con bastante
 precisión cuál es el formato del identificador que tiene cada profesor.</p>
 </section>
 <section id="validacion">
-<h3>Validación<a class="headerlink" href="#validacion" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Validación<a class="headerlink" href="#validacion" title="Link to this heading">#</a></h3>
 <p>Para validar documentos cuya gramática se ha definido mediante un <abbr title="Relax-NG Compact">RNC</abbr> podemos
 valernos de <a class="reference external" href="http://www.thaiopensource.com/relaxng/jing.html">jing</a>
-(disponible a través del paquete <a class="reference external" href="https://packages.debian.org/stable/jing">jing</a>), que soporta la sintaxis compacta
+(disponible a través del paquete <a class="extlink-deb reference external" href="https://packages.debian.org/stable/jing">jing</a>), que soporta la sintaxis compacta
 directamente; o bien aplicar un traductor de <abbr title="Relax-NG Compact">RNC</abbr> a <abbr title="Relax-NG">RNG</abbr> como <a class="reference external" href="http://www.thaiopensource.com/relaxng/trang.html">trang</a> (disponible a través del
-paquete <a class="reference external" href="https://packages.debian.org/stable/trang">trang</a>) y posteriormente realizar la validación propiamente dicha
+paquete <a class="extlink-deb reference external" href="https://packages.debian.org/stable/trang">trang</a>) y posteriormente realizar la validación propiamente dicha
 con <strong class="command">xmlstarlet</strong> que sí soporta <abbr title="Relax-NG">RNG</abbr>.</p>
 <p>Consulte los detalles en el <a class="reference internal" href="99.tools/01-xmlstarlet.html#xmlstarlet-rnc"><span class="std std-ref">apéndice dedicado a XMLStarlet</span></a>.</p>
 </section>
 </section>
 <section id="sintaxis-basica">
-<h2>Sintaxis básica<a class="headerlink" href="#sintaxis-basica" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Sintaxis básica<a class="headerlink" href="#sintaxis-basica" title="Link to this heading">#</a></h2>
 <p>La sintaxis es, hasta cierto punto, semejante a la de un <abbr title="Document Type Definition">DTD</abbr></p>
 <section id="elementos">
-<h3>Elementos<a class="headerlink" href="#elementos" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Elementos<a class="headerlink" href="#elementos" title="Link to this heading">#</a></h3>
 <p>Se definen con la construcción:</p>
 <div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">element</span><span class="nv"> nombre_del_elemento </span><span class="p">{</span>
    contenido
@@ -351,7 +721,7 @@ patrón:</p>
 </div>
 </div>
 <section id="elementos-de-solo-texto">
-<span id="rnc-solo-texto"></span><h4>Elementos de sólo texto<a class="headerlink" href="#elementos-de-solo-texto" title="Enlace permanente a este encabezado">¶</a></h4>
+<span id="rnc-solo-texto"></span><h4>Elementos de sólo texto<a class="headerlink" href="#elementos-de-solo-texto" title="Link to this heading">#</a></h4>
 <p>Los elementos que sólo contienen texto, y que se corresponden con <code class="docutils literal notranslate"><span class="pre">#PCDATA</span></code>
 permiten una expresión muchísimo más rica que la que ofrece la palabra reservada
 <em>text</em>, de manera que al final el contenido no sea texto libre:</p>
@@ -407,7 +777,7 @@ espacios. Por ejemplo, si queremos que el contenido sean dos números enteros:</
 </ul>
 </section>
 <section id="secuencia">
-<h4>Secuencia<a class="headerlink" href="#secuencia" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4>Secuencia<a class="headerlink" href="#secuencia" title="Link to this heading">#</a></h4>
 <p>Ya se definió la <em class="dfn">secuencia</em> como el modo en que varios elementos se
 suceden dentro del contenido de otro y que <abbr title="Document Type Definition">DTD</abbr> permitía definir dos: la
 sucesión representada por la coma, y la alternativa, representada por la tubería
@@ -438,7 +808,7 @@ varios elementos a la vez para complicar la secuencia.</p>
 </section>
 </section>
 <section id="atributos">
-<h3>Atributos<a class="headerlink" href="#atributos" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Atributos<a class="headerlink" href="#atributos" title="Link to this heading">#</a></h3>
 <p>La definición de atributos es idéntica a la de <a class="reference internal" href="#rnc-solo-texto"><span class="std std-ref">elementos de sólo texto</span></a> con la salvedad de que la palabra reservada para definirlos es
 <code class="docutils literal notranslate"><span class="pre">attribute</span></code>:</p>
 <div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="kd">attribute</span><span class="nv"> sexo </span><span class="p">{</span> <span class="s2">&quot;hombre&quot;</span> <span class="o">|</span> <span class="s2">&quot;mujer&quot;</span> <span class="p">}</span>
@@ -465,14 +835,14 @@ no se incluye en el <abbr title="eXtensible  Markup Language">XML</abbr>.</p>
 datos</span></a>, como es el caso del atributo <em>id</em> del elemento <em>profesor</em>.</p>
 </section>
 <section id="comentarios-anotaciones">
-<h3>Comentarios. Anotaciones<a class="headerlink" href="#comentarios-anotaciones" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Comentarios. Anotaciones<a class="headerlink" href="#comentarios-anotaciones" title="Link to this heading">#</a></h3>
 <div class="admonition-todo admonition" id="id4">
 <p class="admonition-title">Por hacer</p>
 <p>Por escribir</p>
 </div>
 </section>
 <section id="y-las-entidades">
-<h3>¿Y las entidades?<a class="headerlink" href="#y-las-entidades" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>¿Y las entidades?<a class="headerlink" href="#y-las-entidades" title="Link to this heading">#</a></h3>
 <p>Las entidades generales definidas por el usuario permitían expresar un contenido
 con un nombre:</p>
 <div class="highlight-dtd notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;!ENTITY</span> <span class="ni">HyG</span> <span class="s2">&quot;Historia y Geografía&quot;</span><span class="k">&gt;</span>
@@ -549,7 +919,7 @@ dedicada a <abbr title="Document Type Definition">DTD</abbr>.</p>
 </section>
 </section>
 <section id="tipos-de-datos">
-<span id="rnc-datatype"></span><h2>Tipos de datos<a class="headerlink" href="#tipos-de-datos" title="Enlace permanente a este encabezado">¶</a></h2>
+<span id="rnc-datatype"></span><h2>Tipos de datos<a class="headerlink" href="#tipos-de-datos" title="Link to this heading">#</a></h2>
 <p>Ya se ha apuntado que <abbr title="Relax-NG Compact">RNC</abbr> soporta tipos, pero no los define, sino que usa las
 definiciones ya establecidas para <abbr title="XML Schema Definition">XSD</abbr>. Estos tipos pueden consultarse en la
 <a class="reference external" href="https://www.w3.org/TR/xmlschema-2/">documentación de del propio W3C XML Schemas</a>,
@@ -557,7 +927,7 @@ o mejor aún, en el <a class="reference external" href="http://books.xmlschemata
 reseñado</a>, que hace
 un resumen de la anterior.</p>
 <section id="relacion">
-<h3>Relación<a class="headerlink" href="#relacion" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Relación<a class="headerlink" href="#relacion" title="Link to this heading">#</a></h3>
 <p>Sin ánimo de ser exahustivos, pueden sernos de mucha utilidad:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="http://books.xmlschemata.org/relaxng/ch19-77151.html">xsd:ID</a>, para
@@ -587,7 +957,7 @@ definir un valor lógico (<em>true</em>/<em>false</em>).</p></li>
 </div>
 </section>
 <section id="restricciones">
-<h3>Restricciones<a class="headerlink" href="#restricciones" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Restricciones<a class="headerlink" href="#restricciones" title="Link to this heading">#</a></h3>
 <p>Al declarar el tipo también se pueden introducir restricciones. Hay distintos
 tipos de restricciones y dependiendo de la naturaleza del tipo de dato unas
 serán aplicables y otras no. Por ejemplo, en los tipos de datos de naturaleza
@@ -610,7 +980,7 @@ añada un número después.</p>
 </section>
 </section>
 <section id="definicion-modular">
-<h2>Definición modular<a class="headerlink" href="#definicion-modular" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Definición modular<a class="headerlink" href="#definicion-modular" title="Link to this heading">#</a></h2>
 <p>Con lo visto hasta ahora, tenemos ya la mayor parte de los componentes
 necesarios para definir la gramática de un <abbr title="eXtensible  Markup Language">XML</abbr> en un sólo documento <abbr title="Relax-NG Compact">RNC</abbr>.
 Ahora bien, cuando la definición es larga o cuando queremos reaprovechar
@@ -628,7 +998,7 @@ gramática.</p></li>
 <li><p><strong>include</strong> qie permite importar una gramática completa</p></li>
 </ul>
 <section id="importacion-de-patrones">
-<h3>Importación de patrones<a class="headerlink" href="#importacion-de-patrones" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Importación de patrones<a class="headerlink" href="#importacion-de-patrones" title="Link to this heading">#</a></h3>
 <p>En este caso, requerimos el uso de <code class="docutils literal notranslate"><span class="pre">external</span></code>. Un ejemplo tan ilustrativo como
 inútil es éste:</p>
 <div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span><span class="c1"># ejemplo.rnc</span>
@@ -651,7 +1021,7 @@ elemento <em>raiz</em>. Por ejemplo:</p>
 sólo, es incapaz de servir para validar.</p>
 </section>
 <section id="importacion-de-gramaticas">
-<h3>Importación de gramáticas<a class="headerlink" href="#importacion-de-gramaticas" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Importación de gramáticas<a class="headerlink" href="#importacion-de-gramaticas" title="Link to this heading">#</a></h3>
 <p>Podemos también con <code class="docutils literal notranslate"><span class="pre">include</span></code> importar una gramática definida en un archivo
 externo. Por ejemplo, consideremos el siguiente <abbr title="eXtensible  Markup Language">XML</abbr>:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;</span>
@@ -764,7 +1134,7 @@ nueva_definicion <span class="o">=</span> ...
 </div>
 </section>
 <section id="espacios-de-nombres">
-<span id="rnc-ns"></span><h3>Espacios de nombres<a class="headerlink" href="#espacios-de-nombres" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="rnc-ns"></span><h3>Espacios de nombres<a class="headerlink" href="#espacios-de-nombres" title="Link to this heading">#</a></h3>
 <p><abbr title="Relax-NG Compact">RNC</abbr> soporta la definición de espacios de nombres.</p>
 <p>Por ejemplo, recordemos que antes jugamos con dos gramáticas: una que definía
 <em>persona</em> y otra que definía <em>direccion</em>. Supongamos que asociamos un espacio de
@@ -836,7 +1206,7 @@ ya que las herramientas de validación lo dan por supuesto.</p>
 </section>
 </section>
 <section id="ejercicios-resueltos">
-<h2>Ejercicios resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Ejercicios resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Link to this heading">#</a></h2>
 <ol class="arabic">
 <li><p>Tomando el <abbr title="eXtensible  Markup Language">XML</abbr> sobre recetas, <a class="reference internal" href="../01.intro/02a.serial.html#yaml-resueltos"><span class="std std-ref">ya resuelto en un epígrafe anterior</span></a>, escriba un <abbr title="Relax-NG Compact">RNC</abbr> para validarlo.</p>
 <div class="highlight-rnc notranslate"><div class="highlight"><pre><span></span>start <span class="o">=</span> recetas
@@ -897,12 +1267,12 @@ plato <span class="o">=</span> <span class="kd">element</span><span class="nv"> 
 </ul>
 <p class="rubric">Notas al pie</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id12" role="note">
+<aside class="footnote brackets" id="id12" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>Las ventajas y desventajas expresadas a continuación son una indisimulada
 reescritura de <a class="reference external" href="http://www.relaxng.org/compact-tutorial-20030326.html#id2817637">esta comparación</a>.</p>
 </aside>
-<aside class="footnote brackets" id="id13" role="note">
+<aside class="footnote brackets" id="id13" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
 <p>Hemos vuelto a la primera versión del ejemplo en el que se incluía la
 definición de las entidades dentro del <abbr title="Document Type Definition">DTD</abbr>, porque <abbr title="Relax-NG Compact">RNC</abbr> no las soporta.
@@ -914,7 +1284,7 @@ Lo que sí podríamos hacer es eliminar referencia a <code class="file docutils 
 </pre></div>
 </div>
 </aside>
-<aside class="footnote brackets" id="id14" role="note">
+<aside class="footnote brackets" id="id14" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
 <p>En puridad, no sólo para elementos y atributos. Podemos hacer otro tipo
 de asignaciones que quizás también resultan útiles y que se entenderán más
@@ -923,13 +1293,13 @@ adelante:</p>
 </pre></div>
 </div>
 </aside>
-<aside class="footnote brackets" id="id15" role="note">
+<aside class="footnote brackets" id="id15" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">4</a><span class="fn-bracket">]</span></span>
 <p>O sea que equivale a <code class="docutils literal notranslate"><span class="pre">text</span></code>. Pero la ventaja de este tipo de dato es
 que <abbr title="XML Schema Definition">XSD</abbr> pemite añadir restricciones a la definición general, como obligar
 a que esa cadena cumpla con una expresión regular. Se verá a continuación.</p>
 </aside>
-<aside class="footnote brackets" id="id16" role="note">
+<aside class="footnote brackets" id="id16" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">5</a><span class="fn-bracket">]</span></span>
 <p>La definición propuesta obliga a poner siempre dos decimales, así que un
 precio de <em>1</em> o de <em>1.5</em> fallará. Para incluir estas posibilidades habría que
@@ -938,29 +1308,29 @@ haber recurrido a una expresión regular:</p>
 </pre></div>
 </div>
 </aside>
-<aside class="footnote brackets" id="id17" role="note">
+<aside class="footnote brackets" id="id17" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">6</a><span class="fn-bracket">]</span></span>
 <p><em>Relax-NG</em> usa las expresiones definidas para <em>W3C XML Schema</em> que son
 expresiones regulares de tipo <abbr title="Extended Regular Expresion">ERE</abbr>.</p>
 </aside>
-<aside class="footnote brackets" id="id18" role="note">
+<aside class="footnote brackets" id="id18" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">7</a><span class="fn-bracket">]</span></span>
 <p>Por ejemplo, la definición de un domicilio postal puede servirnos en
 muchos <abbr title="eXtensible  Markup Language">XML</abbr> que tengan distinto propósito.</p>
 </aside>
-<aside class="footnote brackets" id="id19" role="note">
+<aside class="footnote brackets" id="id19" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">8</a><span class="fn-bracket">]</span></span>
 <p>Los patrones también pueden redefinirse con <code class="code docutils literal notranslate"><span class="pre">&amp;=</span></code> o con <code class="code docutils literal notranslate"><span class="pre">=</span></code>,
 este último para sustituir totalmente la definición antigua. En el caso de
 <em>start</em>, no obstante*^esto último no es posible.</p>
 </aside>
-<aside class="footnote brackets" id="id20" role="note">
+<aside class="footnote brackets" id="id20" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">9</a><span class="fn-bracket">]</span></span>
 <p>Por lo general, en las gramáticas de amplio uso, como <abbr title="Uniform Resource Name">URN</abbr> se toma una <abbr title="Uniform Resource Locator">URL</abbr>
 caracerística. Por ejemplo, los datos de <abbr title="eXtensible  Markup Language">XML</abbr> Schema están definidos en el
 espacio de nombres «<em>http://www.w3.org/2001/XMLSchema-datatypes</em>».</p>
 </aside>
-<aside class="footnote brackets" id="id21" role="note">
+<aside class="footnote brackets" id="id21" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">10</a><span class="fn-bracket">]</span></span>
 <p>La declaración de un espacio de nombres y su prefijo cuando
 no es el predeterminado se hace así:</p>
@@ -978,125 +1348,131 @@ ejemplo:</p>
 </section>
 
 
-            <div class="clearer"></div>
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/logo.png" alt="Logo"/>
-        </a></p><div class="sphinx-toc sphinxlocaltoc">
-    <h3><a href="../index.html">Page contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">Relax-NG Compact</a><ul>
-<li><a class="reference internal" href="#preliminares">Preliminares</a><ul>
-<li><a class="reference internal" href="#declaracion">Declaración</a></li>
-<li><a class="reference internal" href="#ejemplo">Ejemplo</a></li>
-<li><a class="reference internal" href="#validacion">Validación</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#sintaxis-basica">Sintaxis básica</a><ul>
-<li><a class="reference internal" href="#elementos">Elementos</a><ul>
-<li><a class="reference internal" href="#elementos-de-solo-texto">Elementos de sólo texto</a></li>
-<li><a class="reference internal" href="#secuencia">Secuencia</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#atributos">Atributos</a></li>
-<li><a class="reference internal" href="#comentarios-anotaciones">Comentarios. Anotaciones</a></li>
-<li><a class="reference internal" href="#y-las-entidades">¿Y las entidades?</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#tipos-de-datos">Tipos de datos</a><ul>
-<li><a class="reference internal" href="#relacion">Relación</a></li>
-<li><a class="reference internal" href="#restricciones">Restricciones</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#definicion-modular">Definición modular</a><ul>
-<li><a class="reference internal" href="#importacion-de-patrones">Importación de patrones</a></li>
-<li><a class="reference internal" href="#importacion-de-gramaticas">Importación de gramáticas</a></li>
-<li><a class="reference internal" href="#espacios-de-nombres">Espacios de nombres</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#ejercicios-resueltos">Ejercicios resueltos</a></li>
-</ul>
-</li>
-</ul>
+                </article>
+              
 
-  </div>
-  <div class="sphinxprev">
-    <h4>Previous page</h4>
-    <p class="topless"><a href="21.xsd.html"
-                          title="Previous page">&larr; W3C <abbr title="eXtensible  Markup Language">XML</abbr> Schema</a></p>
-  </div>
-  <div class="sphinxnext">
-    <h4>Next page</h4>
-    <p class="topless"><a href="41.xslt.html"
-                          title="Next page">&rarr; <abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>Esta página</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/98.apendices/22.rnc.rst.txt"
-            rel="nofollow">Mostrar el código</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Búsqueda rápida</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Ir a" />
-    </form>
-    </div>
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="21.xsd.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">W3C <abbr title="eXtensible  Markup Language">XML</abbr> Schema</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="41.xslt.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-    
-    
-        <div class="sidebar-toggle-group no-js">
+                </footer>
+              
+            </div>
             
-            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
-                 «
-                <span class="show-for-small">hide menu</span>
-                
-            </button>
-            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
-                
-                <span class="show-for-small">menu</span>
-                <span class="hide-for-small">sidebar</span>
-                 »
-            </button>
-        </div>
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminares">Preliminares</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#declaracion">Declaración</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">Ejemplo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validacion">Validación</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sintaxis-basica">Sintaxis básica</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elementos">Elementos</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#elementos-de-solo-texto">Elementos de sólo texto</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#secuencia">Secuencia</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atributos">Atributos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comentarios-anotaciones">Comentarios. Anotaciones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#y-las-entidades">¿Y las entidades?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-datos">Tipos de datos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relacion">Relación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#restricciones">Restricciones</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-modular">Definición modular</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-patrones">Importación de patrones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-gramaticas">Importación de gramáticas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#espacios-de-nombres">Espacios de nombres</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios-resueltos">Ejercicios resueltos</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
     
-      <div class="clearer"></div>
-    </div>
-    <div class="relbar-bottom">
+<p class="component-author">
+Por José Miguel Sánchez Alés
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
         
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navegación</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="Índice General"
-             >índice</a></li>
-        <li class="right" >
-          <a href="41.xslt.html" title="XSLT"
-             >siguiente</a> &nbsp; &nbsp;</li>
-        <li class="right" >
-          <a href="21.xsd.html" title="W3C XML Schema"
-             >anterior</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
 
-        <li class="nav-item nav-item-this"><a href="">Relax-NG Compact</a></li> 
-      </ul>
+      </main>
     </div>
-    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <div class="footer" role="contentinfo">
-        &#169; Derechos de autor CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
-      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
-    </div>
-    <!-- cloud_sptheme 1.4 -->
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

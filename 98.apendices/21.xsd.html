@@ -1,85 +1,468 @@
 
 
 
-
-
 <!DOCTYPE html>
 
-<html lang="es">
+
+<html lang="es" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>W3C XML Schema &#8212; documentación de Lenguajes de Marcas - rolling</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" href="../_static/general.css" type="text/css" />
     <link rel="stylesheet" href="../_static/particular.css" type="text/css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
-    
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/translations.js"></script>
-    <script src="../_static/design-tabs.js"></script>
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    
-    
-     
-        <script src="../_static/jquery.cookie.js"></script>
-    
-
-    
-     
-        <script src="../_static/cloud.base.js"></script>
-    
-
-    
-     
-        <script src="../_static/cloud.js"></script>
-    
-
+    <script src="../_static/documentation_options.js?v=461dccb6"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '98.apendices/21.xsd';</script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
     <link rel="next" title="Relax-NG Compact" href="22.rnc.html" />
-    <link rel="prev" title="8. Javascript" href="../08.js/index.html" /> 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head><body>
-    <div class="relbar-top">
-        
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navegación</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="Índice General"
-             accesskey="I">índice</a></li>
-        <li class="right" >
-          <a href="22.rnc.html" title="Relax-NG Compact"
-             accesskey="N">siguiente</a> &nbsp; &nbsp;</li>
-        <li class="right" >
-          <a href="../08.js/index.html" title="8. Javascript"
-             accesskey="P">anterior</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
+    <link rel="prev" title="Apendices" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-        <li class="nav-item nav-item-this"><a href="">W3C <abbr title="eXtensible  Markup Language">XML</abbr> Schema</a></li> 
-      </ul>
-    </div>
-    </div>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="documentación de Lenguajes de Marcas - rolling - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="documentación de Lenguajes de Marcas - rolling - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Búsqueda</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01.intro/index.html">1. Lenguajes para el intercambio de datos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01.intro/01.intro.html">1.1. Introducción</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../01.intro/02.sintaxis.html">1.2. Sintaxis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01.intro/02a.serial.html">1.2.1. Lenguajes de serialización de datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../01.intro/02b.marcas.html">1.2.2. Lenguajes de marcas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../01.intro/03.ejercicios.html">1.3. Ejercicios propuestos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02.validacion/index.html">2. Validación</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02.validacion/01.dtdxml.html">2.1. <abbr title="Document Type Definition">DTD</abbr></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.validacion/02.yaml.html">2.2. <abbr title="JavaScript Object Notation">JSON</abbr> Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02.validacion/03.ej.html">2.3. Ejercicios propuestos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03.consulta/index.html">3. Consulta de datos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03.consulta/01.xpath.html">3.1. XPath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03.consulta/02.jsonpath.html">3.2. <abbr title="JavaScript Object Notation">JSON</abbr>Path</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../04.transformacion/index.html">4. Transformación de datos</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05.almacenamiento/index.html">5. Almacenamiento</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05.almacenamiento/01.relacionales.html">5.1. Bases relacionales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05.almacenamiento/02.nativas.html">5.2. Bases nativas</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06.html/index.html">6. <abbr title="HyperText Markup Language">HTML</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/01.intro.html">6.1. Introducción</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/02.estructura.html">6.2. Generalidades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/03.head.html">6.3. Cabecera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/04.basico.html">6.4. Elementos básicos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/05.tablas.html">6.5. Tablas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/07.struct.html">6.6. Estructura semántica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/08.form.html">6.7. Formularios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06.html/09.media.html">6.8. Empotrados</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../07.css/index.html">7. <abbr title="Cascading Style Sheets">CSS</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/01.general.html">7.1. Generalidades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/02.sintaxis.html">7.2. Sintaxis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/03.propiedades.html">7.3. Propiedades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07.css/04.bootstrap.html">7.4. Bootstrap</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../08.js/index.html">8. Javascript</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Apendices</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">W3C <abbr title="eXtensible  Markup Language">XML</abbr> Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22.rnc.html">Relax-NG Compact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="41.xslt.html"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="99.tools.html">Herramientas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="99.tools/01-xmlstarlet.html">XMLStarlet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="99.tools/05-xidel.html">Xidel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="99.tools/10-vscode.html">Visual Studio Code</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../99.ejercicios/index.html">Ejercicios</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/10.lenguajes.html">Lenguajes para el intercambio de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/20.val.html">Validación de documentos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/30.xpath.html"><em>XPath</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/40.xquery.html">XQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/41.xslt.html"><abbr title="eXtensible Stylesheet Language Transformations">XSLT</abbr></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../99.ejercicios/50.basex.html">BaseX</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/60.html.html"><abbr title="HyperText Markup Language">HTML</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/01.head.html">Cabecera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/05.basicos.html">Básicos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/10.tablas.html">Tablas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/15.struct.html">Estructura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/60.html/20.form.html">Formularios</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/70.css.html"><abbr title="Cascading Style Sheets">CSS</abbr></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/70.css/01.selectores.html">Selectores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/70.css/05.reglas.html">Reglas y maquetación</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../99.ejercicios/80.js.html">Javascript</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/80.js/01.basico.html">Sintaxis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../99.ejercicios/80.js/05.dom.html"><abbr title="Document Object Model">DOM</abbr></a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/98.apendices/21.xsd.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>W3C XML Schema</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vistazo-rapido">Vistazo rápido</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-simples">Tipos simples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elementos-simples">Elementos simples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atributos-simples">Atributos simples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#restricciones">Restricciones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-derivados">Tipos derivados</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-complejos">Tipos complejos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contenido-simple-texto-solo">Contenido simple (texto solo)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contenido-complejo">Contenido complejo</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cardinalidad">Cardinalidad</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#secuencia">Secuencia</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#agrupacion">Agrupación</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simplificacion">Simplificación</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-complejos-mixtos">Tipos complejos mixtos</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xsd-deriv-tipos">Tipos derivados</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#casos-particulares">Casos particulares</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tipo-vacio-sin-atributos">Tipo vacío sin atributos</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tipo-vacio-con-atributos">Tipo vacío con atributos</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tipo-texto-con-atributos">Tipo texto con atributos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consejos-de-escritura">Consejos de escritura</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reutilizacion-de-definiciones">Reutilización de definiciones</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#composicion-de-ficheros-xsd">Composición de ficheros <abbr title="XML Schema Definition">XSD</abbr></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#espacios-de-nombres">Espacios de nombres</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#concepto">Concepto</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-del-espacio-de-nombres">Definición del espacio de nombres</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mezclando-espacios-de-nombres">Mezclando espacios de nombres</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios-resueltos">Ejercicios resueltos</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section id="w3c-xml-schema">
-<span id="xsd"></span><h1>W3C <abbr title="eXtensible  Markup Language">XML</abbr> Schema<a class="headerlink" href="#w3c-xml-schema" title="Enlace permanente a este encabezado">¶</a></h1>
+<span id="xsd"></span><h1>W3C <abbr title="eXtensible  Markup Language">XML</abbr> Schema<a class="headerlink" href="#w3c-xml-schema" title="Link to this heading">#</a></h1>
 <section id="introduccion">
-<h2>Introducción<a class="headerlink" href="#introduccion" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Link to this heading">#</a></h2>
 <p>Las <abbr title="eXtensible  Markup Language">XML</abbr> Schemas (esquemas <abbr title="eXtensible  Markup Language">XML</abbr>, en castellano) son un método alternativo a
 los para la definición de la gramática de un dialecto <abbr title="eXtensible  Markup Language">XML</abbr>. Su utilidad radica
 en que tienen una serie de <strong>ventajas</strong> sobre ellos:</p>
@@ -106,7 +489,7 @@ entidades generales.</p></li>
 </div></blockquote>
 </section>
 <section id="vistazo-rapido">
-<h2>Vistazo rápido<a class="headerlink" href="#vistazo-rapido" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Vistazo rápido<a class="headerlink" href="#vistazo-rapido" title="Link to this heading">#</a></h2>
 <p>Antes de meternos en harina, miremos por encima cómo es la definición de un
 documento con <abbr title="eXtensible  Markup Language">XML</abbr> Schemas. Sea el siguiente documento:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;</span>
@@ -144,11 +527,11 @@ documento con <abbr title="eXtensible  Markup Language">XML</abbr> Schemas. Sea 
 </div>
 </section>
 <section id="tipos-simples">
-<h2>Tipos simples<a class="headerlink" href="#tipos-simples" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Tipos simples<a class="headerlink" href="#tipos-simples" title="Link to this heading">#</a></h2>
 <p>En las definiciones mediante <abbr title="eXtensible  Markup Language">XML</abbr> schemas, elementos y atributos pueden ser de
 tipo simple o de tipo compuesto. Bajo este epígrafe se desarrollarán ambos.</p>
 <section id="elementos-simples">
-<h3>Elementos simples<a class="headerlink" href="#elementos-simples" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Elementos simples<a class="headerlink" href="#elementos-simples" title="Link to this heading">#</a></h3>
 <p>Los <em class="dfn">elementos simples</em> son aquellos que contienen únicamente texto y no tienen
 ningún atributo. En el ejemplo anterior <em>nombre</em>, <em>apellidos</em>, <em>dni</em> y <em>tlfo</em>. Sin
 embargo, a diferencia de un <abbr title="Document Type Definition">DTD</abbr>, puede definirse con más exactitud de qué tipo
@@ -179,7 +562,7 @@ predeterminado para el caso de que no se incluya:</p>
 </div>
 </section>
 <section id="atributos-simples">
-<h3>Atributos simples<a class="headerlink" href="#atributos-simples" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Atributos simples<a class="headerlink" href="#atributos-simples" title="Link to this heading">#</a></h3>
 <p>Al igual que los elementos su valor es puro texto. Se definen exactamente igual
 que los elementos, excepto por el hecho que se usan la cláusula <code class="docutils literal notranslate"><span class="pre">xs:attribute</span></code>
 en vez de <code class="docutils literal notranslate"><span class="pre">xs:element</span></code>. Para los casos en los que el atributo era de tipo
@@ -207,7 +590,7 @@ obigatorios:</p>
 </div>
 </section>
 <section id="restricciones">
-<h3>Restricciones<a class="headerlink" href="#restricciones" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Restricciones<a class="headerlink" href="#restricciones" title="Link to this heading">#</a></h3>
 <p>Las restricciones (tanto en elementos como en atributos) sirven para eliminar
 libertad en los valores asignados. Cuando se quieren incluir restricciones, la
 sintaxis se enrevesa un poco:</p>
@@ -284,7 +667,7 @@ restricciones. Por ejemplo, el tipo <code class="docutils literal notranslate"><
 <code class="docutils literal notranslate"><span class="pre">xs:string</span></code> con la restricción del último ejemplo.</p>
 </section>
 <section id="tipos-derivados">
-<h3>Tipos derivados<a class="headerlink" href="#tipos-derivados" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Tipos derivados<a class="headerlink" href="#tipos-derivados" title="Link to this heading">#</a></h3>
 <p>Un usuario también puede definir tipos derivados de tipos simples ya definidos.
 Por ejemplo, podríamos hacer la siguiente definición (basándonos en <a class="reference internal" href="#xsd-id-num"><span class="std std-ref">este ejemplo
 anterior</span></a>):</p>
@@ -302,7 +685,7 @@ definición de todos los atributos que quisiésemos.</p>
 </section>
 </section>
 <section id="tipos-complejos">
-<h2>Tipos complejos<a class="headerlink" href="#tipos-complejos" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Tipos complejos<a class="headerlink" href="#tipos-complejos" title="Link to this heading">#</a></h2>
 <p><em class="dfn">Elementos complejos</em> son aquellos que contienen elementos o tienen
 atributos. O ambos, claro. Sólo tiene sentido hablar de complejos en el caso de
 los elementos, porque el valor de los atributos siempre es texto, más o menos
@@ -334,7 +717,7 @@ restringirlo, limitamos lo que en un principio se podía incluir en el elemento
 y, si lo extendemos, lo que haremos es añadir componentes a los originales del
 elemento. Analicémoslo por separado.</p>
 <section id="contenido-simple-texto-solo">
-<span id="xsd-simplecontent"></span><h3>Contenido simple (texto solo)<a class="headerlink" href="#contenido-simple-texto-solo" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="xsd-simplecontent"></span><h3>Contenido simple (texto solo)<a class="headerlink" href="#contenido-simple-texto-solo" title="Link to this heading">#</a></h3>
 <p>Los tipos que se pueden tomar como base son los que se vieron ya cuando el
 elemento era simple: xs:string, xs:integer, etc. Y a estos tipos base se le
 pueden añadir restricciones o extensiones (pero no ambas a la vez). Por ejemplo,
@@ -417,7 +800,7 @@ restricción y usarlo como base luego en la extensión:</p>
 </div>
 </section>
 <section id="contenido-complejo">
-<span id="xsd-complexcontent"></span><h3>Contenido complejo<a class="headerlink" href="#contenido-complejo" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="xsd-complexcontent"></span><h3>Contenido complejo<a class="headerlink" href="#contenido-complejo" title="Link to this heading">#</a></h3>
 <p>Ya sabemos que son elementos con <em>contenido complejo</em> aquellos contienen otros
 elementos. El principio para definir el contenido complejo es el mismo que para
 el simple: se toma un tipo base y se definen restricciones o extensiones para
@@ -458,7 +841,7 @@ más (+), pero también está el concepto de la agrupación: la cardinalidad del
 determina.  En los <abbr title="eXtensible  Markup Language">XML</abbr> Schemas hay que habilitar un mecanismo equivalente,
 para que se puedan especificar estos tres conceptos.</p>
 <section id="cardinalidad">
-<h4>Cardinalidad<a class="headerlink" href="#cardinalidad" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4>Cardinalidad<a class="headerlink" href="#cardinalidad" title="Link to this heading">#</a></h4>
 <p>Recordemos que indica el número de veces que se puede repetir un elemento. Para
 notarlo se añaden como atributos a la definición <code class="docutils literal notranslate"><span class="pre">xs:element</span></code>, los atributos
 <em>minOccurs</em> (mínimo de ocurrencias) y <em>maxOccurs</em> (número máximo de
@@ -471,7 +854,7 @@ ocurrencias). Por ejemplo:</p>
 sobreentiende que valen <strong>1</strong>.</p>
 </section>
 <section id="secuencia">
-<h4>Secuencia<a class="headerlink" href="#secuencia" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4>Secuencia<a class="headerlink" href="#secuencia" title="Link to this heading">#</a></h4>
 <p>Hay tres secuencias diferentes:</p>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">xs:sequence</span></code></dt><dd><p>Determina que los elementos deben aparecer en el orden que se especifica
@@ -529,7 +912,7 @@ orden que se desee, pero como máximo una vez (no tiene equivalencia en <abbr ti
 y <em>minOccurs</em> sólo puede valer 1 ó 0</p>
 </section>
 <section id="agrupacion">
-<h4>Agrupación<a class="headerlink" href="#agrupacion" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4>Agrupación<a class="headerlink" href="#agrupacion" title="Link to this heading">#</a></h4>
 <p>Para emular el paréntesis de los dtd, es posible incluir los atributos
 <em>minOccurs</em> y <em>maxOccurs</em> dentro de etiquetas <code class="docutils literal notranslate"><span class="pre">xs:sequence</span></code> o <code class="docutils literal notranslate"><span class="pre">xs:choice</span></code>.
 De este modo, la expresión <code class="code docutils literal notranslate"><span class="pre">(a,(b|c)*)</span></code> podría escribirse del siguiente
@@ -602,7 +985,7 @@ máximo una vez y en cualquier orden.</p>
 </div>
 </section>
 <section id="simplificacion">
-<h4>Simplificación<a class="headerlink" href="#simplificacion" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4>Simplificación<a class="headerlink" href="#simplificacion" title="Link to this heading">#</a></h4>
 <p>Ya se ha visto que, cuando se quiere definir un tipo complejo con contenido
 complejo, se puede recurrir a la restricción del tipo base complejo <code class="docutils literal notranslate"><span class="pre">xs:anyType</span></code>.
 Esto habría de hacerse así, pero se admite una simplificación de la sintaxis: se
@@ -621,7 +1004,7 @@ haber sido simplemente:</p>
 complejo ya definido, tal como se tratará en un <a class="reference internal" href="#xsd-deriv-tipos"><span class="std std-ref">epígrafe posterior</span></a>.</p>
 </section>
 <section id="tipos-complejos-mixtos">
-<h4>Tipos complejos mixtos<a class="headerlink" href="#tipos-complejos-mixtos" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4>Tipos complejos mixtos<a class="headerlink" href="#tipos-complejos-mixtos" title="Link to this heading">#</a></h4>
 <p>Un elemento de tipo complejo mixto es aquel que a la vez contiene texto y
 elementos. Por ejemplo, supongamos este fragmento de <abbr title="eXtensible  Markup Language">XML</abbr>:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;p&gt;</span>Esto<span class="w"> </span>es<span class="w"> </span>un<span class="w"> </span>ejemplo<span class="w"> </span>de<span class="w"> </span>párrafo<span class="w"> </span>en<span class="w"> </span>HTML,<span class="w"> </span>en<span class="w"> </span>los<span class="w"> </span>que<span class="w"> </span>puede
@@ -649,7 +1032,7 @@ la versión larga de la definición):</p>
 </section>
 </section>
 <section id="xsd-deriv-tipos">
-<span id="id1"></span><h3>Tipos derivados<a class="headerlink" href="#xsd-deriv-tipos" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="id1"></span><h3>Tipos derivados<a class="headerlink" href="#xsd-deriv-tipos" title="Link to this heading">#</a></h3>
 <p>De la misma manera que con los tipos simples es posible generar tipos derivados
 a partir de tipos complejos: basta con darle un nombre al tipo cuando se define.
 Por ejemplo, si en un <abbr title="eXtensible  Markup Language">XML</abbr> voy a usar varios elementos que representan personas,
@@ -728,9 +1111,9 @@ puede hacerse a menos que en tipo.persona incluyamos también
 <code class="code docutils literal notranslate"><span class="pre">minOccurs=&quot;0&quot;</span></code> para <em>dni</em></p>
 </section>
 <section id="casos-particulares">
-<h3>Casos particulares<a class="headerlink" href="#casos-particulares" title="Enlace permanente a este encabezado">¶</a></h3>
+<h3>Casos particulares<a class="headerlink" href="#casos-particulares" title="Link to this heading">#</a></h3>
 <section id="tipo-vacio-sin-atributos">
-<h4>Tipo vacío sin atributos<a class="headerlink" href="#tipo-vacio-sin-atributos" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4>Tipo vacío sin atributos<a class="headerlink" href="#tipo-vacio-sin-atributos" title="Link to this heading">#</a></h4>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;empty&quot;</span><span class="nt">&gt;</span>
 <span class="w">   </span><span class="nt">&lt;xs:complexContent&gt;</span>
 <span class="w">      </span><span class="nt">&lt;xs:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:anyType&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
@@ -744,7 +1127,7 @@ puede hacerse a menos que en tipo.persona incluyamos también
 </div>
 </section>
 <section id="tipo-vacio-con-atributos">
-<h4>Tipo vacío con atributos<a class="headerlink" href="#tipo-vacio-con-atributos" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4>Tipo vacío con atributos<a class="headerlink" href="#tipo-vacio-con-atributos" title="Link to this heading">#</a></h4>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;empty.attr&quot;</span><span class="nt">&gt;</span>
 <span class="w">   </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;atributo1&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">/&gt;</span>
 <span class="w">   </span><span class="nt">&lt;xs:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;atributo2&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xs:integer&quot;</span><span class="nt">/&gt;</span>
@@ -753,7 +1136,7 @@ puede hacerse a menos que en tipo.persona incluyamos también
 </div>
 </section>
 <section id="tipo-texto-con-atributos">
-<h4>Tipo texto con atributos<a class="headerlink" href="#tipo-texto-con-atributos" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4>Tipo texto con atributos<a class="headerlink" href="#tipo-texto-con-atributos" title="Link to this heading">#</a></h4>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;texto.attr&quot;</span><span class="nt">&gt;</span>
 <span class="w">   </span><span class="nt">&lt;xs:simpleContent&gt;</span>
 <span class="w">      </span><span class="nt">&lt;xs:extension</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">&gt;</span>
@@ -768,7 +1151,7 @@ puede hacerse a menos que en tipo.persona incluyamos también
 </section>
 </section>
 <section id="consejos-de-escritura">
-<span id="xsd-consejos"></span><h2>Consejos de escritura<a class="headerlink" href="#consejos-de-escritura" title="Enlace permanente a este encabezado">¶</a></h2>
+<span id="xsd-consejos"></span><h2>Consejos de escritura<a class="headerlink" href="#consejos-de-escritura" title="Link to this heading">#</a></h2>
 <p>Los documentos <abbr title="eXtensible  Markup Language">XML</abbr> permiten estructurar muy eficazmente los información y
 permiten su fácil procesado. En el caso particular de los <abbr title="XML Schema Definition">XSD</abbr>, permiten ser
 mucho más preciso al definir el contenido de elementos y atributos que los
@@ -835,10 +1218,9 @@ leer, porque todo es muy esquemático:</p>
 el elemento persona o qué atributos y de qué tipo puede contener el atributo
 matricula. En cambio, una definición igual de imprecisa con un <abbr title="XML Schema Definition">XSD</abbr> (sin afinar
 el formato que debe tener un <abbr title="Documento Nacional de Identidad">DNI</abbr> o una matrícula) tiene esta pinta:</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Un <abbr title="XML Schema Definition">XSD</abbr> que parece la carretera de la sierra…</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Un <abbr title="XML Schema Definition">XSD</abbr> que parece la carretera de la sierra…</span><a class="headerlink" href="#id3" title="Link to this code">#</a></div>
+<div class="toggle highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="nt">&lt;xs:schema</span><span class="w"> </span><span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span><span class="nt">&gt;</span>
 <span class="w">   </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gente&quot;</span><span class="nt">&gt;</span>
 <span class="w">      </span><span class="nt">&lt;xs:complexType&gt;</span>
@@ -910,7 +1292,7 @@ el formato que debe tener un <abbr title="Documento Nacional de Identidad">DNI</
 </pre></div>
 </div>
 </div>
-</details><p>Y, ahora, ¿qué elementos puede contener el elemento <em>flota</em>? Es difícil decirlo
+<p>Y, ahora, ¿qué elementos puede contener el elemento <em>flota</em>? Es difícil decirlo
 con un vistazo. Incluso con diez. Es tanta la cantidad de metainformación, tan
 larga y tan prolija, que es incluso difícil de escribir el documento sin que
 olvidemos por qué atributo o elemento íbamos definiendo. Esto, en realidad, es
@@ -925,10 +1307,9 @@ una de ellas sea más compacta.</p>
 definiendo a partir del elemento raíz y, cuando nos topamos con la definición de
 un tipo complejo (o un tipo simple con restricciones), no lo definimos hay mismo
 sino que le damos un nombre a ese tipo y lo definimos aparte:</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Una solución más legible…</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Una solución más legible…</span><a class="headerlink" href="#id4" title="Link to this code">#</a></div>
+<div class="toggle highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="nt">&lt;xs:schema</span><span class="w"> </span><span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span><span class="nt">&gt;</span>
 <span class="w">   </span><span class="nt">&lt;xs:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gente&quot;</span><span class="nt">&gt;</span>
 <span class="w">      </span><span class="nt">&lt;xs:complexType&gt;</span>
@@ -1000,14 +1381,14 @@ sino que le damos un nombre a ese tipo y lo definimos aparte:</p>
 </pre></div>
 </div>
 </div>
-</details><p>El documento resultante no sale más corto, ni siquiera hay menos etiquetas, pero
+<p>El documento resultante no sale más corto, ni siquiera hay menos etiquetas, pero
 las definiciones de cada elemento y de cada tipo están separadas, de modo que
 mediante un vistazo se pueden entender más fácilmente. Además, permite
 reaprovechar las definiciones de tipos para usarlas en otro <abbr title="XML Schema Definition">XSD</abbr>, tal como se
 verá a continuación.</p>
 </section>
 <section id="reutilizacion-de-definiciones">
-<span id="xsd-modular"></span><h2>Reutilización de definiciones<a class="headerlink" href="#reutilizacion-de-definiciones" title="Enlace permanente a este encabezado">¶</a></h2>
+<span id="xsd-modular"></span><h2>Reutilización de definiciones<a class="headerlink" href="#reutilizacion-de-definiciones" title="Link to this heading">#</a></h2>
 <p>Hasta ahora hemos considerado que la definición de la gramática de un <abbr title="eXtensible  Markup Language">XML</abbr> se
 encontraba toda dentro de un archivo <abbr title="XML Schema Definition">XSD</abbr>. Sin embargo, esto no es siempre así:
 puede ser que queramos separarla en varios ficheros, o bien que queramos tener
@@ -1022,7 +1403,7 @@ yuxtaponer distintos ficheros <abbr title="XML Schema Definition">XSD</abbr> y o
 de nombres. La ventaja del segundo es que permite definir tipos con un mismos
 nombre dentro de espacios de nombres distintos.</p>
 <section id="composicion-de-ficheros-xsd">
-<span id="xsd-composicion"></span><h3>Composición de ficheros <abbr title="XML Schema Definition">XSD</abbr><a class="headerlink" href="#composicion-de-ficheros-xsd" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="xsd-composicion"></span><h3>Composición de ficheros <abbr title="XML Schema Definition">XSD</abbr><a class="headerlink" href="#composicion-de-ficheros-xsd" title="Link to this heading">#</a></h3>
 <p>Imaginemos que queremos escribir definir la gramática del <abbr title="eXtensible  Markup Language">XML</abbr> del apartado
 anterior de manera que queremos crear dos archivos <abbr title="XML Schema Definition">XSD</abbr>: uno que incluya las
 definiciones relativas a los vehículos (o sea, todo lo incluido dentro del
@@ -1141,9 +1522,9 @@ redefinición totalmente nueva. Para esto último deberíamos usar el elemento
 </div>
 </section>
 <section id="espacios-de-nombres">
-<span id="xsd-namespaces"></span><h3>Espacios de nombres<a class="headerlink" href="#espacios-de-nombres" title="Enlace permanente a este encabezado">¶</a></h3>
+<span id="xsd-namespaces"></span><h3>Espacios de nombres<a class="headerlink" href="#espacios-de-nombres" title="Link to this heading">#</a></h3>
 <section id="concepto">
-<h4>Concepto<a class="headerlink" href="#concepto" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4>Concepto<a class="headerlink" href="#concepto" title="Link to this heading">#</a></h4>
 <p>Lo visto en el epígrafe anterior soluciona nuestra necesidad de modularizar las
 definiciones. Sin embargo, nos topamos con un problema nada desdeñable: los
 nombres de los tipos no pueden repetirse, de modo que, cuando estuviéramos
@@ -1208,7 +1589,7 @@ diferentes y dos espacios de nombres, cada uno para referenciar los elementos de
 cada <abbr title="Document Type Definition">DTD</abbr>. Sin embargo, esto sí es posible con <abbr title="eXtensible  Markup Language">XML</abbr> Schemas.</p>
 </section>
 <section id="definicion-del-espacio-de-nombres">
-<h4>Definición del espacio de nombres<a class="headerlink" href="#definicion-del-espacio-de-nombres" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4>Definición del espacio de nombres<a class="headerlink" href="#definicion-del-espacio-de-nombres" title="Link to this heading">#</a></h4>
 <p>Retomemos el ejemplo de la definición de persona (en principio sin la dirección,
 que lo dejaremos para el siguiente epígrafe):</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;</span>
@@ -1254,7 +1635,7 @@ definición del <abbr title="eXtensible  Markup Language">XML</abbr> todos los e
 pertenecer al mismo.</p>
 </section>
 <section id="mezclando-espacios-de-nombres">
-<h4>Mezclando espacios de nombres<a class="headerlink" href="#mezclando-espacios-de-nombres" title="Enlace permanente a este encabezado">¶</a></h4>
+<h4>Mezclando espacios de nombres<a class="headerlink" href="#mezclando-espacios-de-nombres" title="Link to this heading">#</a></h4>
 <p>Llega el momento de saber cómo se pueden definir por separado los elementos de
 distintos espacios de nombres (cada uno en un <abbr title="XML Schema Definition">XSD</abbr> diferente) y cómo se pueden
 usar todos esos espacios de nombres a la vez en un único <abbr title="eXtensible  Markup Language">XML</abbr>.</p>
@@ -1361,7 +1742,7 @@ en el <abbr title="XML Schema Definition">XSD</abbr> enlazados deberán tener el
 </section>
 </section>
 <section id="ejercicios-resueltos">
-<h2>Ejercicios resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Enlace permanente a este encabezado">¶</a></h2>
+<h2>Ejercicios resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Link to this heading">#</a></h2>
 <div class="admonition-todo admonition" id="id2">
 <p class="admonition-title">Por hacer</p>
 <p>Resolver los <a class="reference internal" href="../01.intro/02a.serial.html#yaml-resueltos"><span class="std std-ref">ejercicios de recetas y cadena</span></a>.</p>
@@ -1370,136 +1751,142 @@ en el <abbr title="XML Schema Definition">XSD</abbr> enlazados deberán tener el
 </section>
 
 
-            <div class="clearer"></div>
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/logo.png" alt="Logo"/>
-        </a></p><div class="sphinx-toc sphinxlocaltoc">
-    <h3><a href="../index.html">Page contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">W3C <abbr title="eXtensible  Markup Language">XML</abbr> Schema</a><ul>
-<li><a class="reference internal" href="#introduccion">Introducción</a></li>
-<li><a class="reference internal" href="#vistazo-rapido">Vistazo rápido</a></li>
-<li><a class="reference internal" href="#tipos-simples">Tipos simples</a><ul>
-<li><a class="reference internal" href="#elementos-simples">Elementos simples</a></li>
-<li><a class="reference internal" href="#atributos-simples">Atributos simples</a></li>
-<li><a class="reference internal" href="#restricciones">Restricciones</a></li>
-<li><a class="reference internal" href="#tipos-derivados">Tipos derivados</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#tipos-complejos">Tipos complejos</a><ul>
-<li><a class="reference internal" href="#contenido-simple-texto-solo">Contenido simple (texto solo)</a></li>
-<li><a class="reference internal" href="#contenido-complejo">Contenido complejo</a><ul>
-<li><a class="reference internal" href="#cardinalidad">Cardinalidad</a></li>
-<li><a class="reference internal" href="#secuencia">Secuencia</a></li>
-<li><a class="reference internal" href="#agrupacion">Agrupación</a></li>
-<li><a class="reference internal" href="#simplificacion">Simplificación</a></li>
-<li><a class="reference internal" href="#tipos-complejos-mixtos">Tipos complejos mixtos</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#xsd-deriv-tipos">Tipos derivados</a></li>
-<li><a class="reference internal" href="#casos-particulares">Casos particulares</a><ul>
-<li><a class="reference internal" href="#tipo-vacio-sin-atributos">Tipo vacío sin atributos</a></li>
-<li><a class="reference internal" href="#tipo-vacio-con-atributos">Tipo vacío con atributos</a></li>
-<li><a class="reference internal" href="#tipo-texto-con-atributos">Tipo texto con atributos</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#consejos-de-escritura">Consejos de escritura</a></li>
-<li><a class="reference internal" href="#reutilizacion-de-definiciones">Reutilización de definiciones</a><ul>
-<li><a class="reference internal" href="#composicion-de-ficheros-xsd">Composición de ficheros <abbr title="XML Schema Definition">XSD</abbr></a></li>
-<li><a class="reference internal" href="#espacios-de-nombres">Espacios de nombres</a><ul>
-<li><a class="reference internal" href="#concepto">Concepto</a></li>
-<li><a class="reference internal" href="#definicion-del-espacio-de-nombres">Definición del espacio de nombres</a></li>
-<li><a class="reference internal" href="#mezclando-espacios-de-nombres">Mezclando espacios de nombres</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#ejercicios-resueltos">Ejercicios resueltos</a></li>
-</ul>
-</li>
-</ul>
+                </article>
+              
 
-  </div>
-  <div class="sphinxprev">
-    <h4>Previous page</h4>
-    <p class="topless"><a href="../08.js/index.html"
-                          title="Previous page">&larr; <span class="section-number">8. </span>Javascript</a></p>
-  </div>
-  <div class="sphinxnext">
-    <h4>Next page</h4>
-    <p class="topless"><a href="22.rnc.html"
-                          title="Next page">&rarr; Relax-NG Compact</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>Esta página</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/98.apendices/21.xsd.rst.txt"
-            rel="nofollow">Mostrar el código</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Búsqueda rápida</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Ir a" />
-    </form>
-    </div>
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Apendices</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="22.rnc.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Relax-NG Compact</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-    
-    
-        <div class="sidebar-toggle-group no-js">
+                </footer>
+              
+            </div>
             
-            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
-                 «
-                <span class="show-for-small">hide menu</span>
-                
-            </button>
-            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
-                
-                <span class="show-for-small">menu</span>
-                <span class="hide-for-small">sidebar</span>
-                 »
-            </button>
-        </div>
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vistazo-rapido">Vistazo rápido</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-simples">Tipos simples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elementos-simples">Elementos simples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atributos-simples">Atributos simples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#restricciones">Restricciones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-derivados">Tipos derivados</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-complejos">Tipos complejos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contenido-simple-texto-solo">Contenido simple (texto solo)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contenido-complejo">Contenido complejo</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cardinalidad">Cardinalidad</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#secuencia">Secuencia</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#agrupacion">Agrupación</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simplificacion">Simplificación</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-complejos-mixtos">Tipos complejos mixtos</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xsd-deriv-tipos">Tipos derivados</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#casos-particulares">Casos particulares</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tipo-vacio-sin-atributos">Tipo vacío sin atributos</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tipo-vacio-con-atributos">Tipo vacío con atributos</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tipo-texto-con-atributos">Tipo texto con atributos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consejos-de-escritura">Consejos de escritura</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reutilizacion-de-definiciones">Reutilización de definiciones</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#composicion-de-ficheros-xsd">Composición de ficheros <abbr title="XML Schema Definition">XSD</abbr></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#espacios-de-nombres">Espacios de nombres</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#concepto">Concepto</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-del-espacio-de-nombres">Definición del espacio de nombres</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mezclando-espacios-de-nombres">Mezclando espacios de nombres</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios-resueltos">Ejercicios resueltos</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
     
-      <div class="clearer"></div>
-    </div>
-    <div class="relbar-bottom">
+<p class="component-author">
+Por José Miguel Sánchez Alés
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
         
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navegación</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="Índice General"
-             >índice</a></li>
-        <li class="right" >
-          <a href="22.rnc.html" title="Relax-NG Compact"
-             >siguiente</a> &nbsp; &nbsp;</li>
-        <li class="right" >
-          <a href="../08.js/index.html" title="8. Javascript"
-             >anterior</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">documentación de Lenguajes de Marcas - rolling</a> &#187;</li>
 
-        <li class="nav-item nav-item-this"><a href="">W3C <abbr title="eXtensible  Markup Language">XML</abbr> Schema</a></li> 
-      </ul>
+      </main>
     </div>
-    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <div class="footer" role="contentinfo">
-        &#169; Derechos de autor CC BY 4.0, 2023-2025, José Miguel Sánchez Alés.
-      Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
-    </div>
-    <!-- cloud_sptheme 1.4 -->
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
