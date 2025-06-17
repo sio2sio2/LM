@@ -161,6 +161,8 @@ Las unidades se han diseñado atendiendo a los siguientes criterios:
       bases de datos nativas.
 
 **RA 7**
+   Opera sistemas empresariales de gestión de información realizando tareas de
+   importación, integración, aseguramiento y extracción de la información.
 
    UT **10**: :ref:`lm-ut10` (14 horas)
 
